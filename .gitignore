@@ -1,3 +1,9 @@
+# IDEA
+
 .idea/workspace.xml
+
+# Gatsby / Node
+
 node_modules
-build
+.cache
+public
