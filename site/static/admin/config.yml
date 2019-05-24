@@ -28,15 +28,14 @@ collections:
     create: true
     fields:
       - { name: path, label: Path }
-      - { name: priority, label: Date, widget: date }
+      - { name: priority, label: Priority }
       - { name: title, label: Title }
 
 
 
-  - name: alert
-    label: Alert
-    label_singular: 'Alert' # Used in the UI, ie: "New Post"
-    folder: content/
+  - name: constants
+    label: Constants
+    folder: constants/
     create: false
     delete: false
     files:
