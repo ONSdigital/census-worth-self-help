@@ -35,13 +35,9 @@ collections:
 
   - name: constants
     label: Constants
-    folder: constants/
+    folder: content/constants/
     create: false
     delete: false
-    files:
-      - name: 'alert'
-        label: 'Front page alert'
-        file: 'alert.md'
-        description: 'Front page alert'
-        fields:
-          - { label: 'Content', name: 'alert_content', widget: 'string' }
+    fields:
+      - { label: 'title', name: 'alert_title', widget: 'string' }
+      - { label: 'Content', name: 'alert_content', widget: 'string' }
