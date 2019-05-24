@@ -8,31 +8,6 @@ media_folder: static/assets
 public_folder: assets
 
 collections:
-  - name: articles
-    label: Articles
-    label_singular: 'Article' # Used in the UI, ie: "New Post"
-    folder: content/articles
-    create: true
-    fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: date }
-      - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }
-      - { name: role, label: Role }
-
-
-  - name: repos
-    label: Repos
-    label_singular: 'Repo' # Used in the UI, ie: "New Post"
-    folder: content/repos
-    create: true
-    fields:
-      - { name: path, label: Path }
-      - { name: priority, label: Priority }
-      - { name: title, label: Title }
-
-
-
   - name: constants
     label: Constants
     folder: content/constants/
