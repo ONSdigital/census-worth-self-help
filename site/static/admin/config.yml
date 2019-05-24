@@ -1,7 +1,7 @@
 backend:
   name: github
-  repo: ONSdigital/census-worth-self-help
-  branch: test_content
+  repo: ONSdigital/census-worth-self-help-content
+  branch: testcontent
   squash_merges: true
 
 media_folder: static/assets
