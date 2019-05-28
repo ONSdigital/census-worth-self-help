@@ -2,6 +2,10 @@
 
 .idea/workspace.xml
 
+# Environment variables
+
+.env
+
 # Gatsby / Node
 
 node_modules
