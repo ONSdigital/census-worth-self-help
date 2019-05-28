@@ -39,8 +39,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
-    "testdata": "cp -R ../testcontent/ content/; npm run develop",
-    "remotedata": "cp -R ../../census-worth-self-help-content/content/ content/; npm run develop",
+    "local": "./localbuild.sh; npm run develop",
     "serve": "gatsby serve",
     "test": "jest"
   },
