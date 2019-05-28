@@ -1,4 +1,4 @@
 # tl;dr
 
     npm install
-    gatsby develop
+    npm run local
