@@ -1,8 +1,8 @@
 #!/bin/bash
-mkdir -p build
-cp app.yaml build/app-with-env.yaml
+APP_FILE=app-with-env.yaml
+cp app.yaml ${APP_FILE}
 
-echo >> build/app-with-env.yaml
-echo "env_variables:" >> build/app-with-env.yaml
-sed "s/\(.*\)=\(.*\)/  \1: '\2'/" .env >> build/app-with-env.yaml
+echo >> ${APP_FILE}
+echo "env_variables:" >> ${APP_FILE}
+sed "s/\(.*\)=\(.*\)/  \1: '\2'/" .env >> ${APP_FILE}
 
