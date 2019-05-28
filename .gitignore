@@ -6,8 +6,13 @@
 
 .env
 
+# GCP
+
+app-with-env.yaml
+
 # Gatsby / Node
 
 node_modules
 .cache
+build
 public

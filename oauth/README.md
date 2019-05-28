@@ -17,4 +17,9 @@ In the site, for the static/admin/config.yml set
       ...
       base_url: http://localhost:8080
 
+# Deploy
 
+Ensure you have correct .env in place
+
+    ./prepare-app.sh
+    gcloud app deploy app-with-env.yaml

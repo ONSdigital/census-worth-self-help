@@ -2,13 +2,14 @@
   "name": "census-self-help-oauth",
   "version": "1.0.0",
   "engines": {
-    "node": ">=7.x"
+    "node": ">=10"
   },
   "description": "GitHub OAuth client",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "prestart": "node env.js",
+    "start": "node app.js"
   },
   "keywords": [
     "netlify",
