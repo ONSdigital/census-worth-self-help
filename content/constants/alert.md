@@ -1,4 +1,4 @@
 ---
-alert_content: 'See, this value is changed'
+alert_content: 'See, this value is changed ...'
 ---
 
