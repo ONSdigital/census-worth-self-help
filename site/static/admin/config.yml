@@ -15,4 +15,4 @@ collections:
     delete: false
     fields:
       - { label: 'title', name: 'alert_title', widget: 'string' }
-      - { label: 'Content', name: 'alert_content', widget: 'string' }
+      - { label: 'Content', name: 'alert_content', widget: 'string', required: false }
