@@ -22,7 +22,14 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "prettier": "1.17.1"
+    "babel-jest": "^24.8.0",
+    "babel-preset-gatsby": "^0.1.11",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.8.0",
+    "jest-dom": "^3.4.0",
+    "prettier": "1.17.1",
+    "react-test-renderer": "^16.8.6",
+    "react-testing-library": "^7.0.1"
   },
   "keywords": [
     "gatsby"
@@ -35,7 +42,7 @@
     "testdata": "cp -R ../testcontent/ content/; npm run develop",
     "remotedata": "cp -R ../../census-worth-self-help-content/content/ content/; npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "jest"
   },
   "repository": {
     "type": "git",

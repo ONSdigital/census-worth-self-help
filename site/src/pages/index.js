@@ -3,12 +3,12 @@ import { graphql } from "gatsby"
 import Alert from "../components/alert"
 
 export default ({ data }) => {
-  let alertFound = data.markdownRemark !== null && data.markdownRemark.frontmatter.alert_content !== ""
+  let alertFound = data.markdownRemark && data.markdownRemark.frontmatter.alert_content !== ""
   return (
     <div>
       { alertFound &&
         <Alert 
-        title={data.markdownRemark.frontmatter.alert_title}
+        title="Alert"
         content={data.markdownRemark.frontmatter.alert_content} /> 
       }
       <p>hello world</p>
@@ -18,9 +18,8 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-  markdownRemark(frontmatter: {alert_title: {ne: null}}) {
+  markdownRemark(frontmatter: {alert_content: {ne: null}}) {
     frontmatter {
-      alert_title
       alert_content
     }
   }
