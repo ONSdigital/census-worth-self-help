@@ -10,9 +10,11 @@ public_folder: assets
 collections:
   - name: constants
     label: Constants
-    folder: content/constants/
     create: false
     delete: false
-    fields:
-      - { label: 'title', name: 'alert_title', widget: 'string' }
-      - { label: 'Content', name: 'alert_content', widget: 'string', required: false }
+    files:
+      - file: "content/constants/alert.md"
+        label: "Alert"
+        name: "alert"
+        fields:
+          - { label: 'Content', name: 'alert_content', widget: 'string', required: false }
