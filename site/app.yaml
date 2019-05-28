@@ -1,0 +1,40 @@
+runtime: nodejs10
+handlers:
+  - url: /(.*\.json)
+    mime_type: application/json
+    static_files: public/\1
+    upload: public/(.*\.json)
+    expiration: "1m"
+
+  - url: /(.*\.js)
+    mime_type: text/javascript
+    static_files: public/\1
+    upload: public/(.*\.js)
+
+  - url: /(.*\.(gif|ico|jpeg|jpg|png))
+    static_files: public/\1
+    upload: public/(.*\.(gif|ico|jpeg|jpg|png))
+
+  - url: /api
+    script: auto
+
+  - url: /icons
+    static_dir: public/icons
+
+  - url: /static
+    static_dir: public/static
+
+  - url: /
+    static_files: public/index.html
+    upload: public/index.html
+    expiration: "15m"
+
+  - url: /(.+)/
+    static_files: public/\1/index.html
+    upload: public/(.+)/index.html
+    expiration: "15m"
+
+  - url: /(.+)
+    static_files: public/\1/index.html
+    upload: public/(.+)/index.html
+    expiration: "15m"
