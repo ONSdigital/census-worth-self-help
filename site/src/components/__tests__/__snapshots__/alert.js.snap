@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert renders correctly 1`] = `
+<div
+  data-testid="alert-message"
+  style={
+    Object {
+      "backgroundColor": "lightgreen",
+    }
+  }
+>
+  <b>
+    test_title
+  </b>
+  : 
+  <span>
+    this is test content
+  </span>
+</div>
+`;

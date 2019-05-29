@@ -14,5 +14,5 @@ app-with-env.yaml
 
 node_modules
 .cache
-build
 public
+site/_build
