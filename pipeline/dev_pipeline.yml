@@ -2,7 +2,7 @@ resources:
 - name: github-repo
   type: git
   source:
-    uri: https://github.com/raashidjunaid1/try-concourse.git
+    uri: https://github.com/ONSdigital/census-worth-self-help.git
     branch: master
 
 jobs:
@@ -23,14 +23,14 @@ jobs:
       - name: github-repo
 
       caches:
-      - path: github-repo/app/node_modules
+      - path: github-repo/site/node_modules
 
       run:
         path: sh
         args:
         - -exec
         - |
-            cd github-repo/app
+            cd github-repo/site
             npm install
             npm run test
 
@@ -55,13 +55,13 @@ jobs:
       - name: public
 
       caches:
-      - path: github-repo/app/node_modules
+      - path: github-repo/site/node_modules
 
       run:
         path: sh
         args:
         - -exec
         - |
-            cd github-repo/app
+            cd github-repo/site
             npm install
             npm run build
