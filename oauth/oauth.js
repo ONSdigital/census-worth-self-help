@@ -8,7 +8,7 @@ module.exports = {
         secret: clientSecret
       },
       auth: {
-        tokenHost: 'https://github.com',
+        tokenHost: 'https://localhost:8080',
         tokenPath: '/login/oauth/access_token',
         authorizePath: '/login/oauth/authorize'
       }
