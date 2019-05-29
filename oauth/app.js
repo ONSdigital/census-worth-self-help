@@ -1,4 +1,6 @@
 require('dotenv').config({ silent: true })
+const { authCallback } = require('./callbacks.js')
+
 const express = require('express')
 const simpleOauthModule = require('simple-oauth2')
 const randomString = require('randomstring')
@@ -44,17 +46,15 @@ if (('').match(ORIGIN)) {
   process.exit()
 }
 
-// Authorization uri definition
-const authorizationUri = oauth2.authorizationCode.authorizeURL({
+// Authorisation uri definition
+const authorisationUri = oauth2.authorizationCode.authorizeURL({
   redirect_uri: REDIRECT_URL,
   scope: SCOPES,
   state: randomString.generate(32)
 })
 
 // Initial page redirecting to Github
-app.get('/auth', (request, response) => {
-  response.redirect(authorizationUri)
-})
+app.get('/auth', authCallback(authorisationUri))
 
 // Callback service parsing the authorization token and asking for the access token
 app.get('/callback', (request, response) => {
@@ -83,6 +83,7 @@ app.get('/callback', (request, response) => {
     <script>
     (function() {
       function recieveMessage(e) {
+        console.log(${JSON.stringify(ORIGIN)})
         if (!e.origin.match(${JSON.stringify(ORIGIN)})) {
           console.log('Invalid origin: %s', e.origin)
           return;
