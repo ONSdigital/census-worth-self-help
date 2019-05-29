@@ -6,6 +6,7 @@ handlers:
     static_files: public/\1
     upload: public/(.*\.json)
 
+# Netlify CMS has a config.yml that needs to be served up
   - url: /(.*\.yml)
     mime_type: text/yaml
     static_files: public/\1
@@ -23,14 +24,17 @@ handlers:
   - url: /icons
     static_dir: public/icons
 
+# Home page handling
   - url: /
     static_files: public/index.html
     upload: public/index.html
 
+# Support paths with a slash at the end
   - url: /(.+)/
     static_files: public/\1/index.html
     upload: public/(.+)/index.html
 
+# Any left over we treat as a path
   - url: /(.+)
     static_files: public/\1/index.html
     upload: public/(.+)/index.html
