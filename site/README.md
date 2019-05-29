@@ -1,8 +1,8 @@
 # tl;dr
 
     npm install
-    gatsby develop
-    
+    npm run local
+        
 # Deploy GCP app engine service
 
     npm install

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index renders correctly with alert 1`] = `
+<div>
+  <div
+    data-testid="alert-message"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  >
+    <b>
+      Alert
+    </b>
+    : 
+    <span>
+      this is test content
+    </span>
+  </div>
+  <p>
+    hello world
+  </p>
+</div>
+`;
+
+exports[`Index renders correctly without data 1`] = `
+<div>
+  <p>
+    hello world
+  </p>
+</div>
+`;
