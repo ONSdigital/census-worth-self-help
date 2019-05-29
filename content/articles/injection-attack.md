@@ -6,12 +6,8 @@ repo: Bad Articles
 priority: 0
 author: OWASP
 ---
-This is a regular paragraph.
-
-
+If you see an alert message this has failed
 
 <script>alert('xss');</script>
 
-
-
-This is another regular paragraph.
+We should include more tests
