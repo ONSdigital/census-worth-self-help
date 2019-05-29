@@ -10,7 +10,7 @@ public_folder: assets
 collections:
   - name: articles
     label: Articles
-    label_singular: 'Article' # Used in the UI, ie: "New Post"
+    label_singular: 'Article'
     folder: content/articles
     create: true
     fields:
@@ -31,12 +31,13 @@ collections:
       - { name: author, label: Author, required: false }
       - { name: reviewedby, label: Reviewed By, required: false }
       - { name: signedby, label: Signed Off, required: false }
-      - { name: tags, label: Tags, widget: "list", required: false }
+      - { name: tags, label: Tags, widget: "list", required: false,
+          hint: "divide tags up using commas, e.g:  emergency, test, contact " }
 
 
   - name: repos
     label: Repos
-    label_singular: 'Repo' # Used in the UI, ie: "New Post"
+    label_singular: 'Repo'
     folder: content/repos
     create: true
     fields:
