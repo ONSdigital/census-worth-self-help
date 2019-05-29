@@ -11,8 +11,20 @@ const PORT = process.env.PORT || 8080
 const REDIRECT_URL = process.env.REDIRECT_URL
 const SCOPES = process.env.SCOPES || 'repo,user'
 
+// App enging env variables
+const GAE_INSTANCE = process.env.PORT
+
 const OAUTH_PROVIDER = 'github'
 const LOGIN_AUTH_TARGET = '_self'
+
+if (!OAUTH_CLIENT_ID) {
+    if (GAE_INSTANCE) {
+        console.error(`FATAL : OAUTH_CLIENT_ID is not set, was this app deployed with environment variables set?`)
+    } else {
+        console.error(`FATAL : OAUTH_CLIENT_ID is not set, do you have a local .env file in place?`)
+    }
+    process.exit()
+}
 
 const app = express()
 const oauth2 = simpleOauthModule.create({
