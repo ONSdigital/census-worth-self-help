@@ -19,7 +19,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
     </span>
   </div>
   <p>
-    hello world (testing)
+    hello world
   </p>
 </div>
 `;
@@ -27,7 +27,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
 exports[`Index renders correctly without data and has no alert 1`] = `
 <div>
   <p>
-    hello world (testing)
+    hello world
   </p>
 </div>
 `;
