@@ -3,43 +3,14 @@ resources:
   type: git
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
-    branch: master
+    branch: feature/ONS-12-pipeline-to-build-and-deploy-to-dev-env
 
 jobs:
-- name: test
-  plan:
-  - get: github-repo
-    trigger: true
-  - task: unit test
-    config:
-      platform: linux
-      image_resource:
-        type: docker-image
-        source:
-          repository: node
-          tag: alpine
-        
-      inputs:
-      - name: github-repo
-
-      caches:
-      - path: github-repo/site/node_modules
-
-      run:
-        path: sh
-        args:
-        - -exec
-        - |
-            cd github-repo/site
-            npm install
-            npm run test
-
 - name: build
   plan:
   - get: github-repo
-    passed: [test]
     trigger: true
-  - task: a
+  - task: build
     config:
       platform: linux
       image_resource:
@@ -62,6 +33,10 @@ jobs:
         args:
         - -exec
         - |
+            ls
             cd github-repo/site
+            ls
             npm install
+            BUILD="_build/content/"
+            mkdir -p "$BUILD" && cp -R ../content/ "$BUILD"
             npm run build
