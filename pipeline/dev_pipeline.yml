@@ -40,3 +40,43 @@ jobs:
             BUILD="_build/content/"
             mkdir -p "$BUILD" && cp -R ../content/ "$BUILD"
             npm run build
+
+- name: deploy
+  plan:
+  - get: github-repo
+    trigger: true
+  - task: deploy
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: google/cloud-sdk
+          tag: alpine
+
+      params:
+        AUTH_KEY : ((json-key))
+        PROJECT : ((project-name))
+
+      caches:
+      - path: github-repo/site/node_modules
+
+      inputs:
+      - name: github-repo
+
+      run:
+        path: sh
+        args:
+        - -exec
+        - |
+            apk add --update nodejs nodejs-npm
+            cd github-repo/site
+            npm install
+            BUILD="_build/content/"
+            mkdir -p "$BUILD" && cp -R ../content/ "$BUILD"
+            npm run build
+            echo $AUTH_KEY > encrypted_key.txt
+            base64 -d encrypted_key.txt > myfile.json
+            gcloud auth activate-service-account --key-file myfile.json
+            gcloud config set project xxx
+            gcloud app deploy $PROJECT
