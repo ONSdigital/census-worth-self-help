@@ -6,41 +6,6 @@ resources:
     branch: feature/ONS-12-pipeline-to-build-and-deploy-to-dev-env
 
 jobs:
-- name: build
-  plan:
-  - get: github-repo
-    trigger: true
-  - task: build
-    config:
-      platform: linux
-      image_resource:
-        type: docker-image
-        source:
-          repository: node
-          tag: alpine
-    
-      inputs:
-      - name: github-repo
-
-      outputs:
-      - name: public
-
-      caches:
-      - path: github-repo/site/node_modules
-
-      run:
-        path: sh
-        args:
-        - -exec
-        - |
-            ls
-            cd github-repo/site
-            ls
-            npm install
-            BUILD="_build/content/"
-            mkdir -p "$BUILD" && cp -R ../content/ "$BUILD"
-            npm run build
-
 - name: deploy
   plan:
   - get: github-repo
@@ -76,7 +41,7 @@ jobs:
             mkdir -p "$BUILD" && cp -R ../content/ "$BUILD"
             npm run build
             echo $AUTH_KEY > encrypted_key.txt
-            base64 -d encrypted_key.txt > myfile.json
-            gcloud auth activate-service-account --key-file myfile.json
-            gcloud config set project xxx
-            gcloud app deploy $PROJECT
+            base64 -d encrypted_key.txt > service-account.json
+            gcloud auth activate-service-account --key-file service-account.json
+            gcloud config set project $PROJECT
+            gcloud app deploy -q

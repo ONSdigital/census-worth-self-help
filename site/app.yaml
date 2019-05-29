@@ -1,10 +1,15 @@
 runtime: nodejs10
+default_expiration: "1m"
 handlers:
   - url: /(.*\.json)
     mime_type: application/json
     static_files: public/\1
     upload: public/(.*\.json)
-    expiration: "1m"
+
+  - url: /(.*\.yml)
+    mime_type: text/yaml
+    static_files: public/\1
+    upload: public/(.*\.yml)
 
   - url: /(.*\.js)
     mime_type: text/javascript
@@ -21,9 +26,11 @@ handlers:
   - url: /
     static_files: public/index.html
     upload: public/index.html
-    expiration: "1m"
+
+  - url: /(.+)/
+    static_files: public/\1/index.html
+    upload: public/(.+)/index.html
 
   - url: /(.+)
     static_files: public/\1/index.html
     upload: public/(.+)/index.html
-    expiration: "1m"
