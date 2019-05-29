@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8080
 const REDIRECT_URL = process.env.REDIRECT_URL
 const SCOPES = process.env.SCOPES || 'repo,user'
 
-// App enging env variables
+// App engine env variables
 const GAE_INSTANCE = process.env.PORT
 
 const OAUTH_PROVIDER = 'github'
@@ -52,27 +52,27 @@ const authorizationUri = oauth2.authorizationCode.authorizeURL({
 })
 
 // Initial page redirecting to Github
-app.get('/auth', (req, res) => {
-  res.redirect(authorizationUri)
+app.get('/auth', (request, response) => {
+  response.redirect(authorizationUri)
 })
 
 // Callback service parsing the authorization token and asking for the access token
-app.get('/callback', (req, res) => {
-  const code = req.query.code
+app.get('/callback', (request, response) => {
+  const code = request.query.code
   const options = {
     code: code
   }
 
   oauth2.authorizationCode.getToken(options, (error, result) => {
-    let mess, content
+    let message, content
 
     if (error) {
       console.error('Access Token Error', error.message)
-      mess = 'error'
+      message = 'error'
       content = JSON.stringify(error)
     } else {
       const token = oauth2.accessToken.create(result)
-      mess = 'success'
+      message = 'success'
       content = {
         token: token.token.access_token,
         provider: OAUTH_PROVIDER
@@ -87,9 +87,9 @@ app.get('/callback', (req, res) => {
           console.log('Invalid origin: %s', e.origin)
           return;
         }
-        // send message to main window with da app
+        // Send message to main window
         window.opener.postMessage(
-          'authorization:${OAUTH_PROVIDER}:${mess}:${JSON.stringify(content)}',
+          'authorization:${OAUTH_PROVIDER}:${message}:${JSON.stringify(content)}',
           e.origin
         )
       }
@@ -98,16 +98,16 @@ app.get('/callback', (req, res) => {
       window.opener.postMessage("authorizing:${OAUTH_PROVIDER}", "*")
     })()
     </script>`
-    return res.send(script)
+    return response.send(script)
   })
 })
 
-app.get('/success', (req, res) => {
-  res.send('')
+app.get('/success', (request, response) => {
+  response.send('')
 })
 
-app.get('/', (req, res) => {
-  res.send(`<br>
+app.get('/', (request, response) => {
+  response.send(`<br>
     <a href="/auth" target="${LOGIN_AUTH_TARGET}">
       Log in with ${OAUTH_PROVIDER.toUpperCase()}
     </a>`)
