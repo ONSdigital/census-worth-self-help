@@ -1,8 +1,9 @@
 require('dotenv').config({ silent: true })
-const { authCallback } = require('./callbacks.js')
+
+const { authHandler, callbackHandler } = require('./handlers.js')
+const { createOauth2 } = require('./oauth.js')
 
 const express = require('express')
-const simpleOauthModule = require('simple-oauth2')
 const randomString = require('randomstring')
 
 // env variables
@@ -29,17 +30,7 @@ if (!OAUTH_CLIENT_ID) {
 }
 
 const app = express()
-const oauth2 = simpleOauthModule.create({
-  client: {
-    id: OAUTH_CLIENT_ID,
-    secret: OAUTH_CLIENT_SECRET
-  },
-  auth: {
-    tokenHost: 'https://github.com',
-    tokenPath: '/login/oauth/access_token',
-    authorizePath: '/login/oauth/authorize'
-  }
-})
+const oauth2 = createOauth2(OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET)
 
 if (('').match(ORIGIN)) {
   console.error(`FATAL : Insecure ORIGIN pattern : ${ORIGIN}`)
@@ -54,54 +45,10 @@ const authorisationUri = oauth2.authorizationCode.authorizeURL({
 })
 
 // Initial page redirecting to Github
-app.get('/auth', authCallback(authorisationUri))
+app.get('/auth', authHandler(authorisationUri))
 
 // Callback service parsing the authorization token and asking for the access token
-app.get('/callback', (request, response) => {
-  const code = request.query.code
-  const options = {
-    code: code
-  }
-
-  oauth2.authorizationCode.getToken(options, (error, result) => {
-    let message, content
-
-    if (error) {
-      console.error('Access Token Error', error.message)
-      message = 'error'
-      content = JSON.stringify(error)
-    } else {
-      const token = oauth2.accessToken.create(result)
-      message = 'success'
-      content = {
-        token: token.token.access_token,
-        provider: OAUTH_PROVIDER
-      }
-    }
-
-    const script = `
-    <script>
-    (function() {
-      function recieveMessage(e) {
-        console.log(${JSON.stringify(ORIGIN)})
-        if (!e.origin.match(${JSON.stringify(ORIGIN)})) {
-          console.log('Invalid origin: %s', e.origin)
-          return;
-        }
-        // Send message to main window
-        window.opener.postMessage(
-          'authorization:${OAUTH_PROVIDER}:${message}:${JSON.stringify(content)}',
-          e.origin
-        )
-      }
-      window.addEventListener("message", recieveMessage, false)
-      // Start handshake with parent
-      window.opener.postMessage("authorizing:${OAUTH_PROVIDER}", "*")
-    })()
-    </script>`
-    return response.send(script)
-  })
-})
+app.get('/callback', callbackHandler(oauth2, OAUTH_PROVIDER, ORIGIN))
 
 app.get('/success', (request, response) => {
   response.send('')
