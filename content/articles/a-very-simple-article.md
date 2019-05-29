@@ -6,6 +6,7 @@ repo: Good Articles
 priority: 0
 author: Nathan
 tags:
-  - ''
+  - good
+  - basic
 ---
 Hello world
