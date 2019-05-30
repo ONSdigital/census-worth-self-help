@@ -24,6 +24,7 @@ exports.createPages = ({ graphql, actions }) => {
     // will fail if no .md files in /content
 
     let repos = []
+    let articles = []
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
 
@@ -34,13 +35,19 @@ exports.createPages = ({ graphql, actions }) => {
 
       if( directory === 'articles')
       {
-        createPage({
-          path: filename,
-          component: path.resolve(`./src/templates/standard-article.js`),
-          context: {title : node.frontmatter.title},
-        })
+        articles.push(
+          {title : node.frontmatter.title,
+           parent_title : node.frontmatter.repo,
+           link: filename,
+           type: "article"})
       } else if( directory === 'repos' && node.frontmatter.repo ) {
-        repos.push({title : node.frontmatter.title, parent_title : node.frontmatter.repo, resolved : false, children: [], link: filename})
+        repos.push(
+          {title : node.frontmatter.title,
+           parent_title : node.frontmatter.repo,
+           resolved : false,
+           children: [],
+           link: filename,
+           type: "repo"})
       }
     })
 
@@ -65,6 +72,21 @@ exports.createPages = ({ graphql, actions }) => {
       })
     }
 
+    // TODO: build menu here
+
+
+    // Add articles to repos
+    articles.forEach(( article ) => {
+      let parent = repos.find( (parent) => parent.title === article.parent_title )
+      if( parent !== undefined)
+      {
+        article.parent = parent
+        parent.children.push(article)
+        console.log("found parent")
+      }
+    })
+
+    // Figure out ancestors, peers, and children before creating repo pages.
     let breadcrumbRecursion = function(repo, breadcrumbs) {
       if(repo.parent)
       {
@@ -73,9 +95,31 @@ exports.createPages = ({ graphql, actions }) => {
       breadcrumbs.push({title: repo.title, link: repo.link})
       return breadcrumbs
     }
+
+    articles.forEach(( article ) => {
+
+      let peers = []
+      let breadcrumbs = []
+      if(article.parent)
+      {
+        peers = article.parent.children.map( (child) => { return {title: child.title, link: child.link} })
+        breadcrumbs = breadcrumbRecursion(article.parent, [])
+      }
+
+      createPage({
+          path: article.link,
+          component: path.resolve(`./src/templates/standard-article.js`),
+          context: {
+            title : article.title, 
+            peers : peers,
+            breadcrumbs : breadcrumbs}
+      })
+    })
+
+    
     repos.forEach(( repo ) => {
 
-      let children = repo.children.map( (child) => { return { title: child.title, link: child.link} })
+      let children = repo.children.map( (child) => { return { title: child.title, link: child.link, type: child.type} })
       let peers = []
       let breadcrumbs = []
       if(repo.parent)
@@ -83,11 +127,6 @@ exports.createPages = ({ graphql, actions }) => {
         peers = repo.parent.children.map( (child) => { return {title: child.title, link: child.link} })
         breadcrumbs = breadcrumbRecursion(repo.parent, [])
       }
-
-      console.log(repo.link)
-      console.log(children)
-      console.log(peers)
-      console.log(breadcrumbs)
 
       createPage({
         path: repo.link,
