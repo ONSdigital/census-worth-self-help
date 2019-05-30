@@ -7,6 +7,7 @@ module.exports = {
         path: `${__dirname}/_build/content/`,
       },
     },
+    `gatsby-plugin-emotion`,
     `gatsby-plugin-netlify-cms`,
     `gatsby-transformer-remark`,
     'gatsby-plugin-offline',

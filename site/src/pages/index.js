@@ -1,20 +1,21 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Alert from "../components/alert"
+import Layout from "../components/layout"
 
 export default ({ data }) => {
   let alertFound =
     data.markdownRemark && data.markdownRemark.frontmatter.alert_content !== ""
   return (
-    <div>
+    <Layout>
       {alertFound && (
         <Alert
           title="Alert"
           content={data.markdownRemark.frontmatter.alert_content}
         />
       )}
-      <p>hello world</p>
-    </div>
+      <div>hello world</div>
+    </Layout>
   )
 }
 
