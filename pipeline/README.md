@@ -5,8 +5,9 @@ log in to web console and install fly command.
 
 # Local validation
 
+    AUTH_VAR=$(cat /keybase/team/wons/ops/site/pipeline-auth.json | base64)
     fly -t local login -c http://127.0.0.1:8080 -u test -p test
-    fly -t local set-pipeline -c dev_pipeline.yml -p self-help
+    fly -t local set-pipeline -c dev_pipeline.yml -p self-help -v json-key=(echo $AUTH_VAR) -v project-name= _get the project name from gcp_
     fly -t local unpause-pipeline -p self-help
 
 # Troubleshooting
