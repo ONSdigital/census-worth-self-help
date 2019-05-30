@@ -3,7 +3,7 @@ resources:
   type: git
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
-    branch: feature/ONS-12-pipeline-to-build-and-deploy-to-dev-env
+    branch: master
 
 jobs:
 - name: deploy
