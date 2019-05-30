@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Index renders correctly with alert 1`] = `
+exports[`Index renders correctly with alert data and has alert 1`] = `
 <div>
   <div
     data-testid="alert-message"
@@ -24,7 +24,7 @@ exports[`Index renders correctly with alert 1`] = `
 </div>
 `;
 
-exports[`Index renders correctly without data 1`] = `
+exports[`Index renders correctly without data and has no alert 1`] = `
 <div>
   <p>
     hello world
