@@ -13,7 +13,7 @@ export default ({ data }) => {
           content={data.markdownRemark.frontmatter.alert_content}
         />
       )}
-      <p>hello world</p>
+      <p>hello world, for testing</p>
     </div>
   )
 }
