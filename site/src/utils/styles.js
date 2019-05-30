@@ -53,7 +53,6 @@ export const spacing = {
   main_box: css`
     margin: 0 auto;
     max-width: 700px;
-    padding: 30px;
     padding-top: 60px;
   `,
 }

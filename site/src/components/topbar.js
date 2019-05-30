@@ -31,7 +31,7 @@ export default () => {
           flex-grow: 1;
         `}
       >
-        Field assitant
+        Field assistant
       </div>
       <TopbarLink title="x" link="search" />
       <TopbarLink title="MENU" link="menu"/>
