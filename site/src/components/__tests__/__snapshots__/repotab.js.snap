@@ -23,17 +23,17 @@ exports[`RepoTab renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1bx04jm",
+        "name": "1tl9lwk",
         "next": undefined,
         "styles": "
-            
+          
     text-decoration: none;
     color: white;
   
-            
+          
     margin: 0px 2px;
   
-          ",
+        ",
       }
     }
     href="location"

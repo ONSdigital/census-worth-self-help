@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Alert from "../components/alert"
 import Layout from "../components/layout"
+import TextBlock from "../components/textblock"
 
 export default ({ data }) => {
   let alertFound =
@@ -14,7 +15,7 @@ export default ({ data }) => {
           content={data.markdownRemark.frontmatter.alert_content}
         />
       )}
-      <div>hello world</div>
+      <TextBlock>Hello World.</TextBlock>
     </Layout>
   )
 }

@@ -1,6 +1,6 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { colors, fonts, spacing } from "../utils/styles"
+import { fonts, spacing } from "../utils/styles"
 
 export default ({ children }) => {
   return (

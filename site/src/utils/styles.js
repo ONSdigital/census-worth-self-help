@@ -38,9 +38,6 @@ export const spacing = {
     justify-content: center;
     flex-direction: column;
   `,
-  short_vertical: css`
-    margin: 10px 0px;
-  `,
   standard_vertical: css`
     margin: 15px 0px;
   `,
@@ -83,25 +80,8 @@ export const fonts = {
     font-family: OpenSans;
     font-weight: bold;
   `,
-  logo: css`
-    line-height: 1;
-    font-weight: bold;
-    font-size: 40px;
-    color: ${colors.ons_purple};
-  `,
-  hint: css`
-    font-size: x-small;
-  `,
-  subtitle: css`
-    color: ${colors.ons_purple};
-  `,
   article: css`
     font-size: small;
-  `,
-  medium_link: css`
-    font-size: medium;
-    text-decoration: none;
-    color: black;
   `,
   small: css`
     font-size: small;

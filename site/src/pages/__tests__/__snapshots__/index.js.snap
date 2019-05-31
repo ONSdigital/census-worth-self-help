@@ -65,7 +65,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "yzfs1a",
+          "name": "1sm5jo",
           "next": undefined,
           "styles": "
         
@@ -73,14 +73,14 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
     justify-content: center;
     flex-direction: column;
   
-          padding: 0px 10px;
-          background-color: rgb(255, 255, 255, 0.2);
-          border-radius: 4px;
-          margin: 10px 10px 10px 0px;
-          min-width: 20px;
-          object-fit: contain;
-          text-align: center;
-          height: 40px;
+        padding: 0px 10px;
+        background-color: rgb(255, 255, 255, 0.2);
+        border-radius: 4px;
+        margin: 10px 10px 10px 0px;
+        min-width: 20px;
+        object-fit: contain;
+        text-align: center;
+        height: 40px;
       ",
         }
       }
@@ -110,7 +110,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "yzfs1a",
+          "name": "1sm5jo",
           "next": undefined,
           "styles": "
         
@@ -118,14 +118,14 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
     justify-content: center;
     flex-direction: column;
   
-          padding: 0px 10px;
-          background-color: rgb(255, 255, 255, 0.2);
-          border-radius: 4px;
-          margin: 10px 10px 10px 0px;
-          min-width: 20px;
-          object-fit: contain;
-          text-align: center;
-          height: 40px;
+        padding: 0px 10px;
+        background-color: rgb(255, 255, 255, 0.2);
+        border-radius: 4px;
+        margin: 10px 10px 10px 0px;
+        min-width: 20px;
+        object-fit: contain;
+        text-align: center;
+        height: 40px;
       ",
         }
       }
@@ -172,17 +172,17 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "15oc679",
+          "name": "1neujza",
           "next": undefined,
           "styles": "
-	     border-radius: 4px;
-	  	 border: solid 2px rgb(248, 196, 30);
-	  	 background-color: rgb(253, 239, 173);
-	  	 margin: 15px;
-	  	 
+        border-radius: 4px;
+        border: solid 2px rgb(248, 196, 30);
+        background-color: rgb(253, 239, 173);
+        margin: 15px;
+        
     padding: 15px;
   
-  	 ",
+      ",
         }
       }
     >
@@ -195,9 +195,25 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         this is test content
       </p>
     </div>
-    <div>
-      hello world
-    </div>
+    <p
+      css={
+        Object {
+          "map": undefined,
+          "name": "1vwnalb",
+          "next": undefined,
+          "styles": "
+        
+    font-size: small;
+  ;
+        
+    padding: 5px 15px;
+  ;
+      ",
+        }
+      }
+    >
+      Hello World.
+    </p>
     <div
       css={
         Object {
@@ -285,7 +301,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "yzfs1a",
+          "name": "1sm5jo",
           "next": undefined,
           "styles": "
         
@@ -293,14 +309,14 @@ exports[`Index renders correctly without data and has no alert 1`] = `
     justify-content: center;
     flex-direction: column;
   
-          padding: 0px 10px;
-          background-color: rgb(255, 255, 255, 0.2);
-          border-radius: 4px;
-          margin: 10px 10px 10px 0px;
-          min-width: 20px;
-          object-fit: contain;
-          text-align: center;
-          height: 40px;
+        padding: 0px 10px;
+        background-color: rgb(255, 255, 255, 0.2);
+        border-radius: 4px;
+        margin: 10px 10px 10px 0px;
+        min-width: 20px;
+        object-fit: contain;
+        text-align: center;
+        height: 40px;
       ",
         }
       }
@@ -330,7 +346,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "yzfs1a",
+          "name": "1sm5jo",
           "next": undefined,
           "styles": "
         
@@ -338,14 +354,14 @@ exports[`Index renders correctly without data and has no alert 1`] = `
     justify-content: center;
     flex-direction: column;
   
-          padding: 0px 10px;
-          background-color: rgb(255, 255, 255, 0.2);
-          border-radius: 4px;
-          margin: 10px 10px 10px 0px;
-          min-width: 20px;
-          object-fit: contain;
-          text-align: center;
-          height: 40px;
+        padding: 0px 10px;
+        background-color: rgb(255, 255, 255, 0.2);
+        border-radius: 4px;
+        margin: 10px 10px 10px 0px;
+        min-width: 20px;
+        object-fit: contain;
+        text-align: center;
+        height: 40px;
       ",
         }
       }
@@ -388,9 +404,25 @@ exports[`Index renders correctly without data and has no alert 1`] = `
       }
     }
   >
-    <div>
-      hello world
-    </div>
+    <p
+      css={
+        Object {
+          "map": undefined,
+          "name": "1vwnalb",
+          "next": undefined,
+          "styles": "
+        
+    font-size: small;
+  ;
+        
+    padding: 5px 15px;
+  ;
+      ",
+        }
+      }
+    >
+      Hello World.
+    </p>
     <div
       css={
         Object {

@@ -64,7 +64,7 @@ exports[`TopBar renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "yzfs1a",
+        "name": "1sm5jo",
         "next": undefined,
         "styles": "
         
@@ -72,14 +72,14 @@ exports[`TopBar renders correctly 1`] = `
     justify-content: center;
     flex-direction: column;
   
-          padding: 0px 10px;
-          background-color: rgb(255, 255, 255, 0.2);
-          border-radius: 4px;
-          margin: 10px 10px 10px 0px;
-          min-width: 20px;
-          object-fit: contain;
-          text-align: center;
-          height: 40px;
+        padding: 0px 10px;
+        background-color: rgb(255, 255, 255, 0.2);
+        border-radius: 4px;
+        margin: 10px 10px 10px 0px;
+        min-width: 20px;
+        object-fit: contain;
+        text-align: center;
+        height: 40px;
       ",
       }
     }
@@ -109,7 +109,7 @@ exports[`TopBar renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "yzfs1a",
+        "name": "1sm5jo",
         "next": undefined,
         "styles": "
         
@@ -117,14 +117,14 @@ exports[`TopBar renders correctly 1`] = `
     justify-content: center;
     flex-direction: column;
   
-          padding: 0px 10px;
-          background-color: rgb(255, 255, 255, 0.2);
-          border-radius: 4px;
-          margin: 10px 10px 10px 0px;
-          min-width: 20px;
-          object-fit: contain;
-          text-align: center;
-          height: 40px;
+        padding: 0px 10px;
+        background-color: rgb(255, 255, 255, 0.2);
+        border-radius: 4px;
+        margin: 10px 10px 10px 0px;
+        min-width: 20px;
+        object-fit: contain;
+        text-align: center;
+        height: 40px;
       ",
       }
     }

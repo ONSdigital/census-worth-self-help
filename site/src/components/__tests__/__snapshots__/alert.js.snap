@@ -5,17 +5,17 @@ exports[`Alert renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "15oc679",
+      "name": "1neujza",
       "next": undefined,
       "styles": "
-	     border-radius: 4px;
-	  	 border: solid 2px rgb(248, 196, 30);
-	  	 background-color: rgb(253, 239, 173);
-	  	 margin: 15px;
-	  	 
+        border-radius: 4px;
+        border: solid 2px rgb(248, 196, 30);
+        background-color: rgb(253, 239, 173);
+        margin: 15px;
+        
     padding: 15px;
   
-  	 ",
+      ",
     }
   }
 >
