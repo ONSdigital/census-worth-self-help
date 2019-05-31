@@ -1,11 +1,12 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { colors } from "../utils/styles"
+import { colors, fonts, spacing } from "../utils/styles"
 
 export default ({ children }) => {
   return (
     <h1 css={css`
-	  	 color: ${colors.purple};
+	  	 ${fonts.Article_Title_Style};
+	  	 ${spacing.in_page_element}
   	 `}>
       {children}
     </h1>

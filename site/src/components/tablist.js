@@ -12,7 +12,7 @@ export default ({
     <div
       key={element.title}
       css={css`
-        ${spacing.standard_vertical}
+        ${spacing.minimum_gap};
       `}
     >
       {element.type==='repo' && (

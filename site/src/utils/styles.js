@@ -26,6 +26,12 @@ export const colors = {
   white_two: "rgb(250, 250, 250)"
 }
 
+export const gradients = {
+  purple_shine: css`
+    background: linear-gradient(to left, ${colors.velvet}, ${colors.purple});
+  `
+}
+
 export const spacing = {
   vert_aligned_flex_text: css`
     display: flex;
@@ -44,16 +50,24 @@ export const spacing = {
   text_clearance: css`
     margin: 0px 2px;
   `,
+  minimum_gap: css`
+    margin: 2px 0px;
+  `,
   tab: css`
     width: 100%;
     padding: 10px;
-    margin: 10px 0px;
     min-height: 40px;
   `,
   main_box: css`
     margin: 0 auto;
     max-width: 700px;
     padding-top: 60px;
+  `,
+  page_padding : css`
+    padding: 15px;
+  `,
+  in_page_element : css`
+    padding: 5px 15px;
   `,
 }
 
@@ -62,6 +76,12 @@ export const fonts = {
     color: ${colors.white};
     font-size: 16px;
     font-family: OpenSans, Semibold;
+  `,
+  Article_Title_Style: css`
+    color: ${colors.purple};
+    font-size: 24px;
+    font-family: OpenSans;
+    font-weight: bold;
   `,
   logo: css`
     line-height: 1;
@@ -100,5 +120,5 @@ export const fonts = {
     color: inherit;
     font-size: larger;
     color: white;
-  `,
+  `
 }

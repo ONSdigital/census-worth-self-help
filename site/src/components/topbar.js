@@ -1,6 +1,6 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { colors, fonts, spacing } from "../utils/styles"
+import { gradients, fonts, spacing } from "../utils/styles"
 import TopbarLink from "./topbarlink"
 
 export default () => {
@@ -11,7 +11,7 @@ export default () => {
         position: fixed;
         width: 100%;
         height: 60px; // TODO: needs to be a global defined
-        background: linear-gradient(to left, ${colors.velvet}, ${colors.purple})
+        ${gradients.purple_shine};
       `}
     >
       <img

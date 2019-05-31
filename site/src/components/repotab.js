@@ -12,20 +12,16 @@ export default ({ title, link }) => {
           border-left: 6px solid ${colors.purple};
       `}
     >
-      <div
-        css={css`
-          ${spacing.text_clearance}
-        `}
-      >
+
         <Link
           to={link}
           css={css`
             ${fonts.directory_link}
+            ${spacing.text_clearance}
           `}
         >
           {title}
         </Link>
-      </div>
     </div>
   )
 }

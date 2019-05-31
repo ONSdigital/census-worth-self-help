@@ -57,9 +57,10 @@ export default class MenuLink extends React.Component {
 		         onClick={this.toggle}
 		         css={css`
 		          padding: 0px 30px;
+		          ${fonts.menu_toggle};
 		        `}>
-		        {!this.state.toggled && <span>&gt;</span>}
-		        {this.state.toggled && <span>v</span>}
+		        {!this.state.toggled && <span>+</span>}
+		        {this.state.toggled && <span>-</span>}
 		        </div> 
 		   	  }
 		    </div>

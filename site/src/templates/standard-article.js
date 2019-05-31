@@ -1,16 +1,19 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import PageTitle from "../components/pagetitle"
+import Breadcrumbs from "../components/breadcrumbs"
+import TextBlock from "../components/textblock"
 
 export default ({ data, pageContext }) => {
   const post = data.markdownRemark
 
   return (
     <Layout>
-      <div>{post.frontmatter.title}</div>
-      <div>{post.frontmatter.description}</div>
-      <hr />
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <Breadcrumbs breadcrumbs={pageContext.breadcrumbs} peers={pageContext.peers}/>
+      <PageTitle>{pageContext.title}</PageTitle>
+      <TextBlock><b>{post.frontmatter.description}</b></TextBlock>
+      <TextBlock><div dangerouslySetInnerHTML={{ __html: post.html }} /></TextBlock>
     </Layout>
   )
 }

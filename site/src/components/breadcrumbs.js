@@ -1,6 +1,6 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { colors } from "../utils/styles"
+import { colors, spacing } from "../utils/styles"
 
 export default ({ breadcrumbs, peers }) => {
   console.log(breadcrumbs)
@@ -13,11 +13,18 @@ export default ({ breadcrumbs, peers }) => {
 
   return (
     <div css={css`
-	  	 color: ${colors.purple};
+	  	 background-color: ${colors.white_two};
+	  	 border-bottom: ${colors.black_two} 1px solid;
+	  	 ${spacing.page_padding}
   	 `}>
   	 EXPLORE CONTENT
 	  	<div>
-		  	<select>
+		  	<select css={css`
+			  	background-color: ${colors.white_two};
+			  	border-bottom: ${colors.black_two} 1px solid;
+			  	width: 100%;
+			  	padding: 5px;
+		  	`}>
 		  	 	{breadcrumbOptions}
 		  	 	{peerOptions}
 		  	</select>
