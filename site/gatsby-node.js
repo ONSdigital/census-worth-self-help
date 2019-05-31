@@ -53,7 +53,8 @@ exports.createPages = ({ graphql, actions }) => {
 
 
     // Starting from the root connect up all the parents to children and vice versa
-    repos.push({title : 'Root', resolved : true, parent: null, children: [], link: "explore"})
+    let rootRepo = {title : 'Root', resolved : true, parent: null, children: [], link: "explore"}
+    repos.push(rootRepo)
     let searchAgain = true
     while(searchAgain)
     {
@@ -74,6 +75,21 @@ exports.createPages = ({ graphql, actions }) => {
 
     // TODO: build menu here
 
+    let menuRecursion = function(repo, menutree) {
+      let menutreeElement = {title: repo.title, link: repo.link}
+      menutreeElement.children = repo.children.map( (child) => menuRecursion(child, menutreeElement))
+      return menutreeElement
+    }
+
+    let menutree = menuRecursion(rootRepo, [])
+    console.log(menutree)
+    createPage({
+        path: "menu",
+        component: path.resolve(`./src/templates/menu-template.js`),
+        context: {
+          menutree : menutree.children}
+    })
+
 
     // Add articles to repos
     articles.forEach(( article ) => {
@@ -82,7 +98,6 @@ exports.createPages = ({ graphql, actions }) => {
       {
         article.parent = parent
         parent.children.push(article)
-        console.log("found parent")
       }
     })
 
