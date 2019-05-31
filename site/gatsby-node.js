@@ -65,7 +65,7 @@ function combineArticlesAndRepos(articles, repos) {
     {
       article.parent = parent
       parent.children.push(article)
-      article.breadcrumbs = article.breadcrumbs.slice() // shallow copy
+      article.breadcrumbs = parent.breadcrumbs.slice() // shallow copy
       article.breadcrumbs.push({title: parent.title, link: parent.link})
     }
   })
