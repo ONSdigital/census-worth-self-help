@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageTitle renders correctly 1`] = `
+<h1
+  css={
+    Object {
+      "map": undefined,
+      "name": "b0x4sp",
+      "next": undefined,
+      "styles": "
+	  	 
+    color: rgb(120, 16, 137);
+    font-size: 24px;
+    font-family: OpenSans;
+    font-weight: bold;
+  ;
+	  	 
+    padding: 5px 15px;
+  
+  	 ",
+    }
+  }
+>
+  This is a title
+</h1>
+`;

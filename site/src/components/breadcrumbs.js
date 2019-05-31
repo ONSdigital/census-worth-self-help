@@ -3,7 +3,6 @@ import { css } from "@emotion/core"
 import { colors, spacing } from "../utils/styles"
 
 export default ({ breadcrumbs, peers }) => {
-  console.log(breadcrumbs)
   let breadcrumbOptions = breadcrumbs.map(( breadcrumb ) => (
     <option key={breadcrumb.title} value={breadcrumb.link}>{breadcrumb.title}</option>
   ))

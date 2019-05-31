@@ -7,7 +7,6 @@ import { spacing } from "../utils/styles"
 export default ({
   elements
 }) => {
-  console.log(elements)
   let elementTabs = elements.map(( element ) => (
     <div
       key={element.title}

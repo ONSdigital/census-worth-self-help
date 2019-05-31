@@ -1,12 +1,15 @@
 import React from "react"
 import MenuLink from "../components/menulink"
-import RepoMenu from "../components/repomenu"
 import Topbar from "../components/topbar"
 import { spacing, gradients } from "../utils/styles"
 
 import { css } from "@emotion/core"
 
 export default ({ pageContext }) => {
+  let menuLinks = pageContext.menutree.map(( menu_node ) => (
+    <MenuLink key={menu_node.title} link={menu_node.link} title={menu_node.title} hidden_nodes={menu_node.children}></MenuLink>
+  ))
+
   return (
     <div>
       <Topbar open={true} />
@@ -25,7 +28,7 @@ export default ({ pageContext }) => {
             border-top: 1px solid white;
           `}
         />
-        <RepoMenu menutree={pageContext.menutree} />
+        {menuLinks}
         <hr
           css={css`
             border-top: 1px solid white;

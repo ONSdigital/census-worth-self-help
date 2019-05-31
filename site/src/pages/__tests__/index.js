@@ -17,12 +17,13 @@ describe("Index", () => {
 
   it("renders correctly with alert data and has alert", () => {
     // check snapshot
-    const alert_data = { markdownRemark : { frontmatter: {alert_content: "this is test content"}}}
+    const message = "this is test content"
+    const alert_data = { markdownRemark : { frontmatter: {alert_content: message }}}
     const tree = renderer.create(<Index data={alert_data}/>).toJSON()
     expect(tree).toMatchSnapshot()
     
     // check alert content
     const { getByTestId } = render(<Index data={alert_data}/>)
-    expect(getByTestId("alert-message")).toHaveTextContent("Alert: this is test content")
+    expect(getByTestId("alert-message")).toHaveTextContent(message)
   })
 })

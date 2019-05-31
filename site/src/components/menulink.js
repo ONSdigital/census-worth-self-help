@@ -53,7 +53,8 @@ export default class MenuLink extends React.Component {
 		        {this.title}
 		      </Link>
 		      { hiddenMenu &&
-		       <div 
+		       <div
+		         data-testid="toggle-button"
 		         onClick={this.toggle}
 		         css={css`
 		          padding: 0px 30px;
@@ -65,7 +66,7 @@ export default class MenuLink extends React.Component {
 		   	  }
 		    </div>
 		    {hiddenMenu && this.state.toggled &&
-		     <div>
+		     <div data-testid="child-container">
 		        {hiddenMenu}
 	         </div>
 		   	}

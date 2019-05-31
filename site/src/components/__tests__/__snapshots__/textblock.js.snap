@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextBlock renders correctly 1`] = `
+<p
+  css={
+    Object {
+      "map": undefined,
+      "name": "1vwnalb",
+      "next": undefined,
+      "styles": "
+        
+    font-size: small;
+  ;
+        
+    padding: 5px 15px;
+  ;
+      ",
+    }
+  }
+>
+  Text block content
+</p>
+`;

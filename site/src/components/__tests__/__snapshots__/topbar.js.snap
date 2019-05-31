@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopBar renders correctly 1`] = `
+<header
+  css={
+    Object {
+      "map": undefined,
+      "name": "1j8s011",
+      "next": undefined,
+      "styles": "
+        display: flex;
+        position: fixed;
+        width: 100%;
+        height: 60px; // TODO: needs to be a global defined
+        
+    background: linear-gradient(to left, rgb(98, 13, 111), rgb(120, 16, 137));
+  ;
+      ",
+    }
+  }
+>
+  <img
+    alt="Main logo"
+    css={
+      Object {
+        "map": undefined,
+        "name": "lddf18",
+        "next": undefined,
+        "styles": "
+          width: 30px;
+          height: 40px;
+          margin: 10px;
+          margin-right: 30px;
+        ",
+      }
+    }
+    src="/C2021topbar.png"
+  />
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "o3stsu",
+        "next": undefined,
+        "styles": "
+          
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+          
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-family: OpenSans, Semibold;
+  ;
+          flex-grow: 1;
+        ",
+      }
+    }
+  >
+    Field assistant
+  </div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "yzfs1a",
+        "next": undefined,
+        "styles": "
+        
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+          padding: 0px 10px;
+          background-color: rgb(255, 255, 255, 0.2);
+          border-radius: 4px;
+          margin: 10px 10px 10px 0px;
+          min-width: 20px;
+          object-fit: contain;
+          text-align: center;
+          height: 40px;
+      ",
+      }
+    }
+  >
+    <a
+      css={
+        Object {
+          "map": undefined,
+          "name": "1t4ib0k",
+          "next": undefined,
+          "styles": "
+          
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-family: OpenSans, Semibold;
+  ;
+          text-decoration: none;
+        ",
+        }
+      }
+      href="search"
+    >
+      x
+    </a>
+  </div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "yzfs1a",
+        "next": undefined,
+        "styles": "
+        
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+          padding: 0px 10px;
+          background-color: rgb(255, 255, 255, 0.2);
+          border-radius: 4px;
+          margin: 10px 10px 10px 0px;
+          min-width: 20px;
+          object-fit: contain;
+          text-align: center;
+          height: 40px;
+      ",
+      }
+    }
+  >
+    <a
+      css={
+        Object {
+          "map": undefined,
+          "name": "1t4ib0k",
+          "next": undefined,
+          "styles": "
+          
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-family: OpenSans, Semibold;
+  ;
+          text-decoration: none;
+        ",
+        }
+      }
+      href="menu"
+    >
+      MENU
+    </a>
+  </div>
+</header>
+`;

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs renders correctly 1`] = `
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "1a5r8c4",
+      "next": undefined,
+      "styles": "
+	  	 background-color: rgb(250, 250, 250);
+	  	 border-bottom: rgb(48, 48, 48) 1px solid;
+	  	 
+    padding: 15px;
+  
+  	 ",
+    }
+  }
+>
+  EXPLORE CONTENT
+  <div>
+    <select
+      css={
+        Object {
+          "map": undefined,
+          "name": "9hh5jl",
+          "next": undefined,
+          "styles": "
+			  	background-color: rgb(250, 250, 250);
+			  	border-bottom: rgb(48, 48, 48) 1px solid;
+			  	width: 100%;
+			  	padding: 5px;
+		  	",
+        }
+      }
+    >
+      <option
+        value="root"
+      >
+        root
+      </option>
+      <option
+        value="parent"
+      >
+        parent
+      </option>
+      <option
+        value="peer1"
+      >
+        peer1
+      </option>
+      <option
+        value="peer2"
+      >
+        peer2
+      </option>
+      <option
+        value="self"
+      >
+        self
+      </option>
+    </select>
+  </div>
+</div>
+`;

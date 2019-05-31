@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuLink renders correctly with hidden nodes 1`] = `
+<div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "1utvwwc",
+        "next": undefined,
+        "styles": "
+		        
+    margin: 15px 0px;
+  ;
+		        display: flex;
+		      ",
+      }
+    }
+  >
+    <a
+      css={
+        Object {
+          "map": undefined,
+          "name": "1gawbyw",
+          "next": undefined,
+          "styles": "
+		          
+    text-decoration: none;
+    font-size: large;
+    color: white;
+  ;
+		          flex-grow: 1;
+		        ",
+        }
+      }
+      href="basic"
+    >
+      basic
+    </a>
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "1fqa7kz",
+          "next": undefined,
+          "styles": "
+		          padding: 0px 30px;
+		          
+    text-decoration: none;
+    color: inherit;
+    font-size: larger;
+    color: white;
+  ;
+		        ",
+        }
+      }
+      data-testid="toggle-button"
+      onClick={[Function]}
+    >
+      <span>
+        +
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MenuLink renders correctly without hidden nodes 1`] = `
+<div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "1utvwwc",
+        "next": undefined,
+        "styles": "
+		        
+    margin: 15px 0px;
+  ;
+		        display: flex;
+		      ",
+      }
+    }
+  >
+    <a
+      css={
+        Object {
+          "map": undefined,
+          "name": "1gawbyw",
+          "next": undefined,
+          "styles": "
+		          
+    text-decoration: none;
+    font-size: large;
+    color: white;
+  ;
+		          flex-grow: 1;
+		        ",
+        }
+      }
+      href="basic"
+    >
+      basic
+    </a>
+  </div>
+</div>
+`;

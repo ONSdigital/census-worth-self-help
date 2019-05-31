@@ -4,7 +4,7 @@ import { colors, spacing } from "../utils/styles"
 
 export default ({ title, content }) => {
   return (
-    <div data-testid="alert-message" css={css`
+    <div css={css`
 	     border-radius: 4px;
 	  	 border: solid 2px ${colors.golden_yellow};
 	  	 background-color: ${colors.light_tan};
@@ -12,7 +12,7 @@ export default ({ title, content }) => {
 	  	 ${spacing.page_padding}
   	 `}>
       <b>{title}</b>
-      <p>{content}</p>
+      <p data-testid="alert-message">{content}</p>
     </div>
   )
 }
