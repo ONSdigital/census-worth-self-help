@@ -12,7 +12,6 @@ export default () => {
         background-color: ${colors.light_gray};
         display: flex;
       `}
-    >
-    </div>
+    />
   )
 }

@@ -10,12 +10,19 @@ export default ({ pageContext }) => {
   console.log(pageContext)
   return (
     <Layout>
-    <Breadcrumbs breadcrumbs={pageContext.breadcrumbs} peers={pageContext.peers}/>
-    <PageTitle>{pageContext.title}</PageTitle>
-    <div css={css`
-       ${spacing.in_page_element}
-     `}>IN THIS SECTION:</div>
-    <TabList elements={pageContext.children} />
+      <Breadcrumbs
+        breadcrumbs={pageContext.breadcrumbs}
+        peers={pageContext.peers}
+      />
+      <PageTitle>{pageContext.title}</PageTitle>
+      <div
+        css={css`
+          ${spacing.in_page_element}
+        `}
+      >
+        IN THIS SECTION:
+      </div>
+      <TabList elements={pageContext.children} />
     </Layout>
   )
 }

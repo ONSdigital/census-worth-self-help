@@ -12,16 +12,15 @@ export default ({ title, link }) => {
           border-left: 6px solid ${colors.purple};
       `}
     >
-
-        <Link
-          to={link}
-          css={css`
-            ${fonts.directory_link}
-            ${spacing.text_clearance}
-          `}
-        >
-          {title}
-        </Link>
+      <Link
+        to={link}
+        css={css`
+          ${fonts.directory_link}
+          ${spacing.text_clearance}
+        `}
+      >
+        {title}
+      </Link>
     </div>
   )
 }

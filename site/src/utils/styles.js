@@ -63,12 +63,12 @@ export const spacing = {
     max-width: 700px;
     padding-top: 60px;
   `,
-  page_padding : css`
+  page_padding: css`
     padding: 15px;
   `,
-  in_page_element : css`
+  in_page_element: css`
     padding: 5px 15px;
-  `,
+  `
 }
 
 export const fonts = {

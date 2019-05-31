@@ -34,7 +34,7 @@ export default () => {
         Field assistant
       </div>
       <TopbarLink title="x" link="search" />
-      <TopbarLink title="MENU" link="menu"/>
+      <TopbarLink title="MENU" link="menu" />
     </header>
   )
 }

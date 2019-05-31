@@ -5,9 +5,7 @@ import Topbar from "./topbar"
 import Footer from "./footer"
 import { spacing } from "../utils/styles"
 
-export default ({
-  children
-}) => {
+export default ({ children }) => {
   return (
     <div>
       <Topbar />
@@ -17,7 +15,7 @@ export default ({
         `}
       >
         {children}
-        <Footer/>
+        <Footer />
       </div>
     </div>
   )

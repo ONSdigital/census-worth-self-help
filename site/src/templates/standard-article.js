@@ -10,10 +10,17 @@ export default ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <Breadcrumbs breadcrumbs={pageContext.breadcrumbs} peers={pageContext.peers}/>
+      <Breadcrumbs
+        breadcrumbs={pageContext.breadcrumbs}
+        peers={pageContext.peers}
+      />
       <PageTitle>{pageContext.title}</PageTitle>
-      <TextBlock><b>{post.frontmatter.description}</b></TextBlock>
-      <TextBlock><div dangerouslySetInnerHTML={{ __html: post.html }} /></TextBlock>
+      <TextBlock>
+        <b>{post.frontmatter.description}</b>
+      </TextBlock>
+      <TextBlock>
+        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      </TextBlock>
     </Layout>
   )
 }
