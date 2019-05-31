@@ -1,0 +1,40 @@
+runtime: nodejs10
+default_expiration: "1m"
+handlers:
+  - url: /(.*\.json)
+    mime_type: application/json
+    static_files: public/\1
+    upload: public/(.*\.json)
+
+# Netlify CMS has a config.yml that needs to be served up
+  - url: /(.*\.yml)
+    mime_type: text/yaml
+    static_files: public/\1
+    upload: public/(.*\.yml)
+
+  - url: /(.*\.js)
+    mime_type: text/javascript
+    static_files: public/\1
+    upload: public/(.*\.js)
+
+  - url: /(.*\.(gif|ico|jpeg|jpg|png))
+    static_files: public/\1
+    upload: public/(.*\.(gif|ico|jpeg|jpg|png))
+
+  - url: /icons
+    static_dir: public/icons
+
+# Home page handling
+  - url: /
+    static_files: public/index.html
+    upload: public/index.html
+
+# Support paths with a slash at the end
+  - url: /(.+)/
+    static_files: public/\1/index.html
+    upload: public/(.+)/index.html
+
+# Any left over we treat as a path
+  - url: /(.+)
+    static_files: public/\1/index.html
+    upload: public/(.+)/index.html
