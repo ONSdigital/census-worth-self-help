@@ -3,13 +3,20 @@ resources:
   type: git
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
-    branch: master
+    branch: test_content
+
+- name: timer
+  type: time
+  source:
+    interval: 1m
 
 jobs:
 - name: deploy
   plan:
+  - get: timer
   - get: github-repo
     trigger: true
+    
   - task: deploy
     config:
       platform: linux
