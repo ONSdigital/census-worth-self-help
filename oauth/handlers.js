@@ -32,7 +32,6 @@ module.exports = {
             <script>
             (function() {
               function recieveMessage(e) {
-                console.log(${JSON.stringify(origin)})
                 if (!e.origin.match(${JSON.stringify(origin)})) {
                   console.log('Invalid origin: %s', e.origin)
                   return;
