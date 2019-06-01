@@ -1,4 +1,4 @@
 ---
-alert_content: testing timer - anothre change
+alert_content: testing timer - another change
 ---
 
