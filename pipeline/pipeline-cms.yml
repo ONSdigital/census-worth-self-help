@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: feature/ONS-15-pipeline-for-cms
 
   - name: github-site-content
     type: git
@@ -42,7 +42,7 @@ jobs:
             GIT_SECRETS_VERSION : ((git.secrets-version))
 
           caches:
-            - path: github-site-code/site/node_modules
+            - path: $HOME/.npm
 
           inputs:
             - name: github-site-code
@@ -55,9 +55,11 @@ jobs:
               - |
                 echo "GCP Secrets Version : $GCP_SECRETS_VERSION"
                 echo "Git Secrets Version : $GIT_SECRETS_VERSION"
-                apk add --update nodejs nodejs-npm
+                apk add --no-progress --update nodejs nodejs-npm
+                echo "npm version"
+                npm -v
                 cd github-site-code/site
-                npm install
+                npm ci
                 BUILD="_build/content/"
                 mkdir -p "$BUILD" && cp -R ../../github-site-content/content/ "$BUILD"
                 npm run build
@@ -66,6 +68,6 @@ jobs:
                 gcloud auth activate-service-account --key-file service-account.json
                 gcloud config set project $PROJECT
                 sed "s/service:.*/service: cms/" app.yaml > ci-app.yaml
-                sed -i .bak "s/  branch:.*/  branch: master/" public/admin/config.yml
-                sed -i .bak "s/  repo:.*/  repo: ONSdigital\/census-worth-self-help-content/" public/admin/config.yml
+                sed -i "s/  branch:.*/  branch: master/" public/admin/config.yml
+                sed -i "s/  repo:.*/  repo: ONSdigital\/census-worth-self-help-content/" public/admin/config.yml
                 gcloud app deploy -q ci-app.yaml
