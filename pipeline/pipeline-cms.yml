@@ -62,8 +62,11 @@ jobs:
                 npm ci
                 BUILD="_build/content/"
                 mkdir -p "$BUILD" && cp -R ../../github-site-content/content/ "$BUILD"
+                gatsby telemetry --disable
                 npm run build
+                set +x
                 echo $AUTH_KEY > encrypted_key.txt
+                set -x
                 base64 -d encrypted_key.txt > service-account.json
                 gcloud auth activate-service-account --key-file service-account.json
                 gcloud config set project $PROJECT
