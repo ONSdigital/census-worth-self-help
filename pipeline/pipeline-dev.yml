@@ -27,8 +27,9 @@ jobs:
           tag: alpine
 
       params:
-        AUTH_KEY : ((json-key))
-        PROJECT : ((project-name))
+        AUTH_KEY : ((gcp.service-account-key))
+        PROJECT : ((gcp.project-name))
+        GCP_SECRETS_VERSION : ((gcp.secrets-version))
 
       caches:
       - path: github-repo/site/node_modules
@@ -41,6 +42,7 @@ jobs:
         args:
         - -exec
         - |
+            echo "GCP Secrets Version : $GCP_SECRETS_VERSION"
             apk add --update nodejs nodejs-npm
             cd github-repo/site
             npm install
