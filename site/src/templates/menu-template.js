@@ -39,9 +39,9 @@ export default ({ pageContext }) => {
             border-top: 1px solid white;
           `}
         />
-        <MenuLink link="/recent" title="Recently updated" />
-        <MenuLink link="/bookmarks" title="My Bookmarks" />
-        <MenuLink link="/fsscc" title="Field Contact Centre" />
+        <MenuLink link="/mostrecent" title="Recently updated" />
+        {/* todo: <MenuLink link="/bookmarks" title="My Bookmarks" /> */}
+        {/* todo: <MenuLink link="/fsscc" title="Field Contact Centre" /> */}
       </div>
     </div>
   )

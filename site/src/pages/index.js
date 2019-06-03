@@ -4,6 +4,7 @@ import Alert from "../components/alert"
 import Layout from "../components/layout"
 import { transformQueryDataToArticleData } from "../utils/transformers"
 import TabList from "../components/tablist"
+import LargeButton from "../components/largebutton"
 
 export default ({ data }) => {
   let alertFound =
@@ -16,6 +17,7 @@ export default ({ data }) => {
           content={data.markdownRemark.frontmatter.alert_content}
         />
       )}
+      <LargeButton title="Explore content" link="menu" />
       <TabList elements={transformQueryDataToArticleData(data.allMarkdownRemark.edges)} />
     </Layout>
   )
