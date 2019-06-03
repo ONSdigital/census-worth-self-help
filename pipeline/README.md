@@ -7,8 +7,12 @@ log in to web console and install fly command.
 
     AUTH_VAR=$(cat pipeline-auth.json | base64)
     fly -t local login -c http://127.0.0.1:8080 -u test -p test
-    fly -t local set-pipeline -c dev_pipeline.yml -p self-help -v json-key=(echo $AUTH_VAR) -v project-name= (get the project name from gcp) 
+    fly -t local set-pipeline -c pipeline-dev.yml -p self-help
     fly -t local unpause-pipeline -p self-help
+
+# Other pipelines
+
+    fly -t local set-pipeline -c pipeline-cms.yml -p self-help-cms
 
 # Troubleshooting
 
