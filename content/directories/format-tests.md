@@ -1,6 +1,6 @@
 ---
 title: Format Tests
-repo: Root
+directory: Root
 priority: 1
 ---
 

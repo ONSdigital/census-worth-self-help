@@ -1,6 +1,6 @@
 import React from "react"
 import { css } from "@emotion/core"
-import RepoTab from "./repotab"
+import DirectoryTab from "./directorytab"
 import ArticleTab from "./articletab"
 import { spacing } from "../utils/styles"
 
@@ -12,8 +12,8 @@ export default ({ elements }) => {
         ${spacing.minimum_gap};
       `}
     >
-      {element.type === "repo" && (
-        <RepoTab title={element.title} link={element.link} />
+      {element.type === "directory" && (
+        <DirectoryTab title={element.title} link={element.link} />
       )}
       {element.type === "article" && (
         <ArticleTab title={element.title} link={element.link} />

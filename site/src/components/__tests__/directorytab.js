@@ -1,12 +1,12 @@
 import React from "react"
 import renderer from "react-test-renderer"
 
-import RepoTab from "../repotab"
+import DirectoryTab from "../directorytab"
 
-describe("RepoTab", () => {
+describe("DirectoryTab", () => {
   it("renders correctly", () => {
     const tree = renderer
-      .create(<RepoTab title="repo title" link="location" />)
+      .create(<DirectoryTab title="directory title" link="location" />)
       .toJSON()
     expect(tree).toMatchSnapshot()
   })

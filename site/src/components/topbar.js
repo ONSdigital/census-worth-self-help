@@ -9,7 +9,7 @@ export default () => {
       css={css`
         display: flex;
         position: fixed;
-        width: 100%;
+        width: 100vw;
         height: 60px; // TODO: needs to be a global defined
         ${gradients.purple_shine};
       `}

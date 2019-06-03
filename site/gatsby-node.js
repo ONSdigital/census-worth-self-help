@@ -1,9 +1,9 @@
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
 
-function fetchArticlesAndRepos(data) {
+function fetchArticlesAndDirectories(data) {
 
-  let repos = []
+  let directories = []
   let articles = []
   data.forEach(({ node }) => {
 
@@ -15,52 +15,52 @@ function fetchArticlesAndRepos(data) {
     {
       articles.push(
         {title : node.frontmatter.title,
-         parent_title : node.frontmatter.repo,
+         parent_title : node.frontmatter.directory,
          link: filename,
          breadcrumbs: [],
          type: "article"})
-    } else if( directory === 'repos' && node.frontmatter.repo ) {
-      repos.push(
+    } else if( directory === 'directories' && node.frontmatter.directory ) {
+      directories.push(
         {title : node.frontmatter.title,
-         parent_title : node.frontmatter.repo,
+         parent_title : node.frontmatter.directory,
          resolved : false,
          children: [],
          breadcrumbs: [],
          link: filename,
-         type: "repo"})
+         type: "directory"})
     }
   })
-  return {articles: articles, repos: repos}
+  return {articles: articles, directories: directories}
 }
 
-function connectReposTogether(repos) {
-  // Repos is a list of the directories with only the root element resolved.
-  // We loop through the list of repos, each time we will connect one layer further until we find no more layers.
+function connectDirectoriesTogether(directories) {
+  // Directories is a list of the directories with only the root element resolved.
+  // We loop through the list of directories, each time we will connect one layer further until we find no more layers.
   // If there are any loops that do not get connected to the root, they will not be included.
   let searchAgain = true
   while(searchAgain)
   {
     searchAgain = false
-    repos.forEach(( repo ) => {
-      if (repo.resolved === false) {
-        let parent = repos.find( (parent) => parent.title === repo.parent_title )
+    directories.forEach(( directory ) => {
+      if (directory.resolved === false) {
+        let parent = directories.find( (parent) => parent.title === directory.parent_title )
         if( parent !== undefined && parent.resolved)
         {
           searchAgain = true
-          repo.resolved = true
-          repo.parent = parent
-          parent.children.push(repo)
-          repo.breadcrumbs = parent.breadcrumbs.slice() // shallow copy
-          repo.breadcrumbs.push({title: parent.title, link: parent.link})
+          directory.resolved = true
+          directory.parent = parent
+          parent.children.push(directory)
+          directory.breadcrumbs = parent.breadcrumbs.slice() // shallow copy
+          directory.breadcrumbs.push({title: parent.title, link: parent.link})
         }
       }
     })
   }
 }
 
-function combineArticlesAndRepos(articles, repos) {
+function combineArticlesAndDirectories(articles, directories) {
   articles.forEach(( article ) => {
-    let parent = repos.find( (parent) => parent.title === article.parent_title )
+    let parent = directories.find( (parent) => parent.title === article.parent_title )
     if( parent !== undefined)
     {
       article.parent = parent
@@ -71,14 +71,14 @@ function combineArticlesAndRepos(articles, repos) {
   })
 }
 
-function createMenuPage(createPage, rootRepo) {
+function createMenuPage(createPage, rootDirectory) {
   // The tree we need for the menu starts at the root and recurses down.
-  let menuRecursion = function(repo, menutree) {
-    let menutreeElement = {title: repo.title, link: repo.link}
-    menutreeElement.children = repo.children.map( (child) => menuRecursion(child, menutreeElement))
+  let menuRecursion = function(directory, menutree) {
+    let menutreeElement = {title: directory.title, link: directory.link}
+    menutreeElement.children = directory.children.map( (child) => menuRecursion(child, menutreeElement))
     return menutreeElement
   }
-  let menutree = menuRecursion(rootRepo, [])
+  let menutree = menuRecursion(rootDirectory, [])
 
   createPage({
       path: "menu",
@@ -106,25 +106,25 @@ function createArticlePages(createPage, articles) {
   })
 }
 
-function createRepoPages(createPage, repos)
+function createDirectoryPages(createPage, directories)
 {
-  repos.forEach(( repo ) => {
-    // Figure out ancestors, peers, and children before creating repo pages.
-    let children = repo.children.map( (child) => { return { title: child.title, link: child.link, type: child.type} })
+  directories.forEach(( directory ) => {
+    // Figure out ancestors, peers, and children before creating directory pages.
+    let children = directory.children.map( (child) => { return { title: child.title, link: child.link, type: child.type} })
     let peers = []
-    if(repo.parent)
+    if(directory.parent)
     {
-      peers = repo.parent.children.map( (child) => { return {title: child.title, link: child.link} })
+      peers = directory.parent.children.map( (child) => { return {title: child.title, link: child.link} })
     }
 
     createPage({
-      path: repo.link,
-      component: path.resolve(`./src/templates/standard-repo.js`),
+      path: directory.link,
+      component: path.resolve(`./src/templates/standard-directory.js`),
       context: {
-        title : repo.title,
+        title : directory.title,
         children : children,
         peers : peers,
-        breadcrumbs : repo.breadcrumbs
+        breadcrumbs : directory.breadcrumbs
       },
     })
   })
@@ -141,7 +141,7 @@ exports.createPages = ({ graphql, actions }) => {
           fileAbsolutePath
           frontmatter {
             title
-            repo
+            directory
           }
         }
       }
@@ -150,19 +150,19 @@ exports.createPages = ({ graphql, actions }) => {
   `
 ).then(result => {
 
-    let {repos, articles} = fetchArticlesAndRepos(result.data.allMarkdownRemark.edges)
+    let {directories, articles} = fetchArticlesAndDirectories(result.data.allMarkdownRemark.edges)
 
-    let rootRepo = {title : 'Root', resolved : true, parent: null, children: [], breadcrumbs: [], link: "explore"}
-    repos.push(rootRepo)
+    let rootDirectory = {title : 'Root', resolved : true, parent: null, children: [], breadcrumbs: [], link: "explore"}
+    directories.push(rootDirectory)
 
-    connectReposTogether(repos)
+    connectDirectoriesTogether(directories)
 
-    createMenuPage(createPage, rootRepo)
+    createMenuPage(createPage, rootDirectory)
 
-    combineArticlesAndRepos(articles, repos)
+    combineArticlesAndDirectories(articles, directories)
 
     createArticlePages(createPage, articles)
 
-    createRepoPages(createPage, repos)
+    createDirectoryPages(createPage, directories)
   })
 }

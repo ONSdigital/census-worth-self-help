@@ -7,7 +7,6 @@ import { css } from "@emotion/core"
 import { spacing } from "../utils/styles"
 
 export default ({ pageContext }) => {
-  console.log(pageContext)
   return (
     <Layout>
       <Breadcrumbs

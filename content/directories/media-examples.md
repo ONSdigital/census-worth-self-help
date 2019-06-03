@@ -1,6 +1,6 @@
 ---
 title: Media examples
-repo: Format Tests
+directory: Format Tests
 priority: 1
 ---
 

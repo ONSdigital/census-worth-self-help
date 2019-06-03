@@ -18,15 +18,15 @@ collections:
       - { name: date, label: Publish Date, widget: date }
       - { name: description, label: Description }
       - { name: body, label: Main Body, widget: markdown }
-      - { label: "Repo",
-          name: "repo",
+      - { label: "Directory",
+          name: "directory",
           widget: "relation",
-          collection: "repos",
+          collection: "directories",
           searchFields: ["title"],
           valueField: "title",
           displayFields: ["title"]}
       - { name: priority, label: Priority, widget: "number", default: 0,
-          hint: "Controls the order in which the repo appears in the parent repo, starting from 0, lower = higher"  }
+          hint: "Controls the order in which the directory appears in the parent directory, starting from 0, lower = higher"  }
       - { name: role, label: Role, required: false }
       - { name: author, label: Author, required: false }
       - { name: reviewedby, label: Reviewed By, required: false }
@@ -35,24 +35,24 @@ collections:
           hint: "divide tags up using commas, e.g:  emergency, test, contact " }
 
 
-  - name: repos
-    label: Repos
-    label_singular: 'Repo'
-    folder: content/repos
+  - name: directories
+    label: Directories
+    label_singular: 'Directory'
+    folder: content/directories
     create: true
     fields:
       - { name: title, label: Title }
-      - { label: "Repo",
-          name: "repo",
+      - { label: "Directory",
+          name: "directory",
           widget: "relation",
-          collection: "repos",
+          collection: "directories",
           searchFields: ["title"],
           valueField: "title",
           displayFields: ["title"],
-          hint: "Enter the parent repo for this repo, be careful not to create a loop.",
+          hint: "Enter the parent directory for this directory, be careful not to create a loop.",
           required: false }
       - { name: priority, label: Priority, widget: "number", default: 0,
-          hint: "Controls the order in which the repo appears in the parent repo, starting from 0, lower = higher"  }
+          hint: "Controls the order in which the directory appears in the parent directory, starting from 0, lower = higher"  }
 
 
   - name: constants

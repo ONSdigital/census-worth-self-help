@@ -7,9 +7,9 @@ describe("TabList", () => {
   
   const tabs = [
   	{title:"tab1", link:"tab1", type:"article"},
-	{title:"tab2", link:"tab2", type:"repo"},
+	{title:"tab2", link:"tab2", type:"directory"},
 	{title:"tab3", link:"tab3", type:"article"},
-	{title:"tab4", link:"tab4", type:"repo"},
+	{title:"tab4", link:"tab4", type:"directory"},
   ]
 
   it("renders correctly", () => {

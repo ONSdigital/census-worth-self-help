@@ -1,6 +1,6 @@
 ---
 title: Basic Articles
-repo: Root
+directory: Root
 priority: 0
 ---
 

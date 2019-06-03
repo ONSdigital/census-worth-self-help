@@ -1,6 +1,6 @@
 ---
 title: Text Only
-repo: Format Tests
+directory: Format Tests
 priority: 0
 ---
 
