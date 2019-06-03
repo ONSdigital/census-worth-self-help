@@ -1,33 +1,52 @@
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
 
+exports.onCreateNode = (props) => {
+  let { node, actions } = props
+  const { createNodeField } = actions
+
+  if (node.internal.type === `MarkdownRemark`) {
+
+    const parsedPath = path.parse(node.fileAbsolutePath)
+    const collection = path.parse(parsedPath.dir).base
+    const filename = parsedPath.name
+
+    createNodeField({
+      node,
+      name: `collection`,
+      value: collection,
+    })
+    createNodeField({
+      node,
+      name: `pagename`,
+      value: filename,
+    })
+  }
+}
+
+
 function fetchArticlesAndDirectories(data) {
 
   let directories = []
   let articles = []
   data.forEach(({ node }) => {
-
-    const parsedPath = path.parse(node.fileAbsolutePath)
-    const filename = parsedPath.base
-    const directory = path.parse(parsedPath.dir).base
-
-    if( directory === 'articles')
+    if( node.fields.collection === 'articles')
     {
       articles.push(
         {title : node.frontmatter.title,
          parent_title : node.frontmatter.directory,
-         link: filename,
+         link: node.fields.pagename,
          breadcrumbs: [],
          type: "article",
          priority: node.frontmatter.priority})
-    } else if( directory === 'directories' && node.frontmatter.directory ) {
+    } else if( node.fields.collection === 'directories' && node.frontmatter.directory ) {
       directories.push(
         {title : node.frontmatter.title,
          parent_title : node.frontmatter.directory,
          resolved : false,
          children: [],
          breadcrumbs: [],
-         link: filename,
+         link: node.fields.pagename,
          type: "directory",
          priority: node.frontmatter.priority})
     }
@@ -153,6 +172,10 @@ exports.createPages = ({ graphql, actions }) => {
       edges {
         node {
           fileAbsolutePath
+          fields {
+            collection
+            pagename
+          }
           frontmatter {
             title
             directory

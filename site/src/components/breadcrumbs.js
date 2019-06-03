@@ -2,7 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import { colors, spacing } from "../utils/styles"
 
-export default ({ breadcrumbs, peers }) => {
+export default ({ breadcrumbs, peers=[] }) => {
   let breadcrumbOptions = breadcrumbs.map(breadcrumb => (
     <option key={breadcrumb.title} value={breadcrumb.link}>
       {breadcrumb.title}
