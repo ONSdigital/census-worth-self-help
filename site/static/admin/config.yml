@@ -4,6 +4,8 @@ backend:
   branch: test_content
   squash_merges: true
 
+publish_mode: editorial_workflow
+
 media_folder: static/assets
 public_folder: assets
 
