@@ -2,19 +2,30 @@
 
 exports[`Alert renders correctly 1`] = `
 <div
-  data-testid="alert-message"
-  style={
+  css={
     Object {
-      "backgroundColor": "lightgreen",
+      "map": undefined,
+      "name": "1neujza",
+      "next": undefined,
+      "styles": "
+        border-radius: 4px;
+        border: solid 2px rgb(248, 196, 30);
+        background-color: rgb(253, 239, 173);
+        margin: 15px;
+        
+    padding: 15px;
+  
+      ",
     }
   }
 >
   <b>
     test_title
   </b>
-  : 
-  <span>
+  <p
+    data-testid="alert-message"
+  >
     this is test content
-  </span>
+  </p>
 </div>
 `;

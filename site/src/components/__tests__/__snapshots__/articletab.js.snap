@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleTab renders correctly 1`] = `
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "1qod87i",
+      "next": undefined,
+      "styles": "
+        
+    font-size: small;
+  ;
+        
+    width: 100%;
+    padding: 10px;
+    min-height: 40px;
+  ;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+        border-left: 6px solid rgb(120, 16, 137);
+      ",
+    }
+  }
+>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "9dv1cm",
+        "next": undefined,
+        "styles": "
+          
+    margin: 0px 2px;
+  ;
+          display: flex;
+        ",
+      }
+    }
+  >
+    <a
+      css={
+        Object {
+          "map": undefined,
+          "name": "6m0x7k",
+          "next": undefined,
+          "styles": "
+            text-decoration: none;
+            color: inherit;
+            flex-grow: 1;
+          ",
+        }
+      }
+      href="location"
+    >
+      article title
+    </a>
+  </div>
+</div>
+`;

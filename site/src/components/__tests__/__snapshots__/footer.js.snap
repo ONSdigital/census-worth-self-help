@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "1q7gxz7",
+      "next": undefined,
+      "styles": "
+        
+    margin: 30px 0px;
+  
+        width: 100%;
+        padding: 10px 0px;
+        background-color: ;
+        display: flex;
+      ",
+    }
+  }
+/>
+`;

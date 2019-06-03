@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabList renders correctly 1`] = `
+<div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "1mij31f",
+        "next": undefined,
+        "styles": "
+        
+    margin: 2px 0px;
+  ;
+      ",
+      }
+    }
+  >
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "1qod87i",
+          "next": undefined,
+          "styles": "
+        
+    font-size: small;
+  ;
+        
+    width: 100%;
+    padding: 10px;
+    min-height: 40px;
+  ;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+        border-left: 6px solid rgb(120, 16, 137);
+      ",
+        }
+      }
+    >
+      <div
+        css={
+          Object {
+            "map": undefined,
+            "name": "9dv1cm",
+            "next": undefined,
+            "styles": "
+          
+    margin: 0px 2px;
+  ;
+          display: flex;
+        ",
+          }
+        }
+      >
+        <a
+          css={
+            Object {
+              "map": undefined,
+              "name": "6m0x7k",
+              "next": undefined,
+              "styles": "
+            text-decoration: none;
+            color: inherit;
+            flex-grow: 1;
+          ",
+            }
+          }
+          href="tab1"
+        >
+          tab1
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "1mij31f",
+        "next": undefined,
+        "styles": "
+        
+    margin: 2px 0px;
+  ;
+      ",
+      }
+    }
+  >
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "1j5mh0b",
+          "next": undefined,
+          "styles": "
+          
+    width: 100%;
+    padding: 10px;
+    min-height: 40px;
+  
+          background: rgb(120, 16, 137);
+          border-left: 6px solid rgb(120, 16, 137);
+      ",
+        }
+      }
+    >
+      <a
+        css={
+          Object {
+            "map": undefined,
+            "name": "1tl9lwk",
+            "next": undefined,
+            "styles": "
+          
+    text-decoration: none;
+    color: white;
+  
+          
+    margin: 0px 2px;
+  
+        ",
+          }
+        }
+        href="tab2"
+      >
+        tab2
+      </a>
+    </div>
+  </div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "1mij31f",
+        "next": undefined,
+        "styles": "
+        
+    margin: 2px 0px;
+  ;
+      ",
+      }
+    }
+  >
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "1qod87i",
+          "next": undefined,
+          "styles": "
+        
+    font-size: small;
+  ;
+        
+    width: 100%;
+    padding: 10px;
+    min-height: 40px;
+  ;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+        border-left: 6px solid rgb(120, 16, 137);
+      ",
+        }
+      }
+    >
+      <div
+        css={
+          Object {
+            "map": undefined,
+            "name": "9dv1cm",
+            "next": undefined,
+            "styles": "
+          
+    margin: 0px 2px;
+  ;
+          display: flex;
+        ",
+          }
+        }
+      >
+        <a
+          css={
+            Object {
+              "map": undefined,
+              "name": "6m0x7k",
+              "next": undefined,
+              "styles": "
+            text-decoration: none;
+            color: inherit;
+            flex-grow: 1;
+          ",
+            }
+          }
+          href="tab3"
+        >
+          tab3
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "1mij31f",
+        "next": undefined,
+        "styles": "
+        
+    margin: 2px 0px;
+  ;
+      ",
+      }
+    }
+  >
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "1j5mh0b",
+          "next": undefined,
+          "styles": "
+          
+    width: 100%;
+    padding: 10px;
+    min-height: 40px;
+  
+          background: rgb(120, 16, 137);
+          border-left: 6px solid rgb(120, 16, 137);
+      ",
+        }
+      }
+    >
+      <a
+        css={
+          Object {
+            "map": undefined,
+            "name": "1tl9lwk",
+            "next": undefined,
+            "styles": "
+          
+    text-decoration: none;
+    color: white;
+  
+          
+    margin: 0px 2px;
+  
+        ",
+          }
+        }
+        href="tab4"
+      >
+        tab4
+      </a>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopBarLink renders correctly 1`] = `
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "1sm5jo",
+      "next": undefined,
+      "styles": "
+        
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+        padding: 0px 10px;
+        background-color: rgb(255, 255, 255, 0.2);
+        border-radius: 4px;
+        margin: 10px 10px 10px 0px;
+        min-width: 20px;
+        object-fit: contain;
+        text-align: center;
+        height: 40px;
+      ",
+    }
+  }
+>
+  <a
+    css={
+      Object {
+        "map": undefined,
+        "name": "1t4ib0k",
+        "next": undefined,
+        "styles": "
+          
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-family: OpenSans, Semibold;
+  ;
+          text-decoration: none;
+        ",
+      }
+    }
+    href="menu"
+  >
+    menu
+  </a>
+</div>
+`;
