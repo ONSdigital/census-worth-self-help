@@ -6,12 +6,12 @@ exports[`Layout renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1j8s011",
+        "name": "ilowm4",
         "next": undefined,
         "styles": "
         display: flex;
         position: fixed;
-        width: 100%;
+        width: 100vw;
         height: 60px; // TODO: needs to be a global defined
         
     background: linear-gradient(to left, rgb(98, 13, 111), rgb(120, 16, 137));
