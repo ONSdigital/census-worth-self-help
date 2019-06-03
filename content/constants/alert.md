@@ -1,4 +1,4 @@
 ---
-alert_content: 'See, this value is changed - changing again'
+alert_content: testing timer - another change
 ---
 

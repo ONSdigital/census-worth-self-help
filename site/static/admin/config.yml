@@ -1,0 +1,20 @@
+backend:
+  name: github
+  repo: ONSdigital/census-worth-self-help
+  branch: test_content
+  squash_merges: true
+
+media_folder: static/assets
+public_folder: assets
+
+collections:
+  - name: constants
+    label: Constants
+    create: false
+    delete: false
+    files:
+      - file: "content/constants/alert.md"
+        label: "Alert"
+        name: "alert"
+        fields:
+          - { label: 'Content', name: 'alert_content', widget: 'string', required: false }

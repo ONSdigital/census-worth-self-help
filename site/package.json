@@ -3,35 +3,44 @@
   "private": true,
   "description": "A Self Help Facility",
   "version": "0.1.0",
-  "author": "Ian Homer <ihomer@worth.systems>",
+  "license": "MIT",
   "dependencies": {
-    "gatsby": "2.6.0",
-    "gatsby-image": "2.1.0",
-    "gatsby-plugin-manifest": "2.1.1",
-    "gatsby-plugin-offline": "2.1.1",
-    "gatsby-plugin-react-helmet": "3.0.12",
-    "gatsby-plugin-sharp": "2.0.37",
-    "gatsby-source-filesystem": "2.0.37",
-    "gatsby-transformer-sharp": "2.1.19",
-    "prop-types": "15.7.2",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-helmet": "5.2.1"
+    "@emotion/core": "^10.0.10",
+    "bootstrap": "^4.3.1",
+    "escape-string-regexp": "^2.0.0",
+    "gatsby": "^2.4.3",
+    "gatsby-plugin-emotion": "^4.0.6",
+    "gatsby-plugin-offline": "^2.1.0",
+    "gatsby-source-filesystem": "^2.0.34",
+    "gatsby-transformer-remark": "^2.3.12",
+    "gatsby-plugin-netlify-cms": "^4.0.1",
+    "moment": "^2.24.0",
+    "netlify-cms-app": "^2.9.1",
+    "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.8",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "prettier": "1.17.1"
+    "babel-jest": "^24.8.0",
+    "babel-preset-gatsby": "^0.1.11",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.8.0",
+    "jest-dom": "^3.4.0",
+    "prettier": "1.17.1",
+    "react-test-renderer": "^16.8.6",
+    "react-testing-library": "^7.0.1"
   },
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
+    "local": "./localbuild.sh; npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "jest"
   },
   "repository": {
     "type": "git",

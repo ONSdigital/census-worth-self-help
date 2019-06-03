@@ -1,5 +1,5 @@
 ---
-priority: '0'
+priority: 0
 title: Root
 ---
 
