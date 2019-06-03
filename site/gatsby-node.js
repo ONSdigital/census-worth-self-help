@@ -18,7 +18,8 @@ function fetchArticlesAndDirectories(data) {
          parent_title : node.frontmatter.directory,
          link: filename,
          breadcrumbs: [],
-         type: "article"})
+         type: "article",
+         priority: node.frontmatter.priority})
     } else if( directory === 'directories' && node.frontmatter.directory ) {
       directories.push(
         {title : node.frontmatter.title,
@@ -27,7 +28,8 @@ function fetchArticlesAndDirectories(data) {
          children: [],
          breadcrumbs: [],
          link: filename,
-         type: "directory"})
+         type: "directory",
+         priority: node.frontmatter.priority})
     }
   })
   return {articles: articles, directories: directories}
@@ -75,7 +77,10 @@ function createMenuPage(createPage, rootDirectory) {
   // The tree we need for the menu starts at the root and recurses down.
   let menuRecursion = function(directory, menutree) {
     let menutreeElement = {title: directory.title, link: directory.link}
-    menutreeElement.children = directory.children.map( (child) => menuRecursion(child, menutreeElement))
+    // filter out articles as they don't appear in menus. Then recurse over the rest of the children
+    menutreeElement.children = directory.children.filter(
+                                 (child) => child.type === "directory"
+                              ).map( (child) => menuRecursion(child, menutreeElement))
     return menutreeElement
   }
   let menutree = menuRecursion(rootDirectory, [])
@@ -103,6 +108,15 @@ function createArticlePages(createPage, articles) {
           peers : peers,
           breadcrumbs : article.breadcrumbs}
     })
+  })
+}
+
+function sortDirectoriesByPriority(directories)
+{
+  directories.forEach(( directory ) => {
+    directory.children.sort( (child_a, child_b) => {
+      return child_a.priority - child_b.priority;
+    });
   })
 }
 
@@ -142,6 +156,7 @@ exports.createPages = ({ graphql, actions }) => {
           frontmatter {
             title
             directory
+            priority
           }
         }
       }
@@ -156,13 +171,11 @@ exports.createPages = ({ graphql, actions }) => {
     directories.push(rootDirectory)
 
     connectDirectoriesTogether(directories)
+    combineArticlesAndDirectories(articles, directories)
+    sortDirectoriesByPriority(directories)
 
     createMenuPage(createPage, rootDirectory)
-
-    combineArticlesAndDirectories(articles, directories)
-
     createArticlePages(createPage, articles)
-
     createDirectoryPages(createPage, directories)
   })
 }
