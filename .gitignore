@@ -2,6 +2,14 @@
 
 .idea/workspace.xml
 
+# Environment variables
+
+.env
+
+# GCP
+
+app-with-env.yaml
+
 # Gatsby / Node
 
 node_modules
