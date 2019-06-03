@@ -1,6 +1,6 @@
 ---
 title: Test Directory
-directory: Root
+directory: Super Test Directory
 priority: 2
 ---
 
