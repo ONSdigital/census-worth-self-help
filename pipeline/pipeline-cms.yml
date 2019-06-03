@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: feature/ONS-15-pipeline-for-cms
+      branch: master
 
   - name: github-site-content
     type: git
