@@ -1,6 +1,6 @@
 ---
 title: Good Articles
-repo: Basic Articles
-priority: '0'
+directory: Basic Articles
+priority: 0
 ---
 

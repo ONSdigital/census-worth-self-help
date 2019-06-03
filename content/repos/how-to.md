@@ -1,6 +1,6 @@
 ---
 title: How to
-repo: Root
-priority: '2'
+directory: Root
+priority: 2
 ---
 

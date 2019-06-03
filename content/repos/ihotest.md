@@ -1,6 +1,6 @@
 ---
 title: IHOTest
-repo: Root
+directory: Root
 priority: 0
 ---
 
