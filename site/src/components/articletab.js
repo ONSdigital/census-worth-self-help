@@ -4,9 +4,11 @@ import { Link } from "gatsby"
 import { fonts, colors, spacing } from "../utils/styles"
 const moment = require('moment')
 
-export default ({ element }) => {
-  let {title, link, description, date} = element
-  let date_formatted = moment(date).fromNow()
+export default ({ node }) => {
+  let title = node.frontmatter.title
+  let link = node.fields.pagename
+  let description = node.frontmatter.description
+  let time_ago = moment(node.frontmatter.date).fromNow()
   return (
     <div
       css={css`
@@ -44,7 +46,7 @@ export default ({ element }) => {
           {description}
         </div>
         <div>
-          {date_formatted}
+          {time_ago}
         </div>
       </div>
     </div>

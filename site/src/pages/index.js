@@ -2,7 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import Alert from "../components/alert"
 import Layout from "../components/layout"
-import { transformQueryDataToArticleData } from "../utils/transformers"
 import TabList from "../components/tablist"
 import LargeButton from "../components/largebutton"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -21,7 +20,7 @@ export default ({ data }) => {
       )}
       <LargeButton icon={<FontAwesomeIcon icon={faBook} />} title="Explore content" link="menu" />
       <TabList title="RECENTLY UPDATED" link="mostrecent"
-        elements={transformQueryDataToArticleData(data.allMarkdownRemark.edges)} />
+        elements={data.allMarkdownRemark.edges} />
     </Layout>
   )
 }

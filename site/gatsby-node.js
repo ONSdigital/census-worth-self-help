@@ -33,24 +33,22 @@ function fetchArticlesAndDirectories(data) {
     if( node.fields.collection === 'articles')
     {
       articles.push(
-        {title : node.frontmatter.title,
+        {node : node,
+         title : node.frontmatter.title,
+         link : node.fields.pagename,
          parent_title : node.frontmatter.directory,
-         link: node.fields.pagename,
          breadcrumbs: [],
-         type: "article",
-         priority: node.frontmatter.priority})
+         type: "article"})
     } else if( node.fields.collection === 'directories' && node.frontmatter.directory ) {
       directories.push(
-        {title : node.frontmatter.title,
+        { node : node,
+         title : node.frontmatter.title,
+         link : node.fields.pagename,
          parent_title : node.frontmatter.directory,
-         date: node.frontmatter.date,
-         description: node.frontmatter.description,
          resolved : false,
          children: [],
          breadcrumbs: [],
-         link: node.fields.pagename,
-         type: "directory",
-         priority: node.frontmatter.priority})
+         type: "directory"})
     }
   })
   return {articles: articles, directories: directories}
@@ -119,7 +117,7 @@ function createArticlePages(createPage, articles) {
     let peers = []
     if(article.parent)
     {
-      peers = article.parent.children.map( (child) => { return {title: child.title, link: child.link} })
+      peers = article.parent.children.map( (child) => { return { title: child.title, link: child.link } } )
     }
     createPage({
         path: article.link,
@@ -145,7 +143,7 @@ function createDirectoryPages(createPage, directories)
 {
   directories.forEach(( directory ) => {
     // Figure out ancestors, peers, and children before creating directory pages.
-    let children = directory.children.map( (child) => { return { title: child.title, link: child.link, type: child.type} })
+    let children = directory.children.map( (child) => { return { node: child.node } } )
     let peers = []
     if(directory.parent)
     {
@@ -182,6 +180,8 @@ exports.createPages = ({ graphql, actions }) => {
             title
             directory
             priority
+            date
+            description
           }
         }
       }

@@ -6,18 +6,19 @@ import { spacing, fonts } from "../utils/styles"
 import { Link } from "gatsby"
 
 export default ({ elements, title=false, link=false }) => {
-  let elementTabs = elements.map(element => (
+  console.log(elements)
+  let elementTabs = elements.map( ({node}) => (
     <div
-      key={element.title}
+      key={node.frontmatter.title}
       css={css`
         ${spacing.minimum_gap};
       `}
     >
-      {element.type === "directory" && (
-        <DirectoryTab title={element.title} link={element.link} />
+      {node.fields.collection === "directories" && (
+        <DirectoryTab title={node.frontmatter.title} link={node.fields.pagename} />
       )}
-      {element.type === "article" && (
-        <ArticleTab element={element} />
+      {node.fields.collection === "articles" && (
+        <ArticleTab node={node} />
       )}
     </div>
   ))

@@ -5,7 +5,6 @@ import PageTitle from "../components/pagetitle"
 import Breadcrumbs from "../components/breadcrumbs"
 import TextBlock from "../components/textblock"
 import TabList from "../components/tablist"
-import { transformQueryDataToArticleData } from "../utils/transformers"
 
 export default ({ data }) => {
 
@@ -19,7 +18,7 @@ export default ({ data }) => {
       <TextBlock>
         <b>Most recent changes, need to check with Phil to see if there's actually content for this</b>
       </TextBlock>
-      <TabList elements={transformQueryDataToArticleData(data.allMarkdownRemark.edges)} />
+      <TabList elements={data.allMarkdownRemark.edges} />
     </Layout>
   )
 }
