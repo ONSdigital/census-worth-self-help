@@ -1,6 +1,7 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { colors, spacing } from "../utils/styles"
+import { navigate } from "@reach/router"
 
 export default ({ breadcrumbs, peers=[] }) => {
   let breadcrumbOptions = breadcrumbs.map(breadcrumb => (
@@ -14,6 +15,10 @@ export default ({ breadcrumbs, peers=[] }) => {
     </option>
   ))
 
+  const redirect = (event) => {
+    navigate(`/` + event.target.value)
+  }
+
   return (
     <div
       css={css`
@@ -25,6 +30,7 @@ export default ({ breadcrumbs, peers=[] }) => {
       EXPLORE CONTENT
       <div>
         <select
+          onChange={redirect}
           css={css`
             background-color: ${colors.white_two};
             border-bottom: ${colors.black_two} 1px solid;

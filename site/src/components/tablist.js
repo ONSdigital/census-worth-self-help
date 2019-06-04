@@ -6,7 +6,6 @@ import { spacing, fonts } from "../utils/styles"
 import { Link } from "gatsby"
 
 export default ({ elements, title=false, link=false }) => {
-  console.log(elements)
   let elementTabs = elements.map( ({node}) => (
     <div
       key={node.frontmatter.title}
