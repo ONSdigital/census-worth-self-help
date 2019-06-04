@@ -43,6 +43,8 @@ function fetchArticlesAndDirectories(data) {
       directories.push(
         {title : node.frontmatter.title,
          parent_title : node.frontmatter.directory,
+         date: node.frontmatter.date,
+         description: node.frontmatter.description,
          resolved : false,
          children: [],
          breadcrumbs: [],
@@ -123,7 +125,7 @@ function createArticlePages(createPage, articles) {
         path: article.link,
         component: path.resolve(`./src/templates/standard-article.js`),
         context: {
-          title : article.title, 
+          title : article.title,
           peers : peers,
           breadcrumbs : article.breadcrumbs}
     })

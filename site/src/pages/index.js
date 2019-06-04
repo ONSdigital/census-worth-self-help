@@ -5,6 +5,8 @@ import Layout from "../components/layout"
 import { transformQueryDataToArticleData } from "../utils/transformers"
 import TabList from "../components/tablist"
 import LargeButton from "../components/largebutton"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBook } from '@fortawesome/free-solid-svg-icons'
 
 export default ({ data }) => {
   let alertFound =
@@ -17,8 +19,9 @@ export default ({ data }) => {
           content={data.markdownRemark.frontmatter.alert_content}
         />
       )}
-      <LargeButton title="Explore content" link="menu" />
-      <TabList elements={transformQueryDataToArticleData(data.allMarkdownRemark.edges)} />
+      <LargeButton icon={<FontAwesomeIcon icon={faBook} />} title="Explore content" link="menu" />
+      <TabList title="RECENTLY UPDATED" link="mostrecent"
+        elements={transformQueryDataToArticleData(data.allMarkdownRemark.edges)} />
     </Layout>
   )
 }

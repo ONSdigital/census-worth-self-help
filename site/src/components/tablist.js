@@ -2,9 +2,10 @@ import React from "react"
 import { css } from "@emotion/core"
 import DirectoryTab from "./directorytab"
 import ArticleTab from "./articletab"
-import { spacing } from "../utils/styles"
+import { spacing, fonts } from "../utils/styles"
+import { Link } from "gatsby"
 
-export default ({ elements }) => {
+export default ({ elements, title=false, link=false }) => {
   let elementTabs = elements.map(element => (
     <div
       key={element.title}
@@ -16,10 +17,40 @@ export default ({ elements }) => {
         <DirectoryTab title={element.title} link={element.link} />
       )}
       {element.type === "article" && (
-        <ArticleTab title={element.title} link={element.link} />
+        <ArticleTab element={element} />
       )}
     </div>
   ))
 
-  return <div>{elementTabs}</div>
+  let titlebar = null
+  if ( title || link)
+  {
+    titlebar = <div css={css`
+      ${spacing.standard_vertical};
+      ${spacing.in_page_element}
+      display: flex;
+    `}>
+    {title && <div>{title}</div>}
+    {link && (
+      <Link
+        to={link}
+        css={css`
+          ${fonts.small};
+          margin-left: auto
+        `}
+      >
+        View all
+      </Link>
+    )}
+    </div>
+  }
+
+  return (
+    <div css={css`
+      ${spacing.standard_vertical};
+    `}>
+      {titlebar}
+      {elementTabs}
+    </div>
+  )
 }

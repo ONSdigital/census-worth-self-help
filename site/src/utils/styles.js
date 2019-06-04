@@ -39,10 +39,10 @@ export const spacing = {
     flex-direction: column;
   `,
   standard_vertical: css`
-    margin: 15px 0px;
+    padding: 15px 0px;
   `,
   large_vertical: css`
-    margin: 30px 0px;
+    padding: 30px 0px;
   `,
   text_clearance: css`
     margin: 0px 2px;
@@ -51,14 +51,12 @@ export const spacing = {
     margin: 2px 0px;
   `,
   tab: css`
-    width: 100%;
     padding: 10px;
-    min-height: 40px;
+    min-height: 30px;
   `,
   main_box: css`
     margin: 0 auto;
     max-width: 700px;
-    padding-top: 60px;
   `,
   page_padding: css`
     padding: 15px;
