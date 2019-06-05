@@ -1,7 +1,7 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { Link } from "gatsby"
-import { fonts, spacing } from "../utils/styles"
+import { spacing } from "../utils/styles"
 
 export default class MenuLink extends React.Component {
   constructor(props) {
@@ -48,9 +48,10 @@ export default class MenuLink extends React.Component {
           `}
         >
           <Link
+            className="Menu-major-item-Style"
             to={link}
             css={css`
-              ${fonts.menu_link};
+              text-decoration: none;
               flex-grow: 1;
             `}
           >
@@ -58,11 +59,11 @@ export default class MenuLink extends React.Component {
           </Link>
           {hiddenMenu && (
             <div
+              className="Menu-major-item-Style"
               data-testid="toggle-button"
               onClick={this.toggle}
               css={css`
                 padding: 0px 30px;
-                ${fonts.menu_toggle};
               `}
             >
               {!this.state.toggled && <span>+</span>}

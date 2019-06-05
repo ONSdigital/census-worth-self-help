@@ -1,7 +1,7 @@
 import { css } from "@emotion/core"
 
 export const colors = {
-  purple: "rgb(120, 16, 137)",
+  navy_normal: "#003d59",
   marigold: "rgb(255, 204, 0)",
   tangerine: "rgb(255, 149, 0)",
   white: "rgb(255, 255, 255)",
@@ -27,8 +27,8 @@ export const colors = {
 }
 
 export const gradients = {
-  purple_shine: css`
-    background: linear-gradient(to left, ${colors.velvet}, ${colors.purple});
+  navy_shine: css`
+    background: linear-gradient(to left, #33637a, ${colors.navy_normal});
   `
 }
 
@@ -63,40 +63,5 @@ export const spacing = {
   `,
   in_page_element: css`
     padding: 5px 15px;
-  `
-}
-
-export const fonts = {
-  Header_Title_Style: css`
-    color: ${colors.white};
-    font-size: 16px;
-    font-family: OpenSans, Semibold;
-  `,
-  Article_Title_Style: css`
-    color: ${colors.purple};
-    font-size: 24px;
-    font-family: OpenSans;
-    font-weight: bold;
-  `,
-  article: css`
-    font-size: small;
-  `,
-  small: css`
-    font-size: small;
-  `,
-  directory_link: css`
-    text-decoration: none;
-    color: white;
-  `,
-  menu_link: css`
-    text-decoration: none;
-    font-size: large;
-    color: white;
-  `,
-  menu_toggle: css`
-    text-decoration: none;
-    color: inherit;
-    font-size: larger;
-    color: white;
   `
 }

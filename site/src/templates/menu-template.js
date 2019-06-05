@@ -22,7 +22,7 @@ export default ({ pageContext }) => {
         css={css`
           min-height: 100vh;
           ${spacing.main_box};
-          ${gradients.purple_shine};
+          ${gradients.navy_shine};
         `}
       >
         <MenuLink link="/" title="Home" />

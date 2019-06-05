@@ -18,7 +18,7 @@ export default ({ data }) => {
           content={data.markdownRemark.frontmatter.alert_content}
         />
       )}
-      <LargeButton icon={<FontAwesomeIcon icon={faBook} />} title="Explore content" link="menu" />
+      <LargeButton icon={<FontAwesomeIcon icon={faBook} />} title="Explore content" link="/menu" />
       <TabList title="RECENTLY UPDATED" link="mostrecent"
         elements={data.allMarkdownRemark.edges} />
     </Layout>

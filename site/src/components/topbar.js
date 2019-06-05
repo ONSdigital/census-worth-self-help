@@ -1,6 +1,6 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { gradients, fonts, spacing } from "../utils/styles"
+import { gradients, spacing } from "../utils/styles"
 import TopbarLink from "./topbarlink"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,7 +12,7 @@ export default () => {
       css={css`
         display: flex;
         width: 100vw;
-        ${gradients.purple_shine};
+        ${gradients.navy_shine};
       `}
     >
       <img
@@ -26,9 +26,9 @@ export default () => {
         `}
       />
       <div
+        className="Header-Title-Style"
         css={css`
           ${spacing.vert_aligned_flex_text}
-          ${fonts.Header_Title_Style};
           flex-grow: 1;
         `}
       >

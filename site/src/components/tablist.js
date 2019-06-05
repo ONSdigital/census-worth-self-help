@@ -2,7 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import DirectoryTab from "./directorytab"
 import ArticleTab from "./articletab"
-import { spacing, fonts } from "../utils/styles"
+import { spacing } from "../utils/styles"
 import { Link } from "gatsby"
 
 export default ({ elements, title=false, link=false }) => {
@@ -34,8 +34,8 @@ export default ({ elements, title=false, link=false }) => {
     {link && (
       <Link
         to={link}
+        className="Button-subhead-Style"
         css={css`
-          ${fonts.small};
           margin-left: auto
         `}
       >

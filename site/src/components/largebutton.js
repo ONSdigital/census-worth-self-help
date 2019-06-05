@@ -26,7 +26,7 @@ export default ({ title, link, icon=null }) => {
           icon &&
           <div css={css`
             position: relative;
-            color: ${colors.purple}
+            color: ${colors.navy_normal}
           `}>
             <div css={css`
             position: absolute;
@@ -40,6 +40,7 @@ export default ({ title, link, icon=null }) => {
           css={css`
             margin: 0px 20px;
             text-decoration: none;
+            color: ${colors.navy_normal}
           `}
         >
           {title}

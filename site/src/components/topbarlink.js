@@ -1,7 +1,7 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { Link } from "gatsby"
-import { fonts, spacing } from "../utils/styles"
+import { spacing } from "../utils/styles"
 
 export default ({ title, link }) => {
   return (
@@ -20,8 +20,8 @@ export default ({ title, link }) => {
     >
       <Link
         to={link}
+        className="Header-button-Style"
         css={css`
-          ${fonts.Header_Title_Style};
           text-decoration: none;
         `}
       >
