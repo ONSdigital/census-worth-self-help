@@ -15,27 +15,18 @@ export default () => {
         ${gradients.navy_shine};
       `}
     >
-      <img
-        src="/C2021topbar.png"
-        alt="Main logo"
-        css={css`
-          width: 30px;
-          height: 40px;
-          margin: 10px;
-          margin-right: 30px;
-        `}
-      />
       <div
         className="Header-Title-Style"
         css={css`
           ${spacing.vert_aligned_flex_text}
+          ${spacing.page_padding}
           flex-grow: 1;
         `}
       >
-        Field Assistant
+        Census Field Assistant
       </div>
       <TopbarLink title={<FontAwesomeIcon icon={faSearch} />} link="search" />
-      <TopbarLink title="MENU" link="menu" />
+      <TopbarLink title="Menu" link="menu" />
     </header>
   )
 }

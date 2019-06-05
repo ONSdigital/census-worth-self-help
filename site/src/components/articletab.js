@@ -11,7 +11,6 @@ export default ({ node }) => {
   let time_ago = moment(node.frontmatter.date).fromNow()
   return (
     <div
-      className="Button-subhead-Style"
       css={css`
         ${spacing.tab};
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
@@ -20,18 +19,21 @@ export default ({ node }) => {
       `}
     >
       <Link
+          className="Card-heading-Style"
           to={link}
           css={css`
             text-decoration: none;
             color: inherit;
             flex-grow: 1;
-            font-weight: bold;
+            font-weight: semi-bold;
           `}
         >
         {title}
       </Link>
       <div
+        className="Card-sub-head-Style-gray"
         css={css`
+          padding-top:6px;
           display: flex;
           flex-direction: vertical;
         `}
@@ -45,7 +47,7 @@ export default ({ node }) => {
         `}>
           {description}
         </div>
-        <div>
+        <div className="Card-meta-Style">
           {time_ago}
         </div>
       </div>

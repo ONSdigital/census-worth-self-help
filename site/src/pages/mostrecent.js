@@ -4,14 +4,10 @@ import Layout from "../components/layout"
 import PageTitle from "../components/pagetitle"
 import TextBlock from "../components/textblock"
 import TabList from "../components/tablist"
-import LargeButton from "../components/largebutton"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBook } from '@fortawesome/free-solid-svg-icons'
 
 export default ({ data }) => {
   return (
-    <Layout>
-      <LargeButton icon={<FontAwesomeIcon icon={faBook} />} title="Explore content" link="menu" />
+    <Layout explore_more_link={true}>
       <PageTitle>Recently Updated</PageTitle>
       <TextBlock>
         <b>Most recent changes, need to check with Phil to see if there's actually content for this</b>

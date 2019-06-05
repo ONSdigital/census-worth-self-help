@@ -2,7 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import DirectoryTab from "./directorytab"
 import ArticleTab from "./articletab"
-import { spacing } from "../utils/styles"
+import { spacing, colors } from "../utils/styles"
 import { Link } from "gatsby"
 
 export default ({ elements, title=false, link=false }) => {
@@ -30,16 +30,18 @@ export default ({ elements, title=false, link=false }) => {
       ${spacing.in_page_element}
       display: flex;
     `}>
-    {title && <div>{title}</div>}
+    {title && <div className="Section-heading-Style">{title}</div>}
     {link && (
       <Link
         to={link}
         className="Button-subhead-Style"
         css={css`
-          margin-left: auto
+          margin-left: auto;
+          text-decoration: none;
+          color: ${colors.navy_normal};
         `}
       >
-        View all
+        View all >
       </Link>
     )}
     </div>

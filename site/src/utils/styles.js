@@ -23,12 +23,13 @@ export const colors = {
   golden_yellow: "rgb(248, 196, 30)",
   light_tan: "rgb(253, 239, 173)",
   black_two: "rgb(48, 48, 48)",
-  white_two: "rgb(250, 250, 250)"
+  white_two: "rgb(250, 250, 250)",
+  footer_gray: "rgb(236, 236, 237)"
 }
 
 export const gradients = {
   navy_shine: css`
-    background: linear-gradient(to left, #33637a, ${colors.navy_normal});
+    background: linear-gradient(to left, ${colors.navy_normal}, #33637a);
   `
 }
 
@@ -51,7 +52,7 @@ export const spacing = {
     margin: 2px 0px;
   `,
   tab: css`
-    padding: 10px;
+    padding: 15px;
     min-height: 30px;
   `,
   main_box: css`

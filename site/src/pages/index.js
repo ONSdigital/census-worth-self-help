@@ -1,24 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Alert from "../components/alert"
 import Layout from "../components/layout"
 import TabList from "../components/tablist"
-import LargeButton from "../components/largebutton"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBook } from '@fortawesome/free-solid-svg-icons'
 
 export default ({ data }) => {
-  let alertFound =
-    data.markdownRemark && data.markdownRemark.frontmatter.alert_content !== ""
+  let alertText =
+    data.markdownRemark && data.markdownRemark.frontmatter.alert_content
   return (
-    <Layout>
-      {alertFound && (
-        <Alert
-          title="Alert"
-          content={data.markdownRemark.frontmatter.alert_content}
-        />
-      )}
-      <LargeButton icon={<FontAwesomeIcon icon={faBook} />} title="Explore content" link="/menu" />
+    <Layout logo={true} phone_link={false} explore_more_link={true} alert={alertText} >
       <TabList title="RECENTLY UPDATED" link="mostrecent"
         elements={data.allMarkdownRemark.edges} />
     </Layout>
