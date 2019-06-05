@@ -25,10 +25,14 @@ export default ({ title, link, icon=null }) => {
         {
           icon &&
           <div css={css`
-            position: fixed;
+            position: relative;
             color: ${colors.purple}
           `}>
+            <div css={css`
+            position: absolute;
+            `}>
             {icon}
+            </div>
           </div>
         }
         <Link

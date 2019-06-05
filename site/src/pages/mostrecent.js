@@ -2,18 +2,16 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import PageTitle from "../components/pagetitle"
-import Breadcrumbs from "../components/breadcrumbs"
 import TextBlock from "../components/textblock"
 import TabList from "../components/tablist"
+import LargeButton from "../components/largebutton"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBook } from '@fortawesome/free-solid-svg-icons'
 
 export default ({ data }) => {
-
-  let breadcrumbs = []
   return (
     <Layout>
-      <Breadcrumbs
-        breadcrumbs={breadcrumbs}
-      />
+      <LargeButton icon={<FontAwesomeIcon icon={faBook} />} title="Explore content" link="menu" />
       <PageTitle>Recently Updated</PageTitle>
       <TextBlock>
         <b>Most recent changes, need to check with Phil to see if there's actually content for this</b>
