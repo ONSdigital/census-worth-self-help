@@ -22,8 +22,6 @@ export default ({ pageContext }) => {
         css={css`
           min-height: 100vh;
           ${spacing.main_box};
-          padding-left: 20px;
-          padding-right: 20px;
           ${gradients.purple_shine};
         `}
       >
