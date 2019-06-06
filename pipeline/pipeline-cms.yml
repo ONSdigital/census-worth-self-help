@@ -3,27 +3,20 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: v1.11.0
 
   - name: census-worth-self-help-content
     type: git
     source:
       uri: git@github.com:ONSdigital/census-worth-self-help-content.git
       branch: master
-      private_key: ((git.private-key))
-
-  - name: timer
-    type: time
-    source:
-      interval: 1m
+      private_key: ((git-key.private-key))
 
 jobs:
   - name: deploy
     plan:
-      - get: timer
       - get: github-site-code
-        trigger: true
-      - get: github-site-content
+      - get: census-worth-self-help-content
         trigger: true
 
       - task: deploy
@@ -46,7 +39,7 @@ jobs:
 
           inputs:
             - name: github-site-code
-            - name: github-site-content
+            - name: census-worth-self-help-content
 
           run:
             path: sh

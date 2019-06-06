@@ -4,12 +4,16 @@ resources:
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
     branch: master
+  webhook_token: ((git.census_worth_self_help_webhook_token))
+  check_every: 15m
+
 
 jobs:
 - name: deploy
   plan:
   - get: census-worth-self-help
     trigger: true
+    
   - task: deploy
     config:
       platform: linux
