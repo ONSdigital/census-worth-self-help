@@ -6,10 +6,13 @@ import TabList from "../components/tablist"
 export default ({ data }) => {
   let alertText =
     data.markdownRemark && data.markdownRemark.frontmatter.alert_content
+
+  let renderMostRecent = data.allMarkdownRemark
   return (
     <Layout logo={true} phone_link={false} explore_more_link={true} alert={alertText} >
-      <TabList title="RECENTLY UPDATED" link="mostrecent"
-        elements={data.allMarkdownRemark.edges} />
+      { renderMostRecent && 
+        <TabList title="RECENTLY UPDATED" link="mostrecent"
+        elements={data.allMarkdownRemark.edges} /> }
     </Layout>
   )
 }

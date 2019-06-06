@@ -5,31 +5,28 @@ exports[`DirectoryTab renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "1j5mh0b",
+      "name": "2b69ru",
       "next": undefined,
       "styles": "
           
-    width: 100%;
-    padding: 10px;
-    min-height: 40px;
+    padding: 15px;
+    min-height: 30px;
   
-          background: rgb(120, 16, 137);
-          border-left: 6px solid rgb(120, 16, 137);
+          background: #003d59;
+          border-left: 6px solid #003d59;
       ",
     }
   }
 >
   <a
+    className="Card-heading-Style-white"
     css={
       Object {
         "map": undefined,
-        "name": "1tl9lwk",
+        "name": "8jknd3",
         "next": undefined,
         "styles": "
-          
-    text-decoration: none;
-    color: white;
-  
+          text-decoration:none;
           
     margin: 0px 2px;
   

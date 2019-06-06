@@ -1,7 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TabList renders correctly 1`] = `
-<div>
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "hs0g30",
+      "next": undefined,
+      "styles": "
+      
+    padding: 15px 0px;
+  ;
+    ",
+    }
+  }
+>
   <div
     css={
       Object {
@@ -20,180 +33,77 @@ exports[`TabList renders correctly 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1qod87i",
+          "name": "140i7o2",
           "next": undefined,
           "styles": "
         
-    font-size: small;
-  ;
-        
-    width: 100%;
-    padding: 10px;
-    min-height: 40px;
+    padding: 15px;
+    min-height: 30px;
   ;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-        border-left: 6px solid rgb(120, 16, 137);
-      ",
-        }
-      }
-    >
-      <div
-        css={
-          Object {
-            "map": undefined,
-            "name": "9dv1cm",
-            "next": undefined,
-            "styles": "
-          
-    margin: 0px 2px;
-  ;
-          display: flex;
-        ",
-          }
-        }
-      >
-        <a
-          css={
-            Object {
-              "map": undefined,
-              "name": "6m0x7k",
-              "next": undefined,
-              "styles": "
-            text-decoration: none;
-            color: inherit;
-            flex-grow: 1;
-          ",
-            }
-          }
-          href="tab1"
-        >
-          tab1
-        </a>
-      </div>
-    </div>
-  </div>
-  <div
-    css={
-      Object {
-        "map": undefined,
-        "name": "1mij31f",
-        "next": undefined,
-        "styles": "
-        
-    margin: 2px 0px;
-  ;
-      ",
-      }
-    }
-  >
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1j5mh0b",
-          "next": undefined,
-          "styles": "
-          
-    width: 100%;
-    padding: 10px;
-    min-height: 40px;
-  
-          background: rgb(120, 16, 137);
-          border-left: 6px solid rgb(120, 16, 137);
+        border-left: 6px solid #003d59;
+        background-color: rgb(255, 255, 255)
       ",
         }
       }
     >
       <a
+        className="Card-heading-Style"
         css={
           Object {
             "map": undefined,
-            "name": "1tl9lwk",
+            "name": "1ar1xi8",
             "next": undefined,
             "styles": "
-          
-    text-decoration: none;
-    color: white;
-  
-          
-    margin: 0px 2px;
-  
-        ",
+            text-decoration: none;
+            color: inherit;
+            flex-grow: 1;
+            font-weight: semi-bold;
+          ",
           }
         }
-        href="tab2"
+        href="test1"
       >
-        tab2
+        testArticle1
       </a>
-    </div>
-  </div>
-  <div
-    css={
-      Object {
-        "map": undefined,
-        "name": "1mij31f",
-        "next": undefined,
-        "styles": "
-        
-    margin: 2px 0px;
-  ;
-      ",
-      }
-    }
-  >
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1qod87i",
-          "next": undefined,
-          "styles": "
-        
-    font-size: small;
-  ;
-        
-    width: 100%;
-    padding: 10px;
-    min-height: 40px;
-  ;
-        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-        border-left: 6px solid rgb(120, 16, 137);
-      ",
-        }
-      }
-    >
       <div
+        className="Card-sub-head-Style-gray"
         css={
           Object {
             "map": undefined,
-            "name": "9dv1cm",
+            "name": "29uppq",
             "next": undefined,
             "styles": "
-          
-    margin: 0px 2px;
-  ;
+          padding-top:6px;
           display: flex;
+          flex-direction: vertical;
         ",
           }
         }
       >
-        <a
+        <div
           css={
             Object {
               "map": undefined,
-              "name": "6m0x7k",
+              "name": "phrnma",
               "next": undefined,
               "styles": "
-            text-decoration: none;
-            color: inherit;
-            flex-grow: 1;
-          ",
+          width: 70%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          flex-grow:1;
+        ",
             }
           }
-          href="tab3"
         >
-          tab3
-        </a>
+          testDescription
+        </div>
+        <div
+          className="Card-meta-Style"
+        >
+          a few seconds ago
+        </div>
       </div>
     </div>
   </div>
@@ -215,40 +125,129 @@ exports[`TabList renders correctly 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1j5mh0b",
+          "name": "140i7o2",
           "next": undefined,
           "styles": "
-          
-    width: 100%;
-    padding: 10px;
-    min-height: 40px;
-  
-          background: rgb(120, 16, 137);
-          border-left: 6px solid rgb(120, 16, 137);
+        
+    padding: 15px;
+    min-height: 30px;
+  ;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+        border-left: 6px solid #003d59;
+        background-color: rgb(255, 255, 255)
       ",
         }
       }
     >
       <a
+        className="Card-heading-Style"
         css={
           Object {
             "map": undefined,
-            "name": "1tl9lwk",
+            "name": "1ar1xi8",
             "next": undefined,
             "styles": "
+            text-decoration: none;
+            color: inherit;
+            flex-grow: 1;
+            font-weight: semi-bold;
+          ",
+          }
+        }
+        href="test"
+      >
+        testArticle2
+      </a>
+      <div
+        className="Card-sub-head-Style-gray"
+        css={
+          Object {
+            "map": undefined,
+            "name": "29uppq",
+            "next": undefined,
+            "styles": "
+          padding-top:6px;
+          display: flex;
+          flex-direction: vertical;
+        ",
+          }
+        }
+      >
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "phrnma",
+              "next": undefined,
+              "styles": "
+          width: 70%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          flex-grow:1;
+        ",
+            }
+          }
+        >
+          testDescription
+        </div>
+        <div
+          className="Card-meta-Style"
+        >
+          a few seconds ago
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "1mij31f",
+        "next": undefined,
+        "styles": "
+        
+    margin: 2px 0px;
+  ;
+      ",
+      }
+    }
+  >
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "2b69ru",
+          "next": undefined,
+          "styles": "
           
-    text-decoration: none;
-    color: white;
+    padding: 15px;
+    min-height: 30px;
   
+          background: #003d59;
+          border-left: 6px solid #003d59;
+      ",
+        }
+      }
+    >
+      <a
+        className="Card-heading-Style-white"
+        css={
+          Object {
+            "map": undefined,
+            "name": "8jknd3",
+            "next": undefined,
+            "styles": "
+          text-decoration:none;
           
     margin: 0px 2px;
   
         ",
           }
         }
-        href="tab4"
+        href="test"
       >
-        tab4
+        testDirectory3
       </a>
     </div>
   </div>

@@ -6,29 +6,28 @@ exports[`MenuLink renders correctly with hidden nodes 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1329ezx",
+        "name": "xmrkwo",
         "next": undefined,
         "styles": "
             
-    margin: 15px 0px;
+    padding: 15px 0px;
   ;
             display: flex;
+            padding-left: 20px;
+            padding-right: 20px;
           ",
       }
     }
   >
     <a
+      className="Menu-major-item-Style"
       css={
         Object {
           "map": undefined,
-          "name": "dcy533",
+          "name": "gujogz",
           "next": undefined,
           "styles": "
-              
-    text-decoration: none;
-    font-size: large;
-    color: white;
-  ;
+              text-decoration: none;
               flex-grow: 1;
             ",
         }
@@ -38,19 +37,14 @@ exports[`MenuLink renders correctly with hidden nodes 1`] = `
       basic
     </a>
     <div
+      className="Menu-major-item-Style"
       css={
         Object {
           "map": undefined,
-          "name": "9d6hc1",
+          "name": "eheuf0",
           "next": undefined,
           "styles": "
                 padding: 0px 30px;
-                
-    text-decoration: none;
-    color: inherit;
-    font-size: larger;
-    color: white;
-  ;
               ",
         }
       }
@@ -71,29 +65,28 @@ exports[`MenuLink renders correctly without hidden nodes 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1329ezx",
+        "name": "xmrkwo",
         "next": undefined,
         "styles": "
             
-    margin: 15px 0px;
+    padding: 15px 0px;
   ;
             display: flex;
+            padding-left: 20px;
+            padding-right: 20px;
           ",
       }
     }
   >
     <a
+      className="Menu-major-item-Style"
       css={
         Object {
           "map": undefined,
-          "name": "dcy533",
+          "name": "gujogz",
           "next": undefined,
           "styles": "
-              
-    text-decoration: none;
-    font-size: large;
-    color: white;
-  ;
+              text-decoration: none;
               flex-grow: 1;
             ",
         }

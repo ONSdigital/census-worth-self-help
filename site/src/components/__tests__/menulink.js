@@ -25,17 +25,17 @@ describe("MenuLink", () => {
   })
 
   it("toggling hidden nodes", () => {
-	  // Click the toggle button, child container should appear and dissappear
-	const { getByTestId, queryByTestId } = render(<MenuLink title="basic" link="basic" hidden_nodes={hidden_nodes}/>);
-	
-	expect(queryByTestId('child-container')).toBeNull()
+  	  // Click the toggle button, child container should appear and dissappear
+  	const { getByTestId, getAllByTestId, queryByTestId } = render(<MenuLink title="basic" link="basic" hidden_nodes={hidden_nodes}/>);
+  	
+  	expect(queryByTestId('child-container')).toBeNull()
 
-	fireEvent.click(getByTestId('toggle-button'));
+  	fireEvent.click(getByTestId('toggle-button'));
 
-	expect(getByTestId('child-container')).toBeDefined()
+  	expect(getByTestId('child-container')).toBeDefined()
 
-	fireEvent.click(getByTestId('toggle-button'));
+  	fireEvent.click(getAllByTestId('toggle-button')[0]);
 
-	expect(queryByTestId('child-container')).toBeNull()
+  	expect(queryByTestId('child-container')).toBeNull()
   });
 })

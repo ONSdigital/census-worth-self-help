@@ -26,17 +26,13 @@ exports[`TopBarLink renders correctly 1`] = `
   }
 >
   <a
+    className="Header-button-Style"
     css={
       Object {
         "map": undefined,
-        "name": "1t4ib0k",
+        "name": "id1ekf",
         "next": undefined,
         "styles": "
-          
-    color: rgb(255, 255, 255);
-    font-size: 16px;
-    font-family: OpenSans, Semibold;
-  ;
           text-decoration: none;
         ",
       }

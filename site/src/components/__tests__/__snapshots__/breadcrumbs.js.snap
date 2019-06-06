@@ -5,34 +5,61 @@ exports[`Breadcrumbs renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "86c7qq",
+      "name": "1fo0ilb",
       "next": undefined,
       "styles": "
-        background-color: rgb(250, 250, 250);
-        border-bottom: rgb(48, 48, 48) 1px solid;
-        
-    padding: 15px;
-  
-      ",
+        border-bottom: 1px rgb(229, 229, 234) solid;
+        padding: 15px 0px;
+    ",
     }
   }
 >
-  EXPLORE CONTENT
-  <div>
+  <div
+    className="Section-heading-Style"
+    css={
+      Object {
+        "map": undefined,
+        "name": "136nmlb",
+        "next": undefined,
+        "styles": "
+          
+    padding: 5px 15px;
+  
+        ",
+      }
+    }
+  >
+    EXPLORE CONTENT
+  </div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "136nmlb",
+        "next": undefined,
+        "styles": "
+          
+    padding: 5px 15px;
+  
+        ",
+      }
+    }
+  >
     <select
       css={
         Object {
           "map": undefined,
-          "name": "usqrpl",
+          "name": "8a47ri",
           "next": undefined,
           "styles": "
-            background-color: rgb(250, 250, 250);
+            background-color: rgb(255, 255, 255);
             border-bottom: rgb(48, 48, 48) 1px solid;
             width: 100%;
             padding: 5px;
           ",
         }
       }
+      onChange={[Function]}
     >
       <option
         value="root"

@@ -5,13 +5,13 @@ exports[`Alert renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "1neujza",
+      "name": "15ac0on",
       "next": undefined,
       "styles": "
         border-radius: 4px;
         border: solid 2px rgb(248, 196, 30);
         background-color: rgb(253, 239, 173);
-        margin: 15px;
+        margin: 15px 15px 0px 15px;
         
     padding: 15px;
   
@@ -19,13 +19,38 @@ exports[`Alert renders correctly 1`] = `
     }
   }
 >
-  <b>
+  <div
+    className="Notification-heading-Style"
+    css={
+      Object {
+        "map": undefined,
+        "name": "1jorpub",
+        "next": undefined,
+        "styles": "
+        padding-top: 5px;
+        padding-bottom: 10px;
+      ",
+      }
+    }
+  >
     test_title
-  </b>
-  <p
+  </div>
+  <div
+    className="Notification-body-Style"
+    css={
+      Object {
+        "map": undefined,
+        "name": "1wqwh3e",
+        "next": undefined,
+        "styles": "
+        padding-top: 10px;
+        padding-bottom: 5px;
+      ",
+      }
+    }
     data-testid="alert-message"
   >
     this is test content
-  </p>
+  </div>
 </div>
 `;
