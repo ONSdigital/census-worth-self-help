@@ -6,10 +6,13 @@
 
 # Logs
 
+If jobs are hanging without messages in the console, then the ATC logs on the 
+web pod may give some clues / errors.
+
     kubectl get pods
     kubectl logs -f concourse-web-75d5dcbcd8-fgvtn | grep error
 
-Also view GKE logs in gcloud
+You can also view GKE logs in google cloud console.
 
 # Persistent Worker volumes
 
