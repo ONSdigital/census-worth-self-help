@@ -7,4 +7,4 @@ priority: 0
 ---
 Attach image:
 
-![This is the old logo](/assets/c2021topbar.png "old logo")
+![](/assets/397.jpg)
