@@ -32,7 +32,6 @@ jobs:
             AUTH_KEY : ((gcp.service-account-key))
             PROJECT : ((gcp.project-name))
             GCP_SECRETS_VERSION : ((gcp.secrets-version))
-            GIT_SECRETS_VERSION : ((git.secrets-version))
 
           caches:
             - path: $HOME/.npm
@@ -47,7 +46,6 @@ jobs:
               - -exec
               - |
                 echo "GCP Secrets Version : $GCP_SECRETS_VERSION"
-                echo "Git Secrets Version : $GIT_SECRETS_VERSION"
                 apk add --no-progress --update nodejs nodejs-npm
                 echo "npm version"
                 npm -v
