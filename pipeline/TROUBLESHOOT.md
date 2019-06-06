@@ -1,8 +1,10 @@
 # Concourse CLI
 
-   fly -t ci workers 
-   fly -t ci volumes 
-   fly -t ci containers
+    fly -t ci workers 
+    fly -t ci volumes 
+    fly -t ci containers
+    fly -t ci builds
+    fly -t ci abort-build -b 214 
 
 # Logs
 
@@ -14,7 +16,6 @@ web pod may give some clues / errors.
     kubectl logs -f concourse-worker-0 | grep error
     kubectl logs -f concourse-worker-1 | grep error
 
- 
 
 You can also view GKE logs in google cloud console.
 
