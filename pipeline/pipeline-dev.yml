@@ -5,10 +5,12 @@ resources:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
     branch: master
 
-- name: timer
-  type: time
+- name: census-worth-self-help-content
+  type: git
   source:
-    interval: 1m
+    uri: git@github.com:ONSdigital/census-worth-self-help-test.git
+    branch: master
+    private_key: ((git-test.private-key))
 
 jobs:
 - name: deploy
