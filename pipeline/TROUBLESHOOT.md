@@ -11,6 +11,10 @@ web pod may give some clues / errors.
 
     kubectl get pods
     kubectl logs -f concourse-web-75d5dcbcd8-fgvtn | grep error
+    kubectl logs -f concourse-worker-0 | grep error
+    kubectl logs -f concourse-worker-1 | grep error
+
+ 
 
 You can also view GKE logs in google cloud console.
 
