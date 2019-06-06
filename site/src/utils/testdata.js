@@ -43,3 +43,4 @@ export const data = {
 
 export const articleNode = data.edges[0].node
 export const directoryNode = data.edges[2].node
+export const articleList = { edges: data.edges.slice(0, 2) }

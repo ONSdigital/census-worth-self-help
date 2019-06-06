@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section renders correctly 1`] = `
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "1fo0ilb",
+      "next": undefined,
+      "styles": "
+        border-bottom: 1px rgb(229, 229, 234) solid;
+        padding: 15px 0px;
+    ",
+    }
+  }
+>
+  children
+</div>
+`;
