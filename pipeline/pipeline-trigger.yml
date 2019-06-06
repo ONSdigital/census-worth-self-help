@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: feature/ONS-13-add-new-trigger-pipeline
     webhook_token: code-trigger
     check_every: 24h
 
@@ -19,8 +19,9 @@ jobs:
   - name: deploy
     plan:
       - get: github-site-code
+        trigger: true
       - get: github-site-content
-
+        trigger: true
       - task: deploy
         config:
           platform: linux
