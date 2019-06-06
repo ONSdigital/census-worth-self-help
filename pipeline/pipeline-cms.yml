@@ -10,17 +10,11 @@ resources:
     source:
       uri: git@github.com:ONSdigital/census-worth-self-help-content.git
       branch: master
-      private_key: ((git-keys.private-key))
-
-  - name: timer
-    type: time
-    source:
-      interval: 1m
+      private_key: ((git-key.private-key))
 
 jobs:
   - name: deploy
     plan:
-      - get: timer
       - get: github-site-code
         trigger: true
       - get: github-site-content

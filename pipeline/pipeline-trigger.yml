@@ -5,6 +5,7 @@ resources:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
       branch: feature/ONS-13-add-new-trigger-pipeline
     webhook_token: ((git.census_worth_self_help_webhook_token))
+    check_every: 15m
     
   - name: github-site-content
     type: git
@@ -13,6 +14,7 @@ resources:
       branch: master
       private_key: ((git-keys.private-key))
     webhook_token: ((git.census_worth_self_help_content_webhook_token))
+    check_every: 15m
 
   - name: census-worth-self-help-test
     type: git
@@ -21,13 +23,15 @@ resources:
       branch: master
       private_key: ((git-test-keys.private-key))
     webhook_token: ((git.census_worth_self_help_test_webhook_token))
-    check_every: 5m
+    check_every: 15m
 
 jobs:
   - name: deploy
     plan:
       - get: github-site-code
+        trigger: true
       - get: github-site-content
+        trigger: true
       - get: census-worth-self-help-test
         trigger: true
 

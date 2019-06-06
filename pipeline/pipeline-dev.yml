@@ -4,16 +4,12 @@ resources:
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
     branch: master
-
-- name: timer
-  type: time
-  source:
-    interval: 1m
+  webhook_token: ((git.census_worth_self_help_webhook_token))
+  check_every: 15m
 
 jobs:
 - name: deploy
   plan:
-  - get: timer
   - get: github-repo
     trigger: true
     
