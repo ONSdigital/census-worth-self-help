@@ -16,7 +16,6 @@ jobs:
   - name: deploy
     plan:
       - get: github-site-code
-        trigger: true
       - get: census-worth-self-help-content
         trigger: true
 
