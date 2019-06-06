@@ -5,6 +5,12 @@ description: A list of images showing how we embed them.
 directory: Media examples
 priority: 0
 ---
+Small:
+
 ![image alt text](/assets/screenshot-2019-06-02-at-20.52.04.png "image title")
 
-TODO.
+Medium:
+
+Large:
+
+![toobig](/assets/24232256_10155635492414457_1380510062791288801_n.jpg "toobig")
