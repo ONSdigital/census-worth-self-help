@@ -13,6 +13,7 @@ log in to web console and install fly command.
 
 # Other pipelines
 
+    fly -t ci set-pipeline -c pipeline-test.yml -p self-help-test
     fly -t ci set-pipeline -c pipeline-cms.yml -p self-help-cms
 
 # Troubleshooting
