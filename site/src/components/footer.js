@@ -2,10 +2,10 @@ import React from "react"
 import { css } from "@emotion/core"
 import { colors, spacing } from "../utils/styles"
 import LargeButton from "./largebutton"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPhone } from "@fortawesome/free-solid-svg-icons"
 
-export default ({phone_link=false}) => {
+export default ({ phone_link = false }) => {
   return (
     <div
       css={css`
@@ -27,13 +27,19 @@ export default ({phone_link=false}) => {
           margin-top: 50px;
         `}
       />
-      { phone_link && 
-        <div css={css`
-              margin-bottom: 34px;
-            `}>
-          <LargeButton icon={<FontAwesomeIcon icon={faPhone} />} title="Census Field Support" link="/call_centre" />
-        </div>       
-      }
+      {phone_link && (
+        <div
+          css={css`
+            margin-bottom: 34px;
+          `}
+        >
+          <LargeButton
+            icon={<FontAwesomeIcon icon={faPhone} />}
+            title="Census Field Support"
+            link="/call_centre"
+          />
+        </div>
+      )}
       <div className="Footer-Style">© Office for National Statistics 2019</div>
     </div>
   )

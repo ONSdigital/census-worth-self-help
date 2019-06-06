@@ -9,16 +9,24 @@ import Section from "./section"
 import Alert from "../components/alert"
 
 import LargeButton from "../components/largebutton"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBook } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBook } from "@fortawesome/free-solid-svg-icons"
 
-export default ({ children, logo=false, phone_link=true, explore_more_link=false, alert=false }) => {
+export default ({
+  children,
+  logo = false,
+  phone_link = true,
+  explore_more_link = false,
+  alert = false
+}) => {
   return (
-    <div css={css`
-          height: 100vh;
-          display: flex;
-          flex-direction: column;
-        `}>
+    <div
+      css={css`
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      `}
+    >
       <Topbar />
       {logo && <OnsLogo />}
       <div
@@ -28,13 +36,16 @@ export default ({ children, logo=false, phone_link=true, explore_more_link=false
           width: 100vw;
         `}
       >
-        {alert && (
-          <Alert
-            title="Alert"
-            content={alert}
-          />
+        {alert && <Alert title="Alert" content={alert} />}
+        {explore_more_link && (
+          <Section>
+            <LargeButton
+              icon={<FontAwesomeIcon icon={faBook} />}
+              title="Explore Content"
+              link="/menu"
+            />
+          </Section>
         )}
-        {explore_more_link && <Section><LargeButton icon={<FontAwesomeIcon icon={faBook} />} title="Explore Content" link="/menu" /></Section> }
         {children}
         <Footer phone_link={phone_link} />
       </div>

@@ -13,14 +13,25 @@ export default ({ title, content }) => {
         ${spacing.page_padding}
       `}
     >
-      <div className="Notification-heading-Style" css={css`
-        padding-top: 5px;
-        padding-bottom: 10px;
-      `}>{title}</div>
-      <div className="Notification-body-Style" data-testid="alert-message" css={css`
-        padding-top: 10px;
-        padding-bottom: 5px;
-      `}>{content}</div>
+      <div
+        className="Notification-heading-Style"
+        css={css`
+          padding-top: 5px;
+          padding-bottom: 10px;
+        `}
+      >
+        {title}
+      </div>
+      <div
+        className="Notification-body-Style"
+        data-testid="alert-message"
+        css={css`
+          padding-top: 10px;
+          padding-bottom: 5px;
+        `}
+      >
+        {content}
+      </div>
     </div>
   )
 }

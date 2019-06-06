@@ -4,7 +4,7 @@ import { colors, spacing } from "../utils/styles"
 import { navigate } from "@reach/router"
 import Section from "./section"
 
-export default ({ breadcrumbs, peers=[] }) => {
+export default ({ breadcrumbs, peers = [] }) => {
   let breadcrumbOptions = breadcrumbs.map(breadcrumb => (
     <option key={breadcrumb.title} value={breadcrumb.link}>
       {breadcrumb.title}
@@ -16,20 +16,29 @@ export default ({ breadcrumbs, peers=[] }) => {
     </option>
   ))
 
-  const redirect = (event) => {
+  const redirect = event => {
     navigate(`/` + event.target.value)
   }
 
   return (
-    <Section css={css`
-            background-color: ${colors.white_two};
-    `}>
-      <div className="Section-heading-Style" css={css`
+    <Section
+      css={css`
+        background-color: ${colors.white_two};
+      `}
+    >
+      <div
+        className="Section-heading-Style"
+        css={css`
           ${spacing.in_page_element}
-        `}>EXPLORE CONTENT</div>
-      <div css={css`
+        `}
+      >
+        EXPLORE CONTENT
+      </div>
+      <div
+        css={css`
           ${spacing.in_page_element}
-        `}>
+        `}
+      >
         <select
           onChange={redirect}
           css={css`

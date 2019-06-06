@@ -16,7 +16,7 @@ export default ({ title, link }) => {
         to={link}
         className="Card-heading-Style-white"
         css={css`
-          text-decoration:none;
+          text-decoration: none;
           ${spacing.text_clearance}
         `}
       >

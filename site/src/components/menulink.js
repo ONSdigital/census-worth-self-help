@@ -19,8 +19,7 @@ export default class MenuLink extends React.Component {
   }
 
   render() {
-
-    let {title, link, depth=0} = this.props
+    let { title, link, depth = 0 } = this.props
 
     let hiddenMenu = null
     if (this.hidden_nodes.length !== 0) {
@@ -30,12 +29,12 @@ export default class MenuLink extends React.Component {
           title={node.title}
           link={node.link}
           hidden_nodes={node.children}
-          depth={depth+1}
+          depth={depth + 1}
         />
       ))
     }
 
-    let indent = ( depth * 10 + 20 ) + 'px'
+    let indent = depth * 10 + 20 + "px"
 
     return (
       <div>
@@ -72,10 +71,14 @@ export default class MenuLink extends React.Component {
           )}
         </div>
         {hiddenMenu && this.state.toggled && (
-          <div data-testid="child-container" css={css`
-            background-color:rgba(255, 255, 255, 0.1);
-          `}
-          >{hiddenMenu}</div>
+          <div
+            data-testid="child-container"
+            css={css`
+              background-color: rgba(255, 255, 255, 0.1);
+            `}
+          >
+            {hiddenMenu}
+          </div>
         )}
       </div>
     )

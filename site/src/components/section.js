@@ -8,7 +8,8 @@ export default ({ children }) => {
       css={css`
         border-bottom: 1px ${colors.pale_lilac} solid;
         padding: 15px 0px;
-    `}>
+      `}
+    >
       {children}
     </div>
   )

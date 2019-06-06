@@ -9,10 +9,19 @@ export default ({ data }) => {
 
   let renderMostRecent = data.allMarkdownRemark
   return (
-    <Layout logo={true} phone_link={false} explore_more_link={true} alert={alertText} >
-      { renderMostRecent && 
-        <TabList title="RECENTLY UPDATED" link="mostrecent"
-        elements={data.allMarkdownRemark.edges} /> }
+    <Layout
+      logo={true}
+      phone_link={false}
+      explore_more_link={true}
+      alert={alertText}
+    >
+      {renderMostRecent && (
+        <TabList
+          title="RECENTLY UPDATED"
+          link="mostrecent"
+          elements={data.allMarkdownRemark.edges}
+        />
+      )}
     </Layout>
   )
 }
@@ -38,12 +47,12 @@ export const query = graphql`
         alert_content
       }
     }
-  
+
     allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
-      filter: { fields: {collection: {eq: "articles"}}}
+      filter: { fields: { collection: { eq: "articles" } } }
       limit: 3
-    ){
+    ) {
       totalCount
       edges {
         node {

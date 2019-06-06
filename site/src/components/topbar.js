@@ -3,8 +3,8 @@ import { css } from "@emotion/core"
 import { gradients, spacing } from "../utils/styles"
 import TopbarLink from "./topbarlink"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSearch } from "@fortawesome/free-solid-svg-icons"
 
 export default () => {
   return (
