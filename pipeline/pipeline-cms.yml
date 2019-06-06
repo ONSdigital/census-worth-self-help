@@ -5,7 +5,7 @@ resources:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
       branch: master
 
-  - name: github-site-content
+  - name: census-worth-self-help-content
     type: git
     source:
       uri: git@github.com:ONSdigital/census-worth-self-help-content.git
@@ -17,7 +17,7 @@ jobs:
     plan:
       - get: github-site-code
         trigger: true
-      - get: github-site-content
+      - get: census-worth-self-help-content
         trigger: true
 
       - task: deploy
@@ -55,7 +55,7 @@ jobs:
                 cd github-site-code/site
                 npm ci
                 BUILD="_build/content/"
-                mkdir -p "$BUILD" && cp -R ../../github-site-content/content/ "$BUILD"
+                mkdir -p "$BUILD" && cp -R ../../census-worth-self-help-content/content/ "$BUILD"
                 npm run build
                 set +x
                 echo $AUTH_KEY > encrypted_key.txt
