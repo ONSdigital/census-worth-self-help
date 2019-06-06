@@ -19,6 +19,12 @@ log in to web console and install fly command.
     fly -t ci set-pipeline -c pipeline-cms.yml -p self-help-cms
     fly -t ci unpause-pipeline -p self-help-cms
 
+    fly -t ci set-pipeline -c pipeline-trigger.yml -p trigger
+    fly -t ci unpause-pipeline -p trigger
+
+    fly -t ci set-pipeline -c pipeline-control.yml -p control
+    fly -t ci unpause-pipeline -p control
+
 # Troubleshooting
 
     fly -t ci unpause-job  -j self-help/build 
