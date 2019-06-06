@@ -10,7 +10,7 @@ export default ({phone_link=false}) => {
     <div
       css={css`
         ${spacing.large_vertical}
-        width: 100vw;
+        width: 100%;
         padding: 10px 0px;
         background-color: ${colors.footer_gray};
         display: flex;
@@ -20,7 +20,7 @@ export default ({phone_link=false}) => {
       `}
     >
       <img
-        src="/ONS_logo.svg"
+        src="/footer_logo.svg"
         alt="Footer logo"
         css={css`
           margin-bottom: 50px;

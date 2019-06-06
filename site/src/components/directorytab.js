@@ -14,8 +14,9 @@ export default ({ title, link }) => {
     >
       <Link
         to={link}
-        className="Button-subhead-Style"
+        className="Card-heading-Style-white"
         css={css`
+          text-decoration:none;
           ${spacing.text_clearance}
         `}
       >
