@@ -4,6 +4,7 @@ resources:
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
     branch: master
+  webhook_token: ((git.webhook-token))
 
 - name: census-worth-self-help-test
   type: git
@@ -11,6 +12,7 @@ resources:
     uri: git@github.com:ONSdigital/census-worth-self-help-test.git
     branch: master
     private_key: ((git-test.private-key))
+  webhook_token: ((git.webhook-token))
 
 jobs:
 - name: deploy
@@ -18,7 +20,6 @@ jobs:
   - get: census-worth-self-help
     trigger: true
   - get: census-worth-self-help-test
-    trigger: true
   - task: deploy
     config:
       platform: linux
@@ -35,24 +36,29 @@ jobs:
         GIT_SECRETS_VERSION : ((git.secrets-version))
         GIT_TEST_SECRETS_VERSION : ((git-test.secrets-version))
 
-
-      caches:
-      - path: census-worth-self-help/site/node_modules
-
       inputs:
       - name: census-worth-self-help
       - name: census-worth-self-help-test
+
+      caches:
+        - path: $HOME/.npm
+        - path: /var/cache/apk/
 
       run:
         path: sh
         args:
         - -exec
         - |
+            set +x
             echo "GCP Secrets Version      : $GCP_SECRETS_VERSION"
             echo "Git secrets Version      : $GIT_SECRETS_VERSION"
             echo "Git Test secrets Version : $GIT_TEST_SECRETS_VERSION"
+            set -x
+            ls /var/cache/apk/
             apk add --no-progress --update nodejs nodejs-npm
             cd census-worth-self-help/site
+            npm config get cache
+            ls $HOME/.npm
             npm ci
             BUILD="_build/content/"
             mkdir -p "$BUILD"
@@ -64,4 +70,7 @@ jobs:
             base64 -d encrypted_key.txt > service-account.json
             gcloud auth activate-service-account --key-file service-account.json
             gcloud config set project $PROJECT
-            gcloud app deploy -q
+            sed "s/service:.*/service: test/" app.yaml > ci-app.yaml
+            sed -i "s/  branch:.*/  branch: master/" public/admin/config.yml
+            sed -i "s/  repo:.*/  repo: ONSdigital\/census-worth-self-help-test/" public/admin/config.yml
+            gcloud app deploy -q ci-app.yaml
