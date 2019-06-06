@@ -20,6 +20,7 @@ jobs:
   - get: census-worth-self-help
     trigger: true
   - get: census-worth-self-help-test
+    trigger: true
   - task: deploy
     config:
       platform: linux
@@ -40,10 +41,6 @@ jobs:
       - name: census-worth-self-help
       - name: census-worth-self-help-test
 
-      caches:
-        - path: $HOME/.npm
-        - path: /var/cache/apk/
-
       run:
         path: sh
         args:
@@ -54,11 +51,8 @@ jobs:
             echo "Git secrets Version      : $GIT_SECRETS_VERSION"
             echo "Git Test secrets Version : $GIT_TEST_SECRETS_VERSION"
             set -x
-            ls /var/cache/apk/
             apk add --no-progress --update nodejs nodejs-npm
             cd census-worth-self-help/site
-            npm config get cache
-            ls $HOME/.npm
             npm ci
             BUILD="_build/content/"
             mkdir -p "$BUILD"
