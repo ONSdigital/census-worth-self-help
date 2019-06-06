@@ -1,3 +1,15 @@
+# Concourse CLI
+
+   fly -t ci workers 
+   fly -t ci volumes 
+   fly -t ci containers
+
+# Logs
+
+    kubectl get pods
+    kubectl logs -f concourse-web-75d5dcbcd8-fgvtn | grep error
+
+Also view GKE logs in gcloud
 
 # Persistent Worker volumes
 
