@@ -1,11 +1,11 @@
 resources:
-- name: github-repo
+- name: census-worth-self-help
   type: git
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
     branch: master
 
-- name: census-worth-self-help-content
+- name: census-worth-self-help-test
   type: git
   source:
     uri: git@github.com:ONSdigital/census-worth-self-help-test.git
@@ -15,10 +15,10 @@ resources:
 jobs:
 - name: deploy
   plan:
-  - get: timer
-  - get: github-repo
+  - get: census-worth-self-help
     trigger: true
-    
+  - get: census-worth-self-help-test
+    trigger: true
   - task: deploy
     config:
       platform: linux
@@ -32,26 +32,32 @@ jobs:
         AUTH_KEY : ((gcp.service-account-key))
         PROJECT : ((gcp.project-name))
         GCP_SECRETS_VERSION : ((gcp.secrets-version))
+        GCP_TEST_SECRETS_VERSION : ((gcp-test.secrets-version))
 
       caches:
-      - path: github-repo/site/node_modules
+      - path: census-worth-self-help/site/node_modules
 
       inputs:
-      - name: github-repo
+      - name: census-worth-self-help
+      - name: census-worth-self-help-test
 
       run:
         path: sh
         args:
         - -exec
         - |
-            echo "GCP Secrets Version : $GCP_SECRETS_VERSION"
-            apk add --update nodejs nodejs-npm
-            cd github-repo/site
-            npm install
+            echo "GCP Secrets Version      : $GCP_SECRETS_VERSION"
+            echo "GCP Test secrets Version : $GCP_TEST_SECRETS_VERSION"
+            apk add --no-progress --update nodejs nodejs-npm
+            cd census-worth-self-help/site
+            npm ci
             BUILD="_build/content/"
-            mkdir -p "$BUILD" && cp -R ../content/ "$BUILD"
+            mkdir -p "$BUILD"
+            cp -R ../../census-worth-self-help-test/content/ "$BUILD"
             npm run build
+            set +x
             echo $AUTH_KEY > encrypted_key.txt
+            set -x
             base64 -d encrypted_key.txt > service-account.json
             gcloud auth activate-service-account --key-file service-account.json
             gcloud config set project $PROJECT
