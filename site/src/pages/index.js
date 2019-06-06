@@ -15,7 +15,7 @@ export default ({ data }) => {
           content={data.markdownRemark.frontmatter.alert_content}
         />
       )}
-      <TextBlock>Hello World. welcome to the new world 4</TextBlock>
+      <TextBlock>Hello World.</TextBlock>
     </Layout>
   )
 }
