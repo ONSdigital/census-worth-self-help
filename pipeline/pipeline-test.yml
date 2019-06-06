@@ -35,7 +35,7 @@ jobs:
         AUTH_KEY : ((gcp.service-account-key))
         PROJECT : ((gcp.project-name))
         GCP_SECRETS_VERSION : ((gcp.secrets-version))
-        GIT_SECRETS_VERSION : ((git.secrets-version))
+        GIT_KEYS_SECRETS_VERSION : ((git-keys.secrets-version))
 
       inputs:
       - name: census-worth-self-help
@@ -47,8 +47,8 @@ jobs:
         - -exec
         - |
             set +x
-            echo "GCP Secrets Version      : $GCP_SECRETS_VERSION"
-            echo "Git secrets Version      : $GIT_SECRETS_VERSION"
+            echo "GCP secrets version      : $GCP_SECRETS_VERSION"
+            echo "Git keys secrets version      : $GIT_KEYS_SECRETS_VERSION"
             set -x
             apk add --no-progress --update nodejs nodejs-npm
             cd census-worth-self-help/site
