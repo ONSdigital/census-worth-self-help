@@ -2,24 +2,63 @@ import React from "react"
 import { css } from "@emotion/core"
 import DirectoryTab from "./directorytab"
 import ArticleTab from "./articletab"
-import { spacing } from "../utils/styles"
+import { spacing, colors } from "../utils/styles"
+import { Link } from "gatsby"
 
-export default ({ elements }) => {
-  let elementTabs = elements.map(element => (
+export default ({ elements, title = false, link = false }) => {
+  let elementTabs = elements.map(({ node }) => (
     <div
-      key={element.title}
+      key={node.frontmatter.title}
       css={css`
         ${spacing.minimum_gap};
       `}
     >
-      {element.type === "directory" && (
-        <DirectoryTab title={element.title} link={element.link} />
+      {node.fields.collection === "directories" && (
+        <DirectoryTab
+          title={node.frontmatter.title}
+          link={node.fields.pagename}
+        />
       )}
-      {element.type === "article" && (
-        <ArticleTab title={element.title} link={element.link} />
-      )}
+      {node.fields.collection === "articles" && <ArticleTab node={node} />}
     </div>
   ))
 
-  return <div>{elementTabs}</div>
+  let titlebar = null
+  if (title || link) {
+    titlebar = (
+      <div
+        css={css`
+          ${spacing.standard_vertical};
+          ${spacing.in_page_element}
+          display: flex;
+        `}
+      >
+        {title && <div className="Section-heading-Style">{title}</div>}
+        {link && (
+          <Link
+            to={link}
+            className="Button-subhead-Style"
+            css={css`
+              margin-left: auto;
+              text-decoration: none;
+              color: ${colors.navy_normal};
+            `}
+          >
+            View all >
+          </Link>
+        )}
+      </div>
+    )
+  }
+
+  return (
+    <div
+      css={css`
+        ${spacing.standard_vertical};
+      `}
+    >
+      {titlebar}
+      {elementTabs}
+    </div>
+  )
 }

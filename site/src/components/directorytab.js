@@ -1,21 +1,22 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { Link } from "gatsby"
-import { fonts, colors, spacing } from "../utils/styles"
+import { colors, spacing } from "../utils/styles"
 
 export default ({ title, link }) => {
   return (
     <div
       css={css`
           ${spacing.tab}
-          background: ${colors.purple};
-          border-left: 6px solid ${colors.purple};
+          background: ${colors.navy_normal};
+          border-left: 6px solid ${colors.navy_normal};
       `}
     >
       <Link
         to={link}
+        className="Card-heading-Style-white"
         css={css`
-          ${fonts.directory_link}
+          text-decoration: none;
           ${spacing.text_clearance}
         `}
       >

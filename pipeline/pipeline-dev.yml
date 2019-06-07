@@ -7,7 +7,6 @@ resources:
   webhook_token: ((git.census_worth_self_help_webhook_token))
   check_every: 15m
 
-
 jobs:
 - name: deploy
   plan:

@@ -2,18 +2,13 @@
 
 exports[`PageTitle renders correctly 1`] = `
 <h1
+  className="Article-Title-Style"
   css={
     Object {
       "map": undefined,
-      "name": "q8pqpx",
+      "name": "12ew49b",
       "next": undefined,
       "styles": "
-        
-    color: rgb(120, 16, 137);
-    font-size: 24px;
-    font-family: OpenSans;
-    font-weight: bold;
-  ;
         
     padding: 5px 15px;
   

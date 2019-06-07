@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Large Button renders correctly 1`] = `
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "15bgetd",
+      "next": undefined,
+      "styles": "
+        
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+        padding: 0px 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
+        border: solid 1px #ececed;
+        margin: 0px 10px;
+        text-align: center;
+        height: 40px;
+        background-color: rgb(255, 255, 255);
+      ",
+    }
+  }
+>
+  <a
+    className="Button-heading-Style"
+    css={
+      Object {
+        "map": undefined,
+        "name": "1mhjxs4",
+        "next": undefined,
+        "styles": "
+          margin: 0px 20px;
+          text-decoration: none;
+          color: #003d59;
+        ",
+      }
+    }
+    href="anywhere"
+  >
+    press me
+  </a>
+</div>
+`;

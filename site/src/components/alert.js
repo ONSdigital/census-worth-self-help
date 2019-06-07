@@ -9,12 +9,29 @@ export default ({ title, content }) => {
         border-radius: 4px;
         border: solid 2px ${colors.golden_yellow};
         background-color: ${colors.light_tan};
-        margin: 15px;
+        margin: 15px 15px 0px 15px;
         ${spacing.page_padding}
       `}
     >
-      <b>{title}</b>
-      <p data-testid="alert-message">{content}</p>
+      <div
+        className="Notification-heading-Style"
+        css={css`
+          padding-top: 5px;
+          padding-bottom: 10px;
+        `}
+      >
+        {title}
+      </div>
+      <div
+        className="Notification-body-Style"
+        data-testid="alert-message"
+        css={css`
+          padding-top: 10px;
+          padding-bottom: 5px;
+        `}
+      >
+        {content}
+      </div>
     </div>
   )
 }

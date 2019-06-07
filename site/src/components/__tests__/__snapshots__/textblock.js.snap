@@ -2,15 +2,13 @@
 
 exports[`TextBlock renders correctly 1`] = `
 <p
+  className="Article-body-Style"
   css={
     Object {
       "map": undefined,
-      "name": "1vwnalb",
+      "name": "pywoey",
       "next": undefined,
       "styles": "
-        
-    font-size: small;
-  ;
         
     padding: 5px 15px;
   ;
