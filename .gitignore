@@ -16,4 +16,5 @@ node_modules
 .cache
 public
 site/_build
+site/static/assets
 ci-app.yaml
