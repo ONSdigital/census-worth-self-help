@@ -3,7 +3,6 @@ resources:
   type: git
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
-    branch: master
   webhook_token: ((git.census_worth_self_help_webhook_token))
   check_every: 15m
 
@@ -31,6 +30,7 @@ jobs:
       - name: census-worth-self-help
 
       caches:
+      - path : .npm
       - path : census-worth-self-help/site/node_modules
 
       run:
@@ -40,18 +40,14 @@ jobs:
         - |
             set +x
             echo "GCP Secrets Version      : $GCP_SECRETS_VERSION"
+            echo "Home                     : $HOME"
             set -x
             apk add --no-progress --update nodejs nodejs-npm
             cd census-worth-self-help/site
-            npm install
+            npm --cache ../../.npm install
             BUILD="_build/content/"
             mkdir -p "$BUILD"
             cp -R ../content/ "$BUILD"
+            export GATSBY_TELEMETRY_DISABLED=1
+            export GATSBY_TELEMETRY_DEBUG=1
             npm run build
-            set +x
-            echo $AUTH_KEY > encrypted_key.txt
-            set -x
-            base64 -d encrypted_key.txt > service-account.json
-            gcloud auth activate-service-account --key-file service-account.json
-            gcloud config set project $PROJECT
-            gcloud app deploy -q

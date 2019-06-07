@@ -41,6 +41,9 @@ jobs:
       - name: census-worth-self-help
       - name: census-worth-self-help-test
 
+      caches:
+      - path : census-worth-self-help/site/node_modules
+
       run:
         path: sh
         args:
@@ -52,7 +55,7 @@ jobs:
             set -x
             apk add --no-progress --update nodejs nodejs-npm
             cd census-worth-self-help/site
-            npm ci
+            npm install
             BUILD="_build/content/"
             mkdir -p "$BUILD"
             cp -R ../../census-worth-self-help-test/content/ "$BUILD"

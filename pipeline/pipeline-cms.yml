@@ -34,7 +34,7 @@ jobs:
             GCP_SECRETS_VERSION : ((gcp.secrets-version))
 
           caches:
-            - path: $HOME/.npm
+            - path: census-worth-self-help/site/node_modules
 
           inputs:
             - name: github-site-code
@@ -50,7 +50,7 @@ jobs:
                 echo "npm version"
                 npm -v
                 cd github-site-code/site
-                npm ci
+                npm install
                 BUILD="_build/content/"
                 mkdir -p "$BUILD" && cp -R ../../census-worth-self-help-content/content/ "$BUILD"
                 npm run build
