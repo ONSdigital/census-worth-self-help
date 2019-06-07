@@ -4,7 +4,7 @@ resources:
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
     branch: master
-  webhook_token: ((git.census_worth_self_help_webhook_token))
+  webhook_token: ((git.census-worth-self-help-webhook-token))
   check_every: 15m
 
 jobs:
