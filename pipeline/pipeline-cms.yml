@@ -10,7 +10,7 @@ resources:
     source:
       uri: git@github.com:ONSdigital/census-worth-self-help-content.git
       branch: master
-      private_key: ((git-key.private-key))
+      private_key: ((git-keys.private-key))
 
 jobs:
   - name: deploy
