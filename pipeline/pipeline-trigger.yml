@@ -1,0 +1,64 @@
+resources:
+  - name: github-site-code
+    type: git
+    source:
+      uri: https://github.com/ONSdigital/census-worth-self-help.git
+      branch: master
+    webhook_token: ((git.census-worth-self-help-webhook-token))
+    check_every: 15m
+    
+  - name: github-site-content
+    type: git
+    source:
+      uri: git@github.com:ONSdigital/census-worth-self-help-content.git
+      branch: master
+      private_key: ((git-keys.private-key))
+    webhook_token: ((git.census-worth-self-help-content-webhook-token))
+    check_every: 15m
+
+  - name: census-worth-self-help-test
+    type: git
+    source:
+      uri: git@github.com:ONSdigital/census-worth-self-help-test.git
+      branch: master
+      private_key: ((git-keys-test.private-key))
+    webhook_token: ((git.census-worth-self-help-test-webhook-token))
+    check_every: 15m
+
+jobs:
+  - name: deploy
+    plan:
+      - get: github-site-code
+        trigger: true
+      - get: github-site-content
+        trigger: true
+      - get: census-worth-self-help-test
+        trigger: true
+
+      - task: deploy
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: google/cloud-sdk
+              tag: alpine
+
+          params:
+            GCP_SECRETS_VERSION : ((gcp.secrets-version))
+            GIT_SECRETS_VERSION : ((git-keys.secrets-version))
+
+          caches:
+            - path: $HOME/.npm
+
+          inputs:
+            - name: github-site-code
+            - name: github-site-content
+
+          run:
+            path: sh
+            args:
+              - -exec
+              - |
+                echo "GCP Secrets Version : $GCP_SECRETS_VERSION"
+                echo "Git Secrets Version : $GIT_SECRETS_VERSION"

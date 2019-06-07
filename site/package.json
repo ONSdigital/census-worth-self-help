@@ -3,7 +3,6 @@
   "private": true,
   "description": "A Self Help Facility",
   "version": "0.1.0",
-  "author": "Ian Homer <ihomer@worth.systems>",
   "license": "MIT",
   "dependencies": {
     "@emotion/core": "10.0.10",
@@ -37,7 +36,7 @@
     "gatsby"
   ],
   "scripts": {
-    "build": "gatsby build",
+    "build": "audit ; jest ; gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",

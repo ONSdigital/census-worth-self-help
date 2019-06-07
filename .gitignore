@@ -2,9 +2,19 @@
 
 .idea/workspace.xml
 
+# Environment variables
+
+.env
+
+# GCP
+
+app-with-env.yaml
+
 # Gatsby / Node
 
 node_modules
 .cache
 public
 site/_build
+site/static/assets
+ci-app.yaml
