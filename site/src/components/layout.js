@@ -17,7 +17,8 @@ export default ({
   logo = false,
   phone_link = true,
   explore_more_link = false,
-  alert = false
+  alert = false,
+  searchObject
 }) => {
   return (
     <div
@@ -27,7 +28,7 @@ export default ({
         flex-direction: column;
       `}
     >
-      <Topbar />
+      <Topbar searchObject = {searchObject}/>
       {logo && <OnsLogo />}
       <div
         css={css`
