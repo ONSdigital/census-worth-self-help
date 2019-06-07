@@ -5,7 +5,7 @@ exports[`Large Button renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "1ftzyec",
+      "name": "15bgetd",
       "next": undefined,
       "styles": "
         
@@ -20,7 +20,7 @@ exports[`Large Button renders correctly 1`] = `
         margin: 0px 10px;
         text-align: center;
         height: 40px;
-        background-color: rgb(255, 255, 255)
+        background-color: rgb(255, 255, 255);
       ",
     }
   }
@@ -30,12 +30,12 @@ exports[`Large Button renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "t009fo",
+        "name": "1mhjxs4",
         "next": undefined,
         "styles": "
           margin: 0px 20px;
           text-decoration: none;
-          color: #003d59
+          color: #003d59;
         ",
       }
     }

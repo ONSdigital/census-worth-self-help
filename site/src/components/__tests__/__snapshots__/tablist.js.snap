@@ -5,13 +5,13 @@ exports[`TabList renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "hs0g30",
+      "name": "1p7jpnp",
       "next": undefined,
       "styles": "
-      
+        
     padding: 15px 0px;
   ;
-    ",
+      ",
     }
   }
 >
@@ -33,7 +33,7 @@ exports[`TabList renders correctly 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "140i7o2",
+          "name": "1q53lw7",
           "next": undefined,
           "styles": "
         
@@ -42,7 +42,7 @@ exports[`TabList renders correctly 1`] = `
   ;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
         border-left: 6px solid #003d59;
-        background-color: rgb(255, 255, 255)
+        background-color: rgb(255, 255, 255);
       ",
         }
       }
@@ -52,14 +52,14 @@ exports[`TabList renders correctly 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "1ar1xi8",
+            "name": "9t9vj8",
             "next": undefined,
             "styles": "
-            text-decoration: none;
-            color: inherit;
-            flex-grow: 1;
-            font-weight: semi-bold;
-          ",
+          text-decoration: none;
+          color: inherit;
+          flex-grow: 1;
+          font-weight: semi-bold;
+        ",
           }
         }
         href="test1"
@@ -71,10 +71,10 @@ exports[`TabList renders correctly 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "29uppq",
+            "name": "1pj9wla",
             "next": undefined,
             "styles": "
-          padding-top:6px;
+          padding-top: 6px;
           display: flex;
           flex-direction: vertical;
         ",
@@ -85,15 +85,15 @@ exports[`TabList renders correctly 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "phrnma",
+              "name": "kzp1l",
               "next": undefined,
               "styles": "
-          width: 70%;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          flex-grow:1;
-        ",
+            width: 70%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+          ",
             }
           }
         >
@@ -125,7 +125,7 @@ exports[`TabList renders correctly 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "140i7o2",
+          "name": "1q53lw7",
           "next": undefined,
           "styles": "
         
@@ -134,7 +134,7 @@ exports[`TabList renders correctly 1`] = `
   ;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
         border-left: 6px solid #003d59;
-        background-color: rgb(255, 255, 255)
+        background-color: rgb(255, 255, 255);
       ",
         }
       }
@@ -144,14 +144,14 @@ exports[`TabList renders correctly 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "1ar1xi8",
+            "name": "9t9vj8",
             "next": undefined,
             "styles": "
-            text-decoration: none;
-            color: inherit;
-            flex-grow: 1;
-            font-weight: semi-bold;
-          ",
+          text-decoration: none;
+          color: inherit;
+          flex-grow: 1;
+          font-weight: semi-bold;
+        ",
           }
         }
         href="test"
@@ -163,10 +163,10 @@ exports[`TabList renders correctly 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "29uppq",
+            "name": "1pj9wla",
             "next": undefined,
             "styles": "
-          padding-top:6px;
+          padding-top: 6px;
           display: flex;
           flex-direction: vertical;
         ",
@@ -177,15 +177,15 @@ exports[`TabList renders correctly 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "phrnma",
+              "name": "kzp1l",
               "next": undefined,
               "styles": "
-          width: 70%;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          flex-grow:1;
-        ",
+            width: 70%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+          ",
             }
           }
         >
@@ -235,10 +235,10 @@ exports[`TabList renders correctly 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "8jknd3",
+            "name": "pkvqm0",
             "next": undefined,
             "styles": "
-          text-decoration:none;
+          text-decoration: none;
           
     margin: 0px 2px;
   

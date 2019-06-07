@@ -24,12 +24,12 @@ exports[`Alert renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1jorpub",
+        "name": "kmpsy0",
         "next": undefined,
         "styles": "
-        padding-top: 5px;
-        padding-bottom: 10px;
-      ",
+          padding-top: 5px;
+          padding-bottom: 10px;
+        ",
       }
     }
   >
@@ -40,12 +40,12 @@ exports[`Alert renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1wqwh3e",
+        "name": "1a5rwwh",
         "next": undefined,
         "styles": "
-        padding-top: 10px;
-        padding-bottom: 5px;
-      ",
+          padding-top: 10px;
+          padding-bottom: 5px;
+        ",
       }
     }
     data-testid="alert-message"
