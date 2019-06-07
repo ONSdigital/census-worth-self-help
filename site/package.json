@@ -36,7 +36,7 @@
     "gatsby"
   ],
   "scripts": {
-    "build": "audit ; jest ; gatsby build",
+    "build": "npm audit ; jest ; gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
