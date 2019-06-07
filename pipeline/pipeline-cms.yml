@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: v1.11.0
+      branch: v1.11.1
 
   - name: census-worth-self-help-content
     type: git
