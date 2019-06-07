@@ -4,15 +4,16 @@ resources:
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
     branch: master
-  webhook_token: ((git.webhook-token))
+  webhook_token: ((git.census_worth_self_help_webhook_token))
+  check_every: 15m
 
 - name: census-worth-self-help-test
   type: git
   source:
     uri: git@github.com:ONSdigital/census-worth-self-help-test.git
     branch: master
-    private_key: ((git-test.private-key))
-  webhook_token: ((git.webhook-token))
+    private_key: ((git-keys-test.private-key))
+  webhook_token: ((git.census-worth-self-help-test-webhook-toke))
 
 jobs:
 - name: deploy
@@ -34,8 +35,7 @@ jobs:
         AUTH_KEY : ((gcp.service-account-key))
         PROJECT : ((gcp.project-name))
         GCP_SECRETS_VERSION : ((gcp.secrets-version))
-        GIT_SECRETS_VERSION : ((git.secrets-version))
-        GIT_TEST_SECRETS_VERSION : ((git-test.secrets-version))
+        GIT_KEYS_SECRETS_VERSION : ((git-keys.secrets-version))
 
       inputs:
       - name: census-worth-self-help
@@ -47,9 +47,8 @@ jobs:
         - -exec
         - |
             set +x
-            echo "GCP Secrets Version      : $GCP_SECRETS_VERSION"
-            echo "Git secrets Version      : $GIT_SECRETS_VERSION"
-            echo "Git Test secrets Version : $GIT_TEST_SECRETS_VERSION"
+            echo "GCP secrets version      : $GCP_SECRETS_VERSION"
+            echo "Git keys secrets version      : $GIT_KEYS_SECRETS_VERSION"
             set -x
             apk add --no-progress --update nodejs nodejs-npm
             cd census-worth-self-help/site
@@ -57,6 +56,8 @@ jobs:
             BUILD="_build/content/"
             mkdir -p "$BUILD"
             cp -R ../../census-worth-self-help-test/content/ "$BUILD"
+            ASSET_DIR="static/assets/"
+            cp -R ../../census-worth-self-help-test/static/assets "$ASSET_DIR"
             npm run build
             set +x
             echo $AUTH_KEY > encrypted_key.txt
