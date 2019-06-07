@@ -1,0 +1,9 @@
+.env
+.gcloudignore
+.git
+.gitignore
+*.sh
+*.md
+build/
+node_modules/
+app*.yaml

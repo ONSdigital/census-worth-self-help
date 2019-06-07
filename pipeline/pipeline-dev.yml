@@ -1,20 +1,17 @@
 resources:
-- name: github-repo
+- name: census-worth-self-help
   type: git
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
-    branch: test_content
+    branch: master
+  webhook_token: ((git.census_worth_self_help_webhook_token))
+  check_every: 15m
 
-- name: timer
-  type: time
-  source:
-    interval: 1m
 
 jobs:
 - name: deploy
   plan:
-  - get: timer
-  - get: github-repo
+  - get: census-worth-self-help
     trigger: true
     
   - task: deploy
@@ -27,27 +24,31 @@ jobs:
           tag: alpine
 
       params:
-        AUTH_KEY : ((json-key))
-        PROJECT : ((project-name))
-
-      caches:
-      - path: github-repo/site/node_modules
+        AUTH_KEY : ((gcp.service-account-key))
+        PROJECT : ((gcp.project-name))
+        GCP_SECRETS_VERSION : ((gcp.secrets-version))
 
       inputs:
-      - name: github-repo
+      - name: census-worth-self-help
 
       run:
         path: sh
         args:
         - -exec
         - |
-            apk add --update nodejs nodejs-npm
-            cd github-repo/site
-            npm install
+            set +x
+            echo "GCP Secrets Version      : $GCP_SECRETS_VERSION"
+            set -x
+            apk add --no-progress --update nodejs nodejs-npm
+            cd census-worth-self-help/site
+            npm ci
             BUILD="_build/content/"
-            mkdir -p "$BUILD" && cp -R ../content/ "$BUILD"
+            mkdir -p "$BUILD"
+            cp -R ../content/ "$BUILD"
             npm run build
+            set +x
             echo $AUTH_KEY > encrypted_key.txt
+            set -x
             base64 -d encrypted_key.txt > service-account.json
             gcloud auth activate-service-account --key-file service-account.json
             gcloud config set project $PROJECT

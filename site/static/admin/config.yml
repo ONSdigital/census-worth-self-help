@@ -3,6 +3,9 @@ backend:
   repo: ONSdigital/census-worth-self-help
   branch: test_content
   squash_merges: true
+  base_url: https://oauth.worth.census-gcp.onsdigital.uk/
+
+publish_mode: editorial_workflow
 
 media_folder: static/assets
 public_folder: assets
