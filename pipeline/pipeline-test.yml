@@ -12,7 +12,7 @@ resources:
     uri: git@github.com:ONSdigital/census-worth-self-help-test.git
     branch: master
     private_key: ((git-keys-test.private-key))
-  webhook_token: ((git.census-worth-self-help-test-webhook-toke))
+  webhook_token: ((git.census-worth-self-help-test-webhook-token))
 
 jobs:
 - name: deploy
