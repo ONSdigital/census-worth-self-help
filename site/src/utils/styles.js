@@ -1,7 +1,7 @@
 import { css } from "@emotion/core"
 
 export const colors = {
-  purple: "rgb(120, 16, 137)",
+  navy_normal: "#003d59",
   marigold: "rgb(255, 204, 0)",
   tangerine: "rgb(255, 149, 0)",
   white: "rgb(255, 255, 255)",
@@ -23,12 +23,13 @@ export const colors = {
   golden_yellow: "rgb(248, 196, 30)",
   light_tan: "rgb(253, 239, 173)",
   black_two: "rgb(48, 48, 48)",
-  white_two: "rgb(250, 250, 250)"
+  white_two: "rgb(250, 250, 250)",
+  footer_gray: "rgb(236, 236, 237)"
 }
 
 export const gradients = {
-  purple_shine: css`
-    background: linear-gradient(to left, ${colors.velvet}, ${colors.purple});
+  navy_shine: css`
+    background: linear-gradient(to left, ${colors.navy_normal}, #33637a);
   `
 }
 
@@ -39,10 +40,10 @@ export const spacing = {
     flex-direction: column;
   `,
   standard_vertical: css`
-    margin: 15px 0px;
+    padding: 15px 0px;
   `,
   large_vertical: css`
-    margin: 30px 0px;
+    padding: 30px 0px;
   `,
   text_clearance: css`
     margin: 0px 2px;
@@ -51,54 +52,17 @@ export const spacing = {
     margin: 2px 0px;
   `,
   tab: css`
-    width: 100%;
-    padding: 10px;
-    min-height: 40px;
+    padding: 15px;
+    min-height: 30px;
   `,
   main_box: css`
     margin: 0 auto;
     max-width: 700px;
-    padding-top: 60px;
   `,
   page_padding: css`
     padding: 15px;
   `,
   in_page_element: css`
     padding: 5px 15px;
-  `
-}
-
-export const fonts = {
-  Header_Title_Style: css`
-    color: ${colors.white};
-    font-size: 16px;
-    font-family: OpenSans, Semibold;
-  `,
-  Article_Title_Style: css`
-    color: ${colors.purple};
-    font-size: 24px;
-    font-family: OpenSans;
-    font-weight: bold;
-  `,
-  article: css`
-    font-size: small;
-  `,
-  small: css`
-    font-size: small;
-  `,
-  directory_link: css`
-    text-decoration: none;
-    color: white;
-  `,
-  menu_link: css`
-    text-decoration: none;
-    font-size: large;
-    color: white;
-  `,
-  menu_toggle: css`
-    text-decoration: none;
-    color: inherit;
-    font-size: larger;
-    color: white;
   `
 }

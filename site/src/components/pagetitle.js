@@ -1,12 +1,12 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { fonts, spacing } from "../utils/styles"
+import { spacing } from "../utils/styles"
 
 export default ({ children }) => {
   return (
     <h1
+      className="Article-Title-Style"
       css={css`
-        ${fonts.Article_Title_Style};
         ${spacing.in_page_element}
       `}
     >

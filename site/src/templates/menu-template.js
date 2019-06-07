@@ -22,9 +22,7 @@ export default ({ pageContext }) => {
         css={css`
           min-height: 100vh;
           ${spacing.main_box};
-          padding-left: 20px;
-          padding-right: 20px;
-          ${gradients.purple_shine};
+          ${gradients.navy_shine};
         `}
       >
         <MenuLink link="/" title="Home" />
@@ -39,9 +37,9 @@ export default ({ pageContext }) => {
             border-top: 1px solid white;
           `}
         />
-        <MenuLink link="/recent" title="Recently updated" />
-        <MenuLink link="/bookmarks" title="My Bookmarks" />
-        <MenuLink link="/fsscc" title="Field Contact Centre" />
+        <MenuLink link="/mostrecent" title="Recently updated" />
+        {/* todo: <MenuLink link="/bookmarks" title="My Bookmarks" /> */}
+        {/* todo: <MenuLink link="/fsscc" title="Field Contact Centre" /> */}
       </div>
     </div>
   )
