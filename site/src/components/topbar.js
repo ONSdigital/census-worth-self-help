@@ -11,14 +11,15 @@ export default ( {searchObject=null} ) => {
   return (
     <header
       css={css`
-        display: flex;
         width: 100vw;
         ${gradients.navy_shine};
       `}
     >
       { searchOpen && <input type="text" value={searchObject.query} onChange={searchObject.updateFunction} /> }
       { !searchOpen && 
-        <div>
+        <div css={css`
+          display: flex;
+        `}>
           <div
             className="Header-Title-Style"
             css={css`

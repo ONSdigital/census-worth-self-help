@@ -20,9 +20,10 @@ module.exports = {
             tags: node => node.frontmatter.tags,
           },
         },
-        // Optional filter to limit indexed nodes
-        filter: (node, getNode) =>
-          node.frontmatter.tags !== 'exempt',
+        // Remove .md with no content
+        filter: (node, getNode) => {
+          return node.rawMarkdownBody.trim() != ""
+        },
       },
     },
     `gatsby-plugin-emotion`,

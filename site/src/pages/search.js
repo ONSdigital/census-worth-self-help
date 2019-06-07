@@ -1,7 +1,8 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { Index } from "elasticlunr"
+import TabList from "../components/tablist"
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -35,15 +36,12 @@ export default class Search extends React.Component {
       updateFunction: this.updateSearchResults,
       query: this.state.query
     }
+    let edges = this.state.results.map( result => {
+      return this.data.allMarkdownRemark.edges.find( edge => edge.node.frontmatter.title === result.title )
+    })
     return (
       <Layout title="Search" searchObject={searchObject}>
-        <ul>
-          {this.state.results.map(page => (
-            <li key={page.id}>
-              <Link to={"/" + page.title}>{page.title}</Link>
-            </li>
-          ))}
-        </ul>
+        <TabList elements={edges} />
       </Layout>
     )
   }
@@ -52,9 +50,20 @@ export default class Search extends React.Component {
 
 
 export const query = graphql`
-  query SearchIndexQuery {
+  query {
     siteSearchIndex {
       index
+    }
+
+    allMarkdownRemark(
+      filter: { fields: { collection: { eq: "articles" } } }
+    ) {
+      totalCount
+      edges {
+        node {
+          ...BaseArticleFields
+        }
+      }
     }
   }
 `
