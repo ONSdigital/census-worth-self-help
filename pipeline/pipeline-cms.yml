@@ -1,5 +1,5 @@
 resources:
-  - name: github-site-code
+  - name: census-worth-self-help
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
@@ -15,7 +15,7 @@ resources:
 jobs:
   - name: deploy
     plan:
-      - get: github-site-code
+      - get: census-worth-self-help
       - get: census-worth-self-help-content
         trigger: true
 
@@ -37,7 +37,7 @@ jobs:
             - path: census-worth-self-help/site/node_modules
 
           inputs:
-            - name: github-site-code
+            - name: census-worth-self-help
             - name: census-worth-self-help-content
 
           run:
@@ -49,7 +49,7 @@ jobs:
                 apk add --no-progress --update nodejs nodejs-npm
                 echo "npm version"
                 npm -v
-                cd github-site-code/site
+                cd census-worth-self-help/site
                 npm install
                 BUILD="_build/content/"
                 mkdir -p "$BUILD" && cp -R ../../census-worth-self-help-content/content/ "$BUILD"
