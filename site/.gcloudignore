@@ -9,7 +9,7 @@ _build
 .DS_Store
 node_modules/
 src
-static
+/static
 README.md
 Dockerfile
 jest-preprocess.js
