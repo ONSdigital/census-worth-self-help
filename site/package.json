@@ -25,6 +25,7 @@
   "devDependencies": {
     "babel-jest": "24.8.0",
     "babel-preset-gatsby": "0.1.11",
+    "cypress": "^3.3.1",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.8.0",
     "jest-dom": "3.4.0",
@@ -37,6 +38,8 @@
   ],
   "scripts": {
     "build": "npm audit ; jest ; gatsby build",
+    "cyOpen": "node_modules/cypress/bin/cypress open",
+    "cyRun": "node_modules/cypress/bin/cypress run",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",

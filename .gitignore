@@ -18,3 +18,7 @@ public
 site/_build
 site/static/assets
 ci-app.yaml
+
+# Cypress
+
+site/cypress/videos
