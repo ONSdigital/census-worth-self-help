@@ -25,8 +25,6 @@ export default class Search extends React.Component {
     this.updatePagination = this.updatePagination.bind(this)
   }
 
-  componentWillMount() {}
-
   updatePagination(pageTarget) {
     this.state.paginationObject.goToPage(pageTarget)
     // update state to get page to rerender
@@ -51,12 +49,32 @@ export default class Search extends React.Component {
     })
     this.setState({
       query,
-      // Query the index with search string to get an [] of IDs
       results: this.index
         .search(query, {})
-        // Map over each ID and return the full document
         .map(({ ref }) => this.index.documentStore.getDoc(ref)),
     })
+  }
+
+  highlightNode(node) {
+    let splitQuery = this.state.query.trim().toLowerCase().split(" ").filter(str => str)
+    let properties = [node.frontmatter.author, node.frontmatter.description, node.frontmatter.tags, node.html ]
+    let highlightableText = properties.find((property) => {
+      if(!property) { return false; }
+      return splitQuery.find( (queryWord) => property.toLowerCase().includes(queryWord) )
+    })
+    if (highlightableText !== undefined)
+    {
+        console.log('found')
+       splitQuery.forEach( ( query) => { highlightableText = highlightableText.replace( new RegExp(query, 'i'), '<b>' + query + '</b>' ) })
+
+    }
+    else {
+      console.log('not found')
+
+      highlightableText = node.frontmatter.description
+    }
+    node.highlightedText = highlightableText
+    console.log(node.highlightedText)
   }
 
   render() {
@@ -66,7 +84,9 @@ export default class Search extends React.Component {
     }
 
     let edges = this.state.paginationObject.filterResults( this.state.results ).map( result => {
-      return this.data.allMarkdownRemark.edges.find( edge => edge.node.frontmatter.title === result.title )
+      let edge = this.data.allMarkdownRemark.edges.find( edge => edge.node.frontmatter.title === result.title )
+      this.highlightNode(edge.node)
+      return edge
     })
 
     let searching = this.state.query.length >= 4 // todo: figure out how this is actually calculated
@@ -99,6 +119,7 @@ export const query = graphql`
       totalCount
       edges {
         node {
+          html
           ...BaseArticleFields
         }
       }
