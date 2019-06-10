@@ -22,16 +22,17 @@ jobs:
           tag: alpine
 
       params:
-        AUTH_KEY : ((gcp.service-account-key))
-        PROJECT : ((gcp.project-name))
-        GCP_SECRETS_VERSION : ((gcp.secrets-version))
+        AUTH_KEY: ((gcp.service-account-key))
+        PROJECT: ((gcp.project-name))
+        GCP_SECRETS_VERSION: ((gcp.secrets-version))
 
       inputs:
       - name: census-worth-self-help
 
       caches:
-      - path : .npm
-      - path : census-worth-self-help/site/node_modules
+      - path: .npm
+      - path: census-worth-self-help/site/node_modules
+      - path: census-worth-self-help/site/.cache
 
       run:
         path: sh

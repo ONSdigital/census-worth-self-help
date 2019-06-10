@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: v1.11.0
+      branch: v1.11.1
 
   - name: census-worth-self-help-content
     type: git
@@ -29,12 +29,13 @@ jobs:
               tag: alpine
 
           params:
-            AUTH_KEY : ((gcp.service-account-key))
-            PROJECT : ((gcp.project-name))
-            GCP_SECRETS_VERSION : ((gcp.secrets-version))
+            AUTH_KEY: ((gcp.service-account-key))
+            PROJECT: ((gcp.project-name))
+            GCP_SECRETS_VERSION: ((gcp.secrets-version))
 
           caches:
             - path: census-worth-self-help/site/node_modules
+            - path: census-worth-self-help/site/.cache
 
           inputs:
             - name: census-worth-self-help
