@@ -13,7 +13,6 @@ export default class SearchBox extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <input type="text" value={this.state.query} onChange={this.search} />

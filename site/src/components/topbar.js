@@ -8,7 +8,6 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 
 export default ( {searchObject=null} ) => {
   let searchOpen = searchObject && searchObject.open
-  console.log(searchObject)
   return (
     <header
       css={css`
