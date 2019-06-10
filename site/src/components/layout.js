@@ -35,19 +35,24 @@ export default ({
           ${spacing.main_box}
           overflow: scroll;
           width: 100vw;
+          display: flex;
+          flex-direction: column;
+          flex-grow:1
         `}
       >
-        {alert && <Alert title="Alert" content={alert} />}
-        {explore_more_link && (
-          <Section>
-            <LargeButton
-              icon={<FontAwesomeIcon icon={faBook} />}
-              title="Explore Content"
-              link="/menu"
-            />
-          </Section>
-        )}
-        {children}
+        <div css={css`flex-grow:1`}>
+          {alert && <Alert title="Alert" content={alert} />}
+          {explore_more_link && (
+            <Section>
+              <LargeButton
+                icon={<FontAwesomeIcon icon={faBook} />}
+                title="Explore Content"
+                link="/menu"
+              />
+            </Section>
+          )}
+          {children}
+        </div>
         <Footer phone_link={phone_link} />
       </div>
     </div>

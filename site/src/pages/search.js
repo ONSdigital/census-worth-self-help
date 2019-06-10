@@ -73,12 +73,11 @@ export default class Search extends React.Component {
 
     return (
       <Layout title="Search" searchObject={searchObject}>
-        { searching && 
           <div>
-            { edges.length > 0 && <PageTitle><FontAwesomeIcon icon={faSearch} /> {this.state.results.length} results for "{this.state.query}"</PageTitle> }
-            { edges.length===0 && <PageTitle><FontAwesomeIcon icon={faSearch} /> Sorry no results for "{this.state.query}"</PageTitle> }
+            { searching && edges.length > 0 && <PageTitle><FontAwesomeIcon icon={faSearch} /> {this.state.results.length} results for "{this.state.query}"</PageTitle> }
+            { searching && edges.length===0 && <PageTitle><FontAwesomeIcon icon={faSearch} /> Sorry no results for "{this.state.query}"</PageTitle> }
+            { !searching && <PageTitle><FontAwesomeIcon icon={faSearch} /> Begin typing to search</PageTitle> }
           </div>
-        }
         <TabList elements={edges} />
         { this.state.results.length !== 0 && 
           <PaginationBar total={this.state.results.length} paginationObject={this.state.paginationObject} clickFunction={this.updatePagination} onPageCount={edges.length} />
