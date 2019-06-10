@@ -38,6 +38,15 @@ export default class Search extends React.Component {
   updateSearchResults(evt) {
     const query = evt.target.value
     this.index = this.index ? this.index : Index.load(this.data.siteSearchIndex.index)
+    console.log(this.index.search(query, {
+      fields: {
+          title: {boost: 4},
+          author: {boost: 4},
+          tags: {boost: 4},
+          description: {boost: 2},
+          body: {boost: 1}
+      }
+    }))
     this.setState({
       query,
       // Query the index with search string to get an [] of IDs
@@ -56,6 +65,7 @@ export default class Search extends React.Component {
       finishedFunction: this.finishedSearching,
       startFunction: this.startSearching
     }
+    console.log(this.state.results)
     let edges = this.state.results.map( result => {
       return this.data.allMarkdownRemark.edges.find( edge => edge.node.frontmatter.title === result.title )
     })
