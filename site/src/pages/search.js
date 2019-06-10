@@ -18,13 +18,10 @@ export default class Search extends React.Component {
     this.state = {
       query: ``,
       results: [],
-      finished: false,
       paginationObject: paginationObject
     }
     this.data = props.data
     this.updateSearchResults = this.updateSearchResults.bind(this)
-    this.finishedSearching = this.finishedSearching.bind(this)
-    this.startSearching = this.startSearching.bind(this)
     this.updatePagination = this.updatePagination.bind(this)
   }
 
@@ -36,17 +33,6 @@ export default class Search extends React.Component {
     this.setState({
       paginationObject: this.state.paginationObject
     })
-  }
-
-  finishedSearching() {
-    this.setState({
-      finished : true})
-  }
-
-  startSearching(e) {
-    e.preventDefault();
-    this.setState({
-      finished : false})
   }
 
   updateSearchResults(evt) {
@@ -75,11 +61,8 @@ export default class Search extends React.Component {
 
   render() {
     let searchObject = {
-      open: !this.state.finished,
       updateFunction: this.updateSearchResults,
       query: this.state.query,
-      finishedFunction: this.finishedSearching,
-      startFunction: this.startSearching
     }
 
     let edges = this.state.paginationObject.filterResults( this.state.results ).map( result => {
@@ -89,7 +72,7 @@ export default class Search extends React.Component {
     let searching = this.state.query.length >= 4 // todo: figure out how this is actually calculated
 
     return (
-      <Layout title="Search" searchObject={searchObject} explore_more_link={this.state.finished}>
+      <Layout title="Search" searchObject={searchObject}>
         { searching && 
           <div>
             { edges.length > 0 && <PageTitle><FontAwesomeIcon icon={faSearch} /> {this.state.results.length} results for "{this.state.query}"</PageTitle> }

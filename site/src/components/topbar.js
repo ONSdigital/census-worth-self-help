@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 
 export default ( {searchObject=null} ) => {
-  let searchOpen = searchObject && searchObject.open
   return (
     <header
       css={css`
@@ -15,7 +14,7 @@ export default ( {searchObject=null} ) => {
         ${gradients.navy_shine};
       `}
     >
-      { searchOpen && 
+      { searchObject && 
         <div css={css`
           display: flex;
         `}>
@@ -39,11 +38,11 @@ export default ( {searchObject=null} ) => {
                   flex-grow: 1;
                   padding-left:25px;
               `}
-              type="text" value={searchObject.query} onChange={searchObject.updateFunction} onBlur={searchObject.finishedFunction} autoFocus />
+              type="text" value={searchObject.query} onChange={searchObject.updateFunction} autoFocus />
           </div>
-          <TopbarLink title="Cancel" link="/" background={false} />
+          <TopbarLink title="Menu" link="/menu" />
         </div> }
-      { !searchOpen && 
+      { !searchObject && 
         <div css={css`
           display: flex;
         `}>
@@ -57,8 +56,7 @@ export default ( {searchObject=null} ) => {
           >
             Census Field Assistant
           </div>
-          <TopbarLink title={<FontAwesomeIcon icon={faSearch} />} link="/search" 
-            clickFunction={searchObject ? searchObject.startFunction : null} />
+          <TopbarLink title={<FontAwesomeIcon icon={faSearch} />} link="/search" />
           <TopbarLink title="Menu" link="/menu" />
         </div>
       }
