@@ -33,7 +33,7 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
   }
 
   paginationObject.capOffset(total)
-  
+
   let page = paginationObject.page
   let lastPage = Math.ceil(total / paginationObject.perPage) - 1
 
@@ -52,7 +52,7 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
   let pageOptions = range(firstPageOption, lastPageOption)
   let pageOptionsLinks = pageOptions.map(pageOption => (
     <PaginationIcon
-      testid={"pagination-" + ( pageOption + 1 ) + "-button"}
+      testid={"pagination-" + (pageOption + 1) + "-button"}
       key={pageOption}
       clickFunction={clickFunction}
       pageTarget={pageOption}
@@ -93,23 +93,39 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
         `}
       >
         {page !== 0 && (
-          <PaginationIcon clickFunction={clickFunction} pageTarget={0} testid="pagination-first-button">
+          <PaginationIcon
+            clickFunction={clickFunction}
+            pageTarget={0}
+            testid="pagination-first-button"
+          >
             &lt;&lt;
           </PaginationIcon>
         )}
         {page !== 0 && (
-          <PaginationIcon clickFunction={clickFunction} pageTarget={page - 1} testid="pagination-back-button">
+          <PaginationIcon
+            clickFunction={clickFunction}
+            pageTarget={page - 1}
+            testid="pagination-back-button"
+          >
             &lt;
           </PaginationIcon>
         )}
         {pageOptionsLinks}
         {page !== lastPage && (
-          <PaginationIcon clickFunction={clickFunction} pageTarget={page + 1} testid="pagination-next-button">
+          <PaginationIcon
+            clickFunction={clickFunction}
+            pageTarget={page + 1}
+            testid="pagination-next-button"
+          >
             &gt;
           </PaginationIcon>
         )}
         {page !== lastPage && (
-          <PaginationIcon clickFunction={clickFunction} pageTarget={lastPage} testid="pagination-last-button">
+          <PaginationIcon
+            clickFunction={clickFunction}
+            pageTarget={lastPage}
+            testid="pagination-last-button"
+          >
             &gt;&gt;
           </PaginationIcon>
         )}

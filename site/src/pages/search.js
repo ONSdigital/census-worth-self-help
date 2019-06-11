@@ -11,6 +11,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { PaginationObject } from "../utils/pagination"
 
+const escapeStringRegexp = require("escape-string-regexp")
+const minimumSearchString = 3
+
 export default class Search extends React.Component {
   constructor(props) {
     super(props)
@@ -41,6 +44,8 @@ export default class Search extends React.Component {
     this.index = this.index
       ? this.index
       : Index.load(this.data.siteSearchIndex.index)
+
+    // we use a weighted priority of the search strings, this should be calibrated based on user feedback
     this.index.search(query, {
       fields: {
         title: { boost: 4 },
@@ -58,7 +63,11 @@ export default class Search extends React.Component {
     })
   }
 
-  replacePatternToBold(text, pattern) {
+  /*
+   Takes a string and a regex of the form /(bold1|bold2|bold3)/ig
+   Creates a jsx renderable list of strings and bold elements  
+  */
+  static replacePatternToBold(text, pattern) {
     const splitText = text.split(pattern)
     const matches = text.match(pattern)
     if (splitText.length <= 1) {
@@ -74,7 +83,7 @@ export default class Search extends React.Component {
     }, [])
   }
 
-  getTagsAsString(tags) {
+  static getTagsAsString(tags) {
     if (!tags) {
       return ""
     }
@@ -84,18 +93,23 @@ export default class Search extends React.Component {
     return tags
   }
 
-  highlightNode(node) {
-    let splitQuery = this.state.query
+  static highlightNode(node, query) {
+    // normalizes the string into a list of words (space seperated)
+    let splitQuery = query
       .trim()
       .toLowerCase()
       .split(" ")
       .filter(str => str)
+
+    // fetches all properties we wish to highlight in order of precedence
     let properties = [
       node.frontmatter.author,
       node.frontmatter.description,
-      this.getTagsAsString(node.frontmatter.tags),
+      Search.getTagsAsString(node.frontmatter.tags),
       node.html
     ]
+
+    // finds first property which includes a query word
     let highlightableText = properties.find(property => {
       if (!property) {
         return false
@@ -104,35 +118,47 @@ export default class Search extends React.Component {
         property.toLowerCase().includes(queryWord)
       )
     })
+
+    // if a property is found we bould the query words
     if (highlightableText !== undefined) {
       let pattern = new RegExp(
-        splitQuery.map(x => "(" + x + ")").join("|"),
-        "i"
+        "(" + splitQuery.map(x => escapeStringRegexp(x)).join("|") + ")",
+        "ig"
       )
-      highlightableText = this.replacePatternToBold(highlightableText, pattern)
+      highlightableText = Search.replacePatternToBold(
+        highlightableText,
+        pattern
+      )
     } else {
+      // otherwise default to description
       highlightableText = node.frontmatter.description
     }
+
+    // we store the result in a new attribute, which articletab checks for.
     node.highlightedText = highlightableText
   }
 
   render() {
+    // the search object is given to the top bar to control search
     let searchObject = {
       updateFunction: this.updateSearchResults,
       query: this.state.query
     }
 
+    // fetch the data edges corresponding to the search results
     let edges = this.state.paginationObject
       .filterResults(this.state.results)
       .map(result => {
         let edge = this.data.allMarkdownRemark.edges.find(
           edge => edge.node.frontmatter.title === result.title
         )
-        this.highlightNode(edge.node)
+        Search.highlightNode(edge.node, this.state.query)
         return edge
       })
 
-    let searching = this.state.query.length >= 3 || edges.length > 0
+    // A user doesn't count as searching unless they've typed a minimum amount
+    let searching =
+      this.state.query.length >= minimumSearchString || edges.length > 0
 
     return (
       <Layout title="Search" searchObject={searchObject}>
