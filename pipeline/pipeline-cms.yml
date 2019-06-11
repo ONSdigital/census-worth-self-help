@@ -36,7 +36,6 @@ jobs:
 
           caches:
             - path: census-worth-self-help/site/node_modules
-            - path: census-worth-self-help/site/.cache
 
           inputs:
             - name: census-worth-self-help
