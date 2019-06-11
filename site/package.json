@@ -45,7 +45,7 @@
     "cy:run:chrome": "node_modules/cypress/bin/cypress run -b chrome",
     "cy:run:chrome:specific": "node_modules/cypress/bin/cypress run -b chrome -s",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "format": "prettier --write {cypress,src}/**/*.{js,jsx}",
     "start": "npm run develop",
     "local": "./localbuild.sh; npm run develop",
     "serve": "gatsby serve",
