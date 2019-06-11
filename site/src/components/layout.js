@@ -28,7 +28,7 @@ export default ({
         flex-direction: column;
       `}
     >
-      <Topbar searchObject = {searchObject}/>
+      <Topbar searchObject={searchObject} />
       {logo && <OnsLogo />}
       <div
         css={css`
@@ -37,10 +37,14 @@ export default ({
           width: 100vw;
           display: flex;
           flex-direction: column;
-          flex-grow:1
+          flex-grow: 1;
         `}
       >
-        <div css={css`flex-grow:1`}>
+        <div
+          css={css`
+            flex-grow: 1;
+          `}
+        >
           {alert && <Alert title="Alert" content={alert} />}
           {explore_more_link && (
             <Section>

@@ -8,7 +8,7 @@ export default class SearchBox extends Component {
     super(props)
     this.state = {
       query: ``,
-      results: [],
+      results: []
     }
   }
 
@@ -41,7 +41,7 @@ export default class SearchBox extends Component {
       results: this.index
         .search(query, {})
         // Map over each ID and return the full document
-        .map(({ ref }) => this.index.documentStore.getDoc(ref)),
+        .map(({ ref }) => this.index.documentStore.getDoc(ref))
     })
   }
 }

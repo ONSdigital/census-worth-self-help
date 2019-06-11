@@ -1,7 +1,7 @@
 export class PaginationObject {
-  constructor(perPage=5) {
-    this.perPage = perPage;
-    this._offset = 0;
+  constructor(perPage = 5) {
+    this.perPage = perPage
+    this._offset = 0
   }
 
   get page() {
@@ -25,11 +25,11 @@ export class PaginationObject {
   }
 
   filterResults(results) {
-    return results.slice(this._offset, this._offset+this._perPage)
+    return results.slice(this._offset, this._offset + this._perPage)
   }
 
   capOffset(total) {
-    if (this._offset > total ) {
+    if (this._offset > total) {
       this._offset = total
     }
   }

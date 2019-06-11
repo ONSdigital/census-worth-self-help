@@ -7,7 +7,9 @@ const moment = require("moment")
 export default ({ node }) => {
   let title = node.frontmatter.title
   let link = node.fields.pagename
-  let description = node.highlightedText ? node.highlightedText : node.frontmatter.description
+  let description = node.highlightedText
+    ? node.highlightedText
+    : node.frontmatter.description
   console.log(node.highlightedText)
   let time_ago = moment(node.frontmatter.date).fromNow()
   return (
@@ -51,13 +53,16 @@ export default ({ node }) => {
         >
           {description}
         </div>
-        <div 
+        <div
           css={css`
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
           `}
-          className="Card-meta-Style">{time_ago}</div>
+          className="Card-meta-Style"
+        >
+          {time_ago}
+        </div>
       </div>
     </div>
   )

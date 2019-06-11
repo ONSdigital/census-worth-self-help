@@ -38,64 +38,79 @@ export default class Search extends React.Component {
     this.state.paginationObject.goToPage(0)
 
     const query = evt.target.value
-    this.index = this.index ? this.index : Index.load(this.data.siteSearchIndex.index)
+    this.index = this.index
+      ? this.index
+      : Index.load(this.data.siteSearchIndex.index)
     this.index.search(query, {
       fields: {
-          title: {boost: 4},
-          author: {boost: 4},
-          tags: {boost: 4},
-          description: {boost: 2},
-          body: {boost: 1}
+        title: { boost: 4 },
+        author: { boost: 4 },
+        tags: { boost: 4 },
+        description: { boost: 2 },
+        body: { boost: 1 }
       }
     })
     this.setState({
       query,
       results: this.index
         .search(query, {})
-        .map(({ ref }) => this.index.documentStore.getDoc(ref)),
+        .map(({ ref }) => this.index.documentStore.getDoc(ref))
     })
   }
 
   replacePatternToBold(text, pattern) {
-    const splitText = text.split(pattern);
-    const matches = text.match(pattern);
+    const splitText = text.split(pattern)
+    const matches = text.match(pattern)
     if (splitText.length <= 1) {
       return text
     }
 
     return splitText.reduce((arr, element) => {
-        if (!element) return arr
-        if(matches.includes(element)) {
-          return [...arr, <strong>{element}</strong>]
-        }
-        return [...arr, element]
-      },
-      []
-    )
+      if (!element) return arr
+      if (matches.includes(element)) {
+        return [...arr, <strong>{element}</strong>]
+      }
+      return [...arr, element]
+    }, [])
   }
 
   getTagsAsString(tags) {
-    if (!tags) {return ''}
-    if(Array.isArray(tags))
-    {
-      tags = tags.join(', ')
+    if (!tags) {
+      return ""
+    }
+    if (Array.isArray(tags)) {
+      tags = tags.join(", ")
     }
     return tags
   }
 
   highlightNode(node) {
-    let splitQuery = this.state.query.trim().toLowerCase().split(" ").filter(str => str)
-    let properties = [node.frontmatter.author, node.frontmatter.description, this.getTagsAsString(node.frontmatter.tags), node.html ]
-    let highlightableText = properties.find((property) => {
-      if(!property) { return false; }
-      return splitQuery.find( (queryWord) => property.toLowerCase().includes(queryWord) )
+    let splitQuery = this.state.query
+      .trim()
+      .toLowerCase()
+      .split(" ")
+      .filter(str => str)
+    let properties = [
+      node.frontmatter.author,
+      node.frontmatter.description,
+      this.getTagsAsString(node.frontmatter.tags),
+      node.html
+    ]
+    let highlightableText = properties.find(property => {
+      if (!property) {
+        return false
+      }
+      return splitQuery.find(queryWord =>
+        property.toLowerCase().includes(queryWord)
+      )
     })
-    if (highlightableText !== undefined)
-    {
-      let pattern = new RegExp(splitQuery.map( x => '(' + x + ')').join('|'), 'i')
+    if (highlightableText !== undefined) {
+      let pattern = new RegExp(
+        splitQuery.map(x => "(" + x + ")").join("|"),
+        "i"
+      )
       highlightableText = this.replacePatternToBold(highlightableText, pattern)
-    }
-    else {
+    } else {
       highlightableText = node.frontmatter.description
     }
     node.highlightedText = highlightableText
@@ -104,28 +119,49 @@ export default class Search extends React.Component {
   render() {
     let searchObject = {
       updateFunction: this.updateSearchResults,
-      query: this.state.query,
+      query: this.state.query
     }
 
-    let edges = this.state.paginationObject.filterResults( this.state.results ).map( result => {
-      let edge = this.data.allMarkdownRemark.edges.find( edge => edge.node.frontmatter.title === result.title )
-      this.highlightNode(edge.node)
-      return edge
-    })
+    let edges = this.state.paginationObject
+      .filterResults(this.state.results)
+      .map(result => {
+        let edge = this.data.allMarkdownRemark.edges.find(
+          edge => edge.node.frontmatter.title === result.title
+        )
+        this.highlightNode(edge.node)
+        return edge
+      })
 
     let searching = this.state.query.length >= 3 || edges.length > 0
 
     return (
       <Layout title="Search" searchObject={searchObject}>
-          <PageTitle><FontAwesomeIcon icon={faSearch}  css={css` padding: 5px; `} />
-            { searching && edges.length > 0 &&  <div>{this.state.results.length} results for "{this.state.query}"</div> }
-            { searching && edges.length===0 && <div>Sorry no results for "{this.state.query}"</div> }
-            { !searching && <div>Begin typing to search</div> }
-          </PageTitle>
+        <PageTitle>
+          <FontAwesomeIcon
+            icon={faSearch}
+            css={css`
+              padding: 5px;
+            `}
+          />
+          {searching && edges.length > 0 && (
+            <div>
+              {this.state.results.length} results for "{this.state.query}"
+            </div>
+          )}
+          {searching && edges.length === 0 && (
+            <div>Sorry no results for "{this.state.query}"</div>
+          )}
+          {!searching && <div>Begin typing to search</div>}
+        </PageTitle>
         <TabList elements={edges} />
-        { this.state.results.length !== 0 && 
-          <PaginationBar total={this.state.results.length} paginationObject={this.state.paginationObject} clickFunction={this.updatePagination} onPageCount={edges.length} />
-        }
+        {this.state.results.length !== 0 && (
+          <PaginationBar
+            total={this.state.results.length}
+            paginationObject={this.state.paginationObject}
+            clickFunction={this.updatePagination}
+            onPageCount={edges.length}
+          />
+        )}
       </Layout>
     )
   }
@@ -137,9 +173,7 @@ export const query = graphql`
       index
     }
 
-    allMarkdownRemark(
-      filter: { fields: { collection: { eq: "articles" } } }
-    ) {
+    allMarkdownRemark(filter: { fields: { collection: { eq: "articles" } } }) {
       totalCount
       edges {
         node {
