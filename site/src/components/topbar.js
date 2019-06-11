@@ -43,6 +43,7 @@ export default ({ searchObject = null }) => {
               />
             </div>
             <input
+              data-testid="search-box"
               className="Notification-heading-Style"
               css={css`
                 border: 0;

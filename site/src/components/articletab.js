@@ -10,7 +10,7 @@ export default ({ node }) => {
   let description = node.highlightedText
     ? node.highlightedText
     : node.frontmatter.description
-  console.log(node.highlightedText)
+
   let time_ago = moment(node.frontmatter.date).fromNow()
   return (
     <div

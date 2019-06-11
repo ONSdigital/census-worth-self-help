@@ -25,6 +25,7 @@ const PaginationIcon = ({
 }
 
 export default ({ paginationObject, total, onPageCount, clickFunction }) => {
+  // returns a list of numbers ranging from start to end
   let range = (start, end) => {
     return Array(end + 1 - start)
       .fill(start)
@@ -32,6 +33,7 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
   }
 
   paginationObject.capOffset(total)
+  
   let page = paginationObject.page
   let lastPage = Math.ceil(total / paginationObject.perPage) - 1
 
