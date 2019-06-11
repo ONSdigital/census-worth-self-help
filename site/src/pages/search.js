@@ -55,6 +55,24 @@ export default class Search extends React.Component {
     })
   }
 
+  replacePatternToBold(text, pattern) {
+    const splitText = text.split(pattern);
+    const matches = text.match(pattern);
+    if (splitText.length <= 1) {
+      return text
+    }
+
+    return splitText.reduce((arr, element) => {
+        if (!element) return arr
+        if(matches.includes(element)) {
+          return [...arr, <strong>{element}</strong>]
+        }
+        return [...arr, element]
+      },
+      []
+    )
+  }
+
   highlightNode(node) {
     let splitQuery = this.state.query.trim().toLowerCase().split(" ").filter(str => str)
     let properties = [node.frontmatter.author, node.frontmatter.description, node.frontmatter.tags, node.html ]
@@ -64,17 +82,13 @@ export default class Search extends React.Component {
     })
     if (highlightableText !== undefined)
     {
-        console.log('found')
-       splitQuery.forEach( ( query) => { highlightableText = highlightableText.replace( new RegExp(query, 'i'), '<b>' + query + '</b>' ) })
-
+      let pattern = new RegExp(splitQuery.map( x => '(' + x + ')').join('|'), 'i')
+      highlightableText = this.replacePatternToBold(highlightableText, pattern)
     }
     else {
-      console.log('not found')
-
       highlightableText = node.frontmatter.description
     }
     node.highlightedText = highlightableText
-    console.log(node.highlightedText)
   }
 
   render() {

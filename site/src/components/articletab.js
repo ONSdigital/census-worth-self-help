@@ -8,6 +8,7 @@ export default ({ node }) => {
   let title = node.frontmatter.title
   let link = node.fields.pagename
   let description = node.highlightedText ? node.highlightedText : node.frontmatter.description
+  console.log(node.highlightedText)
   let time_ago = moment(node.frontmatter.date).fromNow()
   return (
     <div
@@ -46,8 +47,8 @@ export default ({ node }) => {
             text-overflow: ellipsis;
             flex-grow: 1;
           `}
-          dangerouslySetInnerHTML={{ __html: description }} 
         >
+          {description}
         </div>
         <div className="Card-meta-Style">{time_ago}</div>
       </div>
