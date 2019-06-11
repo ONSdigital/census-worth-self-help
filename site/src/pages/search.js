@@ -73,9 +73,18 @@ export default class Search extends React.Component {
     )
   }
 
+  getTagsAsString(tags) {
+    if (!tags) {return ''}
+    if(Array.isArray(tags))
+    {
+      tags = tags.join(', ')
+    }
+    return tags
+  }
+
   highlightNode(node) {
     let splitQuery = this.state.query.trim().toLowerCase().split(" ").filter(str => str)
-    let properties = [node.frontmatter.author, node.frontmatter.description, node.frontmatter.tags, node.html ]
+    let properties = [node.frontmatter.author, node.frontmatter.description, this.getTagsAsString(node.frontmatter.tags), node.html ]
     let highlightableText = properties.find((property) => {
       if(!property) { return false; }
       return splitQuery.find( (queryWord) => property.toLowerCase().includes(queryWord) )

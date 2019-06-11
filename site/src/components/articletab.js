@@ -37,12 +37,13 @@ export default ({ node }) => {
           padding-top: 6px;
           display: flex;
           flex-direction: vertical;
+          line-height: 1.08;
+          max-height: 42.12px; // line-height * font-size * 3
         `}
       >
         <div
           css={css`
             width: 70%;
-            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             flex-grow: 1;
