@@ -51,7 +51,13 @@ export default ({ node }) => {
         >
           {description}
         </div>
-        <div className="Card-meta-Style">{time_ago}</div>
+        <div 
+          css={css`
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          `}
+          className="Card-meta-Style">{time_ago}</div>
       </div>
     </div>
   )

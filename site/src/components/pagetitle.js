@@ -8,6 +8,7 @@ export default ({ children }) => {
       className="Article-Title-Style"
       css={css`
         ${spacing.in_page_element}
+        display: flex;
       `}
     >
       {children}

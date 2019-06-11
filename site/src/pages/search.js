@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { css } from "@emotion/core"
 import Layout from "../components/layout"
 import { Index } from "elasticlunr"
 import TabList from "../components/tablist"
@@ -112,15 +113,15 @@ export default class Search extends React.Component {
       return edge
     })
 
-    let searching = this.state.query.length >= 4 // todo: figure out how this is actually calculated
+    let searching = this.state.query.length >= 3 || edges.length > 0
 
     return (
       <Layout title="Search" searchObject={searchObject}>
-          <div>
-            { searching && edges.length > 0 && <PageTitle><FontAwesomeIcon icon={faSearch} /> {this.state.results.length} results for "{this.state.query}"</PageTitle> }
-            { searching && edges.length===0 && <PageTitle><FontAwesomeIcon icon={faSearch} /> Sorry no results for "{this.state.query}"</PageTitle> }
-            { !searching && <PageTitle><FontAwesomeIcon icon={faSearch} /> Begin typing to search</PageTitle> }
-          </div>
+          <PageTitle><FontAwesomeIcon icon={faSearch}  css={css` padding: 5px; `} />
+            { searching && edges.length > 0 &&  <div>{this.state.results.length} results for "{this.state.query}"</div> }
+            { searching && edges.length===0 && <div>Sorry no results for "{this.state.query}"</div> }
+            { !searching && <div>Begin typing to search</div> }
+          </PageTitle>
         <TabList elements={edges} />
         { this.state.results.length !== 0 && 
           <PaginationBar total={this.state.results.length} paginationObject={this.state.paginationObject} clickFunction={this.updatePagination} onPageCount={edges.length} />

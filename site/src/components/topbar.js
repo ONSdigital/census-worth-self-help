@@ -19,7 +19,7 @@ export default ( {searchObject=null} ) => {
           display: flex;
         `}>
           <div css={css`
-                padding: 10px 15px 15px 15px;
+                padding: 10px 15px 14px 15px;
                 flex-grow: 1;
                 display: flex;
               `}>
@@ -32,8 +32,8 @@ export default ( {searchObject=null} ) => {
               color: #6e6e6e;
             `} icon={faSearch} /></div>
             <input className="Notification-heading-Style" css={css`
-                  height: 36px;
-                  border-radius: 10px;
+                  border: 0;
+                  border-radius: 16px;
                   background-color: ${colors.white_two};
                   flex-grow: 1;
                   padding-left:25px;
