@@ -4,13 +4,6 @@ import PaginationBar from "../paginationbar"
 import { PaginationObject } from "../../utils/pagination"
 import { render } from "react-testing-library"
 
-/* PaginationBar Testing
-	Match snapshot.
-	For pages at beginning / middle / end:
-		correct record of elements showing
-		correct back / forward buttons showing
-		correct page numbers showing.
-*/
 describe("PaginationBar", () => {
   const paginationObject = new PaginationObject()
 
@@ -26,6 +19,11 @@ describe("PaginationBar", () => {
     expect(tree).toMatchSnapshot()
   })
 
+  /* For pages at beginning / middle / end, check that we:
+      correctly list the number of elements showing
+      have correct back / forward buttons showing
+      have correct page numbers showing.
+  */
   it("navigation on page 0", () => {
   	paginationObject.goToPage(0)
 
@@ -64,7 +62,7 @@ describe("PaginationBar", () => {
     expect(queryByTestId('pagination-5-button')).toBeNull()
     expect(getByTestId('pagination-6-button')).toBeDefined()
     expect(getByTestId('pagination-7-button')).toBeDefined()
-	expect(getByTestId('pagination-8-button')).toBeDefined()
+    expect(getByTestId('pagination-8-button')).toBeDefined()
     expect(queryByTestId('pagination-9-button')).toBeNull()
 
     expect(getByTestId('pagination-next-button')).toBeDefined()
@@ -93,11 +91,3 @@ describe("PaginationBar", () => {
     expect(queryByTestId('pagination-last-button')).toBeNull()
   })
 })
-
-// create paginationObject with 5 pages
-// test page zero has no less than button
-//   and shows 0 1
-// test page 5 has no forward button
-//   and shows 4 5
-// test page 3 shows everything
-//  and 2 3 4
