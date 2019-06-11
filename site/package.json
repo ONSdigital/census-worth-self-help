@@ -50,7 +50,7 @@
     "local": "./localbuild.sh; npm run develop",
     "serve": "gatsby serve",
     "test": "jest",
-    "e2e": "start-server-and-test start http://localhost:8000 cyRun"
+    "e2e": "start-server-and-test start http://localhost:8000 cy:run"
   },
   "repository": {
     "type": "git",
