@@ -71,12 +71,14 @@ exports[`TabList renders correctly 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "1pj9wla",
+            "name": "1hejrb1",
             "next": undefined,
             "styles": "
           padding-top: 6px;
           display: flex;
           flex-direction: vertical;
+          line-height: 1.08;
+          max-height: 42.12px; // line-height * font-size * 3
         ",
           }
         }
@@ -85,11 +87,10 @@ exports[`TabList renders correctly 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "kzp1l",
+              "name": "lz6rtp",
               "next": undefined,
               "styles": "
             width: 70%;
-            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             flex-grow: 1;
@@ -101,6 +102,18 @@ exports[`TabList renders correctly 1`] = `
         </div>
         <div
           className="Card-meta-Style"
+          css={
+            Object {
+              "map": undefined,
+              "name": "4j3tb8",
+              "next": undefined,
+              "styles": "
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          ",
+            }
+          }
         >
           a few seconds ago
         </div>
@@ -163,12 +176,14 @@ exports[`TabList renders correctly 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "1pj9wla",
+            "name": "1hejrb1",
             "next": undefined,
             "styles": "
           padding-top: 6px;
           display: flex;
           flex-direction: vertical;
+          line-height: 1.08;
+          max-height: 42.12px; // line-height * font-size * 3
         ",
           }
         }
@@ -177,11 +192,10 @@ exports[`TabList renders correctly 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "kzp1l",
+              "name": "lz6rtp",
               "next": undefined,
               "styles": "
             width: 70%;
-            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             flex-grow: 1;
@@ -193,6 +207,18 @@ exports[`TabList renders correctly 1`] = `
         </div>
         <div
           className="Card-meta-Style"
+          css={
+            Object {
+              "map": undefined,
+              "name": "4j3tb8",
+              "next": undefined,
+              "styles": "
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          ",
+            }
+          }
         >
           a few seconds ago
         </div>

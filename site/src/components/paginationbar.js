@@ -6,11 +6,13 @@ const PaginationIcon = ({
   children,
   clickFunction,
   pageTarget,
-  underlined = false
+  underlined = false,
+  testid = undefined
 }) => {
   return (
     <div
       className="Article-Title-Style"
+      data-testid={testid}
       css={css`
         padding: 0px 5px;
         text-decoration: ${underlined ? "underline" : "none"};
@@ -48,6 +50,7 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
   let pageOptions = range(firstPageOption, lastPageOption)
   let pageOptionsLinks = pageOptions.map(pageOption => (
     <PaginationIcon
+      testid={"pagination-" + ( pageOption + 1 ) + "-button"}
       key={pageOption}
       clickFunction={clickFunction}
       pageTarget={pageOption}
@@ -71,6 +74,7 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
         `}
       >
         <div
+          data-testid="pagination-element-showing"
           css={css`
             flex-grow: 1;
           `}
@@ -87,23 +91,23 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
         `}
       >
         {page !== 0 && (
-          <PaginationIcon clickFunction={clickFunction} pageTarget={0}>
+          <PaginationIcon clickFunction={clickFunction} pageTarget={0} testid="pagination-first-button">
             &lt;&lt;
           </PaginationIcon>
         )}
         {page !== 0 && (
-          <PaginationIcon clickFunction={clickFunction} pageTarget={page - 1}>
+          <PaginationIcon clickFunction={clickFunction} pageTarget={page - 1} testid="pagination-back-button">
             &lt;
           </PaginationIcon>
         )}
         {pageOptionsLinks}
         {page !== lastPage && (
-          <PaginationIcon clickFunction={clickFunction} pageTarget={page + 1}>
+          <PaginationIcon clickFunction={clickFunction} pageTarget={page + 1} testid="pagination-next-button">
             &gt;
           </PaginationIcon>
         )}
         {page !== lastPage && (
-          <PaginationIcon clickFunction={clickFunction} pageTarget={lastPage}>
+          <PaginationIcon clickFunction={clickFunction} pageTarget={lastPage} testid="pagination-last-button">
             &gt;&gt;
           </PaginationIcon>
         )}

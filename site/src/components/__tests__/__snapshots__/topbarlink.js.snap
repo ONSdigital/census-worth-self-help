@@ -2,6 +2,7 @@
 
 exports[`TopBarLink renders correctly 1`] = `
 <div
+  className="Header-button-Style"
   css={
     Object {
       "map": undefined,
@@ -24,22 +25,8 @@ exports[`TopBarLink renders correctly 1`] = `
       ",
     }
   }
+  onClick={[Function]}
 >
-  <a
-    className="Header-button-Style"
-    css={
-      Object {
-        "map": undefined,
-        "name": "id1ekf",
-        "next": undefined,
-        "styles": "
-          text-decoration: none;
-        ",
-      }
-    }
-    href="menu"
-  >
-    menu
-  </a>
+  menu
 </div>
 `;

@@ -5,10 +5,9 @@ exports[`TopBar renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "alztg8",
+      "name": "tejz0l",
       "next": undefined,
       "styles": "
-        display: flex;
         width: 100vw;
         
     background: linear-gradient(to left, #003d59, #33637a);
@@ -18,35 +17,48 @@ exports[`TopBar renders correctly 1`] = `
   }
 >
   <div
-    className="Header-Title-Style"
     css={
       Object {
         "map": undefined,
-        "name": "1slmtwl",
+        "name": "1thgah9",
         "next": undefined,
         "styles": "
-          
+            display: flex;
+          ",
+      }
+    }
+  >
+    <div
+      className="Header-Title-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "17ih1bc",
+          "next": undefined,
+          "styles": "
+              
     display: flex;
     justify-content: center;
     flex-direction: column;
   
-          
+              
     padding: 15px;
   
-          flex-grow: 1;
-        ",
+              flex-grow: 1;
+            ",
+        }
       }
-    }
-  >
-    Census Field Assistant
-  </div>
-  <div
-    css={
-      Object {
-        "map": undefined,
-        "name": "1sm5jo",
-        "next": undefined,
-        "styles": "
+    >
+      Census Field Assistant
+    </div>
+    <div
+      className="Header-button-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "1sm5jo",
+          "next": undefined,
+          "styles": "
         
     display: flex;
     justify-content: center;
@@ -61,22 +73,9 @@ exports[`TopBar renders correctly 1`] = `
         text-align: center;
         height: 40px;
       ",
-      }
-    }
-  >
-    <a
-      className="Header-button-Style"
-      css={
-        Object {
-          "map": undefined,
-          "name": "id1ekf",
-          "next": undefined,
-          "styles": "
-          text-decoration: none;
-        ",
         }
       }
-      href="search"
+      onClick={[Function]}
     >
       <svg
         aria-hidden="true"
@@ -95,15 +94,15 @@ exports[`TopBar renders correctly 1`] = `
           style={Object {}}
         />
       </svg>
-    </a>
-  </div>
-  <div
-    css={
-      Object {
-        "map": undefined,
-        "name": "1sm5jo",
-        "next": undefined,
-        "styles": "
+    </div>
+    <div
+      className="Header-button-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "1sm5jo",
+          "next": undefined,
+          "styles": "
         
     display: flex;
     justify-content: center;
@@ -118,25 +117,12 @@ exports[`TopBar renders correctly 1`] = `
         text-align: center;
         height: 40px;
       ",
-      }
-    }
-  >
-    <a
-      className="Header-button-Style"
-      css={
-        Object {
-          "map": undefined,
-          "name": "id1ekf",
-          "next": undefined,
-          "styles": "
-          text-decoration: none;
-        ",
         }
       }
-      href="menu"
+      onClick={[Function]}
     >
       Menu
-    </a>
+    </div>
   </div>
 </header>
 `;

@@ -19,10 +19,9 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "alztg8",
+        "name": "tejz0l",
         "next": undefined,
         "styles": "
-        display: flex;
         width: 100vw;
         
     background: linear-gradient(to left, #003d59, #33637a);
@@ -32,35 +31,48 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
     }
   >
     <div
-      className="Header-Title-Style"
       css={
         Object {
           "map": undefined,
-          "name": "1slmtwl",
+          "name": "1thgah9",
           "next": undefined,
           "styles": "
-          
+            display: flex;
+          ",
+        }
+      }
+    >
+      <div
+        className="Header-Title-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "17ih1bc",
+            "next": undefined,
+            "styles": "
+              
     display: flex;
     justify-content: center;
     flex-direction: column;
   
-          
+              
     padding: 15px;
   
-          flex-grow: 1;
-        ",
+              flex-grow: 1;
+            ",
+          }
         }
-      }
-    >
-      Census Field Assistant
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1sm5jo",
-          "next": undefined,
-          "styles": "
+      >
+        Census Field Assistant
+      </div>
+      <div
+        className="Header-button-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1sm5jo",
+            "next": undefined,
+            "styles": "
         
     display: flex;
     justify-content: center;
@@ -75,22 +87,9 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         text-align: center;
         height: 40px;
       ",
-        }
-      }
-    >
-      <a
-        className="Header-button-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "id1ekf",
-            "next": undefined,
-            "styles": "
-          text-decoration: none;
-        ",
           }
         }
-        href="search"
+        onClick={[Function]}
       >
         <svg
           aria-hidden="true"
@@ -109,15 +108,15 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
             style={Object {}}
           />
         </svg>
-      </a>
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1sm5jo",
-          "next": undefined,
-          "styles": "
+      </div>
+      <div
+        className="Header-button-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1sm5jo",
+            "next": undefined,
+            "styles": "
         
     display: flex;
     justify-content: center;
@@ -132,25 +131,12 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         text-align: center;
         height: 40px;
       ",
-        }
-      }
-    >
-      <a
-        className="Header-button-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "id1ekf",
-            "next": undefined,
-            "styles": "
-          text-decoration: none;
-        ",
           }
         }
-        href="menu"
+        onClick={[Function]}
       >
         Menu
-      </a>
+      </div>
     </div>
   </header>
   <div
@@ -187,7 +173,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1g9pegf",
+        "name": "o9ztju",
         "next": undefined,
         "styles": "
           
@@ -196,6 +182,9 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
   
           overflow: scroll;
           width: 100vw;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
         ",
       }
     }
@@ -204,9 +193,21 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "15ac0on",
+          "name": "1k0aln6",
           "next": undefined,
           "styles": "
+            flex-grow: 1;
+          ",
+        }
+      }
+    >
+      <div
+        css={
+          Object {
+            "map": undefined,
+            "name": "15ac0on",
+            "next": undefined,
+            "styles": "
         border-radius: 4px;
         border: solid 2px rgb(248, 196, 30);
         background-color: rgb(253, 239, 173);
@@ -215,63 +216,63 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
     padding: 15px;
   
       ",
+          }
         }
-      }
-    >
-      <div
-        className="Notification-heading-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "kmpsy0",
-            "next": undefined,
-            "styles": "
+      >
+        <div
+          className="Notification-heading-Style"
+          css={
+            Object {
+              "map": undefined,
+              "name": "kmpsy0",
+              "next": undefined,
+              "styles": "
           padding-top: 5px;
           padding-bottom: 10px;
         ",
+            }
           }
-        }
-      >
-        Alert
-      </div>
-      <div
-        className="Notification-body-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "1a5rwwh",
-            "next": undefined,
-            "styles": "
+        >
+          Alert
+        </div>
+        <div
+          className="Notification-body-Style"
+          css={
+            Object {
+              "map": undefined,
+              "name": "1a5rwwh",
+              "next": undefined,
+              "styles": "
           padding-top: 10px;
           padding-bottom: 5px;
         ",
+            }
           }
-        }
-        data-testid="alert-message"
-      >
-        this is test content
+          data-testid="alert-message"
+        >
+          this is test content
+        </div>
       </div>
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "ypl6yy",
-          "next": undefined,
-          "styles": "
-        border-bottom: 1px rgb(229, 229, 234) solid;
-        padding: 15px 0px;
-      ",
-        }
-      }
-    >
       <div
         css={
           Object {
             "map": undefined,
-            "name": "15bgetd",
+            "name": "ypl6yy",
             "next": undefined,
             "styles": "
+        border-bottom: 1px rgb(229, 229, 234) solid;
+        padding: 15px 0px;
+      ",
+          }
+        }
+      >
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "15bgetd",
+              "next": undefined,
+              "styles": "
         
     display: flex;
     justify-content: center;
@@ -286,19 +287,6 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         height: 40px;
         background-color: rgb(255, 255, 255);
       ",
-          }
-        }
-      >
-        <div
-          css={
-            Object {
-              "map": undefined,
-              "name": "1qs2efx",
-              "next": undefined,
-              "styles": "
-            position: relative;
-            color: #003d59;
-          ",
             }
           }
         >
@@ -306,58 +294,72 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "1wo7hj",
+                "name": "1qs2efx",
                 "next": undefined,
                 "styles": "
-              position: absolute;
-            ",
+            position: relative;
+            color: #003d59;
+          ",
               }
             }
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-book fa-w-14 "
-              data-icon="book"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "1wo7hj",
+                  "next": undefined,
+                  "styles": "
+              position: absolute;
+            ",
+                }
+              }
             >
-              <path
-                d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
-                fill="currentColor"
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-book fa-w-14 "
+                data-icon="book"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
                 style={Object {}}
-              />
-            </svg>
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
           </div>
-        </div>
-        <a
-          className="Button-heading-Style"
-          css={
-            Object {
-              "map": undefined,
-              "name": "1mhjxs4",
-              "next": undefined,
-              "styles": "
+          <a
+            className="Button-heading-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "1mhjxs4",
+                "next": undefined,
+                "styles": "
           margin: 0px 20px;
           text-decoration: none;
           color: #003d59;
         ",
+              }
             }
-          }
-          href="/menu"
-        >
-          Explore Content
-        </a>
+            href="/menu"
+          >
+            Explore Content
+          </a>
+        </div>
       </div>
     </div>
     <div
       css={
         Object {
           "map": undefined,
-          "name": "126qal8",
+          "name": "ej75ms",
           "next": undefined,
           "styles": "
         
@@ -370,6 +372,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         min-height: 100px;
         flex-direction: column;
         justify-content: center;
+        flex-shrink: 0;
       ",
         }
       }
@@ -418,10 +421,9 @@ exports[`Index renders correctly without data and has no alert 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "alztg8",
+        "name": "tejz0l",
         "next": undefined,
         "styles": "
-        display: flex;
         width: 100vw;
         
     background: linear-gradient(to left, #003d59, #33637a);
@@ -431,35 +433,48 @@ exports[`Index renders correctly without data and has no alert 1`] = `
     }
   >
     <div
-      className="Header-Title-Style"
       css={
         Object {
           "map": undefined,
-          "name": "1slmtwl",
+          "name": "1thgah9",
           "next": undefined,
           "styles": "
-          
+            display: flex;
+          ",
+        }
+      }
+    >
+      <div
+        className="Header-Title-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "17ih1bc",
+            "next": undefined,
+            "styles": "
+              
     display: flex;
     justify-content: center;
     flex-direction: column;
   
-          
+              
     padding: 15px;
   
-          flex-grow: 1;
-        ",
+              flex-grow: 1;
+            ",
+          }
         }
-      }
-    >
-      Census Field Assistant
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1sm5jo",
-          "next": undefined,
-          "styles": "
+      >
+        Census Field Assistant
+      </div>
+      <div
+        className="Header-button-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1sm5jo",
+            "next": undefined,
+            "styles": "
         
     display: flex;
     justify-content: center;
@@ -474,22 +489,9 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         text-align: center;
         height: 40px;
       ",
-        }
-      }
-    >
-      <a
-        className="Header-button-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "id1ekf",
-            "next": undefined,
-            "styles": "
-          text-decoration: none;
-        ",
           }
         }
-        href="search"
+        onClick={[Function]}
       >
         <svg
           aria-hidden="true"
@@ -508,15 +510,15 @@ exports[`Index renders correctly without data and has no alert 1`] = `
             style={Object {}}
           />
         </svg>
-      </a>
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1sm5jo",
-          "next": undefined,
-          "styles": "
+      </div>
+      <div
+        className="Header-button-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1sm5jo",
+            "next": undefined,
+            "styles": "
         
     display: flex;
     justify-content: center;
@@ -531,25 +533,12 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         text-align: center;
         height: 40px;
       ",
-        }
-      }
-    >
-      <a
-        className="Header-button-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "id1ekf",
-            "next": undefined,
-            "styles": "
-          text-decoration: none;
-        ",
           }
         }
-        href="menu"
+        onClick={[Function]}
       >
         Menu
-      </a>
+      </div>
     </div>
   </header>
   <div
@@ -586,7 +575,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1g9pegf",
+        "name": "o9ztju",
         "next": undefined,
         "styles": "
           
@@ -595,6 +584,9 @@ exports[`Index renders correctly without data and has no alert 1`] = `
   
           overflow: scroll;
           width: 100vw;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
         ",
       }
     }
@@ -603,12 +595,11 @@ exports[`Index renders correctly without data and has no alert 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "ypl6yy",
+          "name": "1k0aln6",
           "next": undefined,
           "styles": "
-        border-bottom: 1px rgb(229, 229, 234) solid;
-        padding: 15px 0px;
-      ",
+            flex-grow: 1;
+          ",
         }
       }
     >
@@ -616,9 +607,22 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "15bgetd",
+            "name": "ypl6yy",
             "next": undefined,
             "styles": "
+        border-bottom: 1px rgb(229, 229, 234) solid;
+        padding: 15px 0px;
+      ",
+          }
+        }
+      >
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "15bgetd",
+              "next": undefined,
+              "styles": "
         
     display: flex;
     justify-content: center;
@@ -633,19 +637,6 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         height: 40px;
         background-color: rgb(255, 255, 255);
       ",
-          }
-        }
-      >
-        <div
-          css={
-            Object {
-              "map": undefined,
-              "name": "1qs2efx",
-              "next": undefined,
-              "styles": "
-            position: relative;
-            color: #003d59;
-          ",
             }
           }
         >
@@ -653,58 +644,72 @@ exports[`Index renders correctly without data and has no alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "1wo7hj",
+                "name": "1qs2efx",
                 "next": undefined,
                 "styles": "
-              position: absolute;
-            ",
+            position: relative;
+            color: #003d59;
+          ",
               }
             }
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-book fa-w-14 "
-              data-icon="book"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "1wo7hj",
+                  "next": undefined,
+                  "styles": "
+              position: absolute;
+            ",
+                }
+              }
             >
-              <path
-                d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
-                fill="currentColor"
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-book fa-w-14 "
+                data-icon="book"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
                 style={Object {}}
-              />
-            </svg>
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
           </div>
-        </div>
-        <a
-          className="Button-heading-Style"
-          css={
-            Object {
-              "map": undefined,
-              "name": "1mhjxs4",
-              "next": undefined,
-              "styles": "
+          <a
+            className="Button-heading-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "1mhjxs4",
+                "next": undefined,
+                "styles": "
           margin: 0px 20px;
           text-decoration: none;
           color: #003d59;
         ",
+              }
             }
-          }
-          href="/menu"
-        >
-          Explore Content
-        </a>
+            href="/menu"
+          >
+            Explore Content
+          </a>
+        </div>
       </div>
     </div>
     <div
       css={
         Object {
           "map": undefined,
-          "name": "126qal8",
+          "name": "ej75ms",
           "next": undefined,
           "styles": "
         
@@ -717,6 +722,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         min-height: 100px;
         flex-direction: column;
         justify-content: center;
+        flex-shrink: 0;
       ",
         }
       }
