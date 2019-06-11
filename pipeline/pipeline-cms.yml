@@ -1,5 +1,5 @@
 resources:
-  - name: github-site-code
+  - name: census-worth-self-help
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
@@ -16,7 +16,7 @@ resources:
 jobs:
   - name: deploy
     plan:
-      - get: github-site-code
+      - get: census-worth-self-help
       - get: census-worth-self-help-content
         trigger: true
 
@@ -30,15 +30,16 @@ jobs:
               tag: alpine
 
           params:
-            AUTH_KEY : ((gcp.service-account-key))
-            PROJECT : ((gcp.project-name))
-            GCP_SECRETS_VERSION : ((gcp.secrets-version))
+            AUTH_KEY: ((gcp.service-account-key))
+            PROJECT: ((gcp.project-name))
+            GCP_SECRETS_VERSION: ((gcp.secrets-version))
 
           caches:
-            - path: $HOME/.npm
+            - path: census-worth-self-help/site/node_modules
+            - path: census-worth-self-help/site/.cache
 
           inputs:
-            - name: github-site-code
+            - name: census-worth-self-help
             - name: census-worth-self-help-content
 
           run:
@@ -50,8 +51,8 @@ jobs:
                 apk add --no-progress --update nodejs nodejs-npm
                 echo "npm version"
                 npm -v
-                cd github-site-code/site
-                npm ci
+                cd census-worth-self-help/site
+                npm install
                 BUILD="_build/content/"
                 mkdir -p "$BUILD" && cp -R ../../census-worth-self-help-content/content/ "$BUILD"
                 npm run build

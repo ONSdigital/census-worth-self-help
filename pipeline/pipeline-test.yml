@@ -31,14 +31,18 @@ jobs:
           tag: alpine
 
       params:
-        AUTH_KEY : ((gcp.service-account-key))
-        PROJECT : ((gcp.project-name))
-        GCP_SECRETS_VERSION : ((gcp.secrets-version))
-        GIT_KEYS_SECRETS_VERSION : ((git-keys.secrets-version))
+        AUTH_KEY: ((gcp.service-account-key))
+        PROJECT: ((gcp.project-name))
+        GCP_SECRETS_VERSION: ((gcp.secrets-version))
+        GIT_KEYS_SECRETS_VERSION: ((git-keys.secrets-version))
 
       inputs:
       - name: census-worth-self-help
       - name: census-worth-self-help-test
+
+      caches:
+      - path: census-worth-self-help/site/node_modules
+      - path: census-worth-self-help/site/.cache
 
       run:
         path: sh
@@ -51,7 +55,7 @@ jobs:
             set -x
             apk add --no-progress --update nodejs nodejs-npm
             cd census-worth-self-help/site
-            npm ci
+            npm install
             BUILD="_build/content/"
             mkdir -p "$BUILD"
             cp -R ../../census-worth-self-help-test/content/ "$BUILD"
