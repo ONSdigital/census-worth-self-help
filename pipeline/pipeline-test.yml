@@ -14,6 +14,12 @@ resources:
     private_key: ((git-keys-test.private-key))
   webhook_token: ((git.census-worth-self-help-test-webhook-token))
 
+- name: netlify-cms-app
+  type: git
+  source:
+    uri: https://github.com/rmohammed605/netlify-cms-app.git
+    branch: master
+
 jobs:
 - name: deploy
   plan:
@@ -21,6 +27,7 @@ jobs:
     trigger: true
   - get: census-worth-self-help-test
     trigger: true
+  - get: netlify-cms-app
   - task: deploy
     config:
       platform: linux
@@ -39,6 +46,7 @@ jobs:
       inputs:
       - name: census-worth-self-help
       - name: census-worth-self-help-test
+      - name: netlify-cms-app
 
       caches:
       - path: census-worth-self-help/site/node_modules
@@ -52,10 +60,14 @@ jobs:
             set +x
             echo "GCP secrets version      : $GCP_SECRETS_VERSION"
             echo "Git keys secrets version      : $GIT_KEYS_SECRETS_VERSION"
+            touch ~/.bashrc
             set -x
             apk add --no-progress --update nodejs nodejs-npm
             cd census-worth-self-help/site
             npm install
+            npm install ../../netlify-cms-app
+            apk add --no-progress yarn
+            yarn
             BUILD="_build/content/"
             mkdir -p "$BUILD"
             cp -R ../../census-worth-self-help-test/content/ "$BUILD"
