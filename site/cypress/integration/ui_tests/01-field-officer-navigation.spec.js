@@ -1,8 +1,13 @@
 /// <reference types="Cypress" />
 
-const commands = '../../support/commands.js';
-const homepage = require('../../fixtures/pages/homepagePage');
+const commands = require('../../support/commands.js');
+const globalTestData = require('../../fixtures/globalTestData');
+
+// fragments
 const menu = require('../../fixtures/fragments/menu');
+
+// pages
+const homepage = require('../../fixtures/pages/homepagePage');
 
 const firstArticlePath = '/deep-article';
 

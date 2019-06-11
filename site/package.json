@@ -29,6 +29,7 @@
     "identity-obj-proxy": "3.0.0",
     "jest": "24.8.0",
     "jest-dom": "3.4.0",
+    "mochawesome": "^4.0.0",
     "prettier": "1.17.1",
     "react-test-renderer": "16.8.6",
     "react-testing-library": "7.0.1"
@@ -38,8 +39,10 @@
   ],
   "scripts": {
     "build": "npm audit ; jest ; gatsby build",
-    "cyOpen": "node_modules/cypress/bin/cypress open",
-    "cyRun": "node_modules/cypress/bin/cypress run",
+    "cy:open": "node_modules/cypress/bin/cypress open",
+    "cy:run": "node_modules/cypress/bin/cypress run",
+    "cy:run:chrome": "node_modules/cypress/bin/cypress run -b chrome",
+    "cy:run:chrome:specific": "node_modules/cypress/bin/cypress run -b chrome -s",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",

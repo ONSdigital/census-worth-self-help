@@ -1,5 +1,7 @@
 # IDEA
 
+.idea/codeStyles
+.idea/dbnavigator.xml
 .idea/workspace.xml
 
 # Environment variables
@@ -21,4 +23,6 @@ ci-app.yaml
 
 # Cypress
 
+mochawesome-report
+site/cypress/screenshots
 site/cypress/videos
