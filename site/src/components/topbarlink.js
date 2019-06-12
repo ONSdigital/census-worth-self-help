@@ -24,6 +24,7 @@ export default ({ title, link }) => {
         css={css`
           text-decoration: none;
         `}
+        data-test="topbarlink__menu-button"
       >
         {title}
       </Link>
