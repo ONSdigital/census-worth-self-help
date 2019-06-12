@@ -5,6 +5,7 @@ import { spacing, colors } from "../utils/styles"
 export default ({ title, subtitle, clickFunction, icon = null }) => {
   return (
     <div
+      data-testid="block-button"
       onClick={clickFunction}
       css={css`
         border-radius: 4px;

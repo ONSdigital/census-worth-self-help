@@ -3,13 +3,13 @@ export const data = {
     {
       node: {
         frontmatter: {
-          title: "testArticle1",
+          title: "test Article1 ",
           description: "testDescription",
           priority: 1,
           date: new Date()
         },
         fields: {
-          pagename: "test1",
+          pagename: "test-article-1",
           collection: "articles"
         }
       }
@@ -17,13 +17,13 @@ export const data = {
     {
       node: {
         frontmatter: {
-          title: "testArticle2",
+          title: "test Article 2",
           description: "testDescription",
           priority: 0,
           date: new Date()
         },
         fields: {
-          pagename: "test",
+          pagename: "test-article-2",
           collection: "articles"
         }
       }
@@ -31,13 +31,13 @@ export const data = {
     {
       node: {
         frontmatter: {
-          title: "testDirectory3",
+          title: "test Directory 3",
           description: "testDescription",
           priority: 0,
           date: new Date()
         },
         fields: {
-          pagename: "test",
+          pagename: "test-directory-1",
           collection: "directories"
         }
       }

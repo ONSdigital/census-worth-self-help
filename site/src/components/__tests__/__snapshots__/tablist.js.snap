@@ -62,9 +62,9 @@ exports[`TabList renders correctly 1`] = `
         ",
           }
         }
-        href="test1"
+        href="test-article-1"
       >
-        testArticle1
+        test Article1 
       </a>
       <div
         className="Card-sub-head-Style-gray"
@@ -154,9 +154,9 @@ exports[`TabList renders correctly 1`] = `
         ",
           }
         }
-        href="test"
+        href="test-article-2"
       >
-        testArticle2
+        test Article 2
       </a>
       <div
         className="Card-sub-head-Style-gray"
@@ -245,9 +245,9 @@ exports[`TabList renders correctly 1`] = `
         ",
           }
         }
-        href="test"
+        href="test-directory-1"
       >
-        testDirectory3
+        test Directory 3
       </a>
     </div>
   </div>

@@ -34,9 +34,9 @@ exports[`ArticleTab renders correctly 1`] = `
         ",
       }
     }
-    href="test1"
+    href="test-article-1"
   >
-    testArticle1
+    test Article1 
   </a>
   <div
     className="Card-sub-head-Style-gray"

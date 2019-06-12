@@ -465,16 +465,16 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "1opes1g",
+              "name": "1ter12k",
               "next": undefined,
               "styles": "
-        
+          
     display: flex;
     justify-content: center;
     flex-direction: column;
   
-        flex-grow:1
-      ",
+          flex-grow:1
+        ",
             }
           }
         >
@@ -488,9 +488,11 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "w7yhn1",
+                "name": "1mexe8m",
                 "next": undefined,
-                "styles": "text-align: center;",
+                "styles": "
+            text-align: center;
+          ",
               }
             }
           >
@@ -958,16 +960,16 @@ exports[`Index renders correctly without data and has no alert 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "1opes1g",
+              "name": "1ter12k",
               "next": undefined,
               "styles": "
-        
+          
     display: flex;
     justify-content: center;
     flex-direction: column;
   
-        flex-grow:1
-      ",
+          flex-grow:1
+        ",
             }
           }
         >
@@ -981,9 +983,11 @@ exports[`Index renders correctly without data and has no alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "w7yhn1",
+                "name": "1mexe8m",
                 "next": undefined,
-                "styles": "text-align: center;",
+                "styles": "
+            text-align: center;
+          ",
               }
             }
           >

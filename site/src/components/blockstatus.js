@@ -6,11 +6,9 @@ export default ({
   title,
   subtitle,
   icon = null,
-  clickFunction = undefined
 }) => {
   return (
     <div
-      onClick={clickFunction}
       css={css`
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
