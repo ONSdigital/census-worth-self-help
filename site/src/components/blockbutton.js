@@ -44,8 +44,22 @@ export default ({ title, subtitle, clickFunction, icon = null }) => {
           color: ${colors.navy_normal};
         `}
       >
-        <div className="Button-heading-Style" css={css`text-align: left;`}>{title}</div>
-        <div className="Card-meta-Style" css={css`text-align: left;`}>{subtitle}</div>
+        <div
+          className="Button-heading-Style"
+          css={css`
+            text-align: left;
+          `}
+        >
+          {title}
+        </div>
+        <div
+          className="Card-meta-Style"
+          css={css`
+            text-align: left;
+          `}
+        >
+          {subtitle}
+        </div>
       </div>
     </div>
   )

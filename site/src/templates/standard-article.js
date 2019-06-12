@@ -8,7 +8,7 @@ import BlockButton from "../components/blockbutton"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBookmark } from "@fortawesome/free-regular-svg-icons"
 
-import {BookmarkManager} from "../utils/bookmarkManager"
+import { BookmarkManager } from "../utils/bookmarkManager"
 
 export default class Article extends React.Component {
   constructor(props) {
@@ -21,7 +21,9 @@ export default class Article extends React.Component {
 
     this.bookmarkManager = new BookmarkManager()
     this.state = {
-      bookmarked: this.bookmarkManager.isPageBookmarked(this.props.pageContext.title)
+      bookmarked: this.bookmarkManager.isPageBookmarked(
+        this.props.pageContext.title
+      )
     }
   }
 
@@ -42,7 +44,7 @@ export default class Article extends React.Component {
   render() {
     let { data, pageContext } = this.props
     const post = data.markdownRemark
-    let bookmarked = this.state.bookmarked;
+    let bookmarked = this.state.bookmarked
 
     return (
       <Layout>
@@ -52,23 +54,22 @@ export default class Article extends React.Component {
         />
         <PageTitle>{pageContext.title}</PageTitle>
 
-        { !bookmarked &&
+        {!bookmarked && (
           <BlockButton
             icon={<FontAwesomeIcon icon={faBookmark} />}
             title="Bookmark this page"
             subtitle="Save it to view later"
             clickFunction={this.bookmarkPage}
           />
-        }
-        {
-          bookmarked &&
-          <BlockButton 
+        )}
+        {bookmarked && (
+          <BlockButton
             icon={<FontAwesomeIcon icon={faBookmark} />}
             title="Bookmarked"
-            subtitle="Click here to remove" 
+            subtitle="Click here to remove"
             clickFunction={this.unBookmarkPage}
           />
-        }
+        )}
         <TextBlock>
           <b>{post.frontmatter.description}</b>
         </TextBlock>

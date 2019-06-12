@@ -288,7 +288,7 @@ exports[`Most Recent renders correctly 1`] = `
     >
       Recently Updated
     </h1>
-    <p
+    <div
       className="Article-body-Style"
       css={
         Object {
@@ -306,7 +306,7 @@ exports[`Most Recent renders correctly 1`] = `
       <b>
         Most recent changes, need to check with Phil to see if there's actually content for this
       </b>
-    </p>
+    </div>
     <div
       css={
         Object {

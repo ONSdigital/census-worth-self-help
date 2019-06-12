@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import TabList from "../components/tablist"
-import {BookmarkManager} from "../utils/bookmarkManager"
+import { BookmarkManager } from "../utils/bookmarkManager"
 import BlockStatus from "../components/blockstatus"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBookmark } from "@fortawesome/free-solid-svg-icons"
@@ -11,14 +11,25 @@ export default ({ data }) => {
   let alertText =
     data.markdownRemark && data.markdownRemark.frontmatter.alert_content
 
-  const topArticleCount = 3;
+  const topArticleCount = 3
 
-  let mostRecentEdges = data.allMarkdownRemark.edges.slice(0, topArticleCount)
+  let mostRecentEdges,
+    bookmarkEdges = []
 
-  let bookmarkManager = new BookmarkManager()
-  let bookmarkTitles = bookmarkManager.getTopBookmarks().slice(0, topArticleCount)
+  if (data.allMarkdownRemark) {
+    mostRecentEdges = data.allMarkdownRemark.edges.slice(0, topArticleCount)
 
-  let bookmarkEdges = bookmarkTitles.map(title => data.allMarkdownRemark.edges.find(edge => edge.node.frontmatter.title===title))
+    let bookmarkManager = new BookmarkManager()
+    let bookmarkTitles = bookmarkManager
+      .getTopBookmarks()
+      .slice(0, topArticleCount)
+
+    bookmarkEdges = bookmarkTitles.map(title =>
+      data.allMarkdownRemark.edges.find(
+        edge => edge.node.frontmatter.title === title
+      )
+    )
+  }
 
   return (
     <Layout
@@ -41,16 +52,13 @@ export default ({ data }) => {
           elements={bookmarkEdges}
         />
       )}
-      { bookmarkEdges.length === 0 && (
+      {bookmarkEdges.length === 0 && (
         <div>
-          <TabList
-            title="MY BOOKMARKS"
-            elements={[]}
-          />
-          <BlockStatus 
+          <TabList title="MY BOOKMARKS" elements={[]} />
+          <BlockStatus
             icon={<FontAwesomeIcon icon={faBookmark} />}
             title="Bookmarks will show here"
-            subtitle="Bookmarks are stored on your device" 
+            subtitle="Bookmarks are stored on your device"
           />
         </div>
       )}

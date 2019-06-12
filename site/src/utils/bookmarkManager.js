@@ -1,8 +1,8 @@
 export class BookmarkManager {
   constructor() {
-    this.bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
-    if(this.bookmarks === null) {
-    	this.bookmarks = []
+    this.bookmarks = JSON.parse(localStorage.getItem("bookmarks"))
+    if (this.bookmarks === null) {
+      this.bookmarks = []
     }
   }
 
@@ -15,17 +15,17 @@ export class BookmarkManager {
   }
 
   bookmarkPage(page) {
-  	if(!this.isPageBookmarked(page)) {
-    	this.bookmarks.push(page)
-	}
-    localStorage.setItem('bookmarks', JSON.stringify(this.bookmarks));
+    if (!this.isPageBookmarked(page)) {
+      this.bookmarks.push(page)
+    }
+    localStorage.setItem("bookmarks", JSON.stringify(this.bookmarks))
   }
 
   unBookmarkPage(page) {
-    this.bookmarks = this.bookmarks.filter(function(bookmark) { 
-	    return bookmark !== page
-	})
+    this.bookmarks = this.bookmarks.filter(function(bookmark) {
+      return bookmark !== page
+    })
 
-	localStorage.setItem('bookmarks', JSON.stringify(this.bookmarks));
+    localStorage.setItem("bookmarks", JSON.stringify(this.bookmarks))
   }
 }
