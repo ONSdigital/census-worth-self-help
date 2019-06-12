@@ -20,9 +20,6 @@ export default ({ data }) => {
 
   let bookmarkEdges = bookmarkTitles.map(title => data.allMarkdownRemark.edges.find(edge => edge.node.frontmatter.title===title))
 
-  console.log(bookmarkTitles)
-  console.log(bookmarkEdges)
-
   return (
     <Layout
       logo={true}
@@ -33,14 +30,14 @@ export default ({ data }) => {
       {data.allMarkdownRemark && (
         <TabList
           title="RECENTLY UPDATED"
-          link="mostrecent"
+          link="/mostrecent"
           elements={mostRecentEdges}
         />
       )}
       {bookmarkEdges.length > 0 && (
         <TabList
           title="MY BOOKMARKS"
-          link="bookmarks"
+          link="/bookmarks"
           elements={bookmarkEdges}
         />
       )}
