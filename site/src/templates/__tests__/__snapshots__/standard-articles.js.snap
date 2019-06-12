@@ -1,0 +1,561 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StandardArticle renders correctly 1`] = `
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "vkixka",
+      "next": undefined,
+      "styles": "
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      ",
+    }
+  }
+>
+  <header
+    css={
+      Object {
+        "map": undefined,
+        "name": "alztg8",
+        "next": undefined,
+        "styles": "
+        display: flex;
+        width: 100vw;
+        
+    background: linear-gradient(to left, #003d59, #33637a);
+  ;
+      ",
+      }
+    }
+  >
+    <div
+      className="Header-Title-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "1slmtwl",
+          "next": undefined,
+          "styles": "
+          
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+          
+    padding: 15px;
+  
+          flex-grow: 1;
+        ",
+        }
+      }
+    >
+      Census Field Assistant
+    </div>
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "1sm5jo",
+          "next": undefined,
+          "styles": "
+        
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+        padding: 0px 10px;
+        background-color: rgb(255, 255, 255, 0.2);
+        border-radius: 4px;
+        margin: 10px 10px 10px 0px;
+        min-width: 20px;
+        object-fit: contain;
+        text-align: center;
+        height: 40px;
+      ",
+        }
+      }
+    >
+      <a
+        className="Header-button-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "id1ekf",
+            "next": undefined,
+            "styles": "
+          text-decoration: none;
+        ",
+          }
+        }
+        href="search"
+      >
+        <svg
+          aria-hidden="true"
+          className="svg-inline--fa fa-search fa-w-16 "
+          data-icon="search"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          style={Object {}}
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+            fill="currentColor"
+            style={Object {}}
+          />
+        </svg>
+      </a>
+    </div>
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "1sm5jo",
+          "next": undefined,
+          "styles": "
+        
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+        padding: 0px 10px;
+        background-color: rgb(255, 255, 255, 0.2);
+        border-radius: 4px;
+        margin: 10px 10px 10px 0px;
+        min-width: 20px;
+        object-fit: contain;
+        text-align: center;
+        height: 40px;
+      ",
+        }
+      }
+    >
+      <a
+        className="Header-button-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "id1ekf",
+            "next": undefined,
+            "styles": "
+          text-decoration: none;
+        ",
+          }
+        }
+        href="menu"
+      >
+        Menu
+      </a>
+    </div>
+  </header>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "1g9pegf",
+        "next": undefined,
+        "styles": "
+          
+    margin: 0 auto;
+    max-width: 700px;
+  
+          overflow: scroll;
+          width: 100vw;
+        ",
+      }
+    }
+  >
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "ypl6yy",
+          "next": undefined,
+          "styles": "
+        border-bottom: 1px rgb(229, 229, 234) solid;
+        padding: 15px 0px;
+      ",
+        }
+      }
+    >
+      <div
+        className="Section-heading-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "136nmlb",
+            "next": undefined,
+            "styles": "
+          
+    padding: 5px 15px;
+  
+        ",
+          }
+        }
+      >
+        EXPLORE CONTENT
+      </div>
+      <div
+        css={
+          Object {
+            "map": undefined,
+            "name": "136nmlb",
+            "next": undefined,
+            "styles": "
+          
+    padding: 5px 15px;
+  
+        ",
+          }
+        }
+      >
+        <select
+          css={
+            Object {
+              "map": undefined,
+              "name": "8a47ri",
+              "next": undefined,
+              "styles": "
+            background-color: rgb(255, 255, 255);
+            border-bottom: rgb(48, 48, 48) 1px solid;
+            width: 100%;
+            padding: 5px;
+          ",
+            }
+          }
+          onChange={[Function]}
+        />
+      </div>
+    </div>
+    <h1
+      className="Article-Title-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "12ew49b",
+          "next": undefined,
+          "styles": "
+        
+    padding: 5px 15px;
+  
+      ",
+        }
+      }
+    >
+      test Article 1
+    </h1>
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "1vf6ctb",
+          "next": undefined,
+          "styles": "
+        border-radius: 4px;
+        box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
+        border: solid 1px #ececed;
+        margin: 0px 10px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+      ",
+        }
+      }
+      data-testid="block-button"
+      onClick={[Function]}
+    >
+      <div
+        className="Article-Title-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "14yivzb",
+            "next": undefined,
+            "styles": "
+            
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+            display: flex;
+            justify-content: center;
+            height: 78px;
+            width: 78px;
+            color: white;
+            background-color: #003d59;
+          ",
+          }
+        }
+      >
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "1n8pnzb",
+              "next": undefined,
+              "styles": "
+              text-align: center;
+            ",
+            }
+          }
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-bookmark fa-w-12 "
+            data-icon="bookmark"
+            data-prefix="far"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 384 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M336 0H48C21.49 0 0 21.49 0 48v464l192-112 192 112V48c0-26.51-21.49-48-48-48zm0 428.43l-144-84-144 84V54a6 6 0 0 1 6-6h276c3.314 0 6 2.683 6 5.996V428.43z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        css={
+          Object {
+            "map": undefined,
+            "name": "i8tjei",
+            "next": undefined,
+            "styles": "
+          
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+          margin: 0px 20px;
+          color: #003d59;
+        ",
+          }
+        }
+      >
+        <div
+          className="Button-heading-Style"
+          css={
+            Object {
+              "map": undefined,
+              "name": "km4e7l",
+              "next": undefined,
+              "styles": "
+            text-align: left;
+          ",
+            }
+          }
+        >
+          Bookmark this page
+        </div>
+        <div
+          className="Card-meta-Style"
+          css={
+            Object {
+              "map": undefined,
+              "name": "km4e7l",
+              "next": undefined,
+              "styles": "
+            text-align: left;
+          ",
+            }
+          }
+        >
+          Save it to view later
+        </div>
+      </div>
+    </div>
+    <div
+      className="Article-body-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "pywoey",
+          "next": undefined,
+          "styles": "
+        
+    padding: 5px 15px;
+  ;
+      ",
+        }
+      }
+    >
+      <b>
+        testDescription
+      </b>
+    </div>
+    <div
+      className="Article-body-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "pywoey",
+          "next": undefined,
+          "styles": "
+        
+    padding: 5px 15px;
+  ;
+      ",
+        }
+      }
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+      />
+    </div>
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "126qal8",
+          "next": undefined,
+          "styles": "
+        
+    padding: 30px 0px;
+  
+        width: 100%;
+        padding: 10px 0px;
+        background-color: rgb(236, 236, 237);
+        display: flex;
+        min-height: 100px;
+        flex-direction: column;
+        justify-content: center;
+      ",
+        }
+      }
+    >
+      <img
+        alt="Footer logo"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1v6eegl",
+            "next": undefined,
+            "styles": "
+          margin-bottom: 50px;
+          margin-top: 50px;
+        ",
+          }
+        }
+        src="/footer_logo.svg"
+      />
+      <div
+        css={
+          Object {
+            "map": undefined,
+            "name": "buygrl",
+            "next": undefined,
+            "styles": "
+            margin-bottom: 34px;
+          ",
+          }
+        }
+      >
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "15bgetd",
+              "next": undefined,
+              "styles": "
+        
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+        padding: 0px 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
+        border: solid 1px #ececed;
+        margin: 0px 10px;
+        text-align: center;
+        height: 40px;
+        background-color: rgb(255, 255, 255);
+      ",
+            }
+          }
+        >
+          <div
+            css={
+              Object {
+                "map": undefined,
+                "name": "1qs2efx",
+                "next": undefined,
+                "styles": "
+            position: relative;
+            color: #003d59;
+          ",
+              }
+            }
+          >
+            <div
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "1wo7hj",
+                  "next": undefined,
+                  "styles": "
+              position: absolute;
+            ",
+                }
+              }
+            >
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-phone fa-w-16 "
+                data-icon="phone"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                style={Object {}}
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
+          </div>
+          <a
+            className="Button-heading-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "1mhjxs4",
+                "next": undefined,
+                "styles": "
+          margin: 0px 20px;
+          text-decoration: none;
+          color: #003d59;
+        ",
+              }
+            }
+            href="/call_centre"
+          >
+            Census Field Support
+          </a>
+        </div>
+      </div>
+      <div
+        className="Footer-Style"
+      >
+        © Office for National Statistics 2019
+      </div>
+    </div>
+  </div>
+</div>
+`;
