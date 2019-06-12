@@ -54,6 +54,8 @@ jobs:
                 npm install
                 BUILD="_build/content/"
                 mkdir -p "$BUILD" && cp -R ../../census-worth-self-help-content/content/ "$BUILD"
+                ASSET_DIR="static/assets/"
+                cp -R ../../census-worth-self-help-content/static/assets "$ASSET_DIR"
                 npm run build
                 set +x
                 echo $AUTH_KEY > encrypted_key.txt
