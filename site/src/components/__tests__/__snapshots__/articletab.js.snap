@@ -34,6 +34,7 @@ exports[`ArticleTab renders correctly 1`] = `
         ",
       }
     }
+    data-test="articletab__article-card"
     href="test1"
   >
     testArticle1
