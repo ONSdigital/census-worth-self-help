@@ -2,8 +2,22 @@ import React from "react"
 import renderer from "react-test-renderer"
 import Index from "../index"
 import { render } from "react-testing-library"
+import { articleList } from "../../utils/testdata"
+import BookmarkManager from "../../utils/bookmarkManager"
+
+jest.mock('../../utils/bookmarkManager', () => jest.fn());
+
+// default to no bookmarks
+BookmarkManager.mockImplementation(
+  () => ({
+    getTopBookmarks: () => []
+  })
+)
 
 describe("Index", () => {
+
+  const mostRecentData = { allMarkdownRemark : articleList }
+
   it("renders correctly without data and has no alert", () => {
     // check snapshot
     const empty_data = {}
@@ -25,5 +39,22 @@ describe("Index", () => {
     // check alert content
     const { getByTestId } = render(<Index data={alert_data}/>)
     expect(getByTestId("alert-message")).toHaveTextContent(message)
+  })
+
+  it("check that it draws top 3 most recent", () => {    
+    const { getAllByTestId } = render(<Index data={mostRecentData} />)
+    expect(getAllByTestId("article-card-title").length).toEqual(3)
+  })
+
+  it("check that it can draw bookmarks", () => {
+
+    BookmarkManager.mockImplementation(
+      () => ({
+        getTopBookmarks: () => ["test Article 1"]
+      })
+    )
+
+    const { getAllByTestId } = render(<Index data={mostRecentData} />)
+    expect(getAllByTestId("article-card-title").length).toEqual(4)
   })
 })

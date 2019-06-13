@@ -1,4 +1,4 @@
-import { BookmarkManager } from "../bookmarkManager"
+import BookmarkManager from "../bookmarkManager"
 
 describe("Bookmark Manager", () => {
   it("adding bookmarks", () => {

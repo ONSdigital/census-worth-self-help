@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import TabList from "../components/tablist"
-import { BookmarkManager } from "../utils/bookmarkManager"
+import BookmarkManager from "../utils/bookmarkManager"
 import BlockStatus from "../components/blockstatus"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBookmark } from "@fortawesome/free-solid-svg-icons"
@@ -24,6 +24,7 @@ export default ({ data }) => {
       .getTopBookmarks()
       .slice(0, topArticleCount)
 
+    console.log(bookmarkTitles)
     bookmarkEdges = bookmarkTitles.map(title =>
       data.allMarkdownRemark.edges.find(
         edge => edge.node.frontmatter.title === title

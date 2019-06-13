@@ -62,9 +62,10 @@ exports[`TabList renders correctly 1`] = `
         ",
           }
         }
+        data-testid="article-card-title"
         href="test-article-1"
       >
-        test Article1 
+        test Article 1
       </a>
       <div
         className="Card-sub-head-Style-gray"
@@ -154,9 +155,196 @@ exports[`TabList renders correctly 1`] = `
         ",
           }
         }
+        data-testid="article-card-title"
         href="test-article-2"
       >
         test Article 2
+      </a>
+      <div
+        className="Card-sub-head-Style-gray"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1pj9wla",
+            "next": undefined,
+            "styles": "
+          padding-top: 6px;
+          display: flex;
+          flex-direction: vertical;
+        ",
+          }
+        }
+      >
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "kzp1l",
+              "next": undefined,
+              "styles": "
+            width: 70%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+          ",
+            }
+          }
+        >
+          testDescription
+        </div>
+        <div
+          className="Card-meta-Style"
+        >
+          a few seconds ago
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "1mij31f",
+        "next": undefined,
+        "styles": "
+        
+    margin: 2px 0px;
+  ;
+      ",
+      }
+    }
+  >
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "1q53lw7",
+          "next": undefined,
+          "styles": "
+        
+    padding: 15px;
+    min-height: 30px;
+  ;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+        border-left: 6px solid #003d59;
+        background-color: rgb(255, 255, 255);
+      ",
+        }
+      }
+    >
+      <a
+        className="Card-heading-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "9t9vj8",
+            "next": undefined,
+            "styles": "
+          text-decoration: none;
+          color: inherit;
+          flex-grow: 1;
+          font-weight: semi-bold;
+        ",
+          }
+        }
+        data-testid="article-card-title"
+        href="test-article-3"
+      >
+        test Article 3
+      </a>
+      <div
+        className="Card-sub-head-Style-gray"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1pj9wla",
+            "next": undefined,
+            "styles": "
+          padding-top: 6px;
+          display: flex;
+          flex-direction: vertical;
+        ",
+          }
+        }
+      >
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "kzp1l",
+              "next": undefined,
+              "styles": "
+            width: 70%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+          ",
+            }
+          }
+        >
+          testDescription
+        </div>
+        <div
+          className="Card-meta-Style"
+        >
+          a few seconds ago
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "1mij31f",
+        "next": undefined,
+        "styles": "
+        
+    margin: 2px 0px;
+  ;
+      ",
+      }
+    }
+  >
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "1q53lw7",
+          "next": undefined,
+          "styles": "
+        
+    padding: 15px;
+    min-height: 30px;
+  ;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+        border-left: 6px solid #003d59;
+        background-color: rgb(255, 255, 255);
+      ",
+        }
+      }
+    >
+      <a
+        className="Card-heading-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "9t9vj8",
+            "next": undefined,
+            "styles": "
+          text-decoration: none;
+          color: inherit;
+          flex-grow: 1;
+          font-weight: semi-bold;
+        ",
+          }
+        }
+        data-testid="article-card-title"
+        href="test-article-4"
+      >
+        test Article 4
       </a>
       <div
         className="Card-sub-head-Style-gray"
@@ -247,7 +435,7 @@ exports[`TabList renders correctly 1`] = `
         }
         href="test-directory-1"
       >
-        test Directory 3
+        test Directory 5
       </a>
     </div>
   </div>

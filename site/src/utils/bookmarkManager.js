@@ -1,4 +1,4 @@
-export class BookmarkManager {
+export default class BookmarkManager {
   constructor() {
     this.bookmarks = JSON.parse(localStorage.getItem("bookmarks"))
     if (this.bookmarks === null) {
