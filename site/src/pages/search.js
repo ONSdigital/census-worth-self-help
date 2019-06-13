@@ -93,6 +93,11 @@ export default class Search extends React.Component {
     return tags
   }
 
+  static stripHTML(html){
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || "";
+  }
+
   static highlightNode(node, query) {
     // normalizes the string into a list of words (space seperated)
     let splitQuery = query
@@ -106,7 +111,7 @@ export default class Search extends React.Component {
       node.frontmatter.author,
       node.frontmatter.description,
       Search.getTagsAsString(node.frontmatter.tags),
-      node.html
+      Search.stripHTML(node.html)
     ]
 
     // finds first property which includes a query word

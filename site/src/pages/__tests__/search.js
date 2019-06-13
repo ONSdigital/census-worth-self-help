@@ -30,6 +30,10 @@ describe("Search", () => {
     	)).toEqual("we are bolding <strong>just this</strong>")
   })
 
+  it("tag stripping", () => {
+    expect(Search.stripHTML("<p><br />hi<br /> <h1>hello</h1>")).toEqual("hi hello")
+  })
+
   it("highlight function on node works correctly", () => {
     let node = articleNode
     node.frontmatter.tags = ['a', 'b', 'hello', 'd']

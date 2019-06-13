@@ -234,6 +234,7 @@ exports[`TopBar renders correctly with searchbox 1`] = `
           }
         }
         data-testid="search-box"
+        maxLength="60"
         onChange={[MockFunction]}
         type="text"
         value="searchString"
