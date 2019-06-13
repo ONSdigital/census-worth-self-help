@@ -6,15 +6,17 @@ exports[`PageTitle renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "12ew49b",
+      "name": "12cq9cc",
       "next": undefined,
       "styles": "
         
     padding: 5px 15px;
   
+        display: flex;
       ",
     }
   }
+  data-testid="search-result-title"
 >
   This is a title
 </h1>

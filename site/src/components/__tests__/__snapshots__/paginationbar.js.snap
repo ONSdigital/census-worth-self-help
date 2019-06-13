@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationBar renders correctly 1`] = `
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "d1qmp1",
+      "next": undefined,
+      "styles": "
+        padding: 15px 0px;
+      ",
+    }
+  }
+>
+  <div
+    className="Button-subhead-Style"
+    css={
+      Object {
+        "map": undefined,
+        "name": "1dmo2ca",
+        "next": undefined,
+        "styles": "
+          display: flex;
+          
+    padding: 5px 15px;
+  
+        ",
+      }
+    }
+  >
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "1k0aln6",
+          "next": undefined,
+          "styles": "
+            flex-grow: 1;
+          ",
+        }
+      }
+      data-testid="pagination-element-showing"
+    >
+      Showing 
+      1
+      -
+      5
+       of 
+      10
+    </div>
+    <div>
+      Show 
+      5
+       per page
+    </div>
+  </div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "1sf84gv",
+        "next": undefined,
+        "styles": "
+          display: flex;
+          justify-content: center;
+        ",
+      }
+    }
+  >
+    <div
+      className="Article-Title-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "1j335gw",
+          "next": undefined,
+          "styles": "
+        padding: 0px 5px;
+        text-decoration: underline;
+      ",
+        }
+      }
+      data-testid="pagination-1-button"
+      onClick={[Function]}
+    >
+      1
+    </div>
+    <div
+      className="Article-Title-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "tvdd9t",
+          "next": undefined,
+          "styles": "
+        padding: 0px 5px;
+        text-decoration: none;
+      ",
+        }
+      }
+      data-testid="pagination-2-button"
+      onClick={[Function]}
+    >
+      2
+    </div>
+    <div
+      className="Article-Title-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "tvdd9t",
+          "next": undefined,
+          "styles": "
+        padding: 0px 5px;
+        text-decoration: none;
+      ",
+        }
+      }
+      data-testid="pagination-next-button"
+      onClick={[Function]}
+    >
+      &gt;
+    </div>
+    <div
+      className="Article-Title-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "tvdd9t",
+          "next": undefined,
+          "styles": "
+        padding: 0px 5px;
+        text-decoration: none;
+      ",
+        }
+      }
+      data-testid="pagination-last-button"
+      onClick={[Function]}
+    >
+      &gt;&gt;
+    </div>
+  </div>
+</div>
+`;

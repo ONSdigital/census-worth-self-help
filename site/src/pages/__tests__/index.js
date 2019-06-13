@@ -43,7 +43,7 @@ describe("Index", () => {
 
   it("check that it draws top 3 most recent", () => {    
     const { getAllByTestId } = render(<Index data={mostRecentData} />)
-    expect(getAllByTestId("article-card-title").length).toEqual(3)
+    expect(getAllByTestId("articletab-article-card").length).toEqual(3)
   })
 
   it("check that it can draw bookmarks", () => {
@@ -55,6 +55,6 @@ describe("Index", () => {
     )
 
     const { getAllByTestId } = render(<Index data={mostRecentData} />)
-    expect(getAllByTestId("article-card-title").length).toEqual(4)
+    expect(getAllByTestId("articletab-article-card").length).toEqual(4)
   })
 })

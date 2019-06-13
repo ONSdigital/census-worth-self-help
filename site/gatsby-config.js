@@ -7,6 +7,26 @@ module.exports = {
         path: `${__dirname}/_build/content/`,
       },
     },
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Set of article fields we search on.
+        fields: [`title`, `description`, `author`, `tags`, `body`],
+        resolvers: {
+          MarkdownRemark: {
+            title: node => node.frontmatter.title,
+            description: node => node.frontmatter.description,
+            author: node => node.frontmatter.author,
+            tags: node => node.frontmatter.tags,
+            body: node => node.rawMarkdownBody
+          },
+        },
+        // Remove .md with no content
+        filter: (node, getNode) => {
+          return node.rawMarkdownBody.trim() != ""
+        },
+      },
+    },
     `gatsby-plugin-emotion`,
     `gatsby-plugin-netlify-cms`,
     `gatsby-transformer-remark`,

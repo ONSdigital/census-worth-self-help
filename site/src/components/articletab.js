@@ -7,7 +7,10 @@ const moment = require("moment")
 export default ({ node }) => {
   let title = node.frontmatter.title
   let link = node.fields.pagename
-  let description = node.frontmatter.description
+  let description = node.highlightedText
+    ? node.highlightedText
+    : node.frontmatter.description
+
   let time_ago = moment(node.frontmatter.date).fromNow()
   return (
     <div
@@ -19,8 +22,8 @@ export default ({ node }) => {
       `}
     >
       <Link
-        data-testid="article-card-title"
         className="Card-heading-Style"
+        data-testid="articletab-article-card"
         to={link}
         css={css`
           text-decoration: none;
@@ -28,7 +31,6 @@ export default ({ node }) => {
           flex-grow: 1;
           font-weight: semi-bold;
         `}
-        data-test="articletab__article-card"
       >
         {title}
       </Link>
@@ -38,12 +40,13 @@ export default ({ node }) => {
           padding-top: 6px;
           display: flex;
           flex-direction: vertical;
+          line-height: 1.08;
+          max-height: 42.12px; // line-height * font-size * 3
         `}
       >
         <div
           css={css`
             width: 70%;
-            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             flex-grow: 1;
@@ -51,7 +54,16 @@ export default ({ node }) => {
         >
           {description}
         </div>
-        <div className="Card-meta-Style">{time_ago}</div>
+        <div
+          css={css`
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          `}
+          className="Card-meta-Style"
+        >
+          {time_ago}
+        </div>
       </div>
     </div>
   )

@@ -19,10 +19,9 @@ exports[`Layout renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "alztg8",
+        "name": "tejz0l",
         "next": undefined,
         "styles": "
-        display: flex;
         width: 100vw;
         
     background: linear-gradient(to left, #003d59, #33637a);
@@ -32,35 +31,48 @@ exports[`Layout renders correctly 1`] = `
     }
   >
     <div
-      className="Header-Title-Style"
       css={
         Object {
           "map": undefined,
-          "name": "1slmtwl",
+          "name": "1thgah9",
           "next": undefined,
           "styles": "
-          
+            display: flex;
+          ",
+        }
+      }
+    >
+      <div
+        className="Header-Title-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "17ih1bc",
+            "next": undefined,
+            "styles": "
+              
     display: flex;
     justify-content: center;
     flex-direction: column;
   
-          
+              
     padding: 15px;
   
-          flex-grow: 1;
-        ",
+              flex-grow: 1;
+            ",
+          }
         }
-      }
-    >
-      Census Field Assistant
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1sm5jo",
-          "next": undefined,
-          "styles": "
+      >
+        Census Field Assistant
+      </div>
+      <div
+        className="Header-button-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1sm5jo",
+            "next": undefined,
+            "styles": "
         
     display: flex;
     justify-content: center;
@@ -75,23 +87,10 @@ exports[`Layout renders correctly 1`] = `
         text-align: center;
         height: 40px;
       ",
-        }
-      }
-    >
-      <a
-        className="Header-button-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "id1ekf",
-            "next": undefined,
-            "styles": "
-          text-decoration: none;
-        ",
           }
         }
-        data-test="topbarlink__menu-button"
-        href="search"
+        data-testid="topbarlink-button"
+        onClick={[Function]}
       >
         <svg
           aria-hidden="true"
@@ -110,15 +109,15 @@ exports[`Layout renders correctly 1`] = `
             style={Object {}}
           />
         </svg>
-      </a>
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1sm5jo",
-          "next": undefined,
-          "styles": "
+      </div>
+      <div
+        className="Header-button-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1sm5jo",
+            "next": undefined,
+            "styles": "
         
     display: flex;
     justify-content: center;
@@ -133,33 +132,20 @@ exports[`Layout renders correctly 1`] = `
         text-align: center;
         height: 40px;
       ",
-        }
-      }
-    >
-      <a
-        className="Header-button-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "id1ekf",
-            "next": undefined,
-            "styles": "
-          text-decoration: none;
-        ",
           }
         }
-        data-test="topbarlink__menu-button"
-        href="menu"
+        data-testid="topbarlink-button"
+        onClick={[Function]}
       >
         Menu
-      </a>
+      </div>
     </div>
   </header>
   <div
     css={
       Object {
         "map": undefined,
-        "name": "1g9pegf",
+        "name": "o9ztju",
         "next": undefined,
         "styles": "
           
@@ -168,16 +154,32 @@ exports[`Layout renders correctly 1`] = `
   
           overflow: scroll;
           width: 100vw;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
         ",
       }
     }
   >
-    Inside layout content
     <div
       css={
         Object {
           "map": undefined,
-          "name": "126qal8",
+          "name": "1k0aln6",
+          "next": undefined,
+          "styles": "
+            flex-grow: 1;
+          ",
+        }
+      }
+    >
+      Inside layout content
+    </div>
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "ej75ms",
           "next": undefined,
           "styles": "
         
@@ -190,6 +192,7 @@ exports[`Layout renders correctly 1`] = `
         min-height: 100px;
         flex-direction: column;
         justify-content: center;
+        flex-shrink: 0;
       ",
         }
       }

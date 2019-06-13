@@ -78,6 +78,7 @@ export const query = graphql`
       date
       description
       directory
+      tags
     }
   }
 

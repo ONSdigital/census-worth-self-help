@@ -6,8 +6,6 @@ import TextBlock from "../components/textblock"
 import TabList from "../components/tablist"
 
 export default ({ data }) => {
-  console.log(data)
-
   return (
     <Layout explore_more_link={true}>
       <PageTitle>Recently Updated</PageTitle>

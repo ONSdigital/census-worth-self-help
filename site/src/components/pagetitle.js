@@ -6,8 +6,10 @@ export default ({ children }) => {
   return (
     <h1
       className="Article-Title-Style"
+      data-testid="search-result-title"
       css={css`
         ${spacing.in_page_element}
+        display: flex;
       `}
     >
       {children}

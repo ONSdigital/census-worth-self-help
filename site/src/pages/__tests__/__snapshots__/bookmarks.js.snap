@@ -19,10 +19,9 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "alztg8",
+        "name": "tejz0l",
         "next": undefined,
         "styles": "
-        display: flex;
         width: 100vw;
         
     background: linear-gradient(to left, #003d59, #33637a);
@@ -32,35 +31,48 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
     }
   >
     <div
-      className="Header-Title-Style"
       css={
         Object {
           "map": undefined,
-          "name": "1slmtwl",
+          "name": "1thgah9",
           "next": undefined,
           "styles": "
-          
+            display: flex;
+          ",
+        }
+      }
+    >
+      <div
+        className="Header-Title-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "17ih1bc",
+            "next": undefined,
+            "styles": "
+              
     display: flex;
     justify-content: center;
     flex-direction: column;
   
-          
+              
     padding: 15px;
   
-          flex-grow: 1;
-        ",
+              flex-grow: 1;
+            ",
+          }
         }
-      }
-    >
-      Census Field Assistant
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1sm5jo",
-          "next": undefined,
-          "styles": "
+      >
+        Census Field Assistant
+      </div>
+      <div
+        className="Header-button-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1sm5jo",
+            "next": undefined,
+            "styles": "
         
     display: flex;
     justify-content: center;
@@ -75,23 +87,10 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         text-align: center;
         height: 40px;
       ",
-        }
-      }
-    >
-      <a
-        className="Header-button-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "id1ekf",
-            "next": undefined,
-            "styles": "
-          text-decoration: none;
-        ",
           }
         }
-        data-test="topbarlink__menu-button"
-        href="search"
+        data-testid="topbarlink-button"
+        onClick={[Function]}
       >
         <svg
           aria-hidden="true"
@@ -110,15 +109,15 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
             style={Object {}}
           />
         </svg>
-      </a>
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1sm5jo",
-          "next": undefined,
-          "styles": "
+      </div>
+      <div
+        className="Header-button-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1sm5jo",
+            "next": undefined,
+            "styles": "
         
     display: flex;
     justify-content: center;
@@ -133,33 +132,20 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         text-align: center;
         height: 40px;
       ",
-        }
-      }
-    >
-      <a
-        className="Header-button-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "id1ekf",
-            "next": undefined,
-            "styles": "
-          text-decoration: none;
-        ",
           }
         }
-        data-test="topbarlink__menu-button"
-        href="menu"
+        data-testid="topbarlink-button"
+        onClick={[Function]}
       >
         Menu
-      </a>
+      </div>
     </div>
   </header>
   <div
     css={
       Object {
         "map": undefined,
-        "name": "1g9pegf",
+        "name": "o9ztju",
         "next": undefined,
         "styles": "
           
@@ -168,6 +154,9 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
   
           overflow: scroll;
           width: 100vw;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
         ",
       }
     }
@@ -176,12 +165,11 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "ypl6yy",
+          "name": "1k0aln6",
           "next": undefined,
           "styles": "
-        border-bottom: 1px rgb(229, 229, 234) solid;
-        padding: 15px 0px;
-      ",
+            flex-grow: 1;
+          ",
         }
       }
     >
@@ -189,9 +177,22 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "15bgetd",
+            "name": "ypl6yy",
             "next": undefined,
             "styles": "
+        border-bottom: 1px rgb(229, 229, 234) solid;
+        padding: 15px 0px;
+      ",
+          }
+        }
+      >
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "15bgetd",
+              "next": undefined,
+              "styles": "
         
     display: flex;
     justify-content: center;
@@ -206,19 +207,6 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         height: 40px;
         background-color: rgb(255, 255, 255);
       ",
-          }
-        }
-      >
-        <div
-          css={
-            Object {
-              "map": undefined,
-              "name": "1qs2efx",
-              "next": undefined,
-              "styles": "
-            position: relative;
-            color: #003d59;
-          ",
             }
           }
         >
@@ -226,110 +214,111 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "1wo7hj",
+                "name": "1qs2efx",
                 "next": undefined,
                 "styles": "
-              position: absolute;
-            ",
+            position: relative;
+            color: #003d59;
+          ",
               }
             }
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-book fa-w-14 "
-              data-icon="book"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "1wo7hj",
+                  "next": undefined,
+                  "styles": "
+              position: absolute;
+            ",
+                }
+              }
             >
-              <path
-                d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
-                fill="currentColor"
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-book fa-w-14 "
+                data-icon="book"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
                 style={Object {}}
-              />
-            </svg>
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
           </div>
-        </div>
-        <a
-          className="Button-heading-Style"
-          css={
-            Object {
-              "map": undefined,
-              "name": "1mhjxs4",
-              "next": undefined,
-              "styles": "
+          <a
+            className="Button-heading-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "1mhjxs4",
+                "next": undefined,
+                "styles": "
           margin: 0px 20px;
           text-decoration: none;
           color: #003d59;
         ",
+              }
             }
-          }
-          href="/menu"
-        >
-          Explore Content
-        </a>
+            href="/menu"
+          >
+            Explore Content
+          </a>
+        </div>
       </div>
-    </div>
-    <h1
-      className="Article-Title-Style"
-      css={
-        Object {
-          "map": undefined,
-          "name": "12ew49b",
-          "next": undefined,
-          "styles": "
+      <h1
+        className="Article-Title-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "12cq9cc",
+            "next": undefined,
+            "styles": "
         
     padding: 5px 15px;
   
+        display: flex;
       ",
+          }
         }
-      }
-    >
-      My Bookmarks
-    </h1>
-    <div
-      className="Article-body-Style"
-      css={
-        Object {
-          "map": undefined,
-          "name": "pywoey",
-          "next": undefined,
-          "styles": "
+        data-testid="search-result-title"
+      >
+        My Bookmarks
+      </h1>
+      <div
+        className="Article-body-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "pywoey",
+            "next": undefined,
+            "styles": "
         
     padding: 5px 15px;
   ;
       ",
+          }
         }
-      }
-    >
-      Bookmarks are links to articles, which will appear here for you to quickly find the article again. To remove a bookmark, tap on the bookmark button in the article. Bookmarks are stored on your device, and are linked to your account, so only you have access to them.
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1p7jpnp",
-          "next": undefined,
-          "styles": "
-        
-    padding: 15px 0px;
-  ;
-      ",
-        }
-      }
-    >
+      >
+        Bookmarks are links to articles, which will appear here for you to quickly find the article again. To remove a bookmark, tap on the bookmark button in the article. Bookmarks are stored on your device, and are linked to your account, so only you have access to them.
+      </div>
       <div
         css={
           Object {
             "map": undefined,
-            "name": "1mij31f",
+            "name": "1p7jpnp",
             "next": undefined,
             "styles": "
         
-    margin: 2px 0px;
+    padding: 15px 0px;
   ;
       ",
           }
@@ -339,9 +328,23 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "1q53lw7",
+              "name": "1mij31f",
               "next": undefined,
               "styles": "
+        
+    margin: 2px 0px;
+  ;
+      ",
+            }
+          }
+        >
+          <div
+            css={
+              Object {
+                "map": undefined,
+                "name": "1q53lw7",
+                "next": undefined,
+                "styles": "
         
     padding: 15px;
     min-height: 30px;
@@ -350,67 +353,80 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         border-left: 6px solid #003d59;
         background-color: rgb(255, 255, 255);
       ",
+              }
             }
-          }
-        >
-          <a
-            className="Card-heading-Style"
-            css={
-              Object {
-                "map": undefined,
-                "name": "9t9vj8",
-                "next": undefined,
-                "styles": "
+          >
+            <a
+              className="Card-heading-Style"
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "9t9vj8",
+                  "next": undefined,
+                  "styles": "
           text-decoration: none;
           color: inherit;
           flex-grow: 1;
           font-weight: semi-bold;
         ",
+                }
               }
-            }
-            data-test="articletab__article-card"
-            data-testid="article-card-title"
-            href="test-article-1"
-          >
-            test Article 1
-          </a>
-          <div
-            className="Card-sub-head-Style-gray"
-            css={
-              Object {
-                "map": undefined,
-                "name": "1pj9wla",
-                "next": undefined,
-                "styles": "
-          padding-top: 6px;
-          display: flex;
-          flex-direction: vertical;
-        ",
-              }
-            }
-          >
+              data-testid="articletab-article-card"
+              href="test-article-1"
+            >
+              test Article 1
+            </a>
             <div
+              className="Card-sub-head-Style-gray"
               css={
                 Object {
                   "map": undefined,
-                  "name": "kzp1l",
+                  "name": "1hejrb1",
                   "next": undefined,
                   "styles": "
+          padding-top: 6px;
+          display: flex;
+          flex-direction: vertical;
+          line-height: 1.08;
+          max-height: 42.12px; // line-height * font-size * 3
+        ",
+                }
+              }
+            >
+              <div
+                css={
+                  Object {
+                    "map": undefined,
+                    "name": "lz6rtp",
+                    "next": undefined,
+                    "styles": "
             width: 70%;
-            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             flex-grow: 1;
           ",
+                  }
                 }
-              }
-            >
-              testDescription
-            </div>
-            <div
-              className="Card-meta-Style"
-            >
-              a few seconds ago
+              >
+                testDescription
+              </div>
+              <div
+                className="Card-meta-Style"
+                css={
+                  Object {
+                    "map": undefined,
+                    "name": "4j3tb8",
+                    "next": undefined,
+                    "styles": "
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          ",
+                  }
+                }
+              >
+                a few seconds ago
+              </div>
             </div>
           </div>
         </div>
@@ -420,7 +436,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "126qal8",
+          "name": "ej75ms",
           "next": undefined,
           "styles": "
         
@@ -433,6 +449,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         min-height: 100px;
         flex-direction: column;
         justify-content: center;
+        flex-shrink: 0;
       ",
         }
       }
@@ -581,10 +598,9 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "alztg8",
+        "name": "tejz0l",
         "next": undefined,
         "styles": "
-        display: flex;
         width: 100vw;
         
     background: linear-gradient(to left, #003d59, #33637a);
@@ -594,35 +610,48 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
     }
   >
     <div
-      className="Header-Title-Style"
       css={
         Object {
           "map": undefined,
-          "name": "1slmtwl",
+          "name": "1thgah9",
           "next": undefined,
           "styles": "
-          
+            display: flex;
+          ",
+        }
+      }
+    >
+      <div
+        className="Header-Title-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "17ih1bc",
+            "next": undefined,
+            "styles": "
+              
     display: flex;
     justify-content: center;
     flex-direction: column;
   
-          
+              
     padding: 15px;
   
-          flex-grow: 1;
-        ",
+              flex-grow: 1;
+            ",
+          }
         }
-      }
-    >
-      Census Field Assistant
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1sm5jo",
-          "next": undefined,
-          "styles": "
+      >
+        Census Field Assistant
+      </div>
+      <div
+        className="Header-button-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1sm5jo",
+            "next": undefined,
+            "styles": "
         
     display: flex;
     justify-content: center;
@@ -637,23 +666,10 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         text-align: center;
         height: 40px;
       ",
-        }
-      }
-    >
-      <a
-        className="Header-button-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "id1ekf",
-            "next": undefined,
-            "styles": "
-          text-decoration: none;
-        ",
           }
         }
-        data-test="topbarlink__menu-button"
-        href="search"
+        data-testid="topbarlink-button"
+        onClick={[Function]}
       >
         <svg
           aria-hidden="true"
@@ -672,15 +688,15 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
             style={Object {}}
           />
         </svg>
-      </a>
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "1sm5jo",
-          "next": undefined,
-          "styles": "
+      </div>
+      <div
+        className="Header-button-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1sm5jo",
+            "next": undefined,
+            "styles": "
         
     display: flex;
     justify-content: center;
@@ -695,33 +711,20 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         text-align: center;
         height: 40px;
       ",
-        }
-      }
-    >
-      <a
-        className="Header-button-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "id1ekf",
-            "next": undefined,
-            "styles": "
-          text-decoration: none;
-        ",
           }
         }
-        data-test="topbarlink__menu-button"
-        href="menu"
+        data-testid="topbarlink-button"
+        onClick={[Function]}
       >
         Menu
-      </a>
+      </div>
     </div>
   </header>
   <div
     css={
       Object {
         "map": undefined,
-        "name": "1g9pegf",
+        "name": "o9ztju",
         "next": undefined,
         "styles": "
           
@@ -730,6 +733,9 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
   
           overflow: scroll;
           width: 100vw;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
         ",
       }
     }
@@ -738,12 +744,11 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "ypl6yy",
+          "name": "1k0aln6",
           "next": undefined,
           "styles": "
-        border-bottom: 1px rgb(229, 229, 234) solid;
-        padding: 15px 0px;
-      ",
+            flex-grow: 1;
+          ",
         }
       }
     >
@@ -751,9 +756,22 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "15bgetd",
+            "name": "ypl6yy",
             "next": undefined,
             "styles": "
+        border-bottom: 1px rgb(229, 229, 234) solid;
+        padding: 15px 0px;
+      ",
+          }
+        }
+      >
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "15bgetd",
+              "next": undefined,
+              "styles": "
         
     display: flex;
     justify-content: center;
@@ -768,19 +786,6 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         height: 40px;
         background-color: rgb(255, 255, 255);
       ",
-          }
-        }
-      >
-        <div
-          css={
-            Object {
-              "map": undefined,
-              "name": "1qs2efx",
-              "next": undefined,
-              "styles": "
-            position: relative;
-            color: #003d59;
-          ",
             }
           }
         >
@@ -788,110 +793,125 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "1wo7hj",
+                "name": "1qs2efx",
                 "next": undefined,
                 "styles": "
-              position: absolute;
-            ",
+            position: relative;
+            color: #003d59;
+          ",
               }
             }
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-book fa-w-14 "
-              data-icon="book"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "1wo7hj",
+                  "next": undefined,
+                  "styles": "
+              position: absolute;
+            ",
+                }
+              }
             >
-              <path
-                d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
-                fill="currentColor"
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-book fa-w-14 "
+                data-icon="book"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
                 style={Object {}}
-              />
-            </svg>
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
           </div>
-        </div>
-        <a
-          className="Button-heading-Style"
-          css={
-            Object {
-              "map": undefined,
-              "name": "1mhjxs4",
-              "next": undefined,
-              "styles": "
+          <a
+            className="Button-heading-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "1mhjxs4",
+                "next": undefined,
+                "styles": "
           margin: 0px 20px;
           text-decoration: none;
           color: #003d59;
         ",
+              }
             }
-          }
-          href="/menu"
-        >
-          Explore Content
-        </a>
+            href="/menu"
+          >
+            Explore Content
+          </a>
+        </div>
       </div>
-    </div>
-    <h1
-      className="Article-Title-Style"
-      css={
-        Object {
-          "map": undefined,
-          "name": "12ew49b",
-          "next": undefined,
-          "styles": "
+      <h1
+        className="Article-Title-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "12cq9cc",
+            "next": undefined,
+            "styles": "
         
     padding: 5px 15px;
   
+        display: flex;
       ",
+          }
         }
-      }
-    >
-      My Bookmarks
-    </h1>
-    <div
-      className="Article-body-Style"
-      css={
-        Object {
-          "map": undefined,
-          "name": "pywoey",
-          "next": undefined,
-          "styles": "
+        data-testid="search-result-title"
+      >
+        My Bookmarks
+      </h1>
+      <div
+        className="Article-body-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "pywoey",
+            "next": undefined,
+            "styles": "
         
     padding: 5px 15px;
   ;
       ",
+          }
         }
-      }
-    >
-      Bookmarks are links to articles, which will appear here for you to quickly find the article again. To remove a bookmark, tap on the bookmark button in the article. Bookmarks are stored on your device, and are linked to your account, so only you have access to them.
-    </div>
-    <div
-      css={
-        Object {
-          "map": undefined,
-          "name": "180i97l",
-          "next": undefined,
-          "styles": "
+      >
+        Bookmarks are links to articles, which will appear here for you to quickly find the article again. To remove a bookmark, tap on the bookmark button in the article. Bookmarks are stored on your device, and are linked to your account, so only you have access to them.
+      </div>
+      <div
+        css={
+          Object {
+            "map": undefined,
+            "name": "180i97l",
+            "next": undefined,
+            "styles": "
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
         background-color: rgb(255, 255, 255);
         height: 74px;
         display: flex;
       ",
+          }
         }
-      }
-    >
-      <div
-        css={
-          Object {
-            "map": undefined,
-            "name": "t2r693",
-            "next": undefined,
-            "styles": "
+      >
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "t2r693",
+              "next": undefined,
+              "styles": "
             position: relative;
             left: 33px;
             color: #003d59;
@@ -902,48 +922,48 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
   
             justify-content: center;
           ",
+            }
           }
-        }
-      >
+        >
+          <div
+            css={
+              Object {
+                "map": undefined,
+                "name": "c8nikn",
+                "next": undefined,
+                "styles": "
+              font-size: 30px;
+              position: absolute;
+            ",
+              }
+            }
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-bookmark fa-w-12 "
+              data-icon="bookmark"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 384 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </div>
+        </div>
         <div
           css={
             Object {
               "map": undefined,
-              "name": "c8nikn",
+              "name": "1ter12k",
               "next": undefined,
               "styles": "
-              font-size: 30px;
-              position: absolute;
-            ",
-            }
-          }
-        >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-bookmark fa-w-12 "
-            data-icon="bookmark"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 384 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"
-              fill="currentColor"
-              style={Object {}}
-            />
-          </svg>
-        </div>
-      </div>
-      <div
-        css={
-          Object {
-            "map": undefined,
-            "name": "1ter12k",
-            "next": undefined,
-            "styles": "
           
     display: flex;
     justify-content: center;
@@ -951,28 +971,29 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
   
           flex-grow:1
         ",
-          }
-        }
-      >
-        <div
-          className="Button-heading-Style"
-        >
-          Bookmarks will show here
-        </div>
-        <div
-          className="Button-subhead-Style"
-          css={
-            Object {
-              "map": undefined,
-              "name": "1mexe8m",
-              "next": undefined,
-              "styles": "
-            text-align: center;
-          ",
             }
           }
         >
-          Bookmarks are stored on your device
+          <div
+            className="Button-heading-Style"
+          >
+            Bookmarks will show here
+          </div>
+          <div
+            className="Button-subhead-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "1mexe8m",
+                "next": undefined,
+                "styles": "
+            text-align: center;
+          ",
+              }
+            }
+          >
+            Bookmarks are stored on your device
+          </div>
         </div>
       </div>
     </div>
@@ -980,7 +1001,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "126qal8",
+          "name": "ej75ms",
           "next": undefined,
           "styles": "
         
@@ -993,6 +1014,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         min-height: 100px;
         flex-direction: column;
         justify-content: center;
+        flex-shrink: 0;
       ",
         }
       }

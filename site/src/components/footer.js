@@ -17,6 +17,7 @@ export default ({ phone_link = false }) => {
         min-height: 100px;
         flex-direction: column;
         justify-content: center;
+        flex-shrink: 0;
       `}
     >
       <img
