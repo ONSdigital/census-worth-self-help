@@ -24,7 +24,6 @@ export default ({ data }) => {
       .getTopBookmarks()
       .slice(0, topArticleCount)
 
-    console.log(bookmarkTitles)
     bookmarkEdges = bookmarkTitles.map(title =>
       data.allMarkdownRemark.edges.find(
         edge => edge.node.frontmatter.title === title
