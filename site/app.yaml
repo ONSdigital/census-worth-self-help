@@ -18,9 +18,15 @@ handlers:
     static_files: public/\1
     upload: public/(.*\.js)
 
-  - url: /(.*\.(gif|ico|jpeg|jpg|png))
+# Images and fonts
+  - url: /(.*\.(gif|ico|jpeg|jpg|png|svg))
     static_files: public/\1
-    upload: public/(.*\.(gif|ico|jpeg|jpg|png))
+    upload: public/(.*\.(gif|ico|jpeg|jpg|png|svg))
+
+# Fonts
+  - url: /(.*\.(woff|woff2|tff|eot))
+    static_files: public/\1
+    upload: public/(.*\.(woff|woff2|tff|eots))
 
   - url: /icons
     static_dir: public/icons

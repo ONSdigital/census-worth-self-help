@@ -28,6 +28,7 @@ export default ({ node }) => {
           flex-grow: 1;
           font-weight: semi-bold;
         `}
+        data-test="articletab__article-card"
       >
         {title}
       </Link>
