@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlockStatus renders correctly 1`] = `
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "180i97l",
+      "next": undefined,
+      "styles": "
+        box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
+        border: solid 1px #ececed;
+        background-color: rgb(255, 255, 255);
+        height: 74px;
+        display: flex;
+      ",
+    }
+  }
+>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "1ter12k",
+        "next": undefined,
+        "styles": "
+          
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+          flex-grow:1
+        ",
+      }
+    }
+  >
+    <div
+      className="Button-heading-Style"
+    >
+      title
+    </div>
+    <div
+      className="Button-subhead-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "1mexe8m",
+          "next": undefined,
+          "styles": "
+            text-align: center;
+          ",
+        }
+      }
+    >
+      anything
+    </div>
+  </div>
+</div>
+`;

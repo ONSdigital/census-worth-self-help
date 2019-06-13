@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlockButton renders correctly 1`] = `
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "1vf6ctb",
+      "next": undefined,
+      "styles": "
+        border-radius: 4px;
+        box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
+        border: solid 1px #ececed;
+        margin: 0px 10px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+      ",
+    }
+  }
+  data-testid="block-button"
+>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "i8tjei",
+        "next": undefined,
+        "styles": "
+          
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+          margin: 0px 20px;
+          color: #003d59;
+        ",
+      }
+    }
+  >
+    <div
+      className="Button-heading-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "km4e7l",
+          "next": undefined,
+          "styles": "
+            text-align: left;
+          ",
+        }
+      }
+    >
+      title
+    </div>
+    <div
+      className="Card-meta-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "km4e7l",
+          "next": undefined,
+          "styles": "
+            text-align: left;
+          ",
+        }
+      }
+    >
+      anything
+    </div>
+  </div>
+</div>
+`;
