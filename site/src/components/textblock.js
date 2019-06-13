@@ -4,13 +4,13 @@ import { spacing } from "../utils/styles"
 
 export default ({ children }) => {
   return (
-    <p
+    <div
       className="Article-body-Style"
       css={css`
         ${spacing.in_page_element};
       `}
     >
       {children}
-    </p>
+    </div>
   )
 }

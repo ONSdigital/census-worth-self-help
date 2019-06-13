@@ -7,6 +7,7 @@
   "dependencies": {
     "@emotion/core": "10.0.10",
     "@fortawesome/fontawesome-svg-core": "1.2.18",
+    "@fortawesome/free-regular-svg-icons": "5.8.2",
     "@fortawesome/free-solid-svg-icons": "5.8.2",
     "@fortawesome/react-fontawesome": "0.1.4",
     "escape-string-regexp": "2.0.0",

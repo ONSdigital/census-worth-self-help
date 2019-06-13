@@ -21,7 +21,6 @@ exports[`ArticleTab renders correctly 1`] = `
 >
   <a
     className="Card-heading-Style"
-    data-testid="articletab-article-card"
     css={
       Object {
         "map": undefined,
@@ -35,9 +34,10 @@ exports[`ArticleTab renders correctly 1`] = `
         ",
       }
     }
-    href="test1"
+    data-testid="articletab-article-card"
+    href="test-article-1"
   >
-    testArticle1
+    test Article 1
   </a>
   <div
     className="Card-sub-head-Style-gray"

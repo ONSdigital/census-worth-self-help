@@ -22,6 +22,7 @@ export default ({ node }) => {
       `}
     >
       <Link
+        data-testid="article-card-title"
         className="Card-heading-Style"
         data-testid="articletab-article-card"
         to={link}
