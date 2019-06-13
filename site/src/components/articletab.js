@@ -23,6 +23,7 @@ export default ({ node }) => {
     >
       <Link
         className="Card-heading-Style"
+        data-testid="articletab-article-card"
         to={link}
         css={css`
           text-decoration: none;
@@ -30,7 +31,6 @@ export default ({ node }) => {
           flex-grow: 1;
           font-weight: semi-bold;
         `}
-        data-test="articletab__article-card"
       >
         {title}
       </Link>

@@ -21,6 +21,7 @@ exports[`ArticleTab renders correctly 1`] = `
 >
   <a
     className="Card-heading-Style"
+    data-testid="articletab-article-card"
     css={
       Object {
         "map": undefined,
