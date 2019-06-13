@@ -37,6 +37,7 @@ exports[`TopBarLink renders correctly 1`] = `
         ",
       }
     }
+    data-test="topbarlink__menu-button"
     href="menu"
   >
     menu
