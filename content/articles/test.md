@@ -1,9 +1,8 @@
 ---
 title: test
-date: 2019-06-02T19:51:25.380Z
-description: test
-directory: IHOTest
+date: 2019-06-13T13:15:18.403Z
+description: ccc
+directory: deep 5
 priority: 0
-role: ''
 ---
-![](/assets/screenshot-2019-06-02-at-20.52.04.png)
+cc
