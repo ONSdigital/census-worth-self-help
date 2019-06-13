@@ -303,9 +303,7 @@ exports[`Most Recent renders correctly 1`] = `
         }
       }
     >
-      <b>
-        Most recent changes, need to check with Phil to see if there's actually content for this
-      </b>
+      Most recent changes, need to check with Phil to see if there's actually content for this
     </div>
     <div
       css={

@@ -2,11 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import { spacing, colors } from "../utils/styles"
 
-export default ({
-  title,
-  subtitle,
-  icon = null,
-}) => {
+export default ({ title, subtitle, icon = null }) => {
   return (
     <div
       css={css`

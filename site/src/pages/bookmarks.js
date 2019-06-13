@@ -22,10 +22,10 @@ export default ({ data }) => {
     <Layout explore_more_link={true}>
       <PageTitle>My Bookmarks</PageTitle>
       <TextBlock>
-        <b>
-          Bookmarks, need to check with Phil to see if there's actually content
-          for this
-        </b>
+        Bookmarks are links to articles, which will appear here for you to
+        quickly find the article again. To remove a bookmark, tap on the
+        bookmark button in the article. Bookmarks are stored on your device, and
+        are linked to your account, so only you have access to them.
       </TextBlock>
       {bookmarkEdges.length > 0 && <TabList elements={bookmarkEdges} />}
       {bookmarkEdges.length === 0 && (
