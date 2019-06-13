@@ -4,6 +4,8 @@ backend:
   branch: master
   squash_merges: true
   base_url: https://oauth.worth.census-gcp.onsdigital.uk/
+  cache_mode: optimised
+  max_unpublished: 20
 
 publish_mode: editorial_workflow
 
