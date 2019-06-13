@@ -1,0 +1,1 @@
+Cypress scripts are prefixed with cy:

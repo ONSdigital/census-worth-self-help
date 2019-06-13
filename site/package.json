@@ -26,25 +26,34 @@
   "devDependencies": {
     "babel-jest": "24.8.0",
     "babel-preset-gatsby": "0.1.11",
+    "cypress": "3.3.1",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.8.0",
     "jest-dom": "3.4.0",
+    "mocha": "5.2.0",
+    "mochawesome": "4.0.0",
     "prettier": "1.17.1",
     "react-test-renderer": "16.8.6",
-    "react-testing-library": "7.0.1"
+    "react-testing-library": "7.0.1",
+    "start-server-and-test": "1.9.1"
   },
   "keywords": [
     "gatsby"
   ],
   "scripts": {
     "build": "npm audit ; jest ; gatsby build",
+    "cy:open": "node_modules/cypress/bin/cypress open",
+    "cy:run": "node_modules/cypress/bin/cypress run",
+    "cy:run:chrome": "node_modules/cypress/bin/cypress run -b chrome",
+    "cy:run:chrome:specific": "node_modules/cypress/bin/cypress run -b chrome -s",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "format": "prettier --write {cypress,src}/**/*.{js,jsx}",
     "start": "npm run develop",
     "local": "./localbuild.sh; npm run develop",
     "serve": "gatsby serve",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "e2e": "start-server-and-test start http://localhost:8000 cy:run"
   },
   "repository": {
     "type": "git",

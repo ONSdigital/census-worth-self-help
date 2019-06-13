@@ -20,7 +20,7 @@ jobs:
               tag: alpine
 
           params:
-            GCP_SECRETS_VERSION : ((gcp.secrets-version))
+            GCP_SECRETS_VERSION: ((gcp.secrets-version))
 
           run:
             path: sh

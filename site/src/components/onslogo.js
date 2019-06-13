@@ -16,6 +16,7 @@ export default () => {
         css={css`
           padding: 0px 15px 20px 15px;
         `}
+        data-test="ons-logo__header"
       />
     </div>
   )
