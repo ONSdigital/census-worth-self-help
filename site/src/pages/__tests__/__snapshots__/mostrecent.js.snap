@@ -90,6 +90,7 @@ exports[`Most Recent renders correctly 1`] = `
         ",
           }
         }
+        data-test="topbarlink__menu-button"
         href="search"
       >
         <svg
@@ -147,6 +148,7 @@ exports[`Most Recent renders correctly 1`] = `
         ",
           }
         }
+        data-test="topbarlink__menu-button"
         href="menu"
       >
         Menu
@@ -366,6 +368,7 @@ exports[`Most Recent renders correctly 1`] = `
         ",
               }
             }
+            data-test="articletab__article-card"
             data-testid="article-card-title"
             href="test-article-1"
           >
@@ -459,6 +462,7 @@ exports[`Most Recent renders correctly 1`] = `
         ",
               }
             }
+            data-test="articletab__article-card"
             data-testid="article-card-title"
             href="test-article-2"
           >
@@ -552,6 +556,7 @@ exports[`Most Recent renders correctly 1`] = `
         ",
               }
             }
+            data-test="articletab__article-card"
             data-testid="article-card-title"
             href="test-article-3"
           >
@@ -645,6 +650,7 @@ exports[`Most Recent renders correctly 1`] = `
         ",
               }
             }
+            data-test="articletab__article-card"
             data-testid="article-card-title"
             href="test-article-4"
           >

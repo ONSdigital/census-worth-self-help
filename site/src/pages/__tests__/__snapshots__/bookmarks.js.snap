@@ -90,6 +90,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         ",
           }
         }
+        data-test="topbarlink__menu-button"
         href="search"
       >
         <svg
@@ -147,6 +148,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         ",
           }
         }
+        data-test="topbarlink__menu-button"
         href="menu"
       >
         Menu
@@ -366,6 +368,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         ",
               }
             }
+            data-test="articletab__article-card"
             data-testid="article-card-title"
             href="test-article-1"
           >
@@ -649,6 +652,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         ",
           }
         }
+        data-test="topbarlink__menu-button"
         href="search"
       >
         <svg
@@ -706,6 +710,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         ",
           }
         }
+        data-test="topbarlink__menu-button"
         href="menu"
       >
         Menu
