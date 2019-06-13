@@ -121,6 +121,7 @@ exports[`Search renders correctly 1`] = `
             }
           }
           data-testid="search-box"
+          maxLength="60"
           onChange={[Function]}
           type="text"
           value=""

@@ -45,6 +45,7 @@ export default ({ searchObject = null }) => {
             <input
               data-testid="search-box"
               className="Notification-heading-Style"
+              maxLength="60"
               css={css`
                 border: 0;
                 border-radius: 16px;
