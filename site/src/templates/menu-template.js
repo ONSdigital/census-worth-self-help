@@ -24,7 +24,7 @@ export default ({ pageContext }) => {
           ${spacing.main_box};
           ${gradients.navy_shine};
         `}
-        data-test="menu-template__menu-box-overlay"
+        data-testid="menu-template-menu-box-overlay"
       >
         <MenuLink link="/" title="Home" />
         <hr

@@ -1,5 +1,4 @@
 module.exports = {
-    menuButton: `[data-test='topbarlink__menu-button']`,
-    menuButtonClass: `.Header-button-Style`,
-    menuOverlay: `[data-test='menu-template__menu-box-overlay']`
+    menuButton: `[data-testid='topbarlink-button']`,
+    menuOverlay: `[data-testid='menu-template-menu-box-overlay']`
 };

@@ -93,9 +93,9 @@ export default class Search extends React.Component {
     return tags
   }
 
-  static stripHTML(html){
-    var doc = new DOMParser().parseFromString(html, 'text/html');
-    return doc.body.textContent || "";
+  static stripHTML(html) {
+    var doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent || ""
   }
 
   static highlightNode(node, query) {

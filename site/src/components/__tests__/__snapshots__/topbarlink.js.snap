@@ -3,6 +3,7 @@
 exports[`TopBarLink renders correctly 1`] = `
 <div
   className="Header-button-Style"
+  data-testid="topbarlink-button"
   css={
     Object {
       "map": undefined,
