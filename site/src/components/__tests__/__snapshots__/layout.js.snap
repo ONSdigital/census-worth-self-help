@@ -90,6 +90,7 @@ exports[`Layout renders correctly 1`] = `
         ",
           }
         }
+        data-test="topbarlink__menu-button"
         href="search"
       >
         <svg
@@ -147,6 +148,7 @@ exports[`Layout renders correctly 1`] = `
         ",
           }
         }
+        data-test="topbarlink__menu-button"
         href="menu"
       >
         Menu

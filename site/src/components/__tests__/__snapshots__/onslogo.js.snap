@@ -28,6 +28,7 @@ exports[`ONS Logo renders correctly 1`] = `
         ",
       }
     }
+    data-test="ons-logo__header"
     src="/ONS_logo.svg"
   />
 </div>

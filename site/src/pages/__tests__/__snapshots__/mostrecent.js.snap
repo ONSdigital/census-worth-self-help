@@ -90,6 +90,7 @@ exports[`Most Recent renders correctly 1`] = `
         ",
           }
         }
+        data-test="topbarlink__menu-button"
         href="search"
       >
         <svg
@@ -147,6 +148,7 @@ exports[`Most Recent renders correctly 1`] = `
         ",
           }
         }
+        data-test="topbarlink__menu-button"
         href="menu"
       >
         Menu
@@ -368,6 +370,7 @@ exports[`Most Recent renders correctly 1`] = `
         ",
               }
             }
+            data-test="articletab__article-card"
             href="test1"
           >
             testArticle1
@@ -460,6 +463,7 @@ exports[`Most Recent renders correctly 1`] = `
         ",
               }
             }
+            data-test="articletab__article-card"
             href="test"
           >
             testArticle2
