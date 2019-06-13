@@ -1,7 +1,7 @@
 backend:
   name: github
-  repo: ONSdigital/census-worth-self-help
-  branch: test_content
+  repo: ONSdigital/census-worth-self-help-test
+  branch: master
   squash_merges: true
   base_url: https://oauth.worth.census-gcp.onsdigital.uk/
 
