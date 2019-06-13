@@ -89,6 +89,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
       ",
           }
         }
+        data-testid="topbarlink-button"
         onClick={[Function]}
       >
         <svg
@@ -133,6 +134,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
       ",
           }
         }
+        data-testid="topbarlink-button"
         onClick={[Function]}
       >
         Menu
@@ -640,6 +642,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
       ",
           }
         }
+        data-testid="topbarlink-button"
         onClick={[Function]}
       >
         <svg
@@ -684,6 +687,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
       ",
           }
         }
+        data-testid="topbarlink-button"
         onClick={[Function]}
       >
         Menu

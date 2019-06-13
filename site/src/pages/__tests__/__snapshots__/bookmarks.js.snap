@@ -89,6 +89,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
       ",
           }
         }
+        data-testid="topbarlink-button"
         onClick={[Function]}
       >
         <svg
@@ -133,6 +134,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
       ",
           }
         }
+        data-testid="topbarlink-button"
         onClick={[Function]}
       >
         Menu
@@ -666,6 +668,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
       ",
           }
         }
+        data-testid="topbarlink-button"
         onClick={[Function]}
       >
         <svg
@@ -710,6 +713,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
       ",
           }
         }
+        data-testid="topbarlink-button"
         onClick={[Function]}
       >
         Menu

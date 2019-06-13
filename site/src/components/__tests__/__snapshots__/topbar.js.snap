@@ -75,6 +75,7 @@ exports[`TopBar renders correctly 1`] = `
       ",
         }
       }
+      data-testid="topbarlink-button"
       onClick={[Function]}
     >
       <svg
@@ -119,6 +120,7 @@ exports[`TopBar renders correctly 1`] = `
       ",
         }
       }
+      data-testid="topbarlink-button"
       onClick={[Function]}
     >
       Menu
@@ -264,6 +266,7 @@ exports[`TopBar renders correctly with searchbox 1`] = `
       ",
         }
       }
+      data-testid="topbarlink-button"
       onClick={[Function]}
     >
       Menu

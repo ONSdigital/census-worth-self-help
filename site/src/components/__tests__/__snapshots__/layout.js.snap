@@ -89,6 +89,7 @@ exports[`Layout renders correctly 1`] = `
       ",
           }
         }
+        data-testid="topbarlink-button"
         onClick={[Function]}
       >
         <svg
@@ -133,6 +134,7 @@ exports[`Layout renders correctly 1`] = `
       ",
           }
         }
+        data-testid="topbarlink-button"
         onClick={[Function]}
       >
         Menu

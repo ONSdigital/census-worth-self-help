@@ -3,7 +3,6 @@
 exports[`TopBarLink renders correctly 1`] = `
 <div
   className="Header-button-Style"
-  data-testid="topbarlink-button"
   css={
     Object {
       "map": undefined,
@@ -26,6 +25,7 @@ exports[`TopBarLink renders correctly 1`] = `
       ",
     }
   }
+  data-testid="topbarlink-button"
   onClick={[Function]}
 >
   menu
