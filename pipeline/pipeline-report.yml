@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: feature/ONS-148-generate-dev-report
     webhook_token: ((git.census-worth-self-help-webhook-token))
     check_every: 24h
 
@@ -16,7 +16,7 @@ jobs:
         config:
           platform: linux
           image_resource:
-            type: docker-image
+            type: registry-image
             source:
               repository: cypress/base
               tag: 10
@@ -26,28 +26,30 @@ jobs:
 
           outputs:
             - name: mochaawesome-report
-              path: census-worth-self-help/site/mochaawesome-report
 
           caches:
             - path: .npm
-            - path: .cache
+            - path: .cypress-cache
 
           run:
             path: sh
             args:
               - -exec
               - |
+                export ROOT_FOLDER=$(pwd)
+                export CYPRESS_CACHE_FOLDER=${ROOT_FOLDER}/.cypress-cache
                 cd census-worth-self-help/site
                 npm ci
                 npm test
                 ./localbuild.sh
                 npm run e2e
+                mv census-worth-self-help/site/mochaawesome-report ../../mochaawesome-report
 
       - task: deploy
         config:
           platform: linux
           image_resource:
-            type: docker-image
+            type: registry-image
             source:
               repository: google/cloud-sdk
               tag: alpine
