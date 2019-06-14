@@ -3,7 +3,7 @@ import { css } from "@emotion/core"
 import { Link } from "gatsby"
 import { spacing, colors } from "../utils/styles"
 
-export default ({ title, link, icon = null }) => {
+export default ({ title, link, icon = null, additionalCss = undefined }) => {
   return (
     <div
       css={css`
@@ -16,6 +16,7 @@ export default ({ title, link, icon = null }) => {
         text-align: center;
         height: 40px;
         background-color: ${colors.white};
+        ${additionalCss}
       `}
     >
       {icon && (

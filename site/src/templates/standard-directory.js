@@ -11,6 +11,7 @@ export default ({ pageContext }) => {
         <Breadcrumbs
           breadcrumbs={pageContext.breadcrumbs}
           peers={pageContext.peers}
+          thisPage={pageContext.title}
         />
       }
       <PageTitle>{pageContext.title}</PageTitle>

@@ -5,12 +5,16 @@ import { navigate } from "@reach/router"
 import Section from "./section"
 import Select from 'react-select';
 
-export default ({ breadcrumbs, peers = [] }) => {
+export default ({ breadcrumbs, peers = [], thisPage="" }) => {
 
   const convertToOption = (linkPair, tabCount) => {
-    let tabString = "-".repeat(tabCount)
-    return {value: linkPair.link, label: tabString + linkPair.title}
+    let label = "-".repeat(tabCount) + linkPair.title
+    if(linkPair.title === thisPage) {
+      label = (<b>{label}</b>)
+    }
+    return {value: linkPair.link, label: label }
   }
+
   let indentLevel = -1;
   breadcrumbs = breadcrumbs.map(breadcrumb => {
     indentLevel += 1
@@ -18,9 +22,12 @@ export default ({ breadcrumbs, peers = [] }) => {
   })
   indentLevel += 1
   peers = peers.map(peer => convertToOption(peer, indentLevel))
-  if ( peers[0] ) {
-    peers[0].label = (<b>{peers[0].label}</b>)
-  }
+
+  peers.forEach((peer) => {
+    if(peer.label === thisPage) {
+      peer.label = (<b>{peers[0].label}</b>)
+    }
+  })
 
   let options = breadcrumbs.concat(peers)
   let selectedOption =  breadcrumbs[breadcrumbs.length - 1]
