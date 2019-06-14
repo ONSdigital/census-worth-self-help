@@ -1,0 +1,43 @@
+runtime: nodejs10
+service: report
+default_expiration: "1m"
+handlers:
+  - url: /(.*\.json)
+    mime_type: application/json
+    static_files: public/\1
+    upload: public/(.*\.json)
+
+  - url: /(.*\.js)
+    mime_type: text/javascript
+    static_files: public/\1
+    upload: public/(.*\.js)
+
+  - url: /(.*\.css)
+    mime_type: text/css
+    static_files: public/\1
+    upload: public/(.*\.css)
+
+# Images
+  - url: /(.*\.(gif|ico|jpeg|jpg|png|svg))
+    static_files: public/\1
+    upload: public/(.*\.(gif|ico|jpeg|jpg|png|svg))
+
+# Fonts
+  - url: /(.*\.(woff|woff2|tff|eot))
+    static_files: public/\1
+    upload: public/(.*\.(woff|woff2|tff|eots))
+
+# Home page handling
+  - url: /
+    static_files: public/index.html
+    upload: public/index.html
+
+# Support paths with a slash at the end
+  - url: /(.+)/
+    static_files: public/\1/index.html
+    upload: public/(.+)/index.html
+
+# Any left over we treat as a path
+  - url: /(.+)
+    static_files: public/\1/index.html
+    upload: public/(.+)/index.html
