@@ -62,6 +62,7 @@ exports[`StandardArticle renders correctly 1`] = `
             ",
           }
         }
+        onClick={[Function]}
       >
         Census Field Assistant
       </div>
@@ -217,50 +218,180 @@ exports[`StandardArticle renders correctly 1`] = `
             }
           }
         >
-          <select
-            css={
-              Object {
-                "map": undefined,
-                "name": "8a47ri",
-                "next": undefined,
-                "styles": "
-            background-color: rgb(255, 255, 255);
-            border-bottom: rgb(48, 48, 48) 1px solid;
-            width: 100%;
-            padding: 5px;
-          ",
-              }
-            }
-            onChange={[Function]}
-          />
+          <div
+            className="Button-subhead-Style css-2b097c-container"
+            onKeyDown={[Function]}
+          >
+            <div
+              className=" css-yk16xz-control"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+            >
+              <div
+                className=" css-1hwfws3"
+              >
+                <div
+                  className=" css-1wa3eu0-placeholder"
+                >
+                  Select...
+                </div>
+                <div
+                  className="css-1g6gooi"
+                >
+                  <div
+                    className=""
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                  >
+                    <input
+                      aria-autocomplete="list"
+                      autoCapitalize="none"
+                      autoComplete="off"
+                      autoCorrect="off"
+                      disabled={false}
+                      id="react-select-2-input"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      spellCheck="false"
+                      style={
+                        Object {
+                          "background": 0,
+                          "border": 0,
+                          "boxSizing": "content-box",
+                          "color": "inherit",
+                          "fontSize": "inherit",
+                          "label": "input",
+                          "opacity": 1,
+                          "outline": 0,
+                          "padding": 0,
+                          "width": "1px",
+                        }
+                      }
+                      tabIndex="0"
+                      type="text"
+                      value=""
+                    />
+                    <div
+                      style={
+                        Object {
+                          "height": 0,
+                          "left": 0,
+                          "overflow": "scroll",
+                          "position": "absolute",
+                          "top": 0,
+                          "visibility": "hidden",
+                          "whiteSpace": "pre",
+                        }
+                      }
+                    >
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className=" css-1wy0on6"
+              >
+                <div
+                  aria-hidden="true"
+                  className=" css-tlfecz-indicatorContainer"
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="css-19bqh2r"
+                    focusable="false"
+                    height={20}
+                    viewBox="0 0 20 20"
+                    width={20}
+                  >
+                    <path
+                      d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <h1
-        className="Article-Title-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "12cq9cc",
-            "next": undefined,
-            "styles": "
-        
-    padding: 5px 15px;
-  
-        display: flex;
-      ",
-          }
-        }
-        data-testid="search-result-title"
-      >
-        test Article 1
-      </h1>
       <div
         css={
           Object {
             "map": undefined,
-            "name": "1vf6ctb",
+            "name": "bj0o6b",
             "next": undefined,
             "styles": "
+            background-color: white;
+          ",
+          }
+        }
+      >
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "12ew49b",
+              "next": undefined,
+              "styles": "
+        
+    padding: 5px 15px;
+  
+      ",
+            }
+          }
+        >
+          <h1
+            className="Article-Title-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "1xcgh0k",
+                "next": undefined,
+                "styles": "
+          margin-bottom: 0px;
+          display: flex;
+        ",
+              }
+            }
+            data-testid="search-result-title"
+          >
+            test Article 1
+          </h1>
+          <div
+            className="Button-subhead-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "wzn8if",
+                "next": undefined,
+                "styles": "
+            padding-top: 5px;
+            padding-bottom: 15px;
+          ",
+              }
+            }
+          >
+            <span>
+              Last updated:
+              <i>
+                 a few seconds ago
+              </i>
+            </span>
+          </div>
+        </div>
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "1vf6ctb",
+              "next": undefined,
+              "styles": "
         border-radius: 4px;
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
@@ -268,19 +399,19 @@ exports[`StandardArticle renders correctly 1`] = `
         background-color: rgb(255, 255, 255);
         display: flex;
       ",
+            }
           }
-        }
-        data-testid="block-button"
-        onClick={[Function]}
-      >
-        <div
-          className="Article-Title-Style"
-          css={
-            Object {
-              "map": undefined,
-              "name": "14yivzb",
-              "next": undefined,
-              "styles": "
+          data-testid="block-button"
+          onClick={[Function]}
+        >
+          <div
+            className="Article-Title-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "14yivzb",
+                "next": undefined,
+                "styles": "
             
     display: flex;
     justify-content: center;
@@ -293,47 +424,47 @@ exports[`StandardArticle renders correctly 1`] = `
             color: white;
             background-color: #003d59;
           ",
+              }
             }
-          }
-        >
+          >
+            <div
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "1n8pnzb",
+                  "next": undefined,
+                  "styles": "
+              text-align: center;
+            ",
+                }
+              }
+            >
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-bookmark fa-w-12 "
+                data-icon="bookmark"
+                data-prefix="far"
+                focusable="false"
+                role="img"
+                style={Object {}}
+                viewBox="0 0 384 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M336 0H48C21.49 0 0 21.49 0 48v464l192-112 192 112V48c0-26.51-21.49-48-48-48zm0 428.43l-144-84-144 84V54a6 6 0 0 1 6-6h276c3.314 0 6 2.683 6 5.996V428.43z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
+          </div>
           <div
             css={
               Object {
                 "map": undefined,
-                "name": "1n8pnzb",
+                "name": "i8tjei",
                 "next": undefined,
                 "styles": "
-              text-align: center;
-            ",
-              }
-            }
-          >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-bookmark fa-w-12 "
-              data-icon="bookmark"
-              data-prefix="far"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 384 512"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M336 0H48C21.49 0 0 21.49 0 48v464l192-112 192 112V48c0-26.51-21.49-48-48-48zm0 428.43l-144-84-144 84V54a6 6 0 0 1 6-6h276c3.314 0 6 2.683 6 5.996V428.43z"
-                fill="currentColor"
-                style={Object {}}
-              />
-            </svg>
-          </div>
-        </div>
-        <div
-          css={
-            Object {
-              "map": undefined,
-              "name": "i8tjei",
-              "next": undefined,
-              "styles": "
           
     display: flex;
     justify-content: center;
@@ -342,82 +473,310 @@ exports[`StandardArticle renders correctly 1`] = `
           margin: 0px 20px;
           color: #003d59;
         ",
+              }
+            }
+          >
+            <div
+              className="Button-heading-Style"
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "km4e7l",
+                  "next": undefined,
+                  "styles": "
+            text-align: left;
+          ",
+                }
+              }
+            >
+              Bookmark this page
+            </div>
+            <div
+              className="Card-meta-Style"
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "km4e7l",
+                  "next": undefined,
+                  "styles": "
+            text-align: left;
+          ",
+                }
+              }
+            >
+              Save it to view later
+            </div>
+          </div>
+        </div>
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "a00x3a",
+              "next": undefined,
+              "styles": "
+              margin-top: 20px;
+            ",
             }
           }
         >
           <div
-            className="Button-heading-Style"
+            className="Article-body-Style"
             css={
               Object {
                 "map": undefined,
-                "name": "km4e7l",
+                "name": "pywoey",
                 "next": undefined,
                 "styles": "
-            text-align: left;
-          ",
+        
+    padding: 5px 15px;
+  ;
+      ",
               }
             }
           >
-            Bookmark this page
-          </div>
-          <div
-            className="Card-meta-Style"
-            css={
-              Object {
-                "map": undefined,
-                "name": "km4e7l",
-                "next": undefined,
-                "styles": "
-            text-align: left;
-          ",
+            <div
+              className="Article-sub-title-Style"
+            >
+              testDescription
+            </div>
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
               }
-            }
-          >
-            Save it to view later
+            />
           </div>
         </div>
-      </div>
-      <div
-        className="Article-body-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "pywoey",
-            "next": undefined,
-            "styles": "
-        
-    padding: 5px 15px;
-  ;
-      ",
-          }
-        }
-      >
-        <b>
-          testDescription
-        </b>
-      </div>
-      <div
-        className="Article-body-Style"
-        css={
-          Object {
-            "map": undefined,
-            "name": "pywoey",
-            "next": undefined,
-            "styles": "
-        
-    padding: 5px 15px;
-  ;
-      ",
-          }
-        }
-      >
         <div
-          dangerouslySetInnerHTML={
+          css={
             Object {
-              "__html": undefined,
+              "map": undefined,
+              "name": "ypl6yy",
+              "next": undefined,
+              "styles": "
+        border-bottom: 1px rgb(229, 229, 234) solid;
+        padding: 15px 0px;
+      ",
             }
           }
-        />
+        >
+          <div
+            className="Section-heading-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "1mp9jtn",
+                "next": undefined,
+                "styles": "
+                display: flex;
+                
+    padding: 15px 0px;
+  
+                
+    padding: 5px 15px;
+  
+              ",
+              }
+            }
+          >
+            HOW WOULD YOU RATE THIS CONTENT?
+          </div>
+          <div
+            css={
+              Object {
+                "map": undefined,
+                "name": "aoc9mf",
+                "next": undefined,
+                "styles": "
+                display: flex;
+              ",
+              }
+            }
+          >
+            <div
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "ltouev",
+                  "next": undefined,
+                  "styles": "
+        
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+        padding: 0px 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
+        border: solid 1px #ececed;
+        margin: 0px 10px;
+        text-align: center;
+        height: 40px;
+        background-color: rgb(255, 255, 255);
+        
+                  flex: 1;
+                  margin-right: 5px;
+                
+      ",
+                }
+              }
+              onClick={[Function]}
+            >
+              <div
+                css={
+                  Object {
+                    "map": undefined,
+                    "name": "1qs2efx",
+                    "next": undefined,
+                    "styles": "
+            position: relative;
+            color: #003d59;
+          ",
+                  }
+                }
+              >
+                <div
+                  css={
+                    Object {
+                      "map": undefined,
+                      "name": "1wo7hj",
+                      "next": undefined,
+                      "styles": "
+              position: absolute;
+            ",
+                    }
+                  }
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-thumbs-up fa-w-16 "
+                    data-icon="thumbs-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M104 224H24c-13.255 0-24 10.745-24 24v240c0 13.255 10.745 24 24 24h80c13.255 0 24-10.745 24-24V248c0-13.255-10.745-24-24-24zM64 472c-13.255 0-24-10.745-24-24s10.745-24 24-24 24 10.745 24 24-10.745 24-24 24zM384 81.452c0 42.416-25.97 66.208-33.277 94.548h101.723c33.397 0 59.397 27.746 59.553 58.098.084 17.938-7.546 37.249-19.439 49.197l-.11.11c9.836 23.337 8.237 56.037-9.308 79.469 8.681 25.895-.069 57.704-16.382 74.757 4.298 17.598 2.244 32.575-6.148 44.632C440.202 511.587 389.616 512 346.839 512l-2.845-.001c-48.287-.017-87.806-17.598-119.56-31.725-15.957-7.099-36.821-15.887-52.651-16.178-6.54-.12-11.783-5.457-11.783-11.998v-213.77c0-3.2 1.282-6.271 3.558-8.521 39.614-39.144 56.648-80.587 89.117-113.111 14.804-14.832 20.188-37.236 25.393-58.902C282.515 39.293 291.817 0 312 0c24 0 72 8 72 81.452z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                className="Button-heading-Style"
+                css={
+                  Object {
+                    "map": undefined,
+                    "name": "1bt83uw",
+                    "next": undefined,
+                    "styles": "
+          margin: 0px 20px;
+          color: #003d59;
+        ",
+                  }
+                }
+              >
+                Useful
+              </div>
+            </div>
+            <div
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "122bqh2",
+                  "next": undefined,
+                  "styles": "
+        
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+        padding: 0px 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
+        border: solid 1px #ececed;
+        margin: 0px 10px;
+        text-align: center;
+        height: 40px;
+        background-color: rgb(255, 255, 255);
+        
+                  flex: 1;
+                  margin-left: 5px;
+                
+      ",
+                }
+              }
+              onClick={[Function]}
+            >
+              <div
+                css={
+                  Object {
+                    "map": undefined,
+                    "name": "1qs2efx",
+                    "next": undefined,
+                    "styles": "
+            position: relative;
+            color: #003d59;
+          ",
+                  }
+                }
+              >
+                <div
+                  css={
+                    Object {
+                      "map": undefined,
+                      "name": "1wo7hj",
+                      "next": undefined,
+                      "styles": "
+              position: absolute;
+            ",
+                    }
+                  }
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-thumbs-down fa-w-16 "
+                    data-icon="thumbs-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 56v240c0 13.255 10.745 24 24 24h80c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H24C10.745 32 0 42.745 0 56zm40 200c0-13.255 10.745-24 24-24s24 10.745 24 24-10.745 24-24 24-24-10.745-24-24zm272 256c-20.183 0-29.485-39.293-33.931-57.795-5.206-21.666-10.589-44.07-25.393-58.902-32.469-32.524-49.503-73.967-89.117-113.111a11.98 11.98 0 0 1-3.558-8.521V59.901c0-6.541 5.243-11.878 11.783-11.998 15.831-.29 36.694-9.079 52.651-16.178C256.189 17.598 295.709.017 343.995 0h2.844c42.777 0 93.363.413 113.774 29.737 8.392 12.057 10.446 27.034 6.148 44.632 16.312 17.053 25.063 48.863 16.382 74.757 17.544 23.432 19.143 56.132 9.308 79.469l.11.11c11.893 11.949 19.523 31.259 19.439 49.197-.156 30.352-26.157 58.098-59.553 58.098H350.723C358.03 364.34 384 388.132 384 430.548 384 504 336 512 312 512z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                className="Button-heading-Style"
+                css={
+                  Object {
+                    "map": undefined,
+                    "name": "1bt83uw",
+                    "next": undefined,
+                    "styles": "
+          margin: 0px 20px;
+          color: #003d59;
+        ",
+                  }
+                }
+              >
+                Not useful
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -473,7 +832,7 @@ exports[`StandardArticle renders correctly 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "15bgetd",
+              "name": "1k8b10p",
               "next": undefined,
               "styles": "
         
@@ -489,9 +848,11 @@ exports[`StandardArticle renders correctly 1`] = `
         text-align: center;
         height: 40px;
         background-color: rgb(255, 255, 255);
+        
       ",
             }
           }
+          onClick={[Function]}
         >
           <div
             css={
@@ -537,24 +898,22 @@ exports[`StandardArticle renders correctly 1`] = `
               </svg>
             </div>
           </div>
-          <a
+          <div
             className="Button-heading-Style"
             css={
               Object {
                 "map": undefined,
-                "name": "1mhjxs4",
+                "name": "1bt83uw",
                 "next": undefined,
                 "styles": "
           margin: 0px 20px;
-          text-decoration: none;
           color: #003d59;
         ",
               }
             }
-            href="/call_centre"
           >
             Census Field Support
-          </a>
+          </div>
         </div>
       </div>
       <div

@@ -46,16 +46,16 @@ exports[`TabList renders correctly 1`] = `
       ",
         }
       }
+      onClick={[Function]}
     >
-      <a
+      <div
         className="Card-heading-Style"
         css={
           Object {
             "map": undefined,
-            "name": "9t9vj8",
+            "name": "qiy98z",
             "next": undefined,
             "styles": "
-          text-decoration: none;
           color: inherit;
           flex-grow: 1;
           font-weight: semi-bold;
@@ -63,10 +63,9 @@ exports[`TabList renders correctly 1`] = `
           }
         }
         data-testid="articletab-article-card"
-        href="test-article-1"
       >
         test Article 1
-      </a>
+      </div>
       <div
         className="Card-sub-head-Style-gray"
         css={
@@ -152,16 +151,16 @@ exports[`TabList renders correctly 1`] = `
       ",
         }
       }
+      onClick={[Function]}
     >
-      <a
+      <div
         className="Card-heading-Style"
         css={
           Object {
             "map": undefined,
-            "name": "9t9vj8",
+            "name": "qiy98z",
             "next": undefined,
             "styles": "
-          text-decoration: none;
           color: inherit;
           flex-grow: 1;
           font-weight: semi-bold;
@@ -169,10 +168,9 @@ exports[`TabList renders correctly 1`] = `
           }
         }
         data-testid="articletab-article-card"
-        href="test-article-2"
       >
         test Article 2
-      </a>
+      </div>
       <div
         className="Card-sub-head-Style-gray"
         css={
@@ -258,16 +256,16 @@ exports[`TabList renders correctly 1`] = `
       ",
         }
       }
+      onClick={[Function]}
     >
-      <a
+      <div
         className="Card-heading-Style"
         css={
           Object {
             "map": undefined,
-            "name": "9t9vj8",
+            "name": "qiy98z",
             "next": undefined,
             "styles": "
-          text-decoration: none;
           color: inherit;
           flex-grow: 1;
           font-weight: semi-bold;
@@ -275,10 +273,9 @@ exports[`TabList renders correctly 1`] = `
           }
         }
         data-testid="articletab-article-card"
-        href="test-article-3"
       >
         test Article 3
-      </a>
+      </div>
       <div
         className="Card-sub-head-Style-gray"
         css={
@@ -364,16 +361,16 @@ exports[`TabList renders correctly 1`] = `
       ",
         }
       }
+      onClick={[Function]}
     >
-      <a
+      <div
         className="Card-heading-Style"
         css={
           Object {
             "map": undefined,
-            "name": "9t9vj8",
+            "name": "qiy98z",
             "next": undefined,
             "styles": "
-          text-decoration: none;
           color: inherit;
           flex-grow: 1;
           font-weight: semi-bold;
@@ -381,10 +378,9 @@ exports[`TabList renders correctly 1`] = `
           }
         }
         data-testid="articletab-article-card"
-        href="test-article-4"
       >
         test Article 4
-      </a>
+      </div>
       <div
         className="Card-sub-head-Style-gray"
         css={
@@ -469,26 +465,25 @@ exports[`TabList renders correctly 1`] = `
       ",
         }
       }
+      onClick={[Function]}
     >
-      <a
+      <div
         className="Card-heading-Style-white"
         css={
           Object {
             "map": undefined,
-            "name": "pkvqm0",
+            "name": "navq8c",
             "next": undefined,
             "styles": "
-          text-decoration: none;
           
     margin: 0px 2px;
   
         ",
           }
         }
-        href="test-directory-1"
       >
         test Directory 5
-      </a>
+      </div>
     </div>
   </div>
 </div>

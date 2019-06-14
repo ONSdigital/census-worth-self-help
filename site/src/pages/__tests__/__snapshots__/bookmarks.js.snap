@@ -62,6 +62,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
             ",
           }
         }
+        onClick={[Function]}
       >
         Census Field Assistant
       </div>
@@ -190,7 +191,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "15bgetd",
+              "name": "1k8b10p",
               "next": undefined,
               "styles": "
         
@@ -206,9 +207,11 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         text-align: center;
         height: 40px;
         background-color: rgb(255, 255, 255);
+        
       ",
             }
           }
+          onClick={[Function]}
         >
           <div
             css={
@@ -254,45 +257,56 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
               </svg>
             </div>
           </div>
-          <a
+          <div
             className="Button-heading-Style"
             css={
               Object {
                 "map": undefined,
-                "name": "1mhjxs4",
+                "name": "1bt83uw",
                 "next": undefined,
                 "styles": "
           margin: 0px 20px;
-          text-decoration: none;
           color: #003d59;
         ",
               }
             }
-            href="/menu"
           >
             Explore Content
-          </a>
+          </div>
         </div>
       </div>
-      <h1
-        className="Article-Title-Style"
+      <div
         css={
           Object {
             "map": undefined,
-            "name": "12cq9cc",
+            "name": "12ew49b",
             "next": undefined,
             "styles": "
         
     padding: 5px 15px;
   
-        display: flex;
       ",
           }
         }
-        data-testid="search-result-title"
       >
-        My Bookmarks
-      </h1>
+        <h1
+          className="Article-Title-Style"
+          css={
+            Object {
+              "map": undefined,
+              "name": "1xcgh0k",
+              "next": undefined,
+              "styles": "
+          margin-bottom: 0px;
+          display: flex;
+        ",
+            }
+          }
+          data-testid="search-result-title"
+        >
+          My Bookmarks
+        </h1>
+      </div>
       <div
         className="Article-body-Style"
         css={
@@ -355,16 +369,16 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
       ",
               }
             }
+            onClick={[Function]}
           >
-            <a
+            <div
               className="Card-heading-Style"
               css={
                 Object {
                   "map": undefined,
-                  "name": "9t9vj8",
+                  "name": "qiy98z",
                   "next": undefined,
                   "styles": "
-          text-decoration: none;
           color: inherit;
           flex-grow: 1;
           font-weight: semi-bold;
@@ -372,10 +386,9 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
                 }
               }
               data-testid="articletab-article-card"
-              href="test-article-1"
             >
               test Article 1
-            </a>
+            </div>
             <div
               className="Card-sub-head-Style-gray"
               css={
@@ -485,7 +498,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "15bgetd",
+              "name": "1k8b10p",
               "next": undefined,
               "styles": "
         
@@ -501,9 +514,11 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         text-align: center;
         height: 40px;
         background-color: rgb(255, 255, 255);
+        
       ",
             }
           }
+          onClick={[Function]}
         >
           <div
             css={
@@ -549,24 +564,22 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
               </svg>
             </div>
           </div>
-          <a
+          <div
             className="Button-heading-Style"
             css={
               Object {
                 "map": undefined,
-                "name": "1mhjxs4",
+                "name": "1bt83uw",
                 "next": undefined,
                 "styles": "
           margin: 0px 20px;
-          text-decoration: none;
           color: #003d59;
         ",
               }
             }
-            href="/call_centre"
           >
             Census Field Support
-          </a>
+          </div>
         </div>
       </div>
       <div
@@ -641,6 +654,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
             ",
           }
         }
+        onClick={[Function]}
       >
         Census Field Assistant
       </div>
@@ -769,7 +783,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "15bgetd",
+              "name": "1k8b10p",
               "next": undefined,
               "styles": "
         
@@ -785,9 +799,11 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         text-align: center;
         height: 40px;
         background-color: rgb(255, 255, 255);
+        
       ",
             }
           }
+          onClick={[Function]}
         >
           <div
             css={
@@ -833,45 +849,56 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
               </svg>
             </div>
           </div>
-          <a
+          <div
             className="Button-heading-Style"
             css={
               Object {
                 "map": undefined,
-                "name": "1mhjxs4",
+                "name": "1bt83uw",
                 "next": undefined,
                 "styles": "
           margin: 0px 20px;
-          text-decoration: none;
           color: #003d59;
         ",
               }
             }
-            href="/menu"
           >
             Explore Content
-          </a>
+          </div>
         </div>
       </div>
-      <h1
-        className="Article-Title-Style"
+      <div
         css={
           Object {
             "map": undefined,
-            "name": "12cq9cc",
+            "name": "12ew49b",
             "next": undefined,
             "styles": "
         
     padding: 5px 15px;
   
-        display: flex;
       ",
           }
         }
-        data-testid="search-result-title"
       >
-        My Bookmarks
-      </h1>
+        <h1
+          className="Article-Title-Style"
+          css={
+            Object {
+              "map": undefined,
+              "name": "1xcgh0k",
+              "next": undefined,
+              "styles": "
+          margin-bottom: 0px;
+          display: flex;
+        ",
+            }
+          }
+          data-testid="search-result-title"
+        >
+          My Bookmarks
+        </h1>
+      </div>
       <div
         className="Article-body-Style"
         css={
@@ -1050,7 +1077,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "15bgetd",
+              "name": "1k8b10p",
               "next": undefined,
               "styles": "
         
@@ -1066,9 +1093,11 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         text-align: center;
         height: 40px;
         background-color: rgb(255, 255, 255);
+        
       ",
             }
           }
+          onClick={[Function]}
         >
           <div
             css={
@@ -1114,24 +1143,22 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
               </svg>
             </div>
           </div>
-          <a
+          <div
             className="Button-heading-Style"
             css={
               Object {
                 "map": undefined,
-                "name": "1mhjxs4",
+                "name": "1bt83uw",
                 "next": undefined,
                 "styles": "
           margin: 0px 20px;
-          text-decoration: none;
           color: #003d59;
         ",
               }
             }
-            href="/call_centre"
           >
             Census Field Support
-          </a>
+          </div>
         </div>
       </div>
       <div

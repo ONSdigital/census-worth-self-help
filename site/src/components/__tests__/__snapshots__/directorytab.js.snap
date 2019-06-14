@@ -17,25 +17,24 @@ exports[`DirectoryTab renders correctly 1`] = `
       ",
     }
   }
+  onClick={[Function]}
 >
-  <a
+  <div
     className="Card-heading-Style-white"
     css={
       Object {
         "map": undefined,
-        "name": "pkvqm0",
+        "name": "navq8c",
         "next": undefined,
         "styles": "
-          text-decoration: none;
           
     margin: 0px 2px;
   
         ",
       }
     }
-    href="location"
   >
     directory title
-  </a>
+  </div>
 </div>
 `;
