@@ -42,7 +42,6 @@ jobs:
                 npm test
                 ./localbuild.sh
                 npm run e2e
-                cp -R
 
       - task: deploy
         config:

@@ -4,6 +4,7 @@
     cd ../site
     npm install
     npm run coverage
+    rm -Rf mochawesome-report
     npm run cy:run
 
     cd ../report        
