@@ -12,7 +12,39 @@ jobs:
     plan:
       - get: census-worth-self-help
         trigger: true
-      - task: report
+      - task: e2e-test
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: cypress/base
+              tag: 10
+
+          inputs:
+            - name: census-worth-self-help
+
+          outputs:
+            - name: mochaawesome-report
+              path: census-worth-self-help/site/mochaawesome-report
+
+          caches:
+            - path: .npm
+            - path: .cache
+
+          run:
+            path: sh
+            args:
+              - -exec
+              - |
+                cd census-worth-self-help/site
+                npm ci
+                npm test
+                ./localbuild.sh
+                npm run e2e
+                cp -R
+
+      - task: deploy
         config:
           platform: linux
           image_resource:
@@ -28,6 +60,7 @@ jobs:
 
           inputs:
             - name: census-worth-self-help
+            - name: mochaawesome-report
 
           caches:
             - path: census-worth-self-help/site/node_modules
@@ -47,12 +80,12 @@ jobs:
                 mkdir -p "$BUILD"
                 cp -R ../content/ "$BUILD"
                 npm run coverage
-                npm run cy:run
+
                 cd ../report
                 mkdir -p public
                 cp -R static/* public/
                 cp -R ../site/coverage public/
-                cp -R ../site/mochawesome-report public/
+                cp -R ../../mochaawesome-report public/
                 set +x
                 echo $AUTH_KEY > encrypted_key.txt
                 set -x
