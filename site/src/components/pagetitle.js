@@ -2,17 +2,30 @@ import React from "react"
 import { css } from "@emotion/core"
 import { spacing } from "../utils/styles"
 
-export default ({ children }) => {
+export default ({ children, subtitle=null }) => {
   return (
-    <h1
-      className="Article-Title-Style"
-      data-testid="search-result-title"
-      css={css`
+    <div css={css`
         ${spacing.in_page_element}
-        display: flex;
-      `}
-    >
-      {children}
-    </h1>
+    `}>
+      <h1 css={css`
+        margin-bottom: 0px;
+        display:flex;
+        `}
+        className="Article-Title-Style"
+        data-testid="search-result-title"
+      >
+        {children}
+      </h1>
+      {subtitle &&
+        <div css={css`
+            padding-top: 5px;
+            padding-bottom: 15px;
+          `}
+          className="Button-subhead-Style"
+        >
+          { subtitle }
+        </div>
+      }
+    </div>
   )
 }

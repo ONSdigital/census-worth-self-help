@@ -1,6 +1,6 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { Link } from "gatsby"
+import { navigate } from "@reach/router"
 import { colors, spacing } from "../utils/styles"
 const moment = require("moment")
 
@@ -14,6 +14,7 @@ export default ({ node }) => {
   let time_ago = moment(node.frontmatter.date).fromNow()
   return (
     <div
+      onClick={() => navigate("/"+link)}
       css={css`
         ${spacing.tab};
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
@@ -21,19 +22,17 @@ export default ({ node }) => {
         background-color: ${colors.white};
       `}
     >
-      <Link
+      <div
         className="Card-heading-Style"
         data-testid="articletab-article-card"
-        to={link}
         css={css`
-          text-decoration: none;
           color: inherit;
           flex-grow: 1;
           font-weight: semi-bold;
         `}
       >
         {title}
-      </Link>
+      </div>
       <div
         className="Card-sub-head-Style-gray"
         css={css`

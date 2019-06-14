@@ -61,7 +61,7 @@ export default class Article extends React.Component {
         return data.allMarkdownRemark.edges.find(
           edge => edge.node.frontmatter.title === peer.title
         )
-    })
+    }).filter(peer => peer !== undefined)
 
     return (
       <Layout>
@@ -70,71 +70,70 @@ export default class Article extends React.Component {
           peers={pageContext.peers}
           thisPage={pageContext.title}
         />
-        <PageTitle>{pageContext.title}</PageTitle>
+        <div css={css` background-color: white;`}>
+          <PageTitle subtitle={( 
+              <span>Last updated: 
+                <i>{ " " + moment(post.frontmatter.date).fromNow() }</i>
+              </span>
+            )}
+          >{pageContext.title}</PageTitle>
 
-        <div
-          css={css`
-            ${spacing.in_page_element}
-          `}
-        >
-        <span className="Button-subhead-Style">Last updated: </span>
-        <span className="Article-meta-content-Style">{ moment(post.frontmatter.date).fromNow() }</span>
-      </div>
-
-
-        {!bookmarked && (
-          <BlockButton
-            icon={<FontAwesomeIcon icon={faBookmark} />}
-            title="Bookmark this page"
-            subtitle="Save it to view later"
-            clickFunction={this.bookmarkPage}
-          />
-        )}
-
-        {bookmarked && (
-          <BlockButton
-            icon={<FontAwesomeIcon icon={faBookmark} />}
-            title="Bookmarked"
-            subtitle="Click here to remove"
-            clickFunction={this.unBookmarkPage}
-          />
-        )}
-        <TextBlock>
-          <b>{post.frontmatter.description}</b>
-        </TextBlock>
-        <TextBlock>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        </TextBlock>
-        <Section>
-          <div className="Section-heading-Style" css={css`
-            display: flex;
-            ${spacing.standard_vertical}
-            ${spacing.in_page_element}
-          `}>
-          HOW WOULD YOU RATE THIS CONTENT?</div>
-
-          <div css={css`
-            display: flex;
-          `}>
-            <LargeButton
-              additionalCss={css`
-                flex: 1;
-                margin-right: 5px;
-              `}
-              icon={<FontAwesomeIcon icon={faThumbsUp} />}
-              title="Useful"
+          {!bookmarked && (
+            <BlockButton
+              icon={<FontAwesomeIcon icon={faBookmark} />}
+              title="Bookmark this page"
+              subtitle="Save it to view later"
+              clickFunction={this.bookmarkPage}
             />
-            <LargeButton
-              additionalCss={css`
-                flex: 1;
-                margin-left: 5px;
-              `}
-              icon={<FontAwesomeIcon icon={faThumbsDown} />}
-              title="Not useful"
+          )}
+
+          {bookmarked && (
+            <BlockButton
+              icon={<FontAwesomeIcon icon={faBookmark} />}
+              title="Bookmarked"
+              subtitle="Click here to remove"
+              clickFunction={this.unBookmarkPage}
             />
+          )}
+
+          <div css={css` margin-top: 20px;`}>
+            <TextBlock>
+              <div className="Article-sub-title-Style">{post.frontmatter.description}</div>
+              <div dangerouslySetInnerHTML={{ __html: post.html }} />
+            </TextBlock>
           </div>
-        </Section>
-        { otherPeers &&
+
+          <Section>
+            <div className="Section-heading-Style" css={css`
+              display: flex;
+              ${spacing.standard_vertical}
+              ${spacing.in_page_element}
+            `}>
+            HOW WOULD YOU RATE THIS CONTENT?</div>
+
+            <div css={css`
+              display: flex;
+            `}>
+              <LargeButton
+                additionalCss={css`
+                  flex: 1;
+                  margin-right: 5px;
+                `}
+                icon={<FontAwesomeIcon icon={faThumbsUp} />}
+                title="Useful"
+              />
+              <LargeButton
+                additionalCss={css`
+                  flex: 1;
+                  margin-left: 5px;
+                `}
+                icon={<FontAwesomeIcon icon={faThumbsDown} />}
+                title="Not useful"
+              />
+            </div>
+          </Section>
+        </div>
+        { peerEdges.length > 0 &&
           <div>
             <Section>
               <TabList
