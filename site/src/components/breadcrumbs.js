@@ -3,21 +3,30 @@ import { css } from "@emotion/core"
 import { colors, spacing } from "../utils/styles"
 import { navigate } from "@reach/router"
 import Section from "./section"
+import Select from 'react-select';
 
 export default ({ breadcrumbs, peers = [] }) => {
-  let breadcrumbOptions = breadcrumbs.map(breadcrumb => (
-    <option key={breadcrumb.title} value={breadcrumb.link}>
-      {breadcrumb.title}
-    </option>
-  ))
-  let peerOptions = peers.map(peer => (
-    <option key={peer.title} value={peer.link}>
-      {peer.title}
-    </option>
-  ))
 
-  const redirect = event => {
-    navigate(`/` + event.target.value)
+  const convertToOption = (linkPair, tabCount) => {
+    let tabString = "-".repeat(tabCount)
+    return {value: linkPair.link, label: tabString + linkPair.title}
+  }
+  let indentLevel = -1;
+  breadcrumbs = breadcrumbs.map(breadcrumb => {
+    indentLevel += 1
+    return convertToOption(breadcrumb, indentLevel)
+  })
+  indentLevel += 1
+  peers = peers.map(peer => convertToOption(peer, indentLevel))
+  if ( peers[0] ) {
+    peers[0].label = (<b>{peers[0].label}</b>)
+  }
+
+  let options = breadcrumbs.concat(peers)
+  let selectedOption =  breadcrumbs[breadcrumbs.length - 1]
+
+  const redirect = option => {
+    navigate(`/` + option.value)
   }
 
   return (
@@ -39,18 +48,15 @@ export default ({ breadcrumbs, peers = [] }) => {
           ${spacing.in_page_element}
         `}
       >
-        <select
+        <Select
+          className="Button-subhead-Style"
+          value={selectedOption}
           onChange={redirect}
-          css={css`
-            background-color: ${colors.white};
-            border-bottom: ${colors.black_two} 1px solid;
-            width: 100%;
-            padding: 5px;
-          `}
-        >
-          {breadcrumbOptions}
-          {peerOptions}
-        </select>
+          options={options}
+          components={{
+            IndicatorSeparator: () => null
+          }}
+        />
       </div>
     </Section>
   )
