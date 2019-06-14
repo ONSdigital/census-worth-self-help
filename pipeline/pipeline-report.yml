@@ -1,0 +1,62 @@
+resources:
+  - name: census-worth-self-help
+    type: git
+    source:
+      uri: https://github.com/ONSdigital/census-worth-self-help.git
+      branch: master
+    webhook_token: ((git.census-worth-self-help-webhook-token))
+    check_every: 24h
+
+jobs:
+  - name: report
+    plan:
+      - get: census-worth-self-help
+        trigger: true
+      - task: report
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: google/cloud-sdk
+              tag: alpine
+
+          params:
+            AUTH_KEY: ((gcp.service-account-key))
+            PROJECT: ((gcp.project-name))
+            GCP_SECRETS_VERSION: ((gcp.secrets-version))
+
+          inputs:
+            - name: census-worth-self-help
+
+          caches:
+            - path: census-worth-self-help/site/node_modules
+
+          run:
+            path: sh
+            args:
+              - -exec
+              - |
+                set +x
+                echo "GCP Secrets Version      : $GCP_SECRETS_VERSION"
+                set -x
+                apk add --no-progress --update nodejs nodejs-npm
+                cd census-worth-self-help/site
+                npm install
+                BUILD="_build/content/"
+                mkdir -p "$BUILD"
+                cp -R ../content/ "$BUILD"
+                npm run coverage
+                npm run cy:run
+                cd ../report
+                mkdir -p public
+                cp -R static/* public/
+                cp -R ../site/coverage public/
+                cp -R ../site/mochawesome-report public/
+                set +x
+                echo $AUTH_KEY > encrypted_key.txt
+                set -x
+                base64 -d encrypted_key.txt > service-account.json
+                gcloud auth activate-service-account --key-file service-account.json
+                gcloud config set project $PROJECT
+                gcloud app deploy -q
