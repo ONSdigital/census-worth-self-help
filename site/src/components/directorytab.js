@@ -6,7 +6,7 @@ import { colors, spacing } from "../utils/styles"
 export default ({ title, link }) => {
   return (
     <div
-      onClick={() => navigate("/"+link)}
+      onClick={() => navigate("/" + link)}
       css={css`
           ${spacing.tab}
           background: ${colors.navy_normal};

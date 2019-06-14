@@ -55,13 +55,17 @@ export default class Article extends React.Component {
     const post = data.markdownRemark
     let bookmarked = this.state.bookmarked
 
-    let otherPeers = pageContext.peers.filter(peer => peer.title !== pageContext.title)
+    let otherPeers = pageContext.peers.filter(
+      peer => peer.title !== pageContext.title
+    )
 
-    let peerEdges = otherPeers.map(peer => {
+    let peerEdges = otherPeers
+      .map(peer => {
         return data.allMarkdownRemark.edges.find(
           edge => edge.node.frontmatter.title === peer.title
         )
-    }).filter(peer => peer !== undefined)
+      })
+      .filter(peer => peer !== undefined)
 
     return (
       <Layout>
@@ -70,13 +74,21 @@ export default class Article extends React.Component {
           peers={pageContext.peers}
           thisPage={pageContext.title}
         />
-        <div css={css` background-color: white;`}>
-          <PageTitle subtitle={( 
-              <span>Last updated: 
-                <i>{ " " + moment(post.frontmatter.date).fromNow() }</i>
+        <div
+          css={css`
+            background-color: white;
+          `}
+        >
+          <PageTitle
+            subtitle={
+              <span>
+                Last updated:
+                <i>{" " + moment(post.frontmatter.date).fromNow()}</i>
               </span>
-            )}
-          >{pageContext.title}</PageTitle>
+            }
+          >
+            {pageContext.title}
+          </PageTitle>
 
           {!bookmarked && (
             <BlockButton
@@ -96,24 +108,36 @@ export default class Article extends React.Component {
             />
           )}
 
-          <div css={css` margin-top: 20px;`}>
+          <div
+            css={css`
+              margin-top: 20px;
+            `}
+          >
             <TextBlock>
-              <div className="Article-sub-title-Style">{post.frontmatter.description}</div>
+              <div className="Article-sub-title-Style">
+                {post.frontmatter.description}
+              </div>
               <div dangerouslySetInnerHTML={{ __html: post.html }} />
             </TextBlock>
           </div>
 
           <Section>
-            <div className="Section-heading-Style" css={css`
-              display: flex;
-              ${spacing.standard_vertical}
-              ${spacing.in_page_element}
-            `}>
-            HOW WOULD YOU RATE THIS CONTENT?</div>
+            <div
+              className="Section-heading-Style"
+              css={css`
+                display: flex;
+                ${spacing.standard_vertical}
+                ${spacing.in_page_element}
+              `}
+            >
+              HOW WOULD YOU RATE THIS CONTENT?
+            </div>
 
-            <div css={css`
-              display: flex;
-            `}>
+            <div
+              css={css`
+                display: flex;
+              `}
+            >
               <LargeButton
                 additionalCss={css`
                   flex: 1;
@@ -133,16 +157,13 @@ export default class Article extends React.Component {
             </div>
           </Section>
         </div>
-        { peerEdges.length > 0 &&
+        {peerEdges.length > 0 && (
           <div>
             <Section>
-              <TabList
-                title="ALSO IN THIS TOPIC"
-                elements={peerEdges}
-              />
+              <TabList title="ALSO IN THIS TOPIC" elements={peerEdges} />
             </Section>
           </div>
-        }
+        )}
       </Layout>
     )
   }

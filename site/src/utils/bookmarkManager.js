@@ -1,4 +1,3 @@
-
 export default class BookmarkManager {
   constructor() {
     try {
@@ -7,7 +6,7 @@ export default class BookmarkManager {
     } catch (exception) {
       this.localStorage = false
     }
-    
+
     if (!this.bookmarks) {
       this.bookmarks = []
     }
@@ -25,7 +24,8 @@ export default class BookmarkManager {
     if (!this.isPageBookmarked(page)) {
       this.bookmarks.push(page)
     }
-    this.localStorage && this.localStorage.setItem("bookmarks", JSON.stringify(this.bookmarks))
+    this.localStorage &&
+      this.localStorage.setItem("bookmarks", JSON.stringify(this.bookmarks))
   }
 
   unBookmarkPage(page) {
@@ -33,6 +33,7 @@ export default class BookmarkManager {
       return bookmark !== page
     })
 
-    this.localStorage && this.localStorage.setItem("bookmarks", JSON.stringify(this.bookmarks))
+    this.localStorage &&
+      this.localStorage.setItem("bookmarks", JSON.stringify(this.bookmarks))
   }
 }

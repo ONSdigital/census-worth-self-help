@@ -3,19 +3,18 @@ import { css } from "@emotion/core"
 import { colors, spacing } from "../utils/styles"
 import { navigate } from "@reach/router"
 import Section from "./section"
-import Select from 'react-select';
+import Select from "react-select"
 
-export default ({ breadcrumbs, peers = [], thisPage="" }) => {
-
+export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
   const convertToOption = (linkPair, tabCount) => {
     let label = "-".repeat(tabCount) + linkPair.title
-    if(linkPair.title === thisPage) {
-      label = (<b>{label}</b>)
+    if (linkPair.title === thisPage) {
+      label = <b>{label}</b>
     }
-    return {value: linkPair.link, label: label }
+    return { value: linkPair.link, label: label }
   }
 
-  let indentLevel = -1;
+  let indentLevel = -1
   breadcrumbs = breadcrumbs.map(breadcrumb => {
     indentLevel += 1
     return convertToOption(breadcrumb, indentLevel)
@@ -23,14 +22,14 @@ export default ({ breadcrumbs, peers = [], thisPage="" }) => {
   indentLevel += 1
   peers = peers.map(peer => convertToOption(peer, indentLevel))
 
-  peers.forEach((peer) => {
-    if(peer.label === thisPage) {
-      peer.label = (<b>{peers[0].label}</b>)
+  peers.forEach(peer => {
+    if (peer.label === thisPage) {
+      peer.label = <b>{peers[0].label}</b>
     }
   })
 
   let options = breadcrumbs.concat(peers)
-  let selectedOption =  breadcrumbs[breadcrumbs.length - 1]
+  let selectedOption = breadcrumbs[breadcrumbs.length - 1]
 
   const redirect = option => {
     navigate(`/` + option.value)

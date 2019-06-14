@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { navigate } from "@reach/router"
 
-
 export default ({ searchObject = null }) => {
   return (
     <header
