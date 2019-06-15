@@ -9,6 +9,9 @@ resources:
 
 jobs:
   - name: report
+    build_log_retention:
+      days: 7
+      builds: 10
     plan:
       - get: census-worth-self-help
         trigger: true
@@ -46,7 +49,6 @@ jobs:
                 npm test
                 ./localbuild.sh
                 npm run e2e
-                mv mochawesome-report/* ../../mochawesome-report
 
       - task: deploy
         config:
@@ -84,7 +86,7 @@ jobs:
                 mkdir -p public
                 cp -R static/* public/
                 cp -R ../site/coverage public/
-                cp -R ../../mochawesome-report public/
+                cp -R ../site/mochawesome-report public/
                 set +x
                 echo $AUTH_KEY > encrypted_key.txt
                 set -x
