@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: feature/ONS-148-generate-dev-report
+      branch: master
     webhook_token: ((git.census-worth-self-help-webhook-token))
     check_every: 24h
 
