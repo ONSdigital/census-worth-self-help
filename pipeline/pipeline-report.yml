@@ -25,7 +25,10 @@ jobs:
             - name: census-worth-self-help
 
           outputs:
-            - name: mochaawesome-report
+            - name: mochawesome-report
+              path: census-worth-self-help/site/mochawesome-report
+            - name: coverage
+              path: census-worth-self-help/site/coverage
 
           caches:
             - path: .npm
@@ -43,7 +46,7 @@ jobs:
                 npm test
                 ./localbuild.sh
                 npm run e2e
-                mv census-worth-self-help/site/mochaawesome-report ../../mochaawesome-report
+                mv mochawesome-report/* ../../mochawesome-report
 
       - task: deploy
         config:
@@ -61,7 +64,10 @@ jobs:
 
           inputs:
             - name: census-worth-self-help
-            - name: mochaawesome-report
+            - name: mochawesome-report
+              path: census-worth-self-help/site/mochawesome-report
+            - name: coverage
+              path: census-worth-self-help/site/coverage
 
           caches:
             - path: census-worth-self-help/site/node_modules
@@ -74,19 +80,11 @@ jobs:
                 set +x
                 echo "GCP Secrets Version      : $GCP_SECRETS_VERSION"
                 set -x
-                apk add --no-progress --update nodejs nodejs-npm
-                cd census-worth-self-help/site
-                npm install
-                BUILD="_build/content/"
-                mkdir -p "$BUILD"
-                cp -R ../content/ "$BUILD"
-                npm run coverage
-
-                cd ../report
+                cd census-worth-self-help/report
                 mkdir -p public
                 cp -R static/* public/
                 cp -R ../site/coverage public/
-                cp -R ../../mochaawesome-report public/
+                cp -R ../../mochawesome-report public/
                 set +x
                 echo $AUTH_KEY > encrypted_key.txt
                 set -x
