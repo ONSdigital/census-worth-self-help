@@ -79,9 +79,6 @@ jobs:
             args:
               - -exec
               - |
-                set +x
-                echo "GCP Secrets Version      : $GCP_SECRETS_VERSION"
-                set -x
                 cd census-worth-self-help/report
                 mkdir -p public
                 cp -R static/* public/
