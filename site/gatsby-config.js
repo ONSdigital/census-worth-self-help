@@ -38,9 +38,9 @@ module.exports = {
             urlPattern: /cms.js$/,
             handler: `cacheFirst`,
             options: {
-              cacheName: 'netlify-cms-f9f8628c',
+              cacheName: 'netlify-cms',
               expiration: {
-                maxAgeSeconds: 604800,
+                maxAgeSeconds: 3600,
               }
             }
           },
