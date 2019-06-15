@@ -41,6 +41,7 @@ module.exports = {
               cacheName: 'netlify-cms',
               expiration: {
                 maxAgeSeconds: 3600,
+                purgeOnQuotaError: true,
               }
             }
           },
