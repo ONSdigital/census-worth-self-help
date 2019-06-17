@@ -30,6 +30,31 @@ module.exports = {
     `gatsby-plugin-emotion`,
     `gatsby-plugin-netlify-cms`,
     `gatsby-transformer-remark`,
-    'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        runtimeCaching: [
+          {
+            urlPattern: /cms.js$/,
+            handler: `cacheFirst`,
+            options: {
+              cacheName: 'netlify-cms',
+              expiration: {
+                maxAgeSeconds: 3600,
+                purgeOnQuotaError: true,
+              }
+            }
+          },
+          {
+            urlPattern: /(\.js$|\.css$|static\/)/,
+            handler: `cacheFirst`,
+          },
+          {
+            urlPattern: /.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
+            handler: `staleWhileRevalidate`,
+          }
+        ]
+      },
+    }
   ],
 }
