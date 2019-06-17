@@ -1,0 +1,46 @@
+resources:
+- name: census-worth-self-help
+  type: git
+  source:
+    uri: https://github.com/ONSdigital/census-worth-self-help.git
+    branch: feature/ONS-152-pipeline-cleanup
+  webhook_token: ((git.census-worth-self-help-webhook-token))
+  check_every: 15m
+
+- name: content-repo
+  type: git
+  source:
+    uri: git@github.com:ONSdigital/census-worth-self-help-test.git
+    branch: master
+    private_key: ((git-keys-test.private-key))
+  webhook_token: ((git.census-worth-self-help-test-webhook-token))
+
+jobs:
+- name: test
+  plan:
+  - get: census-worth-self-help
+    trigger: true
+    
+  - task: test
+    params:
+      SERVICE: default
+      BACKEND_BRANCH: master
+    file: census-worth-self-help/pipeline/tasks/test.yml
+
+  - task: deploy-reports
+    file: census-worth-self-help/pipeline/tasks/deploy-test-reports.yml
+
+- name: deploy
+  plan:
+  - get: census-worth-self-help
+    passed: [test]
+    trigger: true
+  - get: content-repo
+    trigger: true
+
+  - task: deploy
+    params:
+      SERVICE: default
+      BACKEND_BRANCH: master
+      BACKEND_CONTENT_REPO: census-worth-self-help-test
+    file: census-worth-self-help/pipeline/tasks/deploy-code.yml
