@@ -1,4 +1,4 @@
-This repositories includes the following modules :
+This repositories includes the following modules
 
 * [site](site/README.md)
 
