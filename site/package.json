@@ -23,7 +23,7 @@
     "npm-font-open-sans": "1.1.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-select": "^3.0.4"
+    "react-select": "3.0.4"
   },
   "devDependencies": {
     "babel-jest": "24.8.0",
