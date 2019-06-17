@@ -46,7 +46,7 @@ jobs:
                 export CYPRESS_CACHE_FOLDER=${ROOT_FOLDER}/.cypress-cache
                 cd census-worth-self-help/site
                 npm ci
-                npm test
+                npm test -- --coverage
                 ./localbuild.sh
                 npm run e2e
 
