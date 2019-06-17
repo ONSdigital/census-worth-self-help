@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    background-color: #fafafa;
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+header {
+    background: linear-gradient(to left,#003d59,#33637a);
+    width: 100vw;
+    color: #fff;
+    padding: 1em;
+}
+
+a {
+    color: #003d59;
+}
+
+li {
+    list-style: none;
+    line-height: 2em;
+}

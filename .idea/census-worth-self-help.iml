@@ -4,8 +4,10 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/site/.cache" />
+      <excludeFolder url="file://$MODULE_DIR$/site/node_modules" />
       <excludeFolder url="file://$MODULE_DIR$/site/public" />
     </content>
+    <content url="file://$MODULE_DIR$/site/node_modules" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
