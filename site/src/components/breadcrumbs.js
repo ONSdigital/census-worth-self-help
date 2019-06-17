@@ -6,14 +6,12 @@ import Section from "./section"
 import Select from "react-select"
 
 export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
+
   const convertToOption = (linkPair, tabCount) => {
-    let label = "-".repeat(tabCount) + linkPair.title
-    if (linkPair.title === thisPage) {
-      label = <b>{label}</b>
-    }
-    return { value: linkPair.link, label: label }
+    return { value: linkPair.link, label: linkPair.title, indent: tabCount }
   }
 
+  // ancestors have increasing indentation up to the peers that all have the same.
   let indentLevel = -1
   breadcrumbs = breadcrumbs.map(breadcrumb => {
     indentLevel += 1
@@ -21,15 +19,26 @@ export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
   })
   indentLevel += 1
   peers = peers.map(peer => convertToOption(peer, indentLevel))
+  let options = breadcrumbs.concat(peers)
 
-  peers.forEach(peer => {
-    if (peer.label === thisPage) {
-      peer.label = <b>{peers[0].label}</b>
+  // react-select needs the option object itself to know whats been selected.
+  let selectedOption = null
+  options.forEach(option => {
+    if (option.label === thisPage) {
+      selectedOption = option
     }
   })
 
-  let options = breadcrumbs.concat(peers)
-  let selectedOption = breadcrumbs[breadcrumbs.length - 1]
+  // react-select style object we inherit everything and only change the indent
+  const colourStyles = {
+    option: (styles, { data }) => {
+      console.log(data)
+      return {
+        ...styles,
+        "text-indent": data.indent + "em"
+      };
+    },
+  };
 
   const redirect = option => {
     navigate(`/` + option.value)
@@ -59,6 +68,7 @@ export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
           value={selectedOption}
           onChange={redirect}
           options={options}
+          styles={colourStyles}
           components={{
             IndicatorSeparator: () => null
           }}
