@@ -6,6 +6,7 @@ import { spacing, colors } from "../utils/styles"
 export default ({ title, link, icon = null, additionalCss = undefined }) => {
   return (
     <div
+      data-testid="large-button"
       onClick={() => navigate(link)}
       css={css`
         ${spacing.vert_aligned_flex_text}

@@ -211,6 +211,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
       ",
             }
           }
+          data-testid="large-button"
           onClick={[Function]}
         >
           <div
@@ -518,6 +519,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
       ",
             }
           }
+          data-testid="large-button"
           onClick={[Function]}
         >
           <div
@@ -803,6 +805,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
       ",
             }
           }
+          data-testid="large-button"
           onClick={[Function]}
         >
           <div
@@ -1097,6 +1100,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
       ",
             }
           }
+          data-testid="large-button"
           onClick={[Function]}
         >
           <div

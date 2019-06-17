@@ -541,6 +541,7 @@ exports[`StandardArticle renders correctly 1`] = `
               testDescription
             </div>
             <div
+              className="article-content"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": undefined,
@@ -622,6 +623,7 @@ exports[`StandardArticle renders correctly 1`] = `
       ",
                 }
               }
+              data-testid="large-button"
               onClick={[Function]}
             >
               <div
@@ -712,6 +714,7 @@ exports[`StandardArticle renders correctly 1`] = `
       ",
                 }
               }
+              data-testid="large-button"
               onClick={[Function]}
             >
               <div
@@ -773,6 +776,166 @@ exports[`StandardArticle renders correctly 1`] = `
                 }
               >
                 Not useful
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "ypl6yy",
+              "next": undefined,
+              "styles": "
+        border-bottom: 1px rgb(229, 229, 234) solid;
+        padding: 15px 0px;
+      ",
+            }
+          }
+        >
+          <div
+            css={
+              Object {
+                "map": undefined,
+                "name": "1p7jpnp",
+                "next": undefined,
+                "styles": "
+        
+    padding: 15px 0px;
+  ;
+      ",
+              }
+            }
+          >
+            <div
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "qvcny6",
+                  "next": undefined,
+                  "styles": "
+          
+    padding: 15px 0px;
+  ;
+          
+    padding: 5px 15px;
+  
+          display: flex;
+        ",
+                }
+              }
+            >
+              <div
+                className="Section-heading-Style"
+              >
+                ALSO IN THIS TOPIC
+              </div>
+            </div>
+            <div
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "1mij31f",
+                  "next": undefined,
+                  "styles": "
+        
+    margin: 2px 0px;
+  ;
+      ",
+                }
+              }
+            >
+              <div
+                css={
+                  Object {
+                    "map": undefined,
+                    "name": "1q53lw7",
+                    "next": undefined,
+                    "styles": "
+        
+    padding: 15px;
+    min-height: 30px;
+  ;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+        border-left: 6px solid #003d59;
+        background-color: rgb(255, 255, 255);
+      ",
+                  }
+                }
+                onClick={[Function]}
+              >
+                <div
+                  className="Card-heading-Style"
+                  css={
+                    Object {
+                      "map": undefined,
+                      "name": "qiy98z",
+                      "next": undefined,
+                      "styles": "
+          color: inherit;
+          flex-grow: 1;
+          font-weight: semi-bold;
+        ",
+                    }
+                  }
+                  data-testid="articletab-article-card"
+                >
+                  test Article 2
+                </div>
+                <div
+                  className="Card-sub-head-Style-gray"
+                  css={
+                    Object {
+                      "map": undefined,
+                      "name": "1hejrb1",
+                      "next": undefined,
+                      "styles": "
+          padding-top: 6px;
+          display: flex;
+          flex-direction: vertical;
+          line-height: 1.08;
+          max-height: 42.12px; // line-height * font-size * 3
+        ",
+                    }
+                  }
+                >
+                  <div
+                    css={
+                      Object {
+                        "map": undefined,
+                        "name": "lz6rtp",
+                        "next": undefined,
+                        "styles": "
+            width: 70%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+          ",
+                      }
+                    }
+                  >
+                    testDescription
+                  </div>
+                  <div
+                    className="Card-meta-Style"
+                    css={
+                      Object {
+                        "map": undefined,
+                        "name": "4j3tb8",
+                        "next": undefined,
+                        "styles": "
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          ",
+                      }
+                    }
+                  >
+                    a few seconds ago
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -852,6 +1015,7 @@ exports[`StandardArticle renders correctly 1`] = `
       ",
             }
           }
+          data-testid="large-button"
           onClick={[Function]}
         >
           <div

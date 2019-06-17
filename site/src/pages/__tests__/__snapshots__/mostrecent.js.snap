@@ -211,6 +211,7 @@ exports[`Most Recent renders correctly 1`] = `
       ",
             }
           }
+          data-testid="large-button"
           onClick={[Function]}
         >
           <div
@@ -833,6 +834,7 @@ exports[`Most Recent renders correctly 1`] = `
       ",
             }
           }
+          data-testid="large-button"
           onClick={[Function]}
         >
           <div
