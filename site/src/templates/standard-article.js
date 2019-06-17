@@ -117,7 +117,10 @@ export default class Article extends React.Component {
               <div className="Article-sub-title-Style">
                 {post.frontmatter.description}
               </div>
-              <div className="article-content" dangerouslySetInnerHTML={{ __html: post.html }} />
+              <div
+                className="article-content"
+                dangerouslySetInnerHTML={{ __html: post.html }}
+              />
             </TextBlock>
           </div>
 

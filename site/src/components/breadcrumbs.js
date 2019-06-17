@@ -6,7 +6,6 @@ import Section from "./section"
 import Select from "react-select"
 
 export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
-
   const convertToOption = (linkPair, tabCount) => {
     return { value: linkPair.link, label: linkPair.title, indent: tabCount }
   }
@@ -36,9 +35,9 @@ export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
       return {
         ...styles,
         "text-indent": data.indent + "em"
-      };
-    },
-  };
+      }
+    }
+  }
 
   const redirect = option => {
     navigate(`/` + option.value)
