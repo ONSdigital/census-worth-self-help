@@ -6,7 +6,7 @@ resources:
     branch: master
   check_every: 15m
 
-- name: census-worth-self-help-test
+- name: content-repository
   type: git
   source:
     uri: git@github.com:ONSdigital/census-worth-self-help-test.git
@@ -19,55 +19,12 @@ jobs:
   plan:
   - get: census-worth-self-help
     trigger: true
-  - get: census-worth-self-help-test
+  - get: content-repository
     trigger: true
+  
   - task: deploy
-    config:
-      platform: linux
-      image_resource:
-        type: docker-image
-        source:
-          repository: google/cloud-sdk
-          tag: alpine
-
-      params:
-        AUTH_KEY: ((gcp.service-account-key))
-        PROJECT: ((gcp.project-name))
-        GCP_SECRETS_VERSION: ((gcp.secrets-version))
-        GIT_KEYS_SECRETS_VERSION: ((git-keys.secrets-version))
-
-      inputs:
-      - name: census-worth-self-help
-      - name: census-worth-self-help-test
-
-      caches:
-      - path: census-worth-self-help/site/node_modules
-
-      run:
-        path: sh
-        args:
-        - -exec
-        - |
-            set +x
-            echo "GCP secrets version      : $GCP_SECRETS_VERSION"
-            echo "Git keys secrets version      : $GIT_KEYS_SECRETS_VERSION"
-            set -x
-            apk add --no-progress --update nodejs nodejs-npm
-            cd census-worth-self-help/site
-            npm install
-            BUILD="_build/content/"
-            mkdir -p "$BUILD"
-            cp -R ../../census-worth-self-help-test/content/ "$BUILD"
-            ASSET_DIR="static/assets/"
-            cp -R ../../census-worth-self-help-test/static/assets "$ASSET_DIR"
-            npm run build
-            set +x
-            echo $AUTH_KEY > encrypted_key.txt
-            set -x
-            base64 -d encrypted_key.txt > service-account.json
-            gcloud auth activate-service-account --key-file service-account.json
-            gcloud config set project $PROJECT
-            sed "s/service:.*/service: test/" app.yaml > ci-app.yaml
-            sed -i "s/  branch:.*/  branch: master/" public/admin/config.yml
-            sed -i "s/  repo:.*/  repo: ONSdigital\/census-worth-self-help-test/" public/admin/config.yml
-            gcloud app deploy -q ci-app.yaml
+    params:
+      SERVICE: test
+      BUILD_NETLIFY: false     
+      BACKEND_CONTENT_REPO: census-worth-self-help-test
+    file: census-worth-self-help/pipeline/tasks/deploy-site.yml
