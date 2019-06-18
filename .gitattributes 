@@ -1,1 +1,1 @@
-*.snap linguist-generated
+site/src/components/__tests__/__snapshots__ linguist-generated=true
