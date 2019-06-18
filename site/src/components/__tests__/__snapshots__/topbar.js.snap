@@ -48,6 +48,7 @@ exports[`TopBar renders correctly 1`] = `
             ",
         }
       }
+      onClick={[Function]}
     >
       Census Field Assistant
     </div>

@@ -3,16 +3,17 @@ import renderer from "react-test-renderer"
 
 import StandardArticle from "../standard-article"
 
-import {articleNode} from "../../utils/testdata"
+import {articleNode, articleList} from "../../utils/testdata"
 
 describe("StandardArticle", () => {
   const pageContext = {
   	breadcrumbs : [],
-  	peers : [],
+  	peers : [ {title: "nothing"}, {title: "test Article 2"}],
   	title : "test Article 1"
   }
   const data = {
-  	markdownRemark : articleNode
+  	markdownRemark : articleNode,
+    allMarkdownRemark : articleList
   }
   it("renders correctly", () => {
     const tree = renderer

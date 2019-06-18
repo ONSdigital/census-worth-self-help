@@ -19,23 +19,22 @@ exports[`MenuLink renders correctly with hidden nodes 1`] = `
       }
     }
   >
-    <a
+    <div
       className="Menu-major-item-Style"
       css={
         Object {
           "map": undefined,
-          "name": "gujogz",
+          "name": "vecy55",
           "next": undefined,
           "styles": "
-              text-decoration: none;
               flex-grow: 1;
             ",
         }
       }
-      href="basic"
+      onClick={[Function]}
     >
       basic
-    </a>
+    </div>
     <div
       className="Menu-major-item-Style"
       css={
@@ -78,23 +77,22 @@ exports[`MenuLink renders correctly without hidden nodes 1`] = `
       }
     }
   >
-    <a
+    <div
       className="Menu-major-item-Style"
       css={
         Object {
           "map": undefined,
-          "name": "gujogz",
+          "name": "vecy55",
           "next": undefined,
           "styles": "
-              text-decoration: none;
               flex-grow: 1;
             ",
         }
       }
-      href="basic"
+      onClick={[Function]}
     >
       basic
-    </a>
+    </div>
   </div>
 </div>
 `;

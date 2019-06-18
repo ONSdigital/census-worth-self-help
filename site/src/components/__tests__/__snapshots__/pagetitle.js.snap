@@ -1,23 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageTitle renders correctly 1`] = `
-<h1
-  className="Article-Title-Style"
+<div
   css={
     Object {
       "map": undefined,
-      "name": "12cq9cc",
+      "name": "12ew49b",
       "next": undefined,
       "styles": "
         
     padding: 5px 15px;
   
-        display: flex;
       ",
     }
   }
-  data-testid="search-result-title"
 >
-  This is a title
-</h1>
+  <h1
+    className="Article-Title-Style"
+    css={
+      Object {
+        "map": undefined,
+        "name": "1xcgh0k",
+        "next": undefined,
+        "styles": "
+          margin-bottom: 0px;
+          display: flex;
+        ",
+      }
+    }
+    data-testid="search-result-title"
+  >
+    This is a title
+  </h1>
+</div>
 `;

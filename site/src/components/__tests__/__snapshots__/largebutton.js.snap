@@ -5,7 +5,7 @@ exports[`Large Button renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "15bgetd",
+      "name": "1k8b10p",
       "next": undefined,
       "styles": "
         
@@ -21,27 +21,28 @@ exports[`Large Button renders correctly 1`] = `
         text-align: center;
         height: 40px;
         background-color: rgb(255, 255, 255);
+        
       ",
     }
   }
+  data-testid="large-button"
+  onClick={[Function]}
 >
-  <a
+  <div
     className="Button-heading-Style"
     css={
       Object {
         "map": undefined,
-        "name": "1mhjxs4",
+        "name": "1bt83uw",
         "next": undefined,
         "styles": "
           margin: 0px 20px;
-          text-decoration: none;
           color: #003d59;
         ",
       }
     }
-    href="anywhere"
   >
     press me
-  </a>
+  </div>
 </div>
 `;

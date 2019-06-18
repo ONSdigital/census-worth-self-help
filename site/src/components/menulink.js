@@ -1,6 +1,6 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { Link } from "gatsby"
+import { navigate } from "@reach/router"
 import { spacing } from "../utils/styles"
 
 export default class MenuLink extends React.Component {
@@ -46,16 +46,15 @@ export default class MenuLink extends React.Component {
             padding-right: 20px;
           `}
         >
-          <Link
+          <div
+            onClick={() => navigate("/" + link)}
             className="Menu-major-item-Style"
-            to={link}
             css={css`
-              text-decoration: none;
               flex-grow: 1;
             `}
           >
             {title}
-          </Link>
+          </div>
           {hiddenMenu && (
             <div
               className="Menu-major-item-Style"

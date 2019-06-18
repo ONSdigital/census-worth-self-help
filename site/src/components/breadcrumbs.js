@@ -3,21 +3,44 @@ import { css } from "@emotion/core"
 import { colors, spacing } from "../utils/styles"
 import { navigate } from "@reach/router"
 import Section from "./section"
+import Select from "react-select"
 
-export default ({ breadcrumbs, peers = [] }) => {
-  let breadcrumbOptions = breadcrumbs.map(breadcrumb => (
-    <option key={breadcrumb.title} value={breadcrumb.link}>
-      {breadcrumb.title}
-    </option>
-  ))
-  let peerOptions = peers.map(peer => (
-    <option key={peer.title} value={peer.link}>
-      {peer.title}
-    </option>
-  ))
+export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
+  const convertToOption = (linkPair, tabCount) => {
+    return { value: linkPair.link, label: linkPair.title, indent: tabCount }
+  }
 
-  const redirect = event => {
-    navigate(`/` + event.target.value)
+  // ancestors have increasing indentation up to the peers that all have the same.
+  let indentLevel = -1
+  breadcrumbs = breadcrumbs.map(breadcrumb => {
+    indentLevel += 1
+    return convertToOption(breadcrumb, indentLevel)
+  })
+  indentLevel += 1
+  peers = peers.map(peer => convertToOption(peer, indentLevel))
+  let options = breadcrumbs.concat(peers)
+
+  // react-select needs the option object itself to know whats been selected.
+  let selectedOption = null
+  options.forEach(option => {
+    if (option.label === thisPage) {
+      selectedOption = option
+    }
+  })
+
+  // react-select style object we inherit everything and only change the indent
+  const colourStyles = {
+    option: (styles, { data }) => {
+      console.log(data)
+      return {
+        ...styles,
+        "text-indent": data.indent + "em"
+      }
+    }
+  }
+
+  const redirect = option => {
+    navigate(`/` + option.value)
   }
 
   return (
@@ -39,18 +62,16 @@ export default ({ breadcrumbs, peers = [] }) => {
           ${spacing.in_page_element}
         `}
       >
-        <select
+        <Select
+          className="Button-subhead-Style"
+          value={selectedOption}
           onChange={redirect}
-          css={css`
-            background-color: ${colors.white};
-            border-bottom: ${colors.black_two} 1px solid;
-            width: 100%;
-            padding: 5px;
-          `}
-        >
-          {breadcrumbOptions}
-          {peerOptions}
-        </select>
+          options={options}
+          styles={colourStyles}
+          components={{
+            IndicatorSeparator: () => null
+          }}
+        />
       </div>
     </Section>
   )

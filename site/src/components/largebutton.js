@@ -1,11 +1,13 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { Link } from "gatsby"
+import { navigate } from "@reach/router"
 import { spacing, colors } from "../utils/styles"
 
-export default ({ title, link, icon = null }) => {
+export default ({ title, link, icon = null, additionalCss = undefined }) => {
   return (
     <div
+      data-testid="large-button"
+      onClick={() => navigate(link)}
       css={css`
         ${spacing.vert_aligned_flex_text}
         padding: 0px 10px;
@@ -16,6 +18,7 @@ export default ({ title, link, icon = null }) => {
         text-align: center;
         height: 40px;
         background-color: ${colors.white};
+        ${additionalCss}
       `}
     >
       {icon && (
@@ -34,17 +37,15 @@ export default ({ title, link, icon = null }) => {
           </div>
         </div>
       )}
-      <Link
+      <div
         className="Button-heading-Style"
-        to={link}
         css={css`
           margin: 0px 20px;
-          text-decoration: none;
           color: ${colors.navy_normal};
         `}
       >
         {title}
-      </Link>
+      </div>
     </div>
   )
 }

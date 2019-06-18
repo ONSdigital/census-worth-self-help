@@ -205,7 +205,6 @@ export const query = graphql`
     }
 
     allMarkdownRemark(filter: { fields: { collection: { eq: "articles" } } }) {
-      totalCount
       edges {
         node {
           html

@@ -5,6 +5,7 @@ import TopbarLink from "./topbarlink"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
+import { navigate } from "@reach/router"
 
 export default ({ searchObject = null }) => {
   return (
@@ -70,6 +71,7 @@ export default ({ searchObject = null }) => {
         >
           <div
             className="Header-Title-Style"
+            onClick={() => navigate("/")}
             css={css`
               ${spacing.vert_aligned_flex_text}
               ${spacing.page_padding}

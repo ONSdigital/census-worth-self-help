@@ -26,7 +26,7 @@ export default ({ pageContext }) => {
         `}
         data-testid="menu-template-menu-box-overlay"
       >
-        <MenuLink link="/" title="Home" />
+        <MenuLink link="" title="Home" />
         <hr
           css={css`
             border-top: 1px solid white;
@@ -38,9 +38,9 @@ export default ({ pageContext }) => {
             border-top: 1px solid white;
           `}
         />
-        <MenuLink link="/mostrecent" title="Recently updated" />
-        {/* todo: <MenuLink link="/bookmarks" title="My Bookmarks" /> */}
-        {/* todo: <MenuLink link="/fsscc" title="Field Contact Centre" /> */}
+        <MenuLink link="mostrecent" title="Recently updated" />
+        <MenuLink link="bookmarks" title="My Bookmarks" />
+        {/* todo: <MenuLink link="fsscc" title="Field Contact Centre" /> */}
       </div>
     </div>
   )
