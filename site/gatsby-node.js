@@ -46,6 +46,7 @@ function fetchArticlesAndDirectories(data) {
       directories.push(
         { node : node,
          title : node.frontmatter.title,
+         description : node.frontmatter.description,
          link : node.fields.pagename,
          parent_title : node.frontmatter.directory,
          resolved : false,
@@ -158,6 +159,7 @@ function createDirectoryPages(createPage, directories)
       component: path.resolve(`./src/templates/standard-directory.js`),
       context: {
         title : directory.title,
+        description : directory.node ? directory.node.frontmatter.description : undefined,
         children : children,
         peers : peers,
         breadcrumbs : directory.breadcrumbs

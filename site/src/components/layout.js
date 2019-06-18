@@ -15,7 +15,7 @@ import { faBook } from "@fortawesome/free-solid-svg-icons"
 export default ({
   children,
   logo = false,
-  phone_link = true,
+  phone_link = false,
   explore_more_link = false,
   alert = false,
   searchObject

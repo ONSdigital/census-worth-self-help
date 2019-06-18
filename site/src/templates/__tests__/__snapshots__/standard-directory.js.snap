@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Most Recent renders correctly 1`] = `
+exports[`StandardArticle renders correctly 1`] = `
 <div
   css={
     Object {
@@ -188,91 +188,135 @@ exports[`Most Recent renders correctly 1`] = `
         }
       >
         <div
+          className="Section-heading-Style"
           css={
             Object {
               "map": undefined,
-              "name": "1k8b10p",
+              "name": "136nmlb",
               "next": undefined,
               "styles": "
-        
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+          
+    padding: 5px 15px;
   
-        padding: 0px 10px;
-        border-radius: 4px;
-        box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
-        border: solid 1px #ececed;
-        margin: 0px 10px;
-        text-align: center;
-        height: 40px;
-        background-color: rgb(255, 255, 255);
-        
-      ",
+        ",
             }
           }
-          data-testid="large-button"
-          onClick={[Function]}
+        >
+          EXPLORE CONTENT
+        </div>
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "136nmlb",
+              "next": undefined,
+              "styles": "
+          
+    padding: 5px 15px;
+  
+        ",
+            }
+          }
         >
           <div
-            css={
-              Object {
-                "map": undefined,
-                "name": "3pw6ud",
-                "next": undefined,
-                "styles": "
-            position: relative;
-            color: rgb(0,61,89);
-          ",
-              }
-            }
+            className="Button-subhead-Style css-2b097c-container"
+            onKeyDown={[Function]}
           >
             <div
-              css={
-                Object {
-                  "map": undefined,
-                  "name": "1wo7hj",
-                  "next": undefined,
-                  "styles": "
-              position: absolute;
-            ",
-                }
-              }
+              className=" css-yk16xz-control"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
             >
-              <svg
-                aria-hidden="true"
-                className="svg-inline--fa fa-book fa-w-14 "
-                data-icon="book"
-                data-prefix="fas"
-                focusable="false"
-                role="img"
-                style={Object {}}
-                viewBox="0 0 448 512"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                className=" css-1hwfws3"
               >
-                <path
-                  d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
-                  fill="currentColor"
-                  style={Object {}}
-                />
-              </svg>
+                <div
+                  className=" css-1wa3eu0-placeholder"
+                >
+                  Select...
+                </div>
+                <div
+                  className="css-1g6gooi"
+                >
+                  <div
+                    className=""
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                  >
+                    <input
+                      aria-autocomplete="list"
+                      autoCapitalize="none"
+                      autoComplete="off"
+                      autoCorrect="off"
+                      disabled={false}
+                      id="react-select-2-input"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      spellCheck="false"
+                      style={
+                        Object {
+                          "background": 0,
+                          "border": 0,
+                          "boxSizing": "content-box",
+                          "color": "inherit",
+                          "fontSize": "inherit",
+                          "label": "input",
+                          "opacity": 1,
+                          "outline": 0,
+                          "padding": 0,
+                          "width": "1px",
+                        }
+                      }
+                      tabIndex="0"
+                      type="text"
+                      value=""
+                    />
+                    <div
+                      style={
+                        Object {
+                          "height": 0,
+                          "left": 0,
+                          "overflow": "scroll",
+                          "position": "absolute",
+                          "top": 0,
+                          "visibility": "hidden",
+                          "whiteSpace": "pre",
+                        }
+                      }
+                    >
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className=" css-1wy0on6"
+              >
+                <div
+                  aria-hidden="true"
+                  className=" css-tlfecz-indicatorContainer"
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="css-19bqh2r"
+                    focusable="false"
+                    height={20}
+                    viewBox="0 0 20 20"
+                    width={20}
+                  >
+                    <path
+                      d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                    />
+                  </svg>
+                </div>
+              </div>
             </div>
-          </div>
-          <div
-            className="Button-heading-Style"
-            css={
-              Object {
-                "map": undefined,
-                "name": "7tk8ru",
-                "next": undefined,
-                "styles": "
-          margin: 0px 20px;
-          color: rgb(0,61,89);
-        ",
-              }
-            }
-          >
-            Explore Content
           </div>
         </div>
       </div>
@@ -305,7 +349,7 @@ exports[`Most Recent renders correctly 1`] = `
           }
           data-testid="search-result-title"
         >
-          Recently Updated
+          test Directory 1
         </h1>
       </div>
       <div
@@ -323,7 +367,11 @@ exports[`Most Recent renders correctly 1`] = `
           }
         }
       >
-        Most recent changes, need to check with Phil to see if there's actually content for this
+        <div
+          className="Article-sub-title-Style"
+        >
+          test description
+        </div>
       </div>
       <div
         css={
@@ -339,6 +387,30 @@ exports[`Most Recent renders correctly 1`] = `
           }
         }
       >
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "qvcny6",
+              "next": undefined,
+              "styles": "
+          
+    padding: 15px 0px;
+  ;
+          
+    padding: 5px 15px;
+  
+          display: flex;
+        ",
+            }
+          }
+        >
+          <div
+            className="Section-heading-Style"
+          >
+            IN THIS SECTION:
+          </div>
+        </div>
         <div>
           <div
             css={

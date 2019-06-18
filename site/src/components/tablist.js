@@ -7,18 +7,8 @@ import { Link } from "gatsby"
 
 export default ({ elements, title = false, link = false }) => {
   let elementTabs = elements.map(({ node }) => (
-    <div
-      key={node.frontmatter.title}
-      css={css`
-        ${spacing.minimum_gap};
-      `}
-    >
-      {node.fields.collection === "directories" && (
-        <DirectoryTab
-          title={node.frontmatter.title}
-          link={node.fields.pagename}
-        />
-      )}
+    <div key={node.frontmatter.title}>
+      {node.fields.collection === "directories" && <DirectoryTab node={node} />}
       {node.fields.collection === "articles" && <ArticleTab node={node} />}
     </div>
   ))
