@@ -1,0 +1,83 @@
+resources:
+- name: census-worth-self-help
+  type: git
+  source:
+    uri: https://github.com/ONSdigital/census-worth-self-help.git
+    branch: master
+  check_every: 15m
+
+- name: census-worth-self-help-test
+  type: git
+  source:
+    uri: git@github.com:ONSdigital/census-worth-self-help-test.git
+    branch: master
+    private_key: ((git-keys-test.private-key))
+  webhook_token: ((git.census-worth-self-help-test-webhook-token))
+
+
+jobs:
+- name: deploy
+  plan:
+  - get: census-worth-self-help
+    trigger: true
+  - get: census-worth-self-help-test
+    trigger: true
+  
+  - task: deploy
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: google/cloud-sdk
+          tag: alpine
+
+      params:
+        AUTH_KEY: ((gcp.service-account-key))
+        PROJECT: ((gcp.project-name))
+        GCP_SECRETS_VERSION: ((gcp.secrets-version))
+        GIT_KEYS_SECRETS_VERSION: ((git-keys.secrets-version))
+        NETLIFY_BUCKET_NAME: ((gcp.netlify-bucket-name))
+
+      inputs:
+      - name: census-worth-self-help
+      - name: census-worth-self-help-test
+
+      run:
+        path: sh
+        args:
+        - -exec
+        - |
+            set +x
+            echo "GCP secrets version      : $GCP_SECRETS_VERSION"
+            echo "Git keys secrets version      : $GIT_KEYS_SECRETS_VERSION"
+            echo "Netlify bucket name  : $NETLIFY_BUCKET_NAME"
+            echo $AUTH_KEY > encrypted_key.txt
+            set -x
+            base64 -d encrypted_key.txt > service-account.json
+            gcloud auth activate-service-account --key-file service-account.json
+            gcloud config set project $PROJECT
+
+            mkdir netlify-cms-app
+            gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-2-9-1-x.tar.gz .
+            tar -xvzf worth-netlify-cms-app-2-9-1-x.tar.gz -C netlify-cms-app
+
+            set -x
+            apk add --no-progress --update nodejs nodejs-npm
+            cd census-worth-self-help/site
+            npm install 
+            npm install ../../netlify-cms-app
+            apk update && apk add  --no-progress -u yarn
+            yarn
+            BUILD="_build/content/"
+            mkdir -p "$BUILD"
+            cp -R ../../census-worth-self-help-test/content/ "$BUILD"
+            ASSET_DIR="static/assets/"
+            cp -R ../../census-worth-self-help-test/static/assets "$ASSET_DIR"
+            npm run build
+            set +x
+            
+            sed "s/service:.*/service: testbeta/" app.yaml > ci-app.yaml
+            sed -i "s/  branch:.*/  branch: master/" public/admin/config.yml
+            sed -i "s/  repo:.*/  repo: ONSdigital\/census-worth-self-help-test/" public/admin/config.yml
+            gcloud app deploy -q ci-app.yaml
