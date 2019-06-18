@@ -37,6 +37,7 @@ jobs:
         PROJECT: ((gcp.project-name))
         GCP_SECRETS_VERSION: ((gcp.secrets-version))
         GIT_KEYS_SECRETS_VERSION: ((git-keys.secrets-version))
+        NETLIFY_BUCKET_NAME: ((gcp.netlify-bucket-name))
 
       inputs:
       - name: census-worth-self-help
@@ -50,7 +51,7 @@ jobs:
             set +x
             echo "GCP secrets version      : $GCP_SECRETS_VERSION"
             echo "Git keys secrets version      : $GIT_KEYS_SECRETS_VERSION"
-
+            echo "Netlify bucket name  : $NETLIFY_BUCKET_NAME"
             echo $AUTH_KEY > encrypted_key.txt
             set -x
             base64 -d encrypted_key.txt > service-account.json
@@ -58,13 +59,13 @@ jobs:
             gcloud config set project $PROJECT
 
             mkdir netlify-cms-app
-            gsutil cp gs://census-worth-dev-netlify-cms/worth-netlify-cms-app-2-9-1-x.tar.gz .
+            gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-2-9-1-x.tar.gz .
             tar -xvzf worth-netlify-cms-app-2-9-1-x.tar.gz -C netlify-cms-app
 
             set -x
             apk add --no-progress --update nodejs nodejs-npm
             cd census-worth-self-help/site
-            npm install
+            npm install 
             npm install ../../netlify-cms-app
             apk update && apk add  --no-progress -u yarn
             yarn
