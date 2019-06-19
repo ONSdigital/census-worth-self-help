@@ -16,6 +16,5 @@ jest-preprocess.js
 jest.config.js
 gatsby*.js
 loadershim.js
-package*.json
 prettier.config.js
 setup-test-env.js

@@ -5,6 +5,9 @@
   "version": "0.1.0",
   "license": "MIT",
   "main": "app.js",
+  "engines": {
+    "node": ">=10"
+  },
   "dependencies": {
     "@emotion/core": "10.0.10",
     "@fortawesome/fontawesome-svg-core": "1.2.18",
@@ -62,7 +65,7 @@
     "format": "prettier --write {cypress,src}/**/*.{js,jsx}",
     "local": "./localbuild.sh; npm run develop",
     "serve": "gatsby serve",
-    "start": "npm run develop",
+    "start": "node app.js",
     "test": "jest"
   },
   "repository": {
