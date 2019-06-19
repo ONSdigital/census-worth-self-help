@@ -54,6 +54,15 @@ module.exports = {
           }
         ]
       },
+    },
+    {
+      resolve: 'gatsby-plugin-matomo',
+      options: {
+        siteId: '6',
+        matomoUrl: 'http://35.242.170.129',
+        siteUrl: 'http://dev.worth.census-gcp.onsdigital.uk',
+        // dev: true
+      }
     }
   ],
 }

@@ -404,6 +404,9 @@ exports[`Most Recent renders correctly 1`] = `
       ",
               }
             }
+            data-content-name="test Article 1"
+            data-content-piece="foo"
+            data-track-content={true}
             onClick={[Function]}
           >
             <div
@@ -496,6 +499,9 @@ exports[`Most Recent renders correctly 1`] = `
       ",
               }
             }
+            data-content-name="test Article 2"
+            data-content-piece="foo"
+            data-track-content={true}
             onClick={[Function]}
           >
             <div
@@ -588,6 +594,9 @@ exports[`Most Recent renders correctly 1`] = `
       ",
               }
             }
+            data-content-name="test Article 3"
+            data-content-piece="foo"
+            data-track-content={true}
             onClick={[Function]}
           >
             <div
@@ -680,6 +689,9 @@ exports[`Most Recent renders correctly 1`] = `
       ",
               }
             }
+            data-content-name="test Article 4"
+            data-content-piece="foo"
+            data-track-content={true}
             onClick={[Function]}
           >
             <div
