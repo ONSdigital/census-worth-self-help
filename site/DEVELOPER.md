@@ -20,3 +20,7 @@ Then
     npm run app
     
 Then access http://localhost:8080/protected
+
+# Deploy secured app
+
+    gcloud app deploy ci-app.yaml

@@ -12,6 +12,7 @@
 
 .deploy
 app-with-env.yaml
+ci-app.yaml
 
 # Gatsby / Node
 
@@ -20,7 +21,6 @@ node_modules
 public
 site/_build
 site/static/assets
-ci-app.yaml
 coverage
 
 # Cypress
