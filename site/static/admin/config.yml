@@ -47,6 +47,7 @@ collections:
     create: true
     fields:
       - { name: title, label: Title }
+      - { name: description, label: Description }
       - { label: "Directory",
           name: "directory",
           widget: "relation",
