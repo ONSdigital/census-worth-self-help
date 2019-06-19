@@ -4,6 +4,7 @@
   "description": "A Self Help Facility",
   "version": "0.1.0",
   "license": "MIT",
+  "main": "app.js",
   "dependencies": {
     "@emotion/core": "10.0.10",
     "@fortawesome/fontawesome-svg-core": "1.2.18",

@@ -35,9 +35,9 @@ handlers:
   - url: /protected.html
     static_files: public/protected.html
     upload: public/protected.html
-    login: required
+#    login: required
 
-  - url: /protected.html
+  - url: /protected
     script: auto
 
 # Home page handling
