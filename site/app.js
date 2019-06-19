@@ -23,12 +23,14 @@ app.use(passport.session())
 
 const spCertificate = fs.readFileSync('.cache/sp/sp.crt', 'utf-8');
 const spKey = fs.readFileSync('.cache/sp/sp.key', 'utf-8');
+const idpCertificate = fs.readFileSync('.cache/idp/idp-public-cert.pem','utf-8')
 const samlStrategy = new SamlStrategy({
-    host: 'localhost',
-    path: '/sso/callback',
+    cert: idpCertificate,
     entryPoint: IDP_ENTRY_POINT,
+    host: 'localhost',
+    identifierFormat:'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
     issuer: 'http://localhost:8080',
-    identifierFormat:'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified'
+    path: '/sso/callback'
     //decryptionPvk: spKey,
   },
   function(profile, done) {
@@ -74,7 +76,7 @@ app.all('/protected', function (req, res, next) {
   }
 })
 
-app.get('/metadata', function (req, res) {
+app.get('/saml/metadata', function (req, res) {
   res.type('application/xml');
   res.send(samlStrategy.generateServiceProviderMetadata(spCertificate));
 })
