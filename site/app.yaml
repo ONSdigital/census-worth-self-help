@@ -40,6 +40,18 @@ handlers:
   - url: /protected
     script: auto
 
+  - url: /sso/callback
+    script: auto
+
+  - url: /saml/metadata
+    script: auto
+
+  - url: /login
+    script: auto
+
+  - url: /logout
+    script: auto
+
 # Home page handling
   - url: /
     static_files: public/index.html
