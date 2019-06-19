@@ -11,13 +11,15 @@ const IDP_ENTRY_POINT = process.env.IDP_ENTRY_POINT
 // Serve static files from './public'
 app.use('/static', express.static('public'));
 
-const spCertificate = fs.readFileSync('./tmp/sp.crt', 'utf-8');
-const spKey = fs.readFileSync('./tmp/sp.key', 'utf-8');
+const spCertificate = fs.readFileSync('.cache/sp/sp.crt', 'utf-8');
+const spKey = fs.readFileSync('.cache/sp/sp.key', 'utf-8');
 const samlStrategy = new SamlStrategy({
+    host: 'try.sp.local',
     path: '/login/callback',
     entryPoint: IDP_ENTRY_POINT,
-    issuer: 'https://localhost:8080',
-    decryptionPvk: spKey,
+    issuer: 'http://try.sp.local:8080',
+    identifierFormat:'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified'
+    //decryptionPvk: spKey,
   },
   function(profile, done) {
     console.log('passport.use() profile: %s \n', JSON.stringify(profile));

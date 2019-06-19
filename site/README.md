@@ -10,10 +10,3 @@
     
     gcloud auth login
     gcloud app deploy
-    
-# Run with express
-
-Add .env file to this directory (see .env.template for an example)
-
-    ./generate-certificates.sh
-    npm run app
