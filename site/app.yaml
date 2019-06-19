@@ -1,5 +1,5 @@
 runtime: nodejs10
-service: default
+service: secured
 default_expiration: "1m"
 handlers:
   - url: /(.*\.json)
