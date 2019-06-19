@@ -11,9 +11,9 @@
     gcloud auth login
     gcloud app deploy
     
-## Run through Docker
+# Run with express
 
-    npm install
-    npm run build
-    docker build -t ons-site .
-    docker run -d -p 3000:80 --name ons-dev-site ons-site
+Add .env file to this directory (see .env.template for an example)
+
+    ./generate-certificates.sh
+    npm run app
