@@ -7,6 +7,7 @@ import TextBlock from "../components/textblock"
 import BlockButton from "../components/blockbutton"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBookmark } from "@fortawesome/free-regular-svg-icons"
+import { faBookmark as faBookmarkSolid} from "@fortawesome/free-solid-svg-icons"
 
 import BookmarkManager from "../utils/bookmarkManager"
 import { spacing } from "../utils/styles"
@@ -68,7 +69,7 @@ export default class Article extends React.Component {
       .filter(peer => peer !== undefined)
 
     return (
-      <Layout>
+      <Layout phone_link={true}>
         <Breadcrumbs
           breadcrumbs={pageContext.breadcrumbs}
           peers={pageContext.peers}
@@ -101,7 +102,7 @@ export default class Article extends React.Component {
 
           {bookmarked && (
             <BlockButton
-              icon={<FontAwesomeIcon icon={faBookmark} />}
+              icon={<FontAwesomeIcon icon={faBookmarkSolid} />}
               title="Bookmarked"
               subtitle="Click here to remove"
               clickFunction={this.unBookmarkPage}
