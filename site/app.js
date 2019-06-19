@@ -9,8 +9,10 @@ const cookieSession = require('cookie-session')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 
-const IDP_ENTRY_POINT = process.env.IDP_ENTRY_POINT
 const COOKIE_SECRET = process.env.COOKIE_SECRET
+const IDP_ENTRY_POINT = process.env.IDP_ENTRY_POINT
+const SP_CALLBACK_URL = process.env.SP_CALLBACK_URL
+const SP_ENTITY_ID = process.env.SP_ENTITY_ID
 
 // Serve static files from './public'
 app.use('/static', express.static('public'));
@@ -21,17 +23,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(passport.initialize())
 app.use(passport.session())
 
-const spCertificate = fs.readFileSync('.cache/sp/sp.crt', 'utf-8');
-const spKey = fs.readFileSync('.cache/sp/sp.key', 'utf-8');
-const idpCertificate = fs.readFileSync('.cache/idp/idp-public-cert.pem','utf-8')
+const spCertificate = fs.readFileSync('.deploy/sp/sp.crt', 'utf-8');
+const spKey = fs.readFileSync('.deploy/sp/sp.key', 'utf-8');
+const idpCertificate = fs.readFileSync('.deploy/idp/idp-public-cert.pem','utf-8')
 const samlStrategy = new SamlStrategy({
+    callbackUrl: SP_CALLBACK_URL,
     cert: idpCertificate,
     entryPoint: IDP_ENTRY_POINT,
-    host: 'localhost',
-    identifierFormat:'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
-    issuer: 'http://localhost:8080',
-    path: '/sso/callback'
-    //decryptionPvk: spKey,
+    identifierFormat:'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
+    issuer: SP_ENTITY_ID,
+    privateCert: spKey
   },
   function(profile, done) {
     done(null, {
@@ -78,7 +79,7 @@ app.all('/protected', function (req, res, next) {
 
 app.get('/saml/metadata', function (req, res) {
   res.type('application/xml');
-  res.send(samlStrategy.generateServiceProviderMetadata(spCertificate));
+  res.send(samlStrategy.generateServiceProviderMetadata(null, spCertificate));
 })
 
 app.get('/protected', (req, res) => {
