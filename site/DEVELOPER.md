@@ -1,16 +1,21 @@
+# Start up local IDP
+
+In one shell
+
+    npm install --global saml-idp
+    mkdir .cache/idp
+    cd .cache/idp
+    openssl req -x509 -new -newkey rsa:2048 -nodes -subj \
+      "/C=EN/CN=localhost" -keyout idp-private-key.pem -out idp-public-cert.pem -days 7300
+    saml-idp --acs http://localhost:8080/sso/callback --aud http://localhost:8080
+
 # Run SAML SSO locally with express
 
 Add .env file to this directory (see .env.template for an example)
-
-Add local entry for SP domain
-
-``` 
-127.0.0.1 try.sp.local
-```
 
 Then
 
     ./generate-certificates.sh
     npm run app
     
-Then access http://try.sp.local:8080/protected
+Then access http://localhost:8080/protected

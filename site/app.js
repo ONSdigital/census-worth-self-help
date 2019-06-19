@@ -5,51 +5,65 @@ const SamlStrategy = require('passport-saml').Strategy
 const passport = require('passport')
 const fs = require('fs');
 const app = express();
+const cookieSession = require('cookie-session')
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
 
 const IDP_ENTRY_POINT = process.env.IDP_ENTRY_POINT
+const COOKIE_SECRET = process.env.COOKIE_SECRET
 
 // Serve static files from './public'
 app.use('/static', express.static('public'));
 
+app.use(cookieParser());
+app.use(cookieSession({ name: 'token', secret: COOKIE_SECRET }));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(passport.initialize())
+app.use(passport.session())
+
 const spCertificate = fs.readFileSync('.cache/sp/sp.crt', 'utf-8');
 const spKey = fs.readFileSync('.cache/sp/sp.key', 'utf-8');
 const samlStrategy = new SamlStrategy({
-    host: 'try.sp.local',
-    path: '/login/callback',
+    host: 'localhost',
+    path: '/sso/callback',
     entryPoint: IDP_ENTRY_POINT,
-    issuer: 'http://try.sp.local:8080',
+    issuer: 'http://localhost:8080',
     identifierFormat:'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified'
     //decryptionPvk: spKey,
   },
   function(profile, done) {
-    console.log('passport.use() profile: %s \n', JSON.stringify(profile));
-    findByEmail(profile.email, function(err, user) {
-      if (err) {
-        return done(err);
-      }
-      return done(null, user);
-    });
+    done(null, {
+      email: profile.email,
+      displayName: profile.displayName
+    })
   })
 
 passport.use(samlStrategy);
+passport.serializeUser(function (user, done) {
+  done(null, user)
+})
 
-app.post('/login/callback',
+passport.deserializeUser(function (user, done) {
+  done(null, user)
+})
+
+app.post('/sso/callback',
   passport.authenticate('saml', { failureRedirect: '/', failureFlash: true }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('/protected');
   }
 );
 
 app.get('/login',
   passport.authenticate('saml', { failureRedirect: '/', failureFlash: true }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('/protected');
   }
 );
 
 app.get('/logout', function (req, res) {
   req.logout()
-  res.end('Logged out')
+  res.redirect('/')
 })
 
 app.all('/protected', function (req, res, next) {
@@ -60,13 +74,13 @@ app.all('/protected', function (req, res, next) {
   }
 })
 
-app.get('/metadata.xml', function (req, res) {
+app.get('/metadata', function (req, res) {
   res.type('application/xml');
   res.send(samlStrategy.generateServiceProviderMetadata(spCertificate));
 })
 
 app.get('/protected', (req, res) => {
-  res.json({ message: "hello, protected" })
+  res.json({ message: `hello, protected : ${req.user.displayName}` })
 });
 
 // Start the server
