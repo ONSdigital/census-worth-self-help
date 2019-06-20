@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification renders correctly 1`] = `
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "4wubau",
+      "next": undefined,
+      "styles": "
+          position: fixed;
+          height: 78px;
+          width: 100vw;
+          bottom: -78px;
+          transition: bottom 0.5s;
+        ",
+    }
+  }
+>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "qx40g3",
+        "next": undefined,
+        "styles": "
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            border-top: solid 1px rgb(248, 196, 30);
+            background-color: rgb(253, 239, 173);
+          ",
+      }
+    }
+  >
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "1snapf7",
+          "next": undefined,
+          "styles": "
+              flex-grow: 1;
+              
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  ;
+              align-items: center;
+            ",
+        }
+      }
+    >
+      <div
+        className="Article-Title-Style"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1b52s6k",
+            "next": undefined,
+            "styles": "
+                display: flex;
+                align-items: center;
+                color: rgb(48, 48, 48);
+                padding: 5px;
+              ",
+          }
+        }
+      >
+        
+        <div
+          className="Article-sub-title-Style"
+          css={
+            Object {
+              "map": undefined,
+              "name": "k4blbt",
+              "next": undefined,
+              "styles": "
+                  padding-left: 15px;
+                ",
+            }
+          }
+        >
+          basic
+        </div>
+      </div>
+    </div>
+    <div
+      className="Article-sub-title-Style"
+      data-testid="notification-close-button"
+      onClick={[Function]}
+    >
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-times fa-w-11 "
+        css={
+          Object {
+            "map": undefined,
+            "name": "1k955tv",
+            "next": undefined,
+            "styles": "
+                margin: 10px;
+                color: #6e6e6e;
+              ",
+          }
+        }
+        data-icon="times"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 352 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;

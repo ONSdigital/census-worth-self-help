@@ -31,7 +31,6 @@ export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
   // react-select style object we inherit everything and only change the indent
   const colourStyles = {
     option: (styles, { data }) => {
-      console.log(data)
       return {
         ...styles,
         "text-indent": data.indent + "em"

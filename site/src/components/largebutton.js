@@ -3,11 +3,18 @@ import { css } from "@emotion/core"
 import { navigate } from "@reach/router"
 import { spacing, colors } from "../utils/styles"
 
-export default ({ title, link, icon = null, additionalCss = undefined }) => {
+export default ({
+  title,
+  link = "",
+  icon = null,
+  additionalCss = undefined,
+  clickFunction = undefined
+}) => {
+  let onClick = clickFunction ? clickFunction : () => navigate(link)
   return (
     <div
       data-testid="large-button"
-      onClick={() => navigate(link)}
+      onClick={onClick}
       css={css`
         ${spacing.vert_aligned_flex_text}
         padding: 0px 10px;
