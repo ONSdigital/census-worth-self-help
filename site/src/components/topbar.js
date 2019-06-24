@@ -78,7 +78,7 @@ export default ({ searchObject = null }) => {
               flex-grow: 1;
             `}
           >
-            Census Field Assistant
+            Self Help Facility
           </div>
           <TopbarLink
             title={<FontAwesomeIcon icon={faSearch} />}
