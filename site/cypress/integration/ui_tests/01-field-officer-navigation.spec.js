@@ -18,7 +18,7 @@ const firstArticlePath = '/deep-article';
 const searchText = 'injection';
 const incompleteSearch = searchText.slice(0, -1);
 
-describe("The user flow", function() {
+describe("The field officer flow", function() {
     beforeEach(function() {
         cy.visit('');
         cy.get(homepage.homepageLogo).should('be.visible');
