@@ -1,6 +1,4 @@
-const bookmarkUrlPath = '/bookmarks';
 const bookmarkedText = 'Bookmarked';
-const bookmarkHeaderText = 'Bookmarks will show here';
 const bookmarkSaveText = 'Save it to view later';
 const bookmarkBlockButton = `[data-testid='block-button']`;
 
@@ -10,7 +8,5 @@ module.exports = {
     bookmarkSave: `.Card-meta-Style`,
     bookmarkedText,
     bookmarkBlockButton,
-    bookmarkHeaderText,
     bookmarkSaveText,
-    bookmarkUrlPath
 };

@@ -9,7 +9,9 @@ const menu = require('../../fixtures/fragments/menu');
 const search = require('../../fixtures/fragments/search');
 
 // pages
+const bookmarksPage = require('../../fixtures/pages/bookmarksPage');
 const homepage = require('../../fixtures/pages/homepagePage');
+const mostRecentPage = require('../../fixtures/pages/mostRecentPage');
 
 const articleName = 'Injection Attack';
 const authorName = 'owasp';
@@ -67,20 +69,34 @@ describe("The field officer flow", function() {
     });
 
     it('The field officer bookmarks a page and refers to it in their bookmark page', function () {
-       const header = '.Button-heading-Style';
-       cy.get(bookmarks.bookmarkIcon).should('be.visible');
-       cy.visit(bookmarks.bookmarkUrlPath);
-       cy.get(bookmarks.bookmarkIcon).should('be.visible');
-       cy.visit('');
-       cy.get(homepage.articleCard).first().click();
-       cy.get(bookmarks.bookmarkSave).should('have.text', bookmarks.bookmarkSaveText);
-       cy.get(bookmarks.bookmarkBlockButton).click();
-       cy.get(header).first().should('have.text', bookmarks.bookmarkedText);
-       cy.get(menu.menuButton).contains('Menu').click();
-       cy.get('.Menu-major-item-Style').contains('My Bookmarks').click();
-       cy.url().should('include', bookmarks.bookmarkUrlPath);
-       cy.get(homepage.articleCard).should('have.text', 'deep article');
-       cy.get(bookmarks.bookmarkIcon).should('not.be.visible');
+        const header = '.Button-heading-Style';
+        cy.get(bookmarks.bookmarkIcon).should('be.visible');
+        cy.visit(bookmarksPage.bookmarkUrlPath);
+        cy.get(bookmarks.bookmarkIcon).should('be.visible');
+        cy.visit('');
+        cy.get(homepage.articleCard).first().click();
+        cy.get(bookmarks.bookmarkSave).should('have.text', bookmarks.bookmarkSaveText);
+        cy.get(bookmarks.bookmarkBlockButton).click();
+        cy.get(header).first().should('have.text', bookmarks.bookmarkedText);
+        cy.get(menu.menuButton).contains('Menu').click();
+        cy.get('.Menu-major-item-Style').contains('My Bookmarks').click();
+        cy.url().should('include', bookmarksPage.bookmarkUrlPath);
+        cy.get(homepage.articleCard).should('have.text', 'deep article');
+        cy.get(bookmarks.bookmarkIcon).should('not.be.visible');
+    });
+
+    it('The field officer should see all bookmarked articles when they click \'view all\'', function () {
+        cy.bookmarkArticle(firstArticlePath);
+        cy.visit('');
+        cy.get(`[href='${bookmarksPage.bookmarkUrlPath}']`).click();
+        cy.url().should('include', bookmarksPage.bookmarkUrlPath);
+        cy.get(search.searchResultTitle).should('have.text', 'My Bookmarks');
+    });
+
+    it('The field officer should all recently updated articles when they click \'view all\'', function () {
+        cy.get(`[href='${mostRecentPage.mostRecentUrlPath}']`).click();
+        cy.url().should('include', mostRecentPage.mostRecentUrlPath);
+        cy.get(search.searchResultTitle).should('have.text', 'Recently Updated');
     });
 
     it('The field officer should see related articles', function () {
