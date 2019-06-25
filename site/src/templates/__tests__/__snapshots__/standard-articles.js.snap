@@ -65,7 +65,7 @@ exports[`StandardArticle renders correctly 1`] = `
           }
           onClick={[Function]}
         >
-          Census Field Assistant
+          Self Help Facility
         </div>
         <div
           className="Header-button-Style"
