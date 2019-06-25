@@ -64,7 +64,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         }
         onClick={[Function]}
       >
-        Census Field Assistant
+        Self Help Facility
       </div>
       <div
         className="Header-button-Style"
@@ -631,7 +631,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         }
         onClick={[Function]}
       >
-        Census Field Assistant
+        Self Help Facility
       </div>
       <div
         className="Header-button-Style"
