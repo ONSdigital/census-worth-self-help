@@ -1,0 +1,38 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: cypress/base
+    tag: 10
+
+inputs:
+- name: census-worth-self-help
+
+outputs:
+- name: mochawesome-report
+  path: census-worth-self-help/site/mochawesome-report
+- name: coverage
+  path: census-worth-self-help/site/coverage
+
+caches:
+- path: .npm
+- path: .cypress-cache
+
+run:
+  path: sh
+  args:
+  - -exec
+  - |
+    echo "Testing"
+    export ROOT_FOLDER=$(pwd)
+    export CYPRESS_CACHE_FOLDER=${ROOT_FOLDER}/.cypress-cache
+    cd census-worth-self-help/site
+    builddir="_build/content/"
+    mkdir -p "$builddir" && cp -R ../content/ "$builddir"
+    assetdir="static/assets/"
+    rm -rf "$assetdir"
+    cp -R ../static/assets "$assetdir"
+    npm ci
+    npm run coverage
+    npm run e2e
