@@ -20,6 +20,9 @@ import Section from "../components/section"
 import TabList from "../components/tablist"
 import Notification from "../components/notification"
 
+import Feedback from "../utils/feedback"
+import FeedbackScreen from "../components/feedbackscreen"
+
 import { css } from "@emotion/core"
 const moment = require("moment")
 
@@ -32,10 +35,14 @@ export default class Article extends React.Component {
     super(props)
     this.props = props
 
-    // create state with bookmarked
     this.bookmarkPage = this.bookmarkPage.bind(this)
     this.unBookmarkPage = this.unBookmarkPage.bind(this)
-    this.giveFeedback = this.giveFeedback.bind(this)
+    this.givePositiveFeedback = this.givePositiveFeedback.bind(this)
+    this.submitNegativeFeedback = this.submitNegativeFeedback.bind(this)
+    this.openNegativeFeedbackScreen = this.openNegativeFeedbackScreen.bind(this)
+    this.closeNegativeFeedbackScreen = this.closeNegativeFeedbackScreen.bind(
+      this
+    )
 
     this.bookmarkManager = new BookmarkManager()
     this.state = {
@@ -43,15 +50,39 @@ export default class Article extends React.Component {
         this.props.pageContext.title
       ),
       notificationText: "",
-      notificationShowing: false
+      notificationShowing: false,
+      feedbackOpen: false
     }
   }
 
-  giveFeedback() {
+  givePositiveFeedback() {
+    Feedback.articleIsUseful(this.props.pageContext.title)
     this.setState({
       notificationText: feedbackNotificationText,
       notificationShowing: true
     })
+  }
+
+  openNegativeFeedbackScreen() {
+    this.setState({
+      feedbackOpen: true
+    })
+  }
+
+  closeNegativeFeedbackScreen() {
+    this.setState({
+      feedbackOpen: false
+    })
+  }
+
+  submitNegativeFeedback() {
+    let feedback = document.getElementById("feedBackContent").value
+    Feedback.articleIsNotUseful(this.props.pageContext.title, feedback)
+    this.setState({
+      notificationText: feedbackNotificationText,
+      notificationShowing: true
+    })
+    this.closeNegativeFeedbackScreen()
   }
 
   bookmarkPage() {
@@ -146,44 +177,43 @@ export default class Article extends React.Component {
                 />
               </TextBlock>
             </div>
-            {/* remove feedback until analytics comes in. */ false && (
-              <Section>
-                <div
-                  className="Section-heading-Style"
-                  css={css`
-                    display: flex;
-                    ${spacing.standard_vertical}
-                    ${spacing.in_page_element}
-                  `}
-                >
-                  HOW WOULD YOU RATE THIS CONTENT?
-                </div>
 
-                <div
-                  css={css`
-                    display: flex;
+            <Section>
+              <div
+                className="Section-heading-Style"
+                css={css`
+                  display: flex;
+                  ${spacing.standard_vertical}
+                  ${spacing.in_page_element}
+                `}
+              >
+                HOW WOULD YOU RATE THIS CONTENT?
+              </div>
+              <div
+                css={css`
+                  display: flex;
+                `}
+              >
+                <LargeButton
+                  additionalCss={css`
+                    flex: 1;
+                    margin-right: 5px;
                   `}
-                >
-                  <LargeButton
-                    additionalCss={css`
-                      flex: 1;
-                      margin-right: 5px;
-                    `}
-                    icon={<FontAwesomeIcon icon={faThumbsUp} />}
-                    title="Useful"
-                    clickFunction={this.giveFeedback}
-                  />
-                  <LargeButton
-                    additionalCss={css`
-                      flex: 1;
-                      margin-left: 5px;
-                    `}
-                    icon={<FontAwesomeIcon icon={faThumbsDown} />}
-                    title="Not useful"
-                  />
-                </div>
-              </Section>
-            )}
+                  icon={<FontAwesomeIcon icon={faThumbsUp} />}
+                  title="Useful"
+                  clickFunction={this.givePositiveFeedback}
+                />
+                <LargeButton
+                  additionalCss={css`
+                    flex: 1;
+                    margin-left: 5px;
+                  `}
+                  icon={<FontAwesomeIcon icon={faThumbsDown} />}
+                  title="Not useful"
+                  clickFunction={this.openNegativeFeedbackScreen}
+                />
+              </div>
+            </Section>
           </div>
           {peerEdges.length > 0 && (
             <div>
@@ -198,6 +228,12 @@ export default class Article extends React.Component {
           text={this.state.notificationText}
           hidden={!this.state.notificationShowing}
         />
+        {this.state.feedbackOpen && (
+          <FeedbackScreen
+            hideFunction={this.closeNegativeFeedbackScreen}
+            submitFunction={this.submitNegativeFeedback}
+          />
+        )}
       </div>
     )
   }
