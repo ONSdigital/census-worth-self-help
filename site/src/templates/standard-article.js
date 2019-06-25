@@ -7,7 +7,7 @@ import TextBlock from "../components/textblock"
 import BlockButton from "../components/blockbutton"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBookmark } from "@fortawesome/free-regular-svg-icons"
-import { faBookmark as faBookmarkSolid} from "@fortawesome/free-solid-svg-icons"
+import { faBookmark as faBookmarkSolid } from "@fortawesome/free-solid-svg-icons"
 
 import BookmarkManager from "../utils/bookmarkManager"
 import { spacing } from "../utils/styles"
@@ -92,26 +92,26 @@ export default class Article extends React.Component {
     return (
       <div>
         <Layout phone_link={true}>
-        <Breadcrumbs
-          breadcrumbs={pageContext.breadcrumbs}
-          peers={pageContext.peers}
-          thisPage={pageContext.title}
-        />
-        <div
-          css={css`
-            background-color: white;
-          `}
-        >
-          <PageTitle
-            subtitle={
-              <span>
-                Last updated:
-                <i>{" " + moment(post.frontmatter.date).fromNow()}</i>
-              </span>
-            }
+          <Breadcrumbs
+            breadcrumbs={pageContext.breadcrumbs}
+            peers={pageContext.peers}
+            thisPage={pageContext.title}
+          />
+          <div
+            css={css`
+              background-color: white;
+            `}
           >
-            {pageContext.title}
-          </PageTitle>
+            <PageTitle
+              subtitle={
+                <span>
+                  Last updated:
+                  <i>{" " + moment(post.frontmatter.date).fromNow()}</i>
+                </span>
+              }
+            >
+              {pageContext.title}
+            </PageTitle>
 
             {!bookmarked && (
               <BlockButton
@@ -122,14 +122,14 @@ export default class Article extends React.Component {
               />
             )}
 
-          {bookmarked && (
-            <BlockButton
-              icon={<FontAwesomeIcon icon={faBookmarkSolid} />}
-              title="Bookmarked"
-              subtitle="Click here to remove"
-              clickFunction={this.unBookmarkPage}
-            />
-          )}
+            {bookmarked && (
+              <BlockButton
+                icon={<FontAwesomeIcon icon={faBookmarkSolid} />}
+                title="Bookmarked"
+                subtitle="Click here to remove"
+                clickFunction={this.unBookmarkPage}
+              />
+            )}
 
             <div
               css={css`

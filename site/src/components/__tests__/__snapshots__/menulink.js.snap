@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MenuLink renders correctly with hidden nodes 1`] = `
-<div>
+<div
+  data-testid="menulink"
+>
   <div
     css={
       Object {
@@ -59,7 +61,9 @@ exports[`MenuLink renders correctly with hidden nodes 1`] = `
 `;
 
 exports[`MenuLink renders correctly without hidden nodes 1`] = `
-<div>
+<div
+  data-testid="menulink"
+>
   <div
     css={
       Object {
