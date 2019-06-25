@@ -37,7 +37,7 @@ export default class MenuLink extends React.Component {
     let indent = depth * 10 + 20 + "px"
 
     return (
-      <div>
+      <div data-testid="menulink">
         <div
           css={css`
             ${spacing.standard_vertical};
