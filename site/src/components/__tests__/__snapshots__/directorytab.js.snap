@@ -5,36 +5,77 @@ exports[`DirectoryTab renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "2b69ru",
+      "name": "1rakub1",
       "next": undefined,
       "styles": "
-          
+        
     padding: 15px;
     min-height: 30px;
-  
-          background: #003d59;
-          border-left: 6px solid #003d59;
+  ;
+        box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
+        border: solid 1px #ececed;
+        
+    background: linear-gradient(to left, rgb(25, 80, 105), rgb(71, 114, 136));
+  ;
+        border-left: 6px solid rgb(0,61,89);
       ",
     }
   }
   onClick={[Function]}
 >
   <div
-    className="Card-heading-Style-white"
+    className="Card-heading-Style"
     css={
       Object {
         "map": undefined,
-        "name": "navq8c",
+        "name": "1bl45q",
         "next": undefined,
         "styles": "
-          
-    margin: 0px 2px;
-  
+          color: white;
+          flex-grow: 1;
+          font-weight: semi-bold;
+        ",
+      }
+    }
+    data-testid="articletab-article-card"
+  >
+    test Article 3
+  </div>
+  <div
+    className="Card-sub-head-Style-gray"
+    css={
+      Object {
+        "map": undefined,
+        "name": "1hejrb1",
+        "next": undefined,
+        "styles": "
+          padding-top: 6px;
+          display: flex;
+          flex-direction: vertical;
+          line-height: 1.08;
+          max-height: 42.12px; // line-height * font-size * 3
         ",
       }
     }
   >
-    directory title
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "yv8zhf",
+          "next": undefined,
+          "styles": "
+            color: white;
+            width: 70%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+          ",
+        }
+      }
+    >
+      testDescription
+    </div>
   </div>
 </div>
 `;
