@@ -6,10 +6,10 @@ import { Index } from "elasticlunr"
 import TabList from "../components/tablist"
 import PageTitle from "../components/pagetitle"
 import PaginationBar from "../components/paginationbar"
+import { PaginationObject } from "../utils/pagination"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
-import { PaginationObject } from "../utils/pagination"
 
 const escapeStringRegexp = require("escape-string-regexp")
 const minimumSearchString = 3
