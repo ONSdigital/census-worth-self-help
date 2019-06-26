@@ -5,7 +5,7 @@ exports[`ArticleTab renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "1q53lw7",
+      "name": "lcxyxv",
       "next": undefined,
       "styles": "
         
@@ -13,7 +13,7 @@ exports[`ArticleTab renders correctly 1`] = `
     min-height: 30px;
   ;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-        border-left: 6px solid #003d59;
+        border-left: 6px solid rgb(0,61,89);
         background-color: rgb(255, 255, 255);
       ",
     }

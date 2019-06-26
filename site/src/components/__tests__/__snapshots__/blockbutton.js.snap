@@ -23,7 +23,7 @@ exports[`BlockButton renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "i8tjei",
+        "name": "1o8j1iv",
         "next": undefined,
         "styles": "
           
@@ -32,7 +32,7 @@ exports[`BlockButton renders correctly 1`] = `
     flex-direction: column;
   
           margin: 0px 20px;
-          color: #003d59;
+          color: rgb(0,61,89);
         ",
       }
     }

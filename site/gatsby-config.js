@@ -28,7 +28,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-emotion`,
-    `gatsby-plugin-netlify-cms`,
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-offline`,
@@ -57,4 +56,8 @@ module.exports = {
       },
     }
   ],
+}
+
+if (!process.env.DISABLED_NETLIFY) {
+  module.exports.plugins.push("gatsby-plugin-netlify-cms");
 }

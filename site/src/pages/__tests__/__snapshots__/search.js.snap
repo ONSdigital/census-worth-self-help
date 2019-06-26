@@ -19,12 +19,12 @@ exports[`Search renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "tejz0l",
+        "name": "181ra4m",
         "next": undefined,
         "styles": "
         width: 100vw;
         
-    background: linear-gradient(to left, #003d59, #33637a);
+    background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
       ",
       }
@@ -303,107 +303,6 @@ exports[`Search renders correctly 1`] = `
         }
         src="/footer_logo.svg"
       />
-      <div
-        css={
-          Object {
-            "map": undefined,
-            "name": "buygrl",
-            "next": undefined,
-            "styles": "
-            margin-bottom: 34px;
-          ",
-          }
-        }
-      >
-        <div
-          css={
-            Object {
-              "map": undefined,
-              "name": "1k8b10p",
-              "next": undefined,
-              "styles": "
-        
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  
-        padding: 0px 10px;
-        border-radius: 4px;
-        box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
-        border: solid 1px #ececed;
-        margin: 0px 10px;
-        text-align: center;
-        height: 40px;
-        background-color: rgb(255, 255, 255);
-        
-      ",
-            }
-          }
-          data-testid="large-button"
-          onClick={[Function]}
-        >
-          <div
-            css={
-              Object {
-                "map": undefined,
-                "name": "1qs2efx",
-                "next": undefined,
-                "styles": "
-            position: relative;
-            color: #003d59;
-          ",
-              }
-            }
-          >
-            <div
-              css={
-                Object {
-                  "map": undefined,
-                  "name": "1wo7hj",
-                  "next": undefined,
-                  "styles": "
-              position: absolute;
-            ",
-                }
-              }
-            >
-              <svg
-                aria-hidden="true"
-                className="svg-inline--fa fa-phone fa-w-16 "
-                data-icon="phone"
-                data-prefix="fas"
-                focusable="false"
-                role="img"
-                style={Object {}}
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"
-                  fill="currentColor"
-                  style={Object {}}
-                />
-              </svg>
-            </div>
-          </div>
-          <div
-            className="Button-heading-Style"
-            css={
-              Object {
-                "map": undefined,
-                "name": "1bt83uw",
-                "next": undefined,
-                "styles": "
-          margin: 0px 20px;
-          color: #003d59;
-        ",
-              }
-            }
-          >
-            Census Field Support
-          </div>
-        </div>
-      </div>
       <div
         className="Footer-Style"
       >

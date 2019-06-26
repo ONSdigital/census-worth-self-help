@@ -1,0 +1,41 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: google/cloud-sdk
+    tag: alpine
+
+params:
+  AUTH_KEY: ((gcp.service-account-key))
+  PROJECT: ((gcp.project-name))
+  GCP_SECRETS_VERSION: ((gcp.secrets-version))
+
+inputs:
+- name: census-worth-self-help
+- name: mochawesome-report
+  path: census-worth-self-help/site/mochawesome-report
+- name: coverage
+  path: census-worth-self-help/site/coverage
+
+caches:
+- path: census-worth-self-help/site/node_modules
+
+run:
+  path: sh
+  args:
+    - -exec
+    - |
+      echo "Deploying test reports"
+      cd census-worth-self-help/report
+      mkdir -p public
+      cp -R static/* public/
+      cp -R ../site/coverage public/
+      cp -R ../site/mochawesome-report public/
+      set +x
+      echo $AUTH_KEY > encrypted_key.txt
+      set -x
+      base64 -d encrypted_key.txt > service-account.json
+      gcloud auth activate-service-account --key-file service-account.json
+      gcloud config set project $PROJECT
+      gcloud app deploy -q

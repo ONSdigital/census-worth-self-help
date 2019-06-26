@@ -5,8 +5,9 @@
   {
     "overwrite": false,
     "html": true,
-    "json": true
+    "json": false
   },
+  "video": false,
   "viewportWidth": 720,
   "viewportHeight": 1480
 }

@@ -19,12 +19,12 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "tejz0l",
+        "name": "181ra4m",
         "next": undefined,
         "styles": "
         width: 100vw;
         
-    background: linear-gradient(to left, #003d59, #33637a);
+    background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
       ",
       }
@@ -64,7 +64,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         }
         onClick={[Function]}
       >
-        Census Field Assistant
+        Self Help Facility
       </div>
       <div
         className="Header-button-Style"
@@ -146,12 +146,12 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "tejz0l",
+        "name": "181ra4m",
         "next": undefined,
         "styles": "
         width: 100vw;
         
-    background: linear-gradient(to left, #003d59, #33637a);
+    background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
       ",
       }
@@ -301,11 +301,11 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "1qs2efx",
+                "name": "3pw6ud",
                 "next": undefined,
                 "styles": "
             position: relative;
-            color: #003d59;
+            color: rgb(0,61,89);
           ",
               }
             }
@@ -346,11 +346,11 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "1bt83uw",
+                "name": "7tk8ru",
                 "next": undefined,
                 "styles": "
           margin: 0px 20px;
-          color: #003d59;
+          color: rgb(0,61,89);
         ",
               }
             }
@@ -419,12 +419,12 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "t2r693",
+                "name": "1qjqfag",
                 "next": undefined,
                 "styles": "
             position: relative;
             left: 33px;
-            color: #003d59;
+            color: rgb(0,61,89);
             
     display: flex;
     justify-content: center;
@@ -574,12 +574,12 @@ exports[`Index renders correctly without data and has no alert 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "tejz0l",
+        "name": "181ra4m",
         "next": undefined,
         "styles": "
         width: 100vw;
         
-    background: linear-gradient(to left, #003d59, #33637a);
+    background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
       ",
       }
@@ -619,7 +619,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         }
         onClick={[Function]}
       >
-        Census Field Assistant
+        Self Help Facility
       </div>
       <div
         className="Header-button-Style"
@@ -701,12 +701,12 @@ exports[`Index renders correctly without data and has no alert 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "tejz0l",
+        "name": "181ra4m",
         "next": undefined,
         "styles": "
         width: 100vw;
         
-    background: linear-gradient(to left, #003d59, #33637a);
+    background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
       ",
       }
@@ -804,11 +804,11 @@ exports[`Index renders correctly without data and has no alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "1qs2efx",
+                "name": "3pw6ud",
                 "next": undefined,
                 "styles": "
             position: relative;
-            color: #003d59;
+            color: rgb(0,61,89);
           ",
               }
             }
@@ -849,11 +849,11 @@ exports[`Index renders correctly without data and has no alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "1bt83uw",
+                "name": "7tk8ru",
                 "next": undefined,
                 "styles": "
           margin: 0px 20px;
-          color: #003d59;
+          color: rgb(0,61,89);
         ",
               }
             }
@@ -922,12 +922,12 @@ exports[`Index renders correctly without data and has no alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "t2r693",
+                "name": "1qjqfag",
                 "next": undefined,
                 "styles": "
             position: relative;
             left: 33px;
-            color: #003d59;
+            color: rgb(0,61,89);
             
     display: flex;
     justify-content: center;

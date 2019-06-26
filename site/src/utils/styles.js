@@ -1,7 +1,7 @@
 import { css } from "@emotion/core"
 
 export const colors = {
-  navy_normal: "#003d59",
+  navy_normal: "rgb(0,61,89)",
   marigold: "rgb(255, 204, 0)",
   tangerine: "rgb(255, 149, 0)",
   white: "rgb(255, 255, 255)",
@@ -30,6 +30,9 @@ export const colors = {
 export const gradients = {
   navy_shine: css`
     background: linear-gradient(to left, ${colors.navy_normal}, #33637a);
+  `,
+  navy_shine_lighter: css`
+    background: linear-gradient(to left, rgb(25, 80, 105), rgb(71, 114, 136));
   `
 }
 

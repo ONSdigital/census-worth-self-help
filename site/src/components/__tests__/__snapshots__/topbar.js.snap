@@ -5,12 +5,12 @@ exports[`TopBar renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "tejz0l",
+      "name": "181ra4m",
       "next": undefined,
       "styles": "
         width: 100vw;
         
-    background: linear-gradient(to left, #003d59, #33637a);
+    background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
       ",
     }
@@ -50,7 +50,7 @@ exports[`TopBar renders correctly 1`] = `
       }
       onClick={[Function]}
     >
-      Census Field Assistant
+      Self Help Facility
     </div>
     <div
       className="Header-button-Style"
@@ -135,12 +135,12 @@ exports[`TopBar renders correctly with searchbox 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "tejz0l",
+      "name": "181ra4m",
       "next": undefined,
       "styles": "
         width: 100vw;
         
-    background: linear-gradient(to left, #003d59, #33637a);
+    background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
       ",
     }
