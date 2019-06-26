@@ -10,6 +10,7 @@ _build
 node_modules/
 src
 /static
+/scripts
 README.md
 Dockerfile
 jest-preprocess.js

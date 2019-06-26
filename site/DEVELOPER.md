@@ -3,10 +3,7 @@
 In one shell
 
     npm install --global saml-idp
-    mkdir -p .deploy/idp
-    cd .deploy/idp
-    openssl req -x509 -new -newkey rsa:2048 -nodes -subj \
-      "/C=EN/CN=localhost" -keyout idp-private-key.pem -out idp-public-cert.pem -days 7300
+    scripts/generate-local-idp-certificates.sh    
     saml-idp --acs http://localhost:8080/sso/callback --aud http://localhost:8080 \
       --serviceProviderId http://localhost:8080/saml/metadata
 
@@ -16,15 +13,15 @@ Add .env file to this directory (see .env.template for an example)
 
 Then
 
-    ./generate-certificates.sh
+    scripts/generate-local-certificates.sh
+    . scripts/initialise-shell-variables.fish
+    ../pipeline/tasks/task-scripts/prepare-protected-site.sh
     npm run app
     
 Then access http://localhost:8080/protected
 
 # Deploy secured app
 
-Enhance app engine configuration with env variables
-
-    ../pipeline/tasks/task-scripts/deploy-site-protected.sh
+Deploy app with configuration enhanced with env variables
 
     gcloud app deploy ci-app.yaml

@@ -11,6 +11,8 @@
 # GCP
 
 .deploy
+.secrets
+.build
 app-with-env.yaml
 ci-app.yaml
 
