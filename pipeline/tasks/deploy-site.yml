@@ -67,7 +67,8 @@ run:
 
     # SSO Protection
     if [ "${PROTECTED}" == "true" ]; then
-      mkdir .deploy
+      mkdir -p .deploy/idp
+      mkdir -p .deploy/sp
 
       echo ${IDP_CERTIFICATE} > .deploy/idp/sp.certificate
       echo ${SP_CERTIFICATE} > .deploy/sp/sp.certificate
