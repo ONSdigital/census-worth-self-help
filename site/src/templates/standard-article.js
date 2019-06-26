@@ -51,7 +51,8 @@ export default class Article extends React.Component {
       ),
       notificationText: "",
       notificationShowing: false,
-      feedbackOpen: false
+      feedbackOpen: false,
+      feedbackGiven: null
     }
   }
 
@@ -59,7 +60,8 @@ export default class Article extends React.Component {
     Feedback.articleIsUseful(this.props.pageContext.title)
     this.setState({
       notificationText: feedbackNotificationText,
-      notificationShowing: true
+      notificationShowing: true,
+      feedbackGiven: "positive"
     })
   }
 
@@ -80,7 +82,8 @@ export default class Article extends React.Component {
     Feedback.articleIsNotUseful(this.props.pageContext.title, feedback)
     this.setState({
       notificationText: feedbackNotificationText,
-      notificationShowing: true
+      notificationShowing: true,
+      feedbackGiven: "negative"
     })
     this.closeNegativeFeedbackScreen()
   }
@@ -202,6 +205,8 @@ export default class Article extends React.Component {
                   icon={<FontAwesomeIcon icon={faThumbsUp} />}
                   title="Useful"
                   clickFunction={this.givePositiveFeedback}
+                  selected={this.state.feedbackGiven === "positive"}
+                  dimmed={this.state.feedbackGiven === "negative"}
                 />
                 <LargeButton
                   additionalCss={css`
@@ -211,6 +216,8 @@ export default class Article extends React.Component {
                   icon={<FontAwesomeIcon icon={faThumbsDown} />}
                   title="Not useful"
                   clickFunction={this.openNegativeFeedbackScreen}
+                  selected={this.state.feedbackGiven === "negative"}
+                  dimmed={this.state.feedbackGiven === "positive"}
                 />
               </div>
             </Section>

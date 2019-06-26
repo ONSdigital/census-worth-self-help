@@ -8,9 +8,19 @@ export default ({
   link = "",
   icon = null,
   additionalCss = undefined,
-  clickFunction = undefined
+  clickFunction = undefined,
+  selected = false,
+  dimmed = false
 }) => {
-  let onClick = clickFunction ? clickFunction : () => navigate(link)
+  // if already selected, remove click function, if no click function provided navigate to link.
+  const onClick = selected
+    ? null
+    : clickFunction
+    ? clickFunction
+    : () => navigate(link)
+
+  const textColor = dimmed ? "rgba(0,61,89, 0.2)" : colors.navy_normal
+
   return (
     <div
       data-testid="large-button"
@@ -32,7 +42,7 @@ export default ({
         <div
           css={css`
             position: relative;
-            color: ${colors.navy_normal};
+            color: ${textColor};
           `}
         >
           <div
@@ -48,7 +58,7 @@ export default ({
         className="Button-heading-Style"
         css={css`
           margin: 0px 20px;
-          color: ${colors.navy_normal};
+          color: ${textColor};
         `}
       >
         {title}

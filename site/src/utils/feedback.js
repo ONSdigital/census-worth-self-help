@@ -7,6 +7,8 @@ export default class Feedback {
   }
   static feedbackEvent(category, action, name = "", value = "") {
     console.log(["trackEvent", category, action, name, value])
-    window._paq.push(["trackEvent", category, action, name, value])
+    if (window._paq) {
+      window._paq.push(["trackEvent", category, action, name, value])
+    }
   }
 }
