@@ -23,9 +23,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(passport.initialize())
 app.use(passport.session())
 
-const spCertificate = fs.readFileSync('.deploy/sp/sp.crt', 'utf-8');
+const spCertificate = fs.readFileSync('.deploy/sp/sp.certificate', 'utf-8');
 const spKey = fs.readFileSync('.deploy/sp/sp.key', 'utf-8');
-const idpCertificate = fs.readFileSync('.deploy/idp/idp-public-cert.pem','utf-8')
+const idpCertificate = fs.readFileSync('.deploy/idp/idp.certificate','utf-8')
 const samlStrategy = new SamlStrategy({
     callbackUrl: SP_CALLBACK_URL,
     cert: idpCertificate,

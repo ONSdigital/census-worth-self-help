@@ -25,6 +25,9 @@ jobs:
           COOKIE_SECRET: ((sso.cookie-secret))
           DOMAIN_NAME: secured.((dns.default-domain))
           IDP_ENTRY_POINT: ((sso.idp-entry-point))
+          IDP_CERTIFICATE: ((sso-keys.idp-certificate))
           PROTECTED: true
           SERVICE: secured
+          SP_CERTIFICATE: ((sso-keys.sp-certificate))
+          SP_KEY: ((sso-keys.sp-key))
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml

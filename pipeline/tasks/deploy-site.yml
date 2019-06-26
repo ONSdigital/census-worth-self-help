@@ -67,6 +67,12 @@ run:
 
     # SSO Protection
     if [ "${PROTECTED}" == "true" ]; then
+      mkdir .deploy
+
+      echo ${IDP_CERTIFICATE} > .deploy/idp/sp.certificate
+      echo ${SP_CERTIFICATE} > .deploy/sp/sp.certificate
+      echo ${SP_KEY} > .deploy/sp/sp.key
+
       echo "env_variables:" >> ${APP_FILE}
       echo "  SP_CALLBACK_URL: 'https://${DOMAIN_NAME}/sso/callback'" >> ${APP_FILE}
       echo "  SP_ENTITY_ID: 'https://${DOMAIN_NAME}/saml/metadata'" >> ${APP_FILE}
