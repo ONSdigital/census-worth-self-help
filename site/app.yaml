@@ -37,12 +37,7 @@ handlers:
     static_dir: public/icons
     secure: always
 
-# Test login option
-  - url: /protected.html
-    static_files: public/protected.html
-    upload: public/protected.html
-    secure: always
-
+# Temporary protected flow for SSO validation whilst we validate SSO integration
   - url: /protected
     script: auto
     secure: always
