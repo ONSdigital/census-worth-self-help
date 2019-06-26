@@ -19,4 +19,9 @@ describe("Feedback", () => {
     Feedback.feedbackEvent("custom", "freeform", "key", "value")
     expect(window._paq).toEqual([['trackEvent', "custom", "freeform", "key", "value"]])
   })
+
+  it("custom event defaults", () => {
+    Feedback.feedbackEvent("custom", "basic")
+    expect(window._paq).toEqual([['trackEvent', "custom", "basic", "", ""]])
+  })
 })

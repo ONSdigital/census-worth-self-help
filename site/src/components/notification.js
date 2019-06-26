@@ -110,6 +110,7 @@ export default class Notification extends React.Component {
                 css={css`
                   padding-left: 15px;
                 `}
+                data-testid="notification-text-content"
               >
                 {text}
               </div>

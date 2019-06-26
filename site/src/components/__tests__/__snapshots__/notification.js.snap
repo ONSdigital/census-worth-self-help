@@ -81,6 +81,7 @@ exports[`Notification renders correctly 1`] = `
                 ",
             }
           }
+          data-testid="notification-text-content"
         >
           basic
         </div>

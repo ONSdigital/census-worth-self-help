@@ -1172,6 +1172,7 @@ exports[`StandardArticle renders correctly 1`] = `
                 ",
               }
             }
+            data-testid="notification-text-content"
           >
             
           </div>

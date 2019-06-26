@@ -36,6 +36,7 @@ export default ({ hideFunction, submitFunction }) => {
         `}
       >
         <textarea
+          data-testid="feedback-content"
           id="feedBackContent"
           className="Confirmation-text-style"
           autoFocus
@@ -69,6 +70,7 @@ export default ({ hideFunction, submitFunction }) => {
             border-right: 1px rgba(17, 17, 17, 0.1) solid;
           `}
           onClick={hideFunction}
+          data-testid="feedback-screen-cancel-button"
         >
           Cancel
         </div>
@@ -79,6 +81,7 @@ export default ({ hideFunction, submitFunction }) => {
             text-align: center;
             font-weight: 600;
           `}
+          data-testid="feedback-screen-submit-button"
           onClick={submitFunction}
         >
           Submit
