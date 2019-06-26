@@ -1,5 +1,5 @@
 runtime: nodejs10
-service: secured
+service: default
 default_expiration: "1m"
 handlers:
   - url: /(.*\.json)
@@ -41,29 +41,33 @@ handlers:
   - url: /protected.html
     static_files: public/protected.html
     upload: public/protected.html
-#    login: required
+    secure: always
 
   - url: /protected
     script: auto
+    secure: always
 
   - url: /sso/callback
     script: auto
+    secure: always
 
   - url: /saml/metadata
     script: auto
+    secure: always
 
   - url: /login
     script: auto
+    secure: always
 
   - url: /logout
     script: auto
+    secure: always
 
 # Home page handling
   - url: /
     static_files: public/index.html
     secure: always
     upload: public/index.html
-    secure: always
 
 # Support paths with a slash at the end
   - url: /(.+)/
