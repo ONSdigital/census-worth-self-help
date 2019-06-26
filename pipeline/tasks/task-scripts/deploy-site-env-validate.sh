@@ -13,6 +13,9 @@ if [[ "${PROTECTED}" == "true" ]] ; then
     echo "ERROR : Pre-requisites above not met"
     exit 1
   fi
+  echo "SSO Protected"
+  echo "DOMAIN_NAME      = ${DOMAIN_NAME}"
+  echo "IDP_ENTRY_POINT  = ${IDP_ENTRY_POINT}"
 fi
 
-echo "Pre-requisites OK"
+echo "env variables OK"

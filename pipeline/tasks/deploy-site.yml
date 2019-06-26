@@ -26,7 +26,7 @@ run:
   args:
   - -exec
   - |
-    census-worth-self-help/pipeline/tasks/task-scripts/deploy-site-pre-requisites.sh
+    census-worth-self-help/pipeline/tasks/task-scripts/deploy-site-env-validate.sh
     set +x
     echo $BACKEND_CONTENT_REPO
     echo $AUTH_KEY > encrypted_key.txt
@@ -68,10 +68,12 @@ run:
     # SSO Protection
     if [ "${PROTECTED}" == "true" ]; then
       echo "env_variables:" >> ${APP_FILE}
-      echo "  SP_CALLBACK_URL: 'https://${DOMAIN_NAME}/sso/callback'"
-      echo "  SP_ENTITY_ID: 'https://${DOMAIN_NAME}/saml/metadata'"
-      echo "  IDP_ENTRY_POINT: '${IDP_ENTRY_POINT}'"
+      echo "  SP_CALLBACK_URL: 'https://${DOMAIN_NAME}/sso/callback'" >> ${APP_FILE}
+      echo "  SP_ENTITY_ID: 'https://${DOMAIN_NAME}/saml/metadata'" >> ${APP_FILE}
+      echo "  IDP_ENTRY_POINT: '${IDP_ENTRY_POINT}'" >> ${APP_FILE}
+      set +x
       echo "  COOKIE_SECRET: '${COOKIE_SECRET}'"
+      set -x
     fi
 
     gcloud app deploy -q ci-app.yaml
