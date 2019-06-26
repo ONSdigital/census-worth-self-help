@@ -20,7 +20,7 @@ jobs:
       - get: content-repository
       - task: deploy
         params:
-          BACKEND_CONTENT_REPO: census-worth-self-help-test
+          BACKEND_CONTENT_REPO: census-worth-self-help
           BUILD_NETLIFY: false
           PROTECTED: true
           SERVICE: secured

@@ -27,7 +27,6 @@ run:
   - -exec
   - |
     #census-worth-self-help/tasks/task-scripts/deploy-site-pre-requisites.sh
-
     set +x
     echo $BACKEND_CONTENT_REPO
     echo $AUTH_KEY > encrypted_key.txt
@@ -71,8 +70,8 @@ run:
       echo "env_variables:" >> ${APP_FILE}
       echo "  SP_CALLBACK_URL: 'https://${DOMAIN_NAME}/sso/callback'
       echo "  SP_ENTITY_ID: 'https://${DOMAIN_NAME}/saml/metadata'
-      echo "  IDP_ENTRY_POINT: 'https://accounts.google.com/o/saml2/idp?idpid=C00n4re6c'
-        COOKIE_SECRET: 'mock-ee7fhsuwshey'
+      echo "  IDP_ENTRY_POINT: '${IDP_ENTRY_POINT}'
+      echo "  COOKIE_SECRET: '${COOKIE_SECRET}'
     fi
 
     gcloud app deploy -q ci-app.yaml
