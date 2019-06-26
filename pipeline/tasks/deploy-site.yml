@@ -72,7 +72,7 @@ run:
       echo "  SP_ENTITY_ID: 'https://${DOMAIN_NAME}/saml/metadata'" >> ${APP_FILE}
       echo "  IDP_ENTRY_POINT: '${IDP_ENTRY_POINT}'" >> ${APP_FILE}
       set +x
-      echo "  COOKIE_SECRET: '${COOKIE_SECRET}'"
+      echo "  COOKIE_SECRET: '${COOKIE_SECRET}'" >> ${APP_FILE}
       set -x
     fi
 
