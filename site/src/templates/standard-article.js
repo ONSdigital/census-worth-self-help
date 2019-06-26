@@ -50,6 +50,7 @@ export default class Article extends React.Component {
         this.props.pageContext.title
       ),
       notificationText: "",
+      notificationId: 0,
       notificationShowing: false,
       feedbackOpen: false,
       feedbackGiven: null
@@ -60,6 +61,7 @@ export default class Article extends React.Component {
     Feedback.articleIsUseful(this.props.pageContext.title)
     this.setState({
       notificationText: feedbackNotificationText,
+      notificationId: this.state.notificationId + 1,
       notificationShowing: true,
       feedbackGiven: "positive"
     })
@@ -82,6 +84,7 @@ export default class Article extends React.Component {
     Feedback.articleIsNotUseful(this.props.pageContext.title, feedback)
     this.setState({
       notificationText: feedbackNotificationText,
+      notificationId: this.state.notificationId + 1,
       notificationShowing: true,
       feedbackGiven: "negative"
     })
@@ -92,6 +95,7 @@ export default class Article extends React.Component {
     this.bookmarkManager.bookmarkPage(this.props.pageContext.title)
     this.setState({
       bookmarked: true,
+      notificationId: this.state.notificationId + 1,
       notificationText: bookmarkNotificationText,
       notificationShowing: true
     })
@@ -100,6 +104,7 @@ export default class Article extends React.Component {
   unBookmarkPage() {
     this.bookmarkManager.unBookmarkPage(this.props.pageContext.title)
     this.setState({
+      notificationId: this.state.notificationId + 1,
       bookmarked: false,
       notificationText: unbookmarkNotificationText,
       notificationShowing: true
@@ -234,6 +239,7 @@ export default class Article extends React.Component {
           icon={<FontAwesomeIcon icon={faCheck} />}
           text={this.state.notificationText}
           hidden={!this.state.notificationShowing}
+          notificationId={this.state.notificationId}
         />
         {this.state.feedbackOpen && (
           <FeedbackScreen
