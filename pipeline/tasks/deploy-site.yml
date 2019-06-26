@@ -68,10 +68,10 @@ run:
     # SSO Protection
     if [ "${PROTECTED}" == "true" ]; then
       echo "env_variables:" >> ${APP_FILE}
-      echo "  SP_CALLBACK_URL: 'https://${DOMAIN_NAME}/sso/callback'
-      echo "  SP_ENTITY_ID: 'https://${DOMAIN_NAME}/saml/metadata'
-      echo "  IDP_ENTRY_POINT: '${IDP_ENTRY_POINT}'
-      echo "  COOKIE_SECRET: '${COOKIE_SECRET}'
+      echo "  SP_CALLBACK_URL: 'https://${DOMAIN_NAME}/sso/callback'"
+      echo "  SP_ENTITY_ID: 'https://${DOMAIN_NAME}/saml/metadata'"
+      echo "  IDP_ENTRY_POINT: '${IDP_ENTRY_POINT}'"
+      echo "  COOKIE_SECRET: '${COOKIE_SECRET}'"
     fi
 
     gcloud app deploy -q ci-app.yaml
