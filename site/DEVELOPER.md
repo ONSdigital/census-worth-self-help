@@ -14,7 +14,8 @@ Add .env file to this directory (see .env.template for an example)
 Then
 
     scripts/generate-local-certificates.sh
-    . scripts/initialise-shell-variables.fish
+    . scripts/initialise-shell-variables.fish    
+    ../pipeline/tasks/task-scripts/validate-deploy-site-env.sh
     ../pipeline/tasks/task-scripts/prepare-protected-site.sh
     npm run app
     

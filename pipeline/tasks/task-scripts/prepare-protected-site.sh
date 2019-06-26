@@ -18,19 +18,16 @@ if [[ "${PROTECTED}" == "true" ]] ; then
   echo ${SP_KEY} > .build/encoded-sp-key.txt
   set -x
 
-  if [[ `base64 --help | grep "GNU coreutils" | wc -l` -gt 0 ]] ; then
-    # Linux
-    base64 -d tmp/encoded-idp-certificate.txt > .deploy/idp/idp.certificate
-    base64 -d tmp/encoded-sp-certificate.txt > .deploy/sp/sp.certificate
-    base64 -d tmp/encoded-sp-key.txt > .deploy/sp/sp.key
-  elif [[ `base64 --help | grep "hvD" | wc -l` -gt 0 ]] ; then
+  if [[ `base64 --help | grep "hvD" | wc -l` -gt 0 ]] ; then
     # MacOS
-    base64 -D -i tmp/encoded-idp-certificate.txt > .deploy/idp/idp.certificate
-    base64 -D -i tmp/encoded-sp-certificate.txt > .deploy/sp/sp.certificate
-    base64 -D -i tmp/encoded-sp-key.txt > .deploy/sp/sp.key
+    base64 -D -i .build/encoded-idp-certificate.txt > .deploy/idp/idp.certificate
+    base64 -D -i .build/encoded-sp-certificate.txt > .deploy/sp/sp.certificate
+    base64 -D -i .build/encoded-sp-key.txt > .deploy/sp/sp.key
   else
-    echo "Unrecognised base64 command"
-    exit 1
+    # Linux
+    base64 -d .build/encoded-idp-certificate.txt > .deploy/idp/idp.certificate
+    base64 -d .build/encoded-sp-certificate.txt > .deploy/sp/sp.certificate
+    base64 -d .build/encoded-sp-key.txt > .deploy/sp/sp.key
   fi
   set -x
 
