@@ -23,4 +23,8 @@ Then access http://localhost:8080/protected
 
 # Deploy secured app
 
+Enhance app engine configuration with env variables
+
+    ../pipeline/tasks/task-scripts/deploy-site-protected.sh
+
     gcloud app deploy ci-app.yaml

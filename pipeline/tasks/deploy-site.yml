@@ -65,22 +65,6 @@ run:
     sed "s/service:.*/service: $SERVICE/" app.yaml > ${APP_FILE}
     sed -i "s/  repo:.*/  repo: ONSdigital\/$BACKEND_CONTENT_REPO/" public/admin/config.yml
 
-    # SSO Protection
-    if [ "${PROTECTED}" == "true" ]; then
-      mkdir -p .deploy/idp
-      mkdir -p .deploy/sp
-
-      echo ${IDP_CERTIFICATE} > .deploy/idp/sp.certificate
-      echo ${SP_CERTIFICATE} > .deploy/sp/sp.certificate
-      echo ${SP_KEY} > .deploy/sp/sp.key
-
-      echo "env_variables:" >> ${APP_FILE}
-      echo "  SP_CALLBACK_URL: 'https://${DOMAIN_NAME}/sso/callback'" >> ${APP_FILE}
-      echo "  SP_ENTITY_ID: 'https://${DOMAIN_NAME}/saml/metadata'" >> ${APP_FILE}
-      echo "  IDP_ENTRY_POINT: '${IDP_ENTRY_POINT}'" >> ${APP_FILE}
-      set +x
-      echo "  COOKIE_SECRET: '${COOKIE_SECRET}'" >> ${APP_FILE}
-      set -x
-    fi
+    ../pipeline/tasks/task-scripts/deploy-site-protected.sh ${APP_FILE}
 
     gcloud app deploy -q ci-app.yaml
