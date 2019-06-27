@@ -3,7 +3,7 @@ resources:
   type: git
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
-    branch: feature/ONS-124-deploy-matomo-for-site-analytics-2
+    branch: master
   webhook_token: ((git.census-worth-self-help-webhook-token))
   check_every: 15m
 
@@ -44,8 +44,6 @@ jobs:
         - |
             set +x
             echo "GCP Secrets Version      : $GCP_SECRETS_VERSION"
-            echo "MATOMO_IP     : $MATOMO_IP"
-            echo "MATOMO_URL      : $MATOMO_URL"
             set -x
             apk add --no-progress --update nodejs nodejs-npm
             cd census-worth-self-help/site
