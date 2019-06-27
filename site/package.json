@@ -22,6 +22,7 @@
     "netlify-cms-app": "2.9.1",
     "npm-font-open-sans": "1.1.0",
     "react": "16.8.6",
+    "react-detect-offline": "^2.4.0",
     "react-dom": "16.8.6",
     "react-select": "3.0.4"
   },
