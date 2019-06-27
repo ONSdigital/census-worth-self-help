@@ -81,7 +81,15 @@ export default ({ searchObject = null }) => {
             Self Help Facility
           </div>
           <TopbarLink
-            title={<div css={css` font-size: 19px;`}><FontAwesomeIcon icon={faSearch} /></div>}
+            title={
+              <div
+                css={css`
+                  font-size: 19px;
+                `}
+              >
+                <FontAwesomeIcon icon={faSearch} />
+              </div>
+            }
             link="/search"
           />
           <TopbarLink title="Menu" link="/menu" />

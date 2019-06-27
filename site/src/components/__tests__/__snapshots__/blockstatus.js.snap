@@ -21,7 +21,7 @@ exports[`BlockStatus renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1ter12k",
+        "name": "pernti",
         "next": undefined,
         "styles": "
           
@@ -29,28 +29,29 @@ exports[`BlockStatus renders correctly 1`] = `
     justify-content: center;
     flex-direction: column;
   
-          flex-grow:1
+          flex-grow:1;
+          text-align: center;
         ",
       }
     }
   >
     <div
-      className="Button-heading-Style"
+      className="Card-heading-Style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "2e2jvx",
+          "next": undefined,
+          "styles": "
+            margin-bottom: 5px;
+          ",
+        }
+      }
     >
       title
     </div>
     <div
-      className="Button-subhead-Style"
-      css={
-        Object {
-          "map": undefined,
-          "name": "1mexe8m",
-          "next": undefined,
-          "styles": "
-            text-align: center;
-          ",
-        }
-      }
+      className="Card-sub-head-Style-gray"
     >
       anything
     </div>

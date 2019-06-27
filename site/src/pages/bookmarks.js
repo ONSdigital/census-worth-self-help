@@ -47,7 +47,9 @@ export default class Bookmarks extends React.Component {
 
     return (
       <Layout explore_more_link={true}>
-        <PageTitle icon={<FontAwesomeIcon icon={faBookmarkSolid} />}>My Bookmarks</PageTitle>
+        <PageTitle icon={<FontAwesomeIcon icon={faBookmarkSolid} />}>
+          My Bookmarks
+        </PageTitle>
         <TextBlock>
           Bookmarks are links to articles, which will appear here for you to
           quickly find the article again. To remove a bookmark, tap on the

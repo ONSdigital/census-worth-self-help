@@ -40,12 +40,15 @@ export default ({ title, subtitle, icon = null }) => {
           text-align: center;
         `}
       >
-        <div css={css`
-          margin-bottom: 5px;
-        `} className="Card-heading-Style">{title}</div>
-        <div className="Card-sub-head-Style-gray">
-          {subtitle}
+        <div
+          css={css`
+            margin-bottom: 5px;
+          `}
+          className="Card-heading-Style"
+        >
+          {title}
         </div>
+        <div className="Card-sub-head-Style-gray">{subtitle}</div>
       </div>
     </div>
   )

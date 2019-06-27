@@ -34,7 +34,7 @@ export default ({
           css={css`
             font-size: 19px;
             position: relative;
-            left: ${ shortMode ? "0px" : "10px"};
+            left: ${shortMode ? "0px" : "10px"};
             color: ${colors.navy_normal};
           `}
         >

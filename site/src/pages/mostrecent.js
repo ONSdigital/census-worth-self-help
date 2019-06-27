@@ -36,7 +36,9 @@ export default class MostRecent extends React.Component {
 
     return (
       <Layout explore_more_link={true}>
-        <PageTitle icon={<FontAwesomeIcon icon={faClock} />} >Recently Updated</PageTitle>
+        <PageTitle icon={<FontAwesomeIcon icon={faClock} />}>
+          Recently Updated
+        </PageTitle>
         <TextBlock>
           Most recent changes, need to check with Phil to see if there's
           actually content for this

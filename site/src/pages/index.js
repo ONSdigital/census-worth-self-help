@@ -46,9 +46,11 @@ export default ({ data }) => {
           elements={mostRecentEdges}
         />
       )}
-      <div css={css`
-        margin-bottom: 45px;
-      `}>
+      <div
+        css={css`
+          margin-bottom: 45px;
+        `}
+      >
         {bookmarkEdges.length > 0 && (
           <TabList
             title="MY BOOKMARKS"
