@@ -7,7 +7,8 @@ import TabList from "../components/tablist"
 import BookmarkManager from "../utils/bookmarkManager"
 import BlockStatus from "../components/blockstatus"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBookmark } from "@fortawesome/free-solid-svg-icons"
+import { faBookmark } from "@fortawesome/free-regular-svg-icons"
+import { faBookmark as faBookmarkSolid } from "@fortawesome/free-solid-svg-icons"
 
 import { PaginationObject } from "../utils/pagination"
 import PaginationBar from "../components/paginationbar"
@@ -46,7 +47,7 @@ export default class Bookmarks extends React.Component {
 
     return (
       <Layout explore_more_link={true}>
-        <PageTitle>My Bookmarks</PageTitle>
+        <PageTitle icon={<FontAwesomeIcon icon={faBookmarkSolid} />}>My Bookmarks</PageTitle>
         <TextBlock>
           Bookmarks are links to articles, which will appear here for you to
           quickly find the article again. To remove a bookmark, tap on the

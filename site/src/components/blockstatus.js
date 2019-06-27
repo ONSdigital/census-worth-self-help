@@ -36,16 +36,14 @@ export default ({ title, subtitle, icon = null }) => {
       <div
         css={css`
           ${spacing.vert_aligned_flex_text}
-          flex-grow:1
+          flex-grow:1;
+          text-align: center;
         `}
       >
-        <div className="Button-heading-Style">{title}</div>
-        <div
-          css={css`
-            text-align: center;
-          `}
-          className="Button-subhead-Style"
-        >
+        <div css={css`
+          margin-bottom: 5px;
+        `} className="Card-heading-Style">{title}</div>
+        <div className="Card-sub-head-Style-gray">
           {subtitle}
         </div>
       </div>

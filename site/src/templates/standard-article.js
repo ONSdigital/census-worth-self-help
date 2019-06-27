@@ -136,7 +136,7 @@ export default class Article extends React.Component {
                 margin-top: 20px;
               `}
             >
-              <TextBlock>
+              <TextBlock articleContent={true}>
                 <div className="Article-sub-title-Style">
                   {post.frontmatter.description}
                 </div>
@@ -172,6 +172,7 @@ export default class Article extends React.Component {
                     icon={<FontAwesomeIcon icon={faThumbsUp} />}
                     title="Useful"
                     clickFunction={this.giveFeedback}
+                    shortMode={true}
                   />
                   <LargeButton
                     additionalCss={css`
@@ -180,6 +181,7 @@ export default class Article extends React.Component {
                     `}
                     icon={<FontAwesomeIcon icon={faThumbsDown} />}
                     title="Not useful"
+                    shortMode={true}
                   />
                 </div>
               </Section>
