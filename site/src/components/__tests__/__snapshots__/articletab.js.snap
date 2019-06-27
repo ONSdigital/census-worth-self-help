@@ -18,9 +18,6 @@ exports[`ArticleTab renders correctly 1`] = `
       ",
     }
   }
-  data-content-name="test Article 1"
-  data-content-piece="foo"
-  data-track-content={true}
   onClick={[Function]}
 >
   <div
