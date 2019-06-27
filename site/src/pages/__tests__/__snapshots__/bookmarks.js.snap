@@ -93,23 +93,36 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         data-testid="topbarlink-button"
         onClick={[Function]}
       >
-        <svg
-          aria-hidden="true"
-          className="svg-inline--fa fa-search fa-w-16 "
-          data-icon="search"
-          data-prefix="fas"
-          focusable="false"
-          role="img"
-          style={Object {}}
-          viewBox="0 0 512 512"
-          xmlns="http://www.w3.org/2000/svg"
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "1dbjmka",
+              "next": undefined,
+              "styles": "
+                  font-size: 19px;
+                ",
+            }
+          }
         >
-          <path
-            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-            fill="currentColor"
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-search fa-w-16 "
+            data-icon="search"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
             style={Object {}}
-          />
-        </svg>
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </div>
       </div>
       <div
         className="Header-button-Style"
@@ -191,7 +204,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "1k8b10p",
+              "name": "17k9f9t",
               "next": undefined,
               "styles": "
         
@@ -203,9 +216,9 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         border-radius: 4px;
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
-        margin: 0px 10px;
+        margin: 0px 15px;
         text-align: center;
-        height: 40px;
+        height: 50px;
         background-color: rgb(255, 255, 255);
         
       ",
@@ -218,10 +231,12 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "3pw6ud",
+                "name": "1dj94zy",
                 "next": undefined,
                 "styles": "
+            font-size: 19px;
             position: relative;
+            left: 10px;
             color: rgb(0,61,89);
           ",
               }
@@ -305,6 +320,37 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
           }
           data-testid="search-result-title"
         >
+          <div
+            css={
+              Object {
+                "map": undefined,
+                "name": "8x4dpy",
+                "next": undefined,
+                "styles": "
+              font-size: 19px;
+              margin: 5px 20px 0px 2px;
+            ",
+              }
+            }
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-bookmark fa-w-12 "
+              data-icon="bookmark"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 384 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </div>
           My Bookmarks
         </h1>
       </div>
@@ -313,12 +359,13 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "pywoey",
+            "name": "bsbyq4",
             "next": undefined,
             "styles": "
         
     padding: 5px 15px;
   ;
+        margin-bottom: 20px;
       ",
           }
         }
@@ -660,23 +707,36 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         data-testid="topbarlink-button"
         onClick={[Function]}
       >
-        <svg
-          aria-hidden="true"
-          className="svg-inline--fa fa-search fa-w-16 "
-          data-icon="search"
-          data-prefix="fas"
-          focusable="false"
-          role="img"
-          style={Object {}}
-          viewBox="0 0 512 512"
-          xmlns="http://www.w3.org/2000/svg"
+        <div
+          css={
+            Object {
+              "map": undefined,
+              "name": "1dbjmka",
+              "next": undefined,
+              "styles": "
+                  font-size: 19px;
+                ",
+            }
+          }
         >
-          <path
-            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-            fill="currentColor"
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-search fa-w-16 "
+            data-icon="search"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
             style={Object {}}
-          />
-        </svg>
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </div>
       </div>
       <div
         className="Header-button-Style"
@@ -758,7 +818,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "1k8b10p",
+              "name": "17k9f9t",
               "next": undefined,
               "styles": "
         
@@ -770,9 +830,9 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         border-radius: 4px;
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
-        margin: 0px 10px;
+        margin: 0px 15px;
         text-align: center;
-        height: 40px;
+        height: 50px;
         background-color: rgb(255, 255, 255);
         
       ",
@@ -785,10 +845,12 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "3pw6ud",
+                "name": "1dj94zy",
                 "next": undefined,
                 "styles": "
+            font-size: 19px;
             position: relative;
+            left: 10px;
             color: rgb(0,61,89);
           ",
               }
@@ -872,6 +934,37 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
           }
           data-testid="search-result-title"
         >
+          <div
+            css={
+              Object {
+                "map": undefined,
+                "name": "8x4dpy",
+                "next": undefined,
+                "styles": "
+              font-size: 19px;
+              margin: 5px 20px 0px 2px;
+            ",
+              }
+            }
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-bookmark fa-w-12 "
+              data-icon="bookmark"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 384 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </div>
           My Bookmarks
         </h1>
       </div>
@@ -880,12 +973,13 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "pywoey",
+            "name": "bsbyq4",
             "next": undefined,
             "styles": "
         
     padding: 5px 15px;
   ;
+        margin-bottom: 20px;
       ",
           }
         }
@@ -945,7 +1039,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
               aria-hidden="true"
               className="svg-inline--fa fa-bookmark fa-w-12 "
               data-icon="bookmark"
-              data-prefix="fas"
+              data-prefix="far"
               focusable="false"
               role="img"
               style={Object {}}
@@ -953,7 +1047,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"
+                d="M336 0H48C21.49 0 0 21.49 0 48v464l192-112 192 112V48c0-26.51-21.49-48-48-48zm0 428.43l-144-84-144 84V54a6 6 0 0 1 6-6h276c3.314 0 6 2.683 6 5.996V428.43z"
                 fill="currentColor"
                 style={Object {}}
               />
@@ -964,7 +1058,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "1ter12k",
+              "name": "pernti",
               "next": undefined,
               "styles": "
           
@@ -972,28 +1066,29 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
     justify-content: center;
     flex-direction: column;
   
-          flex-grow:1
+          flex-grow:1;
+          text-align: center;
         ",
             }
           }
         >
           <div
-            className="Button-heading-Style"
+            className="Card-heading-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "2e2jvx",
+                "next": undefined,
+                "styles": "
+            margin-bottom: 5px;
+          ",
+              }
+            }
           >
             Bookmarks will show here
           </div>
           <div
-            className="Button-subhead-Style"
-            css={
-              Object {
-                "map": undefined,
-                "name": "1mexe8m",
-                "next": undefined,
-                "styles": "
-            text-align: center;
-          ",
-              }
-            }
+            className="Card-sub-head-Style-gray"
           >
             Bookmarks are stored on your device
           </div>

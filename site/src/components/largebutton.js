@@ -8,7 +8,8 @@ export default ({
   link = "",
   icon = null,
   additionalCss = undefined,
-  clickFunction = undefined
+  clickFunction = undefined,
+  shortMode = false
 }) => {
   let onClick = clickFunction ? clickFunction : () => navigate(link)
   return (
@@ -21,9 +22,9 @@ export default ({
         border-radius: 4px;
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
-        margin: 0px 10px;
+        margin: 0px 15px;
         text-align: center;
-        height: 40px;
+        height: 50px;
         background-color: ${colors.white};
         ${additionalCss}
       `}
@@ -31,7 +32,9 @@ export default ({
       {icon && (
         <div
           css={css`
+            font-size: 19px;
             position: relative;
+            left: ${shortMode ? "0px" : "10px"};
             color: ${colors.navy_normal};
           `}
         >
