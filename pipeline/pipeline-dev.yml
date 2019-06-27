@@ -44,6 +44,8 @@ jobs:
         - |
             set +x
             echo "GCP Secrets Version      : $GCP_SECRETS_VERSION"
+            echo "MATOMO_IP     : $MATOMO_IP"
+            echo "MATOMO_URL      : $MATOMO_URL"
             set -x
             apk add --no-progress --update nodejs nodejs-npm
             cd census-worth-self-help/site
