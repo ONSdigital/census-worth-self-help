@@ -17,8 +17,6 @@ export default ({ node }) => {
     <div
       onClick={() => { 
         window._paq.push(['trackEvent', 'Article', 'clicked', title]);
-        window._paq.push(['trackAllContentImpressions']);
-        console.log(title + " was clicked");
         return navigate("/" + link)}}
       css={css`
         ${spacing.tab};
@@ -26,7 +24,6 @@ export default ({ node }) => {
         border-left: 6px solid ${colors.navy_normal};
         background-color: ${colors.white};
       `}
-      data-track-content 
     >
       <div
         className="Card-heading-Style"
