@@ -35,9 +35,10 @@ const samlStrategy = new SamlStrategy({
     privateCert: spKey
   },
   function(profile, done) {
+    // Log statement to be removed before merge to master
+    console.log(`Profile : ${JSON.stringify(profile)}`)
     done(null, {
-      email: profile.email,
-      displayName: profile.displayName
+      email: profile.email
     })
   })
 
@@ -83,7 +84,7 @@ app.get('/saml/metadata', function (req, res) {
 })
 
 app.get('/protected', (req, res) => {
-  res.json({ message: `hello, protected : ${req.user.displayName}` })
+  res.json({ message: `hello, protected : ${req.user.email}` })
 });
 
 // Start the server

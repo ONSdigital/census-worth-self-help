@@ -3,13 +3,18 @@
 In one shell
 
     npm install --global saml-idp
-    scripts/generate-local-idp-certificates.sh    
+    scripts/generate-local-idp-certificates.sh   
     saml-idp --acs http://localhost:8080/sso/callback --aud http://localhost:8080 \
-      --serviceProviderId http://localhost:8080/saml/metadata
+      --serviceProviderId http://localhost:8080/saml/metadata \
+      --cert .secrets/idp/idp.certificate \
+      --key .secrets/idp/idp.key
+      
 
 # Run SAML SSO locally with express
 
-Add .env file to this directory (see .env.template for an example)
+Add .env file to this directory, e.g
+
+    cp .env.template .env
 
 Then
 
