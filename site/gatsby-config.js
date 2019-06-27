@@ -58,6 +58,10 @@ module.exports = {
   ],
 }
 
+if (!process.env.DISABLED_NETLIFY) {
+  module.exports.plugins.push("gatsby-plugin-netlify-cms");
+}
+
 if (process.env.ENABLE_MATOMO) {
   module.exports.plugins.push(
     {
