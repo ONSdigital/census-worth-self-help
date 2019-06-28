@@ -28,6 +28,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: "./static/favicon.png",
+      }
+    },
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-offline`,
