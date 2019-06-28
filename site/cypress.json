@@ -1,8 +1,7 @@
 {
   "baseUrl": "http://localhost:8000",
   "reporter": "mochawesome",
-  "reporterOptions":
-  {
+  "reporterOptions": {
     "overwrite": false,
     "html": true,
     "json": false

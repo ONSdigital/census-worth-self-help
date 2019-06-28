@@ -72,6 +72,7 @@ export default ({ data }) => {
             <TabList title="MY BOOKMARKS" elements={[]} />
             <BlockStatus
               icon={<FontAwesomeIcon icon={faBookmark} />}
+              data-testid="index-empty-bookmarks-message"
               title="Bookmarks will show here"
               subtitle="Bookmarks are stored on your device"
             />
