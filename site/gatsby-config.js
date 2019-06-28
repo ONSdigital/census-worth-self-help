@@ -70,7 +70,6 @@ if (process.env.ENABLE_MATOMO) {
         siteId: process.env.MATOMO_SITE_ID,
         matomoUrl: process.env.MATOMO_IP,
         siteUrl: process.env.MATOMO_URL,
-        localScript: '/piwik.js',
         // dev: true
       }
     }
