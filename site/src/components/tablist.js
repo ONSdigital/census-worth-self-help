@@ -21,9 +21,10 @@ export default ({ elements, title = false, link = false }) => {
           ${spacing.standard_vertical};
           ${spacing.in_page_element}
           display: flex;
+          margin-bottom: 5px;
         `}
       >
-        {title && <div className="Section-heading-Style">{title}</div>}
+        {title && <div className="Tablist-heading-Style">{title}</div>}
         {link && (
           <Link
             to={link}

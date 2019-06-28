@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { css } from "@emotion/core"
 import Layout from "../components/layout"
 import { Index } from "elasticlunr"
 import TabList from "../components/tablist"
@@ -165,25 +164,32 @@ export default class Search extends React.Component {
     let searching =
       this.state.query.length >= minimumSearchString || edges.length > 0
 
+    let noResults = searching && edges.length === 0
+    let suggestedEdges = []
+    if (noResults) {
+      suggestedEdges = this.data.allMarkdownRemark.edges.filter(
+        edge => {
+          return edge.node.frontmatter.tags && edge.node.frontmatter.tags.includes("popular")
+        }
+      ).slice(0, 3)
+    }
+    
     return (
       <Layout title="Search" searchObject={searchObject}>
-        <PageTitle>
-          <FontAwesomeIcon
-            icon={faSearch}
-            css={css`
-              padding: 5px;
-            `}
-          />
+        <PageTitle  icon={ <FontAwesomeIcon icon={faSearch} /> } >
           {searching && edges.length > 0 && (
             <div>
               {this.state.results.length} results for "{this.state.query}"
             </div>
           )}
-          {searching && edges.length === 0 && (
-            <div>Sorry no results for "{this.state.query}"</div>
+          {noResults && (
+            <div>Sorry, no results for "{this.state.query}"</div>
           )}
           {!searching && <div>Begin typing to search</div>}
         </PageTitle>
+        { noResults && suggestedEdges.length > 0 &&
+          <TabList title="HAVE YOU TRIED..." elements={suggestedEdges} />
+        }
         <TabList elements={edges} />
         {this.state.results.length !== 0 && (
           <PaginationBar
