@@ -405,7 +405,7 @@ exports[`StandardArticle renders correctly 1`] = `
           css={
             Object {
               "map": undefined,
-              "name": "qvcny6",
+              "name": "2artsq",
               "next": undefined,
               "styles": "
           
@@ -415,12 +415,13 @@ exports[`StandardArticle renders correctly 1`] = `
     padding: 5px 15px;
   
           display: flex;
+          margin-bottom: 5px;
         ",
             }
           }
         >
           <div
-            className="Section-heading-Style"
+            className="Tablist-heading-Style"
           >
             IN THIS SECTION:
           </div>

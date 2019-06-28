@@ -167,29 +167,30 @@ export default class Search extends React.Component {
     let noResults = searching && edges.length === 0
     let suggestedEdges = []
     if (noResults) {
-      suggestedEdges = this.data.allMarkdownRemark.edges.filter(
-        edge => {
-          return edge.node.frontmatter.tags && edge.node.frontmatter.tags.includes("popular")
-        }
-      ).slice(0, 3)
+      suggestedEdges = this.data.allMarkdownRemark.edges
+        .filter(edge => {
+          return (
+            edge.node.frontmatter.tags &&
+            edge.node.frontmatter.tags.includes("popular")
+          )
+        })
+        .slice(0, 3)
     }
-    
+
     return (
       <Layout title="Search" searchObject={searchObject}>
-        <PageTitle  icon={ <FontAwesomeIcon icon={faSearch} /> } >
+        <PageTitle icon={<FontAwesomeIcon icon={faSearch} />}>
           {searching && edges.length > 0 && (
             <div>
               {this.state.results.length} results for "{this.state.query}"
             </div>
           )}
-          {noResults && (
-            <div>Sorry, no results for "{this.state.query}"</div>
-          )}
+          {noResults && <div>Sorry, no results for "{this.state.query}"</div>}
           {!searching && <div>Begin typing to search</div>}
         </PageTitle>
-        { noResults && suggestedEdges.length > 0 &&
+        {noResults && suggestedEdges.length > 0 && (
           <TabList title="HAVE YOU TRIED..." elements={suggestedEdges} />
-        }
+        )}
         <TabList elements={edges} />
         {this.state.results.length !== 0 && (
           <PaginationBar
