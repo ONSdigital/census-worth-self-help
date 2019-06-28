@@ -6,7 +6,7 @@ export const data = {
           title: "test Article 1",
           description: "testDescription",
           priority: 1,
-          date: new Date()
+          date: new Date(),
         },
         fields: {
           pagename: "test-article-1",
@@ -20,7 +20,8 @@ export const data = {
           title: "test Article 2",
           description: "testDescription",
           priority: 0,
-          date: new Date()
+          date: new Date(),
+          tags: ["popular"]
         },
         fields: {
           pagename: "test-article-2",
@@ -34,7 +35,8 @@ export const data = {
           title: "test Article 3",
           description: "testDescription",
           priority: 0,
-          date: new Date()
+          date: new Date(),
+          tags: ["popular"]
         },
         fields: {
           pagename: "test-article-3",
@@ -59,7 +61,37 @@ export const data = {
     {
       node: {
         frontmatter: {
-          title: "test Directory 5",
+          title: "test Article 5",
+          description: "testDescription",
+          priority: 0,
+          date: new Date(),
+          tags: ["popular"]
+        },
+        fields: {
+          pagename: "test-article-5",
+          collection: "articles"
+        }
+      }
+    },
+    {
+      node: {
+        frontmatter: {
+          title: "test Article 6",
+          description: "testDescription",
+          priority: 0,
+          date: new Date(),
+          tags: ["popular"]
+        },
+        fields: {
+          pagename: "test-article-6",
+          collection: "articles"
+        }
+      }
+    },
+    {
+      node: {
+        frontmatter: {
+          title: "test Directory 7",
           description: "testDescription",
           priority: 0,
           date: new Date()
@@ -75,4 +107,5 @@ export const data = {
 
 export const articleNode = data.edges[0].node
 export const directoryNode = data.edges[2].node
-export const articleList = { edges: data.edges.slice(0, 4) }
+export const popularList = { edges: [ data.edges[1], data.edges[2], data.edges[4], data.edges[5] ] }
+export const articleList = { edges: data.edges.slice(0, 6) }

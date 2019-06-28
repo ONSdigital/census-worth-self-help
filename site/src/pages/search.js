@@ -142,6 +142,17 @@ export default class Search extends React.Component {
     node.highlightedText = highlightableText
   }
 
+  static getSuggestedEdges(edges) {
+    return edges
+      .filter(edge => {
+        return (
+          edge.node.frontmatter.tags &&
+          edge.node.frontmatter.tags.includes("popular")
+        )
+      })
+      .slice(0, 3)
+  }
+
   render() {
     // the search object is given to the top bar to control search
     let searchObject = {
@@ -167,14 +178,7 @@ export default class Search extends React.Component {
     let noResults = searching && edges.length === 0
     let suggestedEdges = []
     if (noResults) {
-      suggestedEdges = this.data.allMarkdownRemark.edges
-        .filter(edge => {
-          return (
-            edge.node.frontmatter.tags &&
-            edge.node.frontmatter.tags.includes("popular")
-          )
-        })
-        .slice(0, 3)
+      suggestedEdges = Search.getSuggestedEdges(this.data.allMarkdownRemark.edges)
     }
 
     return (

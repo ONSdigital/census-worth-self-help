@@ -754,6 +754,98 @@ exports[`Most Recent renders correctly 1`] = `
             </div>
           </div>
         </div>
+        <div>
+          <div
+            css={
+              Object {
+                "map": undefined,
+                "name": "lcxyxv",
+                "next": undefined,
+                "styles": "
+        
+    padding: 15px;
+    min-height: 30px;
+  ;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+        border-left: 6px solid rgb(0,61,89);
+        background-color: rgb(255, 255, 255);
+      ",
+              }
+            }
+            onClick={[Function]}
+          >
+            <div
+              className="Card-heading-Style"
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "qiy98z",
+                  "next": undefined,
+                  "styles": "
+          color: inherit;
+          flex-grow: 1;
+          font-weight: semi-bold;
+        ",
+                }
+              }
+              data-testid="articletab-article-card"
+            >
+              test Article 5
+            </div>
+            <div
+              className="Card-sub-head-Style-gray"
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "1hejrb1",
+                  "next": undefined,
+                  "styles": "
+          padding-top: 6px;
+          display: flex;
+          flex-direction: vertical;
+          line-height: 1.08;
+          max-height: 42.12px; // line-height * font-size * 3
+        ",
+                }
+              }
+            >
+              <div
+                css={
+                  Object {
+                    "map": undefined,
+                    "name": "lz6rtp",
+                    "next": undefined,
+                    "styles": "
+            width: 70%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+          ",
+                  }
+                }
+              >
+                testDescription
+              </div>
+              <div
+                className="Card-meta-Style"
+                css={
+                  Object {
+                    "map": undefined,
+                    "name": "4j3tb8",
+                    "next": undefined,
+                    "styles": "
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          ",
+                  }
+                }
+              >
+                a few seconds ago
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         css={
@@ -799,9 +891,9 @@ exports[`Most Recent renders correctly 1`] = `
             Showing 
             1
             -
-            4
+            5
              of 
-            4
+            6
           </div>
           <div>
             Show 
@@ -839,6 +931,60 @@ exports[`Most Recent renders correctly 1`] = `
             onClick={[Function]}
           >
             1
+          </div>
+          <div
+            className="Article-Title-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "tvdd9t",
+                "next": undefined,
+                "styles": "
+        padding: 0px 5px;
+        text-decoration: none;
+      ",
+              }
+            }
+            data-testid="pagination-2-button"
+            onClick={[Function]}
+          >
+            2
+          </div>
+          <div
+            className="Article-Title-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "tvdd9t",
+                "next": undefined,
+                "styles": "
+        padding: 0px 5px;
+        text-decoration: none;
+      ",
+              }
+            }
+            data-testid="pagination-next-button"
+            onClick={[Function]}
+          >
+            &gt;
+          </div>
+          <div
+            className="Article-Title-Style"
+            css={
+              Object {
+                "map": undefined,
+                "name": "tvdd9t",
+                "next": undefined,
+                "styles": "
+        padding: 0px 5px;
+        text-decoration: none;
+      ",
+              }
+            }
+            data-testid="pagination-last-button"
+            onClick={[Function]}
+          >
+            &gt;&gt;
           </div>
         </div>
       </div>
