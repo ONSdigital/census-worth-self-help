@@ -17,10 +17,10 @@ BookmarkManager.mockImplementation(
 describe("Index", () => {
 
   const mostRecentData = { allMarkdownRemark : articleList }
+  const empty_data = {}
 
   it("renders correctly without data and has no alert", () => {
     // check snapshot
-    const empty_data = {}
     const tree = renderer.create(<Index data={empty_data}/>).toJSON()
     expect(tree).toMatchSnapshot()
 
@@ -56,5 +56,23 @@ describe("Index", () => {
 
     const { getAllByTestId } = render(<Index data={mostRecentData} />)
     expect(getAllByTestId("articletab-article-card").length).toEqual(4)
+  })
+
+  it("should not show offline message when online", () => {
+
+    const { queryByText } = render(<Index data={empty_data}/>)
+    expect(queryByText('Currently working offline')).toBeNull()
+
+  })
+
+  it("should show offline message when offline", () => {
+
+    Object.defineProperty(navigator, "onLine", {
+      configurable: true,
+      value: false
+    });
+
+    const { getByText } = render(<Index data={empty_data}/>)
+    expect(getByText('Currently working offline')).toBeDefined()
   })
 })
