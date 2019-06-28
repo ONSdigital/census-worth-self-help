@@ -35,7 +35,7 @@ describe("Self Help Facility Field Officer flow", function() {
         cy.get(homepage.exploreContentButton).should('be.visible');
         cy.get(homepage.sectionHeader).contains('RECENTLY UPDATED').should('be.visible');
         cy.get(homepage.sectionHeader).contains('MY BOOKMARKS').should('be.visible');
-        cy.get(homepage.viewAll).first().contains('View all >').should('be.visible');
+        cy.get(homepage.viewAllLink).first().contains('View all >').should('be.visible');
         cy.get(homepage.footerOnsMessage).contains('© Office for National Statistics 2019').should('be.visible');
     });
 
@@ -122,7 +122,7 @@ describe("Self Help Facility Field Officer flow", function() {
         cy.get('.Menu-major-item-Style').contains('My Bookmarks').click();
         cy.url().should('include', bookmarksPage.bookmarkUrlPath);
         cy.get(homepage.articleCard).should('have.text', 'deep article');
-        cy.get(bookmarks.bookmarkIcon).should('not.be.visible');
+        cy.get(bookmarks.emptyBookmarkMessage).should('not.be.visible');
     });
 
     it('The field officer should see all bookmarked articles when they click \'view all\'', function () {

@@ -8,5 +8,5 @@ module.exports = {
     homepageTitle: `[data-test='mainLogo__title']`,
     homepageLogo: `[data-test='ons-logo__header']`,
     sectionHeader: `.Section-heading-Style`,
-    viewAll: `.Button-subhead-Style`
+    viewAllLink: `.Button-subhead-Style`
 };
