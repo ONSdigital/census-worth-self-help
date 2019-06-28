@@ -5,7 +5,7 @@ exports[`BlockStatus renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "180i97l",
+      "name": "bn78dc",
       "next": undefined,
       "styles": "
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
@@ -13,6 +13,8 @@ exports[`BlockStatus renders correctly 1`] = `
         background-color: rgb(255, 255, 255);
         height: 74px;
         display: flex;
+        align-items: center;
+        justify-content: center;
       ",
     }
   }
@@ -21,7 +23,28 @@ exports[`BlockStatus renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1ter12k",
+        "name": "1w87xe6",
+        "next": undefined,
+        "styles": "
+          color: rgb(0,61,89);
+          
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+          font-size: 30px;
+          flex: 1 1 0;
+          align-items: center;
+          padding: 0px 5px;
+        ",
+      }
+    }
+  />
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "sj34c4",
         "next": undefined,
         "styles": "
           
@@ -29,31 +52,43 @@ exports[`BlockStatus renders correctly 1`] = `
     justify-content: center;
     flex-direction: column;
   
-          flex-grow:1
+          text-align: center;
         ",
       }
     }
   >
     <div
-      className="Button-heading-Style"
-    >
-      title
-    </div>
-    <div
-      className="Button-subhead-Style"
+      className="Card-heading-Style"
       css={
         Object {
           "map": undefined,
-          "name": "1mexe8m",
+          "name": "2e2jvx",
           "next": undefined,
           "styles": "
-            text-align: center;
+            margin-bottom: 5px;
           ",
         }
       }
     >
+      title
+    </div>
+    <div
+      className="Card-sub-head-Style-gray"
+    >
       anything
     </div>
   </div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "531ogy",
+        "next": undefined,
+        "styles": "
+          flex: 1 1 0;
+        ",
+      }
+    }
+  />
 </div>
 `;

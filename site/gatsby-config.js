@@ -28,6 +28,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: "./static/favicon.png",
+      }
+    },
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-offline`,
@@ -60,4 +66,18 @@ module.exports = {
 
 if (!process.env.DISABLED_NETLIFY) {
   module.exports.plugins.push("gatsby-plugin-netlify-cms");
+}
+
+if (process.env.ENABLE_MATOMO) {
+  module.exports.plugins.push(
+    {
+      resolve: 'gatsby-plugin-matomo',
+      options: {
+        siteId: process.env.MATOMO_SITE_ID,
+        matomoUrl: process.env.MATOMO_IP,
+        siteUrl: process.env.MATOMO_URL,
+        // dev: true
+      }
+    }
+  );
 }
