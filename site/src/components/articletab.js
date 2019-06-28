@@ -14,12 +14,7 @@ export default ({ node }) => {
   let time_ago = moment(node.frontmatter.date).fromNow()
   return (
     <div
-      onClick={() => 
-        {
-          window._paq.push(['trackEvent', 'Article', 'clicked', title]);
-          return navigate("/" + link)
-        }
-      }
+      onClick={() => navigate("/" + link)}
       css={css`
         ${spacing.tab};
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
