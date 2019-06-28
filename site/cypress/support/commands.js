@@ -12,7 +12,6 @@ Cypress.Commands.add("bookmarkArticle", articlePath => {
 })
 
 Cypress.Commands.add("searchArticle", searchValue => {
-    cy.get(search.searchButton).click()
-    cy.get(search.searchBarField).type(searchValue)
+  cy.get(search.searchButton).click()
+  cy.get(search.searchBarField).type(searchValue)
 })
-

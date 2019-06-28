@@ -22,20 +22,17 @@ const firstArticlePath = '/deep-article';
 const searchText = 'injection';
 const incompleteSearch = searchText.slice(0, -1);
 
-describe("General ONS flow", function() {
+describe("Self Help Facility Field Officer flow", function() {
     beforeEach(function () {
         cy.visit('');
         cy.get(homepage.homepageLogo).should('be.visible');
-        // cy.location().should((loc) => {
-        //     expect(loc.protocol).to.eq('https:')
-        // });
     });
 
     it('The correct elements of the homepage are visible', function () {
         cy.get(homepage.headerTitleSelfHelpFacility).should('have.text', 'Self Help Facility');
         cy.get(search.searchButton).should('be.visible');
         cy.get(menu.menuButton).should('be.visible');
-        cy.get(homepage.exploreContent).should('be.visible');
+        cy.get(homepage.exploreContentButton).should('be.visible');
         cy.get(homepage.sectionHeader).contains('RECENTLY UPDATED').should('be.visible');
         cy.get(homepage.sectionHeader).contains('MY BOOKMARKS').should('be.visible');
         cy.get(homepage.viewAll).first().contains('View all >').should('be.visible');
@@ -63,6 +60,14 @@ describe("General ONS flow", function() {
         cy.url().should('include', imageArticleUrlPath);
         cy.get(`[title='image title']`).then(($el) => {
           Cypress.dom.isVisible($el)
+        })
+    });
+
+    it('Explore content on the homepage brings up the menu', function () {
+        cy.get(menu.menuOverlay).should('not.be.visible');
+        cy.get(homepage.exploreContentButton).click();
+        cy.get(menu.menuOverlay).then(($el) => {
+            Cypress.dom.isVisible($el)
         })
     });
 

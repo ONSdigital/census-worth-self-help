@@ -1,6 +1,7 @@
 module.exports = {
     articleCard: `[data-testid='articletab-article-card']`,
-    exploreContent: `svg[data-icon='book']`,
+    exploreContentIcon: `svg[data-icon='book']`,
+    exploreContentButton: `[data-testid='large-button']`,
     footerOnsMessage: `.Footer-Style`,
     footerLogo: 'data-testid="footer-logo"',
     headerTitleSelfHelpFacility: `.Header-Title-Style`,
