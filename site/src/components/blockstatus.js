@@ -11,44 +11,43 @@ export default ({ title, subtitle, icon = null }) => {
         background-color: ${colors.white};
         height: 74px;
         display: flex;
+        align-items: center;
+        justify-content: center;
       `}
     >
-      {icon && (
-        <div
-          css={css`
-            position: relative;
-            left: 33px;
-            color: ${colors.navy_normal};
-            ${spacing.vert_aligned_flex_text}
-            justify-content: center;
-          `}
-        >
-          <div
-            css={css`
-              font-size: 30px;
-              position: absolute;
-            `}
-          >
-            {icon}
-          </div>
-        </div>
-      )}
+      <div
+        css={css`
+          color: ${colors.navy_normal};
+          ${spacing.vert_aligned_flex_text}
+          font-size: 30px;
+          flex: 1 1 0;
+          align-items: center;
+          padding: 0px 5px;
+        `}
+      >
+        {icon}
+      </div>
       <div
         css={css`
           ${spacing.vert_aligned_flex_text}
-          flex-grow:1
+          text-align: center;
         `}
       >
-        <div className="Button-heading-Style">{title}</div>
         <div
           css={css`
-            text-align: center;
+            margin-bottom: 5px;
           `}
-          className="Button-subhead-Style"
+          className="Card-heading-Style"
         >
-          {subtitle}
+          {title}
         </div>
+        <div className="Card-sub-head-Style-gray">{subtitle}</div>
       </div>
+      <div
+        css={css`
+          flex: 1 1 0;
+        `}
+      />
     </div>
   )
 }

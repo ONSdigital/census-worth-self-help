@@ -2,7 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import { spacing } from "../utils/styles"
 
-export default ({ children, subtitle = null }) => {
+export default ({ children, icon = null, subtitle = null }) => {
   return (
     <div
       css={css`
@@ -17,6 +17,16 @@ export default ({ children, subtitle = null }) => {
         className="Article-Title-Style"
         data-testid="search-result-title"
       >
+        {icon !== null && (
+          <div
+            css={css`
+              font-size: 19px;
+              margin: 5px 20px 0px 2px;
+            `}
+          >
+            {icon}
+          </div>
+        )}
         {children}
       </h1>
       {subtitle && (

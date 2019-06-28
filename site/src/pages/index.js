@@ -5,7 +5,10 @@ import TabList from "../components/tablist"
 import BookmarkManager from "../utils/bookmarkManager"
 import BlockStatus from "../components/blockstatus"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBookmark } from "@fortawesome/free-solid-svg-icons"
+import { faSatelliteDish } from "@fortawesome/free-solid-svg-icons"
+import { faBookmark } from "@fortawesome/free-regular-svg-icons"
+import { css } from "@emotion/core"
+import { Offline } from "react-detect-offline"
 
 export default ({ data }) => {
   let alertText =
@@ -38,6 +41,13 @@ export default ({ data }) => {
       explore_more_link={true}
       alert={alertText}
     >
+      <Offline>
+        <BlockStatus
+          icon={<FontAwesomeIcon icon={faSatelliteDish} />}
+          title="Currently working offline"
+          subtitle="Content will update when you reconnect"
+        />
+      </Offline>
       {data.allMarkdownRemark && (
         <TabList
           title="RECENTLY UPDATED"
@@ -45,23 +55,29 @@ export default ({ data }) => {
           elements={mostRecentEdges}
         />
       )}
-      {bookmarkEdges.length > 0 && (
-        <TabList
-          title="MY BOOKMARKS"
-          link="/bookmarks"
-          elements={bookmarkEdges}
-        />
-      )}
-      {bookmarkEdges.length === 0 && (
-        <div>
-          <TabList title="MY BOOKMARKS" elements={[]} />
-          <BlockStatus
-            icon={<FontAwesomeIcon icon={faBookmark} />}
-            title="Bookmarks will show here"
-            subtitle="Bookmarks are stored on your device"
+      <div
+        css={css`
+          margin-bottom: 45px;
+        `}
+      >
+        {bookmarkEdges.length > 0 && (
+          <TabList
+            title="MY BOOKMARKS"
+            link="/bookmarks"
+            elements={bookmarkEdges}
           />
-        </div>
-      )}
+        )}
+        {bookmarkEdges.length === 0 && (
+          <div>
+            <TabList title="MY BOOKMARKS" elements={[]} />
+            <BlockStatus
+              icon={<FontAwesomeIcon icon={faBookmark} />}
+              title="Bookmarks will show here"
+              subtitle="Bookmarks are stored on your device"
+            />
+          </div>
+        )}
+      </div>
     </Layout>
   )
 }

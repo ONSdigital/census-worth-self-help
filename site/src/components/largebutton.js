@@ -10,7 +10,8 @@ export default ({
   additionalCss = undefined,
   clickFunction = undefined,
   selected = false,
-  dimmed = false
+  dimmed = false,
+  shortMode = false
 }) => {
   // if already selected, remove click function, if no click function provided navigate to link.
   const onClick = selected
@@ -31,9 +32,9 @@ export default ({
         border-radius: 4px;
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
-        margin: 0px 10px;
+        margin: 0px 15px;
         text-align: center;
-        height: 40px;
+        height: 50px;
         background-color: ${colors.white};
         ${additionalCss}
       `}
@@ -41,7 +42,9 @@ export default ({
       {icon && (
         <div
           css={css`
+            font-size: 19px;
             position: relative;
+            left: ${shortMode ? "0px" : "10px"};
             color: ${textColor};
           `}
         >

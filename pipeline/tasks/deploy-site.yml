@@ -1,0 +1,65 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: google/cloud-sdk
+    tag: alpine
+
+params:
+  AUTH_KEY: ((gcp.service-account-key))
+  PROJECT: ((gcp.project-name))
+  GCP_SECRETS_VERSION: ((gcp.secrets-version))
+  NETLIFY_BUCKET_NAME: ((gcp.netlify-bucket-name))
+
+inputs:
+- name: census-worth-self-help
+- name: content-repository
+
+caches:
+- path: census-worth-self-help/site/node_modules
+- path: .npm
+- path: .cypress-cache
+
+run:
+  path: sh
+  args:
+  - -exec
+  - |
+    set +x
+    echo $BACKEND_CONTENT_REPO
+    echo $AUTH_KEY > encrypted_key.txt
+    set -x
+    base64 -d encrypted_key.txt > service-account.json
+    gcloud auth activate-service-account --key-file service-account.json
+    gcloud config set project $PROJECT
+
+    apk add --no-progress --update nodejs nodejs-npm
+    echo "npm version"
+    npm -v
+
+    export ROOT_FOLDER=$(pwd)
+    export CYPRESS_CACHE_FOLDER=${ROOT_FOLDER}/.cypress-cache
+    cd census-worth-self-help/site
+    npm install --only=prod
+
+    if [ "${BUILD_NETLIFY}" == "true" ]; then
+      cd
+      mkdir netlify-cms-app
+      gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-2-9-1-x.tar.gz .
+      tar -xvzf worth-netlify-cms-app-2-9-1-x.tar.gz -C netlify-cms-app
+      cd census-worth-self-help/site
+      npm install ../../netlify-cms-app --only=prod
+      apk update && apk add  --no-progress -u yarn
+      yarn
+    fi
+
+    BUILD="_build/content/"
+    mkdir -p "$BUILD" && cp -R ../../content-repository/content/ "$BUILD"
+    ASSET_DIR="static/assets/"
+    cp -R ../../content-repository/static/assets/ "$ASSET_DIR"
+    npm run build
+                
+    sed "s/service:.*/service: $SERVICE/" app.yaml > ci-app.yaml
+    sed -i "s/  repo:.*/  repo: ONSdigital\/$BACKEND_CONTENT_REPO/" public/admin/config.yml
+    gcloud app deploy -q ci-app.yaml

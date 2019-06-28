@@ -175,7 +175,7 @@ export default class Article extends React.Component {
                 margin-top: 20px;
               `}
             >
-              <TextBlock>
+              <TextBlock articleContent={true}>
                 <div className="Article-sub-title-Style">
                   {post.frontmatter.description}
                 </div>
@@ -210,6 +210,7 @@ export default class Article extends React.Component {
                   icon={<FontAwesomeIcon icon={faThumbsUp} />}
                   title="Useful"
                   clickFunction={this.givePositiveFeedback}
+                  shortMode={true}
                   selected={this.state.feedbackGiven === "positive"}
                   dimmed={this.state.feedbackGiven === "negative"}
                 />
@@ -221,6 +222,7 @@ export default class Article extends React.Component {
                   icon={<FontAwesomeIcon icon={faThumbsDown} />}
                   title="Not useful"
                   clickFunction={this.openNegativeFeedbackScreen}
+                  shortMode={true}
                   selected={this.state.feedbackGiven === "negative"}
                   dimmed={this.state.feedbackGiven === "positive"}
                 />
