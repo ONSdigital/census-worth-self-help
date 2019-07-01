@@ -1,8 +1,13 @@
-# tl;dr
+# Run locally
 
     npm install
     npm run local
         
+# Alternatively serve as we do when doing a production deploy
+    npm install
+    gatsby build
+    gatsby serve
+
 # Deploy GCP app engine service
 
     npm install
@@ -17,3 +22,18 @@
     npm run build
     docker build -t ons-site .
     docker run -d -p 3000:80 --name ons-dev-site ons-site
+
+# Deploying matomo
+
+By default Matomo will not run and the local build will not report feedback
+
+To report to Matomo you must add the following environment variables:
+
+    export ENABLE_MATOMO=true
+    export MATOMO_SITE_ID= ...
+    export MATOMO_IP= ...
+    export MATOMO_URL= ...
+
+The site_id, ip and url will depend on what you have configured your matomo instance is. (For worth details see keybase)
+
+You will then need to do a gatsby build and serve ( Not an npm run local! )

@@ -37,9 +37,12 @@ export default class Notification extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    let { text, hidden = true } = this.props
-    // we can retrigger notification when it is hidden then unhidden or the text is changed.
-    if (hidden !== nextProps.hidden || text !== nextProps.text) {
+    let { text, notificationId = 0, hidden = true } = this.props
+    // we can retrigger notification when it is hidden then unhidden or the id is changed.
+    if (
+      hidden !== nextProps.hidden ||
+      notificationId !== nextProps.notificationId
+    ) {
       this.cancelTimer()
       this.timedOut = false
       if (text !== nextProps.text && !nextProps.hidden) {
@@ -110,6 +113,7 @@ export default class Notification extends React.Component {
                 css={css`
                   padding-left: 15px;
                 `}
+                data-testid="notification-text-content"
               >
                 {text}
               </div>

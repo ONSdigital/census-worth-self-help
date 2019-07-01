@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Feedback Screen renders correctly 1`] = `
+<div
+  css={
+    Object {
+      "map": undefined,
+      "name": "13cjdfv",
+      "next": undefined,
+      "styles": "
+        top: 0;
+        position: fixed;
+        height: calc(100vh - 41px);
+        width: calc(100vw - 40px);
+        margin: 29px 20px 12px 20px;
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      ",
+    }
+  }
+>
+  <div
+    className="Button-subhead-Style"
+    css={
+      Object {
+        "map": undefined,
+        "name": "14a31ti",
+        "next": undefined,
+        "styles": "
+          width: 100%;
+          text-align: center;
+          padding: 14px 0px;
+          border-bottom: 1px rgba(17, 17, 17, 0.1) solid;
+        ",
+      }
+    }
+  >
+    Please tell us how we could improve
+  </div>
+  <div
+    css={
+      Object {
+        "map": undefined,
+        "name": "qrc1lh",
+        "next": undefined,
+        "styles": "
+          flex-grow: 1;
+          padding: 20px;
+        ",
+      }
+    }
+  >
+    <textarea
+      autoFocus={true}
+      className="Confirmation-text-style"
+      css={
+        Object {
+          "map": undefined,
+          "name": "1b9cvhf",
+          "next": undefined,
+          "styles": "
+            outline: none;
+            resize: none;
+            height: 100%;
+            width: 100%;
+            padding: 0px;
+            font-weight: 500;
+            color: #9b9b9b;
+            box-sizing: border-box;
+          ",
+        }
+      }
+      data-testid="feedback-content"
+      id="feedBackContent"
+      maxLength="1023"
+      placeholder="Start typing..."
+    />
+  </div>
+  <div
+    className="Button-subhead-Style"
+    css={
+      Object {
+        "map": undefined,
+        "name": "81cxvx",
+        "next": undefined,
+        "styles": "
+          display: flex;
+          border-top: 1px rgba(17, 17, 17, 0.1) solid;
+          color: #4a90e2;
+          font-size: 20px;
+        ",
+      }
+    }
+  >
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "zs41ju",
+          "next": undefined,
+          "styles": "
+            padding: 20px;
+            flex-grow: 1;
+            text-align: center;
+            border-right: 1px rgba(17, 17, 17, 0.1) solid;
+          ",
+        }
+      }
+      data-testid="feedback-screen-cancel-button"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </div>
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "yi6cjo",
+          "next": undefined,
+          "styles": "
+            padding: 20px;
+            flex-grow: 1;
+            text-align: center;
+            font-weight: 600;
+          ",
+        }
+      }
+      data-testid="feedback-screen-submit-button"
+      onClick={[MockFunction]}
+    >
+      Submit
+    </div>
+  </div>
+</div>
+`;
