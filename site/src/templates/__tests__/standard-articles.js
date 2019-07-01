@@ -38,7 +38,7 @@ describe("StandardArticle", () => {
     expect(notification.textContent).toEqual("Thank you for your feedback")
 
     // check paq updated.
-    expect(window._paq).toEqual([['trackEvent', "article-feedback", "positive", "test Article 1", ""]])
+    expect(window._paq).toEqual([['trackEvent', "article-feedback-rating", "rating", "test Article 1", 1]])
 
   })
 
@@ -63,6 +63,9 @@ describe("StandardArticle", () => {
     fireEvent.click(submitButton);
 
     // check paq updated.
-    expect(window._paq).toEqual([['trackEvent', "article-feedback", "negative", "test Article 1", 'TEST VALUE']])
+    expect(window._paq).toEqual([
+      ['trackEvent', "article-feedback-review", "REVIEW: test Article 1", "TEST VALUE", ""],
+      ['trackEvent', "article-feedback-rating", "rating", "test Article 1", -1]
+    ])
   })
 })

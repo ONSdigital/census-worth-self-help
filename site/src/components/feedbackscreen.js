@@ -36,6 +36,7 @@ export default ({ hideFunction, submitFunction }) => {
         `}
       >
         <textarea
+          maxLength="1023"
           data-testid="feedback-content"
           id="feedBackContent"
           className="Confirmation-text-style"

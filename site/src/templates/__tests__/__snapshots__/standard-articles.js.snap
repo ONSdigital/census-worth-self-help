@@ -615,7 +615,7 @@ exports[`StandardArticle renders correctly 1`] = `
                 css={
                   Object {
                     "map": undefined,
-                    "name": "44phc8",
+                    "name": "cy6kun",
                     "next": undefined,
                     "styles": "
         
@@ -627,9 +627,9 @@ exports[`StandardArticle renders correctly 1`] = `
         border-radius: 4px;
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
-        margin: 0px 10px;
+        margin: 0px 15px;
         text-align: center;
-        height: 40px;
+        height: 50px;
         background-color: rgb(255, 255, 255);
         
                     flex: 1;
@@ -645,10 +645,12 @@ exports[`StandardArticle renders correctly 1`] = `
                   css={
                     Object {
                       "map": undefined,
-                      "name": "3pw6ud",
+                      "name": "12xoiey",
                       "next": undefined,
                       "styles": "
+            font-size: 19px;
             position: relative;
+            left: 0px;
             color: rgb(0,61,89);
           ",
                     }
@@ -706,7 +708,7 @@ exports[`StandardArticle renders correctly 1`] = `
                 css={
                   Object {
                     "map": undefined,
-                    "name": "oat2al",
+                    "name": "1v812xd",
                     "next": undefined,
                     "styles": "
         
@@ -718,9 +720,9 @@ exports[`StandardArticle renders correctly 1`] = `
         border-radius: 4px;
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
-        margin: 0px 10px;
+        margin: 0px 15px;
         text-align: center;
-        height: 40px;
+        height: 50px;
         background-color: rgb(255, 255, 255);
         
                     flex: 1;
@@ -736,10 +738,12 @@ exports[`StandardArticle renders correctly 1`] = `
                   css={
                     Object {
                       "map": undefined,
-                      "name": "3pw6ud",
+                      "name": "12xoiey",
                       "next": undefined,
                       "styles": "
+            font-size: 19px;
             position: relative;
+            left: 0px;
             color: rgb(0,61,89);
           ",
                     }

@@ -1,9 +1,14 @@
 export default class Feedback {
   static articleIsUseful(article) {
-    Feedback.feedbackEvent("article-feedback", "positive", article)
+    Feedback.feedbackEvent("article-feedback-rating", "rating", article, 1)
   }
   static articleIsNotUseful(article, reason) {
-    Feedback.feedbackEvent("article-feedback", "negative", article, reason)
+    Feedback.feedbackEvent(
+      "article-feedback-review",
+      "REVIEW: " + article,
+      reason
+    )
+    Feedback.feedbackEvent("article-feedback-rating", "rating", article, -1)
   }
   static feedbackEvent(category, action, name = "", value = "") {
     console.log(["trackEvent", category, action, name, value])

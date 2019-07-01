@@ -7,12 +7,15 @@ describe("Feedback", () => {
 
   it("article Is Useful", () => {
   	Feedback.articleIsUseful("goodArticleName")
-    expect(window._paq).toEqual([['trackEvent', "article-feedback", "positive", "goodArticleName", ""]])
+    expect(window._paq).toEqual([['trackEvent', "article-feedback-rating", "rating", "goodArticleName", 1]])
   })
 
   it("article Is Not Useful", () => {
   	Feedback.articleIsNotUseful("badArticleName", "poor spelling")
-    expect(window._paq).toEqual([['trackEvent', "article-feedback", "negative", "badArticleName", "poor spelling"]])
+    expect(window._paq).toEqual([
+      ['trackEvent', "article-feedback-review", "REVIEW: badArticleName", "poor spelling", ""],
+      ['trackEvent', "article-feedback-rating", "rating", "badArticleName", -1]
+    ])
   })
 
   it("custom event", () => {

@@ -76,6 +76,7 @@ exports[`Feedback Screen renders correctly 1`] = `
       }
       data-testid="feedback-content"
       id="feedBackContent"
+      maxLength="1023"
       placeholder="Start typing..."
     />
   </div>
