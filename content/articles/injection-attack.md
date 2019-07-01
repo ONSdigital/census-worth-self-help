@@ -5,6 +5,8 @@ description: A place to store test injection attacks to make sure escaping is sa
 directory: Bad Articles
 priority: 0
 author: OWASP
+tags:
+  - popular
 ---
 If you see an alert message this has failed
 

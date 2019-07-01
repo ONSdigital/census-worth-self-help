@@ -4,6 +4,9 @@ date: 2019-05-29T10:20:18.450Z
 description: Instructions on how to add content
 directory: How to
 priority: 0
+tags:
+  - good
+  - popular
 ---
 * go to /admin/
 * sign in with github account

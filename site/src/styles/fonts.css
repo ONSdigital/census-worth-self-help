@@ -141,6 +141,16 @@
   letter-spacing: normal;
   color: #878787;
 }
+.Tablist-heading-Style {
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #878787;
+}
 .Article-meta-content-Style {
   font-family: Open Sans;
   font-size: 13px;
