@@ -33,8 +33,8 @@ describe("Self Help Facility Field Officer flow", function() {
         cy.get(search.searchButton).should('be.visible');
         cy.get(menu.menuButton).should('be.visible');
         cy.get(homepage.exploreContentButton).should('be.visible');
-        cy.get(homepage.sectionHeader).contains('RECENTLY UPDATED').should('be.visible');
-        cy.get(homepage.sectionHeader).contains('MY BOOKMARKS').should('be.visible');
+        cy.get(homepage.tablistHeader).contains('RECENTLY UPDATED').should('be.visible');
+        cy.get(homepage.tablistHeader).contains('MY BOOKMARKS').should('be.visible');
         cy.get(homepage.viewAllLink).first().contains('View all >').should('be.visible');
         cy.get(homepage.footerOnsMessage).contains('© Office for National Statistics 2019').should('be.visible');
     });
