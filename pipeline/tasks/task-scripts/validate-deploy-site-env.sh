@@ -14,7 +14,7 @@ if [[ "${PROTECTED}" == "true" ]] ; then
     exit 1
   fi
   echo "SSO Protected"
-  echo "DOMAIN_NAME      = ${DOMAIN_NAME}"
+  echo "DOMAIN_NAME      = ${SP_DOMAIN_NAME}"
   echo "IDP_ENTRY_POINT  = ${IDP_ENTRY_POINT}"
 fi
 

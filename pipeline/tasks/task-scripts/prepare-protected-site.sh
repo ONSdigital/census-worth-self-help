@@ -37,8 +37,8 @@ if [[ "${PROTECTED}" == "true" ]] ; then
     exit 1
   fi
   echo "env_variables:" >> ${appFile}
-  echo "  SP_CALLBACK_URL: '${spProtocol}://${DOMAIN_NAME}/sso/callback'" >> ${appFile}
-  echo "  SP_ENTITY_ID: '${spProtocol}://${DOMAIN_NAME}/saml/metadata'" >> ${appFile}
+  echo "  SP_CALLBACK_URL: '${spProtocol}://${SP_DOMAIN_NAME}/sso/callback'" >> ${appFile}
+  echo "  SP_ENTITY_ID: '${spProtocol}://${SP_DOMAIN_NAME}/saml/metadata'" >> ${appFile}
   echo "  IDP_ENTRY_POINT: '${IDP_ENTRY_POINT}'" >> ${appFile}
   set +x
   echo "  COOKIE_SECRET: '${COOKIE_SECRET}'" >> ${appFile}
