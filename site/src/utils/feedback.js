@@ -11,7 +11,6 @@ export default class Feedback {
     Feedback.feedbackEvent("article-feedback-rating", "rating", article, -1)
   }
   static feedbackEvent(category, action, name = "", value = "") {
-    console.log(["trackEvent", category, action, name, value])
     if (window._paq) {
       window._paq.push(["trackEvent", category, action, name, value])
     }
