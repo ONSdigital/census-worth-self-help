@@ -7,6 +7,6 @@ module.exports = {
     headerTitleSelfHelpFacility: `.Header-Title-Style`,
     homepageTitle: `[data-test='mainLogo__title']`,
     homepageLogo: `[data-test='ons-logo__header']`,
-    sectionHeader: `.Section-heading-Style`,
+    tablistHeader: `.Tablist-heading-Style`,
     viewAllLink: `.Button-subhead-Style`
 };
