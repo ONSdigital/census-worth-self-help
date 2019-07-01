@@ -6,7 +6,7 @@ export const data = {
           title: "test Article 1",
           description: "testDescription",
           priority: 1,
-          date: new Date(),
+          date: new Date()
         },
         fields: {
           pagename: "test-article-1",
