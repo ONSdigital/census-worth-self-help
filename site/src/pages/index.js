@@ -61,11 +61,13 @@ export default ({ data }) => {
         `}
       >
         {bookmarkEdges.length > 0 && (
-          <TabList
-            title="MY BOOKMARKS"
-            link="/bookmarks"
-            elements={bookmarkEdges}
-          />
+          <div>
+            <TabList
+              title="MY BOOKMARKS"
+              link="/bookmarks"
+              elements={bookmarkEdges}
+            />
+          </div>
         )}
         {bookmarkEdges.length === 0 && (
           <div>
