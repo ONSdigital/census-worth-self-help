@@ -31,6 +31,9 @@ log in to web console and install fly command.
     fly -t ci set-pipeline -c pipeline-trigger.yml -p trigger
     fly -t ci unpause-pipeline -p trigger
 
+    fly -t ci set-pipeline -c pipeline-secured.yml -p secured
+    fly -t ci unpause-pipeline -p secured
+
 # Troubleshooting
 
     fly -t ci unpause-job  -j self-help/build 

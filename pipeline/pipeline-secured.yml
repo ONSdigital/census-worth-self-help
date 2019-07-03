@@ -1,0 +1,33 @@
+resources:
+  - name: census-worth-self-help
+    type: git
+    source:
+      uri: https://github.com/ONSdigital/census-worth-self-help.git
+      branch: feature/ONS-9-saml-2
+    check_every: 15m
+
+  - name: content-repository
+    type: git
+    source:
+      uri: https://github.com/ONSdigital/census-worth-self-help.git
+      branch: master
+
+jobs:
+  - name: deploy
+    plan:
+      - get: census-worth-self-help
+        trigger: true
+      - get: content-repository
+      - task: deploy
+        params:
+          BACKEND_CONTENT_REPO: census-worth-self-help
+          BUILD_NETLIFY: false
+          COOKIE_SECRET: ((sso.cookie-secret))
+          IDP_ENTRY_POINT: ((sso.idp-entry-point))
+          IDP_CERTIFICATE: ((sso.idp-certificate))
+          PROTECTED: true
+          SERVICE: secured
+          SP_CERTIFICATE: ((sso.sp-certificate))
+          SP_DOMAIN_NAME: secured.((dns.default-domain))
+          SP_KEY: ((sso.sp-key))
+        file: census-worth-self-help/pipeline/tasks/deploy-site.yml
