@@ -20,8 +20,9 @@ export default (history, timeout = 1000) => {
   const createScrollToElement = hash => {
     return () => {
       let headers = []
+      let tags = ["h1", "h2", "h3"]
 
-      ["h1", "h2", "h3"].forEach(tag => {
+      tags.forEach(tag => {
         headers = headers.concat(Array.from(document.getElementsByTagName(tag)))
       })
 
