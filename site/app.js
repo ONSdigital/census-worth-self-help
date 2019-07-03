@@ -11,6 +11,7 @@ const bodyParser = require('body-parser')
 
 const COOKIE_SECRET = process.env.COOKIE_SECRET
 const IDP_ENTRY_POINT = process.env.IDP_ENTRY_POINT
+const IDP_LOGOUT = process.env.IDP_LOGOUT
 const SP_CALLBACK_URL = process.env.SP_CALLBACK_URL
 const SP_ENTITY_ID = process.env.SP_ENTITY_ID
 
@@ -72,9 +73,10 @@ app.get('/login',
   }
 );
 
+// logout route is not an end-user flow. It is only added for test and troubleshooting purposes.
 app.get('/logout', function (req, res) {
   req.logout();
-  res.redirect('/');
+  res.redirect(IDP_LOGOUT);
 })
 
 app.get('/saml/metadata', function (req, res) {

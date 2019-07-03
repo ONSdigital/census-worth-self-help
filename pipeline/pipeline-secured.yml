@@ -24,6 +24,7 @@ jobs:
           BUILD_NETLIFY: false
           COOKIE_SECRET: ((sso.cookie-secret))
           IDP_ENTRY_POINT: ((sso.idp-entry-point))
+          IDP_LOGOUT: ((sso.idp-logout))
           IDP_CERTIFICATE: ((sso.idp-certificate))
           PROTECTED: true
           SERVICE: secured

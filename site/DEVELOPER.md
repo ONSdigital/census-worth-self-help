@@ -26,6 +26,8 @@ Then
     
 Then access http://localhost:8080/protected
 
+To logout visit http://localhost:8080/logout
+
 # Deploy secured app
 
 Deploy app with configuration enhanced with env variables
