@@ -2,10 +2,6 @@ export default (history, timeout = 1000) => {
   let observer
   let timeoutId
 
-  if (!(window).MutationObserver) {
-    return
-  }
-
   const reset = () => {
     if (timeoutId) {
       clearTimeout(timeoutId)
@@ -17,20 +13,21 @@ export default (history, timeout = 1000) => {
     }
   }
 
-  const convertTextToLink = (text) => {
+  const convertTextToLink = text => {
     return text.toLowerCase().replace(/\s/g, "-")
   }
 
-  const createScrollToElement = (hash) => {
-
+  const createScrollToElement = hash => {
     return () => {
-      let headers = [];
+      let headers = []
 
-      ["h1", "h2", "h3"].forEach( (tag) => { 
-        headers = headers.concat(Array.from(document.getElementsByTagName(tag))) 
+      ;["h1", "h2", "h3"].forEach(tag => {
+        headers = headers.concat(Array.from(document.getElementsByTagName(tag)))
       })
 
-      let element = headers.find( (header) => convertTextToLink(header.innerText) === hash )
+      let element = headers.find(
+        header => convertTextToLink(header.textContent) === hash
+      )
 
       if (element) {
         element.scrollIntoView()
@@ -43,8 +40,7 @@ export default (history, timeout = 1000) => {
   }
 
   function scroll(hash) {
-
-    if (typeof hash !== 'string') {
+    if (typeof hash !== "string") {
       return
     }
 
@@ -61,35 +57,37 @@ export default (history, timeout = 1000) => {
         return
       }
 
-      observer = new MutationObserver(scrollToElement)
+      if (window.MutationObserver) {
+        observer = new MutationObserver(scrollToElement)
 
-      observer.observe(document, {
-        attributes: true,
-        childList: true,
-        subtree: true,
-      })
+        observer.observe(document, {
+          attributes: true,
+          childList: true,
+          subtree: true
+        })
+      }
 
       timeoutId = setTimeout(reset, timeout)
     })
   }
 
   // listen for changes
-  history.listen(({location, action}) => {
+  history.listen(({ location, action }) => {
     if (timeoutId) {
       reset()
     }
 
-    if (action !== 'POP') {
+    if (action !== "POP") {
       return
     }
 
-    if(location.hash) {
+    if (location.hash) {
       scroll(location.hash)
     }
   })
 
   // also trigger on load
-  if(history.location.hash) {
+  if (history.location.hash) {
     scroll(history.location.hash)
   }
 }

@@ -24,9 +24,7 @@ import Feedback from "../utils/feedback"
 import FeedbackScreen from "../components/feedbackscreen"
 
 import anchorScroll from "../utils/anchorscroll"
-import {
-  createHistory
-} from "@reach/router"
+import { createHistory } from "@reach/router"
 
 import { css } from "@emotion/core"
 const moment = require("moment")
