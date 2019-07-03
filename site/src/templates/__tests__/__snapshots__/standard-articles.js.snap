@@ -655,6 +655,7 @@ exports[`StandardArticle renders correctly 1`] = `
           ",
                     }
                   }
+                  data-testid="large-button-icon"
                 >
                   <div
                     css={
@@ -700,6 +701,7 @@ exports[`StandardArticle renders correctly 1`] = `
         ",
                     }
                   }
+                  data-testid="large-button-text"
                 >
                   Useful
                 </div>
@@ -748,6 +750,7 @@ exports[`StandardArticle renders correctly 1`] = `
           ",
                     }
                   }
+                  data-testid="large-button-icon"
                 >
                   <div
                     css={
@@ -793,6 +796,7 @@ exports[`StandardArticle renders correctly 1`] = `
         ",
                     }
                   }
+                  data-testid="large-button-text"
                 >
                   Not useful
                 </div>
@@ -1039,6 +1043,7 @@ exports[`StandardArticle renders correctly 1`] = `
           ",
                 }
               }
+              data-testid="large-button-icon"
             >
               <div
                 css={
@@ -1084,6 +1089,7 @@ exports[`StandardArticle renders correctly 1`] = `
         ",
                 }
               }
+              data-testid="large-button-text"
             >
               Census Field Support
             </div>

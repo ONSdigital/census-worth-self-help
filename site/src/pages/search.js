@@ -178,7 +178,9 @@ export default class Search extends React.Component {
     let noResults = searching && edges.length === 0
     let suggestedEdges = []
     if (noResults) {
-      suggestedEdges = Search.getSuggestedEdges(this.data.allMarkdownRemark.edges)
+      suggestedEdges = Search.getSuggestedEdges(
+        this.data.allMarkdownRemark.edges
+      )
     }
 
     return (

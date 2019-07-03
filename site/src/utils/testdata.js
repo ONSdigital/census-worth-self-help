@@ -107,5 +107,7 @@ export const data = {
 
 export const articleNode = data.edges[0].node
 export const directoryNode = data.edges[2].node
-export const popularList = { edges: [ data.edges[1], data.edges[2], data.edges[4], data.edges[5] ] }
+export const popularList = {
+  edges: [data.edges[1], data.edges[2], data.edges[4], data.edges[5]]
+}
 export const articleList = { edges: data.edges.slice(0, 6) }

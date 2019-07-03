@@ -41,6 +41,7 @@ exports[`Large Button renders correctly 1`] = `
         ",
       }
     }
+    data-testid="large-button-text"
   >
     press me
   </div>
