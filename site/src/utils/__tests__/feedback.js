@@ -5,6 +5,11 @@ describe("Feedback", () => {
     window._paq = []
   });
 
+  it("article was bookmarked", () => {
+    Feedback.articleWasBookmarked("goodArticleName")
+    expect(window._paq).toEqual([['trackEvent', "article-was-bookmarked", "bookmarked", "goodArticleName", 1]])
+  })
+
   it("article Is Useful", () => {
   	Feedback.articleIsUseful("goodArticleName")
     expect(window._paq).toEqual([['trackEvent', "article-feedback-rating", "rating", "goodArticleName", 1]])
