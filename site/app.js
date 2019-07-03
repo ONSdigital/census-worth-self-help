@@ -15,8 +15,6 @@ const SP_CALLBACK_URL = process.env.SP_CALLBACK_URL
 const SP_ENTITY_ID = process.env.SP_ENTITY_ID
 
 // Serve static files from './public'
-app.use('/static', express.static('public'));
-
 app.use(cookieParser());
 app.use(cookieSession({ name: 'token', secret: COOKIE_SECRET }));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -54,14 +52,21 @@ passport.deserializeUser(function (user, done) {
 app.post('/sso/callback',
   passport.authenticate('saml', { failureRedirect: '/', failureFlash: true }),
   function(req, res) {
-    res.redirect('/protected');
+    res.redirect(req.body.RelayState || '/');
   }
 );
 
 app.get('/login',
-  passport.authenticate('saml', { failureRedirect: '/', failureFlash: true }),
+  function(req,res,next) {
+    req.query.RelayState = req.query.destination;
+    next();
+  },
+  passport.authenticate('saml',  {
+    failureRedirect: '/',
+    failureFlash: true
+  }),
   function(req, res) {
-    res.redirect('/protected');
+    res.redirect('/');
   }
 );
 
@@ -70,22 +75,19 @@ app.get('/logout', function (req, res) {
   res.redirect('/')
 })
 
-app.all('/protected', function (req, res, next) {
-  if (req.isAuthenticated()) {
-    next()
-  } else {
-    res.redirect('/login')
-  }
-})
-
 app.get('/saml/metadata', function (req, res) {
   res.type('application/xml');
   res.send(samlStrategy.generateServiceProviderMetadata(null, spCertificate));
 })
 
-app.get('/protected', (req, res) => {
-  res.json({ message: `hello, protected : ${req.user.email}` })
-});
+const requireAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    next()
+  } else {
+    res.redirect('/login?destination=' + req.path)
+  }
+}
+app.use('/', requireAuthenticated, express.static('public'));
 
 // Start the server
 const PORT = process.env.PORT || 8080;

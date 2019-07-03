@@ -8,3 +8,4 @@ set -x PROTECTED true
 set -x IDP_CERTIFICATE (base64 .secrets/idp/idp.certificate)
 set -x SP_CERTIFICATE (base64 .secrets/sp/sp.certificate)
 set -x SP_KEY (base64 .secrets/sp/sp.key)
+set -x SP_CALLBACK_URL http://$SP_DOMAIN_NAME/sso/callback

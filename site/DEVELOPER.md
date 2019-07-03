@@ -8,7 +8,6 @@ In one shell
       --serviceProviderId http://localhost:8080/saml/metadata \
       --cert .secrets/idp/idp.certificate \
       --key .secrets/idp/idp.key
-      
 
 # Run SAML SSO locally with express
 
@@ -22,6 +21,7 @@ Then
     . scripts/initialise-shell-variables.fish    
     ../pipeline/tasks/task-scripts/validate-deploy-site-env.sh
     ../pipeline/tasks/task-scripts/prepare-protected-site.sh
+    npm run build
     npm run app
     
 Then access http://localhost:8080/protected
