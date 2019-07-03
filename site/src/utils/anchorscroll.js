@@ -21,7 +21,7 @@ export default (history, timeout = 1000) => {
     return () => {
       let headers = []
 
-      ;["h1", "h2", "h3"].forEach(tag => {
+      ["h1", "h2", "h3"].forEach(tag => {
         headers = headers.concat(Array.from(document.getElementsByTagName(tag)))
       })
 
