@@ -24,7 +24,7 @@ import Feedback from "../utils/feedback"
 import FeedbackScreen from "../components/feedbackscreen"
 
 import { css } from "@emotion/core"
-const moment = require("moment")
+import { getTimeAgoPublished } from "../utils/time"
 
 const bookmarkNotificationText = "Article added to bookmarks"
 const unbookmarkNotificationText = "Article removed from bookmarks"
@@ -145,7 +145,7 @@ export default class Article extends React.Component {
               subtitle={
                 <span>
                   Last updated:
-                  <i>{" " + moment(post.frontmatter.date).fromNow()}</i>
+                  <i>{" " + getTimeAgoPublished(post.frontmatter.date) }</i>
                 </span>
               }
             >
