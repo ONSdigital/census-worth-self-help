@@ -67,13 +67,13 @@ describe("Navigating the site and reading articles", function() {
         })
     });
 
-    it('Opening the menu then closing it', function () {
+    it('Opening the menu then closing it [ONS-58]', function () {
         cy.get(menu.menuOverlay).should('not.be.visible');
         cy.get(menu.menuButton).contains('Menu').click();
         cy.get(menu.menuOverlay).should('be.visible');
     });
 
-    it('The field officer should see related articles', function () {
+    it('The field officer should see related articles [ONS-65]', function () {
         const editorialWorkflowArticle = 'editorial workflow';
         const editorialWorkflowPath = '/editorial-workflow';
         const reviwemeArticle = 'reviweme';

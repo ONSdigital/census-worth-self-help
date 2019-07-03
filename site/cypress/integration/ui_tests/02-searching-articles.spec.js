@@ -23,14 +23,14 @@ describe("Article searching", function() {
         cy.get(homepage.homepageLogo).should('be.visible');
     });
 
-    it('A search result that won\'t match any articles', function () {
+    it('A search result that won\'t match any articles [ONS-21]', function () {
         cy.get(search.searchButton).click();
         cy.get(search.searchResultTitle).contains(beginTypingToSearchTitle);
         cy.get(search.searchBarField).type(searchText.slice(0, -1));
         cy.get(search.searchResultTitle).contains(incompleteSearch);
     });
 
-    it('A search result that matches with a shortened word', function () {
+    it('A search result that matches with a shortened word [ONS-21]', function () {
         const shortenedSearchText = searchText.slice(0, -3);
         cy.get(search.searchButton).click();
         cy.get(search.searchBarField).type(searchText.slice(0, -3));
@@ -38,14 +38,14 @@ describe("Article searching", function() {
         cy.get(homepage.articleCard).should('have.text', articleName);
     });
 
-    it('A search result that matches an article via the body', function () {
+    it('A search result that matches an article via the body [ONS-21]', function () {
         cy.get(search.searchButton).click();
         cy.get(search.searchBarField).type(searchText);
         cy.get(search.searchResultTitle).contains(searchText);
         cy.get(homepage.articleCard).should('have.text', articleName);
     });
 
-    it('A search result that matches an article via the author', function () {
+    it('A search result that matches an article via the author [ONS-21]', function () {
         const pageNumber1 = '1';
         cy.get(search.searchButton).click();
         cy.get(search.searchBarField).type(authorName);

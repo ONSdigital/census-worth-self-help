@@ -20,7 +20,7 @@ describe("Article bookmarks", function() {
         cy.get(homepage.homepageLogo).should('be.visible');
     });
 
-    it('The field officer bookmarks a page and refers to it in their bookmark page', function () {
+    it('The field officer bookmarks a page and refers to it in their bookmark page [ONS-64]', function () {
         const header = '.Button-heading-Style';
         cy.get(bookmarks.bookmarkIcon).should('be.visible');
         cy.visit(bookmarksPage.bookmarkUrlPath);
@@ -37,7 +37,7 @@ describe("Article bookmarks", function() {
         cy.get(bookmarks.emptyBookmarkMessage).should('not.be.visible');
     });
 
-    it('The field officer should see all bookmarked articles when they click \'view all\'', function () {
+    it('The field officer should see all bookmarked articles when they click \'view all\' [ONS-64]', function () {
         cy.bookmarkArticle(firstArticlePath);
         cy.visit('');
         cy.get(`[href='${bookmarksPage.bookmarkUrlPath}']`).click();
