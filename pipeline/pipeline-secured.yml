@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: feature/ONS-9-saml-2
+      branch: feature/ONS-187-apply-sso
     check_every: 15m
 
   - name: content-repository
