@@ -36,6 +36,8 @@ const samlStrategy = new SamlStrategy({
     // Log statement to be removed before merge to master
     console.log(`Profile : ${JSON.stringify(profile)}`)
     done(null, {
+      nameID: profile.nameID,
+      nameIDFormat: profile.nameIDFormat,
       email: profile.email
     })
   })
@@ -71,8 +73,8 @@ app.get('/login',
 );
 
 app.get('/logout', function (req, res) {
-  req.logout()
-  res.redirect('/')
+  req.logout();
+  res.redirect('/');
 })
 
 app.get('/saml/metadata', function (req, res) {
@@ -80,14 +82,18 @@ app.get('/saml/metadata', function (req, res) {
   res.send(samlStrategy.generateServiceProviderMetadata(null, spCertificate));
 })
 
+const excluded = RegExp('/*.(svg)');
+
 const requireAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) {
+  if (req.isAuthenticated() || excluded.test(req.path)) {
     next()
   } else {
     res.redirect('/login?destination=' + req.path)
   }
 }
-app.use('/', requireAuthenticated, express.static('public'));
+
+app.use(requireAuthenticated, express.static('public'));
+
 
 // Start the server
 const PORT = process.env.PORT || 8080;
