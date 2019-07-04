@@ -9,14 +9,14 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: feature/ONS-195-concourse-slack-integration
+      branch: master
     webhook_token: ((git.census-worth-self-help-webhook-token))
     check_every: 24h
 
   - name: slack-notify
     type: slack-notification
     source:
-      url: https://hooks.slack.com/services/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
+      url: ((slack.ci-hook))
 
 jobs:
   - name: report
@@ -27,29 +27,18 @@ jobs:
       - get: census-worth-self-help
         trigger: true
       - task: test
-        config:
-          platform: linux
-          image_resource:
-            type: docker-image
-            source:
-              repository: alpine
-          run:
-            path: sh
-            args:
-            - -exec
-            - |
-              exit 1
+        file: census-worth-self-help/pipeline/tasks/test.yml
 
         on_failure:
           task: get-slack-env-vars
           params:
-            BUILD_STATE: Test failed! :x:
+            BUILD_STATE: "Test failed! :x:"
           file: census-worth-self-help/pipeline/tasks/slack-env-vars.yml
 
         on_success:
           task: get-slack-env-vars
           params:
-            BUILD_STATE: Build succeeded! :x:
+            BUILD_STATE: "Tests succeeded! :white_check_mark:"
           file: census-worth-self-help/pipeline/tasks/slack-env-vars.yml
 
         ensure:
