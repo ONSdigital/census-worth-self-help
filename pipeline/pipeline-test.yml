@@ -3,7 +3,7 @@ resources:
   type: git
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
-    branch: feature/ONS-209-display-up-to-50-articles-in-flight
+    branch: master
   check_every: 15m
 
 - name: content-repository
