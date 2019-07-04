@@ -610,6 +610,7 @@ exports[`StandardArticle renders correctly 1`] = `
                 ",
                 }
               }
+              data-id="feedback-buttons"
             >
               <div
                 css={
