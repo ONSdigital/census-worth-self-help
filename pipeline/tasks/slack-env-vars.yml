@@ -17,9 +17,9 @@ run:
   args:
   - -exec
   - |
-    cat <<EOF > env_file/.env
-    CI_URL=$CI_URL 
-    REPORT_URL=$REPORT_URL
-    BUILD_STATE=$BUILD_STATE
-    EOF
+    # cat <<EOF > env_file/.env
+    echo CI_URL=$CI_URL > env_file/.env
+    echo REPORT_URL=$REPORT_URL >> env_file/.env
+    echo BUILD_STATE=$BUILD_STATE >> env_file/.env
+    # EOF
     
