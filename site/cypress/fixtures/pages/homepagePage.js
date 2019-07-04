@@ -1,4 +1,5 @@
 module.exports = {
+    alertMessage: `[data-testid='alert-message']`,
     articleCard: `[data-testid='articletab-article-card']`,
     exploreContentIcon: `svg[data-icon='book']`,
     exploreContentButton: `[data-testid='large-button']`,
@@ -7,6 +8,6 @@ module.exports = {
     headerTitleSelfHelpFacility: `.Header-Title-Style`,
     homepageTitle: `[data-test='mainLogo__title']`,
     homepageLogo: `[data-test='ons-logo__header']`,
-    sectionHeader: `.Section-heading-Style`,
+    tablistHeader: `.Tablist-heading-Style`,
     viewAllLink: `.Button-subhead-Style`
 };

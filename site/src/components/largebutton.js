@@ -41,6 +41,9 @@ export default ({
     >
       {icon && (
         <div
+          data-testid={
+            dimmed ? "large-button-dimmed-icon" : "large-button-icon"
+          }
           css={css`
             font-size: 19px;
             position: relative;
@@ -58,6 +61,9 @@ export default ({
         </div>
       )}
       <div
+        data-testid={
+          selected ? "large-button-selected-text" : "large-button-text"
+        }
         className="Button-heading-Style"
         css={css`
           margin: 0px 20px;

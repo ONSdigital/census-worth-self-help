@@ -4,25 +4,17 @@ const commands = require('../../support/commands.js');
 const globalTestData = require('../../fixtures/globalTestData');
 
 // fragments
-const bookmarks = require('../../fixtures/fragments/bookmarks');
-const menu = require('../../fixtures/fragments/menu');
-const search = require('../../fixtures/fragments/search');
 const article = require('../../fixtures/fragments/article');
+const menu = require('../../fixtures/fragments/menu');
 const pagination = require('../../fixtures/fragments/pagination');
+const search = require('../../fixtures/fragments/search');
 
 // pages
-const bookmarksPage = require('../../fixtures/pages/bookmarksPage');
 const homepage = require('../../fixtures/pages/homepagePage');
-const mostRecentPage = require('../../fixtures/pages/mostRecentPage');
 
-const articleName = 'Injection Attack';
-const authorName = 'owasp';
-const beginTypingToSearchTitle = 'Begin typing to search';
 const firstArticlePath = '/deep-article';
-const searchText = 'injection';
-const incompleteSearch = searchText.slice(0, -1);
 
-describe("Self Help Facility Field Officer flow", function() {
+describe("Navigating the site and reading articles", function() {
     beforeEach(function () {
         cy.visit('');
         cy.get(homepage.homepageLogo).should('be.visible');
@@ -33,10 +25,14 @@ describe("Self Help Facility Field Officer flow", function() {
         cy.get(search.searchButton).should('be.visible');
         cy.get(menu.menuButton).should('be.visible');
         cy.get(homepage.exploreContentButton).should('be.visible');
-        cy.get(homepage.sectionHeader).contains('RECENTLY UPDATED').should('be.visible');
-        cy.get(homepage.sectionHeader).contains('MY BOOKMARKS').should('be.visible');
+        cy.get(homepage.tablistHeader).contains('RECENTLY UPDATED').should('be.visible');
+        cy.get(homepage.tablistHeader).contains('MY BOOKMARKS').should('be.visible');
         cy.get(homepage.viewAllLink).first().contains('View all >').should('be.visible');
         cy.get(homepage.footerOnsMessage).contains('© Office for National Statistics 2019').should('be.visible');
+    });
+
+    it('An alert message is displayed on the homepage', function () {
+        cy.get(homepage.alertMessage).should('be.visible');
     });
 
     it('Reading an article', function () {
@@ -71,69 +67,13 @@ describe("Self Help Facility Field Officer flow", function() {
         })
     });
 
-    it('Opening the menu then closing it', function () {
+    it('Opening the menu then closing it [ONS-58]', function () {
         cy.get(menu.menuOverlay).should('not.be.visible');
         cy.get(menu.menuButton).contains('Menu').click();
         cy.get(menu.menuOverlay).should('be.visible');
     });
 
-    it('A search result that won\'t match any articles', function () {
-        cy.get(search.searchButton).click();
-        cy.get(search.searchResultTitle).contains(beginTypingToSearchTitle);
-        cy.get(search.searchBarField).type(searchText.slice(0, -1));
-        cy.get(search.searchResultTitle).contains(incompleteSearch);
-    });
-
-    it('A search result that matches with a shortened word', function () {
-        const shortenedSearchText = searchText.slice(0, -3);
-        cy.get(search.searchButton).click();
-        cy.get(search.searchBarField).type(searchText.slice(0, -3));
-        cy.get(search.searchResultTitle).contains(shortenedSearchText);
-        cy.get(homepage.articleCard).should('have.text', articleName);
-    });
-
-    it('A search result that matches an article via the body', function () {
-        cy.get(search.searchButton).click();
-        cy.get(search.searchBarField).type(searchText);
-        cy.get(search.searchResultTitle).contains(searchText);
-        cy.get(homepage.articleCard).should('have.text', articleName);
-    });
-
-    it('A search result that matches an article via the author', function () {
-        const pageNumber1 = '1';
-        cy.get(search.searchButton).click();
-        cy.get(search.searchBarField).type(authorName);
-        cy.get(search.searchResultTitle).contains(authorName);
-        cy.get(homepage.articleCard).should('have.text', articleName);
-        cy.get(pagination.pagination1).should('have.text', pageNumber1);
-    });
-
-    it('The field officer bookmarks a page and refers to it in their bookmark page', function () {
-        const header = '.Button-heading-Style';
-        cy.get(bookmarks.bookmarkIcon).should('be.visible');
-        cy.visit(bookmarksPage.bookmarkUrlPath);
-        cy.get(bookmarks.bookmarkIcon).should('be.visible');
-        cy.visit('');
-        cy.get(homepage.articleCard).first().click();
-        cy.get(bookmarks.bookmarkSave).should('have.text', bookmarks.bookmarkSaveText);
-        cy.get(bookmarks.bookmarkBlockButton).click();
-        cy.get(header).first().should('have.text', bookmarks.bookmarkedText);
-        cy.get(menu.menuButton).contains('Menu').click();
-        cy.get('.Menu-major-item-Style').contains('My Bookmarks').click();
-        cy.url().should('include', bookmarksPage.bookmarkUrlPath);
-        cy.get(homepage.articleCard).should('have.text', 'deep article');
-        cy.get(bookmarks.emptyBookmarkMessage).should('not.be.visible');
-    });
-
-    it('The field officer should see all bookmarked articles when they click \'view all\'', function () {
-        cy.bookmarkArticle(firstArticlePath);
-        cy.visit('');
-        cy.get(`[href='${bookmarksPage.bookmarkUrlPath}']`).click();
-        cy.url().should('include', bookmarksPage.bookmarkUrlPath);
-        cy.get(search.searchResultTitle).should('have.text', 'My Bookmarks');
-    });
-
-    it('The field officer should see related articles', function () {
+    it('The field officer should see related articles [ONS-65]', function () {
         const editorialWorkflowArticle = 'editorial workflow';
         const editorialWorkflowPath = '/editorial-workflow';
         const reviwemeArticle = 'reviweme';
@@ -185,4 +125,5 @@ describe("Self Help Facility Field Officer flow", function() {
         cy.get(pagination.pagination2).should('have.css', textAppearance).and('not.match', underline);
         cy.get(pagination.first).should('not.be.visible');
     });
+
 });

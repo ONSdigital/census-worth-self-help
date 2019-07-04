@@ -2,7 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import { navigate } from "@reach/router"
 import { colors, spacing } from "../utils/styles"
-const moment = require("moment")
+import { getTimeAgoPublished } from "../utils/time"
 
 export default ({ node }) => {
   let title = node.frontmatter.title
@@ -11,7 +11,7 @@ export default ({ node }) => {
     ? node.highlightedText
     : node.frontmatter.description
 
-  let time_ago = moment(node.frontmatter.date).fromNow()
+  let time_ago = getTimeAgoPublished(node.frontmatter.date)
   return (
     <div
       onClick={() => navigate("/" + link)}

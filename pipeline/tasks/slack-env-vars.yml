@@ -1,0 +1,23 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: alpine
+
+outputs:
+- name: env_file
+
+params:
+  CI_URL: ((slack.ci-url))
+  REPORT_URL: ((slack.report-url))
+
+run:
+  path: sh
+  args:
+  - -exec
+  - |
+    echo CI_URL=$CI_URL > env_file/.env
+    echo REPORT_URL=$REPORT_URL >> env_file/.env
+    echo BUILD_STATE=$BUILD_STATE >> env_file/.env
+    
