@@ -235,7 +235,7 @@ exports[`Contact centre renders correctly with data 1`] = `
           }
         }
       >
-        Most recent changes, need to check with Phil to see if there's actually content for this
+        We are available to help you with any queries that have not been resolved by the Self help Facility. Lines are open 8am to 5pm on weekdays.
       </div>
       <div
         css={
@@ -1124,7 +1124,7 @@ exports[`Contact centre renders correctly without data 1`] = `
           }
         }
       >
-        Most recent changes, need to check with Phil to see if there's actually content for this
+        We are available to help you with any queries that have not been resolved by the Self help Facility. Lines are open 8am to 5pm on weekdays.
       </div>
       <div
         css={

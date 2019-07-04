@@ -13,7 +13,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 const escapeStringRegexp = require("escape-string-regexp")
 const minimumSearchString = 3
 
-export const getSuggestedEdges = (edges) => {
+export const getSuggestedEdges = edges => {
   return edges
     .filter(edge => {
       return (

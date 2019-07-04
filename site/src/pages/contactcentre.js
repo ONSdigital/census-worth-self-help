@@ -14,20 +14,22 @@ import Section from "../components/section"
 import { getSuggestedEdges } from "./search"
 
 export default ({ data }) => {
-
   let suggestedEdges = getSuggestedEdges(data.allMarkdownRemark.edges)
 
-  let waitingTime = data.markdownRemark ? data.markdownRemark.frontmatter.contact_centre_wait_time : 15
-  let phoneNumber = data.markdownRemark ? data.markdownRemark.frontmatter.contact_centre_number : "01234 56789"
+  let waitingTime = data.markdownRemark
+    ? data.markdownRemark.frontmatter.contact_centre_wait_time
+    : 15
+  let phoneNumber = data.markdownRemark
+    ? data.markdownRemark.frontmatter.contact_centre_number
+    : "01234 56789"
 
   return (
     <Layout>
-      <PageTitle>
-        Census Field Support
-      </PageTitle>
+      <PageTitle>Census Field Support</PageTitle>
       <TextBlock>
-        Most recent changes, need to check with Phil to see if there's
-        actually content for this
+        We are available to help you with any queries that have not been
+        resolved by the Self help Facility. Lines are open 8am to 5pm on
+        weekdays.
       </TextBlock>
       {suggestedEdges.length > 0 && (
         <TabList title="HAVE YOU TRIED..." elements={suggestedEdges} />
@@ -51,7 +53,6 @@ export default ({ data }) => {
     </Layout>
   )
 }
-
 
 export const query = graphql`
   query {

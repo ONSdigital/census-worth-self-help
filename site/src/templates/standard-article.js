@@ -145,7 +145,7 @@ export default class Article extends React.Component {
               subtitle={
                 <span>
                   Last updated:
-                  <i>{" " + getTimeAgoPublished(post.frontmatter.date) }</i>
+                  <i>{" " + getTimeAgoPublished(post.frontmatter.date)}</i>
                 </span>
               }
             >
