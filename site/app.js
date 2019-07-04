@@ -8,7 +8,7 @@ const app = express();
 const cookieSession = require('cookie-session')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
-const { callback, logout, mapUser, preAuthenticate, requireAuthenticated } = require('app/handlers')
+const { callback, logout, mapUser, preAuthenticate, requireAuthenticated } = require('./app/handlers')
 
 const COOKIE_SECRET = process.env.COOKIE_SECRET
 const IDP_ENTRY_POINT = process.env.IDP_ENTRY_POINT

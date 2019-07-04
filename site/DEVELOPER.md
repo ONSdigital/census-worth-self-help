@@ -24,7 +24,7 @@ Then
     npm run build
     npm run app
     
-Then access http://localhost:8080/protected
+Then access http://localhost:8080/
 
 To logout visit http://localhost:8080/logout
 
