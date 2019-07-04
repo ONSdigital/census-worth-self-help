@@ -1,0 +1,69 @@
+resource_types:
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+
+resources:
+  - name: census-worth-self-help
+    type: git
+    source:
+      uri: https://github.com/ONSdigital/census-worth-self-help.git
+      branch: master
+    webhook_token: ((git.census-worth-self-help-webhook-token))
+    check_every: 24h
+
+  - name: slack-notify
+    type: slack-notification
+    source:
+      url: https://hooks.slack.com/services/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
+
+jobs:
+  - name: report
+    build_log_retention:
+      days: 7
+      builds: 10
+    plan:
+      - get: census-worth-self-help
+        trigger: true
+      - task: test
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: alpine
+              
+          run:
+            path: sh
+            args:
+            - -exec
+            - | 
+              exit 1
+
+        on_failure:
+          do:
+          - task: get-slack-env-vars
+            file: census-worth-self-help/pipeline/tasks/slack-env-vars.yml
+
+          - put: slack-notify
+            params:
+              env_file: env_file/.env
+              text: |
+                Test failed! :x:
+                Build logs: $CI_URL/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+                Report: https://report.worth.census-gcp.onsdigital.uk
+
+
+        
+          # put: slack-notify
+          # params:
+          #   env_file: env_file/.env
+          #   text: |
+          #     Test failed! :x:
+          #     Build logs: $CI_URL/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          #     Report: https://report.worth.census-gcp.onsdigital.uk
+
+        # ensure:
+        #   task: deploy-reports
+        #   file: census-worth-self-help/pipeline/tasks/deploy-test-reports.yml
