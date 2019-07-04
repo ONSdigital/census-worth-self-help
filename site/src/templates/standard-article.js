@@ -23,6 +23,9 @@ import Notification from "../components/notification"
 import Feedback from "../utils/feedback"
 import FeedbackScreen from "../components/feedbackscreen"
 
+import anchorScroll from "../utils/anchorscroll"
+import { createHistory } from "@reach/router"
+
 import { css } from "@emotion/core"
 import { getTimeAgoPublished } from "../utils/time"
 
@@ -43,6 +46,9 @@ export default class Article extends React.Component {
     this.closeNegativeFeedbackScreen = this.closeNegativeFeedbackScreen.bind(
       this
     )
+
+    let history = createHistory(window)
+    anchorScroll(history)
 
     this.bookmarkManager = new BookmarkManager()
     this.state = {
