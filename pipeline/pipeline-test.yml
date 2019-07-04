@@ -3,7 +3,7 @@ resources:
   type: git
   source:
     uri: https://github.com/ONSdigital/census-worth-self-help.git
-    branch: master
+    branch: feature/ONS-209-display-up-to-50-articles-in-flight
   check_every: 15m
 
 - name: content-repository
@@ -25,6 +25,6 @@ jobs:
   - task: deploy
     params:
       SERVICE: test
-      BUILD_NETLIFY: false     
+      BUILD_NETLIFY: true
       BACKEND_CONTENT_REPO: census-worth-self-help-test
     file: census-worth-self-help/pipeline/tasks/deploy-site.yml
