@@ -16,7 +16,7 @@ resources:
   - name: slack-notify
     type: slack-notification
     source:
-      url: https://hooks.slack.com/services/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
+      url: https://hooks.slack.com/services/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
 
 jobs:
   - name: report
@@ -27,19 +27,7 @@ jobs:
       - get: census-worth-self-help
         trigger: true
       - task: test
-        config:
-          platform: linux
-          image_resource:
-            type: docker-image
-            source:
-              repository: alpine
-              
-          run:
-            path: sh
-            args:
-            - -exec
-            - | 
-              exit 1
+        file: census-worth-self-help/pipeline/tasks/test.yml
 
         on_failure:
           do:
@@ -52,18 +40,8 @@ jobs:
               text: |
                 Test failed! :x:
                 Build logs: $CI_URL/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
-                Report: https://report.worth.census-gcp.onsdigital.uk
+                Report: $REPORT_URL
 
-
-        
-          # put: slack-notify
-          # params:
-          #   env_file: env_file/.env
-          #   text: |
-          #     Test failed! :x:
-          #     Build logs: $CI_URL/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
-          #     Report: https://report.worth.census-gcp.onsdigital.uk
-
-        # ensure:
-        #   task: deploy-reports
-        #   file: census-worth-self-help/pipeline/tasks/deploy-test-reports.yml
+        ensure:
+          task: deploy-reports
+          file: census-worth-self-help/pipeline/tasks/deploy-test-reports.yml
