@@ -11,17 +11,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons"
 import BlockStatus from "../components/blockstatus"
 import BlockButton from "../components/blockbutton"
 import Section from "../components/section"
-
-const getSuggestedEdges = (edges) => {
-  return edges
-    .filter(edge => {
-      return (
-        edge.node.frontmatter.tags &&
-        edge.node.frontmatter.tags.includes("popular")
-      )
-    })
-    .slice(0, 3)
-}
+import { getSuggestedEdges } from "./search"
 
 export default ({ data }) => {
 

@@ -13,6 +13,17 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 const escapeStringRegexp = require("escape-string-regexp")
 const minimumSearchString = 3
 
+export const getSuggestedEdges = (edges) => {
+  return edges
+    .filter(edge => {
+      return (
+        edge.node.frontmatter.tags &&
+        edge.node.frontmatter.tags.includes("popular")
+      )
+    })
+    .slice(0, 3)
+}
+
 export default class Search extends React.Component {
   constructor(props) {
     super(props)
@@ -142,17 +153,6 @@ export default class Search extends React.Component {
     node.highlightedText = highlightableText
   }
 
-  static getSuggestedEdges(edges) {
-    return edges
-      .filter(edge => {
-        return (
-          edge.node.frontmatter.tags &&
-          edge.node.frontmatter.tags.includes("popular")
-        )
-      })
-      .slice(0, 3)
-  }
-
   render() {
     // the search object is given to the top bar to control search
     let searchObject = {
@@ -178,7 +178,7 @@ export default class Search extends React.Component {
     let noResults = searching && edges.length === 0
     let suggestedEdges = []
     if (noResults) {
-      suggestedEdges = Search.getSuggestedEdges(this.data.allMarkdownRemark.edges)
+      suggestedEdges = getSuggestedEdges(this.data.allMarkdownRemark.edges)
     }
 
     return (
