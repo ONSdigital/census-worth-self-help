@@ -19,17 +19,19 @@ if [[ "${PROTECTED}" == "true" ]] ; then
   echo ${SP_KEY} > .build/encoded-sp-key.txt
   set -x
 
-  if [[ `base64 --help | grep "hvD" | wc -l` -gt 0 ]] ; then
-    # MacOS
-    base64 -D -i .build/encoded-idp-certificate.txt > .deploy/idp/idp.certificate
-    base64 -D -i .build/encoded-sp-certificate.txt > .deploy/sp/sp.certificate
-    base64 -D -i .build/encoded-sp-key.txt > .deploy/sp/sp.key
-  else
-    # Linux
-    base64 -d .build/encoded-idp-certificate.txt > .deploy/idp/idp.certificate
-    base64 -d .build/encoded-sp-certificate.txt > .deploy/sp/sp.certificate
-    base64 -d .build/encoded-sp-key.txt > .deploy/sp/sp.key
-  fi
+  case `uname -a` in
+    Darwin*)
+      # MacOS
+      base64 -D -i .build/encoded-idp-certificate.txt > .deploy/idp/idp.certificate
+      base64 -D -i .build/encoded-sp-certificate.txt > .deploy/sp/sp.certificate
+      base64 -D -i .build/encoded-sp-key.txt > .deploy/sp/sp.key
+      ;;
+    *)
+      # Linux
+      base64 -d .build/encoded-idp-certificate.txt > .deploy/idp/idp.certificate
+      base64 -d .build/encoded-sp-certificate.txt > .deploy/sp/sp.certificate
+      base64 -d .build/encoded-sp-key.txt > .deploy/sp/sp.key
+  esac
   set -x
 
   if [[ `grep SP_CALLBACK_URL ${appFile} | wc -l` -gt 0 ]] ; then
