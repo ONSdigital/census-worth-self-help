@@ -9,8 +9,8 @@ outputs:
 - name: env_file
 
 params:
-  CI_URL: ((slack.ci-url))
-  REPORT_URL: ((slack.repost-url))
+  CI_URL: https://ci.worth.census-gcp.onsdigital.uk
+  REPORT_URL: https://report.worth.census-gcp.onsdigital.uk
 
 run:
   path: sh
