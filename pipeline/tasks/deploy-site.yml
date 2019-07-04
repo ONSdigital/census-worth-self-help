@@ -8,7 +8,6 @@ image_resource:
 
 params:
   AUTH_KEY: ((gcp.service-account-key))
-  PROJECT: ((gcp.project-name))
   GCP_SECRETS_VERSION: ((gcp.secrets-version))
   NETLIFY_BUCKET_NAME: ((gcp.netlify-bucket-name))
 
@@ -26,6 +25,7 @@ run:
   args:
   - -exec
   - |
+    census-worth-self-help/pipeline/tasks/task-scripts/validate-deploy-site-env.sh
     set +x
     echo $BACKEND_CONTENT_REPO
     echo $AUTH_KEY > encrypted_key.txt
@@ -59,7 +59,11 @@ run:
     ASSET_DIR="static/assets/"
     cp -R ../../content-repository/static/assets/ "$ASSET_DIR"
     npm run build
-                
-    sed "s/service:.*/service: $SERVICE/" app.yaml > ci-app.yaml
+
+    APP_FILE=ci-app.yaml
+    sed "s/service:.*/service: $SERVICE/" app.yaml > ${APP_FILE}
     sed -i "s/  repo:.*/  repo: ONSdigital\/$BACKEND_CONTENT_REPO/" public/admin/config.yml
+
+    ../pipeline/tasks/task-scripts/prepare-protected-site.sh ${APP_FILE}
+
     gcloud app deploy -q ci-app.yaml

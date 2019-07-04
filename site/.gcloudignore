@@ -1,6 +1,7 @@
 # See https://cloud.google.com/sdk/gcloud/reference/topic/gcloudignore
 .cache
 __mocks__
+__tests__
 _build
 .dockerignore
 .gcloudignore
@@ -8,7 +9,8 @@ _build
 .gitignore
 .DS_Store
 node_modules/
-src
+/scripts
+/src
 /static
 README.md
 Dockerfile
@@ -16,6 +18,5 @@ jest-preprocess.js
 jest.config.js
 gatsby*.js
 loadershim.js
-package*.json
 prettier.config.js
 setup-test-env.js
