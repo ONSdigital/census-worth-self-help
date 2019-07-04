@@ -16,7 +16,7 @@ resources:
   - name: slack-notify
     type: slack-notification
     source:
-      url: https://hooks.slack.com/services/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
+      url: https://hooks.slack.com/services/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
 
 jobs:
   - name: report
@@ -27,21 +27,39 @@ jobs:
       - get: census-worth-self-help
         trigger: true
       - task: test
-        file: census-worth-self-help/pipeline/tasks/test.yml
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: alpine
+          run:
+            path: sh
+            args:
+            - -exec
+            - |
+              exit 1
 
         on_failure:
-          do:
-          - task: get-slack-env-vars
-            file: census-worth-self-help/pipeline/tasks/slack-env-vars.yml
+          task: get-slack-env-vars
+          params:
+            BUILD_STATE: "Test failed! :x:"
+          file: census-worth-self-help/pipeline/tasks/slack-env-vars.yml
 
+        on_success:
+          task: get-slack-env-vars
+          params:
+            BUILD_STATE: "Build succeeded! :x:"
+          file: census-worth-self-help/pipeline/tasks/slack-env-vars.yml
+
+        ensure:
+          aggregate:
           - put: slack-notify
             params:
               env_file: env_file/.env
               text: |
-                Test failed! :x:
+                $BUILD_STATE
                 Build logs: $CI_URL/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
                 Report: $REPORT_URL
-
-        ensure:
-          task: deploy-reports
-          file: census-worth-self-help/pipeline/tasks/deploy-test-reports.yml
+          - task: deploy-reports
+            file: census-worth-self-help/pipeline/tasks/deploy-test-reports.yml
