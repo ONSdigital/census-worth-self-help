@@ -16,6 +16,9 @@ resources:
 
 jobs:
 - name: deploy
+  build_log_retention:
+    days: 7
+    builds: 10
   plan:
   - get: census-worth-self-help
     trigger: true
