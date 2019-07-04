@@ -8,7 +8,6 @@ image_resource:
 
 params:
   AUTH_KEY: ((gcp.service-account-key))
-  PROJECT: ((gcp.project-name))
   GCP_SECRETS_VERSION: ((gcp.secrets-version))
   NETLIFY_BUCKET_NAME: ((gcp.netlify-bucket-name))
 

@@ -26,8 +26,9 @@ jobs:
           IDP_ENTRY_POINT: ((sso.idp-entry-point))
           IDP_LOGOUT: ((sso.idp-logout))
           IDP_CERTIFICATE: ((sso.idp-certificate))
+          PROJECT: ((gcp.project-name-live))
           PROTECTED: true
-          SERVICE: secured
+          SERVICE: protected
           SP_CERTIFICATE: ((sso.sp-certificate))
           SP_DOMAIN_NAME: secured.((dns.default-domain))
           SP_KEY: ((sso.sp-key))

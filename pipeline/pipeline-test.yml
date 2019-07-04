@@ -25,6 +25,7 @@ jobs:
   - task: deploy
     params:
       SERVICE: test
-      BUILD_NETLIFY: false     
+      BUILD_NETLIFY: false
       BACKEND_CONTENT_REPO: census-worth-self-help-test
+      PROJECT: ((gcp.project-name))
     file: census-worth-self-help/pipeline/tasks/deploy-site.yml
