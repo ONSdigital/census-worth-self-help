@@ -87,7 +87,7 @@ describe("Navigating the site and reading articles", function() {
         cy.get(search.searchResultTitle).should('have.text', editorialWorkflowArticle);
     });
 
-    it('Most recent pagination', function () {
+    it('Most recent pagination [ONS-64]', function () {
         const textAppearance = 'text-decoration';
         const underline = /underline/;
         // go to recently updated page
