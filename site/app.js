@@ -8,6 +8,7 @@ const app = express();
 const cookieSession = require('cookie-session')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const { callback, logout, mapUser, preAuthenticate, requireAuthenticated } = require('app/handlers')
 
 const COOKIE_SECRET = process.env.COOKIE_SECRET
 const IDP_ENTRY_POINT = process.env.IDP_ENTRY_POINT
@@ -34,8 +35,6 @@ const samlStrategy = new SamlStrategy({
     privateCert: spKey
   },
   function(profile, done) {
-    // Log statement to be removed before merge to master
-    console.log(`Profile : ${JSON.stringify(profile)}`)
     done(null, {
       nameID: profile.nameID,
       nameIDFormat: profile.nameIDFormat,
@@ -44,58 +43,31 @@ const samlStrategy = new SamlStrategy({
   })
 
 passport.use(samlStrategy);
-passport.serializeUser(function (user, done) {
-  done(null, user)
-})
-
-passport.deserializeUser(function (user, done) {
-  done(null, user)
-})
+passport.serializeUser(mapUser);
+passport.deserializeUser(mapUser);
 
 app.post('/sso/callback',
   passport.authenticate('saml', { failureRedirect: '/', failureFlash: true }),
-  function(req, res) {
-    res.redirect(req.body.RelayState || '/');
-  }
+  callback
 );
 
 app.get('/login',
-  function(req,res,next) {
-    req.query.RelayState = req.query.destination;
-    next();
-  },
+  preAuthenticate,
   passport.authenticate('saml',  {
     failureRedirect: '/',
     failureFlash: true
-  }),
-  function(req, res) {
-    res.redirect('/');
-  }
+  })
 );
 
 // logout route is not an end-user flow. It is only added for test and troubleshooting purposes.
-app.get('/logout', function (req, res) {
-  req.logout();
-  res.redirect(IDP_LOGOUT);
-})
+app.get('/logout', logout(IDP_LOGOUT))
 
 app.get('/saml/metadata', function (req, res) {
   res.type('application/xml');
   res.send(samlStrategy.generateServiceProviderMetadata(null, spCertificate));
 })
 
-const excluded = RegExp('/*.(svg)');
-
-const requireAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated() || excluded.test(req.path)) {
-    next()
-  } else {
-    res.redirect('/login?destination=' + req.path)
-  }
-}
-
 app.use(requireAuthenticated, express.static('public'));
-
 
 // Start the server
 const PORT = process.env.PORT || 8080;
