@@ -53,7 +53,7 @@ jobs:
           file: census-worth-self-help/pipeline/tasks/slack-env-vars.yml
 
         ensure:
-          aggregate:
+          in_parallel:
           - put: slack-notify
             params:
               env_file: env_file/.env
