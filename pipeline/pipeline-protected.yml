@@ -29,6 +29,10 @@ jobs:
           IDP_ENTRY_POINT: ((sso.idp-entry-point))
           IDP_LOGOUT: ((sso.idp-logout))
           IDP_CERTIFICATE: ((sso.idp-certificate))
+          ENABLE_MATOMO: true
+          MATOMO_SITE_ID: 8
+          MATOMO_IP: ((matomo.matomo-ip-address))
+          MATOMO_URL: ((matomo.matomo-site-url))
           PROJECT: ((gcp.project-name-live))
           PROTECTED: true
           SERVICE: default
