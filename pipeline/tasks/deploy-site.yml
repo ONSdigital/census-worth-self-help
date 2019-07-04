@@ -44,14 +44,8 @@ run:
     npm install --only=prod
 
     if [ "${BUILD_NETLIFY}" == "true" ]; then
-      cd ../..
-      mkdir netlify-cms-app
       gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-2-9-1-x.tar.gz .
-      tar -xvzf worth-netlify-cms-app-2-9-1-x.tar.gz -C netlify-cms-app
-      cd census-worth-self-help/site
-      npm install ../../netlify-cms-app --only=prod
-      apk update && apk add  --no-progress -u yarn
-      yarn
+      npm install worth-netlify-cms-app-2-9-1-x.tar.gz --only=prod
     fi
 
     BUILD="_build/content/"
