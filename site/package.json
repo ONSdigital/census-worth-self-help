@@ -37,6 +37,8 @@
     "jest-dom": "3.4.0",
     "mocha": "5.2.0",
     "mochawesome": "4.0.0",
+    "mochawesome-merge": "^2.0.1",
+    "mochawesome-report-generator": "^4.0.0",
     "mockdate": "2.0.3",
     "prettier": "1.17.1",
     "react-test-renderer": "16.8.6",
@@ -54,12 +56,13 @@
     "cy:run:chrome:specific": "node_modules/cypress/bin/cypress run -b chrome -s",
     "develop": "gatsby develop",
     "format": "prettier --write {cypress,src}/**/*.{js,jsx}",
+    "merge:reports": "npx mochawesome-merge --reportDir mochawesome-report > mochawesome.json; npx mochawesome-report-generator mochawesome.json --reportDir mochawesome-report",
     "start": "npm run develop",
     "local": "./localbuild.sh; npm run develop",
     "serve": "gatsby serve",
     "test": "jest",
     "coverage": "jest --coverage",
-    "e2e": "start-server-and-test start http://localhost:8000 cy:run"
+    "e2e": "start-server-and-test start http://localhost:8000 cy:run merge:reports"
   },
   "repository": {
     "type": "git",
