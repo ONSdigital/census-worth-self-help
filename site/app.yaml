@@ -2,12 +2,6 @@ runtime: nodejs10
 service: default
 default_expiration: "1m"
 handlers:
-  - url: /(.*\.json)
-    mime_type: application/json
-    static_files: public/\1
-    secure: always
-    upload: public/(.*\.json)
-
 # Netlify CMS has a config.yml that needs to be served up
   - url: /(.*\.yml)
     mime_type: text/yaml
@@ -37,20 +31,28 @@ handlers:
     static_dir: public/icons
     secure: always
 
+# Temporary protected flow for SSO validation whilst we validate SSO integration
+  - url: /protected
+    script: auto
+    secure: always
+
+  - url: /sso/callback
+    script: auto
+    secure: always
+
+  - url: /saml/metadata
+    script: auto
+    secure: always
+
+  - url: /login
+    script: auto
+    secure: always
+
+  - url: /logout
+    script: auto
+    secure: always
+
 # Home page handling
-  - url: /
-    static_files: public/index.html
+  - url: /(.*)
+    script: auto
     secure: always
-    upload: public/index.html
-
-# Support paths with a slash at the end
-  - url: /(.+)/
-    static_files: public/\1/index.html
-    secure: always
-    upload: public/(.+)/index.html
-
-# Any left over we treat as a path
-  - url: /(.+)
-    static_files: public/\1/index.html
-    secure: always
-    upload: public/(.+)/index.html
