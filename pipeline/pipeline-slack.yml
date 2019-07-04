@@ -43,13 +43,13 @@ jobs:
         on_failure:
           task: get-slack-env-vars
           params:
-            BUILD_STATE: "Test failed! :x:"
+            BUILD_STATE: Test failed! :x:
           file: census-worth-self-help/pipeline/tasks/slack-env-vars.yml
 
         on_success:
           task: get-slack-env-vars
           params:
-            BUILD_STATE: "Build succeeded! :x:"
+            BUILD_STATE: Build succeeded! :x:
           file: census-worth-self-help/pipeline/tasks/slack-env-vars.yml
 
         ensure:
