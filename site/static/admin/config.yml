@@ -39,7 +39,6 @@ collections:
       - { name: tags, label: Tags, widget: "list", required: false,
           hint: "divide tags up using commas, e.g:  emergency, test, contact " }
 
-
   - name: directories
     label: Directories
     label_singular: 'Directory'
@@ -71,3 +70,10 @@ collections:
         name: "alert"
         fields:
           - { label: 'Content', name: 'alert_content', widget: 'string', required: false }
+
+      - file: "content/constants/contact_centre_details.md"
+        label: "Contact centre details"
+        name: "contact_centre_details"
+        fields:
+          - { label: 'Wait time', name: 'contact_centre_wait_time', widget: 'string', required: true }
+          - { label: 'Phone number', name: 'contact_centre_number', widget: 'string', required: true }
