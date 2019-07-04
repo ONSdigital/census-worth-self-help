@@ -241,6 +241,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
           ",
               }
             }
+            data-testid="large-button-icon"
           >
             <div
               css={
@@ -286,6 +287,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         ",
               }
             }
+            data-testid="large-button-text"
           >
             Explore Content
           </div>
@@ -855,6 +857,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
           ",
               }
             }
+            data-testid="large-button-icon"
           >
             <div
               css={
@@ -900,6 +903,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         ",
               }
             }
+            data-testid="large-button-text"
           >
             Explore Content
           </div>

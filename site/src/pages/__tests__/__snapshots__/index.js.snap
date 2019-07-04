@@ -324,6 +324,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
           ",
               }
             }
+            data-testid="large-button-icon"
           >
             <div
               css={
@@ -369,6 +370,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         ",
               }
             }
+            data-testid="large-button-text"
           >
             Explore Content
           </div>
@@ -857,6 +859,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
           ",
               }
             }
+            data-testid="large-button-icon"
           >
             <div
               css={
@@ -902,6 +905,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         ",
               }
             }
+            data-testid="large-button-text"
           >
             Explore Content
           </div>

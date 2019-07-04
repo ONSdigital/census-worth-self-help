@@ -208,6 +208,7 @@ export default class Article extends React.Component {
                 css={css`
                   display: flex;
                 `}
+                data-id="feedback-buttons"
               >
                 <LargeButton
                   additionalCss={css`
