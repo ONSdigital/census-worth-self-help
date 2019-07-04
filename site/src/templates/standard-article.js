@@ -92,6 +92,7 @@ export default class Article extends React.Component {
   }
 
   bookmarkPage() {
+    Feedback.articleWasBookmarked(this.props.pageContext.title)
     this.bookmarkManager.bookmarkPage(this.props.pageContext.title)
     this.setState({
       bookmarked: true,
@@ -145,7 +146,7 @@ export default class Article extends React.Component {
               subtitle={
                 <span>
                   Last updated:
-                  <i>{" " + getTimeAgoPublished(post.frontmatter.date) }</i>
+                  <i>{" " + getTimeAgoPublished(post.frontmatter.date)}</i>
                 </span>
               }
             >
