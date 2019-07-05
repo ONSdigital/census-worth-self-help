@@ -3,12 +3,17 @@
 appFile=${1:-"ci-app.yaml"}
 spProtocol=${SP_PROTOCOL:-"https"}
 
+if [[ `grep SP_CALLBACK_URL ${appFile} | wc -l` -gt 0 ]] ; then
+  echo "App file ${appFile} has already been enhanced"
+  exit 1
+fi
+
+echo "Enhancing ${appFile} with env_variables"
 # SSO Protection
 if [[ "${SP_PROTECTED}" != "false" ]] ; then
   if [[ ! -f ${appFile} ]] ; then
     cp app.yaml ${appFile}
   fi
-  echo "Enhancing ${appFile} with env_variables"
   mkdir -p .deploy/idp
   mkdir -p .deploy/sp
 
@@ -34,10 +39,6 @@ if [[ "${SP_PROTECTED}" != "false" ]] ; then
   esac
   set -x
 
-  if [[ `grep SP_CALLBACK_URL ${appFile} | wc -l` -gt 0 ]] ; then
-    echo "App file ${appFile} has already been enhanced"
-    exit 1
-  fi
   echo "env_variables:" >> ${appFile}
   set +x
   echo "  COOKIE_SECRET: '${COOKIE_SECRET}'" >> ${appFile}
@@ -46,5 +47,8 @@ if [[ "${SP_PROTECTED}" != "false" ]] ; then
   echo "  IDP_LOGOUT: '${IDP_LOGOUT}'" >> ${appFile}
   echo "  SP_CALLBACK_URL: '${spProtocol}://${SP_DOMAIN_NAME}/sso/callback'" >> ${appFile}
   echo "  SP_ENTITY_ID: '${spProtocol}://${SP_DOMAIN_NAME}/saml/metadata'" >> ${appFile}
-  echo "  SP_PROTECTED: {SP_PROTECTED}" >> ${appFile}
+  echo "  SP_PROTECTED: ${SP_PROTECTED}" >> ${appFile}
+else
+  echo "env_variables:" >> ${appFile}
+  echo "  SP_PROTECTED: ${SP_PROTECTED}" >> ${appFile}
 fi
