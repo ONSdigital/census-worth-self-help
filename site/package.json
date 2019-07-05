@@ -73,7 +73,7 @@
     "local": "./localbuild.sh; npm run develop",
     "merge:reports": "npx mochawesome-merge --reportDir mochawesome-report > mochawesome.json; npx mochawesome-report-generator mochawesome.json --reportDir mochawesome-report",
     "serve": "gatsby serve",
-    "start": "node app.js",
+    "start": "npm run develop",
     "test": "jest"
   },
   "repository": {
