@@ -5,6 +5,8 @@ const app = express();
 
 const SP_PROTECTED = process.env.SP_PROTECTED
 
+console.log(`SP_PROTECTED = ${SP_PROTECTED}`)
+console.log(`SP_PROTECTED type  = ${typeof(SP_PROTECTED)}`)
 if (SP_PROTECTED === "false") {
 
   // For an unprotected deployment, serve static files from /public
