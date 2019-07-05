@@ -12,7 +12,7 @@ log in to web console and install fly command.
 
     fly -t ci set-pipeline -c pipeline-build.yml -p build
     fly -t ci set-pipeline -c pipeline-cms.yml -p self-help-cms
-    fly -t ci set-pipeline -c pipeline-dev.yml -p self-help
+    fly -t ci set-pipeline -c pipeline-dev.yml -p dev
     fly -t ci set-pipeline -c pipeline-control.yml -p control
     fly -t ci set-pipeline -c pipeline-protected.yml -p protected
     fly -t ci set-pipeline -c pipeline-report.yml -p report
