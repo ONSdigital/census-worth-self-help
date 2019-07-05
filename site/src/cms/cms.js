@@ -1,4 +1,4 @@
-import CMS from "netlify-cms"
+import CMS from "netlify-cms-app"
 import React from "react"
 import TextBlock from "../components/textblock"
 import PageTitle from "../components/pagetitle"
