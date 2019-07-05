@@ -17,7 +17,7 @@ if [[ "${SP_PROTECTED}" != "false" ]] ; then
   echo "SP_DOMAIN_NAME   = ${SP_DOMAIN_NAME}"
   echo "IDP_ENTRY_POINT  = ${IDP_ENTRY_POINT}"
 else
-  echo "NOT SSO Protected"
+  echo "*** NOT SSO Protected ***"
 fi
 
 echo "env variables OK"
