@@ -805,6 +805,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         }
       }
     >
+      
       <div
         css={
           Object {
