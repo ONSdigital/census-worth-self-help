@@ -4,7 +4,7 @@ appFile=${1:-"ci-app.yaml"}
 spProtocol=${SP_PROTOCOL:-"https"}
 
 # SSO Protection
-if [[ "${PROTECTED}" == "true" ]] ; then
+if [[ "${SP_PROTECTED}" != "false" ]] ; then
   if [[ ! -f ${appFile} ]] ; then
     cp app.yaml ${appFile}
   fi
