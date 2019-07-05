@@ -1,4 +1,5 @@
 module.exports = {
+    alertMessage: `[data-testid='alert-message']`,
     articleCard: `[data-testid='articletab-article-card']`,
     exploreContentIcon: `svg[data-icon='book']`,
     exploreContentButton: `[data-testid='large-button']`,

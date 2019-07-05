@@ -8,7 +8,6 @@ import BlockButton from "../components/blockbutton"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBookmark } from "@fortawesome/free-regular-svg-icons"
 import { faBookmark as faBookmarkSolid } from "@fortawesome/free-solid-svg-icons"
-
 import BookmarkManager from "../utils/bookmarkManager"
 import { spacing } from "../utils/styles"
 import LargeButton from "../components/largebutton"
@@ -22,6 +21,9 @@ import Notification from "../components/notification"
 
 import Feedback from "../utils/feedback"
 import FeedbackScreen from "../components/feedbackscreen"
+
+import anchorScroll from "../utils/anchorscroll"
+import { createHistory } from "@reach/router"
 
 import { css } from "@emotion/core"
 import { getTimeAgoPublished } from "../utils/time"
@@ -43,6 +45,11 @@ export default class Article extends React.Component {
     this.closeNegativeFeedbackScreen = this.closeNegativeFeedbackScreen.bind(
       this
     )
+
+    if (typeof window !== 'undefined') {
+      let history = createHistory(global.window)
+      anchorScroll(history)
+    }
 
     this.bookmarkManager = new BookmarkManager()
     this.state = {
@@ -92,6 +99,7 @@ export default class Article extends React.Component {
   }
 
   bookmarkPage() {
+    Feedback.articleWasBookmarked(this.props.pageContext.title)
     this.bookmarkManager.bookmarkPage(this.props.pageContext.title)
     this.setState({
       bookmarked: true,
@@ -201,6 +209,7 @@ export default class Article extends React.Component {
                 css={css`
                   display: flex;
                 `}
+                data-id="feedback-buttons"
               >
                 <LargeButton
                   additionalCss={css`

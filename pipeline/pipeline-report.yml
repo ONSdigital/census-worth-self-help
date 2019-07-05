@@ -1,3 +1,9 @@
+resource_types:
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+
 resources:
   - name: census-worth-self-help
     type: git
@@ -6,6 +12,11 @@ resources:
       branch: master
     webhook_token: ((git.census-worth-self-help-webhook-token))
     check_every: 24h
+
+  - name: slack-notify
+    type: slack-notification
+    source:
+      url: ((slack.ci-hook))
 
 jobs:
   - name: report
@@ -18,5 +29,26 @@ jobs:
       - task: test
         file: census-worth-self-help/pipeline/tasks/test.yml
 
-      - task: deploy-reports
-        file: census-worth-self-help/pipeline/tasks/deploy-test-reports.yml
+        on_failure:
+          task: get-slack-env-vars
+          params:
+            BUILD_STATE: "Test failed! :x:"
+          file: census-worth-self-help/pipeline/tasks/slack-env-vars.yml
+
+        on_success:
+          task: get-slack-env-vars
+          params:
+            BUILD_STATE: "Tests succeeded! :white_check_mark:"
+          file: census-worth-self-help/pipeline/tasks/slack-env-vars.yml
+
+        ensure:
+          in_parallel:
+          - put: slack-notify
+            params:
+              env_file: env_file/.env
+              text: |
+                $BUILD_STATE
+                Build logs: $CI_URL/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+                Report: $REPORT_URL
+          - task: deploy-reports
+            file: census-worth-self-help/pipeline/tasks/deploy-test-reports.yml
