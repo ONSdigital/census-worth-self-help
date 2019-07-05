@@ -715,7 +715,7 @@ exports[`Contact centre renders correctly with data 1`] = `
         }
       >
         <a
-          href="tel:01111 333333"
+          href="tel:01111333333"
         >
           <div
             css={
@@ -1288,7 +1288,7 @@ exports[`Contact centre renders correctly without data 1`] = `
         }
       >
         <a
-          href="tel:01234 56789"
+          href="tel:0123456789"
         >
           <div
             css={

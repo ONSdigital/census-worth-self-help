@@ -46,7 +46,7 @@ export default class Article extends React.Component {
       this
     )
 
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       let history = createHistory(global.window)
       anchorScroll(history)
     }

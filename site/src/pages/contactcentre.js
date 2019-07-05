@@ -13,12 +13,17 @@ import BlockButton from "../components/blockbutton"
 import Section from "../components/section"
 import { getSuggestedEdges } from "./search"
 
+// remove spaces as they do not work in uri format
+export const sanitizePhoneNumber = number => number.replace(/\s/g, "")
+
 export default ({ data }) => {
   let suggestedEdges = getSuggestedEdges(data.allMarkdownRemark.edges)
 
-  let waitingTime = data.markdownRemark
-    ? data.markdownRemark.frontmatter.contact_centre_wait_time
-    : 15
+  let waitingTime =
+    data.markdownRemark &&
+    data.markdownRemark.frontmatter.contact_centre_wait_time !== null
+      ? data.markdownRemark.frontmatter.contact_centre_wait_time
+      : 15
   let phoneNumber = data.markdownRemark
     ? data.markdownRemark.frontmatter.contact_centre_number
     : "01234 56789"
@@ -42,7 +47,7 @@ export default ({ data }) => {
         subtitle="Current waiting time"
       />
       <Section>
-        <a href={"tel:" + phoneNumber}>
+        <a href={"tel:" + sanitizePhoneNumber(phoneNumber)}>
           <BlockButton
             icon={<FontAwesomeIcon icon={faPhone} />}
             title="Call Census field support"
