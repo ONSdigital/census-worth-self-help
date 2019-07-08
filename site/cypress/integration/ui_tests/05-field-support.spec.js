@@ -37,8 +37,8 @@ describe("Contact support page", function() {
     });
 
     it('The field officer can view an article from the support page [ONS-47]', function () {
-        const article = 'test article for contact screen';
-        const articleURL = 'test-article-for-contact-screen';
+        const article = 'A very simple article';
+        const articleURL = 'a-very-simple-article';
         cy.visit(supportPage.contactCentrePath);
         cy.get(homepage.articleCard).contains(article).click();
         cy.url().should('include', '/'+articleURL);
