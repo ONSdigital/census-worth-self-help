@@ -1,6 +1,7 @@
 import React from "react"
 import renderer from "react-test-renderer"
 import Search from "../search"
+import { getSuggestedEdges } from "../search"
 import { render } from "react-testing-library"
 import { articleList, articleNode, popularList } from "../../utils/testdata"
 import ReactDOMServer from 'react-dom/server';
@@ -66,7 +67,7 @@ describe("Search", () => {
   })
 
   it("get suggested nodes should find popular nodes", () => {
-    expect(Search.getSuggestedEdges(articleList.edges)).toEqual( popularList.edges.slice(0, 3) )
+    expect(getSuggestedEdges(articleList.edges)).toEqual( popularList.edges.slice(0, 3) )
   })
 
 })

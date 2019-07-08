@@ -40,7 +40,7 @@ export default ({ pageContext }) => {
         />
         <MenuLink link="mostrecent" title="Recently updated" />
         <MenuLink link="bookmarks" title="My Bookmarks" />
-        {/* todo: <MenuLink link="fsscc" title="Field Contact Centre" /> */}
+        <MenuLink link="contactcentre" title="Census Field Support" />
       </div>
     </div>
   )

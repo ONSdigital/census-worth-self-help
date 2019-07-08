@@ -25,8 +25,7 @@ describe("Article bookmarks", function() {
         cy.get(bookmarks.bookmarkIcon).should('be.visible');
         cy.visit(bookmarksPage.bookmarkUrlPath);
         cy.get(bookmarks.bookmarkIcon).should('be.visible');
-        cy.visit('');
-        cy.get(homepage.articleCard).first().click();
+        cy.visit(firstArticlePath);
         cy.get(bookmarks.bookmarkSave).should('have.text', bookmarks.bookmarkSaveText);
         cy.get(bookmarks.bookmarkBlockButton).click();
         cy.get(header).first().should('have.text', bookmarks.bookmarkedText);
