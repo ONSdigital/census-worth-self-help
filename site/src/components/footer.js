@@ -37,7 +37,7 @@ export default ({ phone_link = false }) => {
           <LargeButton
             icon={<FontAwesomeIcon icon={faPhone} />}
             title="Census Field Support"
-            link="/call_centre"
+            link="/contactcentre"
           />
         </div>
       )}

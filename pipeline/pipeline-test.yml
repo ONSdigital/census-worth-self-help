@@ -1,34 +1,38 @@
 resources:
-- name: census-worth-self-help
-  type: git
-  source:
-    uri: https://github.com/ONSdigital/census-worth-self-help.git
-    branch: master
-  check_every: 15m
+  - name: census-worth-self-help
+    type: git
+    source:
+      uri: https://github.com/ONSdigital/census-worth-self-help.git
+      branch: master
+    check_every: 15m
 
-- name: content-repository
-  type: git
-  source:
-    uri: git@github.com:ONSdigital/census-worth-self-help-test.git
-    branch: master
-    private_key: ((git-keys-test.private-key))
-  webhook_token: ((git.census-worth-self-help-test-webhook-token))
+  - name: content-repository
+    type: git
+    source:
+      uri: git@github.com:ONSdigital/census-worth-self-help-test.git
+      branch: master
+      private_key: ((git-keys-test.private-key))
+    webhook_token: ((git.census-worth-self-help-test-webhook-token))
 
 jobs:
-- name: deploy
-  build_log_retention:
-    days: 7
-    builds: 10
-  plan:
-  - get: census-worth-self-help
-    trigger: true
-  - get: content-repository
-    trigger: true
-  
-  - task: deploy
-    params:
-      SERVICE: test
-      BUILD_NETLIFY: true
-      BACKEND_CONTENT_REPO: census-worth-self-help-test
-      PROJECT: ((gcp.project-name))
-    file: census-worth-self-help/pipeline/tasks/deploy-site.yml
+  - name: deploy
+    build_log_retention:
+      days: 8
+      builds: 10
+    plan:
+      - get: census-worth-self-help
+        trigger: true
+      - get: content-repository
+        trigger: true
+
+      - task: deploy
+        params:
+          SERVICE: test
+          PATCH_NETLIFY: true
+          BACKEND_CONTENT_REPO: census-worth-self-help-test
+          PROJECT: ((gcp.project-name))
+          SP_PROTECTED: false
+          ENABLE_MATOMO: true
+          MATOMO_SITE_ID: 8
+          MATOMO_IP: ((matomo.matomo-ip-address))
+        file: census-worth-self-help/pipeline/tasks/deploy-site.yml

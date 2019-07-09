@@ -31,28 +31,7 @@ handlers:
     static_dir: public/icons
     secure: always
 
-# Temporary protected flow for SSO validation whilst we validate SSO integration
-  - url: /protected
-    script: auto
-    secure: always
-
-  - url: /sso/callback
-    script: auto
-    secure: always
-
-  - url: /saml/metadata
-    script: auto
-    secure: always
-
-  - url: /login
-    script: auto
-    secure: always
-
-  - url: /logout
-    script: auto
-    secure: always
-
-# Home page handling
+# Protected page handling
   - url: /(.*)
     script: auto
     secure: always

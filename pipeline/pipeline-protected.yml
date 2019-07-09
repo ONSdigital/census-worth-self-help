@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: feature/ONS-187-apply-sso
+      branch: master
     check_every: 15m
 
   - name: content-repository
@@ -13,7 +13,7 @@ resources:
       branch: master
 
 jobs:
-  - name: deploy
+  - name: protected
     build_log_retention:
       days: 7
       builds: 10
@@ -22,21 +22,21 @@ jobs:
         trigger: true
       - get: content-repository
       - task: deploy
+        file: census-worth-self-help/pipeline/tasks/deploy-site.yml
         params:
           BACKEND_CONTENT_REPO: census-worth-self-help
-          BUILD_NETLIFY: false
+          PATCH_NETLIFY: false
           COOKIE_SECRET: ((sso.cookie-secret))
+          ENABLE_MATOMO: true
           IDP_ENTRY_POINT: ((sso.idp-entry-point))
           IDP_LOGOUT: ((sso.idp-logout))
           IDP_CERTIFICATE: ((sso.idp-certificate))
-          ENABLE_MATOMO: true
-          MATOMO_SITE_ID: 8
           MATOMO_IP: ((matomo.matomo-ip-address))
+          MATOMO_SITE_ID: 8
           MATOMO_URL: ((matomo.matomo-site-url))
           PROJECT: ((gcp.project-name-live))
-          PROTECTED: true
           SERVICE: default
           SP_CERTIFICATE: ((sso.sp-certificate))
           SP_DOMAIN_NAME: secured.((dns.default-domain))
           SP_KEY: ((sso.sp-key))
-        file: census-worth-self-help/pipeline/tasks/deploy-site.yml
+          SP_PROTECTED: true

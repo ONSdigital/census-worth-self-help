@@ -20,7 +20,7 @@ collections:
     create: true
     fields:
       - { name: title, label: Title }
-      - { name: date, label: Publish Date, widget: date }
+      - { name: date, label: Publish Date, widget: datetime }
       - { name: description, label: Description }
       - { name: body, label: Main Body, widget: markdown }
       - { label: "Directory",
@@ -38,7 +38,6 @@ collections:
       - { name: signedby, label: Signed Off, required: false }
       - { name: tags, label: Tags, widget: "list", required: false,
           hint: "divide tags up using commas, e.g:  emergency, test, contact " }
-
 
   - name: directories
     label: Directories
@@ -73,3 +72,10 @@ collections:
           - { label: 'Title', name: 'alert_title', widget: 'string', required: false }
           - { label: 'Content', name: 'alert_content', widget: 'string', required: false,
               hint: "If the content is empty no alert will show." }
+
+      - file: "content/constants/contact_centre_details.md"
+        label: "Contact centre details"
+        name: "contact_centre_details"
+        fields:
+          - { label: 'Wait time', name: 'contact_centre_wait_time', widget: 'number', required: true }
+          - { label: 'Phone number', name: 'contact_centre_number', widget: 'string', required: true }

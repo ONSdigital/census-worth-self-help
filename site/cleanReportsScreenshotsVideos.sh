@@ -37,6 +37,7 @@ function clearReportsScreenshotsVideos() {
             coloredEcho "$f directory doesn't exist." cyan
         fi
     done
+    rm mochawesome.json
 }
 
 clearReportsScreenshotsVideos
