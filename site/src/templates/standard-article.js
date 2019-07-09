@@ -136,6 +136,10 @@ export default class Article extends React.Component {
       })
       .filter(peer => peer !== undefined)
 
+    let articleContent = post
+      ? post.html
+      : "Article content not found. Please Report."
+
     return (
       <div>
         <Layout phone_link={true}>
@@ -151,10 +155,12 @@ export default class Article extends React.Component {
           >
             <PageTitle
               subtitle={
-                <span>
-                  Last updated:
-                  <i>{" " + getTimeAgoPublished(post.frontmatter.date)}</i>
-                </span>
+                post && (
+                  <span>
+                    Last updated:
+                    <i>{" " + getTimeAgoPublished(post.frontmatter.date)}</i>
+                  </span>
+                )
               }
             >
               {pageContext.title}
@@ -185,11 +191,12 @@ export default class Article extends React.Component {
             >
               <TextBlock articleContent={true}>
                 <div className="Article-sub-title-Style">
-                  {post.frontmatter.description}
+                  {post && post.frontmatter.description}
                 </div>
                 <div
+                  data-testid="article-content"
                   className="article-content"
-                  dangerouslySetInnerHTML={{ __html: post.html }}
+                  dangerouslySetInnerHTML={{ __html: articleContent }}
                 />
               </TextBlock>
             </div>

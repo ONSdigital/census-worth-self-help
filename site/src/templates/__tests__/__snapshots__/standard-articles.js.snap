@@ -562,6 +562,7 @@ exports[`StandardArticle renders correctly 1`] = `
                     "__html": undefined,
                   }
                 }
+                data-testid="article-content"
               />
             </div>
           </div>

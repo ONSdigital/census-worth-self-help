@@ -23,6 +23,16 @@ describe("StandardArticle", () => {
     expect(tree).toMatchSnapshot()
   })
 
+  it("if markdown not found, we render a suitable message", () => {
+    const { getByTestId } = render(<StandardArticle 
+        data={{ markdownRemark : null, allMarkdownRemark : articleList }}
+        pageContext={pageContext}
+      />)
+    
+    const articleContent = getByTestId("article-content")
+    expect(articleContent.textContent).toEqual("Article content not found. Please Report.")
+  })
+
   it("positive feedback", () => {
     window._paq = []
 

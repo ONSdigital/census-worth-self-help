@@ -167,9 +167,12 @@ export default class Search extends React.Component {
         let edge = this.data.allMarkdownRemark.edges.find(
           edge => edge.node.frontmatter.title === result.title
         )
-        Search.highlightNode(edge.node, this.state.query)
+        if (edge) {
+          Search.highlightNode(edge.node, this.state.query)
+        }
         return edge
       })
+      .filter(edge => edge)
 
     // A user doesn't count as searching unless they've typed a minimum amount
     let searching =
