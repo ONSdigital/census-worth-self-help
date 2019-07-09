@@ -22,6 +22,7 @@ import Notification from "../components/notification"
 import Feedback from "../utils/feedback"
 import FeedbackScreen from "../components/feedbackscreen"
 
+import WebChatManager from "../utils/webchat"
 import anchorScroll from "../utils/anchorscroll"
 import { createHistory } from "@reach/router"
 
@@ -61,6 +62,13 @@ export default class Article extends React.Component {
       notificationShowing: false,
       feedbackOpen: false,
       feedbackGiven: null
+    }
+
+    this.webchatEnabled = this.props.data.markdownRemark &&
+       this.props.data.markdownRemark.frontmatter.tags.includes("webchat")
+
+    if(this.webchatEnabled) {
+      WebChatManager.load()
     }
   }
 
@@ -246,6 +254,7 @@ export default class Article extends React.Component {
             </div>
           )}
         </Layout>
+        {this.webchatEnabled && WebChatManager.getLink()}
         <Notification
           icon={<FontAwesomeIcon icon={faCheck} />}
           text={this.state.notificationText}
