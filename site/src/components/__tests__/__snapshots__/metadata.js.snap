@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Metadata renders correctly with title 1`] = `null`;
+
+exports[`Metadata renders correctly without a title 1`] = `null`;

@@ -175,7 +175,7 @@ exports[`StandardArticle renders correctly 1`] = `
       }
     }
   >
-    <div
+    <main
       css={
         Object {
           "map": undefined,
@@ -979,7 +979,7 @@ exports[`StandardArticle renders correctly 1`] = `
           </div>
         </div>
       </div>
-    </div>
+    </main>
     <div
       css={
         Object {

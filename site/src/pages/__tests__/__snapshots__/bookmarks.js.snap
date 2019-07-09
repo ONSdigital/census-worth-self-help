@@ -175,7 +175,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
       }
     }
   >
-    <div
+    <main
       css={
         Object {
           "map": undefined,
@@ -568,7 +568,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
           </div>
         </div>
       </div>
-    </div>
+    </main>
     <div
       css={
         Object {
@@ -791,7 +791,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
       }
     }
   >
-    <div
+    <main
       css={
         Object {
           "map": undefined,
@@ -1098,7 +1098,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
           }
         />
       </div>
-    </div>
+    </main>
     <div
       css={
         Object {

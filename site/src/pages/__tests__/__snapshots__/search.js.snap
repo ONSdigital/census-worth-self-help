@@ -178,7 +178,7 @@ exports[`Search renders correctly 1`] = `
       }
     }
   >
-    <div
+    <main
       css={
         Object {
           "map": undefined,
@@ -269,7 +269,7 @@ exports[`Search renders correctly 1`] = `
           }
         }
       />
-    </div>
+    </main>
     <div
       css={
         Object {
