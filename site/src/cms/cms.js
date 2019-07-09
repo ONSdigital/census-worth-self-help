@@ -3,32 +3,55 @@ import React from "react"
 import TextBlock from "../components/textblock"
 import PageTitle from "../components/pagetitle"
 
-const ArticlePreview = ({ entry, widgetFor }) => (
-  <div className="Preview-Layout">
-    <PageTitle
-      subtitle={
-        <span>
-          Last updated: <i>Just published</i>
-        </span>
-      }
-    >
-      {entry.getIn(["data", "title"])}
-    </PageTitle>
+const ArticlePreview = ({ entry, widgetFor }) => {
+  let linkDiv = ""
+  if (typeof window !== 'undefined') {
+    let url = window.location.href;
+    let filename = url.substring(url.lastIndexOf('/'));
+    if (filename !== "/new") {
+      linkDiv = (
+        <div className="Link-Div">{"To link to this page use " + filename}</div>
+      )
+    }
+  }
+  return (
+    <div>
+      {linkDiv}
+      <div className="Preview-Layout">
+        <PageTitle
+          subtitle={
+            entry.getIn(["data", "title"]) && 
+            (<span>
+              Last updated: <i>Just published</i>
+            </span>)
+          }
+        >
+          {entry.getIn(["data", "title"])}
+        </PageTitle>
 
-    <div className="Preview-Article">
-      <TextBlock articleContent={true}>
-        <div className="Article-sub-title-Style">
-          {entry.getIn(["data", "description"])}
+        <div className="Preview-Article">
+          <TextBlock articleContent={true}>
+            <div className="Article-sub-title-Style">
+              {entry.getIn(["data", "description"])}
+            </div>
+            <div className="article-content">{widgetFor("body")}</div>
+          </TextBlock>
         </div>
-        <div className="article-content">{widgetFor("body")}</div>
-      </TextBlock>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 CMS.registerPreviewTemplate("articles", ArticlePreview)
 
 const previewStyles = `
+
+.Link-Div {
+  color: white;
+  background-color: black;
+  padding: 10px 20px;
+}
+
 .Preview-Layout {
   background-color: white;
   margin: 0 auto;
