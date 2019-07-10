@@ -38,4 +38,5 @@ run:
       base64 -d encrypted_key.txt > service-account.json
       gcloud auth activate-service-account --key-file service-account.json
       gcloud config set project $PROJECT
+      ../pipeline/tasks/task-scripts/clean-up-old-appengine-versions.sh report
       gcloud app deploy -q
