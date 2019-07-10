@@ -64,8 +64,14 @@ module.exports = {
   ],
 }
 
-if (!process.env.DISABLED_NETLIFY) {
-  module.exports.plugins.push("gatsby-plugin-netlify-cms");
+if (!process.env.DISABLE_NETLIFY) {
+  module.exports.plugins.push(
+  {
+    resolve: `gatsby-plugin-netlify-cms`,
+    options: {
+      modulePath: `${__dirname}/src/cms/cms.js`,
+    },
+  });
 }
 
 if (process.env.ENABLE_MATOMO) {
