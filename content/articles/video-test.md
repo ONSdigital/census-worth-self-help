@@ -5,4 +5,10 @@ description: can we embed video
 directory: Media examples
 priority: 1
 ---
-Todo, find copyright free video to embed
+Test:
+To get videos to work you must define ```GATSBY_VIDEO_PATH``` in your environement variables
+
+<video controls>
+  <source src="{{TARGET_VIDEO_SRC}}/my-video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>

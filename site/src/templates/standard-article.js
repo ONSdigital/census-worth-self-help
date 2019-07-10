@@ -28,6 +28,8 @@ import { createHistory } from "@reach/router"
 import { css } from "@emotion/core"
 import { getTimeAgoPublished } from "../utils/time"
 
+import { transformSources } from "../utils/sourcetransforms"
+
 const bookmarkNotificationText = "Article added to bookmarks"
 const unbookmarkNotificationText = "Article removed from bookmarks"
 const feedbackNotificationText = "Thank you for your feedback"
@@ -189,7 +191,9 @@ export default class Article extends React.Component {
                 </div>
                 <div
                   className="article-content"
-                  dangerouslySetInnerHTML={{ __html: post.html }}
+                  dangerouslySetInnerHTML={{
+                    __html: transformSources(post.html)
+                  }}
                 />
               </TextBlock>
             </div>
