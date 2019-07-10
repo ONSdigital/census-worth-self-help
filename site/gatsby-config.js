@@ -64,7 +64,7 @@ module.exports = {
   ],
 }
 
-if (!process.env.DISABLED_NETLIFY) {
+if (!process.env.DISABLE_NETLIFY) {
   module.exports.plugins.push(
   {
     resolve: `gatsby-plugin-netlify-cms`,

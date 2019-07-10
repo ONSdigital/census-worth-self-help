@@ -27,9 +27,10 @@ jobs:
           BACKEND_CONTENT_REPO: census-worth-self-help
           PATCH_NETLIFY: true
           GCP_SECRETS_VERSION: ((gcp.secrets-version))
+          DISABLE_NETLIFY: true
           ENABLE_MATOMO: true
           MATOMO_IP: ((matomo.matomo-ip-address))
-          MATOMO_SITE_ID: 8
+          MATOMO_SITE_ID: 2
           MATOMO_URL: ((matomo.matomo-site-url))
           PROJECT: ((gcp.project-name))
           SERVICE: default
