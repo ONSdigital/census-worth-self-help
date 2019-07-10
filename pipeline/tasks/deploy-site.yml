@@ -54,6 +54,5 @@ run:
     sed -i "s/  repo:.*/  repo: ONSdigital\/$BACKEND_CONTENT_REPO/" public/admin/config.yml
 
     ../pipeline/tasks/task-scripts/prepare-protected-site.sh ${APP_FILE}
-
-    census-worth-self-help/pipeline/tasks/task-scripts/clean-up-old-appengine-versions.sh $SERVICE
+    ../pipeline/tasks/task-scripts/clean-up-old-appengine-versions.sh $SERVICE
     gcloud app deploy -q ci-app.yaml
