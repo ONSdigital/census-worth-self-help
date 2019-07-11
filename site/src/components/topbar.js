@@ -6,6 +6,7 @@ import TopbarLink from "./topbarlink"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { navigate } from "@reach/router"
+import VisuallyHidden from "@reach/visually-hidden"
 
 export default ({ searchObject = null }) => {
   return (
@@ -43,7 +44,11 @@ export default ({ searchObject = null }) => {
                 icon={faSearch}
               />
             </div>
+            <VisuallyHidden>
+              <label htmlFor={"search-box"}>Breadcrumb Select Box</label>
+            </VisuallyHidden>
             <input
+              id="search-box"
               data-testid="search-box"
               className="Notification-heading-Style"
               maxLength="60"

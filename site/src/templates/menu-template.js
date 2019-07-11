@@ -3,6 +3,7 @@ import MenuLink from "../components/menulink"
 import Topbar from "../components/topbar"
 import { spacing, gradients } from "../utils/styles"
 import Metadata from "../components/metadata"
+import VisuallyHidden from "@reach/visually-hidden"
 
 import { css } from "@emotion/core"
 
@@ -20,6 +21,9 @@ export default ({ pageContext }) => {
     <div>
       <Metadata>Self Help Facility - Menu</Metadata>
       <Topbar open={true} />
+      <VisuallyHidden>
+        <h1>Menu</h1>
+      </VisuallyHidden>
       <div
         css={css`
           min-height: 100vh;
