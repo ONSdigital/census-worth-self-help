@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: feature/ONS-125-PWA-Offline-hardening
     check_every: 15m
 
   - name: content-repository
@@ -27,7 +27,7 @@ jobs:
 
       - task: deploy
         params:
-          SERVICE: test
+          SERVICE: testbeta
           PATCH_NETLIFY: true
           BACKEND_CONTENT_REPO: census-worth-self-help-test
           PROJECT: ((gcp.project-name))
