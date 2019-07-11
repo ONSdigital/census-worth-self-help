@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 set +x
 echo ${BACKEND_CONTENT_REPO}
 echo ${AUTH_KEY} > encrypted_key.txt

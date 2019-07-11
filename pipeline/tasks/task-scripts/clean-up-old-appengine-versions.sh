@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 keepCount=${2:-"5"}
 
 function deleteOldVersions() {
