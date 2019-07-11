@@ -1,6 +1,6 @@
 runtime: nodejs10
 service: default
-default_expiration: "1m"
+default_expiration: "60m"
 handlers:
 # Netlify CMS has a config.yml that needs to be served up
   - url: /(.*\.yml)
@@ -20,16 +20,19 @@ handlers:
     static_files: public/\1
     secure: always
     upload: public/(.*\.(gif|ico|jpeg|jpg|png|svg))
+    expiration: 1d
 
 # Fonts
   - url: /(.*\.(woff|woff2|tff|eot))
     static_files: public/\1
     secure: always
     upload: public/(.*\.(woff|woff2|tff|eots))
+    expiration: 7d
 
   - url: /icons
     static_dir: public/icons
     secure: always
+    expiration: 1d
 
 # Protected page handling
   - url: /(.*)
