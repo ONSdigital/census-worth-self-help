@@ -32,7 +32,8 @@ describe("Index", () => {
   it("renders correctly with alert data and has alert", () => {
     // check snapshot
     const message = "this is test content"
-    const alert_data = { markdownRemark : { frontmatter: {alert_content: message }}}
+    const alert_data = { markdownRemark : 
+      { frontmatter: {alert_title: "Alert", alert_content: message }}}
     const tree = renderer.create(<Index data={alert_data}/>).toJSON()
     expect(tree).toMatchSnapshot()
     
