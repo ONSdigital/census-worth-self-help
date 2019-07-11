@@ -6,7 +6,7 @@ import { getTimeAgoPublished } from "../utils/time"
 
 export default ({ node }) => {
   let title = node.frontmatter.title
-  let link = node.fields.pagename
+  let link = node.fields.pagename + "/"
   let description = node.highlightedText
     ? node.highlightedText
     : node.frontmatter.description

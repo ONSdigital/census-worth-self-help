@@ -60,7 +60,7 @@ export default ({ data }) => {
       {data.allMarkdownRemark && (
         <TabList
           title="RECENTLY UPDATED"
-          link="/mostrecent"
+          link="/mostrecent/"
           elements={mostRecentEdges}
         />
       )}

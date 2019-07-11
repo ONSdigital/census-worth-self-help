@@ -4,6 +4,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/site/.cache" />
+      <excludeFolder url="file://$MODULE_DIR$/site/mochawesome-report" />
       <excludeFolder url="file://$MODULE_DIR$/site/node_modules" />
       <excludeFolder url="file://$MODULE_DIR$/site/public" />
     </content>

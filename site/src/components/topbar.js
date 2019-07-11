@@ -60,7 +60,7 @@ export default ({ searchObject = null }) => {
               autoFocus
             />
           </div>
-          <TopbarLink title="Menu" link="/menu" />
+          <TopbarLink title="Menu" link="/menu/" />
         </div>
       )}
       {!searchObject && (
@@ -90,9 +90,9 @@ export default ({ searchObject = null }) => {
                 <FontAwesomeIcon icon={faSearch} />
               </div>
             }
-            link="/search"
+            link="/search/"
           />
-          <TopbarLink title="Menu" link="/menu" />
+          <TopbarLink title="Menu" link="/menu/" />
         </div>
       )}
     </header>

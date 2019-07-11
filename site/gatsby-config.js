@@ -39,6 +39,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-offline`,
       options: {
+        globPatterns: ['**/*.{css,png,json,html}'],
         runtimeCaching: [
           {
             urlPattern: /cms.js$/,

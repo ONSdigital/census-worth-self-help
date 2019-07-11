@@ -28,7 +28,7 @@ export default ({ pageContext }) => {
         `}
         data-testid="menu-template-menu-box-overlay"
       >
-        <MenuLink link="" title="Home" />
+        <MenuLink link="/" title="Home" />
         <hr
           css={css`
             border-top: 1px solid white;
