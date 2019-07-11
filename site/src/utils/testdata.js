@@ -21,7 +21,7 @@ export const data = {
           description: "testDescription",
           priority: 0,
           date: new Date(),
-          tags: ["popular"]
+          tags: ["popular", "webchat"]
         },
         fields: {
           pagename: "test-article-2",
@@ -106,6 +106,7 @@ export const data = {
 }
 
 export const articleNode = data.edges[0].node
+export const webchatArticleNode = data.edges[1].node
 export const directoryNode = data.edges[2].node
 export const popularList = {
   edges: [data.edges[1], data.edges[2], data.edges[4], data.edges[5]]
