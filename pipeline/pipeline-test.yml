@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: feature/ONS-214-clean-up-old-versions
+      branch: master
     check_every: 15m
 
   - name: content-repository
