@@ -12,8 +12,6 @@ const search = require('../../fixtures/fragments/search');
 const bookmarksPage = require('../../fixtures/pages/bookmarksPage');
 const homepage = require('../../fixtures/pages/homepagePage');
 
-const firstArticlePath = '/deep-article';
-
 describe("Article bookmarks", function() {
     beforeEach(function () {
         cy.visit('');
@@ -25,7 +23,7 @@ describe("Article bookmarks", function() {
         cy.get(bookmarks.bookmarkIcon).should('be.visible');
         cy.visit(bookmarksPage.bookmarkUrlPath);
         cy.get(bookmarks.bookmarkIcon).should('be.visible');
-        cy.visit(firstArticlePath);
+        cy.visit(globalTestData.firstArticlePath);
         cy.get(bookmarks.bookmarkSave).should('have.text', bookmarks.bookmarkSaveText);
         cy.get(bookmarks.bookmarkBlockButton).click();
         cy.get(header).first().should('have.text', bookmarks.bookmarkedText);
@@ -37,7 +35,7 @@ describe("Article bookmarks", function() {
     });
 
     it('The field officer should see all bookmarked articles when they click \'view all\' [ONS-64]', function () {
-        cy.bookmarkArticle(firstArticlePath);
+        cy.bookmarkArticle(globalTestData.firstArticlePath);
         cy.visit('');
         cy.get(`[href='${bookmarksPage.bookmarkUrlPath}']`).click();
         cy.url().should('include', bookmarksPage.bookmarkUrlPath);

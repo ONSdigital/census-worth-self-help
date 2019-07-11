@@ -12,8 +12,6 @@ const search = require('../../fixtures/fragments/search');
 // pages
 const homepage = require('../../fixtures/pages/homepagePage');
 
-const firstArticlePath = '/deep-article';
-
 describe("Navigating the site and reading articles", function() {
     beforeEach(function () {
         cy.visit('');
@@ -42,7 +40,7 @@ describe("Navigating the site and reading articles", function() {
 
     it('Exploring content from an article to get to the Root page and dive into another section', function () {
         const firstOption = '#react-select-2-option-0';
-        cy.visit(firstArticlePath);
+        cy.visit(globalTestData.firstArticlePath);
         cy.get('.Button-subhead-Style').first().click();
         cy.get(firstOption).click();
         cy.url().should('include', '/explore');
