@@ -7,7 +7,6 @@ function deleteOldVersions() {
   _keepCount=${2}
 
   echo "Keeping last ${_keepCount} of app engine service ${_service}"
-  gcloud app versions list --service ${_service} --sort-by '~version.id' --format 'value(version.id)'
   count=0
   deletedCount=0
   for version in `gcloud app versions list --service ${_service} --sort-by '~version.id' --format 'value(version.id)'`
