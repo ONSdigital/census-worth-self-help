@@ -175,7 +175,7 @@ exports[`Contact centre renders correctly with data 1`] = `
       }
     }
   >
-    <div
+    <main
       css={
         Object {
           "map": undefined,
@@ -841,7 +841,7 @@ exports[`Contact centre renders correctly with data 1`] = `
           </div>
         </a>
       </div>
-    </div>
+    </main>
     <div
       css={
         Object {
@@ -1064,7 +1064,7 @@ exports[`Contact centre renders correctly without data 1`] = `
       }
     }
   >
-    <div
+    <main
       css={
         Object {
           "map": undefined,
@@ -1414,7 +1414,7 @@ exports[`Contact centre renders correctly without data 1`] = `
           </div>
         </a>
       </div>
-    </div>
+    </main>
     <div
       css={
         Object {

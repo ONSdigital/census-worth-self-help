@@ -5,9 +5,9 @@ import PageTitle from "../components/pagetitle"
 
 const ArticlePreview = ({ entry, widgetFor }) => {
   let linkDiv = ""
-  if (typeof window !== 'undefined') {
-    let url = window.location.href;
-    let filename = url.substring(url.lastIndexOf('/'));
+  if (typeof window !== "undefined") {
+    let url = window.location.href
+    let filename = url.substring(url.lastIndexOf("/"))
     if (filename !== "/new") {
       linkDiv = (
         <div className="Link-Div">{"To link to this page use " + filename}</div>
@@ -20,10 +20,11 @@ const ArticlePreview = ({ entry, widgetFor }) => {
       <div className="Preview-Layout">
         <PageTitle
           subtitle={
-            entry.getIn(["data", "title"]) && 
-            (<span>
-              Last updated: <i>Just published</i>
-            </span>)
+            entry.getIn(["data", "title"]) && (
+              <span>
+                Last updated: <i>Just published</i>
+              </span>
+            )
           }
         >
           {entry.getIn(["data", "title"])}

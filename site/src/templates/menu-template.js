@@ -2,6 +2,7 @@ import React from "react"
 import MenuLink from "../components/menulink"
 import Topbar from "../components/topbar"
 import { spacing, gradients } from "../utils/styles"
+import Metadata from "../components/metadata"
 
 import { css } from "@emotion/core"
 
@@ -17,6 +18,7 @@ export default ({ pageContext }) => {
 
   return (
     <div>
+      <Metadata>Self Help Facility - Menu</Metadata>
       <Topbar open={true} />
       <div
         css={css`

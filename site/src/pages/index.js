@@ -9,6 +9,7 @@ import { faSatelliteDish } from "@fortawesome/free-solid-svg-icons"
 import { faBookmark } from "@fortawesome/free-regular-svg-icons"
 import { css } from "@emotion/core"
 import { Offline } from "react-detect-offline"
+import Metadata from "../components/metadata"
 
 export default ({ data }) => {
   let alertTitle = "Alert"
@@ -48,6 +49,7 @@ export default ({ data }) => {
       alertText={alertText}
       alertTitle={alertTitle}
     >
+      <Metadata>Self Help Facility</Metadata>
       <Offline>
         <BlockStatus
           icon={<FontAwesomeIcon icon={faSatelliteDish} />}

@@ -175,7 +175,7 @@ exports[`Layout renders correctly 1`] = `
       }
     }
   >
-    <div
+    <main
       css={
         Object {
           "map": undefined,
@@ -188,7 +188,7 @@ exports[`Layout renders correctly 1`] = `
       }
     >
       Inside layout content
-    </div>
+    </main>
     <div
       css={
         Object {
