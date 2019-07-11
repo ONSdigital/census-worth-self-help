@@ -17,23 +17,23 @@ handlers:
 
 # Images and fonts
   - url: /(.*\.(gif|ico|jpeg|jpg|png|svg))
+    expiration: 1d
     static_files: public/\1
     secure: always
     upload: public/(.*\.(gif|ico|jpeg|jpg|png|svg))
-    expiration: 1d
+    
 
 # Fonts
   - url: /(.*\.(woff|woff2|tff|eot))
+    expiration: 7d
     static_files: public/\1
     secure: always
     upload: public/(.*\.(woff|woff2|tff|eots))
-    expiration: 7d
-
+    
   - url: /icons
+    expiration: 1d
     static_dir: public/icons
     secure: always
-    expiration: 1d
-
 # Protected page handling
   - url: /(.*)
     script: auto
