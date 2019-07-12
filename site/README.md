@@ -4,6 +4,7 @@
     npm run local
         
 # Alternatively serve as we do when doing a production deploy
+
     npm install
     gatsby build
     gatsby serve
@@ -37,3 +38,7 @@ To report to Matomo you must add the following environment variables:
 The site_id, ip and url will depend on what you have configured your matomo instance is. (For worth details see keybase)
 
 You will then need to do a gatsby build and serve ( Not an npm run local! )
+
+# Adding Video Path
+
+    export GATSBY_ASSETS_PATH=...
