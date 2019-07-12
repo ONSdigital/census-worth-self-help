@@ -3,10 +3,12 @@ body {
   background-color:rgb(250, 250, 250);
 }
 
-.article-content img {
+.article-content img, .article-content video {
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
+	max-width: 100%;
+	padding: 10px 0px;
 }
 
 a {

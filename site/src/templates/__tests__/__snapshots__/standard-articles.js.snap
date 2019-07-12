@@ -579,7 +579,7 @@ exports[`StandardArticle renders correctly 1`] = `
                 className="article-content"
                 dangerouslySetInnerHTML={
                   Object {
-                    "__html": undefined,
+                    "__html": "",
                   }
                 }
                 data-testid="article-content"

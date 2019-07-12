@@ -29,6 +29,8 @@ import { createHistory } from "@reach/router"
 import { css } from "@emotion/core"
 import { getTimeAgoPublished } from "../utils/time"
 
+import { transformSources } from "../utils/sourcetransforms"
+
 const bookmarkNotificationText = "Article added to bookmarks"
 const unbookmarkNotificationText = "Article removed from bookmarks"
 const feedbackNotificationText = "Thank you for your feedback"
@@ -143,7 +145,7 @@ export default class Article extends React.Component {
       .filter(peer => peer !== undefined)
 
     let articleContent = post
-      ? post.html
+      ? transformSources(post.html)
       : "Article content not found. Please Report."
 
     return (
