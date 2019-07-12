@@ -34,5 +34,5 @@ jobs:
           MATOMO_URL: ((matomo.matomo-site-url))
           PATCH_NETLIFY: true
           PROJECT: ((gcp.project-name))
-          SERVICE: dev
+          SERVICE: default
           SP_PROTECTED: false
