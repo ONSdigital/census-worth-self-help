@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: origin/feature/ONS-169-ONS-170-video-and-audio-work
+      branch: master
     check_every: 15m
 
   - name: content-repository
@@ -34,6 +34,6 @@ jobs:
           MATOMO_SITE_ID: 8
           PATCH_NETLIFY: true
           PROJECT: ((gcp.project-name))
-          SERVICE: test169
+          SERVICE: test
           SP_PROTECTED: false
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml

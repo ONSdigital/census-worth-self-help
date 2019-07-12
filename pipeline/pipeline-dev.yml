@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: origin/feature/ONS-169-ONS-170-video-and-audio-work
+      branch: master
     webhook_token: ((git.census-worth-self-help-webhook-token))
     check_every: 15m
 
@@ -34,5 +34,5 @@ jobs:
           MATOMO_URL: ((matomo.matomo-site-url))
           PATCH_NETLIFY: true
           PROJECT: ((gcp.project-name))
-          SERVICE: dev169
+          SERVICE: dev
           SP_PROTECTED: false
