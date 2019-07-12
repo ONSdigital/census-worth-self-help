@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`div rendering renders normally when online 1`] = `
+<div
+  className="webchat-link"
+  data-testid="webchat-link"
+  style={
+    Object {
+      "display": "",
+    }
+  }
+>
+  <div
+    id="__8x8-chat-button-container-script_14559760615d036440b0f923.70558301"
+  />
+</div>
+`;

@@ -3,6 +3,7 @@ import MenuLink from "../components/menulink"
 import Topbar from "../components/topbar"
 import { spacing, gradients } from "../utils/styles"
 import Metadata from "../components/metadata"
+import VisuallyHidden from "@reach/visually-hidden"
 
 import { css } from "@emotion/core"
 
@@ -10,7 +11,7 @@ export default ({ pageContext }) => {
   let menuLinks = pageContext.menutree.map(menu_node => (
     <MenuLink
       key={menu_node.title}
-      link={menu_node.link}
+      link={menu_node.link + '/'}
       title={menu_node.title}
       hidden_nodes={menu_node.children}
     />
@@ -20,6 +21,9 @@ export default ({ pageContext }) => {
     <div>
       <Metadata>Self Help Facility - Menu</Metadata>
       <Topbar open={true} />
+      <VisuallyHidden>
+        <h1>Menu</h1>
+      </VisuallyHidden>
       <div
         css={css`
           min-height: 100vh;
@@ -40,9 +44,9 @@ export default ({ pageContext }) => {
             border-top: 1px solid white;
           `}
         />
-        <MenuLink link="mostrecent" title="Recently updated" />
-        <MenuLink link="bookmarks" title="My Bookmarks" />
-        <MenuLink link="contactcentre" title="Census Field Support" />
+        <MenuLink link="mostrecent/" title="Recently updated" />
+        <MenuLink link="bookmarks/" title="My Bookmarks" />
+        <MenuLink link="contactcentre/" title="Census Field Support" />
       </div>
     </div>
   )

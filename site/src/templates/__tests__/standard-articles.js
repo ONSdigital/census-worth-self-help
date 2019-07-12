@@ -3,7 +3,7 @@ import renderer from "react-test-renderer"
 
 import StandardArticle from "../standard-article"
 
-import {articleNode, articleList} from "../../utils/testdata"
+import {articleNode, articleList, webchatArticleNode} from "../../utils/testdata"
 import { render, fireEvent } from "react-testing-library"
 
 describe("StandardArticle", () => {
@@ -77,5 +77,20 @@ describe("StandardArticle", () => {
       ['trackEvent', "article-feedback-review", "REVIEW: test Article 1", "TEST VALUE", ""],
       ['trackEvent', "article-feedback-rating", "rating", "test Article 1", -1]
     ])
+  })
+
+  it("webchat is set based on tags", () => {
+
+    // a normal article doesn't have webchat
+    const { queryByTestId } = render(<StandardArticle data={data} pageContext={pageContext} />);
+    expect(queryByTestId('webchat-link')).toBeNull()
+
+    //one tagged for webchat does
+    const { getByTestId } = render(<StandardArticle data={{
+      markdownRemark : webchatArticleNode,
+      allMarkdownRemark : articleList
+    }} pageContext={pageContext} />);
+
+    expect(getByTestId('webchat-link')).toBeDefined()
   })
 })

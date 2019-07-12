@@ -232,6 +232,26 @@ exports[`TopBar renders correctly with searchbox 1`] = `
           />
         </svg>
       </div>
+      <div
+        style={
+          Object {
+            "border": 0,
+            "clip": "rect(0 0 0 0)",
+            "height": "1px",
+            "margin": "-1px",
+            "overflow": "hidden",
+            "padding": 0,
+            "position": "absolute",
+            "width": "1px",
+          }
+        }
+      >
+        <label
+          htmlFor="search-box"
+        >
+          Breadcrumb Select Box
+        </label>
+      </div>
       <input
         autoFocus={true}
         className="Notification-heading-Style"
@@ -250,6 +270,7 @@ exports[`TopBar renders correctly with searchbox 1`] = `
           }
         }
         data-testid="search-box"
+        id="search-box"
         maxLength="60"
         onChange={[MockFunction]}
         type="text"

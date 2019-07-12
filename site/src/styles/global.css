@@ -14,3 +14,12 @@ body {
 a {
   text-decoration: none;
 }
+
+.webchat-link {
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+}
+.webchat-link img {
+	height: 60px;
+}
