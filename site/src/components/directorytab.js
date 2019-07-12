@@ -5,7 +5,7 @@ import { gradients, colors, spacing } from "../utils/styles"
 
 export default ({ node }) => {
   let title = node.frontmatter.title
-  let link = node.fields.pagename
+  let link = node.fields.pagename + "/"
   let description = node.frontmatter.description
 
   return (

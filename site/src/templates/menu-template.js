@@ -11,7 +11,7 @@ export default ({ pageContext }) => {
   let menuLinks = pageContext.menutree.map(menu_node => (
     <MenuLink
       key={menu_node.title}
-      link={menu_node.link}
+      link={menu_node.link + '/'}
       title={menu_node.title}
       hidden_nodes={menu_node.children}
     />
@@ -44,9 +44,9 @@ export default ({ pageContext }) => {
             border-top: 1px solid white;
           `}
         />
-        <MenuLink link="mostrecent" title="Recently updated" />
-        <MenuLink link="bookmarks" title="My Bookmarks" />
-        <MenuLink link="contactcentre" title="Census Field Support" />
+        <MenuLink link="mostrecent/" title="Recently updated" />
+        <MenuLink link="bookmarks/" title="My Bookmarks" />
+        <MenuLink link="contactcentre/" title="Census Field Support" />
       </div>
     </div>
   )

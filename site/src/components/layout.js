@@ -52,7 +52,7 @@ export default ({
               <LargeButton
                 icon={<FontAwesomeIcon icon={faBook} />}
                 title="Explore Content"
-                link="/menu"
+                link="/menu/"
               />
             </Section>
           )}
