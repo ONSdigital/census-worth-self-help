@@ -73,7 +73,7 @@ export default ({ data }) => {
           <div>
             <TabList
               title="MY BOOKMARKS"
-              link="/bookmarks"
+              link="/bookmarks/"
               elements={bookmarkEdges}
             />
           </div>

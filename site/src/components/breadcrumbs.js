@@ -39,7 +39,7 @@ export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
   }
 
   const redirect = option => {
-    navigate(`/` + option.value)
+    navigate(`/` + option.value + '/')
   }
 
   return (
