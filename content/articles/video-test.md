@@ -6,9 +6,9 @@ directory: Media examples
 priority: 1
 ---
 Test:
-To get videos to work you must define ```GATSBY_VIDEO_PATH``` in your environement variables
+To get videos to work you must define ```GATSBY_ASSETS_PATH``` in your environment variables
 
 <video controls>
-  <source src="{{TARGET_VIDEO_SRC}}/my-video.mp4" type="video/mp4">
+  <source src="{{TARGET_ASSETS_SRC}}/video/my-video.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>

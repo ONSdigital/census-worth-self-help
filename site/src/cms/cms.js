@@ -125,8 +125,7 @@ CMS.registerEditorComponent({
     {
       name: "video_path",
       label: "video",
-      hint:
-        'Give the relative video path of the uploaded file, e.g. "my-video.mp4"'
+      hint: 'Give just the file name of the uploaded file, e.g. "my-video.mp4"'
     }
   ],
   pattern: /^<video controls data-id="([^"]*)">.*<\/video>$/,
@@ -139,11 +138,58 @@ CMS.registerEditorComponent({
     return (
       `<video controls data-id="` +
       obj.video_path +
-      `"><source src="` +
-      transformSources("{{TARGET_VIDEO_SRC}}") +
-      `/` +
+      `"><source src="{{TARGET_ASSETS_SRC}}/video/` +
       obj.video_path +
       `" type="video/mp4">Video disabled</video>`
+    )
+  },
+  toPreview: function(obj) {
+    return (
+      `<video controls data-id="` +
+      obj.video_path +
+      `"><source src="` +
+      transformSources("{{TARGET_ASSETS_SRC}}") +
+      `/video/` +
+      obj.video_path +
+      `" type="video/mp4">Video disabled</video>`
+    )
+  }
+})
+
+CMS.registerEditorComponent({
+  id: "audio",
+  label: "Audio",
+  fields: [
+    {
+      name: "audio_path",
+      label: "audio",
+      hint: 'Give just the file name of the uploaded file, e.g. "my-audio.mp3"'
+    }
+  ],
+  pattern: /^<audio controls data-id="([^"]*)">.*<\/audio>$/,
+  fromBlock: function(match) {
+    return {
+      audio_path: match[1]
+    }
+  },
+  toBlock: function(obj) {
+    return (
+      `<audio controls data-id="` +
+      obj.audio_path +
+      `"><source src="{{TARGET_ASSETS_SRC}}/audio/` +
+      obj.audio_path +
+      `">Video disabled</audio>`
+    )
+  },
+  toPreview: function(obj) {
+    return (
+      `<audio controls data-id="` +
+      obj.audio_path +
+      `"><source src="` +
+      transformSources("{{TARGET_ASSETS_SRC}}") +
+      `/audio/` +
+      obj.audio_path +
+      `">Audio disabled</audio>`
     )
   }
 })
