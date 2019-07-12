@@ -175,7 +175,7 @@ exports[`Most Recent renders correctly 1`] = `
       }
     }
   >
-    <div
+    <main
       css={
         Object {
           "map": undefined,
@@ -990,7 +990,7 @@ exports[`Most Recent renders correctly 1`] = `
           </div>
         </div>
       </div>
-    </div>
+    </main>
     <div
       css={
         Object {

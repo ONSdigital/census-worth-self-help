@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 appFile=${1:-"ci-app.yaml"}
 spProtocol=${SP_PROTOCOL:-"https"}
 

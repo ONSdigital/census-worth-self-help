@@ -17,7 +17,8 @@ export default ({
   logo = false,
   phone_link = false,
   explore_more_link = false,
-  alert = false,
+  alertText = false,
+  alertTitle = "Alert",
   searchObject
 }) => {
   return (
@@ -40,12 +41,12 @@ export default ({
           flex-grow: 1;
         `}
       >
-        <div
+        <main
           css={css`
             flex-grow: 1;
           `}
         >
-          {alert && <Alert title="Alert" content={alert} />}
+          {alertText && <Alert title={alertTitle} content={alertText} />}
           {explore_more_link && (
             <Section>
               <LargeButton
@@ -56,7 +57,7 @@ export default ({
             </Section>
           )}
           {children}
-        </div>
+        </main>
         <Footer phone_link={phone_link} />
       </div>
     </div>

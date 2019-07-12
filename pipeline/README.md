@@ -16,7 +16,7 @@ log in to web console and install fly command.
     fly -t ci set-pipeline -c pipeline-control.yml -p control
     fly -t ci set-pipeline -c pipeline-protected.yml -p protected
     fly -t ci set-pipeline -c pipeline-report.yml -p report
-    fly -t ci set-pipeline -c pipeline-test.yml -p self-help-test   
+    fly -t ci set-pipeline -c pipeline-test.yml -p test   
     fly -t ci set-pipeline -c pipeline-trigger.yml -p trigger
 
 # Troubleshooting

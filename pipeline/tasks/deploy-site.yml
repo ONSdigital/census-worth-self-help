@@ -26,12 +26,7 @@ run:
   - -exec
   - |
     census-worth-self-help/pipeline/tasks/task-scripts/validate-deploy-site-env.sh
-    set +x
-    echo $BACKEND_CONTENT_REPO
-    echo $AUTH_KEY > encrypted_key.txt
-    set -x
-    base64 -d encrypted_key.txt > service-account.json
-    gcloud auth activate-service-account --key-file service-account.json
+    census-worth-self-help/pipeline/tasks/task-scripts/activate-service-account.sh
     gcloud config set project $PROJECT
 
     apk add --no-progress --update nodejs nodejs-npm
@@ -59,5 +54,5 @@ run:
     sed -i "s/  repo:.*/  repo: ONSdigital\/$BACKEND_CONTENT_REPO/" public/admin/config.yml
 
     ../pipeline/tasks/task-scripts/prepare-protected-site.sh ${APP_FILE}
-
+    ../pipeline/tasks/task-scripts/clean-up-old-appengine-versions.sh $SERVICE
     gcloud app deploy -q ci-app.yaml

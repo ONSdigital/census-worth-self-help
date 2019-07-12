@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Pre-requisites to fail task early
 if [[ "${SP_PROTECTED}" != "false" ]] ; then
   for MANDATORY in COOKIE_SECRET IDP_ENTRY_POINT IDP_CERTIFICATE IDP_LOGOUT SP_CERTIFICATE SP_DOMAIN_NAME SP_KEY SP_PROTECTED; do

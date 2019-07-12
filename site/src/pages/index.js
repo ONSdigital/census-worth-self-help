@@ -9,10 +9,17 @@ import { faSatelliteDish } from "@fortawesome/free-solid-svg-icons"
 import { faBookmark } from "@fortawesome/free-regular-svg-icons"
 import { css } from "@emotion/core"
 import { Offline } from "react-detect-offline"
+import Metadata from "../components/metadata"
 
 export default ({ data }) => {
-  let alertText =
-    data.markdownRemark && data.markdownRemark.frontmatter.alert_content
+  let alertTitle = "Alert"
+  let alertText = ""
+  if (data.markdownRemark) {
+    if (data.markdownRemark.frontmatter.alert_title) {
+      alertTitle = data.markdownRemark.frontmatter.alert_title
+    }
+    alertText = data.markdownRemark.frontmatter.alert_content
+  }
 
   const topArticleCount = 3
 
@@ -39,8 +46,10 @@ export default ({ data }) => {
       logo={true}
       phone_link={false}
       explore_more_link={true}
-      alert={alertText}
+      alertText={alertText}
+      alertTitle={alertTitle}
     >
+      <Metadata>Self Help Facility</Metadata>
       <Offline>
         <BlockStatus
           icon={<FontAwesomeIcon icon={faSatelliteDish} />}
@@ -105,6 +114,7 @@ export const query = graphql`
     markdownRemark(frontmatter: { alert_content: { ne: null } }) {
       frontmatter {
         alert_content
+        alert_title
       }
     }
 

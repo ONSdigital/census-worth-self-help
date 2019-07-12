@@ -27,6 +27,7 @@ module.exports = {
         },
       },
     },
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-plugin-favicon`,
@@ -64,7 +65,7 @@ module.exports = {
   ],
 }
 
-if (!process.env.DISABLED_NETLIFY) {
+if (!process.env.DISABLE_NETLIFY) {
   module.exports.plugins.push(
   {
     resolve: `gatsby-plugin-netlify-cms`,
