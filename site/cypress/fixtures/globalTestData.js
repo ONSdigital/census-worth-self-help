@@ -1,4 +1,6 @@
 // Here you can add any test data that is used across multiple tests
+const articleURL = 'a-very-simple-article';
+
 
 const chromebookSize = [
   {
@@ -22,6 +24,7 @@ const samsungJ4PlusSize = [
 ]
 
 module.exports = {
+  articleURL,
   chromebookSize,
   samsungA10Size,
   samsungJ4PlusSize
