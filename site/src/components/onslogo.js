@@ -1,6 +1,7 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { gradients } from "../utils/styles"
+import VisuallyHidden from "@reach/visually-hidden"
 
 export default () => {
   return (
@@ -10,6 +11,9 @@ export default () => {
         ${gradients.navy_shine};
       `}
     >
+      <VisuallyHidden>
+        <h1>Self Help Facility</h1>
+      </VisuallyHidden>
       <img
         src="/ONS_logo.svg"
         alt="Main logo"

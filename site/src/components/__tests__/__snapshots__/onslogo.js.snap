@@ -16,6 +16,24 @@ exports[`ONS Logo renders correctly 1`] = `
     }
   }
 >
+  <div
+    style={
+      Object {
+        "border": 0,
+        "clip": "rect(0 0 0 0)",
+        "height": "1px",
+        "margin": "-1px",
+        "overflow": "hidden",
+        "padding": 0,
+        "position": "absolute",
+        "width": "1px",
+      }
+    }
+  >
+    <h1>
+      Self Help Facility
+    </h1>
+  </div>
   <img
     alt="Main logo"
     css={

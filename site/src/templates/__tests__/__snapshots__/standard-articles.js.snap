@@ -233,6 +233,26 @@ exports[`StandardArticle renders correctly 1`] = `
             }
           >
             <div
+              style={
+                Object {
+                  "border": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "height": "1px",
+                  "margin": "-1px",
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "width": "1px",
+                }
+              }
+            >
+              <label
+                htmlFor="breadcrumbs-input"
+              >
+                Breadcrumb Select Box
+              </label>
+            </div>
+            <div
               className="Button-subhead-Style css-2b097c-container"
               onKeyDown={[Function]}
             >
@@ -266,7 +286,7 @@ exports[`StandardArticle renders correctly 1`] = `
                         autoComplete="off"
                         autoCorrect="off"
                         disabled={false}
-                        id="react-select-2-input"
+                        id="breadcrumbs-input"
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -559,7 +579,7 @@ exports[`StandardArticle renders correctly 1`] = `
                 className="article-content"
                 dangerouslySetInnerHTML={
                   Object {
-                    "__html": undefined,
+                    "__html": "",
                   }
                 }
                 data-testid="article-content"

@@ -4,6 +4,7 @@ import { colors, spacing } from "../utils/styles"
 import { navigate } from "@reach/router"
 import Section from "./section"
 import Select from "react-select"
+import VisuallyHidden from "@reach/visually-hidden"
 
 export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
   const convertToOption = (linkPair, tabCount) => {
@@ -39,7 +40,7 @@ export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
   }
 
   const redirect = option => {
-    navigate(`/` + option.value)
+    navigate(`/` + option.value + '/')
   }
 
   return (
@@ -61,7 +62,11 @@ export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
           ${spacing.in_page_element}
         `}
       >
+        <VisuallyHidden>
+          <label htmlFor={"breadcrumbs-input"}>Breadcrumb Select Box</label>
+        </VisuallyHidden>
         <Select
+          inputId="breadcrumbs-input"
           className="Button-subhead-Style"
           value={selectedOption}
           onChange={redirect}

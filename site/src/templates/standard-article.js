@@ -22,11 +22,14 @@ import Notification from "../components/notification"
 import Feedback from "../utils/feedback"
 import FeedbackScreen from "../components/feedbackscreen"
 
+import WebChat from "../utils/webchat"
 import anchorScroll from "../utils/anchorscroll"
 import { createHistory } from "@reach/router"
 
 import { css } from "@emotion/core"
 import { getTimeAgoPublished } from "../utils/time"
+
+import { transformSources } from "../utils/sourcetransforms"
 
 const bookmarkNotificationText = "Article added to bookmarks"
 const unbookmarkNotificationText = "Article removed from bookmarks"
@@ -62,6 +65,11 @@ export default class Article extends React.Component {
       feedbackOpen: false,
       feedbackGiven: null
     }
+
+    this.webchatEnabled =
+      this.props.data.markdownRemark &&
+      this.props.data.markdownRemark.frontmatter.tags &&
+      this.props.data.markdownRemark.frontmatter.tags.includes("webchat")
   }
 
   givePositiveFeedback() {
@@ -137,7 +145,7 @@ export default class Article extends React.Component {
       .filter(peer => peer !== undefined)
 
     let articleContent = post
-      ? post.html
+      ? transformSources(post.html)
       : "Article content not found. Please Report."
 
     return (
@@ -253,6 +261,7 @@ export default class Article extends React.Component {
             </div>
           )}
         </Layout>
+        {this.webchatEnabled && <WebChat />}
         <Notification
           icon={<FontAwesomeIcon icon={faCheck} />}
           text={this.state.notificationText}

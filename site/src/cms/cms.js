@@ -2,6 +2,7 @@ import CMS from "netlify-cms-app"
 import React from "react"
 import TextBlock from "../components/textblock"
 import PageTitle from "../components/pagetitle"
+import { transformSources } from "../utils/sourcetransforms"
 
 const ArticlePreview = ({ entry, widgetFor }) => {
   let linkDiv = ""
@@ -107,10 +108,88 @@ const previewStyles = `
   color: #6e6e6e;
 }
 
-.article-content img {
+.article-content img, .article-content video {
   display: block;
   margin-right: auto;
   margin-left: auto;
+  max-width: 100%;
+  padding: 10px 0px;
 }`
 
 CMS.registerPreviewStyle(previewStyles, { raw: true })
+
+CMS.registerEditorComponent({
+  id: "video",
+  label: "Video",
+  fields: [
+    {
+      name: "video_path",
+      label: "video",
+      hint: 'Give just the file name of the uploaded file, e.g. "my-video.mp4"'
+    }
+  ],
+  pattern: /^<video controls data-id="([^"]*)">.*<\/video>$/,
+  fromBlock: function(match) {
+    return {
+      video_path: match[1]
+    }
+  },
+  toBlock: function(obj) {
+    return (
+      `<video controls data-id="` +
+      obj.video_path +
+      `"><source src="{{TARGET_ASSETS_SRC}}/video/` +
+      obj.video_path +
+      `" type="video/mp4">Video disabled</video>`
+    )
+  },
+  toPreview: function(obj) {
+    return (
+      `<video controls data-id="` +
+      obj.video_path +
+      `"><source src="` +
+      transformSources("{{TARGET_ASSETS_SRC}}") +
+      `/video/` +
+      obj.video_path +
+      `" type="video/mp4">Video disabled</video>`
+    )
+  }
+})
+
+CMS.registerEditorComponent({
+  id: "audio",
+  label: "Audio",
+  fields: [
+    {
+      name: "audio_path",
+      label: "audio",
+      hint: 'Give just the file name of the uploaded file, e.g. "my-audio.mp3"'
+    }
+  ],
+  pattern: /^<audio controls data-id="([^"]*)">.*<\/audio>$/,
+  fromBlock: function(match) {
+    return {
+      audio_path: match[1]
+    }
+  },
+  toBlock: function(obj) {
+    return (
+      `<audio controls data-id="` +
+      obj.audio_path +
+      `"><source src="{{TARGET_ASSETS_SRC}}/audio/` +
+      obj.audio_path +
+      `">Video disabled</audio>`
+    )
+  },
+  toPreview: function(obj) {
+    return (
+      `<audio controls data-id="` +
+      obj.audio_path +
+      `"><source src="` +
+      transformSources("{{TARGET_ASSETS_SRC}}") +
+      `/audio/` +
+      obj.audio_path +
+      `">Audio disabled</audio>`
+    )
+  }
+})

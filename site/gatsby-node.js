@@ -197,7 +197,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     let {directories, articles} = fetchArticlesAndDirectories(result.data.allMarkdownRemark.edges)
 
-    let rootDirectory = {title : 'Root', resolved : true, parent: null, children: [], breadcrumbs: [], link: "explore"}
+    let rootDirectory = {title : 'Root', resolved : true, parent: null, children: [], breadcrumbs: [], link: "explore/"}
     directories.push(rootDirectory)
 
     connectDirectoriesTogether(directories)

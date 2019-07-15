@@ -10,6 +10,7 @@ params:
   AUTH_KEY: ((gcp.service-account-key))
   GCP_SECRETS_VERSION: ((gcp.secrets-version))
   NETLIFY_BUCKET_NAME: ((gcp.netlify-bucket-name))
+  GATSBY_ASSETS_PATH: ((gatsby.assets-path))
 
 inputs:
 - name: census-worth-self-help

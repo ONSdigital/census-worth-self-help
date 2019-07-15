@@ -19,6 +19,7 @@ jobs:
     build_log_retention:
       days: 8
       builds: 10
+    max_in_flight: 1
     plan:
       - get: census-worth-self-help
         trigger: true
@@ -27,12 +28,12 @@ jobs:
 
       - task: deploy
         params:
-          SERVICE: test
-          PATCH_NETLIFY: true
           BACKEND_CONTENT_REPO: census-worth-self-help-test
-          PROJECT: ((gcp.project-name))
-          SP_PROTECTED: false
           ENABLE_MATOMO: true
-          MATOMO_SITE_ID: 8
           MATOMO_IP: ((matomo.matomo-ip-address))
+          MATOMO_SITE_ID: 8
+          PATCH_NETLIFY: true
+          PROJECT: ((gcp.project-name))
+          SERVICE: test
+          SP_PROTECTED: false
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml
