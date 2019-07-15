@@ -1,4 +1,4 @@
-const contactCentrePath = '/contactcentre';
+const contactCentrePath = '/contactcentre/';
 
 module.exports = {
     callSupportBlock: `[data-testid='block-button']`,
