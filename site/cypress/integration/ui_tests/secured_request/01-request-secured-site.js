@@ -1,11 +1,12 @@
 /// <reference types="Cypress" />
 
 // To run this test, remove the 'x' in front of describe. Placing an x before a test suite or case, will cause it to be skipped
-xdescribe("Request the secured homepage with a valid cookie to check for a 200 status code and the homepage is available", function() {
+describe("Request the secured homepage with a valid cookie to check for a 200 status code and the homepage is available", function() {
     it('SSO request 2', function () {
+        cy.log(Cypress.env('SECURED_URL'));
         cy.request({
             method: 'GET',
-            url: 'https://secured.worth.census-gcp.onsdigital.uk/',
+            url: Cypress.env('SECURED_URL'),
             headers: {
                 authority: 'secured.worth.census-gcp.onsdigital.uk',
                 pragma: 'no-cache',
@@ -16,7 +17,7 @@ xdescribe("Request the secured homepage with a valid cookie to check for a 200 s
                 encoding: 'gzip, deflate, br',
                 language: 'en-GB,en-US;q=0.9,en;q=0.8',
                 // In the keybase repo, grab the cookie from the secret in cypress/secrets.txt
-                cookie: ''
+                cookie: Cypress.env('COOKIE')
             },
         })
             .then((resp) => {

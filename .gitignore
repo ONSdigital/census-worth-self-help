@@ -27,7 +27,9 @@ coverage
 
 # Cypress
 
-site/mochawesome.json
 mochawesome-report
+site/cypress_env_variables.sh
 site/cypress/screenshots
 site/cypress/videos
+site/mochawesome.json
+
