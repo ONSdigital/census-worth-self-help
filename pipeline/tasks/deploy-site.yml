@@ -48,7 +48,7 @@ run:
     mkdir -p "$BUILD" && cp -R ../../content-repository/content/ "$BUILD"
     ASSET_DIR="static/assets/"
     cp -R ../../content-repository/static/assets/ "$ASSET_DIR"
-    npm run build
+    npm run build-no-audit
 
     APP_FILE=ci-app.yaml
     sed "s/service:.*/service: $SERVICE/" app.yaml > ${APP_FILE}
