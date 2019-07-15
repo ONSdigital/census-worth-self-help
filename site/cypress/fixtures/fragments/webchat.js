@@ -1,3 +1,3 @@
 module.exports={
-    liveChatButton: `[data-type="online"]`,
+    liveChatButton: `[data-type="online"],[data-type="offline"]`,
 };
