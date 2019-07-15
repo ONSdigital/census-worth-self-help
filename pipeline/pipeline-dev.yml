@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: feature/ONS-249-audit-failure-handling
+      branch: master
     webhook_token: ((git.census-worth-self-help-webhook-token))
     check_every: 15m
 
