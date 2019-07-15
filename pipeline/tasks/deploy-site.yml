@@ -37,7 +37,7 @@ run:
     export ROOT_FOLDER=$(pwd)
     export CYPRESS_CACHE_FOLDER=${ROOT_FOLDER}/.cypress-cache
     cd census-worth-self-help/site
-    npm install --only=prod
+    npm install
 
     if [ "${PATCH_NETLIFY}" == "true" ]; then
       gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-2-9-1-x.tar.gz .
@@ -48,7 +48,7 @@ run:
     mkdir -p "$BUILD" && cp -R ../../content-repository/content/ "$BUILD"
     ASSET_DIR="static/assets/"
     cp -R ../../content-repository/static/assets/ "$ASSET_DIR"
-    npm run build-no-audit-no-test
+    npm run build-no-audit
 
     APP_FILE=ci-app.yaml
     sed "s/service:.*/service: $SERVICE/" app.yaml > ${APP_FILE}
