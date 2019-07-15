@@ -65,9 +65,7 @@
   ],
   "scripts": {
     "app": "node app.js",
-    "build": "npm audit && jest && gatsby build",
-    "build-no-audit": "jest && gatsby build",
-    "build-no-audit-no-test": "gatsby build",
+    "build": "npm audit ; jest ; gatsby build",
     "coverage": "jest --coverage",
     "cy:open": "node_modules/cypress/bin/cypress open",
     "cy:run": "node_modules/cypress/bin/cypress run",

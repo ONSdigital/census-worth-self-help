@@ -1,13 +1,3 @@
-#
-# Deploy site
-#
-# Parameters
-#    SKIP_UNIT_TESTS - set to false to skip unit tests, note that content deployments that use code
-#                      that has already been unit tested does not value too much from rerunning the
-#                      unit tests, so for such pipelines you can set this to false to speed up the
-#                      build.
-#
-
 platform: linux
 
 image_resource:
@@ -47,12 +37,7 @@ run:
     export ROOT_FOLDER=$(pwd)
     export CYPRESS_CACHE_FOLDER=${ROOT_FOLDER}/.cypress-cache
     cd census-worth-self-help/site
-
-    if [ "${SKIP_UNIT_TESTS}" == "true" ] ; then
-      npm install --only=prod
-    else
-      npm install
-    fi
+    npm install --only=prod
 
     if [ "${PATCH_NETLIFY}" == "true" ]; then
       gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-2-9-1-x.tar.gz .
@@ -63,12 +48,7 @@ run:
     mkdir -p "$BUILD" && cp -R ../../content-repository/content/ "$BUILD"
     ASSET_DIR="static/assets/"
     cp -R ../../content-repository/static/assets/ "$ASSET_DIR"
-
-    if [ "${SKIP_UNIT_TESTS}" == "true" ] ; then
-      npm run build-no-audit-no-test
-    else
-      npm run build-no-audit
-    fi
+    npm run build
 
     APP_FILE=ci-app.yaml
     sed "s/service:.*/service: $SERVICE/" app.yaml > ${APP_FILE}
