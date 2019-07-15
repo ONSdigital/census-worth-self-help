@@ -1,3 +1,13 @@
+#
+# Deploy site
+#
+# Parameters
+#    SKIP_UNIT_TESTS - set to false to skip unit tests, note that content deployments that use code
+#                      that has already been unit tested does not value too much from rerunning the
+#                      unit tests, so for such pipelines you can set this to false to speed up the
+#                      build.
+#
+
 platform: linux
 
 image_resource:
@@ -37,6 +47,7 @@ run:
     export ROOT_FOLDER=$(pwd)
     export CYPRESS_CACHE_FOLDER=${ROOT_FOLDER}/.cypress-cache
     cd census-worth-self-help/site
+
     if [ "${SKIP_UNIT_TESTS}" == "true" ] ; then
       npm install --only=prod
     else
