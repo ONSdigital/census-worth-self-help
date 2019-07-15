@@ -1,4 +1,4 @@
-const mostRecentUrlPath = '/mostrecent';
+const mostRecentUrlPath = '/mostrecent/';
 
 module.exports = {
     articleCard: `[data-testid='articletab-article-card']`,
