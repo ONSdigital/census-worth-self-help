@@ -1,11 +1,15 @@
 resources:
+  - name: after-midnight
+    type: time
+    source:
+      start: 12:00 AM
+      stop: 1:00 AM
+
   - name: census-worth-self-help
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: feature/ONS-249-audit-failure-handlin
-    webhook_token: ((git.census-worth-self-help-webhook-token))
-    check_every: 15m
+      branch: master
 
   - name: content-repository
     type: git
@@ -19,8 +23,9 @@ jobs:
       builds: 10
     max_in_flight: 1
     plan:
-      - get: census-worth-self-help
+      - get: after-midnight
         trigger: true
+      - get: census-worth-self-help
       - get: content-repository
       - task: deploy
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml
