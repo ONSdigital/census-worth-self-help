@@ -70,6 +70,7 @@
     "cy:open": "node_modules/cypress/bin/cypress open",
     "cy:run": "node_modules/cypress/bin/cypress run --spec cypress/integration/ui_tests/e2e_tests/*",
     "cy:secured:test": ". ./cypress_env_variables.sh; ./node_modules/.bin/cypress run --spec cypress/integration/ui_tests/secured_request/*",
+    "cy:secured:open": ". ./cypress_env_variables.sh; node_modules/cypress/bin/cypress open",
     "develop": "gatsby develop",
     "e2e": "start-server-and-test develop http://localhost:8000 cy:run",
     "format": "prettier --write {app,cypress,src}/**/*.{js,jsx}",
