@@ -1,6 +1,6 @@
 // Here you can add any test data that is used across multiple tests
 const firstArticlePath = "/deep-article/"
-const articleURL = '/a-very-simple-article/';
+const articleURL = "/a-very-simple-article/"
 
 const chromebookSize = [
   {

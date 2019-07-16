@@ -15,7 +15,6 @@ export default class WebChatManager extends React.Component {
           "__8x8-chat-button-container-script_14559760615d036440b0f923.70558301",
         align: "right"
       }
-
       ;(function() {
         var se = document.createElement("script")
         se.type = "text/javascript"

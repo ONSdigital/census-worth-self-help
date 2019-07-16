@@ -1,10 +1,10 @@
 /// <reference types="Cypress" />
 
-const commands = require('../../support/commands.js');
-const globalTestData = require('../../fixtures/globalTestData');
+const commands = require('../../../support/commands.js');
+const globalTestData = require('../../../fixtures/globalTestData');
 
 // pages
-const homepage = require('../../fixtures/pages/homepagePage');
+const homepage = require('../../../fixtures/pages/homepagePage');
 
 describe("Videos in articles", function() {
     beforeEach(function () {
