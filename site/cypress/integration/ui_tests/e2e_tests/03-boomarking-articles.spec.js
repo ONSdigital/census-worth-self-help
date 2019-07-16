@@ -1,6 +1,5 @@
 /// <reference types="Cypress" />
 
-const commands = require('../../../support/commands.js');
 const globalTestData = require('../../../fixtures/globalTestData');
 
 // fragments
@@ -14,31 +13,31 @@ const homepage = require('../../../fixtures/pages/homepagePage');
 
 describe("Article bookmarks", function() {
     beforeEach(function () {
-        cy.visit('');
+        cy.visit(Cypress.env('baseUrl'));
         cy.get(homepage.homepageLogo).should('be.visible');
     });
 
     it('The field officer bookmarks a page and refers to it in their bookmark page [ONS-64]', function () {
         const header = '.Button-heading-Style';
         cy.get(bookmarks.bookmarkIcon).should('be.visible');
-        cy.visit(bookmarksPage.bookmarkUrlPath);
+        cy.visitPage(bookmarksPage.bookmarkUrlPath);
         cy.get(bookmarks.bookmarkIcon).should('be.visible');
-        cy.visit(globalTestData.firstArticlePath);
+        cy.visitPage(globalTestData.deepArticlePath);
         cy.get(bookmarks.bookmarkSave).should('have.text', bookmarks.bookmarkSaveText);
         cy.get(bookmarks.bookmarkBlockButton).click();
         cy.get(header).first().should('have.text', bookmarks.bookmarkedText);
         cy.get(menu.menuButton).contains('Menu').click();
         cy.get('.Menu-major-item-Style').contains('My Bookmarks').click();
-        cy.url().should('include', bookmarksPage.bookmarkUrlPath);
+        cy.url().should('eq', Cypress.env('baseUrl')+bookmarksPage.bookmarkUrlPath);
         cy.get(homepage.articleCard).should('have.text', 'deep article');
         cy.get(bookmarks.emptyBookmarkMessage).should('not.be.visible');
     });
 
     it('The field officer should see all bookmarked articles when they click \'view all\' [ONS-64]', function () {
-        cy.bookmarkArticle(globalTestData.firstArticlePath);
-        cy.visit('');
+        cy.bookmarkArticle(globalTestData.deepArticlePath);
+        cy.visit(Cypress.env('baseUrl'));
         cy.get(`[href='${bookmarksPage.bookmarkUrlPath}']`).click();
-        cy.url().should('include', bookmarksPage.bookmarkUrlPath);
+        cy.url().should('eq', Cypress.env('baseUrl')+bookmarksPage.bookmarkUrlPath);
         cy.get(search.searchResultTitle).should('have.text', 'My Bookmarks');
     });
 
