@@ -10,6 +10,16 @@ describe("Feedback", () => {
     expect(window._paq).toEqual([['trackEvent', "article-was-bookmarked", "bookmarked", "goodArticleName", 1]])
   })
 
+  it("article was unbookmarked", () => {
+    Feedback.articleWasUnBookmarked("goodArticleName")
+    expect(window._paq).toEqual([['trackEvent', "article-was-bookmarked", "unbookmarked", "goodArticleName", 1]])
+  })
+
+  it("bookmarked was clicked", () => {
+    Feedback.bookmarkClickEvent("goodArticleName")
+    expect(window._paq).toEqual([['trackEvent', "click-event", "bookmark", "goodArticleName", ""]])
+  })
+
   it("article Is Useful", () => {
   	Feedback.articleIsUseful("goodArticleName")
     expect(window._paq).toEqual([['trackEvent', "article-feedback-rating", "rating", "goodArticleName", 1]])

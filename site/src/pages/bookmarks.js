@@ -44,6 +44,8 @@ export default class Bookmarks extends React.Component {
     let paginatedBookmarkEdges = this.state.paginationObject.filterResults(
       bookmarkEdges
     )
+    
+    bookmarkManager.addBookmarkClickEventToEdges(paginatedBookmarkEdges)
 
     return (
       <Layout explore_more_link={true}>
