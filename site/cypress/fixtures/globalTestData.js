@@ -1,22 +1,6 @@
 // Here you can add any test data that is used across multiple tests
-
-// Urls
-const audioArticlePath = "/audio-test/"
-const aVerySimpleArticlePath = "/a-very-simple-article/"
-const deepArticlePath = "/deep-article/"
-const editorialWorkflowPath = "/editorial-workflow"
-const explorePath = "/explore/"
-const imageArticlePath = "/image-tests/"
-const injectionAttackPath = "/injection-attack/"
-const reviwemeUrlPath = "/reviweme"
-const videoArticlePath = "/video-test/"
-
-// Article names
-const audioArticleName = "Audio test"
-const aVerySimpleArticleName = "A very simple article"
-const editorialWorkflowArticleName = "editorial workflow"
-const injectionAttackArticle = "Injection Attack"
-const reviwemeArticleName = "reviweme"
+const firstArticlePath = "/deep-article/"
+const articleURL = "/a-very-simple-article/"
 
 const chromebookSize = [
   {
@@ -40,21 +24,9 @@ const samsungJ4PlusSize = [
 ]
 
 module.exports = {
-  audioArticleName,
-  audioArticlePath,
-  aVerySimpleArticleName,
-  aVerySimpleArticlePath,
-  deepArticlePath,
-  editorialWorkflowPath,
-  editorialWorkflowArticleName,
-  explorePath,
-  injectionAttackArticle,
-  injectionAttackPath,
-  imageArticlePath,
-  reviwemeArticleName,
-  reviwemeUrlPath,
+  firstArticlePath,
+  articleURL,
   chromebookSize,
   samsungA10Size,
-  samsungJ4PlusSize,
-  videoArticlePath
+  samsungJ4PlusSize
 }

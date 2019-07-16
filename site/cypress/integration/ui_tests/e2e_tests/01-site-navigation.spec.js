@@ -1,5 +1,6 @@
 /// <reference types="Cypress" />
 
+const commands = require('../../../support/commands.js');
 const globalTestData = require('../../../fixtures/globalTestData');
 
 // fragments
@@ -13,7 +14,7 @@ const homepage = require('../../../fixtures/pages/homepagePage');
 
 describe("Navigating the site and reading articles", function() {
     beforeEach(function () {
-        cy.visit(Cypress.env('baseUrl'));
+        cy.visit('');
         cy.get(homepage.homepageLogo).should('be.visible');
     });
 
@@ -38,17 +39,19 @@ describe("Navigating the site and reading articles", function() {
     });
 
     it('Exploring content from an article to get to the Root page and dive into another section', function () {
-        const exploreContentFirstDirectory = '#react-select-2-option-0';
-        cy.visitPage(globalTestData.deepArticlePath);
+        const firstOption = '#react-select-2-option-0';
+        cy.visit(globalTestData.firstArticlePath);
         cy.get('.Button-subhead-Style').first().click();
-        cy.get(exploreContentFirstDirectory).click();
-        cy.url().should('include', globalTestData.explorePath);
+        cy.get(firstOption).click();
+        cy.url().should('include', '/explore');
         cy.get(homepage.articleCard).contains('Format Tests').click();
         cy.url().should('include', '/format-tests');
     });
 
     it('An image in an article', function () {
-        cy.visitPage(globalTestData.imageArticlePath);
+        const imageArticleUrlPath = '/image-tests';
+        cy.visit(imageArticleUrlPath);
+        cy.url().should('include', imageArticleUrlPath);
         cy.get(`[title='image title']`).then(($el) => {
           Cypress.dom.isVisible($el)
         })
@@ -69,13 +72,17 @@ describe("Navigating the site and reading articles", function() {
     });
 
     it('The field officer should see related articles [ONS-65]', function () {
-        cy.visitPage(globalTestData.imageArticlePath);
-        cy.get(search.searchResultTitle).should('not.have.text', globalTestData.editorialWorkflowArticleName);
+        const editorialWorkflowArticle = 'editorial workflow';
+        const editorialWorkflowPath = '/editorial-workflow';
+        const reviwemeArticle = 'reviweme';
+        const reviwemeUrlPath = '/reviweme';
+        cy.visit(reviwemeUrlPath);
+        cy.get(search.searchResultTitle).should('not.have.text', editorialWorkflowArticle);
         cy.contains('ALSO IN THIS TOPIC');
-        cy.get(homepage.articleCard).contains(globalTestData.audioArticleName).click();
-        cy.url().should('eq', Cypress.env('baseUrl')+globalTestData.audioArticlePath);
-        cy.get(search.searchResultTitle).should('not.have.text', globalTestData.reviwemeArticleName);
-        cy.get(search.searchResultTitle).should('have.text', globalTestData.audioArticleName);
+        cy.get(homepage.articleCard).contains(editorialWorkflowArticle).click();
+        cy.url().should('include', editorialWorkflowPath);
+        cy.get(search.searchResultTitle).should('not.have.text', reviwemeArticle);
+        cy.get(search.searchResultTitle).should('have.text', editorialWorkflowArticle);
     });
 
     it('Most recent pagination [ONS-64]', function () {

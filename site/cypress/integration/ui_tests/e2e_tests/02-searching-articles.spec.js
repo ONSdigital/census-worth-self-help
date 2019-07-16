@@ -1,14 +1,17 @@
 /// <reference types="Cypress" />
 
+const commands = require('../../../support/commands.js');
 const globalTestData = require('../../../fixtures/globalTestData');
 
 // fragments
+const menu = require('../../../fixtures/fragments/menu');
 const search = require('../../../fixtures/fragments/search');
 const pagination = require('../../../fixtures/fragments/pagination');
 
 // pages
 const homepage = require('../../../fixtures/pages/homepagePage');
 
+const articleName = 'Injection Attack';
 const authorName = 'owasp';
 const beginTypingToSearchTitle = 'Begin typing to search';
 const searchText = 'injection';
@@ -16,7 +19,7 @@ const incompleteSearch = searchText.slice(0, -1);
 
 describe("Article searching", function() {
     beforeEach(function () {
-        cy.visit(Cypress.env('baseUrl'));
+        cy.visit('');
         cy.get(homepage.homepageLogo).should('be.visible');
     });
 
@@ -32,16 +35,14 @@ describe("Article searching", function() {
         cy.get(search.searchButton).click();
         cy.get(search.searchBarField).type(searchText.slice(0, -3));
         cy.get(search.searchResultTitle).contains(shortenedSearchText);
-        cy.get(homepage.articleCard).should('have.text', globalTestData.injectionAttackArticle);
+        cy.get(homepage.articleCard).should('have.text', articleName);
     });
 
     it('A search result that matches an article via the body [ONS-21]', function () {
         cy.get(search.searchButton).click();
         cy.get(search.searchBarField).type(searchText);
         cy.get(search.searchResultTitle).contains(searchText);
-        cy.get(homepage.articleCard).should('have.text', globalTestData.injectionAttackArticle).click();
-        cy.url().should('eq', Cypress.env('baseUrl')+globalTestData.injectionAttackPath);
-        cy.get(search.searchResultTitle).should('have.text', globalTestData.injectionAttackArticle)
+        cy.get(homepage.articleCard).should('have.text', articleName);
     });
 
     it('A search result that matches an article via the author [ONS-21]', function () {
@@ -49,7 +50,7 @@ describe("Article searching", function() {
         cy.get(search.searchButton).click();
         cy.get(search.searchBarField).type(authorName);
         cy.get(search.searchResultTitle).contains(authorName);
-        cy.get(homepage.articleCard).should('have.text', globalTestData.injectionAttackArticle);
+        cy.get(homepage.articleCard).should('have.text', articleName);
         cy.get(pagination.pagination1).should('have.text', pageNumber1);
     });
 

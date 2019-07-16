@@ -4,7 +4,7 @@ describe("Request the secured homepage with a valid cookie to check for a 200 st
     it('SSO request 2', function () {
         cy.request({
             method: 'GET',
-            url: Cypress.env('SECURED_URL'),
+            url: '/',
             headers: {
                 cookie: Cypress.env('COOKIE')
             },
