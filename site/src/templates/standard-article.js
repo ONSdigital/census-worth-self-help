@@ -29,7 +29,7 @@ import { createHistory } from "@reach/router"
 import { css } from "@emotion/core"
 import { getTimeAgoPublished } from "../utils/time"
 
-import { transformSources, htmlSanitize } from "../utils/sourcetransforms"
+import { transformSources, htmlSanitize } from "../utils/contenttransforms"
 const bookmarkNotificationText = "Article added to bookmarks"
 const unbookmarkNotificationText = "Article removed from bookmarks"
 const feedbackNotificationText = "Thank you for your feedback"

@@ -1,6 +1,6 @@
 process.env.GATSBY_ASSETS_PATH = "test"
 
-import { transformSources, htmlSanitize } from "../sourcetransforms"
+import { transformSources, htmlSanitize } from "../contenttransforms"
 
 describe("transformSources", () => {
 
