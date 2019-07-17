@@ -1,3 +1,5 @@
+const { excludeDraftArticle } = require(`./draft-excluder`)
+
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
 
@@ -9,9 +11,11 @@ exports.onCreateNode = (props) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-
     const parsedPath = path.parse(node.fileAbsolutePath)
-    const collection = path.parse(parsedPath.dir).base
+    let collection = path.parse(parsedPath.dir).base
+    if ( collection === 'articles' && excludeDraftArticle(node) ) {
+      collection = 'draft'
+    }
     const filename = parsedPath.name
 
     createNodeField({
@@ -26,7 +30,6 @@ exports.onCreateNode = (props) => {
     })
   }
 }
-
 
 function fetchArticlesAndDirectories(data) {
 
@@ -187,6 +190,7 @@ exports.createPages = ({ graphql, actions }) => {
             priority
             date
             description
+            tags
           }
         }
       }
