@@ -2,6 +2,9 @@ import React from "react"
 import { css } from "@emotion/core"
 import { spacing } from "../utils/styles"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAngleRight, faAngleDoubleRight, faAngleLeft, faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons"
+
 const PaginationIcon = ({
   children,
   clickFunction,
@@ -98,7 +101,7 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
             pageTarget={0}
             testid="pagination-first-button"
           >
-            &lt;&lt;
+            <FontAwesomeIcon icon={faAngleDoubleLeft} />
           </PaginationIcon>
         )}
         {page !== 0 && (
@@ -107,7 +110,7 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
             pageTarget={page - 1}
             testid="pagination-back-button"
           >
-            &lt;
+            <FontAwesomeIcon icon={faAngleLeft} />
           </PaginationIcon>
         )}
         {pageOptionsLinks}
@@ -117,7 +120,7 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
             pageTarget={page + 1}
             testid="pagination-next-button"
           >
-            &gt;
+            <FontAwesomeIcon icon={faAngleRight} />
           </PaginationIcon>
         )}
         {page !== lastPage && (
@@ -126,7 +129,7 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
             pageTarget={lastPage}
             testid="pagination-last-button"
           >
-            &gt;&gt;
+            <FontAwesomeIcon icon={faAngleDoubleRight} />
           </PaginationIcon>
         )}
       </div>
