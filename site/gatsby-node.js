@@ -1,4 +1,4 @@
-const { excludeDraftArticle } = require(`./draft-excluder`)
+const { excludeDraftArticle } = require(`./src/utils/draft-excluder`)
 
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)

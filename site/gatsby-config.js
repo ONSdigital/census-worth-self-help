@@ -1,4 +1,4 @@
-const { excludeDraftArticle } = require(`./draft-excluder`)
+const { excludeDraftArticle } = require(`./src/utils/draft-excluder`)
 
 module.exports = {
   plugins: [
