@@ -38,8 +38,9 @@ export default class MostRecent extends React.Component {
   }
 
   render() {
-
-    let recentEdges = this.LastVisitManager.getEdgesChangedSinceLastVist(this.data.allMarkdownRemark.edges)
+    let recentEdges = this.LastVisitManager.getEdgesChangedSinceLastVist(
+      this.data.allMarkdownRemark.edges
+    )
 
     let noRecentEdges = recentEdges.length === 0
 
@@ -48,9 +49,7 @@ export default class MostRecent extends React.Component {
       recentEdges = this.data.allMarkdownRemark.edges
     }
 
-    let paginatedEdges = this.state.paginationObject.filterResults(
-      recentEdges
-    )
+    let paginatedEdges = this.state.paginationObject.filterResults(recentEdges)
 
     return (
       <Layout explore_more_link={true}>
@@ -58,7 +57,8 @@ export default class MostRecent extends React.Component {
           Recently Updated
         </PageTitle>
         <TextBlock>
-          This list shows the most recently updated articles since the last time you visited the site.
+          This list shows the most recently updated articles since the last time
+          you visited the site.
         </TextBlock>
         {noRecentEdges && (
           <BlockStatus

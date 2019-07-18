@@ -24,7 +24,7 @@ export default class Index extends React.Component {
   }
 
   render() {
-    let {data} = this.props 
+    let { data } = this.props
     let alertTitle = "Alert"
     let alertText = ""
     if (data.markdownRemark) {
@@ -40,7 +40,9 @@ export default class Index extends React.Component {
       bookmarkEdges = []
 
     if (data.allMarkdownRemark) {
-      mostRecentEdges = this.LastVisitManager.getEdgesChangedSinceLastVist(data.allMarkdownRemark.edges).slice(0, topArticleCount)
+      mostRecentEdges = this.LastVisitManager.getEdgesChangedSinceLastVist(
+        data.allMarkdownRemark.edges
+      ).slice(0, topArticleCount)
 
       let bookmarkManager = new BookmarkManager()
       let bookmarkTitles = bookmarkManager
