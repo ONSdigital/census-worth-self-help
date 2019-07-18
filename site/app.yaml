@@ -1,5 +1,5 @@
 runtime: nodejs10
-service: test-263
+service: default
 default_expiration: 60m
 handlers:
 # Netlify CMS has a config.yml that needs to be served up
