@@ -60,7 +60,7 @@ run:
     fi
 
     BUILD="_build/content/"
-    mkdir -p "$BUILD" && cp -R ../../content-repository/content/ "$BUILD"
+    mkdir -p "$BUILD" && cp -R ../../content-repository/content/* "$BUILD"
     ASSET_DIR="static/assets/"
     cp -R ../../content-repository/static/assets/ "$ASSET_DIR"
 
