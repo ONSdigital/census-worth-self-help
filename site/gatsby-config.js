@@ -53,6 +53,10 @@ module.exports = {
             }
           },
           {
+            urlPattern: /sw.js$/,
+            handler: `staleWhileRevalidate`,
+          },
+          {
             urlPattern: /(\.js$|\.css$|static\/)/,
             handler: `cacheFirst`,
           },

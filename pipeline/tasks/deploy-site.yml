@@ -71,9 +71,8 @@ run:
     fi
 
     APP_FILE=ci-app.yaml
-    sed "s/service:.*/service: $SERVICE/" app.yaml > ${APP_FILE}
-    sed -i "s/  repo:.*/  repo: ONSdigital\/$BACKEND_CONTENT_REPO/" public/admin/config.yml
 
+    ../pipeline/tasks/task-scripts/configure-app.sh ${APP_FILE}
     ../pipeline/tasks/task-scripts/prepare-protected-site.sh ${APP_FILE}
     ../pipeline/tasks/task-scripts/clean-up-old-appengine-versions.sh $SERVICE
     gcloud app deploy -q ci-app.yaml

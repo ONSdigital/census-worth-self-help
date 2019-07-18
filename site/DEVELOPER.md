@@ -17,10 +17,7 @@ Add .env file to this directory, e.g
 
 Then
 
-    scripts/generate-local-certificates.sh
-    . scripts/initialise-shell-variables.fish    
-    ../pipeline/tasks/task-scripts/validate-deploy-site-env.sh
-    ../pipeline/tasks/task-scripts/prepare-protected-site.sh
+    ./scripts/prepare-deployment-from-local.sh
     npm run build
     npm run app
     
