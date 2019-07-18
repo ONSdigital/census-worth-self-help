@@ -9,6 +9,13 @@ handlers:
     secure: always
     upload: public/(.*\.yml)
 
+  - url: /(sw.js)
+    expiration: 15m
+    mime_type: text/javascript
+    static_files: public/\1
+    secure: always
+    upload: public/(.*\.js)
+
   - url: /(.*\.js)
     expiration: 1d
     mime_type: text/javascript
