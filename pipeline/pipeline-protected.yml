@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: bugfix/ONS-264-visual-alert-for-deployment
     check_every: 15m
 
   - name: content-repository
@@ -31,6 +31,7 @@ jobs:
           IDP_ENTRY_POINT: ((sso.idp-entry-point))
           IDP_LOGOUT: ((sso.idp-logout))
           IDP_CERTIFICATE: ((sso.idp-certificate))
+          INJECT_DEPLOYMENT_INFORMATION: true
           MATOMO_IP: ((matomo.matomo-ip-address))
           MATOMO_SITE_ID: 8
           MATOMO_URL: ((matomo.matomo-site-url))
