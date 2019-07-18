@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: bugfix/ONS-263-sw-agressive-caching
     check_every: 15m
 
   - name: content-repository
@@ -34,7 +34,7 @@ jobs:
           MATOMO_SITE_ID: 8
           PATCH_NETLIFY: true
           PROJECT: ((gcp.project-name))
-          SERVICE: test
+          SERVICE: test-263c
           SKIP_UNIT_TESTS: true
           SP_PROTECTED: false
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml
