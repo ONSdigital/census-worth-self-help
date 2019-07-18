@@ -1,16 +1,16 @@
 /// <reference types="Cypress" />
 
-const commands = require('../../support/commands.js');
-const globalTestData = require('../../fixtures/globalTestData');
+const commands = require('../../../support/commands.js');
+const globalTestData = require('../../../fixtures/globalTestData');
 
 // fragments
-const bookmarks = require('../../fixtures/fragments/bookmarks');
-const menu = require('../../fixtures/fragments/menu');
-const search = require('../../fixtures/fragments/search');
+const bookmarks = require('../../../fixtures/fragments/bookmarks');
+const menu = require('../../../fixtures/fragments/menu');
+const search = require('../../../fixtures/fragments/search');
 
 // pages
-const bookmarksPage = require('../../fixtures/pages/bookmarksPage');
-const homepage = require('../../fixtures/pages/homepagePage');
+const bookmarksPage = require('../../../fixtures/pages/bookmarksPage');
+const homepage = require('../../../fixtures/pages/homepagePage');
 
 describe("Article bookmarks", function() {
     beforeEach(function () {

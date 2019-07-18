@@ -36,4 +36,4 @@ run:
     npm ci
     npm run coverage
     npm run e2e
-    npm run merge:reports
+    npm run merge-reports

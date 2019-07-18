@@ -1,15 +1,15 @@
 /// <reference types="Cypress" />
 
-const commands = require('../../support/commands.js');
-const globalTestData = require('../../fixtures/globalTestData');
+const commands = require('../../../support/commands.js');
+const globalTestData = require('../../../fixtures/globalTestData');
 
 // fragments
-const menu = require('../../fixtures/fragments/menu');
-const search = require('../../fixtures/fragments/search');
-const pagination = require('../../fixtures/fragments/pagination');
+const menu = require('../../../fixtures/fragments/menu');
+const search = require('../../../fixtures/fragments/search');
+const pagination = require('../../../fixtures/fragments/pagination');
 
 // pages
-const homepage = require('../../fixtures/pages/homepagePage');
+const homepage = require('../../../fixtures/pages/homepagePage');
 
 const articleName = 'Injection Attack';
 const authorName = 'owasp';

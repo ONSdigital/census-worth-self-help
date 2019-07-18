@@ -1,16 +1,16 @@
 /// <reference types="Cypress" />
 
-const commands = require('../../support/commands.js');
-const globalTestData = require('../../fixtures/globalTestData');
+const commands = require('../../../support/commands.js');
+const globalTestData = require('../../../fixtures/globalTestData');
 
 // fragments
-const article = require('../../fixtures/fragments/article');
-const menu = require('../../fixtures/fragments/menu');
-const pagination = require('../../fixtures/fragments/pagination');
-const search = require('../../fixtures/fragments/search');
+const article = require('../../../fixtures/fragments/article');
+const menu = require('../../../fixtures/fragments/menu');
+const pagination = require('../../../fixtures/fragments/pagination');
+const search = require('../../../fixtures/fragments/search');
 
 // pages
-const homepage = require('../../fixtures/pages/homepagePage');
+const homepage = require('../../../fixtures/pages/homepagePage');
 
 describe("Navigating the site and reading articles", function() {
     beforeEach(function () {

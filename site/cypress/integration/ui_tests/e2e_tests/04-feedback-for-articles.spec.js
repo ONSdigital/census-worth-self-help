@@ -1,13 +1,13 @@
 /// <reference types="Cypress" />
 
-const commands = require('../../support/commands.js');
-const globalTestData = require('../../fixtures/globalTestData');
+const commands = require('../../../support/commands.js');
+const globalTestData = require('../../../fixtures/globalTestData');
 
 // fragments
-const feedback = require('../../fixtures/fragments/feedback');
+const feedback = require('../../../fixtures/fragments/feedback');
 
 // pages
-const homepage = require('../../fixtures/pages/homepagePage');
+const homepage = require('../../../fixtures/pages/homepagePage');
 
 const useful = 'Useful';
 const notUseful = 'Not useful';
