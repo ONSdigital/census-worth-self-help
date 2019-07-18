@@ -40,12 +40,7 @@ export default (history, timeout = 1000) => {
     }
   }
 
-  function scroll(hash) {
-    if (typeof hash !== "string") {
-      return
-    }
-
-    const anchorText = hash.slice(1).toLowerCase()
+  function scroll(anchorText) {
 
     if (!anchorText) {
       return
@@ -82,13 +77,13 @@ export default (history, timeout = 1000) => {
       return
     }
 
-    if (location.hash) {
-      scroll(location.hash)
+    if (location.hash && typeof location.hash === "string") {
+      scroll(location.hash.replace(/[^A-Za-z0-9-]/g, ''))
     }
   })
 
   // also trigger on load
-  if (history.location.hash) {
-    scroll(history.location.hash)
+  if (history.location.hash && typeof history.location.hash === "string") {
+    scroll(history.location.hash.replace(/[^A-Za-z0-9-]/g, ''))
   }
 }
