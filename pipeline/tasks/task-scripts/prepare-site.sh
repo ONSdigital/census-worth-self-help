@@ -54,3 +54,5 @@ else
   echo "env_variables:" >> ${appFile}
   echo "  SP_PROTECTED: ${SP_PROTECTED}" >> ${appFile}
 fi
+
+echo "  CHAT_DOMAIN: ${CHAT_DOMAIN}" >> ${appFile}

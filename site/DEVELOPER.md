@@ -29,4 +29,5 @@ To logout visit http://localhost:8080/logout
 
 Deploy app with configuration enhanced with env variables
 
+    ./scripts/prepare-deployment-from-local.sh
     gcloud app deploy ci-app.yaml
