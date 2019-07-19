@@ -29,6 +29,7 @@ jobs:
           DISABLE_NETLIFY: false
           ENABLE_MATOMO: true
           GCP_SECRETS_VERSION: ((gcp.secrets-version))
+          INJECT_DEPLOYMENT_INFORMATION: true
           MATOMO_IP: ((matomo.matomo-ip-address))
           MATOMO_SITE_ID: 2
           MATOMO_URL: ((matomo.matomo-site-url))

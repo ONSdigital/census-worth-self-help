@@ -10,7 +10,8 @@ jest.mock('../../utils/bookmarkManager', () => jest.fn());
 // default to no bookmarks
 BookmarkManager.mockImplementation(
   () => ({
-    getTopBookmarks: () => []
+    getTopBookmarks: () => [],
+    addBookmarkClickEventToEdges: (edges) => {} 
   })
 )
 
@@ -51,7 +52,8 @@ describe("Index", () => {
 
     BookmarkManager.mockImplementation(
       () => ({
-        getTopBookmarks: () => ["test Article 1"]
+        getTopBookmarks: () => ["test Article 1"],
+        addBookmarkClickEventToEdges: (edges) => {} 
       })
     )
 
