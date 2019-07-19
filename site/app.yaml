@@ -10,7 +10,7 @@ handlers:
     upload: public/(.*\.yml)
 
   - url: /(sw.js)
-    expiration: 15m
+    expiration: 1m
     mime_type: text/javascript
     static_files: public/\1
     secure: always
