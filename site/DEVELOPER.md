@@ -18,8 +18,8 @@ Add .env file to this directory, e.g
 Then
 
     ./scripts/prepare-deployment-from-local.sh
-    npm run build
-    npm run app
+    . scripts/initialise-shell-variables.fish
+    npm run start
     
 Then access http://localhost:8080/
 
@@ -29,4 +29,5 @@ To logout visit http://localhost:8080/logout
 
 Deploy app with configuration enhanced with env variables
 
+    ./scripts/prepare-deployment-from-local.sh
     gcloud app deploy ci-app.yaml
