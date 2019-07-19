@@ -7,10 +7,10 @@ export default class WebChatManager extends React.Component {
     super(props)
     if (typeof window !== "undefined") {
       window.__8x8Chat = {
-        uuid: process.env.GATSBY_UUID,
-        tenant: process.env.GATSBY_TENANT,
-        channel: process.env.GATSBY_CHANNEL,
-        domain: "https://" + process.env.GATSBY_DOMAIN,
+        uuid: process.env.GATSBY_CHAT_UUID,
+        tenant: process.env.GATSBY_CHAT_TENANT,
+        channel: process.env.GATSBY_CHAT_CHANNEL,
+        domain: "https://" + process.env.GATSBY_CHAT_DOMAIN,
         path: "/.",
         buttonContainerId: this.containerId,
         align: "right"
