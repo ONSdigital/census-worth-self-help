@@ -7,8 +7,7 @@ const csp = require('./app/csp').default;
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
 
 app.use(csp({
-  chatDomain : process.env.CHAT_DOMAIN,
-  mediaSource : process.env.GATSBY_ASSETS_PATH
+  chatDomain : process.env.CHAT_DOMAIN
 }));
 
 if (SP_PROTECTED === "false") {

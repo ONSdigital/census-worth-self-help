@@ -1,18 +1,10 @@
-const hostSourceRegex = /(https:\/\/[^\/]*).*/
-
-const parseHostSource = function(url) {
-  if (url.match(hostSourceRegex)) {
-    return hostSourceRegex.exec(url)[1]
-  }
-  return false
-}
-
 const createSources = function(config = {}) {
   let sources = {
     'connect-src': ['\'self\''],
     'default-src': ['\'self\''],
     'font-src': ['\'self\''],
     'img-src': ['\'self\'', 'data:'],
+    'media-src': ['https:'],
     'script-src': ['\'self\'', '\'unsafe-inline\''],
     'style-src': ['\'self\'', '\'unsafe-inline\''],
   }
@@ -20,12 +12,6 @@ const createSources = function(config = {}) {
     sources['frame-src'] = ['https://' + config.chatDomain]
     sources['img-src'].push('https://' + config.chatDomain)
     sources['script-src'].push('https://' + config.chatDomain)
-  }
-  if (config.mediaSource) {
-    const hostSource = parseHostSource(config.mediaSource)
-    if (hostSource) {
-      sources['media-src'] = [hostSource]
-    }
   }
   return sources
 }
