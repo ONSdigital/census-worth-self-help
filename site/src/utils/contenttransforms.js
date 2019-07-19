@@ -15,7 +15,7 @@ export const htmlSanitize = htmlString => {
   	allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'video', 'audio', 'img', 'source', 'h1', 'h2' ]),
   	allowedAttributes: {
   		a: [ 'href', 'name', 'target' ],
-  		img: [ 'src' ],
+  		img: [ 'src', 'title' ],
   		source: [ 'src', 'type'],
   		video: ['controls'],
   		audio: ['controls']
