@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: bugfix/ONS-288-webchat-test-failure
     webhook_token: ((git.census-worth-self-help-webhook-token))
     check_every: 15m
 

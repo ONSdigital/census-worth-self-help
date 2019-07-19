@@ -49,6 +49,7 @@ run:
     apk add --no-progress --update nodejs nodejs-npm
     echo "npm version"
     npm -v
+    node --version
 
     export ROOT_FOLDER=$(pwd)
     export CYPRESS_CACHE_FOLDER=${ROOT_FOLDER}/.cypress-cache
