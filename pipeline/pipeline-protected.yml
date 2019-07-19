@@ -41,8 +41,8 @@ jobs:
           SP_KEY: ((sso.sp-key))
           SP_PROTECTED: true
           GATSBY_ASSETS_PATH: ((gatsby.assets-path))
-          GATSBY_CHAT_BUTTON_CONTAINER_ID: ((gatby.chat-button-container-id))
-          GATSBY_CHAT_CHANNEL: ((gatsby.chat_channel))
-          GATSBY_CHAT_DOMAIN: ((gatbsy.chat-domain))
-          GATSBY_CHAT_TENANT: ((gatbsy.chat-tenant))
-          GATSBY_CHAT_UUID: ((gatbsy.chat-uuid))
+          GATSBY_CHAT_BUTTON_CONTAINER_ID: ((gatsby.chat-button-container-id))
+          GATSBY_CHAT_CHANNEL: ((gatsby.chat-channel))
+          GATSBY_CHAT_DOMAIN: ((gatsby.chat-domain))
+          GATSBY_CHAT_TENANT: ((gatsby.chat-tenant))
+          GATSBY_CHAT_UUID: ((gatsby.chat-uuid))

@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: feature/ONS-274-added-8x8-env-vars
     webhook_token: ((git.census-worth-self-help-webhook-token))
     check_every: 15m
 
@@ -34,11 +34,11 @@ jobs:
           MATOMO_URL: ((matomo.matomo-site-url))
           PATCH_NETLIFY: true
           PROJECT: ((gcp.project-name))
-          SERVICE: default
+          SERVICE: testbeta
           SP_PROTECTED: false
           GATSBY_ASSETS_PATH: ((gatsby.assets-path))
-          GATSBY_CHAT_BUTTON_CONTAINER_ID: ((gatby.chat-button-container-id))
-          GATSBY_CHAT_CHANNEL: ((gatsby.chat_channel))
-          GATSBY_CHAT_DOMAIN: ((gatbsy.chat-domain))
-          GATSBY_CHAT_TENANT: ((gatbsy.chat-tenant))
-          GATSBY_CHAT_UUID: ((gatbsy.chat-uuid))
+          GATSBY_CHAT_BUTTON_CONTAINER_ID: ((gatsby.chat-button-container-id))
+          GATSBY_CHAT_CHANNEL: ((gatsby.chat-channel))
+          GATSBY_CHAT_DOMAIN: ((gatsby.chat-domain))
+          GATSBY_CHAT_TENANT: ((gatsby.chat-tenant))
+          GATSBY_CHAT_UUID: ((gatsby.chat-uuid))

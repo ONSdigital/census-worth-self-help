@@ -41,7 +41,7 @@ export default class WebChatManager extends React.Component {
             data-testid="webchat-link"
             style={{ display: online ? "" : "none" }}
           >
-            <div id={containerId} />
+            <div id={this.containerId} />
           </div>
         )}
       />
