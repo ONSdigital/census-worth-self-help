@@ -36,5 +36,6 @@ jobs:
           PROJECT: ((gcp.project-name))
           SERVICE: testbeta
           SKIP_UNIT_TESTS: true
+          SKIP_AUDIT: true
           SP_PROTECTED: false
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml

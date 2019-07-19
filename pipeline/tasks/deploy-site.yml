@@ -33,7 +33,6 @@ inputs:
 - name: content-repository
 
 caches:
-- path: census-worth-self-help/site/node_modules
 - path: .npm
 - path: .cypress-cache
 
@@ -55,11 +54,7 @@ run:
     export CYPRESS_CACHE_FOLDER=${ROOT_FOLDER}/.cypress-cache
     cd census-worth-self-help/site
 
-    if [ "${SKIP_UNIT_TESTS}" == "true" ] ; then
-      npm install --only=prod
-    else
-      npm install
-    fi
+    npm ci
 
     if [ "${PATCH_NETLIFY}" == "true" ]; then
       gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-2-9-1-x.tar.gz .
@@ -77,8 +72,10 @@ run:
 
     if [ "${SKIP_UNIT_TESTS}" == "true" ] ; then
       npm run build-no-audit-no-test
-    else
+    elif [ "${SKIP_AUDIT}" == "true" ] ; then
       npm run build-no-audit
+    else
+      npm run build
     fi
 
     APP_FILE=ci-app.yaml
