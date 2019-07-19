@@ -10,6 +10,12 @@ params:
   AUTH_KEY: ((gcp.service-account-key))
   PROJECT: ((gcp.project-name))
   GCP_SECRETS_VERSION: ((gcp.secrets-version))
+  GATSBY_ASSETS_PATH: ((gatsby.assets-path))
+  GATSBY_CHAT_BUTTON_CONTAINER_ID: ((gatby.chat-button-container-id))
+  GATSBY_CHAT_CHANNEL: ((gatsby.chat_channel))
+  GATSBY_CHAT_DOMAIN: ((gatbsy.chat-domain))
+  GATSBY_CHAT_TENANT: ((gatbsy.chat-tenant))
+  GATSBY_CHAT_UUID: ((gatbsy.chat-uuid))
 
 inputs:
 - name: census-worth-self-help

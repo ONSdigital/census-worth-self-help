@@ -41,3 +41,9 @@ jobs:
           PROJECT: ((gcp.project-name))
           SERVICE: default
           SP_PROTECTED: false
+          GATSBY_ASSETS_PATH: ((gatsby.assets-path))
+          GATSBY_CHAT_BUTTON_CONTAINER_ID: ((gatby.chat-button-container-id))
+          GATSBY_CHAT_CHANNEL: ((gatsby.chat_channel))
+          GATSBY_CHAT_DOMAIN: ((gatbsy.chat-domain))
+          GATSBY_CHAT_TENANT: ((gatbsy.chat-tenant))
+          GATSBY_CHAT_UUID: ((gatbsy.chat-uuid))

@@ -1,0 +1,29 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: alpine
+
+outputs:
+- name: env_file
+
+params:
+  ASSETS_PATH: ((gatsby.assets-path))
+  CHAT_BUTTON_CONTAINER_ID: ((gatby.chat-button-container-id))
+  CHAT_CHANNEL: ((gatsby.chat_channel))
+  CHAT_DOMAIN: ((gatbsy.chat-domain))
+  CHAT_TENANT: ((gatbsy.chat-tenant))
+  CHAT_UUID: ((gatbsy.chat-uuid))
+
+run:
+  path: sh
+  args:
+  - -exec
+  - |
+    echo export GATBSY_ASSETS_PATH=$ASSETS_PATH > env_vars/export_env_vars.sh
+    echo export GATSBY_CHAT_BUTTON_CONTAINER_ID=$CHAT_BUTTON_CONTAINER_ID >> env_vars/export_env_vars.sh
+    echo export GATSBY_CHAT_CHANNEL=$CHAT_CHANNEL >> env_vars/export_env_vars.sh
+    echo export GATSBY_CHAT_DOMAIN=$CHAT_DOMAIN >> env_vars/export_env_vars.sh
+    echo export GATSBY_CHAT_TENANT=$CHAT_TENANT >> env_vars/export_env_vars.sh
+    echo export GATSBY_CHAT_UUID=$CHAT_UUID >> env_vars/export_env_vars.sh
