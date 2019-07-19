@@ -10,7 +10,7 @@ export default class WebChatManager extends React.Component {
         uuid: process.env.GATSBY_UUID,
         tenant: process.env.GATSBY_TENANT,
         channel: process.env.GATSBY_CHANNEL,
-        domain: process.env.GATSBY_DOMAIN,
+        domain: "https://" + process.env.GATSBY_DOMAIN,
         path: "/.",
         buttonContainerId: this.containerId,
         align: "right"

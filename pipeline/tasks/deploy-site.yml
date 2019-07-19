@@ -41,11 +41,6 @@ run:
   args:
   - -exec
   - |
-    echo "GATSBY_CHAT_BUTTON_CONTAINER_ID = $GATSBY_CHAT_BUTTON_CONTAINER_ID"
-    echo "GATSBY_CHAT_CHANNEL = $GATSBY_CHAT_CHANNEL"
-    echo "GATSBY_CHAT_DOMAIN = $GATSBY_CHAT_DOMAIN"
-    echo "GATSBY_CHAT_TENANT = $GATSBY_CHAT_TENANT"
-
     census-worth-self-help/pipeline/tasks/task-scripts/validate-deploy-site-env.sh
     census-worth-self-help/pipeline/tasks/task-scripts/activate-service-account.sh
     gcloud config set project $PROJECT
