@@ -40,5 +40,7 @@ describe("htmlSanitize", () => {
   	expect(htmlSanitize("made up:<wibble>wibble</wibble>")).toEqual("made up:wibble")
 
   	expect(htmlSanitize("<b onmouseover=alert(‘attribute attack‘)>hi</b>")).toEqual("<b>hi</b>")
+
+    expect(htmlSanitize('test<IFRAME SRC=# onmouseover="alert(\'XSS!\')"></IFRAME>')).toEqual("test")
   })
 })
