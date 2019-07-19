@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: bugfix/ONS-272-restrict-open-redirect
+      branch: master
     check_every: 15m
 
   - name: content-repository
