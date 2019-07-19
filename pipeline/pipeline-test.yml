@@ -34,7 +34,7 @@ jobs:
           MATOMO_SITE_ID: 8
           PATCH_NETLIFY: true
           PROJECT: ((gcp.project-name))
-          SERVICE: test-269
+          SERVICE: testbeta
           SKIP_UNIT_TESTS: true
           SP_PROTECTED: false
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml
