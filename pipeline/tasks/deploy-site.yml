@@ -74,6 +74,6 @@ run:
     APP_FILE=ci-app.yaml
 
     ../pipeline/tasks/task-scripts/configure-app.sh ${APP_FILE}
-    ../pipeline/tasks/task-scripts/prepare-protected-site.sh ${APP_FILE}
+    ../pipeline/tasks/task-scripts/prepare-site.sh ${APP_FILE}
     ../pipeline/tasks/task-scripts/clean-up-old-appengine-versions.sh $SERVICE
     gcloud app deploy -q ci-app.yaml
