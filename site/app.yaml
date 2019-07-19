@@ -2,7 +2,6 @@ runtime: nodejs10
 service: default
 default_expiration: 60m
 handlers:
-# Netlify CMS has a config.yml that needs to be served up
   - url: /admin/(.*\.yml)
     mime_type: text/yaml
     static_files: public/admin/\1
