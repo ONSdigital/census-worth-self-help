@@ -65,7 +65,6 @@
     "gatsby"
   ],
   "scripts": {
-    "app": "node app.js",
     "build": "npm audit && jest && gatsby build",
     "build-no-audit": "jest && gatsby build",
     "build-no-audit-no-test": "gatsby build",

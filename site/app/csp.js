@@ -21,11 +21,13 @@ const csp = function(config) {
   })
 }
 
-export default function(config) {
-  const cspHeaderValue = csp(config).join(' ')
+module.exports = {
+ default : function(config) {
+   const cspHeaderValue = csp(config).join(' ')
 
-  return function(req, res, next){
-    res.setHeader('Content-Security-Policy', cspHeaderValue)
-    next()
-  }
+   return function(req, res, next){
+     res.setHeader('Content-Security-Policy', cspHeaderValue)
+     next()
+   }
+ }
 }

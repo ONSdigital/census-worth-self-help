@@ -12,3 +12,5 @@ scripts/generate-local-certificates.sh
 ../pipeline/tasks/task-scripts/configure-app.sh
 ../pipeline/tasks/task-scripts/validate-deploy-site-env.sh
 ../pipeline/tasks/task-scripts/prepare-protected-site.sh
+
+npm run build-no-audit-no-test

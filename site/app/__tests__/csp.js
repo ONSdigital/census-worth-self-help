@@ -1,5 +1,5 @@
 const expect = require("chai").expect
-import csp from "../csp.js"
+const csp = require("../csp.js").default
 
 let request = {
   body: {}

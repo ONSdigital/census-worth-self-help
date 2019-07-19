@@ -18,8 +18,8 @@ Add .env file to this directory, e.g
 Then
 
     ./scripts/prepare-deployment-from-local.sh
-    npm run build
-    npm run app
+    . scripts/initialise-shell-variables.fish
+    npm run start
     
 Then access http://localhost:8080/
 
