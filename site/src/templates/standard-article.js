@@ -117,6 +117,7 @@ export default class Article extends React.Component {
   }
 
   unBookmarkPage() {
+    Feedback.articleWasUnBookmarked(this.props.pageContext.title)
     this.bookmarkManager.unBookmarkPage(this.props.pageContext.title)
     this.setState({
       notificationId: this.state.notificationId + 1,

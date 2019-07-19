@@ -61,9 +61,13 @@ run:
     fi
 
     BUILD="_build/content/"
-    mkdir -p "$BUILD" && cp -R ../../content-repository/content/ "$BUILD"
+    mkdir -p "$BUILD" && cp -R ../../content-repository/content/* "$BUILD"
     ASSET_DIR="static/assets/"
     cp -R ../../content-repository/static/assets/ "$ASSET_DIR"
+
+    if [ "${INJECT_DEPLOYMENT_INFORMATION}" == "true" ] ; then
+      ../pipeline/tasks/task-scripts/inject-deployment-information.sh
+    fi
 
     if [ "${SKIP_UNIT_TESTS}" == "true" ] ; then
       npm run build-no-audit-no-test

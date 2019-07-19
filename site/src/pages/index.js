@@ -39,6 +39,7 @@ export default ({ data }) => {
         edge => edge.node.frontmatter.title === title
       )
     )
+    bookmarkManager.addBookmarkClickEventToEdges(bookmarkEdges)
   }
 
   return (
