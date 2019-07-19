@@ -33,7 +33,7 @@ export default class WebChatManager extends React.Component {
   }
 
   render() {
-    console.log(this.containerId)
+    console.log("hello" + this.containerId)
     return (
       <Detector
         render={({ online }) => (
