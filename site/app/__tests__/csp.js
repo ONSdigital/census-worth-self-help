@@ -17,10 +17,13 @@ const next = function() {}
 describe("csp", function() {
   it("Should default CSP be locked down ", function () {
     csp()(request, response, next)
-    expect(response.headers['Content-Security-Policy']).to.equal('default-src \'self\'; script-src \'self\'; img-src \'self\' data:; style-src \'self\'; font-src \'self\'; connect-src \'self\';')
+    expect(response.headers['Content-Security-Policy']).to.equal('connect-src \'self\'; default-src \'self\'; ' +
+      'font-src \'self\'; img-src \'self\' data:; script-src \'self\' \'unsafe-inline\'; ' +
+      'style-src \'self\' \'unsafe-inline\';')
   })
   it("Should CSP contain chat domain ", function () {
     csp({chatDomain : 'chat.com'})(request, response, next)
     expect(response.headers['Content-Security-Policy']).to.contain('frame-src https://chat.com')
+    expect(response.headers['Content-Security-Policy']).to.contain('script-src \'self\' \'unsafe-inline\' https://chat.com')
   })
 })

@@ -1,14 +1,15 @@
 const createSources = function(config = {}) {
   let sources = {
-    'default-src': ['\'self\''],
-    'script-src': ['\'self\''],
-    'img-src': ['\'self\'', 'data:'],
-    'style-src': ['\'self\''],
-    'font-src': ['\'self\''],
     'connect-src': ['\'self\''],
+    'default-src': ['\'self\''],
+    'font-src': ['\'self\''],
+    'img-src': ['\'self\'', 'data:'],
+    'script-src': ['\'self\'', '\'unsafe-inline\''],
+    'style-src': ['\'self\'', '\'unsafe-inline\''],
   }
   if (config.chatDomain) {
     sources['frame-src'] = ['https://' + config.chatDomain]
+    sources['script-src'].push('https://' + config.chatDomain)
   }
   return sources
 
