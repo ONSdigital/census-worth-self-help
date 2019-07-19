@@ -17,6 +17,7 @@ jobs:
     build_log_retention:
       days: 7
       builds: 10
+    max_in_flight: 1
     plan:
       - get: census-worth-self-help
         trigger: true
@@ -31,6 +32,7 @@ jobs:
           IDP_ENTRY_POINT: ((sso.idp-entry-point))
           IDP_LOGOUT: ((sso.idp-logout))
           IDP_CERTIFICATE: ((sso.idp-certificate))
+          INJECT_DEPLOYMENT_INFORMATION: true
           MATOMO_IP: ((matomo.matomo-ip-address))
           MATOMO_SITE_ID: 8
           MATOMO_URL: ((matomo.matomo-site-url))

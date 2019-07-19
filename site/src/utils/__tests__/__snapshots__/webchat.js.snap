@@ -11,7 +11,7 @@ exports[`div rendering renders normally when online 1`] = `
   }
 >
   <div
-    id="__8x8-chat-button-container-script_14559760615d036440b0f923.70558301"
+    id="chat-button-container"
   />
 </div>
 `;

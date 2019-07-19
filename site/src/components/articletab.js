@@ -12,9 +12,10 @@ export default ({ node }) => {
     : node.frontmatter.description
 
   let time_ago = getTimeAgoPublished(node.frontmatter.date)
+  let clickFunction = node.clickFunction ? node.clickFunction : () => {}
   return (
     <div
-      onClick={() => navigate("/" + link)}
+      onClick={() => { clickFunction(title); navigate("/" + link)} }
       css={css`
         ${spacing.tab};
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);

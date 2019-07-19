@@ -2,10 +2,15 @@ require('dotenv').config({ silent: true })
 
 const express = require('express');
 const app = express();
+const csp = require('./app/csp').default;
 
-const SP_PROTECTED = process.env.SP_PROTECTED
+const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
 
-if (SP_PROTECTED === "False") {
+app.use(csp({
+  chatDomain : process.env.CHAT_DOMAIN
+}));
+
+if (SP_PROTECTED === "false") {
 
   // For an unprotected deployment, serve static files from /public
 
