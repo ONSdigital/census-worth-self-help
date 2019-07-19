@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: feature/ONS-249-npm-ci
     webhook_token: ((git.census-worth-self-help-webhook-token))
     check_every: 15m
 
@@ -35,5 +35,5 @@ jobs:
           MATOMO_URL: ((matomo.matomo-site-url))
           PATCH_NETLIFY: true
           PROJECT: ((gcp.project-name))
-          SERVICE: default
+          SERVICE: dev-249
           SP_PROTECTED: false
