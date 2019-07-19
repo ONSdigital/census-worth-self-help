@@ -5,10 +5,10 @@ const app = express();
 const csp = require('./app/csp').default;
 
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
-const CHAT_DOMAIN = process.env.CHAT_DOMAIN
 
 app.use(csp({
-  chatDomain : CHAT_DOMAIN
+  chatDomain : process.env.CHAT_DOMAIN,
+  mediaSource : process.env.GATSBY_ASSETS_PATH
 }));
 
 if (SP_PROTECTED === "false") {

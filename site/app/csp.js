@@ -1,3 +1,12 @@
+const hostSourceRegex = /(https:\/\/[^\/]*).*/
+
+const parseHostSource = function(url) {
+  if (url.match(hostSourceRegex)) {
+    return hostSourceRegex.exec(url)[1]
+  }
+  return false
+}
+
 const createSources = function(config = {}) {
   let sources = {
     'connect-src': ['\'self\''],
@@ -9,10 +18,16 @@ const createSources = function(config = {}) {
   }
   if (config.chatDomain) {
     sources['frame-src'] = ['https://' + config.chatDomain]
+    sources['img-src'].push('https://' + config.chatDomain)
     sources['script-src'].push('https://' + config.chatDomain)
   }
+  if (config.mediaSource) {
+    const hostSource = parseHostSource(config.mediaSource)
+    if (hostSource) {
+      sources['media-src'] = [hostSource]
+    }
+  }
   return sources
-
 }
 
 const csp = function(config) {
