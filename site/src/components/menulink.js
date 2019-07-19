@@ -47,6 +47,7 @@ export default class MenuLink extends React.Component {
           `}
         >
           <div
+            className="clickable"
             onClick={() => navigate("/" + link)}
             className="Menu-major-item-Style"
             css={css`

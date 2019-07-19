@@ -14,6 +14,7 @@ export default ({ node }) => {
   let time_ago = getTimeAgoPublished(node.frontmatter.date)
   return (
     <div
+      className="clickable"
       onClick={() => navigate("/" + link)}
       css={css`
         ${spacing.tab};

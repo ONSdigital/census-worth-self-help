@@ -6,6 +6,7 @@ export default ({ title, subtitle, clickFunction, icon = null }) => {
   return (
     <div
       data-testid="block-button"
+      className="clickable"
       onClick={clickFunction}
       css={css`
         border-radius: 4px;
