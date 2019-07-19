@@ -21,6 +21,11 @@ params:
   GCP_SECRETS_VERSION: ((gcp.secrets-version))
   NETLIFY_BUCKET_NAME: ((gcp.netlify-bucket-name))
   GATSBY_ASSETS_PATH: ((gatsby.assets-path))
+  GATSBY_CHAT_BUTTON_CONTAINER_ID: ((gatsby.chat-button-container-id))
+  GATSBY_CHAT_CHANNEL: ((gatsby.chat-channel))
+  GATSBY_CHAT_DOMAIN: ((gatsby.chat-domain))
+  GATSBY_CHAT_TENANT: ((gatsby.chat-tenant))
+  GATSBY_CHAT_UUID: ((gatsby.chat-uuid))
 
 inputs:
 - name: census-worth-self-help

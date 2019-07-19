@@ -27,13 +27,6 @@ jobs:
       - get: census-worth-self-help
         trigger: true
       - task: test
-        params:
-          GATSBY_ASSETS_PATH: ((gatsby.assets-path))
-          GATSBY_CHAT_BUTTON_CONTAINER_ID: ((gatsby.chat-button-container-id))
-          GATSBY_CHAT_CHANNEL: ((gatsby.chat-channel))
-          GATSBY_CHAT_DOMAIN: ((gatsby.chat-domain))
-          GATSBY_CHAT_TENANT: ((gatsby.chat-tenant))
-          GATSBY_CHAT_UUID: ((gatsby.chat-uuid))
         file: census-worth-self-help/pipeline/tasks/test.yml
 
         on_failure:

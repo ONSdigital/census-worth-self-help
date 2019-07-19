@@ -36,9 +36,4 @@ jobs:
           PROJECT: ((gcp.project-name))
           SERVICE: testbeta
           SP_PROTECTED: false
-          GATSBY_ASSETS_PATH: ((gatsby.assets-path))
-          GATSBY_CHAT_BUTTON_CONTAINER_ID: ((gatsby.chat-button-container-id))
-          GATSBY_CHAT_CHANNEL: ((gatsby.chat-channel))
-          GATSBY_CHAT_DOMAIN: ((gatsby.chat-domain))
-          GATSBY_CHAT_TENANT: ((gatsby.chat-tenant))
-          GATSBY_CHAT_UUID: ((gatsby.chat-uuid))
+          SKIP_UNIT_TESTS: true
