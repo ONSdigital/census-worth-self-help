@@ -72,6 +72,8 @@ run:
 
     if [ "${SKIP_UNIT_TESTS}" == "true" ] ; then
       npm run build-no-audit-no-test
+    elif [ "${SKIP_AUDIT}" == "true" ] ; then
+      npm run build-no-audit
     else
       npm run build
     fi
