@@ -2,7 +2,7 @@ import React from "react"
 import { Detector } from "react-detect-offline"
 
 export default class WebChatManager extends React.Component {
-  containerId = process.env.GATSBY_ASSETS_PATH;
+  containerId = process.env.GATSBY_CHAT_BUTTON_CONTAINER_ID;
   constructor(props) {
     super(props)
     if (typeof window !== "undefined") {
