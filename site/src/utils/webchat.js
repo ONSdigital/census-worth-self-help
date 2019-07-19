@@ -2,17 +2,17 @@ import React from "react"
 import { Detector } from "react-detect-offline"
 
 export default class WebChatManager extends React.Component {
+  containerId = process.env.GATSBY_CHAT_BUTTON_CONTAINER_ID;
   constructor(props) {
     super(props)
     if (typeof window !== "undefined") {
       window.__8x8Chat = {
-        uuid: "script_14559760615d036440b0f923.70558301",
-        tenant: "b2ZmaWNlZm9ybmF0aW9uYWwwMQ",
-        channel: "FSSCC Chat",
-        domain: "https://vcc-eu7.8x8.com",
+        uuid: process.env.GATSBY_CHAT_UUID,
+        tenant: process.env.GATSBY_CHAT_TENANT,
+        channel: process.env.GATSBY_CHAT_CHANNEL,
+        domain: "https://" + process.env.GATSBY_CHAT_DOMAIN,
         path: "/.",
-        buttonContainerId:
-          "__8x8-chat-button-container-script_14559760615d036440b0f923.70558301",
+        buttonContainerId: this.containerId,
         align: "right"
       }
       ;(function() {
@@ -41,7 +41,7 @@ export default class WebChatManager extends React.Component {
             data-testid="webchat-link"
             style={{ display: online ? "" : "none" }}
           >
-            <div id="__8x8-chat-button-container-script_14559760615d036440b0f923.70558301" />
+            <div id={this.containerId} />
           </div>
         )}
       />
