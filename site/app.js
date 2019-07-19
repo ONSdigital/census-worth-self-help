@@ -2,8 +2,14 @@ require('dotenv').config({ silent: true })
 
 const express = require('express');
 const app = express();
+const csp = require('./app/csp')
 
 const SP_PROTECTED = process.env.SP_PROTECTED
+const CHAT_DOMAIN = process.env.CHAT_DOMAIN
+
+app.use(csp({
+  chatDomain : CHAT_DOMAIN
+}));
 
 if (SP_PROTECTED === "False") {
 
