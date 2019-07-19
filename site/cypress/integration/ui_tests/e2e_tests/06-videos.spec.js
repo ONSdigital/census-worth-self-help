@@ -20,7 +20,7 @@ describe("Videos in articles", function() {
     });
 
     it('The field officer should not see a video on an article if one has not been uploaded [ONS-169]', function () {
-        cy.visit(globalTestData.firstArticlePath);
+        cy.visit(globalTestData.deepArticlePath);
         cy.get('source').should('not.be.visible');
     })
 });

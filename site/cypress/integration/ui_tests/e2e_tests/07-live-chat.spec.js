@@ -9,7 +9,7 @@ const webchat = require('../../../fixtures/fragments/webchat');
 // pages
 const homepage = require('../../../fixtures/pages/homepagePage');
 
-const firstArticlePath = '/deep-article/';
+const deepArticlePath = '/deep-article/';
 
 describe("Live chat", function() {
     beforeEach(function () {
@@ -18,13 +18,13 @@ describe("Live chat", function() {
     });
 
     it('The field officer can see the live chat icon on an article with webchat as a tag [ONS-122]', function () {
-        cy.visit(globalTestData.articleURL);
+        cy.visit(globalTestData.aVerySimpleArticlePath);
         cy.wait(1000);
         cy.get(webchat.liveChatButton).should('be.visible');
     });
 
     it('The field officer cannot see the live chat icon on an article with no webchat tag [ONS-122]', function () {
-        cy.visit(globalTestData.firstArticlePath);
+        cy.visit(globalTestData.deepArticlePath);
         cy.get(webchat.liveChatButton).should('not.be.visible');
     });
 });

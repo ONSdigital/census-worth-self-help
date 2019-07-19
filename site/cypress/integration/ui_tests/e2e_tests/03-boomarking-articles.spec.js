@@ -23,7 +23,7 @@ describe("Article bookmarks", function() {
         cy.get(bookmarks.bookmarkIcon).should('be.visible');
         cy.visit(bookmarksPage.bookmarkUrlPath);
         cy.get(bookmarks.bookmarkIcon).should('be.visible');
-        cy.visit(globalTestData.firstArticlePath);
+        cy.visit(globalTestData.deepArticlePath);
         cy.get(bookmarks.bookmarkSave).should('have.text', bookmarks.bookmarkSaveText);
         cy.get(bookmarks.bookmarkBlockButton).click();
         cy.get(header).first().should('have.text', bookmarks.bookmarkedText);
@@ -35,7 +35,7 @@ describe("Article bookmarks", function() {
     });
 
     it('The field officer should see all bookmarked articles when they click \'view all\' [ONS-64]', function () {
-        cy.bookmarkArticle(globalTestData.firstArticlePath);
+        cy.bookmarkArticle(globalTestData.deepArticlePath);
         cy.visit('');
         cy.get(`[href='${bookmarksPage.bookmarkUrlPath}']`).click();
         cy.url().should('include', bookmarksPage.bookmarkUrlPath);

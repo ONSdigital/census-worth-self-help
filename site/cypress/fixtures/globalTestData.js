@@ -1,6 +1,19 @@
 // Here you can add any test data that is used across multiple tests
-const firstArticlePath = "/deep-article/"
-const articleURL = "/a-very-simple-article/"
+
+// Article paths
+const aVerySimpleArticlePath = '/a-very-simple-article/'
+const deepArticlePath = '/deep-article/'
+const editorialWorkflowPath = '/editorial-workflow'
+const imageArticlePath = '/image-tests'
+const reviwemePath = '/reviweme'
+
+// Page URLs
+const explorePagePath = '/explore'
+const formatTestsPath = '/format-tests'
+
+// Article names
+const editorialWorkflowArticle = 'editorial workflow'
+const reviwemeArticle = 'reviweme'
 
 const chromebookSize = [
   {
@@ -24,8 +37,20 @@ const samsungJ4PlusSize = [
 ]
 
 module.exports = {
-  firstArticlePath,
-  articleURL,
+    // URLs
+  aVerySimpleArticlePath,
+  deepArticlePath,
+  editorialWorkflowPath,
+  explorePagePath,
+  formatTestsPath,
+  imageArticlePath,
+  reviwemePath,
+
+    // Article names
+  editorialWorkflowArticle,
+  reviwemeArticle,
+
+    // Screen sizes
   chromebookSize,
   samsungA10Size,
   samsungJ4PlusSize

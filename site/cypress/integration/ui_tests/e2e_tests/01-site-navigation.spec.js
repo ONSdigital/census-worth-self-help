@@ -40,19 +40,19 @@ describe("Navigating the site and reading articles", function() {
 
     it('Exploring content from an article to get to the Root page and dive into another section', function () {
         const firstOption = '#react-select-2-option-0';
-        cy.visit(globalTestData.firstArticlePath);
+        cy.visit(globalTestData.deepArticlePath);
         cy.get('.Button-subhead-Style').first().click();
         cy.get(firstOption).click();
-        cy.url().should('include', '/explore');
+        cy.url().should('include', globalTestData.explorePagePath);
         cy.get(homepage.articleCard).contains('Format Tests').click();
-        cy.url().should('include', '/format-tests');
+        cy.url().should('include', globalTestData.formatTestsPath);
     });
 
     it('An image in an article', function () {
-        const imageArticleUrlPath = '/image-tests';
-        cy.visit(imageArticleUrlPath);
-        cy.url().should('include', imageArticleUrlPath);
-        cy.get(`[title='image title']`).then(($el) => {
+        const imageTitle = `[title='image title']`;
+        cy.visit(globalTestData.imageArticlePath);
+        cy.url().should('include', globalTestData.imageArticlePath);
+        cy.get(imageTitle).then(($el) => {
           Cypress.dom.isVisible($el)
         })
     });
@@ -72,17 +72,13 @@ describe("Navigating the site and reading articles", function() {
     });
 
     it('The field officer should see related articles [ONS-65]', function () {
-        const editorialWorkflowArticle = 'editorial workflow';
-        const editorialWorkflowPath = '/editorial-workflow';
-        const reviwemeArticle = 'reviweme';
-        const reviwemeUrlPath = '/reviweme';
-        cy.visit(reviwemeUrlPath);
-        cy.get(search.searchResultTitle).should('not.have.text', editorialWorkflowArticle);
+        cy.visit(globalTestData.reviwemePath);
+        cy.get(search.searchResultTitle).should('not.have.text', globalTestData.editorialWorkflowArticle);
         cy.contains('ALSO IN THIS TOPIC');
-        cy.get(homepage.articleCard).contains(editorialWorkflowArticle).click();
-        cy.url().should('include', editorialWorkflowPath);
-        cy.get(search.searchResultTitle).should('not.have.text', reviwemeArticle);
-        cy.get(search.searchResultTitle).should('have.text', editorialWorkflowArticle);
+        cy.get(homepage.articleCard).contains(globalTestData.editorialWorkflowArticle).click();
+        cy.url().should('include', globalTestData.editorialWorkflowPath);
+        cy.get(search.searchResultTitle).should('not.have.text', globalTestData.reviwemeArticle);
+        cy.get(search.searchResultTitle).should('have.text', globalTestData.editorialWorkflowArticle);
     });
 
     it('Most recent pagination [ONS-64]', function () {
