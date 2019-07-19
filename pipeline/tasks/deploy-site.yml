@@ -33,7 +33,6 @@ inputs:
 - name: content-repository
 
 caches:
-- path: census-worth-self-help/site/node_modules
 - path: .npm
 - path: .cypress-cache
 
