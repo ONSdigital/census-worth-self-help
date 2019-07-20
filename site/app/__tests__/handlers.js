@@ -33,8 +33,12 @@ describe("sso", function() {
       expect(response.redirectCalledWith).to.equal("/")
     })
     it("Should redirect to desired page ", function() {
-      callback({ ...request, body: { RelayState: "/my-page" } }, response)
-      expect(response.redirectCalledWith).to.equal("/my-page")
+      callback({ ...request, body: { RelayState: "my-page" } }, response)
+      expect(response.redirectCalledWith).to.equal("/my-page/")
+    })
+    it("Should restrict undesired destinations ", function() {
+      callback({ ...request, body: { RelayState: "https://bad.com/my-page" } }, response)
+      expect(response.redirectCalledWith).to.equal("/")
     })
   })
   describe("requireAuthenticated", function() {
@@ -44,7 +48,15 @@ describe("sso", function() {
         state.allowed = true
       })
       expect(state.allowed).to.equal(false)
-      expect(response.redirectCalledWith).to.equal("/login?destination=/")
+      expect(response.redirectCalledWith).to.equal("/login")
+    })
+    it("Should redirect deep if not authenticated", function() {
+      let state = { allowed: false }
+      requireAuthenticated({ ...request, path : '/my-page/'}, response, () => {
+        state.allowed = true
+      })
+      expect(state.allowed).to.equal(false)
+      expect(response.redirectCalledWith).to.equal("/login?destination=my-page")
     })
     it("Should allow if authenticated", function() {
       let state = { allowed: false }
