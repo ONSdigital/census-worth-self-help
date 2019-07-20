@@ -56,3 +56,4 @@ else
 fi
 
 echo "  CHAT_DOMAIN: ${CHAT_DOMAIN}" >> ${appFile}
+echo "  MATOMO_IP: ${MATOMO_IP}" >> ${appFile}

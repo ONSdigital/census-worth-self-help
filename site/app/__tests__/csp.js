@@ -27,4 +27,15 @@ describe("csp", function() {
     expect(response.headers['Content-Security-Policy']).to.contain('; script-src \'self\' \'unsafe-inline\' https://chat.com;')
     expect(response.headers['Content-Security-Policy']).to.contain('; img-src \'self\' data: https://chat.com;')
   })
+  it("Should CSP contain analytics host ", function () {
+    csp({analyticsHost : 'https://analytics.com'})(request, response, next)
+    expect(response.headers['Content-Security-Policy']).to.contain('; script-src \'self\' \'unsafe-inline\' https://analytics.com;')
+  })
+  it("Should CSP contain analytics host and chat domain ", function () {
+    csp({
+      analyticsHost : 'https://analytics.com',
+      chatDomain : 'chat.com'
+    })(request, response, next)
+    expect(response.headers['Content-Security-Policy']).to.contain('; script-src \'self\' \'unsafe-inline\' https://chat.com https://analytics.com;')
+  })
 })
