@@ -8,6 +8,12 @@ handlers:
     secure: always
     upload: public/admin/(.*\.yml)
 
+  - url: /admin/cms.css
+    mime_type: text/css
+    static_files: public/admin/cms.css
+    secure: always
+    upload: public/admin/cms.css
+
   - url: /admin/
     expiration: 5m
     static_files: public/admin/index.html
