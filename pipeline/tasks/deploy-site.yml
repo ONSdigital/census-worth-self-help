@@ -51,6 +51,8 @@ run:
 
     export ROOT_FOLDER=$(pwd)
     export CYPRESS_CACHE_FOLDER=${ROOT_FOLDER}/.cypress-cache
+    npm config set cache ${ROOT_FOLDER}/.npm --global
+
     cd census-worth-self-help/site
 
     npm ci
