@@ -34,6 +34,7 @@ inputs:
 caches:
 - path: .npm
 - path: .cypress-cache
+- path: .cache
 
 run:
   path: sh
@@ -56,6 +57,9 @@ run:
     cd census-worth-self-help/site
 
     npm ci
+    cd node_modules
+    ln -s ../../../.cache .
+    cd ..
 
     if [ "${PATCH_NETLIFY}" == "true" ]; then
       gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-2-9-1-x.tar.gz .
