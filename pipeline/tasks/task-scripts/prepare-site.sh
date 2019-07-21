@@ -56,4 +56,4 @@ else
 fi
 
 echo "  GATSBY_CHAT_DOMAIN: ${GATSBY_CHAT_DOMAIN}" >> ${appFile}
-echo "  GATSBY_MATOMO_IP: ${GATSBY_MATOMO_IP}" >> ${appFile}
+echo "  MATOMO_IP: ${MATOMO_IP}" >> ${appFile}
