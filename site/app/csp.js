@@ -15,6 +15,7 @@ const createSources = function(config = {}) {
   }
   if (config.analyticsHost) {
     sources['script-src'].push(config.analyticsHost)
+    sources['img-src'].push(config.analyticsHost)
   }
   return sources
 }

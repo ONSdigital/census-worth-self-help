@@ -29,6 +29,6 @@ else
   echo "*** NOT SSO Protected ***"
 fi
 echo "GATSBY_ASSETS_PATH = ${GATSBY_ASSETS_PATH}"
-echo "CHAT_DOMAIN        = ${CHAT_DOMAIN}"
+echo "GATSBY_CHAT_DOMAIN = ${GATSBY_CHAT_DOMAIN}"
 
 echo "env variables OK"

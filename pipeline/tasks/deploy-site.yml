@@ -18,7 +18,6 @@ image_resource:
 
 params:
   AUTH_KEY: ((gcp.service-account-key))
-  CHAT_DOMAIN: ((gatsby.chat-domain))
   GCP_SECRETS_VERSION: ((gcp.secrets-version))
   NETLIFY_BUCKET_NAME: ((gcp.netlify-bucket-name))
   GATSBY_ASSETS_PATH: ((gatsby.assets-path))
