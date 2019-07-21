@@ -75,6 +75,7 @@ run:
       ../pipeline/tasks/task-scripts/inject-deployment-information.sh
     fi
 
+    export GATSBY_TELEMETRY_DISABLED=1
     if [ "${SKIP_UNIT_TESTS}" == "true" ] ; then
       npm run build-no-audit-no-test
     elif [ "${SKIP_AUDIT}" == "true" ] ; then
