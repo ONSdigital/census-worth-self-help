@@ -5,6 +5,7 @@ const createSources = function(config = {}) {
     'font-src': ['\'self\''],
     'img-src': ['\'self\'', 'data:'],
     'media-src': ['https:'],
+    'prefetch-src': ['\'self\''],
     'script-src': ['\'self\'', '\'unsafe-inline\''],
     'style-src': ['\'self\'', '\'unsafe-inline\''],
   }
@@ -16,6 +17,7 @@ const createSources = function(config = {}) {
   if (config.analyticsHost) {
     sources['script-src'].push(config.analyticsHost)
     sources['img-src'].push(config.analyticsHost)
+    sources['prefetch-src'].push(config.analyticsHost)
   }
   return sources
 }
