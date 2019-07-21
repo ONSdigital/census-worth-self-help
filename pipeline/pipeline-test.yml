@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: bugfix/ONS-296-fix-cms-index
     check_every: 15m
 
   - name: content-repository
