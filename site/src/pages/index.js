@@ -32,13 +32,12 @@ export default ({ data }) => {
     let bookmarkManager = new BookmarkManager()
     let bookmarkTitles = bookmarkManager
       .getTopBookmarks()
-      .slice(0, topArticleCount)
 
     bookmarkEdges = bookmarkTitles.map(title =>
       data.allMarkdownRemark.edges.find(
         edge => edge.node.frontmatter.title === title
       )
-    )
+    ).filter( edge => edge ).slice(0, topArticleCount)
     bookmarkManager.addBookmarkClickEventToEdges(bookmarkEdges)
   }
 
