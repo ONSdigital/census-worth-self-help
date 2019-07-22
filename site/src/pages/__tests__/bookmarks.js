@@ -27,7 +27,7 @@ describe("Bookmarks", () => {
 
     BookmarkManager.mockImplementation(
       () => ({
-        getTopBookmarks: () => ["test Article 1"],
+        getTopBookmarks: () => ["test Article 1", "bogus article"],
         addBookmarkClickEventToEdges: (edges) => {} 
       })
     )

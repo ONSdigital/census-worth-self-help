@@ -40,7 +40,7 @@ export default class Bookmarks extends React.Component {
       this.data.allMarkdownRemark.edges.find(
         edge => edge.node.frontmatter.title === title
       )
-    )
+    ).filter( edge => edge )
     let paginatedBookmarkEdges = this.state.paginationObject.filterResults(
       bookmarkEdges
     )
