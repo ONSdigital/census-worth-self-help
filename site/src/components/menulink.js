@@ -3,6 +3,9 @@ import { css } from "@emotion/core"
 import { navigate } from "@reach/router"
 import { spacing } from "../utils/styles"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons"
+
 export default class MenuLink extends React.Component {
   constructor(props) {
     super(props)
@@ -19,7 +22,7 @@ export default class MenuLink extends React.Component {
   }
 
   render() {
-    let { title, link, depth = 0 } = this.props
+    let { icon, title, link, depth = 0 } = this.props
 
     let hiddenMenu = null
     if (this.hidden_nodes.length !== 0) {
@@ -51,8 +54,18 @@ export default class MenuLink extends React.Component {
             className="Menu-major-item-Style"
             css={css`
               flex-grow: 1;
+              display: flex;
             `}
           >
+            {icon && (
+              <div
+                css={css`
+                  padding-right: 15px;
+                `}
+              >
+                {icon}
+              </div>
+            )}
             {title}
           </div>
           {hiddenMenu && (
@@ -64,8 +77,16 @@ export default class MenuLink extends React.Component {
                 padding: 0px 30px;
               `}
             >
-              {!this.state.toggled && <span>+</span>}
-              {this.state.toggled && <span>-</span>}
+              {!this.state.toggled && (
+                <span>
+                  <FontAwesomeIcon icon={faPlus} />
+                </span>
+              )}
+              {this.state.toggled && (
+                <span>
+                  <FontAwesomeIcon icon={faMinus} />
+                </span>
+              )}
             </div>
           )}
         </div>
