@@ -13,6 +13,11 @@ const createSources = function(config = {}) {
     sources['img-src'].push('https://' + config.chatDomain)
     sources['script-src'].push('https://' + config.chatDomain)
   }
+  if (config.analyticsHost) {
+    sources['script-src'].push(config.analyticsHost)
+    sources['img-src'].push(config.analyticsHost)
+    sources['default-src'].push(config.analyticsHost)
+  }
   return sources
 }
 

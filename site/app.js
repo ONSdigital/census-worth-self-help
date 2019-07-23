@@ -7,7 +7,8 @@ const csp = require('./app/csp').default;
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
 
 app.use(csp({
-  chatDomain : process.env.CHAT_DOMAIN
+  chatDomain : process.env.GATSBY_CHAT_DOMAIN,
+  analyticsHost : process.env.MATOMO_IP
 }));
 
 if (SP_PROTECTED === "false") {

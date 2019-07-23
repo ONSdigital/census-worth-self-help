@@ -55,4 +55,5 @@ else
   echo "  SP_PROTECTED: ${SP_PROTECTED}" >> ${appFile}
 fi
 
-echo "  CHAT_DOMAIN: ${CHAT_DOMAIN}" >> ${appFile}
+echo "  GATSBY_CHAT_DOMAIN: ${GATSBY_CHAT_DOMAIN}" >> ${appFile}
+echo "  MATOMO_IP: ${MATOMO_IP}" >> ${appFile}

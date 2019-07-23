@@ -1,3 +1,5 @@
+const { excludeDraftArticle } = require(`./src/utils/draft-excluder`)
+
 module.exports = {
   plugins: [
     {
@@ -23,7 +25,7 @@ module.exports = {
         },
         // Remove .md with no content
         filter: (node, getNode) => {
-          return node.rawMarkdownBody.trim() != ""
+          return node.rawMarkdownBody.trim() != "" && !excludeDraftArticle(node)
         },
       },
     },
