@@ -3,10 +3,9 @@ import { css } from "@emotion/core"
 
 import Topbar from "./topbar"
 import Footer from "./footer"
-import { spacing } from "../utils/styles"
-import OnsLogo from "./onslogo"
 import Section from "./section"
 import Alert from "../components/alert"
+import { spacing } from "../utils/styles"
 
 import LargeButton from "../components/largebutton"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -29,21 +28,22 @@ export default ({
         flex-direction: column;
       `}
     >
-      <Topbar searchObject={searchObject} />
-      {logo && <OnsLogo />}
+      <Topbar searchObject={searchObject} logo={logo} />
       <div
         css={css`
-          ${spacing.main_box}
           overflow: scroll;
           width: 100vw;
           display: flex;
           flex-direction: column;
           flex-grow: 1;
+          align-items: center;
         `}
       >
         <main
           css={css`
             flex-grow: 1;
+            width: 100%;
+            max-width: ${spacing.desktop_max_width};
           `}
         >
           {alertText && <Alert title={alertTitle} content={alertText} />}

@@ -40,6 +40,8 @@ export default class BookmarkManager {
   }
 
   addBookmarkClickEventToEdges(edges) {
-    edges.forEach(edge => edge.node.clickFunction = Feedback.bookmarkClickEvent)
+    edges.forEach(
+      edge => (edge.node.clickFunction = Feedback.bookmarkClickEvent)
+    )
   }
 }

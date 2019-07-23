@@ -5,10 +5,11 @@ exports[`ONS Logo renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "181ra4m",
+      "name": "1mc8cba",
       "next": undefined,
       "styles": "
-        width: 100vw;
+        width: 100%;
+        max-width: 800px;
         
     background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;

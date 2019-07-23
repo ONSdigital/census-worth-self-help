@@ -204,7 +204,9 @@ export default class Article extends React.Component {
                 <div
                   data-testid="article-content"
                   className="article-content"
-                  dangerouslySetInnerHTML={{ __html: htmlSanitize(articleContent) }}
+                  dangerouslySetInnerHTML={{
+                    __html: htmlSanitize(articleContent)
+                  }}
                 />
               </TextBlock>
             </div>

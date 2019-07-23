@@ -2,24 +2,30 @@ import React from "react"
 import { css } from "@emotion/core"
 import { gradients, spacing, colors } from "../utils/styles"
 import TopbarLink from "./topbarlink"
+import OnsLogo from "./onslogo"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { navigate } from "@reach/router"
 import VisuallyHidden from "@reach/visually-hidden"
 
-export default ({ searchObject = null }) => {
+export default ({ searchObject = null, logo = false }) => {
   return (
     <header
       css={css`
         width: 100vw;
         ${gradients.navy_shine};
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       `}
     >
       {searchObject && (
         <div
           css={css`
             display: flex;
+            width: 100%;
+            max-width: ${spacing.desktop_max_width};
           `}
         >
           <div
@@ -72,6 +78,8 @@ export default ({ searchObject = null }) => {
         <div
           css={css`
             display: flex;
+            width: 100%;
+            max-width: ${spacing.desktop_max_width};
           `}
         >
           <div
@@ -100,6 +108,7 @@ export default ({ searchObject = null }) => {
           <TopbarLink title="Menu" link="/menu/" />
         </div>
       )}
+      {logo && <OnsLogo />}
     </header>
   )
 }

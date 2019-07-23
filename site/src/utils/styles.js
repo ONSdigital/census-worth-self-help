@@ -58,10 +58,7 @@ export const spacing = {
     padding: 15px;
     min-height: 30px;
   `,
-  main_box: css`
-    margin: 0 auto;
-    max-width: 700px;
-  `,
+  desktop_max_width: "800px",
   page_padding: css`
     padding: 15px;
   `,

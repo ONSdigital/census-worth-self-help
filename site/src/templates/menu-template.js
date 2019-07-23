@@ -26,27 +26,37 @@ export default ({ pageContext }) => {
       </VisuallyHidden>
       <div
         css={css`
+          width: 100vw;
           min-height: 100vh;
-          ${spacing.main_box};
           ${gradients.navy_shine};
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         `}
         data-testid="menu-template-menu-box-overlay"
       >
-        <MenuLink link="" title="Home" />
-        <hr
+        <div
           css={css`
-            border-top: 1px solid white;
+            width: 100%;
+            max-width: ${spacing.desktop_max_width};
           `}
-        />
-        {menuLinks}
-        <hr
-          css={css`
-            border-top: 1px solid white;
-          `}
-        />
-        <MenuLink link="mostrecent/" title="Recently updated" />
-        <MenuLink link="bookmarks/" title="My Bookmarks" />
-        <MenuLink link="contactcentre/" title="Census Field Support" />
+        >
+          <MenuLink link="" title="Home" />
+          <hr
+            css={css`
+              border-top: 1px solid white;
+            `}
+          />
+          {menuLinks}
+          <hr
+            css={css`
+              border-top: 1px solid white;
+            `}
+          />
+          <MenuLink link="mostrecent/" title="Recently updated" />
+          <MenuLink link="bookmarks/" title="My Bookmarks" />
+          <MenuLink link="contactcentre/" title="Census Field Support" />
+        </div>
       </div>
     </div>
   )

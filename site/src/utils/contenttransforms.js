@@ -1,4 +1,4 @@
-var sanitizeHtml = require('sanitize-html');
+var sanitizeHtml = require("sanitize-html")
 
 export const transformSources = htmlString => {
   let videoPath = process.env.GATSBY_ASSETS_PATH
@@ -12,13 +12,20 @@ export const transformSources = htmlString => {
 
 export const htmlSanitize = htmlString => {
   return sanitizeHtml(htmlString, {
-  	allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'video', 'audio', 'img', 'source', 'h1', 'h2' ]),
-  	allowedAttributes: {
-  		a: [ 'href', 'name', 'target' ],
-  		img: [ 'src', 'title' ],
-  		source: [ 'src', 'type'],
-  		video: ['controls'],
-  		audio: ['controls']
-  	}
+    allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+      "video",
+      "audio",
+      "img",
+      "source",
+      "h1",
+      "h2"
+    ]),
+    allowedAttributes: {
+      a: ["href", "name", "target"],
+      img: ["src", "title"],
+      source: ["src", "type"],
+      video: ["controls"],
+      audio: ["controls"]
+    }
   })
 }

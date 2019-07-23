@@ -36,15 +36,17 @@ export default class Bookmarks extends React.Component {
   render() {
     let bookmarkManager = new BookmarkManager()
     let bookmarkTitles = bookmarkManager.getTopBookmarks()
-    let bookmarkEdges = bookmarkTitles.map(title =>
-      this.data.allMarkdownRemark.edges.find(
-        edge => edge.node.frontmatter.title === title
+    let bookmarkEdges = bookmarkTitles
+      .map(title =>
+        this.data.allMarkdownRemark.edges.find(
+          edge => edge.node.frontmatter.title === title
+        )
       )
-    ).filter( edge => edge )
+      .filter(edge => edge)
     let paginatedBookmarkEdges = this.state.paginationObject.filterResults(
       bookmarkEdges
     )
-    
+
     bookmarkManager.addBookmarkClickEventToEdges(paginatedBookmarkEdges)
 
     return (
