@@ -1,6 +1,5 @@
 /// <reference types="Cypress" />
 
-const commands = require('../../../support/commands.js');
 const globalTestData = require('../../../fixtures/globalTestData');
 
 // fragments
@@ -8,8 +7,6 @@ const webchat = require('../../../fixtures/fragments/webchat');
 
 // pages
 const homepage = require('../../../fixtures/pages/homepagePage');
-
-const deepArticlePath = '/deep-article/';
 
 describe("Live chat", function() {
     beforeEach(function () {

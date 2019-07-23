@@ -32,7 +32,7 @@ cd into the site folder in your ONS project
 # Merging mochawesome.json files to generate a single HTML report
 To get a HTML report, after a test has finished and JSON file has been created as the report, then run:
 
-    npm run merge:reports
+    npm run merge-reports
     
 This will compile all JSON report files into a single HTML file, to open in a browser.
 

@@ -1,19 +1,21 @@
 // Here you can add any test data that is used across multiple tests
 
+// Article names
+const editorialWorkflowArticle = 'editorial workflow'
+const injectionAttackArticle = 'Injection Attack';
+const reviwemeArticle = 'reviweme'
+
 // Article paths
 const aVerySimpleArticlePath = '/a-very-simple-article/'
 const deepArticlePath = '/deep-article/'
 const editorialWorkflowPath = '/editorial-workflow'
 const imageArticlePath = '/image-tests'
 const reviwemePath = '/reviweme'
+const videoArticlePath = '/video-test/'
 
 // Page URLs
 const explorePagePath = '/explore'
 const formatTestsPath = '/format-tests'
-
-// Article names
-const editorialWorkflowArticle = 'editorial workflow'
-const reviwemeArticle = 'reviweme'
 
 const chromebookSize = [
   {
@@ -37,6 +39,16 @@ const samsungJ4PlusSize = [
 ]
 
 module.exports = {
+  // Article names
+  editorialWorkflowArticle,
+  injectionAttackArticle,
+  reviwemeArticle,
+
+  // Screen sizes
+  chromebookSize,
+  samsungA10Size,
+  samsungJ4PlusSize,
+
     // URLs
   aVerySimpleArticlePath,
   deepArticlePath,
@@ -45,13 +57,5 @@ module.exports = {
   formatTestsPath,
   imageArticlePath,
   reviwemePath,
-
-    // Article names
-  editorialWorkflowArticle,
-  reviwemeArticle,
-
-    // Screen sizes
-  chromebookSize,
-  samsungA10Size,
-  samsungJ4PlusSize
+  videoArticlePath
 }

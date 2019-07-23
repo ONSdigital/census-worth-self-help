@@ -1,8 +1,5 @@
 /// <reference types="Cypress" />
 
-const commands = require('../../../support/commands.js');
-const globalTestData = require('../../../fixtures/globalTestData');
-
 // fragments
 const menu = require('../../../fixtures/fragments/menu');
 const search = require('../../../fixtures/fragments/search');
