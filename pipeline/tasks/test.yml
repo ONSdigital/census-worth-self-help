@@ -19,6 +19,14 @@ caches:
 - path: .npm
 - path: .cypress-cache
 
+params:
+  GATSBY_ASSETS_PATH: ((gatsby.assets-path))
+  GATSBY_CHAT_BUTTON_CONTAINER_ID: ((gatsby.chat-button-container-id))
+  GATSBY_CHAT_CHANNEL: ((gatsby.chat-channel))
+  GATSBY_CHAT_DOMAIN: ((gatsby.chat-domain))
+  GATSBY_CHAT_TENANT: ((gatsby.chat-tenant))
+  GATSBY_CHAT_UUID: ((gatsby.chat-uuid))
+
 run:
   path: sh
   args:
@@ -35,5 +43,7 @@ run:
     cp -R ../static/assets "$assetdir"
     npm ci
     npm run coverage
+    # ONS-289
+    sed -i 's/smokeTestTimeout: 10000/smokeTestTimeout: 60000/' node_modules/cypress/lib/tasks/verify.js
     npm run e2e
     npm run merge-reports

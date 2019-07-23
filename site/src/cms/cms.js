@@ -2,7 +2,7 @@ import CMS from "netlify-cms-app"
 import React from "react"
 import TextBlock from "../components/textblock"
 import PageTitle from "../components/pagetitle"
-import { transformSources } from "../utils/sourcetransforms"
+import { transformSources } from "../utils/contenttransforms"
 
 const ArticlePreview = ({ entry, widgetFor }) => {
   let linkDiv = ""

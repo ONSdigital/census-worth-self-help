@@ -3,7 +3,12 @@ import { css } from "@emotion/core"
 import { spacing } from "../utils/styles"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faAngleRight, faAngleDoubleRight, faAngleLeft, faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons"
+import {
+  faAngleRight,
+  faAngleDoubleRight,
+  faAngleLeft,
+  faAngleDoubleLeft
+} from "@fortawesome/free-solid-svg-icons"
 
 const PaginationIcon = ({
   children,

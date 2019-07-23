@@ -54,3 +54,6 @@ else
   echo "env_variables:" >> ${appFile}
   echo "  SP_PROTECTED: ${SP_PROTECTED}" >> ${appFile}
 fi
+
+echo "  GATSBY_CHAT_DOMAIN: ${GATSBY_CHAT_DOMAIN}" >> ${appFile}
+echo "  MATOMO_IP: ${MATOMO_IP}" >> ${appFile}

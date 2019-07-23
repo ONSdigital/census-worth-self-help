@@ -4,6 +4,9 @@ import renderer from "react-test-renderer"
 import { render } from "react-testing-library"
 
 describe("div rendering", () => {
+  beforeEach(() => {
+    process.env.GATSBY_CHAT_BUTTON_CONTAINER_ID = "chat-button-container"
+  });
 
   it("renders normally when online", () => {
     const tree = renderer.create(<WebChat />).toJSON()

@@ -21,15 +21,20 @@ params:
   GCP_SECRETS_VERSION: ((gcp.secrets-version))
   NETLIFY_BUCKET_NAME: ((gcp.netlify-bucket-name))
   GATSBY_ASSETS_PATH: ((gatsby.assets-path))
+  GATSBY_CHAT_BUTTON_CONTAINER_ID: ((gatsby.chat-button-container-id))
+  GATSBY_CHAT_CHANNEL: ((gatsby.chat-channel))
+  GATSBY_CHAT_DOMAIN: ((gatsby.chat-domain))
+  GATSBY_CHAT_TENANT: ((gatsby.chat-tenant))
+  GATSBY_CHAT_UUID: ((gatsby.chat-uuid))
 
 inputs:
 - name: census-worth-self-help
 - name: content-repository
 
 caches:
-- path: census-worth-self-help/site/node_modules
 - path: .npm
 - path: .cypress-cache
+- path: .cache
 
 run:
   path: sh
@@ -43,16 +48,18 @@ run:
     apk add --no-progress --update nodejs nodejs-npm
     echo "npm version"
     npm -v
+    node --version
 
     export ROOT_FOLDER=$(pwd)
     export CYPRESS_CACHE_FOLDER=${ROOT_FOLDER}/.cypress-cache
+    npm config set cache ${ROOT_FOLDER}/.npm --global
+
     cd census-worth-self-help/site
 
-    if [ "${SKIP_UNIT_TESTS}" == "true" ] ; then
-      npm install --only=prod
-    else
-      npm install
-    fi
+    npm ci
+    cd node_modules
+    ln -s ../../../.cache .
+    cd ..
 
     if [ "${PATCH_NETLIFY}" == "true" ]; then
       gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-2-9-1-x.tar.gz .
@@ -60,19 +67,26 @@ run:
     fi
 
     BUILD="_build/content/"
-    mkdir -p "$BUILD" && cp -R ../../content-repository/content/ "$BUILD"
+    mkdir -p "$BUILD" && cp -R ../../content-repository/content/* "$BUILD"
     ASSET_DIR="static/assets/"
     cp -R ../../content-repository/static/assets/ "$ASSET_DIR"
 
+    if [ "${INJECT_DEPLOYMENT_INFORMATION}" == "true" ] ; then
+      ../pipeline/tasks/task-scripts/inject-deployment-information.sh
+    fi
+
+    export GATSBY_TELEMETRY_DISABLED=1
     if [ "${SKIP_UNIT_TESTS}" == "true" ] ; then
       npm run build-no-audit-no-test
-    else
+    elif [ "${SKIP_AUDIT}" == "true" ] ; then
       npm run build-no-audit
+    else
+      npm run build
     fi
 
     APP_FILE=ci-app.yaml
 
     ../pipeline/tasks/task-scripts/configure-app.sh ${APP_FILE}
-    ../pipeline/tasks/task-scripts/prepare-protected-site.sh ${APP_FILE}
+    ../pipeline/tasks/task-scripts/prepare-site.sh ${APP_FILE}
     ../pipeline/tasks/task-scripts/clean-up-old-appengine-versions.sh $SERVICE
     gcloud app deploy -q ci-app.yaml
