@@ -49,7 +49,7 @@ exports[`StandardArticle renders correctly 1`] = `
         }
       >
         <div
-          className="Header-Title-Style"
+          className="Header-Title-Style clickable"
           css={
             Object {
               "map": undefined,
@@ -73,7 +73,7 @@ exports[`StandardArticle renders correctly 1`] = `
           Self Help Facility
         </div>
         <div
-          className="Header-button-Style"
+          className="Header-button-Style clickable"
           css={
             Object {
               "map": undefined,
@@ -131,7 +131,7 @@ exports[`StandardArticle renders correctly 1`] = `
           </div>
         </div>
         <div
-          className="Header-button-Style"
+          className="Header-button-Style clickable"
           css={
             Object {
               "map": undefined,
@@ -424,6 +424,7 @@ exports[`StandardArticle renders correctly 1`] = `
             </div>
           </div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -638,6 +639,7 @@ exports[`StandardArticle renders correctly 1`] = `
               data-id="feedback-buttons"
             >
               <div
+                className="clickable"
                 css={
                   Object {
                     "map": undefined,
@@ -733,6 +735,7 @@ exports[`StandardArticle renders correctly 1`] = `
                 </div>
               </div>
               <div
+                className="clickable"
                 css={
                   Object {
                     "map": undefined,
@@ -885,6 +888,7 @@ exports[`StandardArticle renders correctly 1`] = `
               </div>
               <div>
                 <div
+                  className="clickable"
                   css={
                     Object {
                       "map": undefined,
@@ -1045,6 +1049,7 @@ exports[`StandardArticle renders correctly 1`] = `
             }
           >
             <div
+              className="clickable"
               css={
                 Object {
                   "map": undefined,
@@ -1249,7 +1254,7 @@ exports[`StandardArticle renders correctly 1`] = `
         </div>
       </div>
       <div
-        className="Article-sub-title-Style"
+        className="Article-sub-title-Style clickable"
         data-testid="notification-close-button"
         onClick={[Function]}
       >

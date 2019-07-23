@@ -48,7 +48,7 @@ exports[`Contact centre renders correctly with data 1`] = `
       }
     >
       <div
-        className="Header-Title-Style"
+        className="Header-Title-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -72,7 +72,7 @@ exports[`Contact centre renders correctly with data 1`] = `
         Self Help Facility
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -130,7 +130,7 @@ exports[`Contact centre renders correctly with data 1`] = `
         </div>
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -282,6 +282,7 @@ exports[`Contact centre renders correctly with data 1`] = `
         </div>
         <div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -374,6 +375,7 @@ exports[`Contact centre renders correctly with data 1`] = `
         </div>
         <div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -466,6 +468,7 @@ exports[`Contact centre renders correctly with data 1`] = `
         </div>
         <div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -722,6 +725,7 @@ exports[`Contact centre renders correctly with data 1`] = `
           href="tel:01111333333"
         >
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -941,7 +945,7 @@ exports[`Contact centre renders correctly without data 1`] = `
       }
     >
       <div
-        className="Header-Title-Style"
+        className="Header-Title-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -965,7 +969,7 @@ exports[`Contact centre renders correctly without data 1`] = `
         Self Help Facility
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -1023,7 +1027,7 @@ exports[`Contact centre renders correctly without data 1`] = `
         </div>
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -1299,6 +1303,7 @@ exports[`Contact centre renders correctly without data 1`] = `
           href="tel:0123456789"
         >
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,

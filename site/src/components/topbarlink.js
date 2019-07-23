@@ -10,7 +10,7 @@ export default ({ title, link, background = true, clickFunction = null }) => {
 
   return (
     <div
-      className="Header-button-Style"
+      className="Header-button-Style clickable"
       data-testid="topbarlink-button"
       css={css`
         ${spacing.vert_aligned_flex_text}

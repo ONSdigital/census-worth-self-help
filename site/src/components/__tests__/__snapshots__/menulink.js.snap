@@ -22,7 +22,7 @@ exports[`MenuLink renders correctly with hidden nodes 1`] = `
     }
   >
     <div
-      className="Menu-major-item-Style"
+      className="Menu-major-item-Style clickable"
       css={
         Object {
           "map": undefined,
@@ -39,7 +39,7 @@ exports[`MenuLink renders correctly with hidden nodes 1`] = `
       basic
     </div>
     <div
-      className="Menu-major-item-Style"
+      className="Menu-major-item-Style clickable"
       css={
         Object {
           "map": undefined,
@@ -99,7 +99,7 @@ exports[`MenuLink renders correctly without hidden nodes 1`] = `
     }
   >
     <div
-      className="Menu-major-item-Style"
+      className="Menu-major-item-Style clickable"
       css={
         Object {
           "map": undefined,

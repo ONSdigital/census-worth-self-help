@@ -17,6 +17,7 @@ exports[`TabList renders correctly 1`] = `
 >
   <div>
     <div
+      className="clickable"
       css={
         Object {
           "map": undefined,
@@ -109,6 +110,7 @@ exports[`TabList renders correctly 1`] = `
   </div>
   <div>
     <div
+      className="clickable"
       css={
         Object {
           "map": undefined,
@@ -201,6 +203,7 @@ exports[`TabList renders correctly 1`] = `
   </div>
   <div>
     <div
+      className="clickable"
       css={
         Object {
           "map": undefined,
@@ -293,6 +296,7 @@ exports[`TabList renders correctly 1`] = `
   </div>
   <div>
     <div
+      className="clickable"
       css={
         Object {
           "map": undefined,
@@ -385,6 +389,7 @@ exports[`TabList renders correctly 1`] = `
   </div>
   <div>
     <div
+      className="clickable"
       css={
         Object {
           "map": undefined,
@@ -477,6 +482,7 @@ exports[`TabList renders correctly 1`] = `
   </div>
   <div>
     <div
+      className="clickable"
       css={
         Object {
           "map": undefined,
@@ -569,6 +575,7 @@ exports[`TabList renders correctly 1`] = `
   </div>
   <div>
     <div
+      className="clickable"
       css={
         Object {
           "map": undefined,

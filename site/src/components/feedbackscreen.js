@@ -70,6 +70,7 @@ export default ({ hideFunction, submitFunction }) => {
             text-align: center;
             border-right: 1px rgba(17, 17, 17, 0.1) solid;
           `}
+          className="clickable"
           onClick={hideFunction}
           data-testid="feedback-screen-cancel-button"
         >
@@ -84,6 +85,7 @@ export default ({ hideFunction, submitFunction }) => {
           `}
           data-testid="feedback-screen-submit-button"
           onClick={submitFunction}
+          className="clickable"
         >
           Submit
         </div>
