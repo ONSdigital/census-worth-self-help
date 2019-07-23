@@ -25,6 +25,7 @@ export default ({
   return (
     <div
       data-testid="large-button"
+      className="clickable"
       onClick={onClick}
       css={css`
         ${spacing.vert_aligned_flex_text}

@@ -2,6 +2,7 @@
 
 exports[`BlockButton renders correctly 1`] = `
 <div
+  className="clickable"
   css={
     Object {
       "map": undefined,
