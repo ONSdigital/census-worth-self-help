@@ -13,6 +13,8 @@ There are scripts in package.json to run with either headless or with the test r
 
     npm run e2e
     npm run e2e-test-runner
+You will also need to export the environment variables for live chat before running the tests. These are in the secrets
+repo.
 
 # x to skip a test suites or test cases
 You can place an 'x' before a test suite or case to skip it e.g. `xdescribe` or `xtest`
