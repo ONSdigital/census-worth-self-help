@@ -12,6 +12,7 @@ const censusFieldSupportTitle = 'Census Field Support';
 
 describe("Contact support page", function() {
     beforeEach(function () {
+        Cypress.env('RETRIES', 2);
         cy.visit('');
         cy.get(homepage.homepageLogo).should('be.visible');
     });

@@ -16,6 +16,7 @@ const incompleteSearch = searchText.slice(0, -1);
 
 describe("Article searching", function() {
     beforeEach(function () {
+        Cypress.env('RETRIES', 2);
         cy.visit('');
         cy.get(homepage.homepageLogo).should('be.visible');
     });

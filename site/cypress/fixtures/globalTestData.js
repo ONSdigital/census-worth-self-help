@@ -1,8 +1,9 @@
 // Here you can add any test data that is used across multiple tests
 
 // Article names
+const deepArticle = 'deep article'
 const editorialWorkflowArticle = 'editorial workflow'
-const injectionAttackArticle = 'Injection Attack';
+const injectionAttackArticle = 'Injection Attack'
 const reviwemeArticle = 'reviweme'
 
 // Article paths
@@ -40,6 +41,7 @@ const samsungJ4PlusSize = [
 
 module.exports = {
   // Article names
+  deepArticle,
   editorialWorkflowArticle,
   injectionAttackArticle,
   reviwemeArticle,

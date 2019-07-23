@@ -13,6 +13,7 @@ const homepage = require('../../../fixtures/pages/homepagePage');
 
 describe("Navigating the site and reading articles", function() {
     beforeEach(function () {
+        Cypress.env('RETRIES', 2);
         cy.visit('');
         cy.get(homepage.homepageLogo).should('be.visible');
     });
@@ -78,6 +79,33 @@ describe("Navigating the site and reading articles", function() {
         cy.url().should('include', globalTestData.editorialWorkflowPath);
         cy.get(search.searchResultTitle).should('not.have.text', globalTestData.reviwemeArticle);
         cy.get(search.searchResultTitle).should('have.text', globalTestData.editorialWorkflowArticle);
+    });
+
+    it('The field officer dives deeper into directories to find an article', function () {
+        // Alias
+        cy.get(homepage.articleCard).as('articleCard');
+
+        cy.get(homepage.exploreContentButton).click();
+
+        cy.contains('many directories deep').click();
+        cy.url().should('include', '/many-directories-deep/');
+
+        cy.get('@articleCard').should('have.text', 'deep 2').click();
+        cy.url().should('include', '/deep-2/');
+
+        cy.get('@articleCard').should('have.text', 'deep 3').click();
+        cy.url().should('include', '/deep-3/');
+
+        cy.get('@articleCard').should('have.text', 'deep 4').click();
+        cy.url().should('include', '/deep-4/');
+
+        cy.get('@articleCard').should('have.text', 'deep 5').click();
+        cy.url().should('include', '/deep-5/');
+
+        cy.get('@articleCard').should('have.text', globalTestData.deepArticle).click();
+        cy.url().should('include', globalTestData.deepArticlePath);
+
+        cy.get(search.searchResultTitle).should('have.text', globalTestData.deepArticle);
     });
 
     it('Most recent pagination [ONS-64]', function () {

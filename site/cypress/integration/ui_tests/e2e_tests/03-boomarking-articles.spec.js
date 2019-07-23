@@ -13,6 +13,7 @@ const homepage = require('../../../fixtures/pages/homepagePage');
 
 describe("Article bookmarks", function() {
     beforeEach(function () {
+        Cypress.env('RETRIES', 2);
         cy.visit('');
         cy.get(homepage.homepageLogo).should('be.visible');
     });
