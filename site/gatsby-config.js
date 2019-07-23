@@ -3,6 +3,13 @@ const { excludeDraftArticle } = require(`./src/utils/draft-excluder`)
 module.exports = {
   plugins: [
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        start_url: `/`,
+        orientation: `portrait`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `content`,
