@@ -27,7 +27,7 @@ export default ({ pageContext }) => {
   return (
     <div>
       <Metadata>Self Help Facility - Menu</Metadata>
-      <Topbar open={true} />
+      <Topbar backButton={true} />
       <VisuallyHidden>
         <h1>Menu</h1>
       </VisuallyHidden>

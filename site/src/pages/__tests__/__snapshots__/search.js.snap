@@ -180,8 +180,9 @@ exports[`Search renders correctly 1`] = `
         data-testid="topbarlink-button"
         onClick={[Function]}
       >
-        Menu
+        Close
       </div>
+      }
     </div>
   </header>
   <div

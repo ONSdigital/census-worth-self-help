@@ -9,7 +9,12 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { navigate } from "@reach/router"
 import VisuallyHidden from "@reach/visually-hidden"
 
-export default ({ searchObject = null, logo = false }) => {
+const backFunction = () => {
+  // Todo: implement a safe back button
+  navigate("/")
+}
+
+export default ({ searchObject = null, logo = false, backButton = false }) => {
   return (
     <header
       css={css`
@@ -71,7 +76,7 @@ export default ({ searchObject = null, logo = false }) => {
               autoFocus
             />
           </div>
-          <TopbarLink title="Menu" link="/menu/" />
+          <TopbarLink title="Close" clickFunction={backFunction} />}
         </div>
       )}
       {!searchObject && (
@@ -105,7 +110,10 @@ export default ({ searchObject = null, logo = false }) => {
             }
             link="/search/"
           />
-          <TopbarLink title="Menu" link="/menu/" />
+          {!backButton && <TopbarLink title="Menu" link="/menu/" />}
+          {backButton && (
+            <TopbarLink title="Close" clickFunction={backFunction} />
+          )}
         </div>
       )}
       {logo && <OnsLogo />}

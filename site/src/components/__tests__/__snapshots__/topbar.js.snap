@@ -314,8 +314,9 @@ exports[`TopBar renders correctly with searchbox 1`] = `
       data-testid="topbarlink-button"
       onClick={[Function]}
     >
-      Menu
+      Close
     </div>
+    }
   </div>
 </header>
 `;
