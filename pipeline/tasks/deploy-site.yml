@@ -58,6 +58,9 @@ run:
     cd census-worth-self-help/site
 
     npm ci
+    cd node_modules
+    ln -s ../../../.cache .
+    cd ..
 
     if [ "${PATCH_NETLIFY}" == "true" ]; then
       gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-${NETLIFY_PATCH_VERSION}.tar.gz .
