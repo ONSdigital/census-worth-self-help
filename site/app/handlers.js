@@ -1,5 +1,8 @@
+const bcrypt = require('bcrypt')
+
 const destinationRegex = /^[a-z0-9-]+$/
 const articleNameRegex = /[^a-z0-9-]*([a-z0-9-]+)\/$/
+const COOKIE_SECRET = process.env.COOKIE_SECRET
 
 const sanitizeDestination = function (destination) {
   if (!destination) {
@@ -19,6 +22,15 @@ const extractArticleName = function (path) {
   return false
 }
 
+// var validSecret = bcrypt.hash(Date.now() + COOKIE_SECRET, 10)
+
+let validSecret = ""
+
+const createValidSecret = () => {
+  validSecret = bcrypt.hashSync(Date.now() + COOKIE_SECRET, 10)
+  return validSecret
+}
+
 module.exports = {
   // User serialisation / deserialisation is simple one-to-one mappin
   mapUser : function (user, done) {
@@ -28,6 +40,8 @@ module.exports = {
   callback : function(req, res) {
     res.redirect('/' + sanitizeDestination(req.body.RelayState));
   },
+
+  createValidSecret,
 
   logout: function(idpLogout) {
     return function (req, res) {
@@ -42,7 +56,8 @@ module.exports = {
   },
 
   requireAuthenticated : function(req, res, next) {
-    if (req.isAuthenticated()) {
+    console.log(validSecret)
+    if (req.isAuthenticated() && req.user.secret == validSecret) {
       next()
     } else {
       const destination = extractArticleName(req.path)
