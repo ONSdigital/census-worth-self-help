@@ -182,7 +182,6 @@ exports[`Search renders correctly 1`] = `
       >
         Close
       </div>
-      }
     </div>
   </header>
   <div
