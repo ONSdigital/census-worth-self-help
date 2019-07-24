@@ -19,7 +19,7 @@ const PaginationIcon = ({
 }) => {
   return (
     <div
-      className="Article-Title-Style"
+      className="Article-Title-Style clickable"
       data-testid={testid}
       css={css`
         padding: 0px 5px;

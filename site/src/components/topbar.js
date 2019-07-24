@@ -75,7 +75,7 @@ export default ({ searchObject = null }) => {
           `}
         >
           <div
-            className="Header-Title-Style"
+            className="Header-Title-Style clickable"
             onClick={() => navigate("/")}
             css={css`
               ${spacing.vert_aligned_flex_text}

@@ -122,7 +122,7 @@ export default class Notification extends React.Component {
 
           <div
             data-testid="notification-close-button"
-            className="Article-sub-title-Style"
+            className="Article-sub-title-Style clickable"
             onClick={this.hide}
           >
             <FontAwesomeIcon

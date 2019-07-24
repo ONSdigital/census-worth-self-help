@@ -17,7 +17,7 @@ describe("Live chat", function() {
 
     it('The field officer can see the live chat icon on an article with webchat as a tag [ONS-122]', function () {
         cy.visit(globalTestData.aVerySimpleArticlePath);
-        cy.wait(1000);
+        cy.wait(5000);
         cy.get(webchat.liveChatButton).should('be.visible');
     });
 

@@ -149,7 +149,7 @@ exports[`Search renders correctly 1`] = `
         />
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,

@@ -48,7 +48,7 @@ export default class MenuLink extends React.Component {
         >
           <div
             onClick={() => navigate("/" + link)}
-            className="Menu-major-item-Style"
+            className="Menu-major-item-Style clickable"
             css={css`
               flex-grow: 1;
             `}
@@ -57,7 +57,7 @@ export default class MenuLink extends React.Component {
           </div>
           {hiddenMenu && (
             <div
-              className="Menu-major-item-Style"
+              className="Menu-major-item-Style clickable"
               data-testid="toggle-button"
               onClick={this.toggle}
               css={css`

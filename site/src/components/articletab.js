@@ -15,6 +15,7 @@ export default ({ node }) => {
   let clickFunction = node.clickFunction ? node.clickFunction : () => {}
   return (
     <div
+      className="clickable"
       onClick={() => { clickFunction(title); navigate("/" + link)} }
       css={css`
         ${spacing.tab};
