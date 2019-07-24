@@ -7,7 +7,7 @@ export default ({ hideFunction, submitFunction }) => {
       css={css`
         top: 0;
         position: fixed;
-        height: calc(100vh - 41px);
+        height: calc(100vh - 80px);
         width: calc(100vw - 40px);
         margin: 29px 20px 12px 20px;
         background-color: white;
@@ -70,6 +70,7 @@ export default ({ hideFunction, submitFunction }) => {
             text-align: center;
             border-right: 1px rgba(17, 17, 17, 0.1) solid;
           `}
+          className="clickable"
           onClick={hideFunction}
           data-testid="feedback-screen-cancel-button"
         >
@@ -84,6 +85,7 @@ export default ({ hideFunction, submitFunction }) => {
           `}
           data-testid="feedback-screen-submit-button"
           onClick={submitFunction}
+          className="clickable"
         >
           Submit
         </div>

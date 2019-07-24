@@ -26,13 +26,14 @@ jobs:
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml
         params:
           BACKEND_CONTENT_REPO: census-worth-self-help
-          DISABLE_NETLIFY: false
+          DISABLE_NETLIFY: true
           ENABLE_MATOMO: true
           GCP_SECRETS_VERSION: ((gcp.secrets-version))
+          INJECT_DEPLOYMENT_INFORMATION: true
           MATOMO_IP: ((matomo.matomo-ip-address))
           MATOMO_SITE_ID: 2
           MATOMO_URL: ((matomo.matomo-site-url))
-          PATCH_NETLIFY: true
+          PATCH_NETLIFY: false
           PROJECT: ((gcp.project-name))
           SERVICE: default
           SP_PROTECTED: false

@@ -5,45 +5,54 @@ handlers:
   - url: /(.*\.json)
     mime_type: application/json
     static_files: public/\1
+    secure: always
     upload: public/(.*\.json)
 
   - url: /(.*\.js)
     mime_type: text/javascript
     static_files: public/\1
+    secure: always
     upload: public/(.*\.js)
 
   - url: /(.*\.css)
     mime_type: text/css
     static_files: public/\1
+    secure: always
     upload: public/(.*\.css)
 
 # Images
   - url: /(.*\.(gif|ico|jpeg|jpg|png|svg))
     static_files: public/\1
+    secure: always
     upload: public/(.*\.(gif|ico|jpeg|jpg|png|svg))
 
 # Fonts
   - url: /(.*\.(woff|woff2|tff|eot))
     static_files: public/\1
+    secure: always
     upload: public/(.*\.(woff|woff2|tff|eots))
 
 # HTML handling
   - url: /(.*\.html)
     mime_type: text/html
     static_files: public/\1
+    secure: always
     upload: public/(.*\.html)
 
 # Home page handling
   - url: /
     static_files: public/index.html
+    secure: always
     upload: public/index.html
 
 # Support paths with a slash at the end
   - url: /(.+)/
     static_files: public/\1/index.html
+    secure: always
     upload: public/(.+)/index.html
 
 # Any left over we treat as a path
   - url: /(.+)
     static_files: public/\1/index.html
+    secure: always
     upload: public/(.+)/index.html

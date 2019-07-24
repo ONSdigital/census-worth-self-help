@@ -10,8 +10,7 @@ resources:
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
       branch: master
-    webhook_token: ((git.census-worth-self-help-webhook-token))
-    check_every: 24h
+    check_every: 1h
 
   - name: slack-notify
     type: slack-notification
@@ -23,6 +22,7 @@ jobs:
     build_log_retention:
       days: 7
       builds: 10
+    max_in_flight: 1
     plan:
       - get: census-worth-self-help
         trigger: true

@@ -1,5 +1,14 @@
+const { excludeDraftArticle } = require(`./src/utils/draft-excluder`)
+
 module.exports = {
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        start_url: `/`,
+        orientation: `portrait`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -23,7 +32,7 @@ module.exports = {
         },
         // Remove .md with no content
         filter: (node, getNode) => {
-          return node.rawMarkdownBody.trim() != ""
+          return node.rawMarkdownBody.trim() != "" && !excludeDraftArticle(node)
         },
       },
     },
@@ -51,6 +60,10 @@ module.exports = {
                 purgeOnQuotaError: true,
               }
             }
+          },
+          {
+            urlPattern: /sw.js$/,
+            handler: `staleWhileRevalidate`,
           },
           {
             urlPattern: /(\.js$|\.css$|static\/)/,

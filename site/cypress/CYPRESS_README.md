@@ -9,10 +9,10 @@ You can also add `--browser=chrome` if you want to run a test without opening th
     ./node_modules/.bin/cypress run --browser=chrome --spec <path/to/file>
     
 # Scripts in package.json
-There are scripts in package.json to run with either the test runner or headless:
+There are scripts in package.json to run with either headless or with the test runner open:
 
-    npm run cy:open
-    npm run cy:run
+    npm run e2e
+    npm run e2e-test-runner
 
 # x to skip a test suites or test cases
 You can place an 'x' before a test suite or case to skip it e.g. `xdescribe` or `xtest`
@@ -25,7 +25,9 @@ running, as the baseURL property in cypress.json will always look for localhost)
 cd into the site folder in your ONS project
 
     ln -s ../../secrets/cypress/cypress_env_variables.sh .
-    npm run cy:secured:test
+    npm run e2e-secured-test
+    OR
+    npm run e2e-secured-open
        
 # Merging mochawesome.json files to generate a single HTML report
 To get a HTML report, after a test has finished and JSON file has been created as the report, then run:

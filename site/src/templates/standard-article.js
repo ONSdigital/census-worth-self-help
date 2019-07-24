@@ -29,8 +29,7 @@ import { createHistory } from "@reach/router"
 import { css } from "@emotion/core"
 import { getTimeAgoPublished } from "../utils/time"
 
-import { transformSources } from "../utils/sourcetransforms"
-
+import { transformSources, htmlSanitize } from "../utils/contenttransforms"
 const bookmarkNotificationText = "Article added to bookmarks"
 const unbookmarkNotificationText = "Article removed from bookmarks"
 const feedbackNotificationText = "Thank you for your feedback"
@@ -118,6 +117,7 @@ export default class Article extends React.Component {
   }
 
   unBookmarkPage() {
+    Feedback.articleWasUnBookmarked(this.props.pageContext.title)
     this.bookmarkManager.unBookmarkPage(this.props.pageContext.title)
     this.setState({
       notificationId: this.state.notificationId + 1,
@@ -204,7 +204,9 @@ export default class Article extends React.Component {
                 <div
                   data-testid="article-content"
                   className="article-content"
-                  dangerouslySetInnerHTML={{ __html: articleContent }}
+                  dangerouslySetInnerHTML={{
+                    __html: htmlSanitize(articleContent)
+                  }}
                 />
               </TextBlock>
             </div>

@@ -1,3 +1,5 @@
+import Feedback from "./feedback"
+
 export default class BookmarkManager {
   constructor() {
     try {
@@ -35,5 +37,11 @@ export default class BookmarkManager {
 
     this.localStorage &&
       this.localStorage.setItem("bookmarks", JSON.stringify(this.bookmarks))
+  }
+
+  addBookmarkClickEventToEdges(edges) {
+    edges.forEach(
+      edge => (edge.node.clickFunction = Feedback.bookmarkClickEvent)
+    )
   }
 }

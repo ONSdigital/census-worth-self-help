@@ -2,12 +2,40 @@ runtime: nodejs10
 service: default
 default_expiration: 60m
 handlers:
-# Netlify CMS has a config.yml that needs to be served up
-  - url: /(.*\.yml)
+  - url: /admin/(.*\.yml)
     mime_type: text/yaml
+    static_files: public/admin/\1
+    secure: always
+    upload: public/admin/(.*\.yml)
+
+  - url: /admin/cms.css
+    mime_type: text/css
+    static_files: public/admin/cms.css
+    secure: always
+    upload: public/admin/cms.css
+
+  - url: /admin/
+    expiration: 5m
+    static_files: public/admin/index.html
+    upload: public/admin/index.html
+    http_headers:
+      Content-Security-Policy: |-
+        connect-src 'self' https://api.github.com; default-src 'self'; img-src 'self' data: https://*.githubusercontent.com; media-src https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';
+
+  - url: /admin/index.html
+    expiration: 5m
+    static_files: public/admin/index.html
+    upload: public/admin/index.html
+    http_headers:
+      Content-Security-Policy: |-
+        connect-src 'self' https://api.github.com; default-src 'self'; img-src 'self' data: https://*.githubusercontent.com; media-src https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';
+
+  - url: /(sw.js)
+    expiration: 1m
+    mime_type: text/javascript
     static_files: public/\1
     secure: always
-    upload: public/(.*\.yml)
+    upload: public/(.*\.js)
 
   - url: /(.*\.js)
     expiration: 1d
@@ -22,19 +50,19 @@ handlers:
     static_files: public/\1
     secure: always
     upload: public/(.*\.(gif|ico|jpeg|jpg|png|svg))
-    
 
 # Fonts
-  - url: /(.*\.(woff|woff2|tff|eot))
+  - url: /(.*\.(woff|woff2|ttf|eot))
     expiration: 7d
     static_files: public/\1
     secure: always
-    upload: public/(.*\.(woff|woff2|tff|eots))
-    
+    upload: public/(.*\.(woff|woff2|ttf|eots))
+
   - url: /icons
     expiration: 1d
     static_dir: public/icons
     secure: always
+
 # Protected page handling
   - url: /(.*)
     script: auto

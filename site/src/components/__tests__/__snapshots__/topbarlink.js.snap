@@ -2,7 +2,7 @@
 
 exports[`TopBarLink renders correctly 1`] = `
 <div
-  className="Header-button-Style"
+  className="Header-button-Style clickable"
   css={
     Object {
       "map": undefined,

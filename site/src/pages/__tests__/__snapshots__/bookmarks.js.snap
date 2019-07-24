@@ -43,7 +43,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
       }
     >
       <div
-        className="Header-Title-Style"
+        className="Header-Title-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -67,7 +67,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         Self Help Facility
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -125,7 +125,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         </div>
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -201,6 +201,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         }
       >
         <div
+          className="clickable"
           css={
             Object {
               "map": undefined,
@@ -390,6 +391,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
       >
         <div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -549,7 +551,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
           }
         >
           <div
-            className="Article-Title-Style"
+            className="Article-Title-Style clickable"
             css={
               Object {
                 "map": undefined,
@@ -659,7 +661,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
       }
     >
       <div
-        className="Header-Title-Style"
+        className="Header-Title-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -683,7 +685,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         Self Help Facility
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -741,7 +743,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         </div>
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -817,6 +819,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         }
       >
         <div
+          className="clickable"
           css={
             Object {
               "map": undefined,
