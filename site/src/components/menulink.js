@@ -61,6 +61,7 @@ export default class MenuLink extends React.Component {
               <div
                 css={css`
                   padding-right: 15px;
+                  min-width: 15px;
                 `}
               >
                 {icon}

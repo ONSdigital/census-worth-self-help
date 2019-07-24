@@ -316,7 +316,6 @@ exports[`TopBar renders correctly with searchbox 1`] = `
     >
       Close
     </div>
-    }
   </div>
 </header>
 `;
