@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+var crypto = require('crypto');
 
 const destinationRegex = /^[a-z0-9-]+$/
 const articleNameRegex = /[^a-z0-9-]*([a-z0-9-]+)\/$/

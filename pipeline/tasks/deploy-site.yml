@@ -46,7 +46,7 @@ run:
     census-worth-self-help/pipeline/tasks/task-scripts/activate-service-account.sh
     gcloud config set project $PROJECT
 
-    apk add --no-progress --update nodejs nodejs-npm
+    apk add --no-progress --update nodejs nodejs-npm build-essential 
     echo "npm version"
     npm -v
     node --version
@@ -57,7 +57,6 @@ run:
 
     cd census-worth-self-help/site
 
-    sudo apt install build-essential  
     npm ci
 
     if [ "${PATCH_NETLIFY}" == "true" ]; then
