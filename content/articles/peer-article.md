@@ -1,6 +1,6 @@
 ---
 title: Peer article
-date: 2019-05-29T10:09:58.020Z
+date: 2019-07-18T14:50:13+01:00
 description: This article is a peer to a directory
 directory: Format Tests
 priority: 2

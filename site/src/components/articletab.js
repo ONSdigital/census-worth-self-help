@@ -16,7 +16,10 @@ export default ({ node }) => {
   return (
     <div
       className="clickable"
-      onClick={() => { clickFunction(title); navigate("/" + link)} }
+      onClick={() => {
+        clickFunction(title)
+        navigate("/" + link)
+      }}
       css={css`
         ${spacing.tab};
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
