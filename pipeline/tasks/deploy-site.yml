@@ -57,6 +57,7 @@ run:
 
     cd census-worth-self-help/site
 
+    sudo apt install build-essential  
     npm ci
 
     if [ "${PATCH_NETLIFY}" == "true" ]; then
