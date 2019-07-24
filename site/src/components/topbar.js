@@ -76,7 +76,7 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
               autoFocus
             />
           </div>
-          <TopbarLink title="Close" clickFunction={backFunction} />}
+          <TopbarLink title="Close" clickFunction={backFunction} />
         </div>
       )}
       {!searchObject && (
