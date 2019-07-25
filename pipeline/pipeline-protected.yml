@@ -20,7 +20,6 @@ jobs:
     max_in_flight: 1
     plan:
       - get: census-worth-self-help
-        trigger: true
       - get: content-repository
       - task: deploy
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml
