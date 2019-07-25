@@ -52,7 +52,7 @@ module.exports = {
 
     validateToken = (secret) => {
       decodedSecret = crypto.createDecipher("aes-256-ctr", COOKIE_SECRET).update(secret, "hex", "utf-8")
-      return ((Date.now().toString() - decodedSecret) / (60 * 1000) < 120)
+      return ((Date.now().toString() - decodedSecret) / (1 * 60 * 1000) < 1)
     }
 
     if (req.isAuthenticated() && validateToken(req.user.secret)) {

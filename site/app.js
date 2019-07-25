@@ -35,12 +35,14 @@ if (SP_PROTECTED === "false") {
 
   // For an protected deployment, protect static file from /public with SAML SSO
 
+  const minutes = (x) => x * 60 * 1000;
+
   app.use(cookieParser());
   app.use(cookieSession({
     name: 'token', 
     secret: COOKIE_SECRET, 
-    maxAge: 1 * 60 * 1000,
-    expires: 1 * 60 * 1000
+    maxAge: minutes(1),
+    expires: minutes(1)
   }));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(passport.initialize())
