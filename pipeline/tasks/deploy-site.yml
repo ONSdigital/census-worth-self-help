@@ -66,7 +66,7 @@ run:
       npm install worth-netlify-cms-app-2-9-1-x.tar.gz --only=prod
     fi
 
-    census-worth-self-help/pipeline/tasks/task-scripts/move-content.sh
+    ../pipeline/tasks/task-scripts/move-content.sh
 
     if [ "${INJECT_DEPLOYMENT_INFORMATION}" == "true" ] ; then
       ../pipeline/tasks/task-scripts/inject-deployment-information.sh
