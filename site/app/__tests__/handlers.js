@@ -47,7 +47,6 @@ describe("sso", function() {
       expect(response.redirectCalledWith).to.equal("/")
     })
   })
-  
   describe("requireAuthenticated", function() {
     it("Should redirect if not authenticated", function() {
       let state = { allowed: false }

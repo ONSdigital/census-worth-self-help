@@ -49,7 +49,6 @@ module.exports = {
   },
 
   requireAuthenticated : function(req, res, next) {
-
     if (req.isAuthenticated() && (calculateCookieTime(req.user.secret) < cookieTimeout)) {
       next()
     } else {

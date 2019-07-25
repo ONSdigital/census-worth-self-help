@@ -25,18 +25,16 @@ if (SP_PROTECTED === "false") {
   const cookieSession = require('cookie-session')
   const cookieParser = require('cookie-parser')
   const bodyParser = require('body-parser')
-  const { callback, logout, mapUser, preAuthenticate, requireAuthenticated, createValidSecret } = require('./app/handlers')
+  const { callback, logout, mapUser, preAuthenticate, requireAuthenticated } = require('./app/handlers')
 
   const COOKIE_SECRET = process.env.COOKIE_SECRET
   const IDP_ENTRY_POINT = process.env.IDP_ENTRY_POINT
   const IDP_LOGOUT = process.env.IDP_LOGOUT
   const SP_CALLBACK_URL = process.env.SP_CALLBACK_URL
   const SP_ENTITY_ID = process.env.SP_ENTITY_ID
-
-  // For an protected deployment, protect static file from /public with SAML SSO
-
   const minutes = (x) => x * 60 * 1000;
 
+  // For an protected deployment, protect static file from /public with SAML SSO
   app.use(cookieParser());
   app.use(cookieSession({
     name: 'token', 
