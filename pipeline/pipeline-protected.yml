@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: feature/ONS-231-sso-token-time-out
+      branch: master
     check_every: 15m
 
   - name: content-repository
@@ -20,6 +20,7 @@ jobs:
     max_in_flight: 1
     plan:
       - get: census-worth-self-help
+        trigger: true
       - get: content-repository
       - task: deploy
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml
@@ -42,4 +43,3 @@ jobs:
           SP_DOMAIN_NAME: secured.((dns.default-domain))
           SP_KEY: ((sso.sp-key))
           SP_PROTECTED: true
-          SKIP_UNIT_TESTS: true

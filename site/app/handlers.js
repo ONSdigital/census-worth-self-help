@@ -54,11 +54,7 @@ module.exports = {
 
   requireAuthenticated : function(req, res, next) {
 
-    validateToken = (secret) => {
-      return calculateCookieTime(secret) < cookieTimeout
-    }
-
-    if (req.isAuthenticated() && validateToken(req.user.secret)) {
+    if (req.isAuthenticated() && (calculateCookieTime(req.user.secret) < cookieTimeout)) {
       next()
     } else {
       const destination = extractArticleName(req.path)
