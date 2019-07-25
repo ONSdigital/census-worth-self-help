@@ -19,13 +19,16 @@ exports[`Most Recent renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "181ra4m",
+        "name": "gw0q2y",
         "next": undefined,
         "styles": "
         width: 100vw;
         
     background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       ",
       }
     }
@@ -34,16 +37,18 @@ exports[`Most Recent renders correctly 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1thgah9",
+          "name": "19nu28a",
           "next": undefined,
           "styles": "
             display: flex;
+            width: 100%;
+            max-width: 800px;
           ",
         }
       }
     >
       <div
-        className="Header-Title-Style"
+        className="Header-Title-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -67,7 +72,7 @@ exports[`Most Recent renders correctly 1`] = `
         Self Help Facility
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -125,7 +130,7 @@ exports[`Most Recent renders correctly 1`] = `
         </div>
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -159,18 +164,15 @@ exports[`Most Recent renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "o9ztju",
+        "name": "1tuxxlm",
         "next": undefined,
         "styles": "
-          
-    margin: 0 auto;
-    max-width: 700px;
-  
           overflow: scroll;
           width: 100vw;
           display: flex;
           flex-direction: column;
           flex-grow: 1;
+          align-items: center;
         ",
       }
     }
@@ -179,10 +181,12 @@ exports[`Most Recent renders correctly 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1k0aln6",
+          "name": "azpgwp",
           "next": undefined,
           "styles": "
             flex-grow: 1;
+            width: 100%;
+            max-width: 800px;
           ",
         }
       }
@@ -201,6 +205,7 @@ exports[`Most Recent renders correctly 1`] = `
         }
       >
         <div
+          className="clickable"
           css={
             Object {
               "map": undefined,
@@ -372,7 +377,7 @@ exports[`Most Recent renders correctly 1`] = `
           }
         }
       >
-        Most recent changes, need to check with Phil to see if there's actually content for this
+        This list shows the most recently updated articles since the last time you visited the site.
       </div>
       <div
         css={
@@ -390,6 +395,7 @@ exports[`Most Recent renders correctly 1`] = `
       >
         <div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -482,6 +488,7 @@ exports[`Most Recent renders correctly 1`] = `
         </div>
         <div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -574,6 +581,7 @@ exports[`Most Recent renders correctly 1`] = `
         </div>
         <div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -666,6 +674,7 @@ exports[`Most Recent renders correctly 1`] = `
         </div>
         <div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -758,6 +767,7 @@ exports[`Most Recent renders correctly 1`] = `
         </div>
         <div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -917,7 +927,7 @@ exports[`Most Recent renders correctly 1`] = `
           }
         >
           <div
-            className="Article-Title-Style"
+            className="Article-Title-Style clickable"
             css={
               Object {
                 "map": undefined,
@@ -935,7 +945,7 @@ exports[`Most Recent renders correctly 1`] = `
             1
           </div>
           <div
-            className="Article-Title-Style"
+            className="Article-Title-Style clickable"
             css={
               Object {
                 "map": undefined,
@@ -953,7 +963,7 @@ exports[`Most Recent renders correctly 1`] = `
             2
           </div>
           <div
-            className="Article-Title-Style"
+            className="Article-Title-Style clickable"
             css={
               Object {
                 "map": undefined,
@@ -987,7 +997,7 @@ exports[`Most Recent renders correctly 1`] = `
             </svg>
           </div>
           <div
-            className="Article-Title-Style"
+            className="Article-Title-Style clickable"
             css={
               Object {
                 "map": undefined,

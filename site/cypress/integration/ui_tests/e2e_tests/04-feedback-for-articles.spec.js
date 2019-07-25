@@ -1,6 +1,5 @@
 /// <reference types="Cypress" />
 
-const commands = require('../../../support/commands.js');
 const globalTestData = require('../../../fixtures/globalTestData');
 
 // fragments
@@ -14,12 +13,13 @@ const notUseful = 'Not useful';
 
 describe("Article feedback", function() {
     beforeEach(function () {
+        Cypress.env('RETRIES', 2);
         cy.visit('');
         cy.get(homepage.homepageLogo).should('be.visible');
     });
 
     it('Marking an article as useful [ONS-57]', function () {
-        cy.visit(globalTestData.firstArticlePath);
+        cy.visit(globalTestData.deepArticlePath);
         cy.get(feedback.feedbackButtons).contains(useful).click();
         cy.get(feedback.feedbackNotification).should('be.visible');
         cy.get(feedback.feedbackButtonSelected).should('have.text', useful);
@@ -27,7 +27,7 @@ describe("Article feedback", function() {
     });
 
     it('Marking an article as not useful, but cancelling it [ONS-57]', function() {
-        cy.visit(globalTestData.firstArticlePath);
+        cy.visit(globalTestData.deepArticlePath);
         cy.get(feedback.feedbackButtons).contains(notUseful).click();
         cy.get(feedback.feedbackTextField).should('be.visible').type('feedback');
         cy.get(feedback.cancelFeedbackButton).should('be.visible').click();
@@ -36,7 +36,7 @@ describe("Article feedback", function() {
     });
 
     it('Marking an article as not useful, then submitting feedback [ONS-57]', function() {
-        cy.visit(globalTestData.firstArticlePath);
+        cy.visit(globalTestData.deepArticlePath);
         cy.get(feedback.feedbackButtons).contains(notUseful).click();
         cy.get(feedback.feedbackTextField).should('be.visible').type('feedback');
         cy.get(feedback.submitFeedbackButton).should('be.visible').click();

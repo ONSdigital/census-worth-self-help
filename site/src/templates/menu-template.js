@@ -6,6 +6,13 @@ import Metadata from "../components/metadata"
 import VisuallyHidden from "@reach/visually-hidden"
 
 import { css } from "@emotion/core"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faHome,
+  faClock,
+  faBookmark,
+  faPhone
+} from "@fortawesome/free-solid-svg-icons"
 
 export default ({ pageContext }) => {
   let menuLinks = pageContext.menutree.map(menu_node => (
@@ -20,33 +27,59 @@ export default ({ pageContext }) => {
   return (
     <div>
       <Metadata>Self Help Facility - Menu</Metadata>
-      <Topbar open={true} />
+      <Topbar backButton={true} />
       <VisuallyHidden>
         <h1>Menu</h1>
       </VisuallyHidden>
       <div
         css={css`
+          width: 100vw;
           min-height: 100vh;
-          ${spacing.main_box};
           ${gradients.navy_shine};
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         `}
         data-testid="menu-template-menu-box-overlay"
       >
-        <MenuLink link="" title="Home" />
-        <hr
+        <div
           css={css`
-            border-top: 1px solid white;
+            width: 100%;
+            max-width: ${spacing.desktop_max_width};
           `}
-        />
-        {menuLinks}
-        <hr
-          css={css`
-            border-top: 1px solid white;
-          `}
-        />
-        <MenuLink link="mostrecent/" title="Recently updated" />
-        <MenuLink link="bookmarks/" title="My Bookmarks" />
-        <MenuLink link="contactcentre/" title="Census Field Support" />
+        >
+          <MenuLink
+            link=""
+            title="Home"
+            icon={<FontAwesomeIcon icon={faHome} />}
+          />
+          <hr
+            css={css`
+              border-top: 1px solid white;
+            `}
+          />
+          {menuLinks}
+          <hr
+            css={css`
+              border-top: 1px solid white;
+            `}
+          />
+          <MenuLink
+            link="mostrecent/"
+            title="Recently updated"
+            icon={<FontAwesomeIcon icon={faClock} />}
+          />
+          <MenuLink
+            link="bookmarks/"
+            title="My Bookmarks"
+            icon={<FontAwesomeIcon icon={faBookmark} />}
+          />
+          <MenuLink
+            link="contactcentre/"
+            title="Census Field Support"
+            icon={<FontAwesomeIcon icon={faPhone} />}
+          />
+        </div>
       </div>
     </div>
   )

@@ -1,6 +1,5 @@
 /// <reference types="Cypress" />
 
-const commands = require('../../../support/commands.js');
 const globalTestData = require('../../../fixtures/globalTestData');
 
 // fragments
@@ -14,6 +13,7 @@ const homepage = require('../../../fixtures/pages/homepagePage');
 
 describe("Navigating the site and reading articles", function() {
     beforeEach(function () {
+        Cypress.env('RETRIES', 2);
         cy.visit('');
         cy.get(homepage.homepageLogo).should('be.visible');
     });
@@ -40,19 +40,19 @@ describe("Navigating the site and reading articles", function() {
 
     it('Exploring content from an article to get to the Root page and dive into another section', function () {
         const firstOption = '#react-select-2-option-0';
-        cy.visit(globalTestData.firstArticlePath);
+        cy.visit(globalTestData.deepArticlePath);
         cy.get('.Button-subhead-Style').first().click();
         cy.get(firstOption).click();
-        cy.url().should('include', '/explore');
+        cy.url().should('include', globalTestData.explorePagePath);
         cy.get(homepage.articleCard).contains('Format Tests').click();
-        cy.url().should('include', '/format-tests');
+        cy.url().should('include', globalTestData.formatTestsPath);
     });
 
     it('An image in an article', function () {
-        const imageArticleUrlPath = '/image-tests';
-        cy.visit(imageArticleUrlPath);
-        cy.url().should('include', imageArticleUrlPath);
-        cy.get(`[title='image title']`).then(($el) => {
+        const imageTitle = `[title='image title']`;
+        cy.visit(globalTestData.imageArticlePath);
+        cy.url().should('include', globalTestData.imageArticlePath);
+        cy.get(imageTitle).then(($el) => {
           Cypress.dom.isVisible($el)
         })
     });
@@ -69,20 +69,46 @@ describe("Navigating the site and reading articles", function() {
         cy.get(menu.menuOverlay).should('not.be.visible');
         cy.get(menu.menuButton).contains('Menu').click();
         cy.get(menu.menuOverlay).should('be.visible');
+        cy.get(menu.menuButton).contains('Close').click();
+        cy.get(menu.menuButton).contains('Menu');
+        cy.get(menu.menuOverlay).should('not.be.visible');
     });
 
     it('The field officer should see related articles [ONS-65]', function () {
-        const editorialWorkflowArticle = 'editorial workflow';
-        const editorialWorkflowPath = '/editorial-workflow';
-        const reviwemeArticle = 'reviweme';
-        const reviwemeUrlPath = '/reviweme';
-        cy.visit(reviwemeUrlPath);
-        cy.get(search.searchResultTitle).should('not.have.text', editorialWorkflowArticle);
+        cy.visit(globalTestData.reviwemePath);
+        cy.get(search.searchResultTitle).should('not.have.text', globalTestData.editorialWorkflowArticle);
         cy.contains('ALSO IN THIS TOPIC');
-        cy.get(homepage.articleCard).contains(editorialWorkflowArticle).click();
-        cy.url().should('include', editorialWorkflowPath);
-        cy.get(search.searchResultTitle).should('not.have.text', reviwemeArticle);
-        cy.get(search.searchResultTitle).should('have.text', editorialWorkflowArticle);
+        cy.get(homepage.articleCard).contains(globalTestData.editorialWorkflowArticle).click();
+        cy.url().should('include', globalTestData.editorialWorkflowPath);
+        cy.get(search.searchResultTitle).should('not.have.text', globalTestData.reviwemeArticle);
+        cy.get(search.searchResultTitle).should('have.text', globalTestData.editorialWorkflowArticle);
+    });
+
+    it('The field officer dives deeper into directories to find an article', function () {
+        // Alias
+        cy.get(homepage.articleCard).as('articleCard');
+
+        cy.get(homepage.exploreContentButton).click();
+
+        cy.contains('many directories deep').click();
+        cy.url().should('include', '/many-directories-deep/');
+
+        cy.get('@articleCard').should('have.text', 'deep 2').click();
+        cy.url().should('include', '/deep-2/');
+
+        cy.get('@articleCard').should('have.text', 'deep 3').click();
+        cy.url().should('include', '/deep-3/');
+
+        cy.get('@articleCard').should('have.text', 'deep 4').click();
+        cy.url().should('include', '/deep-4/');
+
+        cy.get('@articleCard').should('have.text', 'deep 5').click();
+        cy.url().should('include', '/deep-5/');
+
+        cy.get('@articleCard').should('have.text', globalTestData.deepArticle).click();
+        cy.url().should('include', globalTestData.deepArticlePath);
+
+        cy.get(search.searchResultTitle).should('have.text', globalTestData.deepArticle);
     });
 
     it('Most recent pagination [ONS-64]', function () {

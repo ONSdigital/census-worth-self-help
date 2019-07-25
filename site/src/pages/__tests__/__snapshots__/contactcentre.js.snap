@@ -19,13 +19,16 @@ exports[`Contact centre renders correctly with data 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "181ra4m",
+        "name": "gw0q2y",
         "next": undefined,
         "styles": "
         width: 100vw;
         
     background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       ",
       }
     }
@@ -34,16 +37,18 @@ exports[`Contact centre renders correctly with data 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1thgah9",
+          "name": "19nu28a",
           "next": undefined,
           "styles": "
             display: flex;
+            width: 100%;
+            max-width: 800px;
           ",
         }
       }
     >
       <div
-        className="Header-Title-Style"
+        className="Header-Title-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -67,7 +72,7 @@ exports[`Contact centre renders correctly with data 1`] = `
         Self Help Facility
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -125,7 +130,7 @@ exports[`Contact centre renders correctly with data 1`] = `
         </div>
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -159,18 +164,15 @@ exports[`Contact centre renders correctly with data 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "o9ztju",
+        "name": "1tuxxlm",
         "next": undefined,
         "styles": "
-          
-    margin: 0 auto;
-    max-width: 700px;
-  
           overflow: scroll;
           width: 100vw;
           display: flex;
           flex-direction: column;
           flex-grow: 1;
+          align-items: center;
         ",
       }
     }
@@ -179,10 +181,12 @@ exports[`Contact centre renders correctly with data 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1k0aln6",
+          "name": "azpgwp",
           "next": undefined,
           "styles": "
             flex-grow: 1;
+            width: 100%;
+            max-width: 800px;
           ",
         }
       }
@@ -278,6 +282,7 @@ exports[`Contact centre renders correctly with data 1`] = `
         </div>
         <div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -370,6 +375,7 @@ exports[`Contact centre renders correctly with data 1`] = `
         </div>
         <div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -462,6 +468,7 @@ exports[`Contact centre renders correctly with data 1`] = `
         </div>
         <div>
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -718,6 +725,7 @@ exports[`Contact centre renders correctly with data 1`] = `
           href="tel:01111333333"
         >
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,
@@ -908,13 +916,16 @@ exports[`Contact centre renders correctly without data 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "181ra4m",
+        "name": "gw0q2y",
         "next": undefined,
         "styles": "
         width: 100vw;
         
     background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       ",
       }
     }
@@ -923,16 +934,18 @@ exports[`Contact centre renders correctly without data 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1thgah9",
+          "name": "19nu28a",
           "next": undefined,
           "styles": "
             display: flex;
+            width: 100%;
+            max-width: 800px;
           ",
         }
       }
     >
       <div
-        className="Header-Title-Style"
+        className="Header-Title-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -956,7 +969,7 @@ exports[`Contact centre renders correctly without data 1`] = `
         Self Help Facility
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -1014,7 +1027,7 @@ exports[`Contact centre renders correctly without data 1`] = `
         </div>
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -1048,18 +1061,15 @@ exports[`Contact centre renders correctly without data 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "o9ztju",
+        "name": "1tuxxlm",
         "next": undefined,
         "styles": "
-          
-    margin: 0 auto;
-    max-width: 700px;
-  
           overflow: scroll;
           width: 100vw;
           display: flex;
           flex-direction: column;
           flex-grow: 1;
+          align-items: center;
         ",
       }
     }
@@ -1068,10 +1078,12 @@ exports[`Contact centre renders correctly without data 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1k0aln6",
+          "name": "azpgwp",
           "next": undefined,
           "styles": "
             flex-grow: 1;
+            width: 100%;
+            max-width: 800px;
           ",
         }
       }
@@ -1291,6 +1303,7 @@ exports[`Contact centre renders correctly without data 1`] = `
           href="tel:0123456789"
         >
           <div
+            className="clickable"
             css={
               Object {
                 "map": undefined,

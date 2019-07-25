@@ -10,6 +10,7 @@ export default ({ node }) => {
 
   return (
     <div
+      className="clickable"
       onClick={() => navigate("/" + link)}
       css={css`
         ${spacing.tab};

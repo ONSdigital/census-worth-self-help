@@ -31,14 +31,24 @@ export default ({ phone_link = false }) => {
       {phone_link && (
         <div
           css={css`
-            margin-bottom: 34px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
           `}
         >
-          <LargeButton
-            icon={<FontAwesomeIcon icon={faPhone} />}
-            title="Census Field Support"
-            link="/contactcentre/"
-          />
+          <div
+            css={css`
+              margin-bottom: 34px;
+              max-width: 350px;
+              width: 100%;
+            `}
+          >
+            <LargeButton
+              icon={<FontAwesomeIcon icon={faPhone} />}
+              title="Census Field Support"
+              link="/contactcentre/"
+            />
+          </div>
         </div>
       )}
       <div className="Footer-Style">© Office for National Statistics 2019</div>

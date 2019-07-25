@@ -15,7 +15,11 @@ export default ({ node }) => {
   let clickFunction = node.clickFunction ? node.clickFunction : () => {}
   return (
     <div
-      onClick={() => { clickFunction(title); navigate("/" + link)} }
+      className="clickable"
+      onClick={() => {
+        clickFunction(title)
+        navigate("/" + link)
+      }}
       css={css`
         ${spacing.tab};
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);

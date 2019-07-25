@@ -1,6 +1,6 @@
 body {
-  margin: 0px;
-  background-color:rgb(250, 250, 250);
+	margin: 0px;
+	background-color:rgb(250, 250, 250);
 }
 
 .article-content img, .article-content video {
@@ -11,8 +11,12 @@ body {
 	padding: 10px 0px;
 }
 
+.clickable {
+	cursor: pointer;
+}
+
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .webchat-link {

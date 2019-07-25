@@ -19,13 +19,16 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "181ra4m",
+        "name": "gw0q2y",
         "next": undefined,
         "styles": "
         width: 100vw;
         
     background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       ",
       }
     }
@@ -34,16 +37,18 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1thgah9",
+          "name": "19nu28a",
           "next": undefined,
           "styles": "
             display: flex;
+            width: 100%;
+            max-width: 800px;
           ",
         }
       }
     >
       <div
-        className="Header-Title-Style"
+        className="Header-Title-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -67,7 +72,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         Self Help Facility
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -125,7 +130,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         </div>
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -154,72 +159,67 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         Menu
       </div>
     </div>
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "k6unfh",
+          "next": undefined,
+          "styles": "
+        width: 100%;
+        max-width: 800px;
+      ",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "border": 0,
+            "clip": "rect(0 0 0 0)",
+            "height": "1px",
+            "margin": "-1px",
+            "overflow": "hidden",
+            "padding": 0,
+            "position": "absolute",
+            "width": "1px",
+          }
+        }
+      >
+        <h1>
+          Self Help Facility
+        </h1>
+      </div>
+      <img
+        alt="Main logo"
+        css={
+          Object {
+            "map": undefined,
+            "name": "10mfl7n",
+            "next": undefined,
+            "styles": "
+          padding: 0px 15px 20px 15px;
+        ",
+          }
+        }
+        data-test="ons-logo__header"
+        src="/ONS_logo.svg"
+      />
+    </div>
   </header>
   <div
     css={
       Object {
         "map": undefined,
-        "name": "181ra4m",
+        "name": "1tuxxlm",
         "next": undefined,
         "styles": "
-        width: 100vw;
-        
-    background: linear-gradient(to left, rgb(0,61,89), #33637a);
-  ;
-      ",
-      }
-    }
-  >
-    <div
-      style={
-        Object {
-          "border": 0,
-          "clip": "rect(0 0 0 0)",
-          "height": "1px",
-          "margin": "-1px",
-          "overflow": "hidden",
-          "padding": 0,
-          "position": "absolute",
-          "width": "1px",
-        }
-      }
-    >
-      <h1>
-        Self Help Facility
-      </h1>
-    </div>
-    <img
-      alt="Main logo"
-      css={
-        Object {
-          "map": undefined,
-          "name": "10mfl7n",
-          "next": undefined,
-          "styles": "
-          padding: 0px 15px 20px 15px;
-        ",
-        }
-      }
-      data-test="ons-logo__header"
-      src="/ONS_logo.svg"
-    />
-  </div>
-  <div
-    css={
-      Object {
-        "map": undefined,
-        "name": "o9ztju",
-        "next": undefined,
-        "styles": "
-          
-    margin: 0 auto;
-    max-width: 700px;
-  
           overflow: scroll;
           width: 100vw;
           display: flex;
           flex-direction: column;
           flex-grow: 1;
+          align-items: center;
         ",
       }
     }
@@ -228,10 +228,12 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1k0aln6",
+          "name": "azpgwp",
           "next": undefined,
           "styles": "
             flex-grow: 1;
+            width: 100%;
+            max-width: 800px;
           ",
         }
       }
@@ -302,6 +304,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         }
       >
         <div
+          className="clickable"
           css={
             Object {
               "map": undefined,
@@ -398,11 +401,11 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "ukgb2j",
+            "name": "t6c09x",
             "next": undefined,
             "styles": "
-          margin-bottom: 45px;
-        ",
+            margin-bottom: 45px;
+          ",
           }
         }
       >
@@ -624,13 +627,16 @@ exports[`Index renders correctly without data and has no alert 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "181ra4m",
+        "name": "gw0q2y",
         "next": undefined,
         "styles": "
         width: 100vw;
         
     background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       ",
       }
     }
@@ -639,16 +645,18 @@ exports[`Index renders correctly without data and has no alert 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1thgah9",
+          "name": "19nu28a",
           "next": undefined,
           "styles": "
             display: flex;
+            width: 100%;
+            max-width: 800px;
           ",
         }
       }
     >
       <div
-        className="Header-Title-Style"
+        className="Header-Title-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -672,7 +680,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         Self Help Facility
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -730,7 +738,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         </div>
       </div>
       <div
-        className="Header-button-Style"
+        className="Header-button-Style clickable"
         css={
           Object {
             "map": undefined,
@@ -759,72 +767,67 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         Menu
       </div>
     </div>
+    <div
+      css={
+        Object {
+          "map": undefined,
+          "name": "k6unfh",
+          "next": undefined,
+          "styles": "
+        width: 100%;
+        max-width: 800px;
+      ",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "border": 0,
+            "clip": "rect(0 0 0 0)",
+            "height": "1px",
+            "margin": "-1px",
+            "overflow": "hidden",
+            "padding": 0,
+            "position": "absolute",
+            "width": "1px",
+          }
+        }
+      >
+        <h1>
+          Self Help Facility
+        </h1>
+      </div>
+      <img
+        alt="Main logo"
+        css={
+          Object {
+            "map": undefined,
+            "name": "10mfl7n",
+            "next": undefined,
+            "styles": "
+          padding: 0px 15px 20px 15px;
+        ",
+          }
+        }
+        data-test="ons-logo__header"
+        src="/ONS_logo.svg"
+      />
+    </div>
   </header>
   <div
     css={
       Object {
         "map": undefined,
-        "name": "181ra4m",
+        "name": "1tuxxlm",
         "next": undefined,
         "styles": "
-        width: 100vw;
-        
-    background: linear-gradient(to left, rgb(0,61,89), #33637a);
-  ;
-      ",
-      }
-    }
-  >
-    <div
-      style={
-        Object {
-          "border": 0,
-          "clip": "rect(0 0 0 0)",
-          "height": "1px",
-          "margin": "-1px",
-          "overflow": "hidden",
-          "padding": 0,
-          "position": "absolute",
-          "width": "1px",
-        }
-      }
-    >
-      <h1>
-        Self Help Facility
-      </h1>
-    </div>
-    <img
-      alt="Main logo"
-      css={
-        Object {
-          "map": undefined,
-          "name": "10mfl7n",
-          "next": undefined,
-          "styles": "
-          padding: 0px 15px 20px 15px;
-        ",
-        }
-      }
-      data-test="ons-logo__header"
-      src="/ONS_logo.svg"
-    />
-  </div>
-  <div
-    css={
-      Object {
-        "map": undefined,
-        "name": "o9ztju",
-        "next": undefined,
-        "styles": "
-          
-    margin: 0 auto;
-    max-width: 700px;
-  
           overflow: scroll;
           width: 100vw;
           display: flex;
           flex-direction: column;
           flex-grow: 1;
+          align-items: center;
         ",
       }
     }
@@ -833,10 +836,12 @@ exports[`Index renders correctly without data and has no alert 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1k0aln6",
+          "name": "azpgwp",
           "next": undefined,
           "styles": "
             flex-grow: 1;
+            width: 100%;
+            max-width: 800px;
           ",
         }
       }
@@ -856,6 +861,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         }
       >
         <div
+          className="clickable"
           css={
             Object {
               "map": undefined,
@@ -952,11 +958,11 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "ukgb2j",
+            "name": "t6c09x",
             "next": undefined,
             "styles": "
-          margin-bottom: 45px;
-        ",
+            margin-bottom: 45px;
+          ",
           }
         }
       >

@@ -88,7 +88,7 @@ exports[`Notification renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="Article-sub-title-Style"
+      className="Article-sub-title-Style clickable"
       data-testid="notification-close-button"
       onClick={[Function]}
     >

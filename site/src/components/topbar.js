@@ -2,24 +2,35 @@ import React from "react"
 import { css } from "@emotion/core"
 import { gradients, spacing, colors } from "../utils/styles"
 import TopbarLink from "./topbarlink"
+import OnsLogo from "./onslogo"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { navigate } from "@reach/router"
 import VisuallyHidden from "@reach/visually-hidden"
 
-export default ({ searchObject = null }) => {
+const backFunction = () => {
+  // Todo: implement a safe back button
+  navigate("/")
+}
+
+export default ({ searchObject = null, logo = false, backButton = false }) => {
   return (
     <header
       css={css`
         width: 100vw;
         ${gradients.navy_shine};
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       `}
     >
       {searchObject && (
         <div
           css={css`
             display: flex;
+            width: 100%;
+            max-width: ${spacing.desktop_max_width};
           `}
         >
           <div
@@ -65,17 +76,19 @@ export default ({ searchObject = null }) => {
               autoFocus
             />
           </div>
-          <TopbarLink title="Menu" link="/menu/" />
+          <TopbarLink title="Close" clickFunction={backFunction} />
         </div>
       )}
       {!searchObject && (
         <div
           css={css`
             display: flex;
+            width: 100%;
+            max-width: ${spacing.desktop_max_width};
           `}
         >
           <div
-            className="Header-Title-Style"
+            className="Header-Title-Style clickable"
             onClick={() => navigate("/")}
             css={css`
               ${spacing.vert_aligned_flex_text}
@@ -97,9 +110,13 @@ export default ({ searchObject = null }) => {
             }
             link="/search/"
           />
-          <TopbarLink title="Menu" link="/menu/" />
+          {!backButton && <TopbarLink title="Menu" link="/menu/" />}
+          {backButton && (
+            <TopbarLink title="Close" clickFunction={backFunction} />
+          )}
         </div>
       )}
+      {logo && <OnsLogo />}
     </header>
   )
 }
