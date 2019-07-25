@@ -7,7 +7,7 @@ export default ({ hideFunction, submitFunction }) => {
       css={css`
         top: 0;
         position: fixed;
-        height: calc(100vh - 41px);
+        height: calc(100vh - 80px);
         width: calc(100vw - 40px);
         margin: 29px 20px 12px 20px;
         background-color: white;

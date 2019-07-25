@@ -401,11 +401,11 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "ukgb2j",
+            "name": "t6c09x",
             "next": undefined,
             "styles": "
-          margin-bottom: 45px;
-        ",
+            margin-bottom: 45px;
+          ",
           }
         }
       >
@@ -958,11 +958,11 @@ exports[`Index renders correctly without data and has no alert 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "ukgb2j",
+            "name": "t6c09x",
             "next": undefined,
             "styles": "
-          margin-bottom: 45px;
-        ",
+            margin-bottom: 45px;
+          ",
           }
         }
       >

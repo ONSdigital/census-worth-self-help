@@ -377,7 +377,7 @@ exports[`Most Recent renders correctly 1`] = `
           }
         }
       >
-        Most recent changes, need to check with Phil to see if there's actually content for this
+        This list shows the most recently updated articles since the last time you visited the site.
       </div>
       <div
         css={
