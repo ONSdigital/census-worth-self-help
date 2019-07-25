@@ -1,12 +1,9 @@
-const crypto = require('crypto');
-
 const destinationRegex = /^[a-z0-9-]+$/
 const articleNameRegex = /[^a-z0-9-]*([a-z0-9-]+)\/$/
 
 // Note, the time here is in minutes
 const cookieTimeout = process.env.COOKIE_TIMEOUT || 1
 const validCookieAge = process.env.VALID_COOKIE_AGE || 1
-
 
 const sanitizeDestination = function (destination) {
   if (!destination) {
@@ -28,7 +25,6 @@ const extractArticleName = function (path) {
 
 let calculateCookieTime = (secret) => 
   ((Date.now().toString() - secret) / (validCookieAge * 60 * 1000))
-
 
 module.exports = {
   // User serialisation / deserialisation is simple one-to-one mappin

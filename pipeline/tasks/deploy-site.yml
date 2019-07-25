@@ -46,7 +46,7 @@ run:
     census-worth-self-help/pipeline/tasks/task-scripts/activate-service-account.sh
     gcloud config set project $PROJECT
 
-    apk add --no-progress --update nodejs nodejs-npm build-base
+    apk add --no-progress --update nodejs nodejs-npm
     echo "npm version"
     npm -v
     node --version
