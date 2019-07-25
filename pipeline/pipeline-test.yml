@@ -32,7 +32,7 @@ jobs:
           ENABLE_MATOMO: true
           MATOMO_IP: ((matomo.matomo-ip-address))
           MATOMO_SITE_ID: 8
-          PATCH_NETLIFY: true
+          PATCH_NETLIFY: false
           PROJECT: ((gcp.project-name))
           SERVICE: testbeta
           SKIP_UNIT_TESTS: true
