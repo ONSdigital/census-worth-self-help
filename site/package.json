@@ -49,6 +49,7 @@
     "babel-preset-gatsby": "0.1.11",
     "chai": "4.2.0",
     "cypress": "^3.4.0",
+    "cypress-plugin-retries": "1.2.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.8.0",
     "jest-dom": "3.4.0",

@@ -1,7 +1,8 @@
 /// <reference types="Cypress" />
 
 describe("Request the secured homepage with a valid cookie to check for a 200 status code and the homepage is available", function() {
-    it('SSO request 2', function () {
+    it('Check status code of site and homepage is up', function () {
+        Cypress.env('RETRIES', 2);
         cy.request({
             method: 'GET',
             url: '/',

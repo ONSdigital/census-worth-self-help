@@ -13,6 +13,8 @@ There are scripts in package.json to run with either headless or with the test r
 
     npm run e2e
     npm run e2e-test-runner
+You will also need to export the environment variables for live chat before running the tests. These are in the secrets
+repo.
 
 # x to skip a test suites or test cases
 You can place an 'x' before a test suite or case to skip it e.g. `xdescribe` or `xtest`
@@ -32,7 +34,7 @@ cd into the site folder in your ONS project
 # Merging mochawesome.json files to generate a single HTML report
 To get a HTML report, after a test has finished and JSON file has been created as the report, then run:
 
-    npm run merge:reports
+    npm run merge-reports
     
 This will compile all JSON report files into a single HTML file, to open in a browser.
 

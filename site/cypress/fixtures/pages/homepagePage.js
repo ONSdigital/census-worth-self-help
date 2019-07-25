@@ -4,7 +4,7 @@ module.exports = {
     exploreContentIcon: `svg[data-icon='book']`,
     exploreContentButton: `[data-testid='large-button']`,
     footerOnsMessage: `.Footer-Style`,
-    footerLogo: 'data-testid="footer-logo"',
+    footerLogo: `data-testid='footer-logo'`,
     headerTitleSelfHelpFacility: `.Header-Title-Style`,
     homepageTitle: `[data-test='mainLogo__title']`,
     homepageLogo: `[data-test='ons-logo__header']`,
