@@ -64,7 +64,7 @@ if (SP_PROTECTED === "false") {
         nameID: profile.nameID,
         nameIDFormat: profile.nameIDFormat,
         email: profile.email,
-        secret: createValidSecret ()
+        secret: Date.now()
       })
     })
 
