@@ -60,6 +60,7 @@
     "mochawesome-merge": "2.0.1",
     "mochawesome-report-generator": "4.0.0",
     "mockdate": "2.0.3",
+    "nodemon": "^1.19.1",
     "prettier": "1.17.1",
     "react-test-renderer": "16.8.6",
     "react-testing-library": "7.0.1",

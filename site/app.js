@@ -36,7 +36,7 @@ if (SP_PROTECTED === "false") {
   // For an protected deployment, protect static file from /public with SAML SSO
 
   app.use(cookieParser());
-  app.use(cookieSession({name: 'token', secret: COOKIE_SECRET, maxAge: 5 * 60 * 1000}));
+  app.use(cookieSession({name: 'token', secret: COOKIE_SECRET, maxAge: 1 * 60 * 1000}));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(passport.initialize())
   app.use(passport.session())
