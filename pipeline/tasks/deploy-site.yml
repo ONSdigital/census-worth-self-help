@@ -20,6 +20,7 @@ params:
   AUTH_KEY: ((gcp.service-account-key))
   GCP_SECRETS_VERSION: ((gcp.secrets-version))
   NETLIFY_BUCKET_NAME: ((gcp.netlify-bucket-name))
+  NETLIFY_VERSION: "2.9.7"
   GATSBY_ASSETS_PATH: ((gatsby.assets-path))
   GATSBY_CHAT_BUTTON_CONTAINER_ID: ((gatsby.chat-button-container-id))
   GATSBY_CHAT_CHANNEL: ((gatsby.chat-channel))
@@ -62,8 +63,8 @@ run:
     cd ..
 
     if [ "${PATCH_NETLIFY}" == "true" ]; then
-      gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-2-9-1-x.tar.gz .
-      npm install worth-netlify-cms-app-2-9-1-x.tar.gz --only=prod
+      gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-${NETLIFY_VERSION}-x.tar.gz .
+      npm install worth-netlify-cms-app-${NETLIFY_VERSION}-x.tar.gz --only=prod
     fi
 
     BUILD="_build/content/"
