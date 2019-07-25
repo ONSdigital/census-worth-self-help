@@ -32,6 +32,7 @@ if (SP_PROTECTED === "false") {
   const IDP_LOGOUT = process.env.IDP_LOGOUT
   const SP_CALLBACK_URL = process.env.SP_CALLBACK_URL
   const SP_ENTITY_ID = process.env.SP_ENTITY_ID
+  const cookieTimeout = process.env.COOKIE_TIMEOUT || 5
   const minutes = (x) => x * 60 * 1000;
 
   // For an protected deployment, protect static file from /public with SAML SSO
@@ -39,8 +40,7 @@ if (SP_PROTECTED === "false") {
   app.use(cookieSession({
     name: 'token', 
     secret: COOKIE_SECRET, 
-    maxAge: minutes(1),
-    expires: minutes(1)
+    maxAge: minutes(cookieTimeout)
   }));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(passport.initialize())

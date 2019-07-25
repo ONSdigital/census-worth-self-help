@@ -2,8 +2,8 @@ const destinationRegex = /^[a-z0-9-]+$/
 const articleNameRegex = /[^a-z0-9-]*([a-z0-9-]+)\/$/
 
 // Note, the time here is in minutes
-const cookieTimeout = process.env.COOKIE_TIMEOUT || 1
-const validCookieAge = process.env.VALID_COOKIE_AGE || 1
+const cookieTimeout = process.env.COOKIE_TIMEOUT || 5
+const validCookieAge = process.env.VALID_COOKIE_AGE || 15
 
 const sanitizeDestination = function (destination) {
   if (!destination) {
@@ -23,7 +23,7 @@ const extractArticleName = function (path) {
   return false
 }
 
-let calculateCookieTime = (secret) => 
+let calculateCookieAge = (secret) => 
   ((Date.now().toString() - secret) / (validCookieAge * 60 * 1000))
 
 module.exports = {
@@ -49,7 +49,7 @@ module.exports = {
   },
 
   requireAuthenticated : function(req, res, next) {
-    if (req.isAuthenticated() && (calculateCookieTime(req.user.secret) < cookieTimeout)) {
+    if (req.isAuthenticated() && (calculateCookieAge(req.user.secret) < cookieTimeout)) {
       next()
     } else {
       const destination = extractArticleName(req.path)
