@@ -8,5 +8,5 @@ ASSET_DIR="static/assets/"
 
 #cp -R ../../content-repository/static/assets/ "$ASSET_DIR"
 find ../../content-repository/static/assets \
-	-type f \( -name "*.jpg" -or -name "*.jpeg" -or -name "*.png" -or -name "*.gif" \) -print0  \
+  -type f \( -name "*.jpg" -or -name "*.jpeg" -or -name "*.png" -or -name "*.gif" \) -print0  \
 | xargs -0 -I filepath cp -prv filepath "$ASSET_DIR"
