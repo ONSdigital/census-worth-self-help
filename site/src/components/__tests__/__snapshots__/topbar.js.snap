@@ -5,13 +5,16 @@ exports[`TopBar renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "181ra4m",
+      "name": "gw0q2y",
       "next": undefined,
       "styles": "
         width: 100vw;
         
     background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       ",
     }
   }
@@ -20,10 +23,12 @@ exports[`TopBar renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1thgah9",
+        "name": "19nu28a",
         "next": undefined,
         "styles": "
             display: flex;
+            width: 100%;
+            max-width: 800px;
           ",
       }
     }
@@ -148,13 +153,16 @@ exports[`TopBar renders correctly with searchbox 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "181ra4m",
+      "name": "gw0q2y",
       "next": undefined,
       "styles": "
         width: 100vw;
         
     background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       ",
     }
   }
@@ -163,10 +171,12 @@ exports[`TopBar renders correctly with searchbox 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1thgah9",
+        "name": "19nu28a",
         "next": undefined,
         "styles": "
             display: flex;
+            width: 100%;
+            max-width: 800px;
           ",
       }
     }
@@ -304,7 +314,7 @@ exports[`TopBar renders correctly with searchbox 1`] = `
       data-testid="topbarlink-button"
       onClick={[Function]}
     >
-      Menu
+      Close
     </div>
   </div>
 </header>

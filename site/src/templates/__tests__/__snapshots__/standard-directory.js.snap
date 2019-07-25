@@ -19,13 +19,16 @@ exports[`StandardArticle renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "181ra4m",
+        "name": "gw0q2y",
         "next": undefined,
         "styles": "
         width: 100vw;
         
     background: linear-gradient(to left, rgb(0,61,89), #33637a);
   ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       ",
       }
     }
@@ -34,10 +37,12 @@ exports[`StandardArticle renders correctly 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1thgah9",
+          "name": "19nu28a",
           "next": undefined,
           "styles": "
             display: flex;
+            width: 100%;
+            max-width: 800px;
           ",
         }
       }
@@ -159,18 +164,15 @@ exports[`StandardArticle renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "o9ztju",
+        "name": "1tuxxlm",
         "next": undefined,
         "styles": "
-          
-    margin: 0 auto;
-    max-width: 700px;
-  
           overflow: scroll;
           width: 100vw;
           display: flex;
           flex-direction: column;
           flex-grow: 1;
+          align-items: center;
         ",
       }
     }
@@ -179,10 +181,12 @@ exports[`StandardArticle renders correctly 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1k0aln6",
+          "name": "azpgwp",
           "next": undefined,
           "styles": "
             flex-grow: 1;
+            width: 100%;
+            max-width: 800px;
           ",
         }
       }

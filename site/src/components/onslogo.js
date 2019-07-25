@@ -1,14 +1,14 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { gradients } from "../utils/styles"
+import { spacing } from "../utils/styles"
 import VisuallyHidden from "@reach/visually-hidden"
 
 export default () => {
   return (
     <div
       css={css`
-        width: 100vw;
-        ${gradients.navy_shine};
+        width: 100%;
+        max-width: ${spacing.desktop_max_width};
       `}
     >
       <VisuallyHidden>

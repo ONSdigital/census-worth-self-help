@@ -69,6 +69,9 @@ describe("Navigating the site and reading articles", function() {
         cy.get(menu.menuOverlay).should('not.be.visible');
         cy.get(menu.menuButton).contains('Menu').click();
         cy.get(menu.menuOverlay).should('be.visible');
+        cy.get(menu.menuButton).contains('Close').click();
+        cy.get(menu.menuButton).contains('Menu');
+        cy.get(menu.menuOverlay).should('not.be.visible');
     });
 
     it('The field officer should see related articles [ONS-65]', function () {
