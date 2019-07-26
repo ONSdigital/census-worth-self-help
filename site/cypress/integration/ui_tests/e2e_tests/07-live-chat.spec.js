@@ -8,7 +8,7 @@ const webchat = require('../../../fixtures/fragments/webchat');
 // pages
 const homepage = require('../../../fixtures/pages/homepagePage');
 
-describe("Live chat", function() {
+xdescribe("Live chat", function() {
     beforeEach(function () {
         Cypress.env('RETRIES', 2);
         cy.visit('');
