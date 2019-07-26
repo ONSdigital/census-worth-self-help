@@ -31,7 +31,7 @@ export default class Index extends React.Component {
       if (data.markdownRemark.frontmatter.alert_title) {
         alertTitle = data.markdownRemark.frontmatter.alert_title
       }
-      alertText = data.markdownRemark.frontmatter.alert_content
+      alertText = data.markdownRemark.html
     }
 
     const topArticleCount = 3
@@ -139,11 +139,11 @@ export const query = graphql`
   }
 
   query {
-    markdownRemark(frontmatter: { alert_content: { ne: null } }) {
+    markdownRemark(frontmatter: { alert_title: { ne: null } }) {
       frontmatter {
-        alert_content
         alert_title
       }
+      html
     }
 
     allMarkdownRemark(
