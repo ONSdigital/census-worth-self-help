@@ -6,4 +6,8 @@ mkdir -p "$builddir" && cp -R ../content/ "$builddir";
 
 assetdir="static/assets/"
 rm -rf "$assetdir"
-cp -R ../static/assets "$assetdir";
+mkdir "$assetdir"
+
+find ../static/assets -type f \( -name "*.jpg" -or -name "*.jpeg" -or -name "*.png" -or -name "*.gif" \) -print0  \
+| xargs -0 -I filepath cp -prv filepath "$assetdir"
+

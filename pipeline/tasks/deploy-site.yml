@@ -67,10 +67,7 @@ run:
       npm install worth-netlify-cms-app-${NETLIFY_PATCH_VERSION}.tar.gz --only=prod
     fi
 
-    BUILD="_build/content/"
-    mkdir -p "$BUILD" && cp -R ../../content-repository/content/* "$BUILD"
-    ASSET_DIR="static/assets/"
-    cp -R ../../content-repository/static/assets/ "$ASSET_DIR"
+    ../pipeline/tasks/task-scripts/move-content.sh
 
     if [ "${INJECT_DEPLOYMENT_INFORMATION}" == "true" ] ; then
       ../pipeline/tasks/task-scripts/inject-deployment-information.sh
