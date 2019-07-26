@@ -4,6 +4,7 @@ const articleNameRegex = /[^a-z0-9-]*([a-z0-9-]+)\/$/
 // Note, the time here is in minutes
 const validCookieAge = process.env.VALID_COOKIE_AGE || 5
 const milliseconds = (minutes) => minutes * 60 * 1000 
+const clock_contingency = process.env.CLOCK_CONTINGENCY || -1
 
 const sanitizeDestination = function (destination) {
   if (!destination) {
@@ -24,7 +25,7 @@ const extractArticleName = function (path) {
 }
 
 let isTokenValid = (date) => 
-  ((Date.now().toString() - date) < milliseconds(validCookieAge))
+  (clock_contingency < (Date.now().toString() - date) < milliseconds(validCookieAge))
 
 module.exports = {
   // User serialisation / deserialisation is simple one-to-one mappin
