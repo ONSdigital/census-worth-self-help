@@ -14,6 +14,9 @@ let request = {
   isAuthenticated: function() {
     return false
   },
+  user: {
+    date: Date.now()
+  },
   logout: function() {
     this.logoutCalled = true
   }
@@ -53,6 +56,26 @@ describe("sso", function() {
       expect(state.allowed).to.equal(false)
       expect(response.redirectCalledWith).to.equal("/login")
     })
+    it("Should redirect if token expired", function() {
+      let state = { allowed: false }
+      requireAuthenticated(
+        {
+          ...request,
+          isAuthenticated: function() {
+            return true
+          },
+          user:{
+            date: 234234235
+          }
+        },
+        response,
+        () => {
+          state.allowed = false
+        }
+      )
+      expect(state.allowed).to.equal(false)
+      expect(response.redirectCalledWith).to.equal("/login")
+    })
     it("Should redirect deep if not authenticated", function() {
       let state = { allowed: false }
       requireAuthenticated({ ...request, path: "/my-page/" }, response, () => {
@@ -61,23 +84,7 @@ describe("sso", function() {
       expect(state.allowed).to.equal(false)
       expect(response.redirectCalledWith).to.equal("/login?destination=my-page")
     })
-    it("Should allow if authenticated", function() {
-      let state = { allowed: false }
-      requireAuthenticated(
-        {
-          ...request,
-          isAuthenticated: function() {
-            return true
-          }
-        },
-        response,
-        () => {
-          state.allowed = true
-        }
-      )
-      expect(state.allowed).to.equal(true)
-    })
-    it("Should allow if authenticated ", function() {
+    it("Should allow if authenticated and token valid", function() {
       let state = { allowed: false }
       requireAuthenticated(
         {

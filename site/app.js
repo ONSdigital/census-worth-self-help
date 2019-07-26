@@ -25,18 +25,22 @@ if (SP_PROTECTED === "false") {
   const cookieSession = require('cookie-session')
   const cookieParser = require('cookie-parser')
   const bodyParser = require('body-parser')
-  const { callback, logout, mapUser, preAuthenticate, requireAuthenticated } = require('./app/handlers')
+  const { callback, logout, mapUser, preAuthenticate, requireAuthenticated, milliseconds } = require('./app/handlers')
 
   const COOKIE_SECRET = process.env.COOKIE_SECRET
   const IDP_ENTRY_POINT = process.env.IDP_ENTRY_POINT
   const IDP_LOGOUT = process.env.IDP_LOGOUT
   const SP_CALLBACK_URL = process.env.SP_CALLBACK_URL
   const SP_ENTITY_ID = process.env.SP_ENTITY_ID
+  const cookieTimeout = process.env.COOKIE_TIMEOUT || 5
 
   // For an protected deployment, protect static file from /public with SAML SSO
-
   app.use(cookieParser());
-  app.use(cookieSession({name: 'token', secret: COOKIE_SECRET}));
+  app.use(cookieSession({
+    name: 'token', 
+    secret: COOKIE_SECRET, 
+    maxAge: milliseconds(cookieTimeout)
+  }));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(passport.initialize())
   app.use(passport.session())
@@ -56,7 +60,8 @@ if (SP_PROTECTED === "false") {
       done(null, {
         nameID: profile.nameID,
         nameIDFormat: profile.nameIDFormat,
-        email: profile.email
+        email: profile.email,
+        date: Date.now()
       })
     })
 
