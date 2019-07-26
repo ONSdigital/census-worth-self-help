@@ -33,14 +33,14 @@ if (SP_PROTECTED === "false") {
   const SP_CALLBACK_URL = process.env.SP_CALLBACK_URL
   const SP_ENTITY_ID = process.env.SP_ENTITY_ID
   const cookieTimeout = process.env.COOKIE_TIMEOUT || 5
-  const minutes = (x) => x * 60 * 1000;
+  const milliseconds = (minute) => minute * 60 * 1000;
 
   // For an protected deployment, protect static file from /public with SAML SSO
   app.use(cookieParser());
   app.use(cookieSession({
     name: 'token', 
     secret: COOKIE_SECRET, 
-    maxAge: minutes(cookieTimeout)
+    maxAge: milliseconds(cookieTimeout)
   }));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(passport.initialize())
@@ -62,7 +62,7 @@ if (SP_PROTECTED === "false") {
         nameID: profile.nameID,
         nameIDFormat: profile.nameIDFormat,
         email: profile.email,
-        secret: Date.now()
+        date: Date.now()
       })
     })
 

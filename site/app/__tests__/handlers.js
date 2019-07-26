@@ -15,7 +15,7 @@ let request = {
     return false
   },
   user: {
-    secret: Date.now()
+    date: Date.now()
   },
   logout: function() {
     this.logoutCalled = true
@@ -73,7 +73,7 @@ describe("sso", function() {
             return true
           },
           user:{
-            secret: 234234235
+            date: 234234235
           }
         },
         response,
@@ -84,7 +84,7 @@ describe("sso", function() {
       expect(state.allowed).to.equal(false)
       expect(response.redirectCalledWith).to.equal("/login")
     })
-    it("Should allow if authenticated ", function() {
+    it("Should allow if authenticated and token valid", function() {
       let state = { allowed: false }
       requireAuthenticated(
         {
