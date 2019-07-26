@@ -2,7 +2,26 @@ import CMS from "netlify-cms-app"
 import React from "react"
 import TextBlock from "../components/textblock"
 import PageTitle from "../components/pagetitle"
-import { transformSources } from "../utils/contenttransforms"
+import { transformSources, htmlSanitize } from "../utils/contenttransforms"
+
+import { WidgetPreviewContainer } from "netlify-cms-ui-default"
+import NetlifyCmsWidgetMarkdown from "netlify-cms-widget-markdown"
+
+const SanitiziedMarkdownPreview = opts => {
+  let widget = NetlifyCmsWidgetMarkdown.previewComponent(opts)
+  let dangerousHtml = widget.props.dangerouslySetInnerHTML.__html
+  return (
+    <WidgetPreviewContainer
+      dangerouslySetInnerHTML={{ __html: htmlSanitize(dangerousHtml) }}
+    />
+  )
+}
+
+CMS.registerWidget(
+  "sanitiziedMarkdown",
+  NetlifyCmsWidgetMarkdown.controlComponent,
+  SanitiziedMarkdownPreview
+)
 
 const ArticlePreview = ({ entry, widgetFor }) => {
   let linkDiv = ""

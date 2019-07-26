@@ -22,7 +22,7 @@ collections:
       - { name: title, label: Title }
       - { name: date, label: Publish Date, widget: datetime }
       - { name: description, label: Description }
-      - { name: body, label: Main Body, widget: markdown }
+      - { name: body, label: Main Body, widget: sanitiziedMarkdown }
       - { label: "Directory",
           name: "directory",
           widget: "relation",

@@ -12,7 +12,9 @@ export const transformSources = htmlString => {
 
 export const htmlSanitize = htmlString => {
   return sanitizeHtml(htmlString, {
-    allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+    allowedTags: sanitizeHtml.defaults.allowedTags.filter(function(tag) {
+      return tag !== "iframe"
+    }).concat([
       "video",
       "audio",
       "img",
