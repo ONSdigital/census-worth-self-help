@@ -30,12 +30,12 @@ handlers:
       Content-Security-Policy: |-
         connect-src 'self' https://api.github.com; default-src 'self'; img-src 'self' data: https://*.githubusercontent.com; media-src https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';
 
-  - url: /cms.js
-    expiration: 60m
+  - url: /admin/cms.js
+    expiration: 30m
     mime_type: text/javascript
-    static_files: public/cms.js
+    static_files: public/admin/cms.js
     secure: always
-    upload: public/cms.js
+    upload: public/admin/cms.js
 
   - url: /sw.js
     expiration: 1m
