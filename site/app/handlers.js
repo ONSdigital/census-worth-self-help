@@ -23,10 +23,8 @@ const extractArticleName = function (path) {
   return false
 }
 
-let isTokenValid = (date) => {
-  console.log(((Date.now().toString() - date) < milliseconds(validCookieAge)))
-  return ((Date.now().toString() - date) < milliseconds(validCookieAge))
-}
+let isTokenValid = (date) => 
+  ((Date.now().toString() - date) < milliseconds(validCookieAge))
 
 module.exports = {
   // User serialisation / deserialisation is simple one-to-one mappin
