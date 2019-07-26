@@ -1,11 +1,5 @@
 var sanitizeHtml = require("sanitize-html")
 
-const customTags = sanitizeHtml.defaults.allowedTags
-  .filter(function(tag) {
-    return tag !== "iframe"
-  })
-  .concat(["video", "audio", "img", "source", "h1", "h2"])
-
 export const transformSources = htmlString => {
   let videoPath = process.env.GATSBY_ASSETS_PATH
     ? process.env.GATSBY_ASSETS_PATH
