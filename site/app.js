@@ -39,7 +39,7 @@ if (SP_PROTECTED === "false") {
   app.use(cookieSession({
     name: 'token', 
     secret: COOKIE_SECRET, 
-    maxAge: milliseconds(cookieTimeout)
+    maxAge: milliseconds (cookieTimeout)
   }));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(passport.initialize())

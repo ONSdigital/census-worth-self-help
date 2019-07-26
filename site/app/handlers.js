@@ -49,6 +49,8 @@ module.exports = {
     next();
   },
 
+  milliseconds,
+
   requireAuthenticated : function(req, res, next) {
     if (req.isAuthenticated() && isTokenValid (req.user.date)) {
       next()
