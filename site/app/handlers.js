@@ -24,8 +24,10 @@ const extractArticleName = function (path) {
   return false
 }
 
-const isTokenValid = (date) =>
-  (CLOCK_CONTINGENCY < (Date.now().toString() - date) < VALID_TOKEN_AGE)
+const isTokenValid = (date) => {
+  let delta = Date.now() - date
+  return CLOCK_CONTINGENCY < delta && delta < VALID_TOKEN_AGE
+}
 
 module.exports = {
   // User serialisation / deserialisation is simple one-to-one mappin
