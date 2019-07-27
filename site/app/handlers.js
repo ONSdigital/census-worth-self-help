@@ -1,10 +1,10 @@
-const destinationRegex = /^[a-z0-9-]+$/
-const articleNameRegex = /[^a-z0-9-]*([a-z0-9-]+)\/$/
+const destinationRegex = /^[a-z0-9-\.\/]+$/
+const pageNameRegex = /\/[^a-z0-9-\.\/]*([a-z0-9-\.\/]+)$/
 
 // Note, the time here is in minutes
-const validCookieAge = process.env.VALID_COOKIE_AGE || 5
-const milliseconds = (minutes) => minutes * 60 * 1000 
-const clock_contingency = process.env.CLOCK_CONTINGENCY || -1
+const milliseconds = (minutes) => minutes * 60 * 1000
+const VALID_TOKEN_AGE = milliseconds(process.env.VALID_TOKEN_AGE || 5)
+const CLOCK_CONTINGENCY = milliseconds(process.env.CLOCK_CONTINGENCY || -1)
 
 const sanitizeDestination = function (destination) {
   if (!destination) {
@@ -12,20 +12,22 @@ const sanitizeDestination = function (destination) {
   }
 
   if (destination.match(destinationRegex)) {
-    return destination + '/'
+    return destination
   }
   return ''
 }
 
-const extractArticleName = function (path) {
-  if (path.match(articleNameRegex)) {
-    return articleNameRegex.exec(path)[1]
+const extractPageName = function (path) {
+  if (path.match(pageNameRegex)) {
+    return pageNameRegex.exec(path)[1]
   }
   return false
 }
 
-let isTokenValid = (date) => 
-  (clock_contingency < (Date.now().toString() - date) < milliseconds(validCookieAge))
+const isTokenValid = (date) => {
+  let delta = Date.now() - date
+  return CLOCK_CONTINGENCY < delta && delta < VALID_TOKEN_AGE
+}
 
 module.exports = {
   // User serialisation / deserialisation is simple one-to-one mappin
@@ -52,10 +54,10 @@ module.exports = {
   milliseconds,
 
   requireAuthenticated : function(req, res, next) {
-    if (req.isAuthenticated() && isTokenValid (req.user.date)) {
+    if (req.isAuthenticated() && isTokenValid(req.user.date)) {
       next()
     } else {
-      const destination = extractArticleName(req.path)
+      const destination = extractPageName(req.path)
       if (destination) {
         res.redirect('/login?destination=' + destination)
       } else {

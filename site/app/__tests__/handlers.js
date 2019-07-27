@@ -29,15 +29,28 @@ let response = {
   }
 }
 
+let state = {
+  allowed: false,
+  next: function() {
+    state.allowed = true
+  }.bind()
+}
+
 describe("sso", function() {
+  beforeEach(() => {
+    state.allowed = false
+  });
+
   describe("callback", function() {
     it("Should redirect to default page ", function() {
       callback(request, response)
       expect(response.redirectCalledWith).to.equal("/")
     })
     it("Should redirect to desired page ", function() {
-      callback({ ...request, body: { RelayState: "my-page" } }, response)
+      callback({ ...request, body: { RelayState: "my-page/" } }, response)
       expect(response.redirectCalledWith).to.equal("/my-page/")
+      callback({ ...request, body: { RelayState: "sw.js" } }, response)
+      expect(response.redirectCalledWith).to.equal("/sw.js")
     })
     it("Should restrict undesired destinations ", function() {
       callback(
@@ -49,43 +62,57 @@ describe("sso", function() {
   })
   describe("requireAuthenticated", function() {
     it("Should redirect if not authenticated", function() {
-      let state = { allowed: false }
-      requireAuthenticated(request, response, () => {
-        state.allowed = true
-      })
+      requireAuthenticated(request, response, state)
       expect(state.allowed).to.equal(false)
       expect(response.redirectCalledWith).to.equal("/login")
     })
     it("Should redirect if token expired", function() {
-      let state = { allowed: false }
-      requireAuthenticated(
-        {
-          ...request,
-          isAuthenticated: function() {
-            return true
-          },
-          user:{
-            date: 234234235
-          }
-        },
-        response,
-        () => {
-          state.allowed = false
+      [
+        ['Old', 1, false],
+        ['Now', Date.now(), true],
+        ['3 minutes ago', Date.now() - 180 * 1000, true],
+        ['10 minutes ago', Date.now() - 600 * 1000, false],
+        ['An hour ago', Date.now() - 3600 * 1000, false],
+        ['In 2 minutes', Date.now() + 180 * 1000, false],
+        ['In 30 seconds', Date.now() + 30 * 1000, true],
+        ['Negative', -5000, false]
+      ].forEach(item => {
+        let state = {
+          allowed: false,
+          next: function() {
+            state.allowed = true
+          }.bind()
         }
-      )
-      expect(state.allowed).to.equal(false)
-      expect(response.redirectCalledWith).to.equal("/login")
+        requireAuthenticated(
+          {
+            ...request,
+            isAuthenticated: () => true,
+            user: {
+              date: item[1]
+            }
+          },
+          response,
+          state.next,
+        )
+        expect(state.allowed, item[0] + ':' + item[1]).to.equal(item[2])
+      })
     })
     it("Should redirect deep if not authenticated", function() {
-      let state = { allowed: false }
-      requireAuthenticated({ ...request, path: "/my-page/" }, response, () => {
-        state.allowed = true
-      })
+      requireAuthenticated({ ...request, path: "/my-page/" }, response, state.next)
       expect(state.allowed).to.equal(false)
-      expect(response.redirectCalledWith).to.equal("/login?destination=my-page")
+      expect(response.redirectCalledWith).to.equal("/login?destination=my-page/")
+    })
+    it("Should redirect index.html if not authenticated", function() {
+      requireAuthenticated({ ...request, path: "/my-page/index.html" }, response, state.next)
+      expect(state.allowed).to.equal(false)
+      expect(response.redirectCalledWith).to.equal("/login?destination=my-page/index.html")
+    })
+    it("Should redirect sw.js if not authenticated", function() {
+      requireAuthenticated({ ...request, path: "/sw.js" }, response, state.next)
+      expect(state.allowed).to.equal(false)
+      expect(response.redirectCalledWith).to.equal("/login?destination=sw.js")
     })
     it("Should allow if authenticated and token valid", function() {
-      let state = { allowed: false }
       requireAuthenticated(
         {
           ...request,
@@ -94,9 +121,7 @@ describe("sso", function() {
           }
         },
         response,
-        () => {
-          state.allowed = true
-        }
+        state.next
       )
       expect(state.allowed).to.equal(true)
     })

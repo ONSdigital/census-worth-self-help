@@ -9,7 +9,7 @@ resources:
   - name: content-repository
     type: git
     source:
-      uri: https://github.com/ONSdigital/census-worth-self-help.git
+      uri: https://github.com/ONSdigital/census-worth-self-help-test.git
       branch: master
 
 jobs:
