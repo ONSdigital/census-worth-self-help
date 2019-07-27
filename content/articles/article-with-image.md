@@ -9,4 +9,4 @@ Article with Image
 
 Image
 
-![image alt text](/assets/screenshot-2019-06-04-at-08.41.30.png "image title")
+![image alt text](/assets/test-image.png "image title")

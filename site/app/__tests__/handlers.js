@@ -36,8 +36,10 @@ describe("sso", function() {
       expect(response.redirectCalledWith).to.equal("/")
     })
     it("Should redirect to desired page ", function() {
-      callback({ ...request, body: { RelayState: "my-page" } }, response)
+      callback({ ...request, body: { RelayState: "my-page/" } }, response)
       expect(response.redirectCalledWith).to.equal("/my-page/")
+      callback({ ...request, body: { RelayState: "sw.js" } }, response)
+      expect(response.redirectCalledWith).to.equal("/sw.js")
     })
     it("Should restrict undesired destinations ", function() {
       callback(

@@ -1,5 +1,5 @@
-const destinationRegex = /^[a-z0-9-]+$/
-const articleNameRegex = /[^a-z0-9-]*([a-z0-9-]+)\/$/
+const destinationRegex = /^[a-z0-9-\.\/]+$/
+const articleNameRegex = /[^a-z0-9-\.\/]*([a-z0-9-\.\/]+)\/$/
 
 // Note, the time here is in minutes
 const validCookieAge = process.env.VALID_COOKIE_AGE || 5
@@ -12,7 +12,7 @@ const sanitizeDestination = function (destination) {
   }
 
   if (destination.match(destinationRegex)) {
-    return destination + '/'
+    return destination
   }
   return ''
 }

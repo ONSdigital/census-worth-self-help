@@ -38,11 +38,8 @@ handlers:
     upload: public/admin/cms.js
 
   - url: /sw.js
-    expiration: 1m
-    mime_type: text/javascript
-    static_files: public/sw.js
+    script: auto
     secure: always
-    upload: public/sw.js
 
   - url: /(.*\.js)
     expiration: 1d
@@ -51,7 +48,12 @@ handlers:
     secure: always
     upload: public/(.*\.js)
 
-# Images and fonts
+# Protected content managed images and fonts (driven by CMS)
+  - url: /assets/(.*\.(gif|ico|jpeg|jpg|png|svg))
+    script: auto
+    secure: always
+
+# No need for protection for images and fonts driven from code repository
   - url: /(.*\.(gif|ico|jpeg|jpg|png|svg))
     expiration: 1d
     static_files: public/\1
