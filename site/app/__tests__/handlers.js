@@ -100,7 +100,17 @@ describe("sso", function() {
     it("Should redirect deep if not authenticated", function() {
       requireAuthenticated({ ...request, path: "/my-page/" }, response, state.next)
       expect(state.allowed).to.equal(false)
-      expect(response.redirectCalledWith).to.equal("/login?destination=/my-page")
+      expect(response.redirectCalledWith).to.equal("/login?destination=my-page/")
+    })
+    it("Should redirect index.html if not authenticated", function() {
+      requireAuthenticated({ ...request, path: "/my-page/index.html" }, response, state.next)
+      expect(state.allowed).to.equal(false)
+      expect(response.redirectCalledWith).to.equal("/login?destination=my-page/index.html")
+    })
+    it("Should redirect sw.js if not authenticated", function() {
+      requireAuthenticated({ ...request, path: "/sw.js" }, response, state.next)
+      expect(state.allowed).to.equal(false)
+      expect(response.redirectCalledWith).to.equal("/login?destination=sw.js")
     })
     it("Should allow if authenticated and token valid", function() {
       requireAuthenticated(

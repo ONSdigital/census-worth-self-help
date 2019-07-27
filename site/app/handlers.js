@@ -1,5 +1,5 @@
 const destinationRegex = /^[a-z0-9-\.\/]+$/
-const articleNameRegex = /[^a-z0-9-\.\/]*([a-z0-9-\.\/]+)\/$/
+const pageNameRegex = /\/[^a-z0-9-\.\/]*([a-z0-9-\.\/]+)$/
 
 // Note, the time here is in minutes
 const milliseconds = (minutes) => minutes * 60 * 1000
@@ -17,9 +17,9 @@ const sanitizeDestination = function (destination) {
   return ''
 }
 
-const extractArticleName = function (path) {
-  if (path.match(articleNameRegex)) {
-    return articleNameRegex.exec(path)[1]
+const extractPageName = function (path) {
+  if (path.match(pageNameRegex)) {
+    return pageNameRegex.exec(path)[1]
   }
   return false
 }
@@ -57,7 +57,7 @@ module.exports = {
     if (req.isAuthenticated() && isTokenValid(req.user.date)) {
       next()
     } else {
-      const destination = extractArticleName(req.path)
+      const destination = extractPageName(req.path)
       if (destination) {
         res.redirect('/login?destination=' + destination)
       } else {
