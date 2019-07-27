@@ -45,7 +45,7 @@ if [[ "${SP_PROTECTED}" != "false" ]] ; then
   set +x
   echo "  COOKIE_SECRET: '${COOKIE_SECRET}'" >> ${appFile}
   set -x
-  echo "  COOKIE_TIMEOUT: '${COOKIE_TIMEOUT}'" >> ${appFile}
+  echo "  COOKIE_TIMEOUT: ${COOKIE_TIMEOUT}" >> ${appFile}
   echo "  IDP_ENTRY_POINT: '${IDP_ENTRY_POINT}'" >> ${appFile}
   echo "  IDP_LOGOUT: '${IDP_LOGOUT}'" >> ${appFile}
   echo "  SP_CALLBACK_URL: '${spProtocol}://${SP_DOMAIN_NAME}/sso/callback'" >> ${appFile}
