@@ -2,9 +2,9 @@ const destinationRegex = /^[a-z0-9-\.\/]+$/
 const articleNameRegex = /[^a-z0-9-\.\/]*([a-z0-9-\.\/]+)\/$/
 
 // Note, the time here is in minutes
-const validCookieAge = process.env.VALID_COOKIE_AGE || 5
-const milliseconds = (minutes) => minutes * 60 * 1000 
-const clock_contingency = process.env.CLOCK_CONTINGENCY || -1
+const milliseconds = (minutes) => minutes * 60 * 1000
+const VALID_TOKEN_AGE = milliseconds(process.env.VALID_TOKEN_AGE || 5)
+const CLOCK_CONTINGENCY = milliseconds(process.env.CLOCK_CONTINGENCY || -1)
 
 const sanitizeDestination = function (destination) {
   if (!destination) {
@@ -24,8 +24,8 @@ const extractArticleName = function (path) {
   return false
 }
 
-let isTokenValid = (date) => 
-  (clock_contingency < (Date.now().toString() - date) < milliseconds(validCookieAge))
+const isTokenValid = (date) =>
+  (CLOCK_CONTINGENCY < (Date.now().toString() - date) < VALID_TOKEN_AGE)
 
 module.exports = {
   // User serialisation / deserialisation is simple one-to-one mappin
@@ -52,7 +52,7 @@ module.exports = {
   milliseconds,
 
   requireAuthenticated : function(req, res, next) {
-    if (req.isAuthenticated() && isTokenValid (req.user.date)) {
+    if (req.isAuthenticated() && isTokenValid(req.user.date)) {
       next()
     } else {
       const destination = extractArticleName(req.path)

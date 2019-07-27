@@ -63,10 +63,8 @@ describe("sso", function() {
       requireAuthenticated(
         {
           ...request,
-          isAuthenticated: function() {
-            return true
-          },
-          user:{
+          isAuthenticated: () => true,
+          user: {
             date: 234234235
           }
         },
@@ -84,7 +82,7 @@ describe("sso", function() {
         state.allowed = true
       })
       expect(state.allowed).to.equal(false)
-      expect(response.redirectCalledWith).to.equal("/login?destination=my-page")
+      expect(response.redirectCalledWith).to.equal("/login?destination=/my-page")
     })
     it("Should allow if authenticated and token valid", function() {
       let state = { allowed: false }

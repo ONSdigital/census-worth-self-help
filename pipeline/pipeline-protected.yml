@@ -3,14 +3,14 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: bugfix/ONS-316-protect-sw.js
     check_every: 15m
 
   - name: content-repository
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: bugfix/ONS-316-protect-sw.js
 
 jobs:
   - name: protected
