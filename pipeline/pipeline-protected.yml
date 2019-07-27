@@ -9,8 +9,8 @@ resources:
   - name: content-repository
     type: git
     source:
-      uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: bugfix/ONS-316-protect-sw.js
+      uri: https://github.com/ONSdigital/census-worth-self-help-test.git
+      branch: master
 
 jobs:
   - name: protected
