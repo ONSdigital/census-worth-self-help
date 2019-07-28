@@ -56,6 +56,14 @@ handlers:
     script: auto
     secure: always
 
+# Online route for offline detection
+  - url: /online
+    expiration: 1d
+    mime_type: text/plain
+    static_files: public/online.txt
+    secure: always
+    upload: public/online.txt
+
 # No need for protection for images and fonts driven from code repository
   - url: /(.*\.(gif|ico|jpeg|jpg|png|svg))
     expiration: 1d

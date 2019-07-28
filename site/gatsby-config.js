@@ -51,6 +51,10 @@ module.exports = {
         globPatterns: ['**/*.{css,png,js,json,html,svg,woff,woff2,ttf}'],
         runtimeCaching: [
           {
+            urlPattern: /online/,
+            handler: `networkOnly`
+          },
+          {
             urlPattern: /api\/.*/,
             handler: `networkOnly`
           },
