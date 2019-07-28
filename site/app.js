@@ -1,24 +1,32 @@
 require('dotenv').config({ silent: true })
 
 const express = require('express');
+const onHeaders = require('on-headers')
 const app = express();
 const csp = require('./app/csp').default;
 
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
+
+const withoutEtag = (response) => {
+  onHeaders(response, function() {
+    this.removeHeader('ETag')
+  })
+  return response
+}
 
 app.use(csp({
   chatDomain : process.env.GATSBY_CHAT_DOMAIN,
   analyticsHost : process.env.MATOMO_IP
 }));
 
-app.get('/api/ping', (request, response) => response.send("OK"))
+app.get('/api/ping', (request, response) => withoutEtag(response).send("OK"))
 
 if (SP_PROTECTED === "false") {
 
   // For an unprotected deployment, serve static files from /public
 
   app.use(express.static('public'));
-  app.get('/api/auth', (request, response) => response.send("NOAUTH"))
+  app.get('/api/auth', (request, response) => withoutEtag(response).send("NOAUTH"))
 
 } else {
 
@@ -88,7 +96,7 @@ if (SP_PROTECTED === "false") {
   // logout route is not an end-user flow. It is only added for test and troubleshooting purposes.
   app.get('/logout', logout(IDP_LOGOUT))
 
-  app.get('/api/auth', requireAuthenticated, (request, response) => response.send("AUTH"))
+  app.get('/api/auth', requireAuthenticated, (request, response) => withoutEtag(response).send("AUTH"))
 
   app.get('/saml/metadata', function (req, res) {
     res.type('application/xml');
