@@ -11,11 +11,14 @@ app.use(csp({
   analyticsHost : process.env.MATOMO_IP
 }));
 
+app.get('/api/ping', (request, response) => response.send("OK"))
+
 if (SP_PROTECTED === "false") {
 
   // For an unprotected deployment, serve static files from /public
 
   app.use(express.static('public'));
+  app.get('/api/auth', (request, response) => response.send("NOAUTH"))
 
 } else {
 
@@ -84,6 +87,8 @@ if (SP_PROTECTED === "false") {
 
   // logout route is not an end-user flow. It is only added for test and troubleshooting purposes.
   app.get('/logout', logout(IDP_LOGOUT))
+
+  app.get('/api/auth', requireAuthenticated, (request, response) => response.send("AUTH"))
 
   app.get('/saml/metadata', function (req, res) {
     res.type('application/xml');

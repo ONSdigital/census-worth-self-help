@@ -1,12 +1,6 @@
 #@IgnoreInspection BashAddShebang
 # Prepare environment variables in same way they are set in CI to allow production like local development
 
-# First check we've not got variables set in shell already since we want to rely on the .env file
-if [[ ! -z "${GATSBY_ASSETS_PATH}" ]] ; then
-  echo "Warning GATSBY_ASSETS_PATH already defined (${GATSBY_ASSETS_PATH}), please clear environment variables in shell otherwise you may have unexpected results"
-  exit 1
-fi
-
 export $(cat .env | xargs)
 
 if [[ -z "${PROTECTED}" ]] ; then

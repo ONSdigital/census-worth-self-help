@@ -51,6 +51,10 @@ module.exports = {
         globPatterns: ['**/*.{css,png,js,json,html,svg,woff,woff2,ttf}'],
         runtimeCaching: [
           {
+            urlPattern: /api\/.*/,
+            handler: `networkOnly`
+          },
+          {
             urlPattern: /cms.js$/,
             handler: `cacheFirst`,
             options: {
