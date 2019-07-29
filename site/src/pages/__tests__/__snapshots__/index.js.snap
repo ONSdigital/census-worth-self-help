@@ -273,7 +273,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
           Alert
         </div>
         <div
-          className="Notification-body-Style"
+          className="Notification-body-Style article-content"
           dangerouslySetInnerHTML={
             Object {
               "__html": "this is test content",

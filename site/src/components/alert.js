@@ -1,7 +1,7 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { colors, spacing } from "../utils/styles"
-import { htmlSanitize } from "../utils/contenttransforms"
+import { htmlSanitize, transformSources } from "../utils/contenttransforms"
 
 export default ({ title, content }) => {
   return (
@@ -24,10 +24,10 @@ export default ({ title, content }) => {
         {title}
       </div>
       <div
-        className="Notification-body-Style"
+        className="Notification-body-Style article-content"
         data-testid="alert-message"
         dangerouslySetInnerHTML={{
-          __html: htmlSanitize(content)
+          __html: htmlSanitize(transformSources(content))
         }}
       >
       </div>

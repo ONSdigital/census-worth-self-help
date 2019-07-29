@@ -36,7 +36,7 @@ exports[`Alert renders correctly 1`] = `
     test_title
   </div>
   <div
-    className="Notification-body-Style"
+    className="Notification-body-Style article-content"
     dangerouslySetInnerHTML={
       Object {
         "__html": "this is test content",
