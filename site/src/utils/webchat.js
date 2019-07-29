@@ -1,5 +1,5 @@
 import React from "react"
-import { Detector } from "react-detect-offline"
+import DetectOffline from "../components/detectoffline"
 
 export default class WebChatManager extends React.Component {
   containerId = process.env.GATSBY_CHAT_BUTTON_CONTAINER_ID
@@ -34,17 +34,14 @@ export default class WebChatManager extends React.Component {
 
   render() {
     return (
-      <Detector
-        render={({ online }) => (
+      <DetectOffline showWhen="online" justHide={true}>
           <div
             className="webchat-link"
             data-testid="webchat-link"
-            style={{ display: online ? "" : "none" }}
           >
             <div id={this.containerId} />
           </div>
-        )}
-      />
+      </DetectOffline>
     )
   }
 }
