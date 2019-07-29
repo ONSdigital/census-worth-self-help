@@ -4,6 +4,7 @@ import Topbar from "../components/topbar"
 import { spacing, gradients } from "../utils/styles"
 import Metadata from "../components/metadata"
 import VisuallyHidden from "@reach/visually-hidden"
+import DetectOffline from "../components/detectoffline"
 
 import { css } from "@emotion/core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -64,11 +65,16 @@ export default ({ pageContext }) => {
               border-top: 1px solid white;
             `}
           />
-          <MenuLink
+          <DetectOffline showWhen="offline"><MenuLink
             link="mostrecent/"
             title="Recently updated"
             icon={<FontAwesomeIcon icon={faClock} />}
-          />
+          /></DetectOffline>
+          <DetectOffline showWhen="online"><MenuLink
+            link="mostrecent"
+            title="Recently updated"
+            icon={<FontAwesomeIcon icon={faClock} />}
+          /></DetectOffline>
           <MenuLink
             link="bookmarks/"
             title="My Bookmarks"
