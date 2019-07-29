@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSatelliteDish } from "@fortawesome/free-solid-svg-icons"
 import { faBookmark, faClock } from "@fortawesome/free-regular-svg-icons"
 import { css } from "@emotion/core"
-import { Offline } from "react-detect-offline"
+import DetectOffline from "../components/detectoffline"
 import Metadata from "../components/metadata"
 
 export default class Index extends React.Component {
@@ -67,13 +67,13 @@ export default class Index extends React.Component {
         alertTitle={alertTitle}
       >
         <Metadata>Self Help Facility</Metadata>
-        <Offline>
+        <DetectOffline showWhen="offline">
           <BlockStatus
             icon={<FontAwesomeIcon icon={faSatelliteDish} />}
             title="Currently working offline"
             subtitle="Content will update when you reconnect"
           />
-        </Offline>
+        </DetectOffline>
         {data.allMarkdownRemark && (
           <div>
             <TabList

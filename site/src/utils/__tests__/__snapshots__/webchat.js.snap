@@ -2,8 +2,7 @@
 
 exports[`div rendering renders normally when online 1`] = `
 <div
-  className="webchat-link"
-  data-testid="webchat-link"
+  data-testid="offlinable-container"
   style={
     Object {
       "display": "",
@@ -11,7 +10,12 @@ exports[`div rendering renders normally when online 1`] = `
   }
 >
   <div
-    id="chat-button-container"
-  />
+    className="webchat-link"
+    data-testid="webchat-link"
+  >
+    <div
+      id="chat-button-container"
+    />
+  </div>
 </div>
 `;

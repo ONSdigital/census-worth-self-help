@@ -13,7 +13,7 @@ describe("div rendering", () => {
     expect(tree).toMatchSnapshot()
 
     const { getByTestId } = render(<WebChat />)
-    expect(getByTestId("webchat-link")).not.toHaveStyle("display:none")
+    expect(getByTestId("offlinable-container")).not.toHaveStyle("display:none")
   })
 
   it("is not displayed when offline", () => {
@@ -23,6 +23,6 @@ describe("div rendering", () => {
     });
 
     const { getByTestId } = render(<WebChat />)
-    expect(getByTestId("webchat-link")).toHaveStyle("display:none")
+    expect(getByTestId("offlinable-container")).toHaveStyle("display:none")
   })
 })
