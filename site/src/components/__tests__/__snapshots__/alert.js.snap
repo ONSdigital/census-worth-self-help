@@ -24,11 +24,11 @@ exports[`Alert renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "kmpsy0",
+        "name": "9oofe6",
         "next": undefined,
         "styles": "
           padding-top: 5px;
-          padding-bottom: 10px;
+          padding-bottom: 5px;
         ",
       }
     }
@@ -36,21 +36,13 @@ exports[`Alert renders correctly 1`] = `
     test_title
   </div>
   <div
-    className="Notification-body-Style"
-    css={
+    className="Notification-body-Style article-content"
+    dangerouslySetInnerHTML={
       Object {
-        "map": undefined,
-        "name": "1a5rwwh",
-        "next": undefined,
-        "styles": "
-          padding-top: 10px;
-          padding-bottom: 5px;
-        ",
+        "__html": "this is test content",
       }
     }
     data-testid="alert-message"
-  >
-    this is test content
-  </div>
+  />
 </div>
 `;

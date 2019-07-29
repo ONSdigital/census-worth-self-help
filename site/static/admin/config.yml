@@ -70,7 +70,7 @@ collections:
         name: "alert"
         fields:
           - { label: 'Title', name: 'alert_title', widget: 'string', required: false }
-          - { label: 'Content', name: 'alert_content', widget: 'string', required: false,
+          - { label: 'Content', name: 'body', widget: 'markdown', required: false,
               hint: "If the content is empty no alert will show." }
 
       - file: "content/constants/contact_centre_details.md"

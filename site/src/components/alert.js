@@ -1,6 +1,7 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { colors, spacing } from "../utils/styles"
+import { htmlSanitize, transformSources } from "../utils/contenttransforms"
 
 export default ({ title, content }) => {
   return (
@@ -17,20 +18,18 @@ export default ({ title, content }) => {
         className="Notification-heading-Style"
         css={css`
           padding-top: 5px;
-          padding-bottom: 10px;
+          padding-bottom: 5px;
         `}
       >
         {title}
       </div>
       <div
-        className="Notification-body-Style"
+        className="Notification-body-Style article-content"
         data-testid="alert-message"
-        css={css`
-          padding-top: 10px;
-          padding-bottom: 5px;
-        `}
+        dangerouslySetInnerHTML={{
+          __html: htmlSanitize(transformSources(content))
+        }}
       >
-        {content}
       </div>
     </div>
   )
