@@ -38,11 +38,8 @@ handlers:
     upload: public/admin/cms.js
 
   - url: /sw.js
-    expiration: 1m
-    mime_type: text/javascript
-    static_files: public/sw.js
+    script: auto
     secure: always
-    upload: public/sw.js
 
   - url: /(.*\.js)
     expiration: 1d
