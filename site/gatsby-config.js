@@ -55,6 +55,10 @@ module.exports = {
             handler: `networkOnly`
           },
           {
+            urlPattern: /menu\//,
+            handler: `networkFirst`
+          },
+          {
             urlPattern: /api\/.*/,
             handler: `networkOnly`
           },
