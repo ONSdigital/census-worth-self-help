@@ -22,7 +22,6 @@ jobs:
     max_in_flight: 1
     plan:
       - get: census-worth-self-help
-        trigger: true
       - get: content-repository
         trigger: true
 
