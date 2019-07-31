@@ -77,5 +77,5 @@ collections:
         label: "Contact centre details"
         name: "contact_centre_details"
         fields:
-          - { label: 'Wait time', name: 'contact_centre_wait_time', widget: 'number', required: true }
           - { label: 'Phone number', name: 'contact_centre_number', widget: 'string', required: true }
+          - { label: 'Text shown on contact centre page', name: 'contact_centre_text', widget: 'string', required: true }

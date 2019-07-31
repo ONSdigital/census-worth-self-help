@@ -14,7 +14,7 @@ describe("Contact centre", () => {
 
   it("renders correctly with data", () => {
     const data = { allMarkdownRemark : articleList,
-    	markdownRemark : { frontmatter: {contact_centre_wait_time: "25", contact_centre_number: "01111 333333" }} }
+    	markdownRemark : { frontmatter: {contact_centre_text: "wibble wibble", contact_centre_number: "01111 333333" }} }
     const tree = renderer.create(<ContactCentre data={data}/>).toJSON()
     expect(tree).toMatchSnapshot()
   })
