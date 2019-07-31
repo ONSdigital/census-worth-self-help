@@ -78,4 +78,4 @@ collections:
         name: "contact_centre_details"
         fields:
           - { label: 'Phone number', name: 'contact_centre_number', widget: 'string', required: true }
-          - { label: 'Text shown on contact centre page', name: 'contact_centre_text', widget: 'string', required: true }
+          - { label: 'Text shown on contact centre page', name: 'contact_centre_text', widget: 'text', required: true }
