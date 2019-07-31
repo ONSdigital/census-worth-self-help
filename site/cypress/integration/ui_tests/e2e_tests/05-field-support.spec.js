@@ -29,8 +29,6 @@ describe("Contact support page", function() {
         cy.visit(supportPage.contactCentrePath);
         cy.get(supportPage.tabHeading).contains('HAVE YOU TRIED...');
         cy.get(homepage.articleCard).contains('Injection Attack').should('be.visible');
-        cy.get(supportPage.tabHeading).contains('CONTACTING FIELD SUPPORT');
-        cy.get('.Card-heading-Style').should('not.have.text', 'null minutes');
         cy.get(supportPage.callSupportBlock).should('be.visible');
     });
 
