@@ -13,17 +13,6 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 const escapeStringRegexp = require("escape-string-regexp")
 const minimumSearchString = 3
 
-export const getSuggestedEdges = edges => {
-  return edges
-    .filter(edge => {
-      return (
-        edge.node.frontmatter.tags &&
-        edge.node.frontmatter.tags.includes("popular")
-      )
-    })
-    .slice(0, 3)
-}
-
 export default class Search extends React.Component {
   constructor(props) {
     super(props)
@@ -179,10 +168,6 @@ export default class Search extends React.Component {
       this.state.query.length >= minimumSearchString || edges.length > 0
 
     let noResults = searching && edges.length === 0
-    let suggestedEdges = []
-    if (noResults) {
-      suggestedEdges = getSuggestedEdges(this.data.allMarkdownRemark.edges)
-    }
 
     return (
       <Layout title="Search" searchObject={searchObject}>
@@ -195,9 +180,6 @@ export default class Search extends React.Component {
           {noResults && <div>Sorry, no results for "{this.state.query}"</div>}
           {!searching && <div>Begin typing to search</div>}
         </PageTitle>
-        {noResults && suggestedEdges.length > 0 && (
-          <TabList title="HAVE YOU TRIED..." elements={suggestedEdges} />
-        )}
         <TabList elements={edges} />
         {this.state.results.length !== 0 && (
           <PaginationBar

@@ -37,7 +37,7 @@ collections:
       - { name: reviewedby, label: Reviewed By, required: false }
       - { name: signedby, label: Signed Off, required: false }
       - { name: tags, label: Tags, widget: "list", required: false,
-          hint: "divide tags up using commas, e.g:  emergency, test, contact " }
+          hint: "divide tags up using commas, e.g:  emergency, test, contact. The following tags have effects: draft, webchat, popular " }
 
   - name: directories
     label: Directories
