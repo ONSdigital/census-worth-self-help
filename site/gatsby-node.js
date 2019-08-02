@@ -141,7 +141,7 @@ function sortDirectoriesByPriority(directories)
 {
   directories.forEach(( directory ) => {
     directory.children.sort( (child_a, child_b) => {
-      return child_a.priority - child_b.priority;
+      return child_a.node.frontmatter.priority - child_b.node.frontmatter.priority;
     });
   })
 }
