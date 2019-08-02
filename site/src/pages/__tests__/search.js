@@ -1,9 +1,8 @@
 import React from "react"
 import renderer from "react-test-renderer"
 import Search from "../search"
-import { getSuggestedEdges } from "../search"
 import { render } from "react-testing-library"
-import { articleList, articleNode, popularList } from "../../utils/testdata"
+import { articleList, articleNode } from "../../utils/testdata"
 import ReactDOMServer from 'react-dom/server';
 
 describe("Search", () => {
@@ -65,9 +64,4 @@ describe("Search", () => {
     Search.highlightNode(node, 'description beautiful')
     expect(ReactDOMServer.renderToStaticMarkup(node.highlightedText)).toEqual("this is my <strong>beautiful</strong> <strong>description</strong>")
   })
-
-  it("get suggested nodes should find popular nodes", () => {
-    expect(getSuggestedEdges(articleList.edges)).toEqual( popularList.edges.slice(0, 3) )
-  })
-
 })

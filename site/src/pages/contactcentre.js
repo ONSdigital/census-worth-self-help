@@ -9,10 +9,20 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons"
 
 import BlockButton from "../components/blockbutton"
 import Section from "../components/section"
-import { getSuggestedEdges } from "./search"
 
 // remove spaces as they do not work in uri format
 export const sanitizePhoneNumber = number => number.replace(/\s/g, "")
+
+export const getSuggestedEdges = edges => {
+  return edges
+    .filter(edge => {
+      return (
+        edge.node.frontmatter.tags &&
+        edge.node.frontmatter.tags.includes("popular")
+      )
+    })
+    .slice(0, 3)
+}
 
 export default ({ data }) => {
   let suggestedEdges = getSuggestedEdges(data.allMarkdownRemark.edges)

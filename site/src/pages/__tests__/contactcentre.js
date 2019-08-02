@@ -1,9 +1,10 @@
 import React from "react"
 import renderer from "react-test-renderer"
 import ContactCentre from "../contactcentre"
+import { getSuggestedEdges } from "../contactcentre"
 import { sanitizePhoneNumber } from "../contactcentre"
 import { render } from "react-testing-library"
-import { articleList } from "../../utils/testdata"
+import { articleList, popularList } from "../../utils/testdata"
 
 describe("Contact centre", () => {
   it("renders correctly without data", () => {
@@ -21,5 +22,9 @@ describe("Contact centre", () => {
 
   it("phone numbers are space escaped", () => {
     expect(sanitizePhoneNumber("0123 456 789")).toEqual("0123456789")
+  })
+
+  it("get suggested nodes should find popular nodes", () => {
+    expect(getSuggestedEdges(articleList.edges)).toEqual( popularList.edges.slice(0, 3) )
   })
 })
