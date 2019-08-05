@@ -32,6 +32,7 @@ run:
   args:
   - -exec
   - |
+    set +e 
     echo "Testing"
     export ROOT_FOLDER=$(pwd)
     export CYPRESS_CACHE_FOLDER=${ROOT_FOLDER}/.cypress-cache
