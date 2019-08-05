@@ -90,7 +90,7 @@ describe("Navigating the site and reading articles", function() {
 
         cy.get(homepage.exploreContentButton).click();
 
-        cy.contains('many directories deep').click();
+        cy.contains('Directory containing a deep stack of directories').click();
         cy.url().should('include', '/many-directories-deep/');
 
         cy.get('@articleCard').should('have.text', 'deep 2').click();

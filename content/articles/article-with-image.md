@@ -2,7 +2,7 @@
 title: Article with image
 date: 2019-05-29T10:08:38.444Z
 description: Article with image
-directory: Basic Articles
+directory: Good Articles
 priority: 1
 ---
 Article with Image
