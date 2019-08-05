@@ -6,7 +6,7 @@ exports[`TopBarLink renders correctly 1`] = `
   css={
     Object {
       "map": undefined,
-      "name": "1sm5jo",
+      "name": "1qbb1d3",
       "next": undefined,
       "styles": "
         
@@ -15,7 +15,7 @@ exports[`TopBarLink renders correctly 1`] = `
     flex-direction: column;
   
         padding: 0px 10px;
-        background-color: rgb(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.2);
         border-radius: 4px;
         margin: 10px 10px 10px 0px;
         min-width: 20px;

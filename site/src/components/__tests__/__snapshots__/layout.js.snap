@@ -19,7 +19,7 @@ exports[`Layout renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "gw0q2y",
+        "name": "x3j3gt",
         "next": undefined,
         "styles": "
         width: 100vw;
@@ -29,6 +29,7 @@ exports[`Layout renders correctly 1`] = `
         display: flex;
         flex-direction: column;
         align-items: center;
+        flex-shrink: 0;
       ",
       }
     }
@@ -37,9 +38,10 @@ exports[`Layout renders correctly 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "19nu28a",
+          "name": "i1lmtx",
           "next": undefined,
           "styles": "
+            flex-shrink: 0;
             display: flex;
             width: 100%;
             max-width: 800px;
@@ -76,7 +78,7 @@ exports[`Layout renders correctly 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "1sm5jo",
+            "name": "1qbb1d3",
             "next": undefined,
             "styles": "
         
@@ -85,7 +87,7 @@ exports[`Layout renders correctly 1`] = `
     flex-direction: column;
   
         padding: 0px 10px;
-        background-color: rgb(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.2);
         border-radius: 4px;
         margin: 10px 10px 10px 0px;
         min-width: 20px;
@@ -134,7 +136,7 @@ exports[`Layout renders correctly 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "1sm5jo",
+            "name": "1qbb1d3",
             "next": undefined,
             "styles": "
         
@@ -143,7 +145,7 @@ exports[`Layout renders correctly 1`] = `
     flex-direction: column;
   
         padding: 0px 10px;
-        background-color: rgb(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.2);
         border-radius: 4px;
         margin: 10px 10px 10px 0px;
         min-width: 20px;
