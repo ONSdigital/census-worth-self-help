@@ -23,11 +23,13 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
         display: flex;
         flex-direction: column;
         align-items: center;
+        flex-shrink: 0;
       `}
     >
       {searchObject && (
         <div
           css={css`
+            flex-shrink: 0;
             display: flex;
             width: 100%;
             max-width: ${spacing.desktop_max_width};
@@ -82,6 +84,7 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
       {!searchObject && (
         <div
           css={css`
+            flex-shrink: 0;
             display: flex;
             width: 100%;
             max-width: ${spacing.desktop_max_width};
