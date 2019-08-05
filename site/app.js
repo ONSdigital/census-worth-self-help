@@ -1,9 +1,10 @@
 require('dotenv').config({ silent: true })
 
 const express = require('express');
-const onHeaders = require('on-headers')
+const onHeaders = require('on-headers');
 const app = express();
 const csp = require('./app/csp').default;
+const hsts = require('hsts');
 
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
 
@@ -18,6 +19,11 @@ app.use(csp({
   chatDomain : process.env.GATSBY_CHAT_DOMAIN,
   analyticsHost : process.env.MATOMO_IP
 }));
+
+app.use(hsts({
+  maxAge: 15552000,
+  includeSubDomains: true
+}))
 
 app.get('/api/ping', (request, response) => withoutEtag(response).send("OK"))
 
