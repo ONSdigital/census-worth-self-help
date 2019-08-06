@@ -47,3 +47,4 @@ run:
     sed -i 's/smokeTestTimeout: 10000/smokeTestTimeout: 60000/' node_modules/cypress/lib/tasks/verify.js
     npm run e2e
     npm run merge-reports
+    
