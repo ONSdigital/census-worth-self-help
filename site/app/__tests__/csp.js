@@ -17,6 +17,11 @@ const next = function() {}
 describe("csp", function() {
   it("Should default CSP be locked down ", function() {
     csp()(request, response, next)
+    // response.headers.forEach(element => {
+    //   response.headers[element.key]
+    // });
+    console.log(response)
+    console.log("hello : " + (response.headers["Strict-Transport-Security"]))
     expect(response.headers["Content-Security-Policy"]).to.equal(
       "connect-src 'self'; default-src 'self'; " +
         "font-src 'self'; img-src 'self' data:; media-src https:; " +
