@@ -4,6 +4,7 @@ const express = require('express');
 const onHeaders = require('on-headers')
 const app = express();
 const csp = require('./app/csp').default;
+const hstsheader = require('./app/hstsheader').default;
 
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
 
@@ -18,6 +19,8 @@ app.use(csp({
   chatDomain : process.env.GATSBY_CHAT_DOMAIN,
   analyticsHost : process.env.MATOMO_IP
 }));
+
+app.use(hstsheader())
 
 app.get('/api/ping', (request, response) => withoutEtag(response).send("OK"))
 

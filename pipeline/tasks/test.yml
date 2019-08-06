@@ -45,5 +45,4 @@ run:
     npm run coverage
     # ONS-289
     sed -i 's/smokeTestTimeout: 10000/smokeTestTimeout: 60000/' node_modules/cypress/lib/tasks/verify.js
-    npm run e2e
-    npm run merge-reports
+    npm run e2e || npm run merge-reports && npm run merge-reports
