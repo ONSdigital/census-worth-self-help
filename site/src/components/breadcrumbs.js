@@ -34,7 +34,7 @@ export default ({ breadcrumbs, peers = [], thisPage = "" }) => {
     option: (styles, { data }) => {
       return {
         ...styles,
-        "text-indent": data.indent + "em"
+        "textIndent": data.indent + "em"
       }
     }
   }

@@ -9,12 +9,31 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { navigate } from "@reach/router"
 import VisuallyHidden from "@reach/visually-hidden"
 
+import { parse } from 'query-string'
+
+
 const backFunction = () => {
-  // Todo: implement a safe back button
-  navigate("/")
+  let target = "/"
+  if (typeof window !== "undefined") {
+    let queryParams = parse(window.location.search)
+    if(queryParams.redirect) {
+      let redirect = decodeURIComponent(queryParams.redirect)
+      if (redirect[0] === '/')
+      {
+        target = queryParams.redirect
+      }
+    }
+  }
+  navigate(target)
 }
 
 export default ({ searchObject = null, logo = false, backButton = false }) => {
+
+  let pathname = encodeURIComponent("/")
+  if (typeof window !== "undefined") {
+    pathname = encodeURIComponent(window.location.pathname)
+  }
+
   return (
     <header
       css={css`
@@ -111,9 +130,9 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
                 <FontAwesomeIcon icon={faSearch} />
               </div>
             }
-            link="/search/"
+            link={"/search/?redirect=" + pathname}
           />
-          {!backButton && <TopbarLink title="Menu" link="/menu/" />}
+          {!backButton && <TopbarLink title="Menu" link={"/menu/?redirect=" + pathname} />}
           {backButton && (
             <TopbarLink title="Close" clickFunction={backFunction} />
           )}
