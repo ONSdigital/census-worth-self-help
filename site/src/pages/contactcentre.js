@@ -60,7 +60,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    markdownRemark(frontmatter: { contact_centre_wait_time: { ne: null } }) {
+    markdownRemark(frontmatter: { contact_centre_number: { ne: null } }) {
       frontmatter {
         contact_centre_number
         contact_centre_text
