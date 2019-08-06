@@ -115,7 +115,7 @@ describe("Navigating the site and reading articles", function() {
         const textAppearance = 'text-decoration';
         const underline = /underline/;
         // go to recently updated page
-        cy.get(menu.menuButton).contains('Menu').click();
+        cy.get(menu.menuButton).contains('Menusdvsd').click();
         cy.get(menu.menuLink).contains('Recently updated').click();
 
         // page 1 should be selected. Clicking it again should do nothing.
