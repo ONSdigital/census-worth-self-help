@@ -19,7 +19,7 @@ describe("Navigating the site and reading articles", function() {
     });
 
     it('The correct elements of the homepage are visible', function () {
-        cy.get(homepage.headerTitleSelfHelpFacility).should('have.text', 'Self Help Facility');
+        cy.get(homepage.headerTitleSelfHelpFacility).should('have.text', 'nothing here');
         cy.get(search.searchButton).should('be.visible');
         cy.get(menu.menuButton).should('be.visible');
         cy.get(homepage.exploreContentButton).should('be.visible');

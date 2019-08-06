@@ -9,7 +9,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: feature/ONS-271-add-hsts-header
     check_every: 1h
 
   - name: slack-notify
