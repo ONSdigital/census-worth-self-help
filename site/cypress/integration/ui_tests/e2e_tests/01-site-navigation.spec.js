@@ -19,7 +19,7 @@ describe("Navigating the site and reading articles", function() {
     });
 
     it('The correct elements of the homepage are visible', function () {
-        cy.get(homepage.headerTitleSelfHelpFacility).should('have.text', 'nothing here');
+        cy.get(homepage.headerTitleSelfHelpFacility).should('have.text', 'Self Help Facility');
         cy.get(search.searchButton).should('be.visible');
         cy.get(menu.menuButton).should('be.visible');
         cy.get(homepage.exploreContentButton).should('be.visible');
@@ -115,7 +115,7 @@ describe("Navigating the site and reading articles", function() {
         const textAppearance = 'text-decoration';
         const underline = /underline/;
         // go to recently updated page
-        cy.get(menu.menuButton).contains('Menusdvsd').click();
+        cy.get(menu.menuButton).contains('Menu').click();
         cy.get(menu.menuLink).contains('Recently updated').click();
 
         // page 1 should be selected. Clicking it again should do nothing.
