@@ -1,7 +1,7 @@
 require('dotenv').config({ silent: true })
 
 const express = require('express');
-const onHeaders = require('on-headers');
+const onHeaders = require('on-headers')
 const app = express();
 const csp = require('./app/csp').default;
 const hstsheader = require('./app/hstsheader').default;
