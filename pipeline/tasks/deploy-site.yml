@@ -14,7 +14,7 @@ image_resource:
   type: docker-image
   source:
     repository: google/cloud-sdk
-    tag: alpine
+    tag: 250.0.0-alpine
 
 params:
   AUTH_KEY: ((gcp.service-account-key))
