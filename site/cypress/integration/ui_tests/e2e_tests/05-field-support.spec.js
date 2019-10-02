@@ -28,7 +28,7 @@ describe("Contact support page", function() {
     it('The correct elements of the page are displayed [ONS-47]', function () {
         cy.visit(supportPage.contactCentrePath);
         cy.get(supportPage.tabHeading).contains('HAVE YOU TRIED...');
-        cy.get(homepage.articleCard).contains('Injection Attack').should('be.visible');
+        cy.get(homepage.articleCard).contains('Tagged with popular').should('be.visible');
         cy.get(supportPage.callSupportBlock).should('be.visible');
     });
 

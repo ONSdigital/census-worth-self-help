@@ -1,6 +1,6 @@
 ---
 title: deep 2
-directory: many directories deep
+directory: Directory containing a deep stack of directories
 priority: 0
 ---
 
