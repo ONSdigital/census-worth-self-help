@@ -4,7 +4,6 @@ export default class SearchAnalytics {
   static querySearched(query) {
     Analytics.trackEvent(
       "search",
-      "input",
       "query",
       query
     )
