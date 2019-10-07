@@ -21,7 +21,7 @@ describe("Search", () => {
       allMarkdownRemark : articleList,
       siteSearchIndex: { index : index.toJSON() }
     }
-    const { getByTestId }  = render(<Search data={data}/>)
+    const { getByTestId }  = render(<Search data={data} debounceDelay={0}/>)
     const searchBox = getByTestId('search-box')
     fireEvent.change(searchBox, { target: { value: 'TEST QUERY' } });
     // check paq updated.
