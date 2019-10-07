@@ -7,12 +7,13 @@ import PageTitle from "../components/pagetitle"
 import PaginationBar from "../components/paginationbar"
 import { PaginationObject } from "../utils/pagination"
 import searchAnalytics from "../utils/searchAnalytics"
-
+import _ from "lodash"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 
 const escapeStringRegexp = require("escape-string-regexp")
 const minimumSearchString = 3
+const trackSearchQuery = _.debounce(query => searchAnalytics.querySearched(query), 1000)
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export default class Search extends React.Component {
     this.state.paginationObject.goToPage(0)
 
     const query = evt.target.value
-    searchAnalytics.querySearched(query)
+    trackSearchQuery(query);
     this.index = this.index
       ? this.index
       : Index.load(this.data.siteSearchIndex.index)
