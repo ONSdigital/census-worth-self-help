@@ -1,15 +1,31 @@
 import React from "react"
 import renderer from "react-test-renderer"
 import Search from "../search"
-import { render } from "react-testing-library"
-import { articleList, articleNode } from "../../utils/testdata"
+import { render, fireEvent } from "react-testing-library"
+import { articleList, articleNode, siteSearchIndex } from "../../utils/testdata"
 import ReactDOMServer from 'react-dom/server';
+import { Index } from 'elasticlunr';
 
 describe("Search", () => {
   it("renders correctly", () => {
     const data = { allMarkdownRemark : articleList }
     const tree = renderer.create(<Search data={data}/>).toJSON()
     expect(tree).toMatchSnapshot()
+  })
+
+  it("anlytics captured", () => {
+    window._paq = []
+    var index = new Index;
+    ["title", "author", "tags", "description", "body"].forEach( name => index.addField(name))
+    const data = {
+      allMarkdownRemark : articleList,
+      siteSearchIndex: { index : index.toJSON() }
+    }
+    const { getByTestId }  = render(<Search data={data}/>)
+    const searchBox = getByTestId('search-box')
+    fireEvent.change(searchBox, { target: { value: 'TEST QUERY' } });
+    // check paq updated.
+    expect(window._paq).toEqual([['trackEvent', "search", "input", "query", "TEST QUERY"]])
   })
 
   it("bold-pattern function works correctly", () => {
