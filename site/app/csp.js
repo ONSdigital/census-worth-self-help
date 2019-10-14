@@ -17,6 +17,7 @@ const createSources = function(config = {}) {
     sources['script-src'].push(config.analyticsHost)
     sources['img-src'].push(config.analyticsHost)
     sources['default-src'].push(config.analyticsHost)
+    sources['connect-src'].push(config.analyticsHost)
   }
   return sources
 }

@@ -6,6 +6,8 @@ import TabList from "../components/tablist"
 import PageTitle from "../components/pagetitle"
 import PaginationBar from "../components/paginationbar"
 import { PaginationObject } from "../utils/pagination"
+import debounce from "../utils/debounce"
+import searchAnalytics from "../utils/searchAnalytics"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
@@ -24,6 +26,7 @@ export default class Search extends React.Component {
       paginationObject: paginationObject
     }
     this.data = props.data
+    this.trackSearchQuery = debounce(searchAnalytics.querySearched, props.debounceDelay)
     this.updateSearchResults = this.updateSearchResults.bind(this)
     this.updatePagination = this.updatePagination.bind(this)
   }
@@ -40,6 +43,7 @@ export default class Search extends React.Component {
     this.state.paginationObject.goToPage(0)
 
     const query = evt.target.value
+    this.trackSearchQuery(query);
     this.index = this.index
       ? this.index
       : Index.load(this.data.siteSearchIndex.index)
