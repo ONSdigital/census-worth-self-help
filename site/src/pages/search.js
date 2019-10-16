@@ -26,7 +26,7 @@ export default class Search extends React.Component {
       paginationObject: paginationObject
     }
     this.data = props.data
-    this.trackSearchQuery = debounce(searchAnalytics.querySearched, props.debounceDelay)
+    this.trackSiteSearch = debounce(searchAnalytics.trackSiteSearch, props.debounceDelay)
     this.updateSearchResults = this.updateSearchResults.bind(this)
     this.updatePagination = this.updatePagination.bind(this)
   }
@@ -43,7 +43,6 @@ export default class Search extends React.Component {
     this.state.paginationObject.goToPage(0)
 
     const query = evt.target.value
-    this.trackSearchQuery(query);
     this.index = this.index
       ? this.index
       : Index.load(this.data.siteSearchIndex.index)
@@ -58,11 +57,13 @@ export default class Search extends React.Component {
         body: { boost: 1 }
       }
     })
+    const results = this.index
+      .search(query, {})
+      .map(({ ref }) => this.index.documentStore.getDoc(ref));
+    this.trackSiteSearch(query, false, results.length);
     this.setState({
       query,
-      results: this.index
-        .search(query, {})
-        .map(({ ref }) => this.index.documentStore.getDoc(ref))
+      results
     })
   }
 

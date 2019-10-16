@@ -1,11 +1,12 @@
 import Analytics from "./analytics"
 
 export default class SearchAnalytics {
-  static querySearched(query) {
+  static trackSiteSearch(keyword, category, searchCount) {
     Analytics.trackEvent(
       "search",
       "query",
-      query
+      keyword
     )
+    Analytics.trackSiteSearch(keyword, category, searchCount)
   }
 }
