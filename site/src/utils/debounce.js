@@ -4,5 +4,5 @@ import _ from "lodash"
 export default (fn, delay) => {
   return (delay === 0)
     ? fn
-    : _.debounce(query => fn(query), delay || 1000)
+    : _.debounce((...args) => fn(...args), delay || 1000)
 }

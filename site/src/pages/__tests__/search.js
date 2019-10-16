@@ -25,7 +25,8 @@ describe("Search", () => {
     const searchBox = getByTestId('search-box')
     fireEvent.change(searchBox, { target: { value: 'TEST QUERY' } });
     // check paq updated.
-    expect(window._paq).toEqual([['trackEvent', "search", "query", "TEST QUERY", ""]])
+    expect(window._paq[0]).toEqual(['trackEvent', "search", "query", "TEST QUERY", ""])
+    expect(window._paq[1]).toEqual(['trackSiteSearch', "TEST QUERY", false, 0])
   })
 
   it("bold-pattern function works correctly", () => {
