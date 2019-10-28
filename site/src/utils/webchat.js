@@ -18,7 +18,7 @@ export default class WebChatManager extends React.Component {
       ;(function() {
         var se = document.createElement("script")
         se.type = "text/javascript"
-        se.async = true
+        se.defer = true
         se.src =
           window.__8x8Chat.domain +
           window.__8x8Chat.path +
