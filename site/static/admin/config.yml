@@ -29,7 +29,7 @@ collections:
           collection: "directories",
           searchFields: ["title"],
           valueField: "title",
-          displayFields: ["title"]}
+          displayFields: ["title"] }
       - { name: priority, label: Priority, widget: "number", default: 0,
           hint: "Controls the order in which the directory appears in the parent directory, starting from 0, lower = higher"  }
       - { name: role, label: Role, required: false }
@@ -38,6 +38,23 @@ collections:
       - { name: signedby, label: Signed Off, required: false }
       - { name: tags, label: Tags, widget: "list", required: false,
           hint: "divide tags up using commas, e.g:  emergency, test, contact. The following tags have effects: draft, webchat, popular " }
+      - { label: "Related Departments",
+          name: "departments",
+          widget: "relation",
+          collection: "departments",
+          searchFields: ["title"],
+          valueField: "title",
+          displayFields: ["title"],
+          multiple: true }
+
+  - name: departments
+    label: Departments
+    label_singular: 'Department'
+    folder: content/departments
+    create: true
+    fields:
+    - { name: title, label: Title }
+    - { name: description, label: Description }
 
   - name: directories
     label: Directories
@@ -79,3 +96,4 @@ collections:
         fields:
           - { label: 'Phone number', name: 'contact_centre_number', widget: 'string', required: true }
           - { label: 'Text shown on contact centre page', name: 'contact_centre_text', widget: 'text', required: true }
+
