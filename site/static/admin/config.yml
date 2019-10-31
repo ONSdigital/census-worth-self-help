@@ -38,6 +38,7 @@ collections:
       - { name: signedby, label: Signed Off, required: false }
       - { name: tags, label: Tags, widget: "list", required: false,
           hint: "divide tags up using commas, e.g:  emergency, test, contact. The following tags have effects: draft, webchat, popular " }
+      - { name: externalreference, label: "SharePoint link", required: false }
 
   - name: directories
     label: Directories
@@ -58,7 +59,6 @@ collections:
           required: false }
       - { name: priority, label: Priority, widget: "number", default: 0,
           hint: "Controls the order in which the directory appears in the parent directory, starting from 0, lower = higher"  }
-
 
   - name: constants
     label: Constants
