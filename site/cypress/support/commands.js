@@ -17,7 +17,14 @@ Cypress.Commands.add("searchArticle", searchValue => {
   cy.get(search.searchBarField).type(searchValue)
 })
 
-Cypress.Commands.add('getArticleContent', () => {
-  cy.get("body")
-    .get(article.content, { timeout: 0 })
+Cypress.Commands.add('isArticlePage', () => {
+  cy.get(article.content)
+    .should("be.visible")
 })
+
+Cypress.Commands.add('isPageNotFoundPage', () => {
+  cy.get("#___gatsby")
+    .contains("Gatsby.js development 404 page")
+})
+
+
