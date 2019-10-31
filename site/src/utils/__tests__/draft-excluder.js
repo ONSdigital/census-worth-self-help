@@ -29,20 +29,6 @@ const notReadyForProductionNode = {
   }
 }
 
-const notCcOnlyNode = {
-  frontmatter: {
-    title: "not call centre only",
-    description: "not call centre only description",
-    priority: 0,
-    date: new Date(),
-    cconly: false
-  },
-  fields: {
-    pagename: "not-call-centre-only",
-    collection: "articles"
-  }
-}
-
 const ccOnlyNode = {
   frontmatter: {
     title: "call centre only",
@@ -53,6 +39,20 @@ const ccOnlyNode = {
   },
   fields: {
     pagename: "call-centre-only",
+    collection: "articles"
+  }
+}
+
+const notCcOnlyNode = {
+  frontmatter: {
+    title: "not call centre only",
+    description: "not call centre only description",
+    priority: 0,
+    date: new Date(),
+    cconly: false
+  },
+  fields: {
+    pagename: "not-call-centre-only",
     collection: "articles"
   }
 }
@@ -78,7 +78,7 @@ describe("excludeDraftArticle without filtering", () => {
     expect(excludeDraftArticle(ccOnlyNode)).toBe(false)
   })
   it("not cc only node", () => {
-    expect(excludeDraftArticle(ccOnlyNode)).toBe(false)
+    expect(excludeDraftArticle(notCcOnlyNode)).toBe(false)
   })
 })
 
@@ -103,6 +103,6 @@ describe("excludeDraftArticle with filtering", () => {
     expect(excludeDraftArticle(ccOnlyNode)).toBe(true)
   })
   it("not cc only node", () => {
-    expect(excludeDraftArticle(ccOnlyNode)).toBe(false)
+    expect(excludeDraftArticle(notCcOnlyNode)).toBe(false)
   })
 })

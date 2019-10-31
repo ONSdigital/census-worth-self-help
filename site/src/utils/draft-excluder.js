@@ -9,7 +9,7 @@ exports.excludeDraftArticle = node => {
       ) || (
         node.frontmatter.draftreason &&
         node.frontmatter.draftreason !== READY_FOR_PRODUCTION
-      )
+      ) || node.frontmatter.cconly
     )
   )
 }

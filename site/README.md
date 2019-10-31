@@ -15,6 +15,7 @@
 
 Or to run interactively
     
+    rm -Rf node_modules/.cache/  _build public
     npm run local:production-like
     export EXCLUDE_DRAFTS=true
     npm run cy-open    
