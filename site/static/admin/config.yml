@@ -51,14 +51,15 @@ collections:
           displayFields: ["title"],
           required: true,
           multiple: false }
-      - { label: "Related Departments",
+      - { label: "Related Team(s)",
           name: "departments",
           widget: "relation",
           collection: "departments",
           searchFields: ["title"],
           valueField: "title",
           displayFields: ["title"],
-          multiple: true }
+          multiple: true,
+          hint: "Please include the team responsible plus any team that need to be consulted" }
       - { label: "Draft Reason",
           name: "draftreason",
           widget: "relation",
