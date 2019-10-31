@@ -47,6 +47,15 @@ collections:
           valueField: "title",
           displayFields: ["title"],
           multiple: true }
+      - { label: "Draft Reason",
+          name: "draftreason",
+          widget: "relation",
+          collection: "draftreasons",
+          searchFields: ["title"],
+          valueField: "title",
+          displayFields: ["title"],
+          multiple: false,
+          required: true }
 
   - name: departments
     label: Departments
@@ -76,6 +85,15 @@ collections:
           required: false }
       - { name: priority, label: Priority, widget: "number", default: 0,
           hint: "Controls the order in which the directory appears in the parent directory, starting from 0, lower = higher"  }
+
+  - name: draftreasons
+    label: "Draft Reasons"
+    label_singular: 'Draft Reason'
+    folder: content/draftreason
+    create: true
+    fields:
+    - { name: title, label: Title }
+    - { name: description, label: Description }
 
   - name: constants
     label: Constants
