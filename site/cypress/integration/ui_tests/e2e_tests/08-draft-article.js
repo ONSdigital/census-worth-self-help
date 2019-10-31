@@ -4,10 +4,13 @@
 const article = require('../../../fixtures/fragments/article');
 
 describe("Draft articles", function() {
-    it('An article with the \'draft\' tag should not be visible [ONS-232]', function () {
+    it('An article with the draftresason field or \'draft\' tag should not be visible [ONS-232] and [ONS-351]', function () {
         Cypress.env('RETRIES', 2);
-        cy.exec('echo $EXCLUDE_DRAFTS').its('stdout').should('eq', 'true');
         cy.visit('/draft-test-article');
         cy.get(article.content).should('not.be.visible');
+        cy.visit('/draft-legacy-test-article');
+        cy.get(article.content).should('not.be.visible');
+        cy.visit('/ready-for-production-test-article');
+        cy.get(article.content).should('not.visible');
     });
 });

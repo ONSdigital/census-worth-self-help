@@ -1,18 +1,22 @@
 # Run an individual spec
+
 In order to run individual spec files, you can run:
 
     ./node_modules/.bin/cypress run --spec cypress/integration/ui_tests/<file_name>
 
-# Browser argument    
+# Browser argument
+
 You can also add `--browser=chrome` if you want to run a test without opening the test runner:
 
     ./node_modules/.bin/cypress run --browser=chrome --spec <path/to/file>
     
 # Scripts in package.json
+
 There are scripts in package.json to run with either headless or with the test runner open:
 
     npm run e2e
     npm run e2e-test-runner
+
 You will also need to export the environment variables for live chat before running the tests. These are in the secrets
 repo.
 

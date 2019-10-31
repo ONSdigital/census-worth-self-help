@@ -109,7 +109,7 @@ export const data = {
 export const articleNode = data.edges[0].node
 export const webchatArticleNode = data.edges[1].node
 export const directoryNode = data.edges[2].node
-export const draftNode = data.edges[3].node
+export const legacyDraftNode = data.edges[3].node
 export const popularList = {
   edges: [data.edges[1], data.edges[2], data.edges[4], data.edges[5]]
 }

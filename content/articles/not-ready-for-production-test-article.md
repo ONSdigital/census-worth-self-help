@@ -1,7 +1,7 @@
 ---
-title: Draft article
+title: Not ready for production article
 date: 2019-10-31T09:38:55.047Z
-description: a draft article
+description: Not ready for production article
 directory: Good Articles
 priority: 0
 author: Ian

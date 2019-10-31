@@ -9,6 +9,18 @@
     gatsby build
     gatsby serve
 
+# Run e2e tests
+
+    npm run e2e
+
+Or to run interactively
+    
+    npm run local:production-like
+    export EXCLUDE_DRAFTS=true
+    npm run cy-open    
+
+See [e2e README](cypress/CYPRESS_README.md) for more details.
+        
 # Deploy GCP app engine service
 
     npm install
