@@ -4,7 +4,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
 
 exports.onCreateNode = (props) => {
-  // This function permeantly adds the following values to our graphql queries.
+  // This function permanently adds the following values to our graphql queries.
   // collection - this tells us which collection the .md is from
   // pagename - based on the filename, this will be the url of the .md in the interface
   let { node, actions } = props

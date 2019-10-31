@@ -82,6 +82,7 @@
     "e2e-secured-open": "export EXCLUDE_DRAFTS='true'; start-server-and-test develop http://localhost:8000; . ./cypress_env_variables.sh; node_modules/cypress/bin/cypress open",
     "format": "prettier --write {app,cypress,src}/**/*.{js,jsx}",
     "local": "./localbuild.sh; npm run develop",
+    "local:exclude-drafts": "./localbuild.sh; export EXCLUDE_DRAFTS='true' ; npm run develop",
     "merge-reports": "npx mochawesome-merge --reportDir mochawesome-report > mochawesome.json; npx mochawesome-report-generator mochawesome.json --reportDir mochawesome-report",
     "serve": "gatsby serve",
     "start": "node app.js",
