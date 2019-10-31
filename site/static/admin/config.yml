@@ -128,10 +128,10 @@ collections:
           - { label: 'Phone number', name: 'contact_centre_number', widget: 'string', required: true }
           - { label: 'Text shown on contact centre page', name: 'contact_centre_text', widget: 'text', required: true }
 
-  - name: optimizedby
-    label: "Optimized By"
-    label_singular: 'Optimized By'
-    folder: content/optimizedby
+  - name: optimisedby
+    label: "Optimised By"
+    label_singular: 'Optimised By'
+    folder: content/optimisedby
     create: true
     fields:
     - { name: title, label: Name }
