@@ -29,6 +29,34 @@ const notReadyForProductionNode = {
   }
 }
 
+const notCcOnlyNode = {
+  frontmatter: {
+    title: "not call centre only",
+    description: "not call centre only description",
+    priority: 0,
+    date: new Date(),
+    cconly: false
+  },
+  fields: {
+    pagename: "not-call-centre-only",
+    collection: "articles"
+  }
+}
+
+const ccOnlyNode = {
+  frontmatter: {
+    title: "call centre only",
+    description: "call centre only description",
+    priority: 0,
+    date: new Date(),
+    cconly: true
+  },
+  fields: {
+    pagename: "call-centre-only",
+    collection: "articles"
+  }
+}
+
 describe("excludeDraftArticle without filtering", () => {
   beforeEach(() => {
 	  process.env.EXCLUDE_DRAFTS = ""
@@ -45,6 +73,12 @@ describe("excludeDraftArticle without filtering", () => {
   })
   it("not ready for production node", () => {
     expect(excludeDraftArticle(notReadyForProductionNode)).toBe(false)
+  })
+  it("cc only node", () => {
+    expect(excludeDraftArticle(ccOnlyNode)).toBe(false)
+  })
+  it("not cc only node", () => {
+    expect(excludeDraftArticle(ccOnlyNode)).toBe(false)
   })
 })
 
@@ -64,5 +98,11 @@ describe("excludeDraftArticle with filtering", () => {
   })
   it("not ready for production node", () => {
     expect(excludeDraftArticle(notReadyForProductionNode)).toBe(true)
+  })
+  it("cc only node", () => {
+    expect(excludeDraftArticle(ccOnlyNode)).toBe(true)
+  })
+  it("not cc only node", () => {
+    expect(excludeDraftArticle(ccOnlyNode)).toBe(false)
   })
 })
