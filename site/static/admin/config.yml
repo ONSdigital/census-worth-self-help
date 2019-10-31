@@ -38,7 +38,18 @@ collections:
       - { name: signedby, label: Signed Off, required: false }
       - { name: tags, label: Tags, widget: "list", required: false,
           hint: "divide tags up using commas, e.g:  emergency, test, contact. The following tags have effects: draft, webchat, popular " }
-      - { name: externalreference, label: "SharePoint link", required: false }
+      - { name: contentsource, label: "SharePoint link",
+          pattern: ['.{144,}', "￼Must be a valid SharePoint link"],
+          required: true }
+      - { label: "Optimised By",
+          name: "optimisedby",
+          widget: "relation",
+          collection: "optimisedby",
+          searchFields: ["title"],
+          valueField: "title",
+          displayFields: ["title"],
+          required: true,
+          multiple: false }
       - { label: "Related Departments",
           name: "departments",
           widget: "relation",
@@ -115,3 +126,11 @@ collections:
           - { label: 'Phone number', name: 'contact_centre_number', widget: 'string', required: true }
           - { label: 'Text shown on contact centre page', name: 'contact_centre_text', widget: 'text', required: true }
 
+  - name: optimizedby
+    label: "Optimized By"
+    label_singular: 'Optimized By'
+    folder: content/optimizedby
+    create: true
+    fields:
+    - { name: title, label: Name }
+    - { name: description, label: Description }
