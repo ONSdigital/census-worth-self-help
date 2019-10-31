@@ -67,6 +67,9 @@ collections:
           displayFields: ["title"],
           multiple: false,
           required: true }
+      - { label: "Call Centre Only",
+          name: "cconly",
+          widget: boolean }
 
   - name: departments
     label: Departments
