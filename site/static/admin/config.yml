@@ -41,6 +41,15 @@ collections:
       - { name: contentsource, label: "SharePoint link",
           pattern: ['.{144,}', "￼Must be a valid SharePoint link"],
           required: true }
+      - { label: "Optimised By",
+          name: "optimisedby",
+          widget: "relation",
+          collection: "optimisedby",
+          searchFields: ["title"],
+          valueField: "title",
+          displayFields: ["title"],
+          required: true,
+          multiple: false }
       - { label: "Related Departments",
           name: "departments",
           widget: "relation",
@@ -99,3 +108,11 @@ collections:
           - { label: 'Phone number', name: 'contact_centre_number', widget: 'string', required: true }
           - { label: 'Text shown on contact centre page', name: 'contact_centre_text', widget: 'text', required: true }
 
+  - name: optimizedby
+    label: "Optimized By"
+    label_singular: 'Optimized By'
+    folder: content/optimizedby
+    create: true
+    fields:
+    - { name: title, label: Name }
+    - { name: description, label: Description }
