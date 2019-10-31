@@ -40,6 +40,7 @@ collections:
           hint: "divide tags up using commas, e.g:  emergency, test, contact. The following tags have effects: draft, webchat, popular " }
       - { name: contentsource, label: "SharePoint link",
           pattern: ['.{144,}', "￼Must be a valid SharePoint link"],
+          hint: "Always open SharePoint links on Internet Explorer",
           required: true }
       - { label: "Optimised By",
           name: "optimisedby",
@@ -50,14 +51,15 @@ collections:
           displayFields: ["title"],
           required: true,
           multiple: false }
-      - { label: "Related Departments",
+      - { label: "Related Team(s)",
           name: "departments",
           widget: "relation",
           collection: "departments",
           searchFields: ["title"],
           valueField: "title",
           displayFields: ["title"],
-          multiple: true }
+          multiple: true,
+          hint: "Please include the team responsible plus any team that need to be consulted" }
       - { label: "Draft Reason",
           name: "draftreason",
           widget: "relation",
@@ -129,10 +131,10 @@ collections:
           - { label: 'Phone number', name: 'contact_centre_number', widget: 'string', required: true }
           - { label: 'Text shown on contact centre page', name: 'contact_centre_text', widget: 'text', required: true }
 
-  - name: optimizedby
-    label: "Optimized By"
-    label_singular: 'Optimized By'
-    folder: content/optimizedby
+  - name: optimisedby
+    label: "Optimised By"
+    label_singular: 'Optimised By'
+    folder: content/optimisedby
     create: true
     fields:
     - { name: title, label: Name }
