@@ -19,9 +19,41 @@ collections:
     folder: content/articles
     create: true
     fields:
+      - { label: "Call Centre Only",
+          name: "cconly",
+          widget: boolean,
+          default: false,
+          required: false,
+          hint: "Remember to add *CC only* at the beginning of the title. The article will be visible only to the Call Centre." }
+      - { label: "Draft Reason",
+          name: "draftreason",
+          widget: "relation",
+          collection: "draftreasons",
+          searchFields: ["title"],
+          valueField: "title",
+          displayFields: ["title"],
+          multiple: false,
+          required: true,
+          hint: "Remember to add *DRAFT* at the beginning of the title. The article will be visible only to the Call Centre until this is set to ‘Ready for Live’." }
+      - { label: "Related Team(s)",
+          name: "departments",
+          widget: "relation",
+          collection: "departments",
+          searchFields: ["title"],
+          valueField: "title",
+          displayFields: ["title"],
+          multiple: true,
+          hint: "Please include the team responsible plus any team that need to be consulted" }
+      - { name: contentsource, label: "SharePoint link",
+          pattern: ['.{144,}', "￼Must be a valid SharePoint link"],
+          hint: "Always open SharePoint links on Internet Explorer",
+          required: true }
+      - { name: date, label: Publish Date, widget: datetime,
+          hint: "Remember to change to current date & time before saving" }
       - { name: title, label: Title }
-      - { name: date, label: Publish Date, widget: datetime }
-      - { name: description, label: Description }
+      - { name: description, label: Description,
+          hint: "Should only be 1-2 sentences. The description will appear in bold letters on the website." }
+      - { name: role, label: Role, required: true }
       - { name: body, label: Main Body, widget: sanitiziedMarkdown }
       - { label: "Directory",
           name: "directory",
@@ -32,16 +64,10 @@ collections:
           displayFields: ["title"] }
       - { name: priority, label: Priority, widget: "number", default: 0,
           hint: "Controls the order in which the directory appears in the parent directory, starting from 0, lower = higher"  }
-      - { name: role, label: Role, required: false }
-      - { name: author, label: Author, required: false }
-      - { name: reviewedby, label: Reviewed By, required: false }
-      - { name: signedby, label: Signed Off, required: false }
       - { name: tags, label: Tags, widget: "list", required: false,
           hint: "divide tags up using commas, e.g:  emergency, test, contact. The following tags have effects: draft, webchat, popular " }
-      - { name: contentsource, label: "SharePoint link",
-          pattern: ['.{144,}', "￼Must be a valid SharePoint link"],
-          hint: "Always open SharePoint links on Internet Explorer",
-          required: true }
+      - { name: author, label: Author, required: true }
+      - { name: reviewedby, label: Reviewed By, required: false }
       - { label: "Optimised By",
           name: "optimisedby",
           widget: "relation",
@@ -51,29 +77,7 @@ collections:
           displayFields: ["title"],
           required: true,
           multiple: false }
-      - { label: "Related Team(s)",
-          name: "departments",
-          widget: "relation",
-          collection: "departments",
-          searchFields: ["title"],
-          valueField: "title",
-          displayFields: ["title"],
-          multiple: true,
-          hint: "Please include the team responsible plus any team that need to be consulted" }
-      - { label: "Draft Reason",
-          name: "draftreason",
-          widget: "relation",
-          collection: "draftreasons",
-          searchFields: ["title"],
-          valueField: "title",
-          displayFields: ["title"],
-          multiple: false,
-          required: true }
-      - { label: "Call Centre Only",
-          name: "cconly",
-          widget: boolean,
-          default: false,
-          required: false }
+      - { name: signedby, label: Signed Off, required: true }
 
   - name: departments
     label: Departments
