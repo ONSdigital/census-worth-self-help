@@ -7,7 +7,7 @@ const readyForProductionNode = {
     description: "ready for production description",
     priority: 0,
     date: new Date(),
-    draftreason: "Ready for production"
+    draftreason: "Ready for Live Site"
   },
   fields: {
     pagename: "ready-for-production",

@@ -1,4 +1,4 @@
-const READY_FOR_PRODUCTION = "Ready for production"
+const READY_FOR_PRODUCTION = "Ready for Live Site"
 
 // Articles in draft should not be deployed to production. An article is draft if the draftreason for the article
 // is anything other than "Ready for production" - see ONS-359.
