@@ -71,7 +71,9 @@ collections:
           required: true }
       - { label: "Call Centre Only",
           name: "cconly",
-          widget: boolean }
+          widget: boolean,
+          default: false,
+          required: false }
 
   - name: departments
     label: Departments
