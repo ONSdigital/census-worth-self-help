@@ -29,6 +29,7 @@ jobs:
         params:
           BACKEND_CONTENT_REPO: census-worth-self-help-test
           ENABLE_MATOMO: true
+          EXCLUDE_DRAFTS: 'true'
           MATOMO_IP: ((matomo.matomo-ip-address))
           MATOMO_SITE_ID: 8
           PATCH_NETLIFY: true

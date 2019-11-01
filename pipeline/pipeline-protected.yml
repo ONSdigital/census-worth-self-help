@@ -30,6 +30,7 @@ jobs:
           COOKIE_TIMEOUT: 10
           DISABLE_NETLIFY: true
           ENABLE_MATOMO: true
+          EXCLUDE_DRAFTS: 'true'
           IDP_ENTRY_POINT: ((sso.idp-entry-point))
           IDP_LOGOUT: ((sso.idp-logout))
           IDP_CERTIFICATE: ((sso.idp-certificate))
