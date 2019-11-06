@@ -60,7 +60,7 @@ collections:
           searchFields: ["title"],
           valueField: "title",
           displayFields: ["title"],
-          multiple: false,
+          multiple: true,
           required: true }
       - { name: body, label: Main Body, widget: sanitiziedMarkdown,
           required: true }
