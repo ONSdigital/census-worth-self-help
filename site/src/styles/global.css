@@ -27,3 +27,21 @@ a {
 .webchat-link img {
 	height: 60px;
 }
+
+table {
+	margin-left:auto;
+	margin-right:auto;
+	border-collapse: collapse;
+}
+
+table, td, th {
+	border: 1px solid black;
+}
+
+td, th {
+	padding: 0.3em;
+}
+
+tr:nth-child(even) {
+	background-color: #ddd;
+}
