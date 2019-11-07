@@ -16,9 +16,6 @@ BookmarkManager.mockImplementation(
 )
 
 describe("Index", () => {
-  beforeEach(() => {
-    window._paq = []
-  });
 
   const mostRecentData = { allMarkdownRemark : articleList }
   const empty_data = {}
