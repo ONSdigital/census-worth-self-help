@@ -180,6 +180,7 @@ export const query = graphql`
             departments
             draftreason
             optimisedby
+            role
             signedby       
           }
         }
