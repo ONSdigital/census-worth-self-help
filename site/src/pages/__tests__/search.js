@@ -7,10 +7,6 @@ import ReactDOMServer from 'react-dom/server';
 import { Index } from 'elasticlunr';
 
 describe("Search", () => {
-  beforeEach(() => {
-    window._paq = []
-  });
-
   it("renders correctly", () => {
     const data = { allMarkdownRemark : articleList }
     const tree = renderer.create(<Search data={data}/>).toJSON()
@@ -18,6 +14,7 @@ describe("Search", () => {
   })
 
   it("anlytics captured", () => {
+    window._paq = []
     var index = new Index;
     ["title", "author", "tags", "description", "body"].forEach( name => index.addField(name))
     const data = {
@@ -28,9 +25,8 @@ describe("Search", () => {
     const searchBox = getByTestId('search-box')
     fireEvent.change(searchBox, { target: { value: 'TEST QUERY' } });
     // check paq updated.
-    expect(window._paq[0]).toEqual(['setCustomDimension', 1, 'other'])
-    expect(window._paq[1]).toEqual(['trackEvent', "search", "query", "TEST QUERY", ""])
-    expect(window._paq[2]).toEqual(['trackSiteSearch', "TEST QUERY", false, 0])
+    expect(window._paq[0]).toEqual(['trackEvent', "search", "query", "TEST QUERY", ""])
+    expect(window._paq[1]).toEqual(['trackSiteSearch', "TEST QUERY", false, 0])
   })
 
   it("bold-pattern function works correctly", () => {

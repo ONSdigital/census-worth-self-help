@@ -3,14 +3,14 @@ import { css } from "@emotion/core"
 import { spacing } from "../utils/styles"
 import Metadata from "./metadata"
 
-export default ({ children, icon = null, subtitle = null, pageType }) => {
+export default ({ children, icon = null, subtitle = null }) => {
   return (
     <div
       css={css`
         ${spacing.in_page_element}
       `}
     >
-      <Metadata pageType={pageType}>SHF: {children}</Metadata>
+      <Metadata>SHF: {children}</Metadata>
       <h1
         css={css`
           margin-bottom: 0px;
