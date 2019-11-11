@@ -16,7 +16,7 @@ export default class Analytics {
   }
 
   static setPageType(pageType) {
-    if (window._paq) {
+    if (typeof window !== `undefined` && window._paq) {
       window._paq.push(["setCustomDimension", 1, pageType])
     }
   }
