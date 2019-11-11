@@ -162,6 +162,7 @@ export default class Article extends React.Component {
             `}
           >
             <PageTitle
+              pageType="article"
               subtitle={
                 post && (
                   <span>

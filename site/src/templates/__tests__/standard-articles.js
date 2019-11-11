@@ -7,6 +7,10 @@ import {articleNode, articleList, webchatArticleNode} from "../../utils/testdata
 import { render, fireEvent } from "react-testing-library"
 
 describe("StandardArticle", () => {
+  beforeEach(() => {
+    window._paq = []
+  });
+
   const pageContext = {
   	breadcrumbs : [],
   	peers : [ {title: "nothing"}, {title: "test Article 2"}],
@@ -34,8 +38,6 @@ describe("StandardArticle", () => {
   })
 
   it("positive feedback", () => {
-    window._paq = []
-
     // create page
     const { getByTestId, getByText } = render(<StandardArticle data={data} pageContext={pageContext} />);
     
@@ -48,13 +50,15 @@ describe("StandardArticle", () => {
     expect(notification.textContent).toEqual("Thank you for your feedback")
 
     // check paq updated.
-    expect(window._paq).toEqual([['trackEvent', "article-feedback-rating", "rating", "test Article 1", 1]])
+    expect(window._paq).toEqual([
+      ['setCustomDimension', 1, 'article'],
+      ['trackEvent', "article-feedback-rating", "rating", "test Article 1", 1],
+      ['setCustomDimension', 1, 'article']
+    ])
 
   })
 
   it("negative feedback", () => {
-    window._paq = []
-
     // create page
     const { getByTestId, getByText } = render(<StandardArticle data={data} pageContext={pageContext} />);
 
@@ -74,8 +78,11 @@ describe("StandardArticle", () => {
 
     // check paq updated.
     expect(window._paq).toEqual([
+      ['setCustomDimension', 1, 'article'],
+      ['setCustomDimension', 1, 'article'],
       ['trackEvent', "article-feedback-review", "REVIEW: test Article 1", "TEST VALUE", ""],
-      ['trackEvent', "article-feedback-rating", "rating", "test Article 1", -1]
+      ['trackEvent', "article-feedback-rating", "rating", "test Article 1", -1],
+      ['setCustomDimension', 1, 'article']
     ])
   })
 
