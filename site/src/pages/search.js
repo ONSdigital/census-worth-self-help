@@ -28,7 +28,6 @@ export default class Search extends React.Component {
     this.data = props.data
     this.trackSiteSearch = debounce(searchAnalytics.trackSiteSearch, props.debounceDelay)
     this.updateSearchResults = this.updateSearchResults.bind(this)
-    this.updateSearchResults = this.updateSearchResults.bind(this)
     this.updatePagination = this.updatePagination.bind(this)
   }
 
