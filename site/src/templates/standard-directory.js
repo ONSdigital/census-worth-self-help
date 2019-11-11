@@ -15,7 +15,7 @@ export default ({ pageContext }) => {
           thisPage={pageContext.title}
         />
       )}
-      <PageTitle pageType="directory">{pageContext.title}</PageTitle>
+      <PageTitle>{pageContext.title}</PageTitle>
       {pageContext.description && (
         <TextBlock>
           <div className="Article-sub-title-Style">
