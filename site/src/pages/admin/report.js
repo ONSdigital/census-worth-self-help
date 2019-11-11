@@ -10,25 +10,36 @@ export default class Report extends React.Component {
     super(props)
     this.data = props.data
     this.state = {
+      role: "",
       title: ""
     }
-    this.updateReport = this.updateReport.bind(this)
+    this.updateReportTitle = this.updateReportTitle.bind(this)
+    this.updateReportRole = this.updateReportRole.bind(this)
   }
 
-  updateReport(event) {
+  updateReportTitle(event) {
     this.setState({
-      title : event.target.value
+      title : event.target.value.toLowerCase()
+    })
+  }
+
+  updateReportRole(event) {
+    this.setState({
+      role : event.target.value
     })
   }
 
   render() {
-    const items = this.data.allMarkdownRemark.edges
+    const items = this.data.allItems.edges
       .filter(({ node }) => {
         if (this.state.title) {
-          if (node.frontmatter) {
-            if (!node.frontmatter.title.includes(this.state.title)) {
-              return false
-            }
+          if (!node.frontmatter.title.toLowerCase().includes(this.state.title)) {
+            return false
+          }
+        }
+        if (this.state.role) {
+          if (node.frontmatter.role !== this.state.role) {
+            return false
           }
         }
         return true
@@ -37,6 +48,10 @@ export default class Report extends React.Component {
       <ReportItem
           key={node.fields.collection + "/" + node.fields.pagename}
           node={node}/>
+    ))
+
+    const roles = this.data.allRoles.edges.map(({ node }) => (
+      <option>{node.frontmatter.title}</option>
     ))
 
     return (
@@ -53,9 +68,21 @@ export default class Report extends React.Component {
           maxLength="20"
           type="text"
           value={this.state.title}
-          onChange={this.updateReport}
-          autoFocus
+          onChange={this.updateReportTitle}
         />
+        <select
+          id="report-role"
+          data-testid="report-role"
+          value={this.state.role}
+          onChange={this.updateReportRole}
+          >
+          <option/>
+          {roles}
+        </select>
+        <input
+          type="checkbox"
+          name="cconly"
+          value={this.state.cconly}/> cc only
         {items}
       </Layout>
     )
@@ -64,8 +91,9 @@ export default class Report extends React.Component {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(
+    allItems: allMarkdownRemark(
       sort: { fields: frontmatter___title }
+      filter: { fields: { collection: { eq: "articles" } } }
     ) {
       totalCount
       edges {
@@ -74,5 +102,17 @@ export const query = graphql`
         }
       }
     }
+    allRoles: allMarkdownRemark(
+      sort: { fields: frontmatter___title }
+      filter: { fields: { collection: { eq: "role" } } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+          }
+        }
+      }
+    }    
   }
 `
