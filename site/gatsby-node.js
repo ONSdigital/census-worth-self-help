@@ -174,6 +174,14 @@ function createDirectoryPages(createPage, directories)
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
+  if (!process.env.DISABLE_NETLIFY) {
+    console.log("Report page included in deployment")
+    createPage({
+      path: `/report`,
+      component: path.resolve(`./src/pages/admin/report.js`),
+    })
+  }
+
   return graphql(`
   {
     allMarkdownRemark {
