@@ -14,4 +14,10 @@ export default class Analytics {
       console.debug(`Track site search : ${keyword} - ${category} - ${searchCount}`)
     }
   }
+
+  static setPageType(pageType) {
+    if (window._paq) {
+      window._paq.push(["setCustomDimension", 1, pageType])
+    }
+  }
 }
