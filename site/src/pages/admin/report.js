@@ -8,6 +8,7 @@ import ReportItem from "../../components/admin/reportItem"
 
 const NA = "(not set)"
 const SET = "(set)"
+const DRAFT = "(in draft)"
 const INITIAL_STATE = {
   author: "",
   cconly: "",
@@ -15,20 +16,22 @@ const INITIAL_STATE = {
   department: "",
   directory: "",
   draftreason: "",
-  optimisedby: "",
+  "match-title": "",
+  "match-signedby": "",
   role: "",
   signedby: "",
-  title: ""
+  title: "",
 }
 export default class Report extends React.Component {
   constructor(props) {
     super(props)
     this.data = props.data
     this.state = INITIAL_STATE
-    this.fieldIncludes = this.fieldIncludes.bind(this)
+    this.fieldMatches = this.fieldMatches.bind(this)
     this.fieldEquals = this.fieldEquals.bind(this)
     this.getCollectionSelect = this.getCollectionSelect.bind(this)
     this.getCollectionOptions = this.getCollectionOptions.bind(this)
+    this.getFieldMatchInput = this.getFieldMatchInput.bind(this)
     this.reset = this.reset.bind(this)
   }
 
@@ -44,15 +47,19 @@ export default class Report extends React.Component {
     this.setState(INITIAL_STATE);
   }
 
-  fieldIncludes(fieldName, node) {
-    return !this.state[fieldName] ||
-      node.frontmatter[fieldName].toLowerCase().includes(this.state[fieldName].toLowerCase())
+  fieldMatches(fieldName, node) {
+    const matchStateAttributeName = "match-" + fieldName
+    return !this.state[matchStateAttributeName] ||
+      (node.frontmatter[fieldName] &&
+        node.frontmatter[fieldName].toLowerCase().includes(this.state[matchStateAttributeName].toLowerCase())
+      )
   }
 
   fieldEquals(fieldName, node) {
     const value = this.state[fieldName]
     return !value ||
       `${node.frontmatter[fieldName]}` === value ||
+      (value === DRAFT && node.frontmatter[fieldName] !== "Ready for Live Site") ||
       (value === NA && !this.isSet(node.frontmatter[fieldName])) ||
       (value === SET && this.isSet(node.frontmatter[fieldName]))
   }
@@ -61,6 +68,17 @@ export default class Report extends React.Component {
     return value !== null && value !== ""
   }
 
+  getFieldMatchInput(fieldName) {
+    const matchStateAttributeName = "match-" + fieldName
+    return (<input
+      id={"report-match-" + fieldName}
+      maxLength="30"
+      size={30}
+      type="text"
+      value={this.state[matchStateAttributeName]}
+      onChange={this.updateReport(matchStateAttributeName).bind(this)}
+    />)
+  }
 
   getCollectionOptions(fieldName) {
     if (fieldName === "cconly")
@@ -90,13 +108,19 @@ export default class Report extends React.Component {
         <option/>
         <option>{NA}</option>
         <option>{SET}</option>
+        {fieldName === "draftreason" && <option>{DRAFT}</option>}
         {this.getCollectionOptions(fieldName)}
       </select>
     )
   }
 
   render() {
-    const stateKeys = Object.keys(this.state).filter(key => this.state[key])
+    const stateKeys = Object.keys(this.state)
+      .filter(key => this.state[key])
+    const fieldNamesSearched = Array.from(new Set(stateKeys.map(key =>
+      key.startsWith("match-") ? key.substring(6) : key
+    )))
+
     const items = this.data.allItems.edges
       .filter(({ node }) => {
         return this.fieldEquals("author", node) &&
@@ -108,12 +132,13 @@ export default class Report extends React.Component {
           this.fieldEquals("optimisedby", node) &&
           this.fieldEquals("role", node) &&
           this.fieldEquals("signedby", node) &&
-          this.fieldIncludes("title", node)
+          this.fieldMatches("signedby", node)
+          this.fieldMatches("title", node)
       }).map(({ node }) => (
       <ReportItem
           key={node.fields.collection + "/" + node.fields.pagename}
           node={node}
-          fieldNames={stateKeys}/>
+          fieldNames={fieldNamesSearched}/>
     ))
 
     const filterAsString = stateKeys
@@ -134,14 +159,7 @@ export default class Report extends React.Component {
             padding: 1em;
           `}>
             <div>
-              Title <input
-                id="report-title"
-                maxLength="50"
-                size={50}
-                type="text"
-                value={this.state.title}
-                onChange={this.updateReport("title").bind(this)}
-              />
+              Title{this.getFieldMatchInput("title")}
             </div>
             Call&nbsp;Centre&nbsp;Only{this.getCollectionSelect("cconly")}
             Draft&nbsp;Reasons{this.getCollectionSelect("draftreason")}
@@ -151,7 +169,10 @@ export default class Report extends React.Component {
             Directory{this.getCollectionSelect("directory")}
             Author{this.getCollectionSelect("author")}
             Optimised&nbsp;By{this.getCollectionSelect("optimisedby")}
-            Signed&nbsp;By{this.getCollectionSelect("signedby")}
+            <div>
+              Signed&nbsp;By{this.getCollectionSelect("signedby")}
+              {this.getFieldMatchInput("signedby")}
+            </div>
             <div css={css`
               text-align:right;
             `}><button css={css`font-size:1.5em;`} onClick={this.reset}>Reset</button></div>
