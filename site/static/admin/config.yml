@@ -53,15 +53,18 @@ collections:
       - { name: title, label: Title }
       - { name: description, label: Description,
           hint: "Should only be 1-2 sentences. The description will appear in bold letters on the website." }
-      - { name: role,
-          label: Role,
+      - { name: roles,
+          label: Role(s),
           widget: "relation",
-          collection: "role",
+          collection: "roles",
           searchFields: ["title"],
           valueField: "title",
           displayFields: ["title"],
           multiple: true,
           required: true }
+      - { name: role,
+          label: Role,
+          hint: "Please use Role(s) now." }
       - { name: body,
           label: Main Body,
           widget: sanitiziedMarkdown,
@@ -158,10 +161,10 @@ collections:
     - { name: title, label: Name }
     - { name: description, label: Description }
 
-  - name: role
+  - name: roles
     label: "Roles"
     label_singular: 'Role'
-    folder: content/role
+    folder: content/roles
     create: true
     fields:
     - { name: title, label: Name }
