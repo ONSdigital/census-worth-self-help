@@ -10,5 +10,7 @@ departments:
   - My Other Department
 optimisedby: My Name
 signedby: A Signer
+roles:
+  - A Role
 ---
 Will create the article later okay
