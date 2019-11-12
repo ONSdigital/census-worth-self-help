@@ -51,7 +51,7 @@ export default class Report extends React.Component {
     const matchStateAttributeName = "match-" + fieldName
     return !this.state[matchStateAttributeName] ||
       (node.frontmatter[fieldName] &&
-        node.frontmatter[fieldName].toLowerCase().includes(this.state[matchStateAttributeName].toLowerCase())
+        JSON.stringify(node.frontmatter[fieldName]).toLowerCase().includes(this.state[matchStateAttributeName].toLowerCase())
       )
   }
 
@@ -71,6 +71,9 @@ export default class Report extends React.Component {
   getFieldMatchInput(fieldName) {
     const matchStateAttributeName = "match-" + fieldName
     return (<input
+      css={css`
+          margin: 0em 1em;
+        `}
       id={"report-match-" + fieldName}
       maxLength="30"
       size={30}
@@ -102,7 +105,7 @@ export default class Report extends React.Component {
         value={this.state[fieldName]}
         onChange={this.updateReport(fieldName).bind(this)}
         css={css`
-          margin-right: 1em;
+          margin: 0em 1em;
         `}
       >
         <option/>
@@ -132,8 +135,9 @@ export default class Report extends React.Component {
           this.fieldEquals("optimisedby", node) &&
           this.fieldEquals("role", node) &&
           this.fieldEquals("signedby", node) &&
-          this.fieldMatches("signedby", node)
-          this.fieldMatches("title", node)
+          this.fieldMatches("signedby", node) &&
+          this.fieldMatches("title", node) &&
+          this.fieldMatches("tags", node)
       }).map(({ node }) => (
       <ReportItem
           key={node.fields.collection + "/" + node.fields.pagename}
@@ -173,6 +177,9 @@ export default class Report extends React.Component {
               Signed&nbsp;By{this.getCollectionSelect("signedby")}
               {this.getFieldMatchInput("signedby")}
             </div>
+            <div>
+              Tags{this.getFieldMatchInput("tags")}
+            </div>
             <div css={css`
               text-align:right;
             `}><button css={css`font-size:1.5em;`} onClick={this.reset}>Reset</button></div>
@@ -202,7 +209,8 @@ export const query = graphql`
             draftreason
             optimisedby
             role
-            signedby       
+            signedby      
+            tags 
           }
         }
       }
