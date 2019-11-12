@@ -16,8 +16,11 @@ const INITIAL_STATE = {
   department: "",
   directory: "",
   draftreason: "",
+  "match-author": "",
   "match-title": "",
   "match-signedby": "",
+  "match-tags": "",
+  optimisedby: "",
   role: "",
   signedby: "",
   title: "",
@@ -135,6 +138,7 @@ export default class Report extends React.Component {
           this.fieldEquals("optimisedby", node) &&
           this.fieldEquals("role", node) &&
           this.fieldEquals("signedby", node) &&
+          this.fieldMatches("author", node) &&
           this.fieldMatches("signedby", node) &&
           this.fieldMatches("title", node) &&
           this.fieldMatches("tags", node)
@@ -171,7 +175,10 @@ export default class Report extends React.Component {
             Content&nbsp;Source{this.getCollectionSelect("contentsource")}
             Role{this.getCollectionSelect("role")}
             Directory{this.getCollectionSelect("directory")}
-            Author{this.getCollectionSelect("author")}
+            <div>
+              Author{this.getCollectionSelect("author")}
+              {this.getFieldMatchInput("author")}
+            </div>
             Optimised&nbsp;By{this.getCollectionSelect("optimisedby")}
             <div>
               Signed&nbsp;By{this.getCollectionSelect("signedby")}
