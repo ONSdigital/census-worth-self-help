@@ -64,6 +64,7 @@ collections:
           required: true }
       - { name: role,
           label: Role,
+          required: false,
           hint: "Please use Role(s) now." }
       - { name: body,
           label: Main Body,
