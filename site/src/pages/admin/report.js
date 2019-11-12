@@ -21,7 +21,7 @@ const INITIAL_STATE = {
   "match-signedby": "",
   "match-tags": "",
   optimisedby: "",
-  role: "",
+  roles: "",
   signedby: "",
   title: "",
 }
@@ -136,7 +136,7 @@ export default class Report extends React.Component {
           this.fieldEquals("directory", node) &&
           this.fieldEquals("draftreason", node) &&
           this.fieldEquals("optimisedby", node) &&
-          this.fieldEquals("role", node) &&
+          this.fieldEquals("roles", node) &&
           this.fieldEquals("signedby", node) &&
           this.fieldMatches("author", node) &&
           this.fieldMatches("signedby", node) &&
@@ -173,7 +173,7 @@ export default class Report extends React.Component {
             Draft&nbsp;Reasons{this.getCollectionSelect("draftreason")}
             <div>Related&nbsp;Team(s){this.getCollectionSelect("departments")}</div>
             Content&nbsp;Source{this.getCollectionSelect("contentsource")}
-            Role{this.getCollectionSelect("role")}
+            Role(s){this.getCollectionSelect("roles")}
             Directory{this.getCollectionSelect("directory")}
             <div>
               Author{this.getCollectionSelect("author")}
@@ -215,16 +215,16 @@ export const query = graphql`
             departments
             draftreason
             optimisedby
-            role
+            roles
             signedby      
             tags 
           }
         }
       }
     }
-    role: allMarkdownRemark(
+    roles: allMarkdownRemark(
       sort: { fields: frontmatter___title }
-      filter: { fields: { collection: { eq: "role" } } }
+      filter: { fields: { collection: { eq: "roles" } } }
     ) {
       edges {
         node {
