@@ -65,8 +65,11 @@ collections:
       - { name: role,
           label: Role,
           hint: "Please use Role(s) now." }
-      - { name: body, label: Main Body, widget: sanitiziedMarkdown,
-          required: true }
+      - { name: body,
+          label: Main Body,
+          widget: sanitiziedMarkdown,
+          required: true,
+          hint: "To add a table to the MAIN BODY, use the CMS_Table_Tool.xlsx"}
       - { label: "Directory",
           name: "directory",
           widget: "relation",
