@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { css } from "@emotion/core"
-import Layout from "../../components/admin/layout"
 import PageTitle from "../../components/pagetitle"
 import TextBlock from "../../components/textblock"
 import ReportItem from "../../components/admin/reportItem"
@@ -16,7 +15,7 @@ const INITIAL_STATE = {
   author: "",
   cconly: "",
   contentsource: "",
-  department: "",
+  departments: "",
   directory: "",
   draftreason: "",
   "match-author": "",
@@ -78,7 +77,7 @@ export default class Report extends React.Component {
     const fieldValue = node.frontmatter[fieldName]
 
     return !value ||
-      Array.isArray(fieldValue) && fieldValue.includes(value) ||
+      (Array.isArray(fieldValue) && fieldValue.includes(value)) ||
       `${node.frontmatter[fieldName]}` === value ||
       (value === DRAFT && node.frontmatter[fieldName] !== "Ready for Live Site") ||
       (value === NA && !this.isSet(node.frontmatter[fieldName])) ||
@@ -158,7 +157,7 @@ export default class Report extends React.Component {
   }
 
   getFieldDateBetweenSelector(fieldName) {
-    return (<div>
+    return (<span>
       <DatePicker
         id={"report-select-" + fieldName + "-from"}
         selected={this.state[fieldName + "-from"]}
@@ -171,7 +170,7 @@ export default class Report extends React.Component {
         onChange={this.updateReportDate(fieldName + "-to").bind(this)}
         dateFormat={"dd/MM/yyyy"}
       />
-    </div>)
+    </span>)
   }
 
   render() {
@@ -217,12 +216,8 @@ export default class Report extends React.Component {
 
     const count = items.length;
     return (
-      <Layout>
-        <PageTitle>
-          CMS content report : {count} item{(count !== 1) && <span>s</span>}
-        </PageTitle>
+      <div>
         <TextBlock>
-          <ul>{filterAsString}</ul>
           <div css={css`
             border: 1px solid #555;
             padding: 1em;
@@ -248,14 +243,21 @@ export default class Report extends React.Component {
             <div>
               Tags{this.getFieldMatchInput("tags")}
             </div>
-            Between Dates {this.getFieldDateBetweenSelector("date")}
+            <div>Between Dates {this.getFieldDateBetweenSelector("date")}</div>
             <div css={css`
               text-align:right;
             `}><button css={css`font-size:1.5em;`} onClick={this.reset}>Reset</button></div>
           </div>
+          <PageTitle>
+            CMS content report : {count} item{(count !== 1) && <span>s</span>}
+          </PageTitle>
+          <div css={css`
+            text-align:right;
+          `}>{moment().format("DD MMM YYYY @ hh:mm")}</div>
+          <ul>{filterAsString}</ul>
           {items}
         </TextBlock>
-      </Layout>
+      </div>
     )
   }
 }
