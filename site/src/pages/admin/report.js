@@ -75,7 +75,10 @@ export default class Report extends React.Component {
 
   fieldEquals(fieldName, node) {
     const value = this.state[fieldName]
+    const fieldValue = node.frontmatter[fieldName]
+
     return !value ||
+      Array.isArray(fieldValue) && fieldValue.includes(value) ||
       `${node.frontmatter[fieldName]}` === value ||
       (value === DRAFT && node.frontmatter[fieldName] !== "Ready for Live Site") ||
       (value === NA && !this.isSet(node.frontmatter[fieldName])) ||

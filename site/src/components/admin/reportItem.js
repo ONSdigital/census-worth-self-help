@@ -19,6 +19,7 @@ export default ({ node, fieldNames }) => {
           css={css`
             padding-left:1em;
           `}
+          key={fieldName}
           id={fieldName}>{fieldName} = {node.frontmatter[fieldName] && node.frontmatter[fieldName].toString()}</div>
       ))}
       </div>

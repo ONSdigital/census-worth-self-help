@@ -5,6 +5,11 @@ description: a simple article for demo purpose
 directory: Good Articles
 priority: 0
 author: Nathan
+departments: 
+  - My Other Department
+  - My Third Department
+roles:
+  - A Role
 tags:
   - good
   - basic
