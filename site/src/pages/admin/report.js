@@ -1,10 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { css } from "@emotion/core"
-import Layout from "../../components/admin/layout"
 import PageTitle from "../../components/pagetitle"
 import TextBlock from "../../components/textblock"
 import ReportItem from "../../components/admin/reportItem"
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+const moment = require("moment")
 
 const NA = "(not set)"
 const SET = "(set)"
@@ -13,7 +15,7 @@ const INITIAL_STATE = {
   author: "",
   cconly: "",
   contentsource: "",
-  department: "",
+  departments: "",
   directory: "",
   draftreason: "",
   "match-author": "",
@@ -21,6 +23,8 @@ const INITIAL_STATE = {
   "match-signedby": "",
   "match-tags": "",
   optimisedby: "",
+  "date-from": null,
+  "date-to": null,
   roles: "",
   signedby: "",
   title: "",
@@ -32,9 +36,11 @@ export default class Report extends React.Component {
     this.state = INITIAL_STATE
     this.fieldMatches = this.fieldMatches.bind(this)
     this.fieldEquals = this.fieldEquals.bind(this)
+    this.fieldDateBetween = this.fieldDateBetween.bind(this)
     this.getCollectionSelect = this.getCollectionSelect.bind(this)
     this.getCollectionOptions = this.getCollectionOptions.bind(this)
     this.getFieldMatchInput = this.getFieldMatchInput.bind(this)
+    this.getFieldDateBetweenSelector = this.getFieldDateBetweenSelector.bind(this)
     this.reset = this.reset.bind(this)
   }
 
@@ -42,6 +48,14 @@ export default class Report extends React.Component {
     return (event) => {
       this.setState({
         [fieldName]: event.target.value
+      })
+    }
+  }
+
+  updateReportDate(fieldName) {
+    return (date) => {
+      this.setState({
+        [fieldName]: date
       })
     }
   }
@@ -60,11 +74,33 @@ export default class Report extends React.Component {
 
   fieldEquals(fieldName, node) {
     const value = this.state[fieldName]
+    const fieldValue = node.frontmatter[fieldName]
+
     return !value ||
+      (Array.isArray(fieldValue) && fieldValue.includes(value)) ||
       `${node.frontmatter[fieldName]}` === value ||
       (value === DRAFT && node.frontmatter[fieldName] !== "Ready for Live Site") ||
       (value === NA && !this.isSet(node.frontmatter[fieldName])) ||
       (value === SET && this.isSet(node.frontmatter[fieldName]))
+  }
+
+  fieldDateBetween(fieldName, node) {
+    const from = this.state[fieldName + "-from"]
+    const to = this.state[fieldName + "-to"]
+    const date = node.frontmatter[fieldName]
+    if (!to && !from) {
+      return true
+    }
+    if (!date) {
+      return false
+    }
+    if (!to) {
+      return moment(date).isAfter(moment(from));
+    }
+    if (!from) {
+      return moment(date).isBefore(moment(to));
+    }
+    return moment(date).isAfter(moment(from)) && moment(date).isBefore(moment(to));
   }
 
   isSet(value) {
@@ -94,7 +130,7 @@ export default class Report extends React.Component {
         ))
       )
     if (["author","contentsource", "signedby"].includes(fieldName))
-      return (<span/>)
+      return (<option hidden key={fieldName + "-option/hidden"}/>)
     return this.data[fieldName].edges.map(({ node }) => (
       <option
         key={fieldName + "-option/" + node.fields.pagename}
@@ -120,11 +156,29 @@ export default class Report extends React.Component {
     )
   }
 
+  getFieldDateBetweenSelector(fieldName) {
+    return (<span>
+      <DatePicker
+        id={"report-select-" + fieldName + "-from"}
+        selected={this.state[fieldName + "-from"]}
+        onChange={this.updateReportDate(fieldName + "-from").bind(this)}
+        dateFormat={"dd/MM/yyyy"}
+      />
+      <DatePicker
+        id={"report-select-" + fieldName + "-to"}
+        selected={this.state[fieldName + "-to"]}
+        onChange={this.updateReportDate(fieldName + "-to").bind(this)}
+        dateFormat={"dd/MM/yyyy"}
+      />
+    </span>)
+  }
+
   render() {
     const stateKeys = Object.keys(this.state)
       .filter(key => this.state[key])
     const fieldNamesSearched = Array.from(new Set(stateKeys.map(key =>
-      key.startsWith("match-") ? key.substring(6) : key
+      key.startsWith("match-") ? key.substring(6) :
+        key.startsWith("date-") ? "date" : key
     )))
 
     const items = this.data.allItems.edges
@@ -141,7 +195,8 @@ export default class Report extends React.Component {
           this.fieldMatches("author", node) &&
           this.fieldMatches("signedby", node) &&
           this.fieldMatches("title", node) &&
-          this.fieldMatches("tags", node)
+          this.fieldMatches("tags", node) &&
+          this.fieldDateBetween("date", node)
       }).map(({ node }) => (
       <ReportItem
           key={node.fields.collection + "/" + node.fields.pagename}
@@ -150,18 +205,19 @@ export default class Report extends React.Component {
     ))
 
     const filterAsString = stateKeys
-      .map(key => (
-        <li key={"state/" + key}>{key} = {this.state[key]}</li>
-      ))
+      .map(key => {
+        const value = this.state[key]
+        const valueAsString = key.includes("date") ?
+          moment(value).format("D MMM YY") : value
+        return (
+          <li key={"state/" + key}>{key} = {valueAsString}</li>
+        )
+      })
 
     const count = items.length;
     return (
-      <Layout>
-        <PageTitle>
-          CMS content report : {count} item{(count !== 1) && <span>s</span>}
-        </PageTitle>
+      <div>
         <TextBlock>
-          <ul>{filterAsString}</ul>
           <div css={css`
             border: 1px solid #555;
             padding: 1em;
@@ -187,13 +243,21 @@ export default class Report extends React.Component {
             <div>
               Tags{this.getFieldMatchInput("tags")}
             </div>
+            <div>Between Dates {this.getFieldDateBetweenSelector("date")}</div>
             <div css={css`
               text-align:right;
             `}><button css={css`font-size:1.5em;`} onClick={this.reset}>Reset</button></div>
           </div>
+          <PageTitle>
+            CMS content report : {count} item{(count !== 1) && <span>s</span>}
+          </PageTitle>
+          <div css={css`
+            text-align:right;
+          `}>{moment().format("DD MMM YYYY @ hh:mm")}</div>
+          <ul>{filterAsString}</ul>
           {items}
         </TextBlock>
-      </Layout>
+      </div>
     )
   }
 }
@@ -212,6 +276,7 @@ export const query = graphql`
             author
             cconly
             contentsource
+            date
             departments
             draftreason
             optimisedby
