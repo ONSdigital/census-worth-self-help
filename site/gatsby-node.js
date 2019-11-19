@@ -178,7 +178,7 @@ exports.createPages = ({ graphql, actions }) => {
     console.log("Report page included in deployment")
     createPage({
       path: `/report`,
-      component: path.resolve(`./src/pages/admin/report.js`),
+      component: path.resolve(`./src/extra/report.js`),
     })
   }
 

@@ -1,11 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { css } from "@emotion/core"
-import PageTitle from "../../components/pagetitle"
-import TextBlock from "../../components/textblock"
-import ReportItem from "../../components/admin/reportItem"
+import PageTitle from "../components/pagetitle"
+import TextBlock from "../components/textblock"
+import ReportItem from "../components/admin/reportItem"
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import datePickerCss from "react-datepicker/dist/react-datepicker.css";
 const moment = require("moment")
 
 const NA = "(not set)"
@@ -157,7 +157,7 @@ export default class Report extends React.Component {
   }
 
   getFieldDateBetweenSelector(fieldName) {
-    return (<span>
+    return (<span css={{datePickerCss}}>
       <DatePicker
         id={"report-select-" + fieldName + "-from"}
         selected={this.state[fieldName + "-from"]}
