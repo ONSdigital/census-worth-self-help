@@ -63,8 +63,13 @@ run:
     cd ..
 
     if [ "${PATCH_NETLIFY}" == "true" ]; then
+      mkdir -p tmp/netlify-cms-app
+      cd tmp
       gsutil cp gs://$NETLIFY_BUCKET_NAME/worth-netlify-cms-app-${NETLIFY_PATCH_VERSION}.tar.gz .
-      npm install worth-netlify-cms-app-${NETLIFY_PATCH_VERSION}.tar.gz --only=prod
+      gunzip worth-netlify-cms-app-${NETLIFY_PATCH_VERSION}.tar.gz
+      tar xvf worth-netlify-cms-app-${NETLIFY_PATCH_VERSION}.tar -C netlify-cms-app
+      cp -R netlify-cms-app/* ../node_modules/netlify-cms-app/
+      rm -Rf tmp
     fi
 
     ../pipeline/tasks/task-scripts/move-content.sh
