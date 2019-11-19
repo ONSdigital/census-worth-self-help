@@ -69,6 +69,7 @@ run:
       gunzip worth-netlify-cms-app-${NETLIFY_PATCH_VERSION}.tar.gz
       tar xvf worth-netlify-cms-app-${NETLIFY_PATCH_VERSION}.tar -C netlify-cms-app
       cp -R netlify-cms-app/* ../node_modules/netlify-cms-app/
+      cd ..
       rm -Rf tmp
     fi
 
