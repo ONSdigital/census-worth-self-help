@@ -15,6 +15,7 @@ image_resource:
   source:
     repository: google/cloud-sdk
     tag: alpine
+    version: 276.0.0
 
 params:
   AUTH_KEY: ((gcp.service-account-key))
