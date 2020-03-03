@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: feature/ONS-429-lock-down-alpine-version
     check_every: 15m
 
   - name: content-repository
