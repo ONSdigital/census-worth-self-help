@@ -1,4 +1,5 @@
 import { css } from "@emotion/core"
+import { faRubleSign } from "@fortawesome/free-solid-svg-icons"
 
 export const colors = {
   navy_normal: "rgb(0,61,89)",
@@ -8,7 +9,8 @@ export const colors = {
   light_tan: "rgb(253, 239, 173)",
   black_two: "rgb(48, 48, 48)",
   white_two: "rgb(250, 250, 250)",
-  footer_gray: "rgb(236, 236, 237)"
+  footer_gray: "rgb(236, 236, 237)",
+  purple: "rgb(144, 32, 130)"
 }
 
 export const gradients = {

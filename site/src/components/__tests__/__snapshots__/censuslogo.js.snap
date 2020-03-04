@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ONS Logo renders correctly 1`] = `
+exports[`Census Logo renders correctly 1`] = `
 <div
   css={
     Object {
@@ -37,15 +37,16 @@ exports[`ONS Logo renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "10mfl7n",
+        "name": "1bnebze",
         "next": undefined,
         "styles": "
+          height: 50px;
           padding: 0px 15px 20px 15px;
         ",
       }
     }
     data-test="ons-logo__header"
-    src="/ONS_logo.svg"
+    src="/census_2021_logo_white.svg"
   />
 </div>
 `;

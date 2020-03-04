@@ -28,15 +28,16 @@ exports[`Footer renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "1v6eegl",
+        "name": "1dml5kz",
         "next": undefined,
         "styles": "
-          margin-bottom: 50px;
-          margin-top: 50px;
+          height: 50px;
+          margin-bottom: 30px;
+          margin-top: 30px;
         ",
       }
     }
-    src="/footer_logo.svg"
+    src="/census_2021_logo_purple.svg"
   />
   <div
     className="Footer-Style"

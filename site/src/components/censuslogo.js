@@ -15,9 +15,10 @@ export default () => {
         <h1>Self Help Facility</h1>
       </VisuallyHidden>
       <img
-        src="/ONS_logo.svg"
+        src="/census_2021_logo_white.svg"
         alt="Main logo"
         css={css`
+          height: 50px;
           padding: 0px 15px 20px 15px;
         `}
         data-test="ons-logo__header"
