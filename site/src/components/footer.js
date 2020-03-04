@@ -21,11 +21,12 @@ export default ({ phone_link = false }) => {
       `}
     >
       <img
-        src="/footer_logo.svg"
+        src="/census_2021_logo_purple.svg"
         alt="Footer logo"
         css={css`
-          margin-bottom: 50px;
-          margin-top: 50px;
+          height: 50px;
+          margin-bottom: 30px;
+          margin-top: 30px;
         `}
       />
       {phone_link && (
