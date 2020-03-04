@@ -2,7 +2,7 @@
 
     npm install
     npm run local
-        
+
 # Alternatively serve as we do when doing a production deploy
 
     npm install
@@ -13,23 +13,27 @@
 
     npm run e2e
 
-Or to run interactively
+Or to run test interactively
+
     
-    rm -Rf node_modules/.cache/  _build public
+    npm run clean
     npm run local:production-like
-    export EXCLUDE_DRAFTS=true
-    npm run cy-open    
+    npm run cy-open
 
 See [e2e README](cypress/CYPRESS_README.md) for more details.
-        
+
+# Clear build cache
+
+    npm run clean
+
 # Deploy GCP app engine service
 
     npm install
     npm run build
-    
+
     gcloud auth login
     gcloud app deploy
-    
+
 ## Run through Docker
 
     npm install

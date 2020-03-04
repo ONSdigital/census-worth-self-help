@@ -12,7 +12,7 @@ describe("Request the secured homepage with a valid cookie to check for a 200 st
         })
             .then((resp) => {
                 expect(resp.status).to.eq(200);
-                expect(resp.body).to.have.string('RECENTLY UPDATED');
+                expect(resp.body).to.have.string('census-worth-self-help');
             });
     });
 });
