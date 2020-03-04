@@ -19,13 +19,11 @@ exports[`Most Recent renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "x3j3gt",
+        "name": "4ct1me",
         "next": undefined,
         "styles": "
         width: 100vw;
-        
-    background: linear-gradient(to left, rgb(0,61,89), #33637a);
-  ;
+        background-color: rgb(144, 32, 130);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1062,15 +1060,16 @@ exports[`Most Recent renders correctly 1`] = `
         css={
           Object {
             "map": undefined,
-            "name": "1v6eegl",
+            "name": "1dml5kz",
             "next": undefined,
             "styles": "
-          margin-bottom: 50px;
-          margin-top: 50px;
+          height: 50px;
+          margin-bottom: 30px;
+          margin-top: 30px;
         ",
           }
         }
-        src="/footer_logo.svg"
+        src="/census_2021_logo_purple.svg"
       />
       <div
         className="Footer-Style"

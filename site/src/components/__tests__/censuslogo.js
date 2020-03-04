@@ -1,12 +1,12 @@
 import React from "react"
 import renderer from "react-test-renderer"
 
-import OnsLogo from "../onslogo"
+import CensusLogo from "../censuslogo"
 
-describe("ONS Logo", () => {
+describe("Census Logo", () => {
   it("renders correctly", () => {
     const tree = renderer
-      .create(<OnsLogo/>)
+      .create(<CensusLogo/>)
       .toJSON()
     expect(tree).toMatchSnapshot()
   })

@@ -2,7 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import { gradients, spacing, colors } from "../utils/styles"
 import TopbarLink from "./topbarlink"
-import OnsLogo from "./onslogo"
+import CensusLogo from "./censuslogo"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
@@ -38,7 +38,7 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
     <header
       css={css`
         width: 100vw;
-        ${gradients.navy_shine};
+        background-color: ${colors.purple};
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -138,7 +138,7 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
           )}
         </div>
       )}
-      {logo && <OnsLogo />}
+      {logo && <CensusLogo />}
     </header>
   )
 }
