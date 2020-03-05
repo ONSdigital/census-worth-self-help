@@ -1,7 +1,7 @@
 import React from "react"
 import MenuLink from "../components/menulink"
 import Topbar from "../components/topbar"
-import { spacing, gradients } from "../utils/styles"
+import { spacing, colors } from "../utils/styles"
 import Metadata from "../components/metadata"
 import VisuallyHidden from "@reach/visually-hidden"
 
@@ -35,7 +35,7 @@ export default ({ pageContext }) => {
         css={css`
           width: 100vw;
           min-height: 100vh;
-          ${gradients.navy_shine};
+          background-color:${colors.purple};
           display: flex;
           flex-direction: column;
           align-items: center;
