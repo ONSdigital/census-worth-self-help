@@ -48,17 +48,16 @@ export default class Search extends React.Component {
       : Index.load(this.data.siteSearchIndex.index)
 
     // we use a weighted priority of the search strings, this should be calibrated based on user feedback
-    this.index.search(query, {
-      fields: {
-        title: { boost: 4 },
-        author: { boost: 4 },
-        tags: { boost: 4 },
-        description: { boost: 2 },
-        body: { boost: 1 }
-      }
-    })
     const results = this.index
-      .search(query, {})
+      .search(query, {fields: {
+          title: { boost: 4 },
+          author: { boost: 4 },
+          tags: { boost: 4 },
+          description: { boost: 2 },
+          body: { boost: 1 },
+        },
+        expand: true // partial mapping
+      })
       .map(({ ref }) => this.index.documentStore.getDoc(ref));
     this.trackSiteSearch(query, false, results.length);
     this.setState({
