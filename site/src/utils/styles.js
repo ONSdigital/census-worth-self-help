@@ -19,7 +19,10 @@ export const gradients = {
   `,
   navy_shine_lighter: css`
     background: linear-gradient(to left, rgb(25, 80, 105), rgb(71, 114, 136));
-  `
+  `,
+  purple_shine: css`
+    background: linear-gradient(to left, ${colors.purple}, #bb2aaa);
+  `,
 }
 
 export const spacing = {

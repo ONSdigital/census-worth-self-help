@@ -23,7 +23,7 @@ export default ({ node }) => {
       css={css`
         ${spacing.tab};
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-        border-left: 6px solid ${colors.navy_normal};
+        border-left: 6px solid ${colors.purple};
         background-color: ${colors.white};
       `}
     >

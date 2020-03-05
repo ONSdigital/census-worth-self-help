@@ -32,7 +32,7 @@ export default ({ elements, title = false, link = false }) => {
             css={css`
               margin-left: auto;
               text-decoration: none;
-              color: ${colors.navy_normal};
+              color: ${colors.purple};
             `}
           >
             View all >
