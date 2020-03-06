@@ -328,13 +328,13 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "1dj94zy",
+                "name": "1gp2a2n",
                 "next": undefined,
                 "styles": "
             font-size: 19px;
             position: relative;
             left: 10px;
-            color: rgb(0,61,89);
+            color: rgb(144, 32, 130);
           ",
               }
             }
@@ -376,11 +376,11 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "7tk8ru",
+                "name": "1empy9n",
                 "next": undefined,
                 "styles": "
           margin: 0px 20px;
-          color: rgb(0,61,89);
+          color: rgb(144, 32, 130);
         ",
               }
             }
@@ -465,10 +465,10 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
               css={
                 Object {
                   "map": undefined,
-                  "name": "1w87xe6",
+                  "name": "1c62eix",
                   "next": undefined,
                   "styles": "
-          color: rgb(0,61,89);
+          color: rgb(144, 32, 130);
           
     display: flex;
     justify-content: center;
@@ -887,13 +887,13 @@ exports[`Index renders correctly without data and has no alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "1dj94zy",
+                "name": "1gp2a2n",
                 "next": undefined,
                 "styles": "
             font-size: 19px;
             position: relative;
             left: 10px;
-            color: rgb(0,61,89);
+            color: rgb(144, 32, 130);
           ",
               }
             }
@@ -935,11 +935,11 @@ exports[`Index renders correctly without data and has no alert 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "7tk8ru",
+                "name": "1empy9n",
                 "next": undefined,
                 "styles": "
           margin: 0px 20px;
-          color: rgb(0,61,89);
+          color: rgb(144, 32, 130);
         ",
               }
             }
@@ -1024,10 +1024,10 @@ exports[`Index renders correctly without data and has no alert 1`] = `
               css={
                 Object {
                   "map": undefined,
-                  "name": "1w87xe6",
+                  "name": "1c62eix",
                   "next": undefined,
                   "styles": "
-          color: rgb(0,61,89);
+          color: rgb(144, 32, 130);
           
     display: flex;
     justify-content: center;

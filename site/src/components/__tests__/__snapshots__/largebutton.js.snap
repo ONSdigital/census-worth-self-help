@@ -34,11 +34,11 @@ exports[`Large Button renders correctly 1`] = `
     css={
       Object {
         "map": undefined,
-        "name": "7tk8ru",
+        "name": "1empy9n",
         "next": undefined,
         "styles": "
           margin: 0px 20px;
-          color: rgb(0,61,89);
+          color: rgb(144, 32, 130);
         ",
       }
     }
