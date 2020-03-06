@@ -10,7 +10,10 @@ export const colors = {
   black_two: "rgb(48, 48, 48)",
   white_two: "rgb(250, 250, 250)",
   footer_gray: "rgb(236, 236, 237)",
-  purple: "rgb(144, 32, 130)"
+  primary_purple: "rgb(144, 32, 130)",
+  primary_blue: "rgb(60, 56, 142)",
+  secondary_teal: "rgb(0, 163, 166)",
+  secondary_pink: "rgb(223, 6, 103)"
 }
 
 export const gradients = {
@@ -22,7 +25,7 @@ export const gradients = {
   `,
   purple_shine: css`
     background: linear-gradient(to left, ${colors.purple}, #bb2aaa);
-  `,
+  `
 }
 
 export const spacing = {

@@ -27,7 +27,7 @@ export default ({ title, subtitle, clickFunction, icon = null }) => {
             height: 78px;
             width: 78px;
             color: white;
-            background-color: ${colors.purple};
+            background-color: ${colors.primary_purple};
           `}
         >
           <div
@@ -43,7 +43,7 @@ export default ({ title, subtitle, clickFunction, icon = null }) => {
         css={css`
           ${spacing.vert_aligned_flex_text}
           margin: 0px 20px;
-          color: ${colors.purple};
+          color: ${colors.primary_purple};
         `}
       >
         <div

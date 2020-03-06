@@ -17,7 +17,7 @@ export default ({ node }) => {
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
         ${gradients.purple_shine};
-        border-left: 6px solid ${colors.purple};
+        border-left: 6px solid ${colors.primary_purple};
       `}
     >
       <div
