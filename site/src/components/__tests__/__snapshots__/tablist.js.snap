@@ -579,7 +579,7 @@ exports[`TabList renders correctly 1`] = `
       css={
         Object {
           "map": undefined,
-          "name": "1rvu5ew",
+          "name": "r9qi6j",
           "next": undefined,
           "styles": "
         
@@ -589,7 +589,7 @@ exports[`TabList renders correctly 1`] = `
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
         
-    background: linear-gradient(to left, , #bb2aaa);
+    background: linear-gradient(to left, rgb(144, 32, 130), #bb2aaa);
   ;
         border-left: 6px solid rgb(144, 32, 130);
       ",
