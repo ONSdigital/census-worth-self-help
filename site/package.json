@@ -8,6 +8,11 @@
   "engines": {
     "node": ">=10"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
+  },
   "dependencies": {
     "@emotion/core": "10.0.10",
     "@fortawesome/fontawesome-svg-core": "1.2.18",
