@@ -20,7 +20,7 @@ export default ({
     ? clickFunction
     : () => navigate(link)
 
-  const textColor = dimmed ? "rgba(0,61,89, 0.2)" : colors.navy_normal
+  const textColor = dimmed ? "rgba(0,61,89, 0.2)" : colors.primary_purple
 
   return (
     <div

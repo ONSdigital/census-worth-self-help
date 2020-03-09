@@ -16,8 +16,8 @@ export default ({ node }) => {
         ${spacing.tab};
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
-        ${gradients.navy_shine_lighter};
-        border-left: 6px solid ${colors.navy_normal};
+        ${gradients.purple_shine};
+        border-left: 6px solid ${colors.primary_purple};
       `}
     >
       <div

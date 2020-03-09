@@ -35,7 +35,7 @@ export default ({ pageContext }) => {
         css={css`
           width: 100vw;
           min-height: 100vh;
-          background-color:${colors.purple};
+          background-color: ${colors.primary_purple};
           display: flex;
           flex-direction: column;
           align-items: center;

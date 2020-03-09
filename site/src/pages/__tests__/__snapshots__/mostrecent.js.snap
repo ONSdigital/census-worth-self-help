@@ -236,13 +236,13 @@ exports[`Most Recent renders correctly 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "1dj94zy",
+                "name": "1gp2a2n",
                 "next": undefined,
                 "styles": "
             font-size: 19px;
             position: relative;
             left: 10px;
-            color: rgb(0,61,89);
+            color: rgb(144, 32, 130);
           ",
               }
             }
@@ -284,11 +284,11 @@ exports[`Most Recent renders correctly 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "7tk8ru",
+                "name": "1empy9n",
                 "next": undefined,
                 "styles": "
           margin: 0px 20px;
-          color: rgb(0,61,89);
+          color: rgb(144, 32, 130);
         ",
               }
             }
@@ -399,7 +399,7 @@ exports[`Most Recent renders correctly 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "lcxyxv",
+                "name": "b0yq0x",
                 "next": undefined,
                 "styles": "
         
@@ -407,7 +407,7 @@ exports[`Most Recent renders correctly 1`] = `
     min-height: 30px;
   ;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-        border-left: 6px solid rgb(0,61,89);
+        border-left: 6px solid rgb(144, 32, 130);
         background-color: rgb(255, 255, 255);
       ",
               }
@@ -492,7 +492,7 @@ exports[`Most Recent renders correctly 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "lcxyxv",
+                "name": "b0yq0x",
                 "next": undefined,
                 "styles": "
         
@@ -500,7 +500,7 @@ exports[`Most Recent renders correctly 1`] = `
     min-height: 30px;
   ;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-        border-left: 6px solid rgb(0,61,89);
+        border-left: 6px solid rgb(144, 32, 130);
         background-color: rgb(255, 255, 255);
       ",
               }
@@ -585,7 +585,7 @@ exports[`Most Recent renders correctly 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "lcxyxv",
+                "name": "b0yq0x",
                 "next": undefined,
                 "styles": "
         
@@ -593,7 +593,7 @@ exports[`Most Recent renders correctly 1`] = `
     min-height: 30px;
   ;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-        border-left: 6px solid rgb(0,61,89);
+        border-left: 6px solid rgb(144, 32, 130);
         background-color: rgb(255, 255, 255);
       ",
               }
@@ -678,7 +678,7 @@ exports[`Most Recent renders correctly 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "lcxyxv",
+                "name": "b0yq0x",
                 "next": undefined,
                 "styles": "
         
@@ -686,7 +686,7 @@ exports[`Most Recent renders correctly 1`] = `
     min-height: 30px;
   ;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-        border-left: 6px solid rgb(0,61,89);
+        border-left: 6px solid rgb(144, 32, 130);
         background-color: rgb(255, 255, 255);
       ",
               }
@@ -771,7 +771,7 @@ exports[`Most Recent renders correctly 1`] = `
             css={
               Object {
                 "map": undefined,
-                "name": "lcxyxv",
+                "name": "b0yq0x",
                 "next": undefined,
                 "styles": "
         
@@ -779,7 +779,7 @@ exports[`Most Recent renders correctly 1`] = `
     min-height: 30px;
   ;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-        border-left: 6px solid rgb(0,61,89);
+        border-left: 6px solid rgb(144, 32, 130);
         background-color: rgb(255, 255, 255);
       ",
               }

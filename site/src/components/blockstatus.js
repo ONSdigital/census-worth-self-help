@@ -17,7 +17,7 @@ export default ({ title, subtitle, icon = null }) => {
     >
       <div
         css={css`
-          color: ${colors.navy_normal};
+          color: ${colors.primary_purple};
           ${spacing.vert_aligned_flex_text}
           font-size: 30px;
           flex: 1 1 0;

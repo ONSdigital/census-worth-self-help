@@ -38,7 +38,7 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
     <header
       css={css`
         width: 100vw;
-        background-color: ${colors.purple};
+        background-color: ${colors.primary_purple};
         display: flex;
         flex-direction: column;
         align-items: center;
