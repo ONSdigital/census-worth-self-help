@@ -85,7 +85,7 @@ run:
     elif [ "${SKIP_AUDIT}" == "true" ] ; then
       npm run build-no-audit
     else
-      npm run build
+      npm run build-no-audit
     fi
 
     APP_FILE=ci-app.yaml
