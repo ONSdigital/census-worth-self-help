@@ -52,4 +52,19 @@ describe("Article searching", function() {
         cy.get(pagination.pagination1).should('have.text', pageNumber1);
     });
 
+    it('A search result that matches an article with a partial match [ONS-424]', () => {
+        const shortenedSearchText = searchText.slice(0, 3);
+        cy.get(search.searchButton).click();
+        cy.get(search.searchBarField).type(shortenedSearchText);
+        cy.get(search.searchResultTitle).contains(shortenedSearchText);
+        cy.get(homepage.articleCard).should('have.text', globalTestData.injectionAttackArticle);
+    })
+
+    it('A search result that matches an article with stemming match [ONS-424]', () => {
+        const sameStemTSearchText = "injectable";
+        cy.get(search.searchButton).click();
+        cy.get(search.searchBarField).type(sameStemTSearchText);
+        cy.get(search.searchResultTitle).should('not.contain', searchText);
+        cy.get(homepage.articleCard).should('have.text', globalTestData.injectionAttackArticle);
+    })
 });

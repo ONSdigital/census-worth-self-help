@@ -1,8 +1,7 @@
 # IDEA
 
-.idea/codeStyles
-.idea/dbnavigator.xml
-.idea/workspace.xml
+.idea
+*.iml
 
 # Environment variables
 
