@@ -22,6 +22,9 @@ repo.
 
 # Run against remote environment
 
+    CYPRESS_BASE_URL=<remote environment> <cypress command>
+
+    e.g.
     CYPRESS_BASE_URL=https://remote-environment.co.uk/ cy-run",
     CYPRESS_BASE_URL=https://remote-environment.co.uk/ cy-open"
 
