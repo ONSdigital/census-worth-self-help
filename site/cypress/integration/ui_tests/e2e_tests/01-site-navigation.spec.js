@@ -18,6 +18,10 @@ describe("Navigating the site and reading articles", function() {
         cy.get(homepage.homepageLogo).should('be.visible');
     });
 
+    it('The favicon is included in the deployed site', function() {
+        cy.request(globalTestData.faviconPath);
+    });
+
     it('The correct elements of the homepage are visible', function () {
         cy.get(homepage.headerTitleSelfHelpFacility).should('have.text', 'Self Help Facility');
         cy.get(search.searchButton).should('be.visible');

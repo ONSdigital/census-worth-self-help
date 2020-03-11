@@ -18,6 +18,9 @@ const videoArticlePath = '/video-test/'
 const explorePagePath = '/explore'
 const formatTestsPath = '/format-tests'
 
+// Resources
+const faviconPath='/favicon.png'
+
 const chromebookSize = [
   {
     screenWidth: 1280,
@@ -59,5 +62,8 @@ module.exports = {
   formatTestsPath,
   imageArticlePath,
   reviwemePath,
-  videoArticlePath
+  videoArticlePath,
+
+  // Resources
+  faviconPath
 }
