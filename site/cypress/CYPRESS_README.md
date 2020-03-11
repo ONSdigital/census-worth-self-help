@@ -20,6 +20,11 @@ There are scripts in package.json to run with either headless or with the test r
 You will also need to export the environment variables for live chat before running the tests. These are in the secrets
 repo.
 
+# Run against remote environment
+
+    CYPRESS_BASE_URL=https://remote-environment.co.uk/ cy-run",
+    CYPRESS_BASE_URL=https://remote-environment.co.uk/ cy-open"
+
 # x to skip a test suites or test cases
 You can place an 'x' before a test suite or case to skip it e.g. `xdescribe` or `xtest`
 
