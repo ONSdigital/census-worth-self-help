@@ -25,8 +25,8 @@ repo.
     CYPRESS_BASE_URL=<remote environment> <cypress command>
 
     e.g.
-    CYPRESS_BASE_URL=https://remote-environment.co.uk/ cy-run",
-    CYPRESS_BASE_URL=https://remote-environment.co.uk/ cy-open"
+    CYPRESS_BASE_URL=https://remote-environment.co.uk/ npm run cy-run",
+    CYPRESS_BASE_URL=https://remote-environment.co.uk/ npm run cy-open"
 
 # x to skip a test suites or test cases
 You can place an 'x' before a test suite or case to skip it e.g. `xdescribe` or `xtest`
