@@ -49,20 +49,19 @@ module.exports = {
       resolve: `gatsby-plugin-offline`,
       options: {
         workboxConfig: {
-          debug: true,
           globPatterns: ["**/*.{css,png,js,json,html,svg,woff,woff2,ttf}"],
           runtimeCaching: [
             {
               urlPattern: /online/,
-              handler: `networkOnly`
+              handler: `NetworkOnly`
             },
             {
               urlPattern: /api\/.*/,
-              handler: `networkOnly`
+              handler: `NetworkOnly`
             },
             {
               urlPattern: /cms.js$/,
-              handler: `cacheFirst`,
+              handler: `CacheFirst`,
               options: {
                 cacheName: "netlify-cms",
                 expiration: {
@@ -73,15 +72,15 @@ module.exports = {
             },
             {
               urlPattern: /sw.js$/,
-              handler: `staleWhileRevalidate`
+              handler: `StaleWhileRevalidate`
             },
             {
               urlPattern: /(\.js$|\.css$|static\/)/,
-              handler: `cacheFirst`
+              handler: `CacheFirst`
             },
             {
               urlPattern: /.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
-              handler: `staleWhileRevalidate`
+              handler: `StaleWhileRevalidate`
             }
           ]
         }
