@@ -48,43 +48,40 @@ module.exports = {
     {
       resolve: `gatsby-plugin-offline`,
       options: {
-        debug: true,
-        workboxConfig: {
-          globPatterns: ["**/*.{css,png,js,json,html,svg,woff,woff2,ttf}"],
-          runtimeCaching: [
-            {
-              urlPattern: /online/,
-              handler: `NetworkOnly`
-            },
-            {
-              urlPattern: /api\/.*/,
-              handler: `NetworkOnly`
-            },
-            {
-              urlPattern: /cms.js$/,
-              handler: `CacheFirst`,
-              options: {
-                cacheName: "netlify-cms",
-                expiration: {
-                  maxAgeSeconds: 3600,
-                  purgeOnQuotaError: true
-                }
+        globPatterns: ["**/*.{css,js,json,html,svg,woff,woff2,ttf}"],
+        runtimeCaching: [
+          {
+            urlPattern: /online/,
+            handler: `networkOnly`
+          },
+          {
+            urlPattern: /api\/.*/,
+            handler: `networkOnly`
+          },
+          {
+            urlPattern: /cms.js$/,
+            handler: `cacheFirst`,
+            options: {
+              cacheName: "netlify-cms",
+              expiration: {
+                maxAgeSeconds: 3600,
+                purgeOnQuotaError: true
               }
-            },
-            {
-              urlPattern: /sw.js$/,
-              handler: `StaleWhileRevalidate`
-            },
-            {
-              urlPattern: /(\.js$|\.css$|static\/)/,
-              handler: `CacheFirst`
-            },
-            {
-              urlPattern: /.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
-              handler: `StaleWhileRevalidate`
             }
-          ]
-        }
+          },
+          {
+            urlPattern: /sw.js$/,
+            handler: `staleWhileRevalidate`
+          },
+          {
+            urlPattern: /(\.js$|\.css$|static\/)/,
+            handler: `cacheFirst`
+          },
+          {
+            urlPattern: /.*\.(jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
+            handler: `staleWhileRevalidate`
+          }
+        ]
       }
     }
   ]
