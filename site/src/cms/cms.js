@@ -6,15 +6,14 @@ import { transformSources, htmlSanitize } from "../utils/contenttransforms"
 
 import { WidgetPreviewContainer } from "netlify-cms-ui-default"
 import NetlifyCmsWidgetMarkdown from "netlify-cms-widget-markdown"
+import marked from "marked"
 
+const createMarkup = v => {
+  return { __html: htmlSanitize(marked(v)) }
+}
 const SanitiziedMarkdownPreview = opts => {
-  let widget = NetlifyCmsWidgetMarkdown.previewComponent(opts)
-  let dangerousHtml = widget.props.dangerouslySetInnerHTML.__html
-  return (
-    <WidgetPreviewContainer
-      dangerouslySetInnerHTML={{ __html: htmlSanitize(dangerousHtml) }}
-    />
-  )
+  const markup = createMarkup(opts.value)
+  return <WidgetPreviewContainer dangerouslySetInnerHTML={markup} />
 }
 
 CMS.registerWidget(
