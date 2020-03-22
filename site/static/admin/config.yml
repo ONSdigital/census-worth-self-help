@@ -64,7 +64,7 @@ collections:
           required: true }
       - { name: body,
           label: Main Body,
-          widget: sanitiziedMarkdown,
+          widget: markdown,
           required: true,
           hint: "To add a table to the MAIN BODY, use the CMS_Table_Tool.xlsx"}
       - { label: "Directory",
