@@ -10,7 +10,7 @@ backend:
 publish_mode: editorial_workflow
 
 media_folder: static/assets
-public_folder: assets
+public_folder: /assets
 
 collections:
   - name: articles
@@ -64,7 +64,7 @@ collections:
           required: true }
       - { name: body,
           label: Main Body,
-          widget: markdown,
+          widget: sanitiziedMarkdown,
           required: true,
           hint: "To add a table to the MAIN BODY, use the CMS_Table_Tool.xlsx"}
       - { label: "Directory",
