@@ -12,7 +12,7 @@ const showdown = require("showdown"),
   converter = new showdown.Converter()
 
 const createMarkup = v => {
-  return { __html: htmlSanitize(converter.makeHtml(v)) }
+  return { __html: htmlSanitize(marked(v)) }
 }
 const SanitiziedMarkdownPreview = opts => {
   const markup = createMarkup(opts.value)
