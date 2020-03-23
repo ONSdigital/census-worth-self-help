@@ -20,15 +20,15 @@ handlers:
     upload: public/admin/index.html
     http_headers:
       Content-Security-Policy: |-
-        connect-src 'self' https://api.github.com; default-src 'self'; media-src https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';
- 
+        connect-src 'self' https://api.github.com; default-src 'self'; img-src 'self' data: blob: https://github.com/ONSdigital/census-worth-self-help-*; media-src https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';
+
   - url: /admin/index.html
     expiration: 5m
     static_files: public/admin/index.html
     upload: public/admin/index.html
     http_headers:
       Content-Security-Policy: |-
-        connect-src 'self' https://api.github.com; default-src 'self'; media-src https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';
+        connect-src 'self' https://api.github.com; default-src 'self'; img-src 'self' data: blob: https://github.com/ONSdigital/census-worth-self-help-*; media-src https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';
 
   - url: /admin/cms.js
     expiration: 30m
