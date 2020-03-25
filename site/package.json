@@ -50,6 +50,7 @@
     "react-helmet": "5.2.1",
     "react-select": "3.0.4",
     "remark": "^11.0.2",
+    "remark-html": "^11.0.1",
     "sanitize-html-react": "1.13.0"
   },
   "devDependencies": {
