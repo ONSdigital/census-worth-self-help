@@ -7,11 +7,19 @@ import { transformSources, htmlSanitize } from "../utils/contenttransforms"
 import { WidgetPreviewContainer } from "netlify-cms-ui-default"
 import NetlifyCmsWidgetMarkdown from "netlify-cms-widget-markdown"
 
-const showdown = require('showdown'),
-converter = new showdown.converter
+const remark = require('remark')
+const html = require('remark-html')
+
+const remarkMarkdownToHtmlParser = (markdownInput) => {
+  return remark()
+    .use(html)
+    .process(markdownInput, function(err) {
+      console.error(`There was an error parsing markdown to html: ${err}`)
+    })
+}
 
 const createMarkup = v => {
-  return { __html: htmlSanitize(converter.makeHtml(v)) }
+  return { __html: htmlSanitize(remarkMarkdownToHtmlParser(v)) }
 }
 const SanitiziedMarkdownPreview = opts => {
   const markup = createMarkup(opts.value)

@@ -49,8 +49,8 @@
     "react-dom": "16.8.6",
     "react-helmet": "5.2.1",
     "react-select": "3.0.4",
-    "sanitize-html-react": "1.13.0",
-    "showdown": "^1.9.1"
+    "remark": "^11.0.2",
+    "sanitize-html-react": "1.13.0"
   },
   "devDependencies": {
     "babel-jest": "24.8.0",
