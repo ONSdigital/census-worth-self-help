@@ -6,10 +6,12 @@ import { transformSources, htmlSanitize } from "../utils/contenttransforms"
 
 import { WidgetPreviewContainer } from "netlify-cms-ui-default"
 import NetlifyCmsWidgetMarkdown from "netlify-cms-widget-markdown"
-import marked from "marked"
+
+const showdown = require("showdown"),
+  converter = new showdown.Converter()
 
 const createMarkup = v => {
-  return { __html: htmlSanitize(marked(v)) }
+  return { __html: htmlSanitize(converter.makeHtml(v)) }
 }
 const SanitiziedMarkdownPreview = opts => {
   const markup = createMarkup(opts.value)
