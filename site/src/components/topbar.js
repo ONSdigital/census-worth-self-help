@@ -1,6 +1,6 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { gradients, spacing, colors } from "../utils/styles"
+import { siteStyle, spacing, colors } from "../utils/styles"
 import TopbarLink from "./topbarlink"
 import CensusLogo from "./censuslogo"
 
@@ -9,17 +9,15 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { navigate } from "@reach/router"
 import VisuallyHidden from "@reach/visually-hidden"
 
-import { parse } from 'query-string'
-
+import { parse } from "query-string"
 
 const backFunction = () => {
   let target = "/"
   if (typeof window !== "undefined") {
     let queryParams = parse(window.location.search)
-    if(queryParams.redirect) {
+    if (queryParams.redirect) {
       let redirect = decodeURIComponent(queryParams.redirect)
-      if (redirect[0] === '/')
-      {
+      if (redirect[0] === "/") {
         target = queryParams.redirect
       }
     }
@@ -28,17 +26,19 @@ const backFunction = () => {
 }
 
 export default ({ searchObject = null, logo = false, backButton = false }) => {
-
   let pathname = encodeURIComponent("/")
+
   if (typeof window !== "undefined") {
     pathname = encodeURIComponent(window.location.pathname)
   }
+
+  const siteSpecificStyle = siteStyle(window.location.href)
 
   return (
     <header
       css={css`
         width: 100vw;
-        background-color: ${colors.primary_purple};
+        background-color: ${siteSpecificStyle};
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -132,7 +132,9 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
             }
             link={"/search/?redirect=" + pathname}
           />
-          {!backButton && <TopbarLink title="Menu" link={"/menu/?redirect=" + pathname} />}
+          {!backButton && (
+            <TopbarLink title="Menu" link={"/menu/?redirect=" + pathname} />
+          )}
           {backButton && (
             <TopbarLink title="Close" clickFunction={backFunction} />
           )}

@@ -15,6 +15,17 @@ export const colors = {
   secondary_teal: "rgb(0, 163, 166)",
   secondary_pink: "rgb(223, 6, 103)"
 }
+export const siteStyle = site => {
+  let returnValue = colors.primary_purple
+  if (site) {
+    if (site.indexOf("dev.") > -1) {
+      returnValue = colors.primary_blue
+    } else if (site.indexOf("test.")>-1) {
+      returnValue = colors.secondary_teal
+    }
+  }
+  return returnValue
+}
 
 export const gradients = {
   navy_shine: css`
