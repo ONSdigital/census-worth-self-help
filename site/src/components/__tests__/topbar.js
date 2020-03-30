@@ -76,18 +76,21 @@ describe("TopBar", () => {
   })
 })
 
-it("returns correct site styling", () => {
+it("returns default color for sites outside of our knowledge", () => {
   let returnedSiteStyle = siteStyle("/")
   let expectedSiteStyle = "rgb(144, 32, 130)"
 
   expect(returnedSiteStyle).toEqual(expectedSiteStyle)
 
   returnedSiteStyle = siteStyle("google.com")
-  expectedSiteStyle = "rgb(144, 32, 130)"
   expect(returnedSiteStyle).toEqual(expectedSiteStyle)
+})
+
+it("returns correct site color for specified sites", () => {
+  let returnedSiteStyle = siteStyle("/")
+  let expectedSiteStyle = "rgb(60, 56, 142)"
 
   returnedSiteStyle = siteStyle("https://dev.random-domain.com/")
-  expectedSiteStyle = "rgb(60, 56, 142)"
   expect(returnedSiteStyle).toEqual(expectedSiteStyle)
 
   returnedSiteStyle = siteStyle("https://test.random-domain.com/")

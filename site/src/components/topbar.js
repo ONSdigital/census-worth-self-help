@@ -27,12 +27,12 @@ const backFunction = () => {
 
 export default ({ searchObject = null, logo = false, backButton = false }) => {
   let pathname = encodeURIComponent("/")
+  let siteSpecificStyle = siteStyle("/")
 
   if (typeof window !== "undefined") {
     pathname = encodeURIComponent(window.location.pathname)
+    siteSpecificStyle = siteStyle(window.location.href)
   }
-
-  const siteSpecificStyle = siteStyle(window.location.href)
 
   return (
     <header
