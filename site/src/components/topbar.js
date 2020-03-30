@@ -33,7 +33,7 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
   }
 
   const color = colorTransform()
-
+ console.log(process.env.SITE_COLOR)
   return (
     <header
       css={css`
