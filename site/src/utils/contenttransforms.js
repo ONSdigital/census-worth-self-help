@@ -1,10 +1,11 @@
 var sanitizeHtml = require("sanitize-html")
 
-export const colorTransform = () => {
-  let color = process.env.SITE_COLOR
-    ? process.env.SITE_COLOR
-    : "rgb(144, 32, 130)"
-  return color
+export const getSiteSpecificBannerColour = () => {
+  const defaultPurple = "rgb(144, 32, 130)";
+  let colour = process.env.SITE_BANNER_COLOUR
+    ? process.env.SITE_BANNER_COLOUR
+    : defaultPurple
+  return colour
 }
 
 export const transformSources = htmlString => {
