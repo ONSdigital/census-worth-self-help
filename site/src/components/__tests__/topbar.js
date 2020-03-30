@@ -5,13 +5,12 @@ import TopBar from "../topbar"
 import { render, fireEvent } from "react-testing-library"
 
 import { navigate } from "@reach/router"
-
-jest.mock('@reach/router', () => ({
-  navigate: jest.fn(),
+import { siteStyle } from "../../utils/styles"
+jest.mock("@reach/router", () => ({
+  navigate: jest.fn()
 }))
 
 describe("TopBar", () => {
-
   let updateFunction = jest.fn()
 
   const searchObject = {
@@ -20,9 +19,7 @@ describe("TopBar", () => {
   }
 
   it("renders correctly", () => {
-    const tree = renderer
-      .create(<TopBar/>)
-      .toJSON()
+    const tree = renderer.create(<TopBar />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 
@@ -34,46 +31,66 @@ describe("TopBar", () => {
   })
 
   it("has working search box", () => {
-    const { getByTestId, getAllByTestId, queryByTestId } = render(<TopBar searchObject={searchObject} />);
-  	
-    const searchBox = getByTestId('search-box')
+    const { getByTestId, getAllByTestId, queryByTestId } = render(
+      <TopBar searchObject={searchObject} />
+    )
 
-  	expect(searchBox.value).toEqual("searchString")
+    const searchBox = getByTestId("search-box")
 
-  	fireEvent.change(searchBox, { target: { value: 'TEST VALUE' } });
+    expect(searchBox.value).toEqual("searchString")
 
-  	expect(updateFunction).toHaveBeenCalled();
+    fireEvent.change(searchBox, { target: { value: "TEST VALUE" } })
+
+    expect(updateFunction).toHaveBeenCalled()
   })
 
   it("menu links return to original page", () => {
-
     // create a fake window object with the pathname parameter and the redirect parameter.
-    global.window = Object.create(window);
-    Object.defineProperty(window, 'location', {
+    global.window = Object.create(window)
+    Object.defineProperty(window, "location", {
       value: {
         pathname: "testtest",
         search: "?redirect=" + encodeURIComponent("/testtest/")
       }
-    });
+    })
 
     // if you are on page testtest and click menu:
-    let { getByText } = render(<TopBar />);
-    
-    const menuButton = getByText('Menu')
-    fireEvent.click(menuButton);
+    let { getByText } = render(<TopBar />)
+
+    const menuButton = getByText("Menu")
+    fireEvent.click(menuButton)
 
     // you get sent to the menu page with redirect link in the url
     expect(navigate).toHaveBeenCalledTimes(1)
-    expect(navigate).toHaveBeenCalledWith('/menu/?redirect=testtest')
+    expect(navigate).toHaveBeenCalledWith("/menu/?redirect=testtest")
 
     // if you have the redirect link in the url and click close
-    getByText = render(<TopBar backButton={true} />).getByText;
-    
-    const closeButton = getByText('Close')
-    fireEvent.click(closeButton);
+    getByText = render(<TopBar backButton={true} />).getByText
+
+    const closeButton = getByText("Close")
+    fireEvent.click(closeButton)
 
     // you return to the original page
     expect(navigate).toHaveBeenCalledTimes(2)
-    expect(navigate).toHaveBeenCalledWith('/testtest/')
+    expect(navigate).toHaveBeenCalledWith("/testtest/")
   })
+})
+
+it("returns correct site styling", () => {
+  let returnedSiteStyle = siteStyle("/")
+  let expectedSiteStyle = "rgb(144, 32, 130)"
+
+  expect(returnedSiteStyle).toEqual(expectedSiteStyle)
+
+  returnedSiteStyle = siteStyle("google.com")
+  expectedSiteStyle = "rgb(144, 32, 130)"
+  expect(returnedSiteStyle).toEqual(expectedSiteStyle)
+
+  returnedSiteStyle = siteStyle("https://dev.random-domain.com/")
+  expectedSiteStyle = "rgb(60, 56, 142)"
+  expect(returnedSiteStyle).toEqual(expectedSiteStyle)
+
+  returnedSiteStyle = siteStyle("https://test.random-domain.com/")
+  expectedSiteStyle = "rgb(0, 163, 166)"
+  expect(returnedSiteStyle).toEqual(expectedSiteStyle)
 })
