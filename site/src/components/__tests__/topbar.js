@@ -76,14 +76,13 @@ describe("TopBar", () => {
   })
 })
 
-it("returns correct site styling", () => {
+it("returns correct site color for dev and test, and defaults to purple for other sites", () => {
   let returnedSiteStyle = siteStyle("/")
   let expectedSiteStyle = "rgb(144, 32, 130)"
 
   expect(returnedSiteStyle).toEqual(expectedSiteStyle)
 
   returnedSiteStyle = siteStyle("google.com")
-  expectedSiteStyle = "rgb(144, 32, 130)"
   expect(returnedSiteStyle).toEqual(expectedSiteStyle)
 
   returnedSiteStyle = siteStyle("https://dev.random-domain.com/")
