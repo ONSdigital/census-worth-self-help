@@ -33,6 +33,7 @@ fi
 echo "GATSBY_ASSETS_PATH = ${GATSBY_ASSETS_PATH}"
 echo "GATSBY_CHAT_DOMAIN = ${GATSBY_CHAT_DOMAIN}"
 echo "MATOMO_IP          = ${MATOMO_IP}"
+echo "SITE_BANNER_COLOUR = ${SITE_BANNER_COLOUR}"
 
 
 echo "env variables OK"
