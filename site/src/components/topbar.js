@@ -33,7 +33,7 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
   }
 
  const siteSpecificBannerColour = getSiteSpecificBannerColour()
- console.log(process.env.SITE_BANNER_COLOUR)
+ console.log(process.env.GATSBY_SITE_BANNER_COLOUR)
  console.log(siteSpecificBannerColour)
   return (
     <header
