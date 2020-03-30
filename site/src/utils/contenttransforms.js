@@ -1,5 +1,12 @@
 var sanitizeHtml = require("sanitize-html")
 
+export const colorTransform = () => {
+  let color = process.env.SITE_COLOR
+    ? process.env.SITE_COLOR
+    : "rgb(144, 32, 130)"
+  return color
+}
+
 export const transformSources = htmlString => {
   let videoPath = process.env.GATSBY_ASSETS_PATH
     ? process.env.GATSBY_ASSETS_PATH
@@ -12,16 +19,11 @@ export const transformSources = htmlString => {
 
 export const htmlSanitize = htmlString => {
   return sanitizeHtml(htmlString, {
-    allowedTags: sanitizeHtml.defaults.allowedTags.filter(function(tag) {
-      return tag !== "iframe"
-    }).concat([
-      "video",
-      "audio",
-      "img",
-      "source",
-      "h1",
-      "h2"
-    ]),
+    allowedTags: sanitizeHtml.defaults.allowedTags
+      .filter(function(tag) {
+        return tag !== "iframe"
+      })
+      .concat(["video", "audio", "img", "source", "h1", "h2"]),
     allowedAttributes: {
       a: ["href", "name", "target"],
       img: ["src", "title"],

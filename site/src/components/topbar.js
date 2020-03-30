@@ -1,8 +1,9 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { siteStyle, spacing, colors } from "../utils/styles"
+import { spacing, colors } from "../utils/styles"
 import TopbarLink from "./topbarlink"
 import CensusLogo from "./censuslogo"
+import { colorTransform } from "../utils/contenttransforms"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
@@ -27,24 +28,17 @@ const backFunction = () => {
 
 export default ({ searchObject = null, logo = false, backButton = false }) => {
   let pathname = encodeURIComponent("/")
-  let siteSpecificStyle = siteStyle("/")
-  console.log(siteSpecificStyle)
-
   if (typeof window !== "undefined") {
     pathname = encodeURIComponent(window.location.pathname)
-
-    console.log(window.location.href)
-    siteSpecificStyle = siteStyle(window.location.href)
-    console.log(siteSpecificStyle)
-    console.log(window.location.href)
   }
-  console.log(siteSpecificStyle)
+
+  const color = colorTransform()
 
   return (
     <header
       css={css`
         width: 100vw;
-        background-color: ${siteSpecificStyle};
+        background-color: ${color};
         display: flex;
         flex-direction: column;
         align-items: center;
