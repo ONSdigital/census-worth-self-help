@@ -29,7 +29,7 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
   let pathname = encodeURIComponent("/")
   let siteSpecificStyle = siteStyle("/")
   console.log(siteSpecificStyle)
-  window && console.log(window)
+
   if (typeof window !== "undefined") {
     pathname = encodeURIComponent(window.location.pathname)
 
