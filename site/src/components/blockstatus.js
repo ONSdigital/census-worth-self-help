@@ -1,8 +1,10 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { spacing, colors } from "../utils/styles"
+import { getSiteSpecificStyle } from "../utils/contenttransforms"
 
 export default ({ title, subtitle, icon = null }) => {
+  const siteSpecificColour = getSiteSpecificStyle().colour
   return (
     <div
       css={css`
@@ -17,7 +19,7 @@ export default ({ title, subtitle, icon = null }) => {
     >
       <div
         css={css`
-          color: ${colors.primary_purple};
+          color: ${siteSpecificColour};
           ${spacing.vert_aligned_flex_text}
           font-size: 30px;
           flex: 1 1 0;

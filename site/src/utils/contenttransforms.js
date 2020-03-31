@@ -1,22 +1,25 @@
-import { colors } from "./styles"
+import { colors, gradients } from "./styles"
 var sanitizeHtml = require("sanitize-html")
 
-export const getSiteSpecificBannerColour = () => {
-  let colour
-  let siteType = process.env.GATSBY_SITE_BANNER_COLOUR || "main_site_colour"
+export const getSiteSpecificStyle = () => {
+  const siteType = process.env.GATSBY_SITE_COLOUR || "main_site_colour"
+  let style = {}
 
   switch (siteType) {
     case "secondary":
-      colour = colors.primary_blue
+      style.colour = colors.primary_blue
+      style.gradient = gradients.blue_shine
       break
     case "tertiary":
-      colour = colors.secondary_teal
+      style.colour = colors.secondary_teal
+      style.gradient = gradients.teal_shine
       break
     default:
-      colour = colors.primary_purple
+      style.colour = colors.primary_purple
+      style.gradient = gradients.purple_shine
   }
 
-  return colour
+  return style
 }
 
 export const transformSources = htmlString => {

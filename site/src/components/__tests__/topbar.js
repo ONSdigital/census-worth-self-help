@@ -5,7 +5,6 @@ import TopBar from "../topbar"
 import { render, fireEvent } from "react-testing-library"
 
 import { navigate } from "@reach/router"
-import { siteStyle } from "../../utils/styles"
 jest.mock("@reach/router", () => ({
   navigate: jest.fn()
 }))
@@ -22,11 +21,11 @@ describe("TopBar", () => {
     let tree = renderer.create(<TopBar />).toJSON()
     expect(tree).toMatchSnapshot()
 
-    const originalEnvValue = process.env.GATSBY_SITE_BANNER_COLOUR
-    process.env.GATSBY_SITE_BANNER_COLOUR = "secondary"
+    const originalEnvValue = process.env.GATSBY_SITE_COLOUR
+    process.env.GATSBY_SITE_COLOUR = "secondary"
     tree = renderer.create(<TopBar />).toJSON()
     expect(tree).toMatchSnapshot()
-    process.env.GATSBY_SITE_BANNER_COLOUR = originalEnvValue
+    process.env.GATSBY_SITE_COLOUR = originalEnvValue
   })
 
   it("renders correctly with searchbox", () => {
@@ -80,26 +79,4 @@ describe("TopBar", () => {
     expect(navigate).toHaveBeenCalledTimes(2)
     expect(navigate).toHaveBeenCalledWith("/testtest/")
   })
-})
-
-it("returns default color for sites outside of our knowledge", () => {
-  let returnedSiteStyle = siteStyle("/")
-  let expectedSiteStyle = "rgb(144, 32, 130)"
-
-  expect(returnedSiteStyle).toEqual(expectedSiteStyle)
-
-  returnedSiteStyle = siteStyle("google.com")
-  expect(returnedSiteStyle).toEqual(expectedSiteStyle)
-})
-
-it("returns correct site color for specified sites", () => {
-  let returnedSiteStyle = siteStyle("/")
-  let expectedSiteStyle = "rgb(60, 56, 142)"
-
-  returnedSiteStyle = siteStyle("https://dev.random-domain.com/")
-  expect(returnedSiteStyle).toEqual(expectedSiteStyle)
-
-  returnedSiteStyle = siteStyle("https://test.random-domain.com/")
-  expectedSiteStyle = "rgb(0, 163, 166)"
-  expect(returnedSiteStyle).toEqual(expectedSiteStyle)
 })

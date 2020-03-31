@@ -4,6 +4,7 @@ import Topbar from "../components/topbar"
 import { spacing, colors } from "../utils/styles"
 import Metadata from "../components/metadata"
 import VisuallyHidden from "@reach/visually-hidden"
+import { getSiteSpecificStyle } from "../utils/contenttransforms"
 
 import { css } from "@emotion/core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -24,6 +25,7 @@ export default ({ pageContext }) => {
     />
   ))
 
+  const siteSpecificColour = getSiteSpecificStyle().colour
   return (
     <div>
       <Metadata>Self Help Facility - Menu</Metadata>
@@ -35,7 +37,7 @@ export default ({ pageContext }) => {
         css={css`
           width: 100vw;
           min-height: 100vh;
-          background-color: ${colors.primary_purple};
+          background-color: ${siteSpecificColour};
           display: flex;
           flex-direction: column;
           align-items: center;

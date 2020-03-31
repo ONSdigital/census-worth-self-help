@@ -3,6 +3,7 @@ import { css } from "@emotion/core"
 import { navigate } from "@reach/router"
 import { colors, spacing } from "../utils/styles"
 import { getTimeAgoPublished } from "../utils/time"
+import { getSiteSpecificStyle } from "../utils/contenttransforms" 
 
 export default ({ node }) => {
   let title = node.frontmatter.title
@@ -13,6 +14,7 @@ export default ({ node }) => {
 
   let time_ago = getTimeAgoPublished(node.frontmatter.date)
   let clickFunction = node.clickFunction ? node.clickFunction : () => {}
+  const siteSpecificColour = getSiteSpecificStyle().colour;
   return (
     <div
       className="clickable"
@@ -23,7 +25,7 @@ export default ({ node }) => {
       css={css`
         ${spacing.tab};
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-        border-left: 6px solid ${colors.primary_purple};
+        border-left: 6px solid ${siteSpecificColour};
         background-color: ${colors.white};
       `}
     >

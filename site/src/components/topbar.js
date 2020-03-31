@@ -3,7 +3,7 @@ import { css } from "@emotion/core"
 import { spacing, colors } from "../utils/styles"
 import TopbarLink from "./topbarlink"
 import CensusLogo from "./censuslogo"
-import { getSiteSpecificBannerColour } from "../utils/contenttransforms"
+import { getSiteSpecificStyle } from "../utils/contenttransforms"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
@@ -32,13 +32,13 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
     pathname = encodeURIComponent(window.location.pathname)
   }
 
-  const siteSpecificBannerColour = getSiteSpecificBannerColour()
+  const siteSpecificColour = getSiteSpecificStyle().colour
 
   return (
     <header
       css={css`
         width: 100vw;
-        background-color: ${siteSpecificBannerColour};
+        background-color: ${siteSpecificColour};
         display: flex;
         flex-direction: column;
         align-items: center;
