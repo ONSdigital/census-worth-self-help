@@ -8,7 +8,7 @@ import { articleList, popularList } from "../../utils/testdata"
 
 
 describe("Contact centre", () => {
-  process.env.GATSBY_SITE_BANNER_COLOUR = "rgb(144, 32, 130)"
+  process.env.GATSBY_SITE_BANNER_COLOUR = "primary"
   
   it("renders correctly without data", () => {
     const data = { allMarkdownRemark: { edges: [] } }

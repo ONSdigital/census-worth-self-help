@@ -15,7 +15,7 @@ BookmarkManager.mockImplementation(() => ({
 }))
 
 describe("Index", () => {
-  process.env.GATSBY_SITE_BANNER_COLOUR = "rgb(144, 32, 130)"
+  process.env.GATSBY_SITE_BANNER_COLOUR = "primary"
   
   const mostRecentData = { allMarkdownRemark: articleList }
   const empty_data = {}

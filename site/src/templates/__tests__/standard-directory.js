@@ -6,7 +6,7 @@ import StandardDirectory from "../standard-directory"
 import { articleList } from "../../utils/testdata"
 
 describe("StandardArticle", () => {
-  process.env.GATSBY_SITE_BANNER_COLOUR = "rgb(144, 32, 130)"
+  process.env.GATSBY_SITE_BANNER_COLOUR = "primary"
 
   const pageContext = {
     breadcrumbs: [{ title: "root", link: "explore" }],
