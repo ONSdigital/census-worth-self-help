@@ -11,8 +11,7 @@ import {
 import { render, fireEvent } from "react-testing-library"
 
 describe("StandardArticle", () => {
-  process.env.GATSBY_SITE_BANNER_COLOUR = "primary"
-
+  
   beforeEach(() => {
     window._paq = []
   })

@@ -7,8 +7,7 @@ import ReactDOMServer from "react-dom/server"
 import { Index } from "elasticlunr"
 
 describe("Search", () => {
-  process.env.GATSBY_SITE_BANNER_COLOUR = "primary"
-
+  
   beforeEach(() => {
     window._paq = []
   })

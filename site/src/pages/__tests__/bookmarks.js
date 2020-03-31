@@ -15,8 +15,7 @@ BookmarkManager.mockImplementation(() => ({
 }))
 
 describe("Bookmarks", () => {
-  process.env.GATSBY_SITE_BANNER_COLOUR = "primary"
-  
+    
   const data = { allMarkdownRemark: articleList }
 
   it("renders correctly without bookmarks", () => {
