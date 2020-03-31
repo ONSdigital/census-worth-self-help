@@ -13,7 +13,8 @@ export const colors = {
   primary_purple: "rgb(144, 32, 130)",
   primary_blue: "rgb(60, 56, 142)",
   secondary_teal: "rgb(0, 163, 166)",
-  secondary_pink: "rgb(223, 6, 103)"
+  secondary_pink: "rgb(223, 6, 103)",
+  dimmed: "rgba(0,61,89, 0.2)"
 }
 
 export const gradients = {

@@ -22,7 +22,7 @@ export default ({
     : () => navigate(link)
 
   const siteSpecificStyle = getSiteSpecificStyle()
-  const textColor = dimmed ? "rgba(0,61,89, 0.2)" : siteSpecificStyle.colour
+  const textColor = dimmed ? colors.dimmed : siteSpecificStyle.colour
   const siteSpecificColourClass = siteSpecificStyle.siteSpecificColourClass
   return (
     <div
