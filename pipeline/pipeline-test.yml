@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: feature/ONS-575-make-colour-modifiable-across-aspects-of-site
     check_every: 15m
 
   - name: content-repository
@@ -38,5 +38,5 @@ jobs:
           SKIP_UNIT_TESTS: true
           SKIP_AUDIT: true
           SP_PROTECTED: false
-          GATSBY_SITE_COLOUR: tertiary
+          GATSBY_SITE_COLOUR: primary
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml

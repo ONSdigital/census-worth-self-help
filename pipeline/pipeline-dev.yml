@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: feature/ONS-575-make-colour-modifiable-across-aspects-of-site
     webhook_token: ((git.census-worth-self-help-webhook-token))
     check_every: 15m
 
@@ -37,4 +37,4 @@ jobs:
           PROJECT: ((gcp.project-name))
           SERVICE: default
           SP_PROTECTED: false
-          GATSBY_SITE_COLOUR: secondary
+          GATSBY_SITE_COLOUR: primary
