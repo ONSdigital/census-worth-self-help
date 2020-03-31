@@ -5,34 +5,31 @@ import { render } from "react-testing-library"
 import { articleList } from "../../utils/testdata"
 import BookmarkManager from "../../utils/bookmarkManager"
 
-jest.mock('../../utils/bookmarkManager', () => jest.fn());
+
+jest.mock("../../utils/bookmarkManager", () => jest.fn())
 
 // default to no bookmarks
-BookmarkManager.mockImplementation(
-  () => ({
-    getTopBookmarks: () => [],
-    addBookmarkClickEventToEdges: (edges) => {} 
-  })
-)
+BookmarkManager.mockImplementation(() => ({
+  getTopBookmarks: () => [],
+  addBookmarkClickEventToEdges: edges => {}
+}))
 
 describe("Bookmarks", () => {
-  const data = { allMarkdownRemark : articleList }
+    
+  const data = { allMarkdownRemark: articleList }
 
   it("renders correctly without bookmarks", () => {
-    const tree = renderer.create(<Bookmarks data={data}/>).toJSON()
+    const tree = renderer.create(<Bookmarks data={data} />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 
   it("renders correctly with bookmarks", () => {
+    BookmarkManager.mockImplementation(() => ({
+      getTopBookmarks: () => ["test Article 1", "bogus article"],
+      addBookmarkClickEventToEdges: edges => {}
+    }))
 
-    BookmarkManager.mockImplementation(
-      () => ({
-        getTopBookmarks: () => ["test Article 1", "bogus article"],
-        addBookmarkClickEventToEdges: (edges) => {} 
-      })
-    )
-
-    const tree = renderer.create(<Bookmarks data={data}/>).toJSON()
+    const tree = renderer.create(<Bookmarks data={data} />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

@@ -19,8 +19,14 @@ describe("TopBar", () => {
   }
 
   it("renders correctly", () => {
-    const tree = renderer.create(<TopBar />).toJSON()
+    let tree = renderer.create(<TopBar />).toJSON()
     expect(tree).toMatchSnapshot()
+
+    const originalEnvValue = process.env.GATSBY_SITE_BANNER_COLOUR
+    process.env.GATSBY_SITE_BANNER_COLOUR = "secondary"
+    tree = renderer.create(<TopBar />).toJSON()
+    expect(tree).toMatchSnapshot()
+    process.env.GATSBY_SITE_BANNER_COLOUR = originalEnvValue
   })
 
   it("renders correctly with searchbox", () => {

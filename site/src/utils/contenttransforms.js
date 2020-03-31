@@ -1,4 +1,23 @@
+import { colors } from "./styles"
 var sanitizeHtml = require("sanitize-html")
+
+export const getSiteSpecificBannerColour = () => {
+  let colour
+  let siteType = process.env.GATSBY_SITE_BANNER_COLOUR || "main_site_colour"
+
+  switch (siteType) {
+    case "secondary":
+      colour = colors.primary_blue
+      break
+    case "tertiary":
+      colour = colors.secondary_teal
+      break
+    default:
+      colour = colors.primary_purple
+  }
+
+  return colour
+}
 
 export const transformSources = htmlString => {
   let videoPath = process.env.GATSBY_ASSETS_PATH
@@ -12,16 +31,11 @@ export const transformSources = htmlString => {
 
 export const htmlSanitize = htmlString => {
   return sanitizeHtml(htmlString, {
-    allowedTags: sanitizeHtml.defaults.allowedTags.filter(function(tag) {
-      return tag !== "iframe"
-    }).concat([
-      "video",
-      "audio",
-      "img",
-      "source",
-      "h1",
-      "h2"
-    ]),
+    allowedTags: sanitizeHtml.defaults.allowedTags
+      .filter(function(tag) {
+        return tag !== "iframe"
+      })
+      .concat(["video", "audio", "img", "source", "h1", "h2"]),
     allowedAttributes: {
       a: ["href", "name", "target"],
       img: ["src", "title"],

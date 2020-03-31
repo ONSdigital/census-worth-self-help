@@ -34,5 +34,4 @@ echo "GATSBY_ASSETS_PATH = ${GATSBY_ASSETS_PATH}"
 echo "GATSBY_CHAT_DOMAIN = ${GATSBY_CHAT_DOMAIN}"
 echo "MATOMO_IP          = ${MATOMO_IP}"
 
-
 echo "env variables OK"

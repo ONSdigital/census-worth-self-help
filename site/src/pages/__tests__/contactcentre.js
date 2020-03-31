@@ -6,17 +6,26 @@ import { sanitizePhoneNumber } from "../contactcentre"
 import { render } from "react-testing-library"
 import { articleList, popularList } from "../../utils/testdata"
 
+
 describe("Contact centre", () => {
+    
   it("renders correctly without data", () => {
-    const data = {allMarkdownRemark : { edges : []}}
-    const tree = renderer.create(<ContactCentre data={data}/>).toJSON()
+    const data = { allMarkdownRemark: { edges: [] } }
+    const tree = renderer.create(<ContactCentre data={data} />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 
   it("renders correctly with data", () => {
-    const data = { allMarkdownRemark : articleList,
-    	markdownRemark : { frontmatter: {contact_centre_text: "wibble wibble", contact_centre_number: "01111 333333" }} }
-    const tree = renderer.create(<ContactCentre data={data}/>).toJSON()
+    const data = {
+      allMarkdownRemark: articleList,
+      markdownRemark: {
+        frontmatter: {
+          contact_centre_text: "wibble wibble",
+          contact_centre_number: "01111 333333"
+        }
+      }
+    }
+    const tree = renderer.create(<ContactCentre data={data} />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 
@@ -25,6 +34,8 @@ describe("Contact centre", () => {
   })
 
   it("get suggested nodes should find popular nodes", () => {
-    expect(getSuggestedEdges(articleList.edges)).toEqual( popularList.edges.slice(0, 3) )
+    expect(getSuggestedEdges(articleList.edges)).toEqual(
+      popularList.edges.slice(0, 3)
+    )
   })
 })
