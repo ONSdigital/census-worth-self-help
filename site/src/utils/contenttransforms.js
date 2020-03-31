@@ -3,14 +3,9 @@ var sanitizeHtml = require("sanitize-html")
 
 export const getSiteSpecificBannerColour = () => {
   let colour
-  let siteType = process.env.GATSBY_SITE_BANNER_COLOUR
-    ? process.env.GATSBY_SITE_BANNER_COLOUR
-    : "primary"
+  let siteType = process.env.GATSBY_SITE_BANNER_COLOUR || ""
 
   switch (siteType) {
-    case "primary":
-      colour = colors.primary_purple
-      break
     case "secondary":
       colour = colors.primary_blue
       break
