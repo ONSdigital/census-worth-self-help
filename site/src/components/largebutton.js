@@ -23,7 +23,7 @@ export default ({
 
   const siteSpecificStyle = getSiteSpecificStyle()
   const textColor = dimmed ? "rgba(0,61,89, 0.2)" : siteSpecificStyle.colour
-  const className = siteSpecificStyle.className
+  const siteSpecificColourClass = siteSpecificStyle.siteSpecificColourClass
   return (
     <div
       data-testid="large-button"
@@ -67,7 +67,7 @@ export default ({
         data-testid={
           selected ? "large-button-selected-text" : "large-button-text"
         }
-        className={`Button-heading-Style ${className}`}
+        className={`Button-heading-Style ${siteSpecificColourClass}`}
         css={css`
           margin: 0px 20px;
           color: ${textColor};

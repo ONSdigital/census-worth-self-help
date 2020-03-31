@@ -5,7 +5,7 @@ import Metadata from "./metadata"
 import { getSiteSpecificStyle } from "../utils/contenttransforms"
 
 export default ({ children, icon = null, subtitle = null, pageType }) => {
-  const className = getSiteSpecificStyle().className
+  const siteSpecificColourClass = getSiteSpecificStyle().siteSpecificColourClass
   return (
     <div
       css={css`
@@ -18,7 +18,7 @@ export default ({ children, icon = null, subtitle = null, pageType }) => {
           margin-bottom: 0px;
           display: flex;
         `}
-        className={`Article-Title-Style ${className}`}
+        className={`Article-Title-Style ${siteSpecificColourClass}`}
         data-testid="search-result-title"
       >
         {icon !== null && (

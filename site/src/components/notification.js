@@ -71,7 +71,7 @@ export default class Notification extends React.Component {
     if (this.hidden) {
       this.cancelTimer()
     }
-    const className = getSiteSpecificStyle().className
+    const siteSpecificColourClass = getSiteSpecificStyle().siteSpecificColourClass
     return (
       <div
         css={css`
@@ -100,7 +100,7 @@ export default class Notification extends React.Component {
             `}
           >
             <div
-              className={`Article-Title-Style ${className}`}
+              className={`Article-Title-Style ${siteSpecificColourClass}`}
               css={css`
                 display: flex;
                 align-items: center;

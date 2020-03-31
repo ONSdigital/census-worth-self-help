@@ -18,10 +18,10 @@ const PaginationIcon = ({
   underlined = false,
   testid = undefined
 }) => {
-  const className = getSiteSpecificStyle().className
+  const siteSpecificColourClass = getSiteSpecificStyle().siteSpecificColourClass
   return (
     <div
-      className={`Article-Title-Style ${className} clickable`}
+      className={`Article-Title-Style ${siteSpecificColourClass} clickable`}
       data-testid={testid}
       css={css`
         padding: 0px 5px;

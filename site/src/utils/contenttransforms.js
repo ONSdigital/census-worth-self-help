@@ -9,17 +9,17 @@ export const getSiteSpecificStyle = () => {
     case "secondary":
       style.colour = colors.primary_blue
       style.gradient = gradients.blue_shine
-      style.className = "blue-text-colour"
+      style.siteSpecificColourClass = "blue-text-colour"
       break
     case "tertiary":
       style.colour = colors.secondary_teal
       style.gradient = gradients.teal_shine
-      style.className = "teal-text-colour"
+      style.siteSpecificColourClass = "teal-text-colour"
       break
     default:
       style.colour = colors.primary_purple
       style.gradient = gradients.purple_shine
-      style.className = "purple-text-colour"
+      style.siteSpecificColourClass = "purple-text-colour"
   }
 
   return style
