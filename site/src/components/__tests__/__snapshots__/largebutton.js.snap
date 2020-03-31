@@ -30,7 +30,7 @@ exports[`Large Button renders correctly 1`] = `
   onClick={[Function]}
 >
   <div
-    className="Button-heading-Style"
+    className="Button-heading-Style purple-text-colour"
     css={
       Object {
         "map": undefined,

@@ -1,13 +1,17 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { navigate } from "@reach/router"
-import { gradients, colors, spacing } from "../utils/styles"
+import { spacing } from "../utils/styles"
+import { getSiteSpecificStyle } from "../utils/contenttransforms"
 
 export default ({ node }) => {
   let title = node.frontmatter.title
   let link = node.fields.pagename + "/"
   let description = node.frontmatter.description
 
+  const siteStyle = getSiteSpecificStyle();
+  const siteSpecificColour = siteStyle.colour
+  const siteSpecificGradient = siteStyle.gradient
   return (
     <div
       className="clickable"
@@ -16,8 +20,8 @@ export default ({ node }) => {
         ${spacing.tab};
         box-shadow: 0 2px 4px 0 rgba(212, 212, 212, 0.5);
         border: solid 1px #ececed;
-        ${gradients.purple_shine};
-        border-left: 6px solid ${colors.primary_purple};
+        ${siteSpecificGradient};
+        border-left: 6px solid ${siteSpecificColour};
       `}
     >
       <div

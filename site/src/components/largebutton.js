@@ -2,6 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import { navigate } from "@reach/router"
 import { spacing, colors } from "../utils/styles"
+import { getSiteSpecificStyle } from "../utils/contenttransforms"
 
 export default ({
   title,
@@ -20,8 +21,9 @@ export default ({
     ? clickFunction
     : () => navigate(link)
 
-  const textColor = dimmed ? "rgba(0,61,89, 0.2)" : colors.primary_purple
-
+  const siteSpecificStyle = getSiteSpecificStyle()
+  const textColor = dimmed ? colors.dimmed : siteSpecificStyle.colour
+  const siteSpecificColourClass = siteSpecificStyle.siteSpecificColourClass
   return (
     <div
       data-testid="large-button"
@@ -65,7 +67,7 @@ export default ({
         data-testid={
           selected ? "large-button-selected-text" : "large-button-text"
         }
-        className="Button-heading-Style"
+        className={`Button-heading-Style ${siteSpecificColourClass}`}
         css={css`
           margin: 0px 20px;
           color: ${textColor};

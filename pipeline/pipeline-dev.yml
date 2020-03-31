@@ -37,4 +37,4 @@ jobs:
           PROJECT: ((gcp.project-name))
           SERVICE: default
           SP_PROTECTED: false
-          GATSBY_SITE_BANNER_COLOUR: secondary
+          GATSBY_SITE_COLOUR: primary

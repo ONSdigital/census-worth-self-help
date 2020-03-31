@@ -16,7 +16,7 @@ exports[`PageTitle renders correctly 1`] = `
   }
 >
   <h1
-    className="Article-Title-Style"
+    className="Article-Title-Style purple-text-colour"
     css={
       Object {
         "map": undefined,

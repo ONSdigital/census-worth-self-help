@@ -3,24 +3,24 @@ process.env.GATSBY_ASSETS_PATH = "test"
 import {
   transformSources,
   htmlSanitize,
-  getSiteSpecificBannerColour
+  getSiteSpecificStyle
 } from "../contenttransforms"
 
-describe("getSiteSpecificBannerColour", () => {
+describe("getSiteSpecificStyle", () => {
   it("gets a specific banner colour based on an environment variable", () => {
-    expect(getSiteSpecificBannerColour()).toEqual("rgb(144, 32, 130)")
+    expect(getSiteSpecificStyle().colour).toEqual("rgb(144, 32, 130)")
 
-    const originalEnvValue = process.env.GATSBY_SITE_BANNER_COLOUR
+    const originalEnvValue = process.env.GATSBY_SITE_COLOUR
 
-    process.env.GATSBY_SITE_BANNER_COLOUR = "secondary"
-    expect(getSiteSpecificBannerColour()).toEqual("rgb(60, 56, 142)")
-    process.env.GATSBY_SITE_BANNER_COLOUR = "tertiary"
-    expect(getSiteSpecificBannerColour()).toEqual("rgb(0, 163, 166)")
+    process.env.GATSBY_SITE_COLOUR = "secondary"
+    expect(getSiteSpecificStyle().colour).toEqual("rgb(60, 56, 142)")
+    process.env.GATSBY_SITE_COLOUR = "tertiary"
+    expect(getSiteSpecificStyle().colour).toEqual("rgb(0, 163, 166)")
 
-    process.env.GATSBY_SITE_BANNER_COLOUR = "unknown"
-    expect(getSiteSpecificBannerColour()).toEqual("rgb(144, 32, 130)")
+    process.env.GATSBY_SITE_COLOUR = "unknown"
+    expect(getSiteSpecificStyle().colour).toEqual("rgb(144, 32, 130)")
 
-    process.env.GATSBY_SITE_BANNER_COLOUR = originalEnvValue
+    process.env.GATSBY_SITE_COLOUR = originalEnvValue
   })
 })
 

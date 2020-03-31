@@ -6,7 +6,15 @@
   font-stretch: normal;
   line-height: normal;
   letter-spacing: -0.5px;
+}
+.purple-text-colour {
   color: rgb(144, 32, 130);
+}
+.blue-text-colour {
+  color: rgb(60, 56, 142);
+}
+.teal-text-colour {
+  color: rgb(0, 163, 166);
 }
 .Notification-heading-Style {
   font-family: Open Sans;
@@ -37,7 +45,6 @@
   line-height: 1.3;
   letter-spacing: -0.2px;
   text-align: center;
-  color: rgb(144, 32, 130);
 }
 .Card-heading-Style {
   font-family: Open Sans;

@@ -4,6 +4,7 @@ import DirectoryTab from "./directorytab"
 import ArticleTab from "./articletab"
 import { spacing, colors } from "../utils/styles"
 import { Link } from "gatsby"
+import { getSiteSpecificStyle } from "../utils/contenttransforms"
 
 export default ({ elements, title = false, link = false }) => {
   let elementTabs = elements.map(({ node }) => (
@@ -13,6 +14,7 @@ export default ({ elements, title = false, link = false }) => {
     </div>
   ))
 
+  const siteSpecificColour = getSiteSpecificStyle().colour
   let titlebar = null
   if (title || link) {
     titlebar = (
@@ -32,7 +34,7 @@ export default ({ elements, title = false, link = false }) => {
             css={css`
               margin-left: auto;
               text-decoration: none;
-              color: ${colors.primary_purple};
+              color: ${siteSpecificColour};
             `}
           >
             View all >

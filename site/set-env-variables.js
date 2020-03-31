@@ -1,1 +1,1 @@
-process.env.GATSBY_SITE_BANNER_COLOUR = "primary"
+process.env.GATSBY_SITE_COLOUR = "primary"
