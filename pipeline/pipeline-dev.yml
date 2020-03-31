@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: feature/ONS-523-visual-diff
     webhook_token: ((git.census-worth-self-help-webhook-token))
     check_every: 15m
 
@@ -37,3 +37,5 @@ jobs:
           PROJECT: ((gcp.project-name))
           SERVICE: default
           SP_PROTECTED: false
+          GATSBY_SITE_BANNER_COLOUR: rgb(0,163,166)
+          SKIP_UNIT_TESTS: true
