@@ -42,6 +42,7 @@ run:
   args:
   - -exec
   - |
+    census-worth-self-help/pipeline/tasks/task-scripts/dump-configuration.sh
     census-worth-self-help/pipeline/tasks/task-scripts/validate-deploy-site-env.sh
     census-worth-self-help/pipeline/tasks/task-scripts/activate-service-account.sh
     gcloud config set project $PROJECT
