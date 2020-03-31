@@ -37,5 +37,4 @@ jobs:
           PROJECT: ((gcp.project-name))
           SERVICE: default
           SP_PROTECTED: false
-          GATSBY_SITE_BANNER_COLOUR: rgb(0,163,166)
-          SKIP_UNIT_TESTS: true
+          GATSBY_SITE_BANNER_COLOUR: secondary

@@ -32,9 +32,8 @@ export default ({ searchObject = null, logo = false, backButton = false }) => {
     pathname = encodeURIComponent(window.location.pathname)
   }
 
- const siteSpecificBannerColour = getSiteSpecificBannerColour()
- console.log(process.env.GATSBY_SITE_BANNER_COLOUR)
- console.log(siteSpecificBannerColour)
+  const siteSpecificBannerColour = getSiteSpecificBannerColour()
+
   return (
     <header
       css={css`

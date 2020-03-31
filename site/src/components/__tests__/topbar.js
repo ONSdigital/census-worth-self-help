@@ -10,7 +10,10 @@ jest.mock("@reach/router", () => ({
   navigate: jest.fn()
 }))
 
+
 describe("TopBar", () => {
+  process.env.GATSBY_SITE_BANNER_COLOUR = "rgb(144, 32, 130)"
+  
   let updateFunction = jest.fn()
 
   const searchObject = {

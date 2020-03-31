@@ -3,22 +3,28 @@ import renderer from "react-test-renderer"
 
 import StandardArticle from "../standard-article"
 
-import {articleNode, articleList, webchatArticleNode} from "../../utils/testdata"
+import {
+  articleNode,
+  articleList,
+  webchatArticleNode
+} from "../../utils/testdata"
 import { render, fireEvent } from "react-testing-library"
 
 describe("StandardArticle", () => {
+  process.env.GATSBY_SITE_BANNER_COLOUR = "rgb(144, 32, 130)"
+
   beforeEach(() => {
     window._paq = []
-  });
+  })
 
   const pageContext = {
-  	breadcrumbs : [],
-  	peers : [ {title: "nothing"}, {title: "test Article 2"}],
-  	title : "test Article 1"
+    breadcrumbs: [],
+    peers: [{ title: "nothing" }, { title: "test Article 2" }],
+    title: "test Article 1"
   }
   const data = {
-  	markdownRemark : articleNode,
-    allMarkdownRemark : articleList
+    markdownRemark: articleNode,
+    allMarkdownRemark: articleList
   }
   it("renders correctly", () => {
     const tree = renderer
@@ -28,22 +34,28 @@ describe("StandardArticle", () => {
   })
 
   it("if markdown not found, we render a suitable message", () => {
-    const { getByTestId } = render(<StandardArticle 
-        data={{ markdownRemark : null, allMarkdownRemark : articleList }}
+    const { getByTestId } = render(
+      <StandardArticle
+        data={{ markdownRemark: null, allMarkdownRemark: articleList }}
         pageContext={pageContext}
-      />)
-    
+      />
+    )
+
     const articleContent = getByTestId("article-content")
-    expect(articleContent.textContent).toEqual("Article content not found. Please Report.")
+    expect(articleContent.textContent).toEqual(
+      "Article content not found. Please Report."
+    )
   })
 
   it("positive feedback", () => {
     // create page
-    const { getByTestId, getByText } = render(<StandardArticle data={data} pageContext={pageContext} />);
-    
+    const { getByTestId, getByText } = render(
+      <StandardArticle data={data} pageContext={pageContext} />
+    )
+
     // click positive feedback
-    const positiveButton = getByText('Useful')
-    fireEvent.click(positiveButton);
+    const positiveButton = getByText("Useful")
+    fireEvent.click(positiveButton)
 
     // check notification text
     const notification = getByTestId("notification-text-content")
@@ -51,53 +63,66 @@ describe("StandardArticle", () => {
 
     // check paq updated.
     expect(window._paq).toEqual([
-      ['setCustomDimension', 1, 'article'],
-      ['trackEvent', "article-feedback-rating", "rating", "test Article 1", 1],
-      ['setCustomDimension', 1, 'article']
+      ["setCustomDimension", 1, "article"],
+      ["trackEvent", "article-feedback-rating", "rating", "test Article 1", 1],
+      ["setCustomDimension", 1, "article"]
     ])
-
   })
 
   it("negative feedback", () => {
     // create page
-    const { getByTestId, getByText } = render(<StandardArticle data={data} pageContext={pageContext} />);
+    const { getByTestId, getByText } = render(
+      <StandardArticle data={data} pageContext={pageContext} />
+    )
 
     // click negative feedback
-    const negativeButton = getByText('Not useful')
-    fireEvent.click(negativeButton);
+    const negativeButton = getByText("Not useful")
+    fireEvent.click(negativeButton)
 
     // check form appears
-    const feedbackContent = getByTestId('feedback-content')
+    const feedbackContent = getByTestId("feedback-content")
 
     // add text.
-    fireEvent.change(feedbackContent, { target: { value: 'TEST VALUE' } });
+    fireEvent.change(feedbackContent, { target: { value: "TEST VALUE" } })
 
     // click confirm
-    const submitButton = getByTestId('feedback-screen-submit-button')
-    fireEvent.click(submitButton);
+    const submitButton = getByTestId("feedback-screen-submit-button")
+    fireEvent.click(submitButton)
 
     // check paq updated.
     expect(window._paq).toEqual([
-      ['setCustomDimension', 1, 'article'],
-      ['setCustomDimension', 1, 'article'],
-      ['trackEvent', "article-feedback-review", "REVIEW: test Article 1", "TEST VALUE", ""],
-      ['trackEvent', "article-feedback-rating", "rating", "test Article 1", -1],
-      ['setCustomDimension', 1, 'article']
+      ["setCustomDimension", 1, "article"],
+      ["setCustomDimension", 1, "article"],
+      [
+        "trackEvent",
+        "article-feedback-review",
+        "REVIEW: test Article 1",
+        "TEST VALUE",
+        ""
+      ],
+      ["trackEvent", "article-feedback-rating", "rating", "test Article 1", -1],
+      ["setCustomDimension", 1, "article"]
     ])
   })
 
   it("webchat is set based on tags", () => {
-
     // a normal article doesn't have webchat
-    const { queryByTestId } = render(<StandardArticle data={data} pageContext={pageContext} />);
-    expect(queryByTestId('webchat-link')).toBeNull()
+    const { queryByTestId } = render(
+      <StandardArticle data={data} pageContext={pageContext} />
+    )
+    expect(queryByTestId("webchat-link")).toBeNull()
 
     //one tagged for webchat does
-    const { getByTestId } = render(<StandardArticle data={{
-      markdownRemark : webchatArticleNode,
-      allMarkdownRemark : articleList
-    }} pageContext={pageContext} />);
+    const { getByTestId } = render(
+      <StandardArticle
+        data={{
+          markdownRemark: webchatArticleNode,
+          allMarkdownRemark: articleList
+        }}
+        pageContext={pageContext}
+      />
+    )
 
-    expect(getByTestId('webchat-link')).toBeDefined()
+    expect(getByTestId("webchat-link")).toBeDefined()
   })
 })

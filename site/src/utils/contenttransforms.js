@@ -1,11 +1,26 @@
-import { colors } from './styles'
+import { colors } from "./styles"
 var sanitizeHtml = require("sanitize-html")
 
 export const getSiteSpecificBannerColour = () => {
-  //const defaultPurple = "rgb(144, 32, 130)";
-  let colour = process.env.GATSBY_SITE_BANNER_COLOUR
+  let colour
+  let siteType = process.env.GATSBY_SITE_BANNER_COLOUR
     ? process.env.GATSBY_SITE_BANNER_COLOUR
-    : colors.primary_purple
+    : "primary"
+
+  switch (siteType) {
+    case "primary":
+      colour = colors.primary_purple
+      break
+    case "secondary":
+      colour = colors.primary_blue
+      break
+    case "tertiary":
+      colour = colors.secondary_teal
+      break
+    default:
+      colour = colors.primary_purple
+  }
+
   return colour
 }
 
