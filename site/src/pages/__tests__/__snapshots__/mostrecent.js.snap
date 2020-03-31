@@ -280,7 +280,7 @@ exports[`Most Recent renders correctly 1`] = `
             </div>
           </div>
           <div
-            className="Button-heading-Style"
+            className="Button-heading-Style purple-text-colour"
             css={
               Object {
                 "map": undefined,
@@ -313,7 +313,7 @@ exports[`Most Recent renders correctly 1`] = `
         }
       >
         <h1
-          className="Article-Title-Style"
+          className="Article-Title-Style purple-text-colour"
           css={
             Object {
               "map": undefined,
@@ -927,7 +927,7 @@ exports[`Most Recent renders correctly 1`] = `
           }
         >
           <div
-            className="Article-Title-Style clickable"
+            className="Article-Title-Style purple-text-colour clickable"
             css={
               Object {
                 "map": undefined,
@@ -945,7 +945,7 @@ exports[`Most Recent renders correctly 1`] = `
             1
           </div>
           <div
-            className="Article-Title-Style clickable"
+            className="Article-Title-Style purple-text-colour clickable"
             css={
               Object {
                 "map": undefined,
@@ -963,7 +963,7 @@ exports[`Most Recent renders correctly 1`] = `
             2
           </div>
           <div
-            className="Article-Title-Style clickable"
+            className="Article-Title-Style purple-text-colour clickable"
             css={
               Object {
                 "map": undefined,
@@ -997,7 +997,7 @@ exports[`Most Recent renders correctly 1`] = `
             </svg>
           </div>
           <div
-            className="Article-Title-Style clickable"
+            className="Article-Title-Style purple-text-colour clickable"
             css={
               Object {
                 "map": undefined,

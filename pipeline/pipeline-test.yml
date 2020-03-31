@@ -38,4 +38,5 @@ jobs:
           SKIP_UNIT_TESTS: true
           SKIP_AUDIT: true
           SP_PROTECTED: false
+          GATSBY_SITE_COLOUR: tertiary
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml

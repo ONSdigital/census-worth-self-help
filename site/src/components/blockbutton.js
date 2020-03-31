@@ -4,7 +4,9 @@ import { spacing, colors } from "../utils/styles"
 import { getSiteSpecificStyle } from "../utils/contenttransforms"
 
 export default ({ title, subtitle, clickFunction, icon = null }) => {
-  const siteSpecificColour = getSiteSpecificStyle().colour
+  const siteSpecificStyle = getSiteSpecificStyle()
+  const siteSpecificColour = siteSpecificStyle.colour
+  const className = siteSpecificStyle.className
   return (
     <div
       data-testid="block-button"
@@ -21,7 +23,7 @@ export default ({ title, subtitle, clickFunction, icon = null }) => {
     >
       {icon && (
         <div
-          className="Article-Title-Style"
+          className={`Article-Title-Style ${className}`}
           css={css`
             ${spacing.vert_aligned_flex_text}
             display: flex;
@@ -49,7 +51,7 @@ export default ({ title, subtitle, clickFunction, icon = null }) => {
         `}
       >
         <div
-          className="Button-heading-Style"
+          className={`Button-heading-Style ${className}`}
           css={css`
             text-align: left;
           `}

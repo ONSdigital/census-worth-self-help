@@ -280,7 +280,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
             </div>
           </div>
           <div
-            className="Button-heading-Style"
+            className="Button-heading-Style purple-text-colour"
             css={
               Object {
                 "map": undefined,
@@ -313,7 +313,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
         }
       >
         <h1
-          className="Article-Title-Style"
+          className="Article-Title-Style purple-text-colour"
           css={
             Object {
               "map": undefined,
@@ -555,7 +555,7 @@ exports[`Bookmarks renders correctly with bookmarks 1`] = `
           }
         >
           <div
-            className="Article-Title-Style clickable"
+            className="Article-Title-Style purple-text-colour clickable"
             css={
               Object {
                 "map": undefined,
@@ -903,7 +903,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
             </div>
           </div>
           <div
-            className="Button-heading-Style"
+            className="Button-heading-Style purple-text-colour"
             css={
               Object {
                 "map": undefined,
@@ -936,7 +936,7 @@ exports[`Bookmarks renders correctly without bookmarks 1`] = `
         }
       >
         <h1
-          className="Article-Title-Style"
+          className="Article-Title-Style purple-text-colour"
           css={
             Object {
               "map": undefined,

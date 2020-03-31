@@ -1,6 +1,7 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { spacing } from "../utils/styles"
+import { getSiteSpecificStyle } from "../utils/contenttransforms"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
@@ -17,9 +18,10 @@ const PaginationIcon = ({
   underlined = false,
   testid = undefined
 }) => {
+  const className = getSiteSpecificStyle().className
   return (
     <div
-      className="Article-Title-Style clickable"
+      className={`Article-Title-Style ${className} clickable`}
       data-testid={testid}
       css={css`
         padding: 0px 5px;

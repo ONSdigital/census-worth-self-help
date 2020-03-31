@@ -3,6 +3,7 @@ import { css } from "@emotion/core"
 import { spacing, colors } from "../utils/styles"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTimes } from "@fortawesome/free-solid-svg-icons"
+import { getSiteSpecificStyle } from "../utils/contenttransforms"
 
 export default class Notification extends React.Component {
   constructor(props) {
@@ -70,7 +71,7 @@ export default class Notification extends React.Component {
     if (this.hidden) {
       this.cancelTimer()
     }
-
+    const className = getSiteSpecificStyle().className
     return (
       <div
         css={css`
@@ -99,7 +100,7 @@ export default class Notification extends React.Component {
             `}
           >
             <div
-              className="Article-Title-Style"
+              className={`Article-Title-Style ${className}`}
               css={css`
                 display: flex;
                 align-items: center;

@@ -39,7 +39,7 @@ exports[`BlockButton renders correctly 1`] = `
     }
   >
     <div
-      className="Button-heading-Style"
+      className="Button-heading-Style purple-text-colour"
       css={
         Object {
           "map": undefined,

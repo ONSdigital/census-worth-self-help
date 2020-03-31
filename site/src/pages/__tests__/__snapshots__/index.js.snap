@@ -372,7 +372,7 @@ exports[`Index renders correctly with alert data and has alert 1`] = `
             </div>
           </div>
           <div
-            className="Button-heading-Style"
+            className="Button-heading-Style purple-text-colour"
             css={
               Object {
                 "map": undefined,
@@ -931,7 +931,7 @@ exports[`Index renders correctly without data and has no alert 1`] = `
             </div>
           </div>
           <div
-            className="Button-heading-Style"
+            className="Button-heading-Style purple-text-colour"
             css={
               Object {
                 "map": undefined,

@@ -206,7 +206,7 @@ exports[`Contact centre renders correctly with data 1`] = `
         }
       >
         <h1
-          className="Article-Title-Style"
+          className="Article-Title-Style purple-text-colour"
           css={
             Object {
               "map": undefined,
@@ -596,7 +596,7 @@ exports[`Contact centre renders correctly with data 1`] = `
             data-testid="block-button"
           >
             <div
-              className="Article-Title-Style"
+              className="Article-Title-Style purple-text-colour"
               css={
                 Object {
                   "map": undefined,
@@ -668,7 +668,7 @@ exports[`Contact centre renders correctly with data 1`] = `
               }
             >
               <div
-                className="Button-heading-Style"
+                className="Button-heading-Style purple-text-colour"
                 css={
                   Object {
                     "map": undefined,
@@ -956,7 +956,7 @@ exports[`Contact centre renders correctly without data 1`] = `
         }
       >
         <h1
-          className="Article-Title-Style"
+          className="Article-Title-Style purple-text-colour"
           css={
             Object {
               "map": undefined,
@@ -1027,7 +1027,7 @@ exports[`Contact centre renders correctly without data 1`] = `
             data-testid="block-button"
           >
             <div
-              className="Article-Title-Style"
+              className="Article-Title-Style purple-text-colour"
               css={
                 Object {
                   "map": undefined,
@@ -1099,7 +1099,7 @@ exports[`Contact centre renders correctly without data 1`] = `
               }
             >
               <div
-                className="Button-heading-Style"
+                className="Button-heading-Style purple-text-colour"
                 css={
                   Object {
                     "map": undefined,

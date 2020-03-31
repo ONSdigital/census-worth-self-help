@@ -21,8 +21,9 @@ export default ({
     ? clickFunction
     : () => navigate(link)
 
-  const textColor = dimmed ? "rgba(0,61,89, 0.2)" : getSiteSpecificStyle().colour
-
+  const siteSpecificStyle = getSiteSpecificStyle()
+  const textColor = dimmed ? "rgba(0,61,89, 0.2)" : siteSpecificStyle.colour
+  const className = siteSpecificStyle.className
   return (
     <div
       data-testid="large-button"
@@ -66,7 +67,7 @@ export default ({
         data-testid={
           selected ? "large-button-selected-text" : "large-button-text"
         }
-        className="Button-heading-Style"
+        className={`Button-heading-Style ${className}`}
         css={css`
           margin: 0px 20px;
           color: ${textColor};
