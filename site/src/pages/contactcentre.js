@@ -6,6 +6,7 @@ import TextBlock from "../components/textblock"
 import TabList from "../components/tablist"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone } from "@fortawesome/free-solid-svg-icons"
+import analytics from "../utils/analytics"
 
 import BlockButton from "../components/blockbutton"
 import Section from "../components/section"
@@ -23,7 +24,9 @@ export const getSuggestedEdges = edges => {
     })
     .slice(0, 3)
 }
-
+const trackCallSupportClick = () =>
+  analytics.trackEvent("census-field-support", "call-field-support")
+  
 export default ({ data }) => {
   let suggestedEdges = getSuggestedEdges(data.allMarkdownRemark.edges)
 
@@ -39,14 +42,17 @@ export default ({ data }) => {
     <Layout>
       <PageTitle>Census Field Support</PageTitle>
 
-      <TextBlock>
-        {contactCentreText}
-      </TextBlock>
+      <TextBlock>{contactCentreText}</TextBlock>
       {suggestedEdges.length > 0 && (
         <TabList title="HAVE YOU TRIED..." elements={suggestedEdges} />
       )}
       <Section>
-        <a href={"tel:" + sanitizePhoneNumber(phoneNumber)}>
+        <a
+          data-testid="cc-link"
+          data-track-content
+          href={"tel:" + sanitizePhoneNumber(phoneNumber)}
+          onClick={trackCallSupportClick}
+        >
           <BlockButton
             icon={<FontAwesomeIcon icon={faPhone} />}
             title="Call Census field support"

@@ -574,7 +574,10 @@ exports[`Contact centre renders correctly with data 1`] = `
         }
       >
         <a
+          data-testid="cc-link"
+          data-track-content={true}
           href="tel:01111333333"
+          onClick={[Function]}
         >
           <div
             className="clickable"
@@ -1005,7 +1008,10 @@ exports[`Contact centre renders correctly without data 1`] = `
         }
       >
         <a
+          data-testid="cc-link"
+          data-track-content={true}
           href="tel:0123456789"
+          onClick={[Function]}
         >
           <div
             className="clickable"
