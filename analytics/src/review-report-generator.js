@@ -67,3 +67,5 @@ matomo.getArticleReviews(queryParams).then((res) => {
 
   reportGenerator.generate(outFileName, processedReviewData);
 });
+
+return dateString
