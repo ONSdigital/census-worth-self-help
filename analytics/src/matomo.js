@@ -20,8 +20,10 @@ class Matomo {
     this.authToken = authToken;
   }
 
-  fetch(url) {
-    return this.fetcher.fetch(url);
+  async fetch(url) {
+    const result = await this.fetcher.fetch(url);
+
+    return result;
   }
 
   getBaseUrl() {
@@ -34,7 +36,7 @@ class Matomo {
     // console.log(this.getBaseUrl())
     // console.log(query)
     //return urljoin(this.getBaseUrl(), query);
-    return this.getBaseUrl() + query
+    return this.getBaseUrl() + query;
   }
 
   getGeoLocation(url) {
