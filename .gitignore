@@ -32,3 +32,5 @@ site/cypress/screenshots
 site/cypress/videos
 site/mochawesome.json
 
+# Analytics
+out
