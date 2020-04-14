@@ -40,16 +40,18 @@ class ReportGenerator {
 
     outLines.push(`"Article Title","Review content","Date"`);
     jsonArrayIn.map((review, j) => {
-      let reviewsExist = review.reviews.length > 0;
-      if (reviewsExist && review.title.includes("REVIEW")) {
-        review.reviews.map((feedback, i) => {
-          const sanitizedFeedback = this.sanitize(feedback);
-          outLines.push(
-            i === 0
-              ? `"${review.title}","${sanitizedFeedback}","${dateString}"`
-              : `,"${sanitizedFeedback}","${dateString}"`
-          );
-        });
+      if (review) {
+        let reviewsExist = review.reviews.length > 0;
+        if (reviewsExist && review.title.includes("REVIEW")) {
+          review.reviews.map((feedback, i) => {
+            const sanitizedFeedback = this.sanitize(feedback);
+            outLines.push(
+              i === 0
+                ? `"${review.title}","${sanitizedFeedback}","${dateString}"`
+                : `,"${sanitizedFeedback}","${dateString}"`
+            );
+          });
+        }
       }
     });
     return outLines.join("\n");
