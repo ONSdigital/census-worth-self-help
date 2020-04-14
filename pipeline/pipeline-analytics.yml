@@ -1,0 +1,85 @@
+resources:
+  - name: census-worth-self-help
+    type: git
+    source:
+      uri: https://github.com/ONSdigital/census-worth-self-help.git
+      branch: feature/ONS-634-add-report-gen-to-main-repo
+  
+  - name: middle-of-the-night
+    type: time
+    source:
+      start: 2:00 AM
+      stop: 3:00 AM
+      location: Europe/London
+
+jobs:
+  - name: report
+    build_log_retention:
+      days: 7
+      builds: 10
+    max_in_flight: 1
+    plan:
+      - get: middle-of-the-night
+        trigger: true
+
+      - get: census-worth-self-help
+        trigger: false
+      
+      - task: generate-report
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: google/cloud-sdk
+              tag: alpine
+
+          params:
+            AUTH_KEY: ((gcp.service-account-key))
+            PROJECT: ((gcp.project-name))
+            REPORTING_MATOMO_AUTH_TOKEN: ((analytics.matomo-auth-token))
+            REPORTING_MATOMO_SITE_ID: ((analytics.matomo-site-id))
+            REPORTING_BUCKET_NAME: ((analytics.bucket-name))
+              
+          inputs:
+            - name: census-worth-self-help
+
+          caches:
+            - path: .npm
+ 
+          run:
+            path: sh
+            args:
+            - -exec
+            - |
+              apk add --no-progress --update nodejs nodejs-npm
+              echo "npm version"
+              npm -v
+              node --version
+
+              export ROOT_FOLDER=$(pwd)
+              npm config set cache ${ROOT_FOLDER}/.npm --global
+
+              cd census-worth-self-help/analytics
+
+              npm ci
+
+              set -e
+              REPORT=`node src/review-report-generator.js`
+              RETURN_CODE=$?
+
+              if[ $RETURN_CODE -ne 0 ]; then
+                exit($RETURN_CODE)
+              fi
+
+              set +x
+              echo $AUTH_KEY > encrypted_key.txt
+              set -x
+
+              base64 -d encrypted_key.txt > service-account.json
+              gcloud auth activate-service-account --key-file service-account.json
+              gcloud config set project $PROJECT
+
+              echo "Copying $REPORT to $REPORTING_GCP_BUCKET_ID"
+              gsutil cp "src/out/$REPORT" "gs://$REPORTING_BUCKET_NAME/"
+
