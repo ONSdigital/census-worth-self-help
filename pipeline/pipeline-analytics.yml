@@ -37,6 +37,7 @@ jobs:
           params:
             AUTH_KEY: ((gcp.service-account-key))
             PROJECT: ((gcp.project-name))
+            REPORTING_MATOMO_BASE_URL: ((matomo.matomo_site_url))
             REPORTING_MATOMO_AUTH_TOKEN: ((analytics.matomo-auth-token))
             REPORTING_MATOMO_SITE_ID: ((analytics.matomo-site-id))
             REPORTING_BUCKET_NAME: ((analytics.bucket-name))
