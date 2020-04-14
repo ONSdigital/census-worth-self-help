@@ -40,7 +40,7 @@ jobs:
             REPORTING_MATOMO_BASE_URL: ((matomo.matomo-site-url))
             REPORTING_MATOMO_AUTH_TOKEN: ((analytics.matomo-auth-token))
             REPORTING_MATOMO_SITE_ID: ((analytics.matomo-site-id))
-            REPORTING_BUCKET_NAME: ((analytics.bucket-name))
+            REPORTING_BUCKET_NAME: ((analytics.storage-bucket))
               
           inputs:
             - name: census-worth-self-help
