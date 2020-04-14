@@ -24,7 +24,8 @@ class ReportGenerator {
 
   getReportDateString() {
     const date = new Date();
-    date.setDate(this.previousDay(date));
+    const yesterday = this.previousDay(date);
+    date.setDate(yesterday);
 
     const year = String(date.getFullYear());
     const month = String(date.getMonth() + 1).padStart(2, "0");

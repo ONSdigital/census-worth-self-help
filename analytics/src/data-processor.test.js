@@ -32,7 +32,7 @@ test("When given a more complex map, the entry data is stripped down to just tit
   const returnedJSON = dataProcessor.process(reviewData);
 
   const expectedJSON = {
-    label: "REVIEW: When to use the outcome code “have completed”",
+    label: "REVIEW: Ullamco labore do reprehenderit cillum do ullamco laborum ad quis exercitation deserunt in. “lorem”",
   };
 
   expect(returnedJSON[0]).toEqual(expectedJSON);
@@ -68,12 +68,12 @@ test("List individual reviews for the first of the articles", () => {
   const returnedJSON = dataProcessor.process(reviewData);
 
   const expectedJSON = {
-    title: "REVIEW: When to use the outcome code “have completed”",
+    title: "REVIEW: Ullamco labore do reprehenderit cillum do ullamco laborum ad quis exercitation deserunt in. “lorem”",
     reviews: [
       "Duck",
-      'Sorry, this is useful, but could you maybe suggest a procedure (for the real thing) for if an address is listed as "have completed" but is still coming up on the workload? I\'ve seen too many of these for it to be a random glitch...',
-      "That's good to know that the \"have completed\" outcome is meant to remain and isn't a glitch, but at what point, if any, is it appropriate to follow up at these addresses?(probably more relevant in the mandatory census rather than the optional rehearsal)",
-      'What is the procedure if the address is still coming up on the workload but it is listed as "have completed" over a week ago?',
+      'Et veniam ea commodo consectetur.',
+      "Non aute laboris et laboris consequat cupidatat consectetur ipsum ea Lorem voluptate sint laboris aliqua.",
+      'Consectetur exercitation anim ex consequat ut consequat."lorem" Sint excepteur sunt nulla excepteur duis nostrud dolore magna occaecat amet?',
     ],
   };
 
@@ -110,10 +110,10 @@ test("List individual reviews for a different article", () => {
   const returnedJSON = dataProcessor.process(reviewData);
 
   const expectedJSON = {
-    title: "REVIEW: How to issue a household UAC",
+    title: "REVIEW: Pariatur consequat ad consequat aliqua ex non voluptate.",
     reviews: [
-      'Perhaps add an option for "receive new HUAC by post". Some people are uncomfortable to give out, or they don\'t know, their mobile number. If you can get a paper questionnaire by post, why not a code?',
-      "Sometimes householder doesn't want to give me their mobile phone number. We were told by FSS to telephone the public number in such cases. 08001412021\nI did that this evening while  I was with the householder and guess what : they said they don't give Huac by post.  Only by text �\nSo there's some confusion somewhere!",
+      'Exercitation ex velit elit magna. "Quis laboris dolor nulla nulla ex anim incididunt excepteur laboris do Lorem sunt id et.". Incididunt nisi quis ut adipisicing quis aliqua consequat pariatur in ea ad minim.?',
+      "Consectetur qui veniam\n quis enim deserunt nostrud cillum mollit ut minim.",
     ],
   };
 
