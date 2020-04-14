@@ -1,0 +1,34 @@
+{
+  "name": "matomo-reporting-utils",
+  "version": "1.0.0",
+  "description": "Generate matomo reports",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hpenton/matomo-reporting-utils.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hpenton/matomo-reporting-utils/issues"
+  },
+  "homepage": "https://github.com/hpenton/matomo-reporting-utils#readme",
+  "devDependencies": {
+    "fetch-mock-jest": "^1.2.5",
+    "jest": "^25.2.7"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
+    "lodash.mapvalues": "^4.6.0",
+    "node-fetch": "^2.6.0",
+    "node-json-transform": "^1.0.20",
+    "path": "^0.12.7",
+    "rimraf": "^3.0.2",
+    "url-join": "^4.0.1"
+  }
+}
