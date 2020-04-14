@@ -4,7 +4,7 @@ class Fetcher {
   fetch(url) {
     return fetch(url)
       .then((res) => res.json())
-      .catch((error) => console.error(error));
+      .catch(() => console.error("There was an error fetching from the API"));
   }
 }
 module.exports = Fetcher;

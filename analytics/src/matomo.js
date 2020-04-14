@@ -21,7 +21,12 @@ class Matomo {
   }
 
   async fetch(url) {
-    const result = await this.fetcher.fetch(url);
+    let result = {};
+    try {
+      result = await this.fetcher.fetch(url);
+    } catch {
+      console.error("There was an error fetching from the API");
+    }
 
     return result;
   }
@@ -33,9 +38,6 @@ class Matomo {
     return this.authToken;
   }
   getFullUrl(query) {
-    // console.log(this.getBaseUrl())
-    // console.log(query)
-    //return urljoin(this.getBaseUrl(), query);
     return this.getBaseUrl() + query;
   }
 
