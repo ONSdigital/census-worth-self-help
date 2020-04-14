@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: feature/ONS-634-add-report-gen-to-main-repo
+      branch: master
   
   - name: middle-of-the-night
     type: time
