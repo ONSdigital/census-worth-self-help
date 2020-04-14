@@ -69,24 +69,4 @@ describe("test contructor  plus baseurl getter/setter", () => {
 
     expect(matomoInstance.getFullUrl(relativePath)).toEqual(expectedFullUrl);
   });
-
-  // test("url construction with multiple slashes builds correct url", () => {
-  //   const expectedBaseUrl = "https://differentUrl/";
-  //   const matomoInstance = new Matomo(new Fetcher(), expectedBaseUrl, authToken);
-
-  //   const relativePath = "/my/relative/path?some=param&another=param";
-  //   const expectedFullUrl = "https://differentUrl" + relativePath;
-
-  //   expect(matomoInstance.getFullUrl(relativePath)).toEqual(expectedFullUrl);
-  // });
-
-  // test("url construction with missing slashes builds correct url", () => {
-  //   const expectedBaseUrl = "https://differentUrl";
-  //   const matomoInstance = new Matomo(new Fetcher(), expectedBaseUrl, authToken);
-
-  //   const relativePath = "my/relative/path?some=param&another=param";
-  //   const expectedFullUrl = "https://differentUrl/" + relativePath;
-
-  //   expect(matomoInstance.getFullUrl(relativePath)).toEqual(expectedFullUrl);
-  // });
 });

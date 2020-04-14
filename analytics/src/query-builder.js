@@ -7,7 +7,9 @@ class QueryBuilder {
 
   build() {
     let path = "";
-
+    if (!this.queryParams.get('idSite')) {
+      throw new Error("site id required");
+    }
     this.queryParams.forEach((value, key) => {
       if (path.length > 0) {
         path = `${path}&${key}=${value}`;

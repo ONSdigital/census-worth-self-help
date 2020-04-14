@@ -8,13 +8,16 @@ describe("Query builder", () => {
 
   test("Build method returns a non empty string", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const builtQuery = queryBuilder.build();
     expect(builtQuery.length > 0).toBeTruthy();
   });
 
   test("when auth token added then return query including auth token", () => {
     const queryBuilder = new QueryBuilder();
-    const expectedQuery = "colour=RED&name=ted";
+    queryBuilder.setIdSite("1");
+
     const authToken = "a4BXy8djF8f1dd";
     queryBuilder.setAuthToken(authToken);
     const builtQuery = queryBuilder.build();
@@ -32,6 +35,8 @@ describe("Query builder", () => {
 
   test("when no format is set then return query including default format value", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const builtQuery = queryBuilder.build();
     expect(builtQuery.includes(`format=JSON`)).toBeTruthy();
@@ -39,6 +44,8 @@ describe("Query builder", () => {
 
   test("when format is added then return query including format", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const format = "JSON";
     queryBuilder.setFormat(format);
@@ -48,6 +55,8 @@ describe("Query builder", () => {
 
   test("when no module is set then return query including default module value", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const builtQuery = queryBuilder.build();
     expect(builtQuery.includes(`module=API`)).toBeTruthy();
@@ -55,6 +64,8 @@ describe("Query builder", () => {
 
   test("when module is set then return query including module value", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const module = "API";
     queryBuilder.setModule(module);
@@ -64,6 +75,8 @@ describe("Query builder", () => {
 
   test("when segment is set then return query including segment value", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const segment = "testsegment";
     queryBuilder.setSegment(segment);
@@ -73,6 +86,8 @@ describe("Query builder", () => {
 
   test("when flat is set then return query including flat value", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const flat = "1";
     queryBuilder.setFlat(flat);
@@ -82,6 +97,8 @@ describe("Query builder", () => {
 
   test("when method is set then return query including method value", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const method = "method";
     queryBuilder.setMethod(method);
@@ -91,6 +108,8 @@ describe("Query builder", () => {
 
   test("when date is set then return query including date value", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const date = "date";
     queryBuilder.setDate(date);
@@ -100,6 +119,8 @@ describe("Query builder", () => {
 
   test("when period is set then return query including period value", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const period = "period";
     queryBuilder.setPeriod(period);
@@ -109,6 +130,8 @@ describe("Query builder", () => {
 
   test("when filter_truncate is set then return query including filter_truncate value", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const filterTruncate = "filter_truncate";
     queryBuilder.setFilterTruncate(filterTruncate);
@@ -120,6 +143,8 @@ describe("Query builder", () => {
 
   test("when secondaryDimension is set then return query including secondaryDimension value", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const secondaryDimension = "secondaryDimension";
     queryBuilder.setSecondaryDimension(secondaryDimension);
@@ -131,6 +156,8 @@ describe("Query builder", () => {
 
   test("when expanded is set then return query including expanded value", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const expanded = "expanded";
     queryBuilder.setExpanded(expanded);
@@ -140,6 +167,8 @@ describe("Query builder", () => {
 
   test("when filter_limit is set then return query including filterLimit value", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const expectedQuery = "colour=RED&name=ted";
     const filterLimit = "filterLimit";
     queryBuilder.setFilterLimit(filterLimit);
@@ -149,11 +178,19 @@ describe("Query builder", () => {
 
   test("There is no leading ampersand and no undefined data at the start of the query", () => {
     const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+
     const filterLimit = "filterLimit";
     queryBuilder.setFilterLimit(filterLimit);
     const builtQuery = queryBuilder.build();
     expect(builtQuery[0]).not.toBe("&");
     expect(builtQuery.startsWith("undefined")).toBeFalsy();
+  });
+
+  test("site ID is a required parameter", () => {
+    const queryBuilder = new QueryBuilder();
+
+    expect(() => queryBuilder.build()).toThrow();
   });
 });
 
@@ -215,7 +252,6 @@ describe("fluent interface", () => {
 
 describe("emergent behaviour", () => {
   test("Query can be formed with all parameters", () => {
-    //defaults = module, format
     const expectedQueryParams = [
       "module=API",
       "format=JSON",

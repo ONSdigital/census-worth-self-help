@@ -9,7 +9,8 @@ const DataProcessor = require("./data-processor");
 
 const authToken = process.env.REPORTING_MATOMO_AUTH_TOKEN;
 const reportingDate = process.env.REPORTING_DATE;
-const baseUrl = "https://www.analytics.worth.census-gcp.onsdigital.uk/?";
+const siteID = process.env.REPORTING_MATOMO_SITE_ID;
+const baseUrl = process.env.REPORTING_MATOMO_BASE_URL;
 
 const fetcher = new Fetcher();
 const matomo = new Matomo(fetcher, baseUrl, authToken);
@@ -20,7 +21,7 @@ const queryParams = queryBuilder
   .setFormat("JSON")
   .setMethod("Events.getAction")
   .setAuthToken(authToken)
-  .setIdSite("2")
+  .setIdSite(siteID)
   .setDate(reportingDate || "yesterday")
   .setSegment("eventCategory==article-feedback-review")
   .setPeriod("day")

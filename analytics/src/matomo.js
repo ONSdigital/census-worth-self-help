@@ -1,10 +1,6 @@
 require("dotenv").config();
 
 const fetcher = require("./fetcher");
-const urljoin = require("url-join");
-
-//const baseUrl = `https://analytics.worth.census-gcp.onsdigital.uk/index.php`;
-//const query = `?date=2020-01-01,2020-04-06&expanded=1&filter_limit=5&format=JSON&idSite=12&method=UserCountry.getCity&module=API&period=range&token_auth=????????`;
 
 class Matomo {
   constructor(fetcher, baseUrl, authToken) {
