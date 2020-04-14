@@ -9,6 +9,7 @@ let returnObj = (data) => {
   return {
     data: data,
     json: () => data,
+    ok: true,
   };
 };
 
@@ -28,7 +29,7 @@ const fetch = (url) => {
           reject("error");
       }
     } else {
-      reject("error");
+      resolve({ ok: false });
     }
   });
 };

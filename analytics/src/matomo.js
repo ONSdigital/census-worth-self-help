@@ -24,8 +24,10 @@ class Matomo {
     let result = {};
     try {
       result = await this.fetcher.fetch(url);
-    } catch {
-      console.error("There was an error fetching from the API");
+    } catch (e) {
+      console.error("There was an issue with fetching from the API");
+      e.status && console.error(`Error code was ${e.status}`);
+      process.exit(1);
     }
 
     return result;
