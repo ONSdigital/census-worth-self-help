@@ -193,7 +193,7 @@ describe("Query builder", () => {
     expect(() => queryBuilder.build()).toThrow();
   });
 
-  test("sanitizer removes %0A from strings", () => {
+  test("sanitizer removes line feed from strings", () => {
     const queryBuilder = new QueryBuilder();
 
     const outputString = queryBuilder.sanitize('string\n')
