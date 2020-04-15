@@ -14,8 +14,3 @@ test("JSON Function errors gracefully", async () => {
   const returnedValidApiCall = await fetcher.fetch("fetcher-test-url");
   expect(returnedValidApiCall).toEqual({ type: "fetcher-test" });
 });
-
-// test("Check unset res throws error", () => {
-//   const fetcher = new Fetcher();
-//   expect(() => fetcher.fetch('error-case')).toThrow();
-// });
