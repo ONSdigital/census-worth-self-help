@@ -13,8 +13,8 @@ class Fetcher {
           throw fetchError;
         }
       })
-      .catch((e) => {
-        console.error(e);
+      .catch(() => {
+        console.error("Error resolving promise");
       });
   }
 }
