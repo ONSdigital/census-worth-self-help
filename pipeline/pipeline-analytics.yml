@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: feature/ONS-639-enable-logging
+      branch: master
   
   - name: middle-of-the-night
     type: time
