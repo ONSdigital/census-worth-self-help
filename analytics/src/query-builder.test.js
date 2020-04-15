@@ -192,6 +192,21 @@ describe("Query builder", () => {
 
     expect(() => queryBuilder.build()).toThrow();
   });
+
+  test("sanitizer removes %0A from strings", () => {
+    const queryBuilder = new QueryBuilder();
+
+    const outputString = queryBuilder.sanitize('%0A')
+    expect(outputString.includes("%0A")).toBeFalsy();
+  });
+
+  test("Query builder removes line feed from built query", () => {
+    const queryBuilder = new QueryBuilder();
+    queryBuilder.setIdSite("1");
+    queryBuilder.setModule("testing%0A");
+    const builtPath = queryBuilder.build();
+    expect(builtPath.includes("%0A")).toBeFalsy();
+  });
 });
 
 describe("fluent interface", () => {

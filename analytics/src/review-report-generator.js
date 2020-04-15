@@ -7,7 +7,7 @@ const Fetcher = require("./fetcher");
 const path = require("path");
 const DataProcessor = require("./data-processor");
 
-const authToken = process.env.REPORTING_MATOMO_AUTH_TOKEN;
+const authToken = stripLineFeeds(process.env.REPORTING_MATOMO_AUTH_TOKEN);
 const reportingDate = process.env.REPORTING_DATE;
 const siteID = process.env.REPORTING_MATOMO_SITE_ID;
 const baseUrl = process.env.REPORTING_MATOMO_BASE_URL;

@@ -7,7 +7,7 @@ class QueryBuilder {
 
   build() {
     let path = "";
-    if (!this.queryParams.get('idSite')) {
+    if (!this.queryParams.get("idSite")) {
       throw new Error("site id required");
     }
     this.queryParams.forEach((value, key) => {
@@ -17,9 +17,14 @@ class QueryBuilder {
         path = `${key}=${value}`;
       }
     });
-    return path;
+
+    return this.sanitize(path);
   }
 
+  sanitize(inputString) {
+    const sanitizedString = inputString.replace(/%0A/gi, "");
+    return sanitizedString;
+  }
   setAuthToken(authToken) {
     this.queryParams.set("token_auth", authToken);
     return this;
