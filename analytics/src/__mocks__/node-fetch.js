@@ -9,6 +9,7 @@ let returnObj = (data) => {
   return {
     data: data,
     json: () => data,
+    text: () => data,
     ok: true,
   };
 };
@@ -26,7 +27,7 @@ const fetch = (url) => {
           break;
 
         default:
-          reject("error");
+          resolve({ status: 404, ok: false });
       }
     } else {
       resolve({ ok: false });
