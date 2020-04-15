@@ -196,16 +196,16 @@ describe("Query builder", () => {
   test("sanitizer removes %0A from strings", () => {
     const queryBuilder = new QueryBuilder();
 
-    const outputString = queryBuilder.sanitize('%0A')
-    expect(outputString.includes("%0A")).toBeFalsy();
+    const outputString = queryBuilder.sanitize('string\n')
+    expect(outputString.includes("\n")).toBeFalsy();
   });
 
   test("Query builder removes line feed from built query", () => {
     const queryBuilder = new QueryBuilder();
     queryBuilder.setIdSite("1");
-    queryBuilder.setModule("testing%0A");
+    queryBuilder.setModule("testing\n");
     const builtPath = queryBuilder.build();
-    expect(builtPath.includes("%0A")).toBeFalsy();
+    expect(builtPath.includes("\n")).toBeFalsy();
   });
 });
 

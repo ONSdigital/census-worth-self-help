@@ -22,7 +22,7 @@ class QueryBuilder {
   }
 
   sanitize(inputString) {
-    const sanitizedString = inputString.replace(/%0A/gi, "");
+    const sanitizedString = inputString.replace(/\r?\n|\r/gi, "");
     return sanitizedString;
   }
   setAuthToken(authToken) {
