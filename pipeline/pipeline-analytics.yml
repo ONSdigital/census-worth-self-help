@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: feature/ONS-634-add-report-gen-to-main-repo
+      branch: master
   
   - name: middle-of-the-night
     type: time
@@ -37,9 +37,10 @@ jobs:
           params:
             AUTH_KEY: ((gcp.service-account-key))
             PROJECT: ((gcp.project-name))
+            REPORTING_MATOMO_BASE_URL: ((analytics.matomo-query-prefix))
             REPORTING_MATOMO_AUTH_TOKEN: ((analytics.matomo-auth-token))
             REPORTING_MATOMO_SITE_ID: ((analytics.matomo-site-id))
-            REPORTING_BUCKET_NAME: ((analytics.bucket-name))
+            REPORTING_BUCKET_NAME: ((analytics.storage-bucket))
               
           inputs:
             - name: census-worth-self-help
@@ -52,6 +53,17 @@ jobs:
             args:
             - -exec
             - |
+              echo "REPORTING_MATOMO_BASE_URL: ${REPORTING_MATOMO_BASE_URL}"
+              echo "REPORTING_MATOMO_SITE_ID: ${REPORTING_MATOMO_SITE_ID}"
+              echo "REPORTING_BUCKET_NAME: ${REPORTING_BUCKET_NAME}"
+
+              if [ -z "${REPORTING_MATOMO_AUTH_TOKEN+x}" ]; then
+                echo "Missing REPORTING_MATOMO_AUTH_TOKEN"
+                exit -1
+              fi
+
+              echo "REPORTING_MATOMO_AUTH_TOKEN: (set)"
+
               apk add --no-progress --update nodejs nodejs-npm
               echo "npm version"
               npm -v
@@ -61,16 +73,10 @@ jobs:
               npm config set cache ${ROOT_FOLDER}/.npm --global
 
               cd census-worth-self-help/analytics
-
               npm ci
 
               set -e
-              REPORT=`node src/review-report-generator.js`
-              RETURN_CODE=$?
-
-              if[ $RETURN_CODE -ne 0 ]; then
-                exit($RETURN_CODE)
-              fi
+              node src/review-report-generator.js
 
               set +x
               echo $AUTH_KEY > encrypted_key.txt
@@ -80,6 +86,6 @@ jobs:
               gcloud auth activate-service-account --key-file service-account.json
               gcloud config set project $PROJECT
 
-              echo "Copying $REPORT to $REPORTING_GCP_BUCKET_ID"
-              gsutil cp "src/out/$REPORT" "gs://$REPORTING_BUCKET_NAME/"
+              echo "Copying reports to $REPORTING_GCP_BUCKET_ID"
+              gsutil cp "src/out/*.csv" "gs://$REPORTING_BUCKET_NAME/"
 
