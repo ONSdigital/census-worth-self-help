@@ -1,5 +1,5 @@
 export default class Dictionary {
-  getCorrectSpelling() {
-    return "article"
+  getCorrectSpelling(str) {
+    return str
   }
 }
