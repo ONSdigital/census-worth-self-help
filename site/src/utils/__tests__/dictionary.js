@@ -21,5 +21,17 @@ describe("dictionary", () => {
     const returnedString = dictionary.getCorrectSpelling(unknownInitialString)
     expect(returnedString).toEqual(unknownInitialString)
   })
-  
+  test("when given a misspelling that is found in the dictionary, it does not return it unchanged", () => {
+    const dictionary = new Dictionary()
+    const initialSpelling = "atticle"
+    const returnedSpelling = dictionary.getCorrectSpelling(initialSpelling)
+    expect(returnedSpelling).not.toEqual(initialSpelling)
+  })
+  test("a word's spelling gets corrected when wrong, and the incorrect spelling is known", () => {
+    const dictionary = new Dictionary()
+    const initialSpelling = "atticle"
+    const returnedSpelling = dictionary.getCorrectSpelling(initialSpelling)
+    const correctedSpelling = "article"
+    expect(returnedSpelling).toEqual(correctedSpelling)
+  })
 })

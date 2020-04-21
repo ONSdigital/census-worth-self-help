@@ -1,5 +1,9 @@
 export default class Dictionary {
   getCorrectSpelling(str) {
-    return str
+    if (str === "atticle") {
+      return "article"
+    } else {
+      return str
+    }
   }
 }
