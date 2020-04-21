@@ -1,6 +1,6 @@
 import Dictionary from "../dictionary"
-
-describe("dictionary", () => {
+import dictionaryDefinition from "../commonMisspellings.json"
+describe("getCorrectSpelling", () => {
   test("can be instantiated", () => {
     const dictionary = new Dictionary()
     expect(dictionary).toBeTruthy()
@@ -73,7 +73,36 @@ describe("dictionary", () => {
     newDictionarySource[secondWrongSpelling] = correctSpelling
     const dictionary = new Dictionary(newDictionarySource)
 
-    expect(dictionary.getCorrectSpelling(firstWrongSpelling)).toEqual(correctSpelling)
-    expect(dictionary.getCorrectSpelling(secondWrongSpelling)).toEqual(correctSpelling)
+    expect(dictionary.getCorrectSpelling(firstWrongSpelling)).toEqual(
+      correctSpelling
+    )
+    expect(dictionary.getCorrectSpelling(secondWrongSpelling)).toEqual(
+      correctSpelling
+    )
+  })
+  test("loading external dictionary is functional", () => {
+    const dictionary = new Dictionary(dictionaryDefinition)
+    const wrongSpellings = [
+      "abandonned",
+      "wresters",
+      "wriet",
+      "writen",
+      "wroet",
+      "wrok"
+    ]
+    const correctSpellings = [
+      "abandoned",
+      "wrestlers",
+      "write",
+      "written",
+      "wrote",
+      "work"
+    ]
+
+    wrongSpellings.map((wrongspelling, index) => {
+      expect(dictionary.getCorrectSpelling(wrongspelling)).toEqual(
+        correctSpellings[index]
+      )
+    })
   })
 })
