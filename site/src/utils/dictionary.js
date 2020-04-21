@@ -1,9 +1,15 @@
 export default class Dictionary {
-  getCorrectSpelling(str) {
-    if (str === "atticle") {
-      return "article"
+  constructor(dictionarySource) {
+    if(dictionarySource){
+      this.spellingCorrections = dictionarySource
     } else {
-      return str
+      this.spellingCorrections = {atticle : "article", dimmy: "dummy"}
     }
+  }
+  getCorrectSpelling(str) {
+    if(this.spellingCorrections[str]){
+      return this.spellingCorrections[str]
+    }
+    return str
   }
 }

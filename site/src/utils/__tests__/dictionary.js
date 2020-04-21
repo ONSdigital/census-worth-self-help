@@ -31,7 +31,49 @@ describe("dictionary", () => {
     const dictionary = new Dictionary()
     const initialSpelling = "atticle"
     const returnedSpelling = dictionary.getCorrectSpelling(initialSpelling)
-    const correctedSpelling = "article"
-    expect(returnedSpelling).toEqual(correctedSpelling)
+    const correctSpelling = "article"
+    expect(returnedSpelling).toEqual(correctSpelling)
+  })
+  test("when given a misspelling in the dictionary, return the corrected spelling", () => {
+    const dictionary = new Dictionary()
+    const initialSpelling = "dimmy"
+    const returnedSpelling = dictionary.getCorrectSpelling(initialSpelling)
+    const correctSpelling = "dummy"
+    expect(returnedSpelling).toEqual(correctSpelling)
+  })
+  test("when initialised with a dictionary source, the dictionary is initialised", () => {
+    const dictionary = new Dictionary({ misspelling: "correctSpelling" })
+    expect(dictionary).toBeTruthy()
+  })
+  test("when initialised with a dictionary source, the dictionary can correct misspellings in the source", () => {
+    const wrongSpelling = "tesst"
+    const correctSpelling = "test"
+
+    let dictionary = new Dictionary()
+
+    expect(dictionary.getCorrectSpelling(wrongSpelling)).not.toEqual(
+      correctSpelling
+    )
+
+    let newDictionarySource = {}
+    newDictionarySource[wrongSpelling] = correctSpelling
+    dictionary = new Dictionary(newDictionarySource)
+
+    expect(dictionary.getCorrectSpelling(wrongSpelling)).toEqual(
+      correctSpelling
+    )
+  })
+  test("the correct spelling is returned for multiple misspellings", () => {
+    const firstWrongSpelling = "tesst"
+    const secondWrongSpelling = "tessst"
+    const correctSpelling = "test"
+
+    let newDictionarySource = {}
+    newDictionarySource[firstWrongSpelling] = correctSpelling
+    newDictionarySource[secondWrongSpelling] = correctSpelling
+    const dictionary = new Dictionary(newDictionarySource)
+
+    expect(dictionary.getCorrectSpelling(firstWrongSpelling)).toEqual(correctSpelling)
+    expect(dictionary.getCorrectSpelling(secondWrongSpelling)).toEqual(correctSpelling)
   })
 })
