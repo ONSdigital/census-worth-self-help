@@ -51,14 +51,46 @@ describe("query sanitizer", () => {
     const correctlySpeltQuery = "years yield"
     expect(querySanitizer.sanitize(incorrectQuery)).toEqual(correctlySpeltQuery)
   })
+  test("pass in a longer string of multiple tokens incorrectly spelt and correct them", () => {
+    const querySanitizer = new QuerySanitizer({
+      yaers: "years",
+      yeild: "yield",
+      aborigene: "aborigine",
+      accesories: "accessories",
+      accidant: "accident",
+      abortificant: "abortifacient",
+      abreviate: "abbreviate",
+    })
+
+    const incorrectQuery = "yaers yeild aborigene accesories accidant abortificant abreviate"
+    const correctlySpeltQuery = "years yield aborigine accessories accident abortifacient abbreviate"
+    expect(querySanitizer.sanitize(incorrectQuery)).toEqual(correctlySpeltQuery)
+  })
+  test("pass in a longer string of multiple tokens where some are incorrectly spelt and correct them if they are in the dictionary", () => {
+    const querySanitizer = new QuerySanitizer({
+      yaers: "years",
+      yeild: "yield",
+      aborigene: "aborigine",
+      accesories: "accessories",
+      accidant: "accident",
+      abortificant: "abortifacient",
+      abreviate: "abbreviate",
+    })
+
+    const incorrectQuery = "yaers yeild aborigine accesories accidant abortifacient abreviate wertyu"
+    const correctlySpeltQuery = "years yield aborigine accessories accident abortifacient abbreviate wertyu"
+    expect(querySanitizer.sanitize(incorrectQuery)).toEqual(correctlySpeltQuery)
+  })
+  test("pass in a longer string of multiple tokens where some are incorrectly spelt and correct them if they are in the dictionary", () => {
+    const querySanitizer = new QuerySanitizer({
+      yaers: "years",
+      yeild: "yield",
+      aborigene: "aborigine"
+    })
+
+    const incorrectQuery = "yaers! yeild ? $%^&*^:'; aborigine =+"
+    const correctlySpeltQuery = "yaers! yield ? $%^&*^:'; aborigine =+"
+    expect(querySanitizer.sanitize(incorrectQuery)).toEqual(correctlySpeltQuery)
+  })
 })
 
-//test our tokenizer
-//
-//pass in string containing a token that spell corrects to multiple tokens
-//pass in a non string
-// pass in an empty string
-// pass in a null
-// pass in a query string containing repeated whitespace
-// pass in a query string with punctuation chars
-// pass in a query string with only punctuation chars

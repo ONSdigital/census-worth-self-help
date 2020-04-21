@@ -8,6 +8,8 @@ import PaginationBar from "../components/paginationbar"
 import { PaginationObject } from "../utils/pagination"
 import debounce from "../utils/debounce"
 import searchAnalytics from "../utils/searchAnalytics"
+import QuerySanitizer from "../utils/querysanitizer"
+import dictionaryDefinition from "../utils/commonMisspellings.json"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
@@ -22,47 +24,55 @@ export default class Search extends React.Component {
     let paginationObject = new PaginationObject()
     this.state = {
       query: ``,
+      sanitizedQuery:``,
       results: [],
-      paginationObject: paginationObject
+      paginationObject: paginationObject,
     }
     this.data = props.data
-    this.trackSiteSearch = debounce(searchAnalytics.trackSiteSearch, props.debounceDelay)
+    this.trackSiteSearch = debounce(
+      searchAnalytics.trackSiteSearch,
+      props.debounceDelay
+    )
     this.updateSearchResults = this.updateSearchResults.bind(this)
     this.updatePagination = this.updatePagination.bind(this)
+
+    this.querySanitizer = new QuerySanitizer(dictionaryDefinition)
   }
 
   updatePagination(pageTarget) {
     this.state.paginationObject.goToPage(pageTarget)
     // update state to get page to rerender
     this.setState({
-      paginationObject: this.state.paginationObject
+      paginationObject: this.state.paginationObject,
     })
   }
 
   updateSearchResults(evt) {
     this.state.paginationObject.goToPage(0)
 
-    const query = evt.target.value
+    const query = this.querySanitizer.sanitize(evt.target.value)
     this.index = this.index
       ? this.index
       : Index.load(this.data.siteSearchIndex.index)
 
     // we use a weighted priority of the search strings, this should be calibrated based on user feedback
     const results = this.index
-      .search(query, {fields: {
+      .search(query, {
+        fields: {
           title: { boost: 4 },
           author: { boost: 4 },
           tags: { boost: 4 },
           description: { boost: 2 },
           body: { boost: 1 },
         },
-        expand: true // partial mapping
+        expand: true, // partial mapping
       })
-      .map(({ ref }) => this.index.documentStore.getDoc(ref));
-    this.trackSiteSearch(query, false, results.length);
+      .map(({ ref }) => this.index.documentStore.getDoc(ref))
+    this.trackSiteSearch(query, false, results.length)
     this.setState({
-      query,
-      results
+      query: evt.target.value,
+      sanitizedQuery: query,
+      results,
     })
   }
 
@@ -107,22 +117,22 @@ export default class Search extends React.Component {
       .trim()
       .toLowerCase()
       .split(" ")
-      .filter(str => str)
+      .filter((str) => str)
 
     // fetches all properties we wish to highlight in order of precedence
     let properties = [
       node.frontmatter.author,
       node.frontmatter.description,
       Search.getTagsAsString(node.frontmatter.tags),
-      Search.stripHTML(node.html)
+      Search.stripHTML(node.html),
     ]
 
     // finds first property which includes a query word
-    let highlightableText = properties.find(property => {
+    let highlightableText = properties.find((property) => {
       if (!property) {
         return false
       }
-      return splitQuery.find(queryWord =>
+      return splitQuery.find((queryWord) =>
         property.toLowerCase().includes(queryWord)
       )
     })
@@ -130,7 +140,7 @@ export default class Search extends React.Component {
     // if a property is found we bould the query words
     if (highlightableText !== undefined) {
       let pattern = new RegExp(
-        "(" + splitQuery.map(x => escapeStringRegexp(x)).join("|") + ")",
+        "(" + splitQuery.map((x) => escapeStringRegexp(x)).join("|") + ")",
         "ig"
       )
       highlightableText = Search.replacePatternToBold(
@@ -150,22 +160,22 @@ export default class Search extends React.Component {
     // the search object is given to the top bar to control search
     let searchObject = {
       updateFunction: this.updateSearchResults,
-      query: this.state.query
+      query: this.state.query,
     }
 
     // fetch the data edges corresponding to the search results
     let edges = this.state.paginationObject
       .filterResults(this.state.results)
-      .map(result => {
+      .map((result) => {
         let edge = this.data.allMarkdownRemark.edges.find(
-          edge => edge.node.frontmatter.title === result.title
+          (edge) => edge.node.frontmatter.title === result.title
         )
         if (edge) {
-          Search.highlightNode(edge.node, this.state.query)
+          Search.highlightNode(edge.node, this.state.sanitizedQuery)
         }
         return edge
       })
-      .filter(edge => edge)
+      .filter((edge) => edge)
 
     // A user doesn't count as searching unless they've typed a minimum amount
     let searching =

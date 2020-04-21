@@ -5,11 +5,18 @@ import { render, fireEvent } from "react-testing-library"
 import { articleList, articleNode, siteSearchIndex } from "../../utils/testdata"
 import ReactDOMServer from "react-dom/server"
 import { Index } from "elasticlunr"
+import QuerySanitizer from "../../utils/querysanitizer"
+
+jest.mock("../../utils/querysanitizer", () => {
+  return jest.fn().mockImplementation(() => {
+    return { sanitize: query => query }
+  })
+})
 
 describe("Search", () => {
-  
   beforeEach(() => {
     window._paq = []
+    QuerySanitizer.mockClear()
   })
 
   it("renders correctly", () => {
@@ -127,5 +134,22 @@ describe("Search", () => {
     expect(ReactDOMServer.renderToStaticMarkup(node.highlightedText)).toEqual(
       "this is my <strong>beautiful</strong> <strong>description</strong>"
     )
+  })
+
+  it("the query sanitizer is called with the query when updateSearchResults is called", () => {
+    const evt = { target: { value: "abc" } }
+    var index = new Index()
+    ;["title", "author", "tags", "description", "body"].forEach(name =>
+      index.addField(name)
+    )
+    const data = {
+      allMarkdownRemark: articleList,
+      siteSearchIndex: { index: index.toJSON() }
+    }
+    // const tree = renderer.create(<Search data={data} />).toJSON()
+
+    const search = renderer.create(<Search data={data} debounceDelay={0} />)
+    search.getInstance().updateSearchResults(evt)
+    expect(QuerySanitizer).toHaveBeenCalledTimes(1)
   })
 })

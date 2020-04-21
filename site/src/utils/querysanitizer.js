@@ -15,8 +15,6 @@ export default class QuerySanitizer {
   }
 
   tokenize(query) {
-    // elasticlunr uses /[\s\-]+/
-    // return str.toString().trim().toLowerCase().split(elasticlunr.tokenizer.seperator);
     let modifiedQuery = query
     modifiedQuery
       .toString()

@@ -1,4 +1,5 @@
 {
+  "atticle": "article",
   "abandonned": "abandoned",
   "aberation": "aberration",
   "abilityes": "abilities",
@@ -1331,6 +1332,8 @@
   "divison": "division",
   "divisons": "divisions",
   "dum": "dumb",
+  "dimmy": "dummy",
+  "dimm": "dummy",
   "doccument": "document",
   "doccumented": "documented",
   "doccuments": "documents",
