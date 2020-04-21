@@ -9,7 +9,7 @@ import { PaginationObject } from "../utils/pagination"
 import debounce from "../utils/debounce"
 import searchAnalytics from "../utils/searchAnalytics"
 import QuerySanitizer from "../utils/querysanitizer"
-import dictionaryDefinition from "../utils/commonMisspellings.json"
+import spellingCorrectionMap from "../utils/commonMisspellings.json"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
@@ -36,7 +36,7 @@ export default class Search extends React.Component {
     this.updateSearchResults = this.updateSearchResults.bind(this)
     this.updatePagination = this.updatePagination.bind(this)
 
-    this.querySanitizer = new QuerySanitizer(dictionaryDefinition)
+    this.querySanitizer = new QuerySanitizer(spellingCorrectionMap)
   }
 
   updatePagination(pageTarget) {
@@ -47,17 +47,22 @@ export default class Search extends React.Component {
     })
   }
 
+  getSearchIndex() {
+    // Lazy-load the index data
+    return this.index
+      ? this.index
+      : Index.load(this.data.siteSearchIndex.index)
+  }
+
   updateSearchResults(evt) {
     this.state.paginationObject.goToPage(0)
 
-    const query = this.querySanitizer.sanitize(evt.target.value)
-    this.index = this.index
-      ? this.index
-      : Index.load(this.data.siteSearchIndex.index)
-
+    const rawQuery = evt.target.value
+    const sanitizedQuery = this.querySanitizer.sanitize(rawQuery)
+ 
     // we use a weighted priority of the search strings, this should be calibrated based on user feedback
-    const results = this.index
-      .search(query, {
+    const results = this.getSearchIndex()
+      .search(sanitizedQuery, {
         fields: {
           title: { boost: 4 },
           author: { boost: 4 },
@@ -68,10 +73,12 @@ export default class Search extends React.Component {
         expand: true, // partial mapping
       })
       .map(({ ref }) => this.index.documentStore.getDoc(ref))
-    this.trackSiteSearch(query, false, results.length)
+
+    this.trackSiteSearch(rawQuery, false, results.length)
+
     this.setState({
-      query: evt.target.value,
-      sanitizedQuery: query,
+      query: rawQuery,
+      sanitizedQuery: sanitizedQuery,
       results,
     })
   }

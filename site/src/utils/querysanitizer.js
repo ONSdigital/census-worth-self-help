@@ -1,26 +1,44 @@
 import Dictionary from "./dictionary"
+
+const defaultTokenSeparator = /[\s\-]+/
+
 export default class QuerySanitizer {
-  constructor(dictionaryDefinition) {
+  constructor(dictionaryDefinition, tokenSeparator) {
     this.dictionary = new Dictionary(dictionaryDefinition)
+    this.tokenSeparator = tokenSeparator ? tokenSeparator : defaultTokenSeparator
+  }
+
+  correctTokenSpelling(tokens) {
+    let correctlySpeltTokens = []
+
+    if(tokens) {
+      tokens.forEach(token => {
+        correctlySpeltTokens.push(this.dictionary.getCorrectSpelling(token))
+      })
+    }
+
+    return correctlySpeltTokens
+  }
+
+  buildQueryFromTokens(tokens) {
+    return tokens ? tokens.join(" ") : ""
   }
 
   sanitize(query) {
-    const tokenizedQuery = this.tokenize(query)
-    let correctlySpeltTokens = []
-    tokenizedQuery.forEach(token => {
-      correctlySpeltTokens.push(this.dictionary.getCorrectSpelling(token))
-    })
-    const reassembledQuery = correctlySpeltTokens.join(" ")
+    const tokens = this.tokenize(query)
+    const correctlySpeltTokens = this.correctTokenSpelling(tokens)
+    const reassembledQuery = this.buildQueryFromTokens(correctlySpeltTokens)
+
     return reassembledQuery
   }
 
   tokenize(query) {
-    let modifiedQuery = query
-    modifiedQuery
+    if(!query) return []
+
+    return query
       .toString()
       .trim()
       .toLowerCase()
-
-    return modifiedQuery.split(/[\s\-]+/)
+      .split(this.tokenSeparator)
   }
 }
