@@ -68,9 +68,9 @@ export default class Search extends React.Component {
       .search(sanitizedQuery, {
         fields: {
           title: { boost: 4 },
-          author: { boost: 4 },
-          tags: { boost: 4 },
-          description: { boost: 2 },
+          author: { boost: 0 },
+          tags: { boost: 5 },
+          description: { boost: 3 },
           body: { boost: 1 }
         },
         expand: true // partial mapping
