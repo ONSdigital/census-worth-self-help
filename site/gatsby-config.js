@@ -20,13 +20,14 @@ module.exports = {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Set of article fields we search on.
-        fields: [`title`, `description`,`tags`, `body`],
+        fields: [`title`, `description`, `tags`, `body`, `roles`],
         resolvers: {
           MarkdownRemark: {
             title: node => node.frontmatter.title,
             description: node => node.frontmatter.description,
             tags: node => node.frontmatter.tags,
-            body: node => node.rawMarkdownBody
+            body: node => node.rawMarkdownBody,
+            roles: node => node.frontmatter.roles
           }
         },
         // Remove .md with no content

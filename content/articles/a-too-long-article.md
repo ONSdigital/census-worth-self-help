@@ -11,6 +11,6 @@ departments:
 optimisedby: My Name
 signedby: A Signer
 roles:
-  - A Role
+  - Bread roll
 ---
 Will create the article later okay
