@@ -1,8 +1,8 @@
 ---
-title: A Too Long Article
+title: Porch Agenda
 date: 2020-03-01T10:08:38.444Z
-description: Is it possible to create an article that we need to truncate
-directory: Bad Articles
+description: A
+directory: Good Articles
 priority: 1
 contentsource: /x/y/z
 draftreason: Ready for a Site
@@ -11,6 +11,6 @@ departments:
 optimisedby: My Name
 signedby: A Signer
 roles:
-  - A role
+  - XXX
 ---
 Will create the article later okay

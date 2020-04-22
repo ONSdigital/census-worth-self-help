@@ -67,9 +67,10 @@ export default class Search extends React.Component {
     const results = index
       .search(sanitizedQuery, {
         fields: {
-          title: { boost: 4 },
           tags: { boost: 5 },
+          title: { boost: 4 },
           description: { boost: 3 },
+          roles: { boost: 2 },
           body: { boost: 1 }
         },
         expand: true // partial mapping
