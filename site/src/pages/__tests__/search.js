@@ -5,11 +5,21 @@ import { render, fireEvent } from "react-testing-library"
 import { articleList, articleNode, siteSearchIndex } from "../../utils/testdata"
 import ReactDOMServer from "react-dom/server"
 import { Index } from "elasticlunr"
+import QuerySanitizer from "../../utils/querysanitizer"
+
+const mockSanitizer = jest.fn(query => query)
+
+jest.mock("../../utils/querysanitizer", () => {
+  return jest.fn().mockImplementation(() => {
+    return { sanitize: mockSanitizer }
+  })
+})
 
 describe("Search", () => {
-  
   beforeEach(() => {
     window._paq = []
+    QuerySanitizer.mockClear()
+    mockSanitizer.mockClear()
   })
 
   it("renders correctly", () => {
@@ -127,5 +137,24 @@ describe("Search", () => {
     expect(ReactDOMServer.renderToStaticMarkup(node.highlightedText)).toEqual(
       "this is my <strong>beautiful</strong> <strong>description</strong>"
     )
+  })
+
+  it("the query sanitizer is called with the query when updateSearchResults is called", () => {
+    const evt = { target: { value: "abc" } }
+    var index = new Index()
+    ;["title", "author", "tags", "description", "body"].forEach(name =>
+      index.addField(name)
+    )
+    const data = {
+      allMarkdownRemark: articleList,
+      siteSearchIndex: { index: index.toJSON() }
+    }
+    expect(mockSanitizer.mock.calls.length).toEqual(0)
+    const search = renderer.create(<Search data={data} debounceDelay={0} />)
+    search.getInstance().updateSearchResults(evt)
+
+    expect(mockSanitizer.mock.calls.length).toEqual(1)
+    const sanitizerArguments = mockSanitizer.mock.calls[0]
+    expect(sanitizerArguments[0]).toEqual("abc")
   })
 })
