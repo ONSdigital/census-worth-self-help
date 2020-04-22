@@ -7,9 +7,11 @@ import ReactDOMServer from "react-dom/server"
 import { Index } from "elasticlunr"
 import QuerySanitizer from "../../utils/querysanitizer"
 
+const mockSanitizer = jest.fn(query => query)
+
 jest.mock("../../utils/querysanitizer", () => {
   return jest.fn().mockImplementation(() => {
-    return { sanitize: query => query }
+    return { sanitize: mockSanitizer }
   })
 })
 
@@ -17,6 +19,7 @@ describe("Search", () => {
   beforeEach(() => {
     window._paq = []
     QuerySanitizer.mockClear()
+    mockSanitizer.mockClear()
   })
 
   it("renders correctly", () => {
@@ -146,10 +149,12 @@ describe("Search", () => {
       allMarkdownRemark: articleList,
       siteSearchIndex: { index: index.toJSON() }
     }
-    // const tree = renderer.create(<Search data={data} />).toJSON()
-
+    expect(mockSanitizer.mock.calls.length).toEqual(0)
     const search = renderer.create(<Search data={data} debounceDelay={0} />)
     search.getInstance().updateSearchResults(evt)
-    expect(QuerySanitizer).toHaveBeenCalledTimes(1)
+
+    expect(mockSanitizer.mock.calls.length).toEqual(1)
+    const sanitizerArguments = mockSanitizer.mock.calls[0]
+    expect(sanitizerArguments[0]).toEqual("abc")
   })
 })
