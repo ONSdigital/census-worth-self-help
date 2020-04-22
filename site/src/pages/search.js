@@ -68,7 +68,6 @@ export default class Search extends React.Component {
       .search(sanitizedQuery, {
         fields: {
           title: { boost: 4 },
-          author: { boost: 0 },
           tags: { boost: 5 },
           description: { boost: 3 },
           body: { boost: 1 }
@@ -131,7 +130,6 @@ export default class Search extends React.Component {
 
     // fetches all properties we wish to highlight in order of precedence
     let properties = [
-      node.frontmatter.author,
       node.frontmatter.description,
       Search.getTagsAsString(node.frontmatter.tags),
       Search.stripHTML(node.html)

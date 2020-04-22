@@ -20,12 +20,11 @@ module.exports = {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Set of article fields we search on.
-        fields: [`title`, `description`, `author`, `tags`, `body`],
+        fields: [`title`, `description`,`tags`, `body`],
         resolvers: {
           MarkdownRemark: {
             title: node => node.frontmatter.title,
             description: node => node.frontmatter.description,
-            author: node => node.frontmatter.author,
             tags: node => node.frontmatter.tags,
             body: node => node.rawMarkdownBody
           }
