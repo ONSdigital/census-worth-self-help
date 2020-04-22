@@ -30,7 +30,7 @@ describe("Search", () => {
 
   it("anlytics captured", () => {
     var index = new Index()
-    ;["title", "author", "tags", "description", "body"].forEach(name =>
+    ;["title", "tags", "description", "body"].forEach(name =>
       index.addField(name)
     )
     const data = {
@@ -100,7 +100,6 @@ describe("Search", () => {
     let node = articleNode
     node.frontmatter.tags = ["a", "b", "hello", "d"]
     node.frontmatter.description = "this is my beautiful description"
-    node.frontmatter.author = "Napolean"
 
     // search description
     Search.highlightNode(node, "beautiful")
@@ -112,12 +111,6 @@ describe("Search", () => {
     Search.highlightNode(node, "hello")
     expect(ReactDOMServer.renderToStaticMarkup(node.highlightedText)).toEqual(
       "a, b, <strong>hello</strong>, d"
-    )
-
-    // search author
-    Search.highlightNode(node, "Napolean")
-    expect(ReactDOMServer.renderToStaticMarkup(node.highlightedText)).toEqual(
-      "<strong>Napolean</strong>"
     )
 
     // search capitalisied tags
