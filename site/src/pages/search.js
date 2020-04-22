@@ -24,9 +24,9 @@ export default class Search extends React.Component {
     let paginationObject = new PaginationObject()
     this.state = {
       query: ``,
-      sanitizedQuery:``,
+      sanitizedQuery: ``,
       results: [],
-      paginationObject: paginationObject,
+      paginationObject: paginationObject
     }
     this.data = props.data
     this.trackSiteSearch = debounce(
@@ -43,15 +43,16 @@ export default class Search extends React.Component {
     this.state.paginationObject.goToPage(pageTarget)
     // update state to get page to rerender
     this.setState({
-      paginationObject: this.state.paginationObject,
+      paginationObject: this.state.paginationObject
     })
   }
 
   getSearchIndex() {
     // Lazy-load the index data
+    if (!this.index) {
+      this.index = Index.load(this.data.siteSearchIndex.index)
+    }
     return this.index
-      ? this.index
-      : Index.load(this.data.siteSearchIndex.index)
   }
 
   updateSearchResults(evt) {
@@ -59,27 +60,29 @@ export default class Search extends React.Component {
 
     const rawQuery = evt.target.value
     const sanitizedQuery = this.querySanitizer.sanitize(rawQuery)
- 
+
+    const index = this.getSearchIndex()
+
     // we use a weighted priority of the search strings, this should be calibrated based on user feedback
-    const results = this.getSearchIndex()
+    const results = index
       .search(sanitizedQuery, {
         fields: {
           title: { boost: 4 },
           author: { boost: 4 },
           tags: { boost: 4 },
           description: { boost: 2 },
-          body: { boost: 1 },
+          body: { boost: 1 }
         },
-        expand: true, // partial mapping
+        expand: true // partial mapping
       })
-      .map(({ ref }) => this.index.documentStore.getDoc(ref))
+      .map(({ ref }) => index.documentStore.getDoc(ref))
 
     this.trackSiteSearch(rawQuery, false, results.length)
 
     this.setState({
       query: rawQuery,
       sanitizedQuery: sanitizedQuery,
-      results,
+      results
     })
   }
 
@@ -124,22 +127,22 @@ export default class Search extends React.Component {
       .trim()
       .toLowerCase()
       .split(" ")
-      .filter((str) => str)
+      .filter(str => str)
 
     // fetches all properties we wish to highlight in order of precedence
     let properties = [
       node.frontmatter.author,
       node.frontmatter.description,
       Search.getTagsAsString(node.frontmatter.tags),
-      Search.stripHTML(node.html),
+      Search.stripHTML(node.html)
     ]
 
     // finds first property which includes a query word
-    let highlightableText = properties.find((property) => {
+    let highlightableText = properties.find(property => {
       if (!property) {
         return false
       }
-      return splitQuery.find((queryWord) =>
+      return splitQuery.find(queryWord =>
         property.toLowerCase().includes(queryWord)
       )
     })
@@ -147,7 +150,7 @@ export default class Search extends React.Component {
     // if a property is found we bould the query words
     if (highlightableText !== undefined) {
       let pattern = new RegExp(
-        "(" + splitQuery.map((x) => escapeStringRegexp(x)).join("|") + ")",
+        "(" + splitQuery.map(x => escapeStringRegexp(x)).join("|") + ")",
         "ig"
       )
       highlightableText = Search.replacePatternToBold(
@@ -167,22 +170,22 @@ export default class Search extends React.Component {
     // the search object is given to the top bar to control search
     let searchObject = {
       updateFunction: this.updateSearchResults,
-      query: this.state.query,
+      query: this.state.query
     }
 
     // fetch the data edges corresponding to the search results
     let edges = this.state.paginationObject
       .filterResults(this.state.results)
-      .map((result) => {
+      .map(result => {
         let edge = this.data.allMarkdownRemark.edges.find(
-          (edge) => edge.node.frontmatter.title === result.title
+          edge => edge.node.frontmatter.title === result.title
         )
         if (edge) {
           Search.highlightNode(edge.node, this.state.sanitizedQuery)
         }
         return edge
       })
-      .filter((edge) => edge)
+      .filter(edge => edge)
 
     // A user doesn't count as searching unless they've typed a minimum amount
     let searching =
