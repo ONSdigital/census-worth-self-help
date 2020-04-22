@@ -30,7 +30,7 @@ describe("Search", () => {
 
   it("anlytics captured", () => {
     var index = new Index()
-    ;["title", "tags", "description", "body"].forEach(name =>
+    ;["title", "tags", "description", "body", "roles"].forEach(name =>
       index.addField(name)
     )
     const data = {
@@ -135,7 +135,7 @@ describe("Search", () => {
   it("the query sanitizer is called with the query when updateSearchResults is called", () => {
     const evt = { target: { value: "abc" } }
     var index = new Index()
-    ;["title", "author", "tags", "description", "body"].forEach(name =>
+    ;["title", "roles", "tags", "description", "body"].forEach(name =>
       index.addField(name)
     )
     const data = {
