@@ -130,6 +130,7 @@ function createArticlePages(createPage, articles) {
         path: article.link,
         component: path.resolve(`./src/templates/standard-article.js`),
         context: {
+          id: article.node.id,    
           title : article.title,
           peers : peers,
           breadcrumbs : article.breadcrumbs}
@@ -187,6 +188,7 @@ exports.createPages = ({ graphql, actions }) => {
     allMarkdownRemark {
       edges {
         node {
+          id
           fileAbsolutePath
           fields {
             collection

@@ -283,8 +283,8 @@ export default class Article extends React.Component {
 }
 
 export const query = graphql`
-  query($title: String!) {
-    markdownRemark(frontmatter: { title: { eq: $title } }) {
+  query($id: String!) {
+    markdownRemark( id: { eq: $id } ) {
       html
       ...BaseArticleFields
     }
@@ -292,7 +292,6 @@ export const query = graphql`
     allMarkdownRemark(filter: {fields: {collection: {in: ["articles", "directories"]}}}) {
       edges {
         node {
-          id
           frontmatter {
             description
             title
