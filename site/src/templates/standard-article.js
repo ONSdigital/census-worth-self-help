@@ -289,11 +289,17 @@ export const query = graphql`
       ...BaseArticleFields
     }
 
-    allMarkdownRemark(filter: { fields: { collection: { eq: "articles" } } }) {
+    allMarkdownRemark(filter: {fields: {collection: {in: ["articles", "directories"]}}}) {
       edges {
         node {
-          html
-          ...BaseArticleFields
+          id
+          frontmatter {
+            description
+            title
+          }
+          fields {
+            collection
+          }
         }
       }
     }
