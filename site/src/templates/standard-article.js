@@ -11,6 +11,8 @@ import { faBookmark as faBookmarkSolid } from "@fortawesome/free-solid-svg-icons
 import BookmarkManager from "../utils/bookmarkManager"
 import { spacing } from "../utils/styles"
 import LargeButton from "../components/largebutton"
+import PaginationBar from "../components/paginationbar"
+import { PaginationObject } from "../utils/pagination"
 
 import { faCheck } from "@fortawesome/free-solid-svg-icons"
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons"
@@ -53,8 +55,12 @@ export default class Article extends React.Component {
       anchorScroll(history)
     }
 
+    let paginationObject = new PaginationObject()
+    this.updatePagination = this.updatePagination.bind(this)
+
     this.bookmarkManager = new BookmarkManager()
     this.state = {
+      paginationObject: paginationObject,
       bookmarked: this.bookmarkManager.isPageBookmarked(
         this.props.pageContext.title
       ),
@@ -69,6 +75,14 @@ export default class Article extends React.Component {
       this.props.data.markdownRemark &&
       this.props.data.markdownRemark.frontmatter.tags &&
       this.props.data.markdownRemark.frontmatter.tags.includes("webchat")
+  }
+
+  updatePagination(pageTarget) {
+    this.state.paginationObject.goToPage(pageTarget)
+    // update state to get page to rerender
+    this.setState({
+      paginationObject: this.state.paginationObject
+    })
   }
 
   givePositiveFeedback() {
@@ -143,6 +157,8 @@ export default class Article extends React.Component {
         )
       })
       .filter(peer => peer !== undefined)
+
+      let paginatedEdges = this.state.paginationObject.filterResults(peerEdges)
 
     let articleContent = post
       ? transformSources(post.html)
@@ -259,7 +275,13 @@ export default class Article extends React.Component {
           {peerEdges.length > 0 && (
             <div>
               <Section>
-                <TabList title="ALSO IN THIS TOPIC" elements={peerEdges} />
+                <TabList title="ALSO IN THIS TOPIC" elements={paginatedEdges} />
+                <PaginationBar
+                  total={peerEdges.length}
+                  paginationObject={this.state.paginationObject}
+                  clickFunction={this.updatePagination}
+                  onPageCount={paginatedEdges.length}
+                />
               </Section>
             </div>
           )}
