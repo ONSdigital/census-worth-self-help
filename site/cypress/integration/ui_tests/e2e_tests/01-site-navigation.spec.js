@@ -115,6 +115,56 @@ describe("Navigating the site and reading articles", function() {
         cy.get(search.searchResultTitle).should('have.text', globalTestData.deepArticle);
     });
 
+    it("Pagination on related articles [ONS-405]", function() {
+        cy.visit(globalTestData.aVerySimpleArticlePath)
+        cy.get(search.searchResultTitle).should(
+          "not.have.text",
+          globalTestData.editorialWorkflowArticle
+        )
+        cy.contains("ALSO IN THIS TOPIC")
+        const textAppearance = "text-decoration"
+        const underline = /underline/
+        // page 1 should be selected. Clicking it again should do nothing.
+        cy.get(pagination.pagination1)
+          .should("have.css", textAppearance)
+          .and("match", underline)
+        cy.get(pagination.pagination2)
+          .should("have.css", textAppearance)
+          .and("not.match", underline)
+        cy.get(pagination.pagination1).click()
+        cy.get(pagination.pagination1)
+          .should("have.css", textAppearance)
+          .and("match", underline)
+        cy.get(pagination.pagination2)
+          .should("have.css", textAppearance)
+          .and("not.match", underline)
+        // clicking page 2 should change switch selected pagination element
+        cy.get(pagination.pagination2).click()
+        cy.get(pagination.pagination2)
+          .should("have.css", textAppearance)
+          .and("match", underline)
+        cy.get(pagination.pagination1)
+          .should("have.css", textAppearance)
+          .and("not.match", underline)
+        // clicking back takes us back to 1 being selected
+        cy.get(pagination.back).click()
+        cy.get(pagination.pagination1)
+          .should("have.css", textAppearance)
+          .and("match", underline)
+        cy.get(pagination.pagination2)
+          .should("have.css", textAppearance)
+          .and("not.match", underline)
+        cy.get(pagination.back).should("not.be.visible")
+        // clicking next takes us forward to 2 being selected
+        cy.get(pagination.next).click()
+        cy.get(pagination.pagination2)
+          .should("have.css", textAppearance)
+          .and("match", underline)
+        cy.get(pagination.pagination1)
+          .should("have.css", textAppearance)
+          .and("not.match", underline)
+      })
+
     it('Most recent pagination [ONS-64]', function () {
         const textAppearance = 'text-decoration';
         const underline = /underline/;

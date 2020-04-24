@@ -980,6 +980,93 @@ exports[`StandardArticle renders correctly 1`] = `
                 </div>
               </div>
             </div>
+            <div
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "d1qmp1",
+                  "next": undefined,
+                  "styles": "
+        padding: 15px 0px;
+      ",
+                }
+              }
+            >
+              <div
+                className="Button-subhead-Style"
+                css={
+                  Object {
+                    "map": undefined,
+                    "name": "1dmo2ca",
+                    "next": undefined,
+                    "styles": "
+          display: flex;
+          
+    padding: 5px 15px;
+  
+        ",
+                  }
+                }
+              >
+                <div
+                  css={
+                    Object {
+                      "map": undefined,
+                      "name": "1k0aln6",
+                      "next": undefined,
+                      "styles": "
+            flex-grow: 1;
+          ",
+                    }
+                  }
+                  data-testid="pagination-element-showing"
+                >
+                  Showing 
+                  1
+                  -
+                  1
+                   of 
+                  1
+                </div>
+                <div>
+                  Show 
+                  5
+                   per page
+                </div>
+              </div>
+              <div
+                css={
+                  Object {
+                    "map": undefined,
+                    "name": "1sf84gv",
+                    "next": undefined,
+                    "styles": "
+          display: flex;
+          justify-content: center;
+        ",
+                  }
+                }
+              >
+                <div
+                  className="Article-Title-Style purple-text-colour clickable"
+                  css={
+                    Object {
+                      "map": undefined,
+                      "name": "1j335gw",
+                      "next": undefined,
+                      "styles": "
+        padding: 0px 5px;
+        text-decoration: underline;
+      ",
+                    }
+                  }
+                  data-testid="pagination-1-button"
+                  onClick={[Function]}
+                >
+                  1
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>

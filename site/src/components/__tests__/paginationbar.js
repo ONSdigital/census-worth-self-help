@@ -5,13 +5,13 @@ import { PaginationObject } from "../../utils/pagination"
 import { render } from "react-testing-library"
 
 describe("PaginationBar", () => {
-  const paginationObject = new PaginationObject()
+  const paginator = new PaginationObject()
 
   it("renders correctly", () => {
     const tree = renderer
       .create(<PaginationBar
             total={10}
-            paginationObject={paginationObject}
+            paginator={paginator}
             clickFunction={ () => {} }
             onPageCount={5}
           />)
@@ -25,11 +25,11 @@ describe("PaginationBar", () => {
       have correct page numbers showing.
   */
   it("navigation on page 0", () => {
-  	paginationObject.goToPage(0)
+  	paginator.goToPage(0)
 
 	const { getByTestId, queryByTestId } = render(<PaginationBar
             total={88}
-            paginationObject={paginationObject}
+            paginator={paginator}
             clickFunction={ () => {} }
             onPageCount={5}
           />)
@@ -47,11 +47,11 @@ describe("PaginationBar", () => {
   })
 
   it("navigation on middle page", () => {
-  	paginationObject.goToPage(6)
+  	paginator.goToPage(6)
 
 	const { getByTestId, queryByTestId } = render(<PaginationBar
             total={88}
-            paginationObject={paginationObject}
+            paginator={paginator}
             clickFunction={ () => {} }
             onPageCount={5}
           />)
@@ -70,11 +70,11 @@ describe("PaginationBar", () => {
   })
 
   it("navigation on last page", () => {
-  	paginationObject.goToPage(17)
+  	paginator.goToPage(17)
 
 	const { getByTestId, queryByTestId } = render(<PaginationBar
             total={88}
-            paginationObject={paginationObject}
+            paginator={paginator}
             clickFunction={ () => {} }
             onPageCount={3}
           />)

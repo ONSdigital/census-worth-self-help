@@ -17,19 +17,19 @@ export default class Bookmarks extends React.Component {
   constructor(props) {
     super(props)
 
-    let paginationObject = new PaginationObject()
+    let paginator = new PaginationObject()
     this.state = {
-      paginationObject: paginationObject
+      paginator: paginator
     }
     this.data = props.data
     this.updatePagination = this.updatePagination.bind(this)
   }
 
   updatePagination(pageTarget) {
-    this.state.paginationObject.goToPage(pageTarget)
+    this.state.paginator.goToPage(pageTarget)
     // update state to get page to rerender
     this.setState({
-      paginationObject: this.state.paginationObject
+      paginator: this.state.paginator
     })
   }
 
@@ -43,7 +43,7 @@ export default class Bookmarks extends React.Component {
         )
       )
       .filter(edge => edge)
-    let paginatedBookmarkEdges = this.state.paginationObject.filterResults(
+    let paginatedBookmarkEdges = this.state.paginator.filterResults(
       bookmarkEdges
     )
 
@@ -66,7 +66,7 @@ export default class Bookmarks extends React.Component {
         {bookmarkEdges.length > 0 && (
           <PaginationBar
             total={bookmarkEdges.length}
-            paginationObject={this.state.paginationObject}
+            paginator={this.state.paginator}
             clickFunction={this.updatePagination}
             onPageCount={paginatedBookmarkEdges.length}
           />

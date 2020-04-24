@@ -34,7 +34,7 @@ const PaginationIcon = ({
   )
 }
 
-export default ({ paginationObject, total, onPageCount, clickFunction }) => {
+export default ({ paginator, total, onPageCount, clickFunction }) => {
   // returns a list of numbers ranging from start to end
   let range = (start, end) => {
     return Array(end + 1 - start)
@@ -42,10 +42,10 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
       .map((x, y) => x + y)
   }
 
-  paginationObject.capOffset(total)
+  paginator.capOffset(total)
 
-  let page = paginationObject.page
-  let lastPage = Math.ceil(total / paginationObject.perPage) - 1
+  let page = paginator.page
+  let lastPage = Math.ceil(total / paginator.perPage) - 1
 
   let pageOptionSpread = 1 // the number of page options before or after this page to show
 
@@ -91,10 +91,10 @@ export default ({ paginationObject, total, onPageCount, clickFunction }) => {
             flex-grow: 1;
           `}
         >
-          Showing {paginationObject.offset + 1}-
-          {paginationObject.offset + onPageCount} of {total}
+          Showing {paginator.offset + 1}-
+          {paginator.offset + onPageCount} of {total}
         </div>
-        <div>Show {paginationObject.perPage} per page</div>
+        <div>Show {paginator.perPage} per page</div>
       </div>
       <div
         css={css`
