@@ -55,12 +55,12 @@ export default class Article extends React.Component {
       anchorScroll(history)
     }
 
-    let paginationObject = new PaginationObject()
+    let paginator = new PaginationObject()
     this.updatePagination = this.updatePagination.bind(this)
 
     this.bookmarkManager = new BookmarkManager()
     this.state = {
-      paginationObject: paginationObject,
+      paginator: paginator,
       bookmarked: this.bookmarkManager.isPageBookmarked(
         this.props.pageContext.title
       ),
@@ -78,10 +78,10 @@ export default class Article extends React.Component {
   }
 
   updatePagination(pageTarget) {
-    this.state.paginationObject.goToPage(pageTarget)
+    this.state.paginator.goToPage(pageTarget)
     // update state to get page to rerender
     this.setState({
-      paginationObject: this.state.paginationObject
+      paginator: this.state.paginator
     })
   }
 
@@ -158,7 +158,7 @@ export default class Article extends React.Component {
       })
       .filter(peer => peer !== undefined)
 
-      let paginatedEdges = this.state.paginationObject.filterResults(peerEdges)
+      let paginatedPeerEdges = this.state.paginator.filterResults(peerEdges)
 
     let articleContent = post
       ? transformSources(post.html)
@@ -275,12 +275,12 @@ export default class Article extends React.Component {
           {peerEdges.length > 0 && (
             <div>
               <Section>
-                <TabList title="ALSO IN THIS TOPIC" elements={paginatedEdges} />
+                <TabList title="ALSO IN THIS TOPIC" elements={paginatedPeerEdges} />
                 <PaginationBar
                   total={peerEdges.length}
-                  paginationObject={this.state.paginationObject}
+                  paginator={this.state.paginator}
                   clickFunction={this.updatePagination}
-                  onPageCount={paginatedEdges.length}
+                  onPageCount={paginatedPeerEdges.length}
                 />
               </Section>
             </div>

@@ -17,9 +17,9 @@ export default class MostRecent extends React.Component {
     super(props)
     this.LastVisitManager = new LastVisitManager()
 
-    let paginationObject = new PaginationObject()
+    let paginator = new PaginationObject()
     this.state = {
-      paginationObject: paginationObject
+      paginator: paginator
     }
     this.data = props.data
     this.updatePagination = this.updatePagination.bind(this)
@@ -30,10 +30,10 @@ export default class MostRecent extends React.Component {
   }
 
   updatePagination(pageTarget) {
-    this.state.paginationObject.goToPage(pageTarget)
+    this.state.paginator.goToPage(pageTarget)
     // update state to get page to rerender
     this.setState({
-      paginationObject: this.state.paginationObject
+      paginator: this.state.paginator
     })
   }
 
@@ -49,7 +49,7 @@ export default class MostRecent extends React.Component {
       recentEdges = this.data.allMarkdownRemark.edges
     }
 
-    let paginatedEdges = this.state.paginationObject.filterResults(recentEdges)
+    let paginatedEdges = this.state.paginator.filterResults(recentEdges)
 
     return (
       <Layout explore_more_link={true}>
@@ -70,7 +70,7 @@ export default class MostRecent extends React.Component {
         <TabList elements={paginatedEdges} />
         <PaginationBar
           total={recentEdges.length}
-          paginationObject={this.state.paginationObject}
+          paginator={this.state.paginator}
           clickFunction={this.updatePagination}
           onPageCount={paginatedEdges.length}
         />

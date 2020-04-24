@@ -21,12 +21,12 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props)
 
-    let paginationObject = new PaginationObject()
+    let paginator = new PaginationObject()
     this.state = {
       query: ``,
       sanitizedQuery: ``,
       results: [],
-      paginationObject: paginationObject
+      paginator: paginator
     }
     this.data = props.data
     this.trackSiteSearch = debounce(
@@ -40,10 +40,10 @@ export default class Search extends React.Component {
   }
 
   updatePagination(pageTarget) {
-    this.state.paginationObject.goToPage(pageTarget)
+    this.state.paginator.goToPage(pageTarget)
     // update state to get page to rerender
     this.setState({
-      paginationObject: this.state.paginationObject
+      paginator: this.state.paginator
     })
   }
 
@@ -56,7 +56,7 @@ export default class Search extends React.Component {
   }
 
   updateSearchResults(evt) {
-    this.state.paginationObject.goToPage(0)
+    this.state.paginator.goToPage(0)
 
     const rawQuery = evt.target.value
     const sanitizedQuery = this.querySanitizer.sanitize(rawQuery)
@@ -173,7 +173,7 @@ export default class Search extends React.Component {
     }
 
     // fetch the data edges corresponding to the search results
-    let edges = this.state.paginationObject
+    let edges = this.state.paginator
       .filterResults(this.state.results)
       .map(result => {
         let edge = this.data.allMarkdownRemark.edges.find(
@@ -207,7 +207,7 @@ export default class Search extends React.Component {
         {this.state.results.length !== 0 && (
           <PaginationBar
             total={this.state.results.length}
-            paginationObject={this.state.paginationObject}
+            paginator={this.state.paginator}
             clickFunction={this.updatePagination}
             onPageCount={edges.length}
           />
