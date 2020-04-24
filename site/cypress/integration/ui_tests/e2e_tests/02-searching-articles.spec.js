@@ -9,7 +9,6 @@ const pagination = require('../../../fixtures/fragments/pagination');
 // pages
 const homepage = require('../../../fixtures/pages/homepagePage');
 
-const authorName = 'owasp';
 const beginTypingToSearchTitle = 'Begin typing to search';
 const searchText = 'injection';
 const incompleteSearch = searchText.slice(0, -1);
@@ -41,15 +40,6 @@ describe("Article searching", function() {
         cy.get(search.searchBarField).type(searchText);
         cy.get(search.searchResultTitle).contains(searchText);
         cy.get(homepage.articleCard).should('have.text', globalTestData.injectionAttackArticle);
-    });
-
-    it('A search result that matches an article via the author [ONS-21]', function () {
-        const pageNumber1 = '1';
-        cy.get(search.searchButton).click();
-        cy.get(search.searchBarField).type(authorName);
-        cy.get(search.searchResultTitle).contains(authorName);
-        cy.get(homepage.articleCard).should('have.text', globalTestData.injectionAttackArticle);
-        cy.get(pagination.pagination1).should('have.text', pageNumber1);
     });
 
     it('A search result that matches an article with a partial match [ONS-424]', () => {
