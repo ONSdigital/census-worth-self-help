@@ -34,7 +34,7 @@ export default class Search extends React.Component {
       searchAnalytics.trackSiteSearch,
       props.debounceDelay
     )
-    this.updateSearchResults = this.updateSearchResults.bind(this)
+    this.updateSearchResultsCallback = this.updateSearchResultsCallback.bind(this)
     this.updatePagination = this.updatePagination.bind(this)
 
     this.querySanitizer = new QuerySanitizer(spellingCorrectionMap)
@@ -66,11 +66,11 @@ export default class Search extends React.Component {
 
   componentDidMount() {
     this.getIndexedSearchValue((value) => {
-      if(value) this.updateSearchResults({ target: { value: value } })
+      if(value) this.updateSearchResultsCallback({ target: { value: value } })
     })
   }
 
-  updateSearchResults(evt) {
+  updateSearchResultsCallback(evt) {
     this.state.paginator.goToPage(0)
 
     const rawQuery = evt.target.value
@@ -185,7 +185,7 @@ export default class Search extends React.Component {
   render() {
     // the search object is given to the top bar to control search
     let searchObject = {
-      updateFunction: this.updateSearchResults,
+      updateFunction: this.updateSearchResultsCallback,
       query: this.state.query
     }
 

@@ -142,12 +142,12 @@ describe("Search", () => {
     )
   })
 
-  it("the query sanitizer is called with the query when updateSearchResults is called", () => {
+  it("the query sanitizer is called with the query when updateSearchResultsCallback is called", () => {
     const evt = { target: { value: "abc" } }
     
     expect(mockSanitizer.mock.calls.length).toEqual(0)
     const search = renderer.create(<Search data={data} debounceDelay={0} />)
-    search.getInstance().updateSearchResults(evt)
+    search.getInstance().updateSearchResultsCallback(evt)
 
     expect(mockSanitizer.mock.calls.length).toEqual(1)
     const sanitizerArguments = mockSanitizer.mock.calls[0]
