@@ -29,7 +29,7 @@ describe("Search", () => {
   })
 
   it("anlytics captured", () => {
-    var index = new Index()
+    const index = new Index()
     ;["title", "tags", "description", "body", "roles"].forEach(name =>
       index.addField(name)
     )
@@ -134,7 +134,7 @@ describe("Search", () => {
 
   it("the query sanitizer is called with the query when updateSearchResults is called", () => {
     const evt = { target: { value: "abc" } }
-    var index = new Index()
+    const index = new Index()
     ;["title", "roles", "tags", "description", "body"].forEach(name =>
       index.addField(name)
     )
@@ -149,5 +149,41 @@ describe("Search", () => {
     expect(mockSanitizer.mock.calls.length).toEqual(1)
     const sanitizerArguments = mockSanitizer.mock.calls[0]
     expect(sanitizerArguments[0]).toEqual("abc")
+  })
+
+  it("stores the query on search bar update and persists to a new instance of search", async () => {
+    const query = "i am a test query"
+    const index = new Index()
+    ;["title", "roles", "tags", "description", "body"].forEach(name =>
+      index.addField(name)
+    )
+    const data = {
+      allMarkdownRemark: articleList,
+      siteSearchIndex: { index: index.toJSON() }
+    }
+
+    const primarySearch = renderer.create(
+      <Search data={data} debounceDelay={0} />
+    )
+
+    primarySearch.getInstance().updateIndexedSearchValue(query)
+
+    let databaseOutValue = await primarySearch
+      .getInstance()
+      .getIndexedSearchValue()
+    expect(databaseOutValue).toBeTruthy()
+    expect(databaseOutValue).toEqual(query)
+
+    primarySearch.getInstance().updateIndexedSearchValue(query)
+
+    const secondarySearch = renderer.create(
+      <Search data={data} debounceDelay={0} />
+    )
+
+    databaseOutValue = await secondarySearch
+      .getInstance()
+      .getIndexedSearchValue()
+    expect(databaseOutValue).toBeTruthy()
+    expect(databaseOutValue).toEqual(query)
   })
 })

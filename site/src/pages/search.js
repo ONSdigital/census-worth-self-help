@@ -14,6 +14,7 @@ import spellingCorrectionMap from "../utils/commonMisspellings.json"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 
+const localForage = require("localforage")
 const escapeStringRegexp = require("escape-string-regexp")
 const minimumSearchString = 3
 
@@ -54,11 +55,23 @@ export default class Search extends React.Component {
     }
     return this.index
   }
-
+  updateIndexedSearchValue(query) {
+    localForage.setItem("searchQuery", query, err => {})
+  }
+  getIndexedSearchValue() {
+    return localForage.getItem("searchQuery")
+  }
+  componentDidMount() {
+    this.getIndexedSearchValue().then(
+      text => text && this.updateSearchResults({ target: { value: text } })
+    )
+  }
   updateSearchResults(evt) {
     this.state.paginator.goToPage(0)
 
     const rawQuery = evt.target.value
+
+    this.updateIndexedSearchValue(rawQuery)
     const sanitizedQuery = this.querySanitizer.sanitize(rawQuery)
 
     const index = this.getSearchIndex()
