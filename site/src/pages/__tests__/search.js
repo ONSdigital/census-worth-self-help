@@ -17,10 +17,27 @@ jest.mock("../../utils/querysanitizer", () => {
 })
 
 describe("Search", () => {
+  
+
+  let data
+
+
   beforeEach(() => {
     window._paq = []
     QuerySanitizer.mockClear()
     mockSanitizer.mockClear()
+
+    const index = new Index();
+    const indexVals = ["title", "roles", "tags", "description", "body"]
+    
+    indexVals.forEach(name =>
+      index.addField(name)
+    )
+    
+    data = {
+      allMarkdownRemark: articleList,
+      siteSearchIndex: { index: index.toJSON() }
+    }
   })
 
   it("renders correctly", () => {
@@ -30,14 +47,6 @@ describe("Search", () => {
   })
 
   it("anlytics captured", () => {
-    const index = new Index()
-    ;["title", "tags", "description", "body", "roles"].forEach(name =>
-      index.addField(name)
-    )
-    const data = {
-      allMarkdownRemark: articleList,
-      siteSearchIndex: { index: index.toJSON() }
-    }
     const { getByTestId } = render(<Search data={data} debounceDelay={0} />)
     const searchBox = getByTestId("search-box")
     fireEvent.change(searchBox, { target: { value: "TEST QUERY" } })
@@ -135,14 +144,7 @@ describe("Search", () => {
 
   it("the query sanitizer is called with the query when updateSearchResults is called", () => {
     const evt = { target: { value: "abc" } }
-    const index = new Index()
-    ;["title", "roles", "tags", "description", "body"].forEach(name =>
-      index.addField(name)
-    )
-    const data = {
-      allMarkdownRemark: articleList,
-      siteSearchIndex: { index: index.toJSON() }
-    }
+    
     expect(mockSanitizer.mock.calls.length).toEqual(0)
     const search = renderer.create(<Search data={data} debounceDelay={0} />)
     search.getInstance().updateSearchResults(evt)
@@ -154,14 +156,6 @@ describe("Search", () => {
 
   it("stores the query on search bar update", async () => {
     const query = "i am a test query"
-    const index = new Index()
-    ;["title", "roles", "tags", "description", "body"].forEach(name =>
-      index.addField(name)
-    )
-    const data = {
-      allMarkdownRemark: articleList,
-      siteSearchIndex: { index: index.toJSON() }
-    }
 
     const spy = jest.spyOn(localForage, "setItem").mockImplementation(
       value =>
@@ -186,14 +180,7 @@ describe("Search", () => {
         resolve(value)
       })
   ) 
-  const index = new Index()
-    ;["title", "roles", "tags", "description", "body"].forEach(name =>
-      index.addField(name)
-    )
-  const data = {
-    allMarkdownRemark: articleList,
-    siteSearchIndex: { index: index.toJSON() }
-  }
+  
   const search = renderer.create(
     <Search data={data} debounceDelay={0} />
   )
