@@ -69,7 +69,7 @@ export default class Search extends React.Component {
       if(value) this.updateSearchResults({ target: { value: value } })
     })
   }
-  
+
   updateSearchResults(evt) {
     this.state.paginator.goToPage(0)
 

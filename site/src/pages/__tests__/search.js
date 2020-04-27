@@ -178,4 +178,28 @@ describe("Search", () => {
     expect(spy).toHaveBeenCalledWith("searchQuery", query, expect.any(Function))
     spy.mockRestore()
  })
+
+ it("when storage returns a query then getIndexedSearchValue returns it", async () => {
+  const spy = jest.spyOn(localForage, "getItem").mockImplementation(
+    value =>
+      new Promise((resolve, reject) => {
+        resolve(value)
+      })
+  ) 
+  const index = new Index()
+    ;["title", "roles", "tags", "description", "body"].forEach(name =>
+      index.addField(name)
+    )
+  const data = {
+    allMarkdownRemark: articleList,
+    siteSearchIndex: { index: index.toJSON() }
+  }
+  const search = renderer.create(
+    <Search data={data} debounceDelay={0} />
+  )
+
+  expect(spy).toHaveBeenCalledWith("searchQuery", expect.any(Function))
+ })
+
+
 })
