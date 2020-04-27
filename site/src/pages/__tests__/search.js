@@ -1,6 +1,6 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import Search from "../search"
+import { SearchHistory, Search } from "../search"
 import { render, fireEvent } from "react-testing-library"
 import { articleList, articleNode, siteSearchIndex } from "../../utils/testdata"
 import ReactDOMServer from "react-dom/server"
@@ -157,36 +157,89 @@ describe("Search", () => {
   it("stores the query on search bar update", async () => {
     const query = "i am a test query"
 
-    const spy = jest.spyOn(localForage, "setItem").mockImplementation(
-      value =>
-        new Promise((resolve, reject) => {
-          resolve(value)
-        })
-    ) 
+    jest.doMock('../search', () => {
+      return class SearchHistory {
+        store = jest.fn()
+        retrieve() {}
+      }
+    })
+    const SearchHistory = require('../search')
+    const searchHistory = new SearchHistory()
 
     const primarySearch = renderer.create(
       <Search data={data} debounceDelay={0} />
     )
 
+    primarySearch.getInstance().searchHistory = searchHistory
     primarySearch.getInstance().updateIndexedSearchValue(query)
-    expect(spy).toHaveBeenCalledWith("searchQuery", query, expect.any(Function))
+    expect(searchHistory.store).toHaveBeenCalledWith(query)
+    jest.clearAllMocks
+ })
+
+//  it("when seach is instantiated then retrieve is called", async () => {
+//   const expected = "stored search query"
+//   let wasCalled
+
+//   const mockRetrieve = jest.fn().mockImplementation((callback) => {
+//     return new Promise((resolve) => {
+//       wasCalled = true
+//       resolve(expected)
+//     })
+//   })
+
+//   jest.doMock('../search', () => {
+//     return class SearchHistory {
+//       store = jest.fn()
+//       retrieve = mockRetrieve
+//     }
+//   })
+
+//   const search = renderer.create(
+//     <Search data={data} debounceDelay={0} />
+//   )
+ 
+//   expect(mockRetrieve).toHaveBeenCalled()
+//  })
+})
+
+describe("SearchHistory", () => {
+  it("Can be instantiated", () => {
+    const searchHistory = new SearchHistory("some key")
+  })
+
+  it("Storing a search item is possible", () => {
+    const spy = jest.spyOn(localForage, "setItem").mockImplementation(
+      value =>
+        new Promise((resolve, reject) => {
+          resolve(value)
+        })
+    )
+
+    const searchKey = "some key"
+    const queryText = "some random query"
+    const searchHistory = new SearchHistory(searchKey)
+    searchHistory.store(queryText)
+    expect(spy).toBeCalledWith(searchKey, queryText, expect.any(Function))
     spy.mockRestore()
- })
+  })
 
- it("when storage returns a query then getIndexedSearchValue returns it", async () => {
-  const spy = jest.spyOn(localForage, "getItem").mockImplementation(
-    value =>
-      new Promise((resolve, reject) => {
-        resolve(value)
-      })
-  ) 
+  it("Retrieving a search item is possible", async () => {
+    const expected = "stored query"
+    const spy = jest.spyOn(localForage, "getItem").mockImplementation(
+      () =>
+        new Promise((resolve) => {
+          resolve(expected)
+        })
+    )
+
+    const searchKey = "some key"
+    const searchHistory = new SearchHistory(searchKey)
   
-  const search = renderer.create(
-    <Search data={data} debounceDelay={0} />
-  )
-
-  expect(spy).toHaveBeenCalledWith("searchQuery", expect.any(Function))
- })
-
+    searchHistory.retrieve((err, value) => {
+      expect(spy).toBeCalledWith(searchKey, callback)
+      expect(value).toEqual(expected)
+      spy.mockRestore()
+    })
+  })
 
 })

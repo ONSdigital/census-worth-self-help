@@ -13,12 +13,28 @@ import spellingCorrectionMap from "../utils/commonMisspellings.json"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
+import { keyframes } from "@emotion/core"
 
 const localForage = require("localforage")
 const escapeStringRegexp = require("escape-string-regexp")
 const minimumSearchString = 3
+const defaultSearchKey = "searchHistory"
 
-export default class Search extends React.Component {
+export class SearchHistory {
+  constructor(key) {
+    this.key = key ? key : defaultSearchKey
+  }
+
+  store(queryText) {
+    localForage.setItem(this.key, queryText, err => {})
+  }
+
+ retrieve(callback){
+    localForage.getItem(this.key, callback)
+  }
+}
+
+export class Search extends React.Component {
   constructor(props) {
     super(props)
 
@@ -38,6 +54,7 @@ export default class Search extends React.Component {
     this.updatePagination = this.updatePagination.bind(this)
 
     this.querySanitizer = new QuerySanitizer(spellingCorrectionMap)
+    this.searchHistory = new SearchHistory()
   }
 
   updatePagination(pageTarget) {
@@ -57,16 +74,16 @@ export default class Search extends React.Component {
   }
 
   updateIndexedSearchValue(query) {
-    localForage.setItem("searchQuery", query, err => {})
+    this.searchHistory.store(query)
   }
 
   getIndexedSearchValue(callback) {
-    return localForage.getItem("searchQuery", callback)
+    return this.searchHistory.retrieve(callback)
   }
 
   componentDidMount() {
     this.getIndexedSearchValue((value) => {
-      if(value) this.updateSearchResultsCallback({ target: { value: value } })
+      if(value) this.updateSearchResults(value)
     })
   }
 
