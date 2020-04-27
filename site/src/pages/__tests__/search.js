@@ -7,7 +7,6 @@ import ReactDOMServer from "react-dom/server"
 import { Index } from "elasticlunr"
 import QuerySanitizer from "../../utils/querysanitizer"
 const localForage = require("localforage")
-jest.mock("localforage")
 
 const mockSanitizer = jest.fn(query => query)
 
@@ -16,29 +15,6 @@ jest.mock("../../utils/querysanitizer", () => {
     return { sanitize: mockSanitizer }
   })
 })
-
-// const spy = jest.spyOn(console, 'log').mockImplementation(() => {})
-// expect(console.log.mock.calls).toEqual([['dope'], ['nope']])
-// spy.mockRestore()
-
-// const mockLocalForageInstance = localforage.mock.instances[0];
-// const mockLocalForageSetItem = localforage.setItem;
-
-// const mockGetItem = jest.fn(
-//   value =>
-//     new Promise(resolve => {
-//       resolve(value)
-//     })
-// )
-// const mockSetItem = jest.fn(() => {})
-// jest.mock("localforage", () => {
-//   return jest.fn().mockImplementation(() => {
-//     return {
-//       getItem: mockGetItem,
-//       setItem: mockSetItem
-//     }
-//   })
-// })
 
 describe("Search", () => {
   beforeEach(() => {
@@ -176,7 +152,7 @@ describe("Search", () => {
     expect(sanitizerArguments[0]).toEqual("abc")
   })
 
-  it("stores the query on search bar update and persists to a new instance of search", async () => {
+  it("stores the query on search bar update", async () => {
     const query = "i am a test query"
     const index = new Index()
     ;["title", "roles", "tags", "description", "body"].forEach(name =>
@@ -187,30 +163,19 @@ describe("Search", () => {
       siteSearchIndex: { index: index.toJSON() }
     }
 
-    const spy = jest.spyOn(localForage, "getItem").mockImplementation(
+    const spy = jest.spyOn(localForage, "setItem").mockImplementation(
       value =>
         new Promise((resolve, reject) => {
           resolve(value)
         })
-    )
-
-    spy.mockRestore()
+    ) 
 
     const primarySearch = renderer.create(
       <Search data={data} debounceDelay={0} />
     )
 
     primarySearch.getInstance().updateIndexedSearchValue(query)
-    expect().toHaveBeenCalled()
-
-    const secondarySearch = renderer.create(
-      <Search data={data} debounceDelay={0} />
-    )
-
-    databaseOutValue = await secondarySearch
-      .getInstance()
-      .getIndexedSearchValue()
-    expect(databaseOutValue).toBeTruthy()
-    expect(databaseOutValue).toEqual(query)
-  })
+    expect(spy).toHaveBeenCalledWith("searchQuery", query, expect.any(Function))
+    spy.mockRestore()
+ })
 })

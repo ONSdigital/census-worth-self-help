@@ -55,17 +55,21 @@ export default class Search extends React.Component {
     }
     return this.index
   }
+
   updateIndexedSearchValue(query) {
     localForage.setItem("searchQuery", query, err => {})
   }
-  getIndexedSearchValue() {
-    return localForage.getItem("searchQuery")
+
+  getIndexedSearchValue(callback) {
+    return localForage.getItem("searchQuery", callback)
   }
+
   componentDidMount() {
-    this.getIndexedSearchValue().then(
-      text => text && this.updateSearchResults({ target: { value: text } })
-    )
+    this.getIndexedSearchValue((value) => {
+      if(value) this.updateSearchResults({ target: { value: value } })
+    })
   }
+  
   updateSearchResults(evt) {
     this.state.paginator.goToPage(0)
 
