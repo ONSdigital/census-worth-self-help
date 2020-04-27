@@ -70,13 +70,11 @@ export default class Search extends React.Component {
     })
   }
 
-  updateSearchResultsCallback(evt) {
+  updateSearchResult(queryText) {
     this.state.paginator.goToPage(0)
 
-    const rawQuery = evt.target.value
-
-    this.updateIndexedSearchValue(rawQuery)
-    const sanitizedQuery = this.querySanitizer.sanitize(rawQuery)
+    this.updateIndexedSearchValue(queryText)
+    const sanitizedQuery = this.querySanitizer.sanitize(queryText)
 
     const index = this.getSearchIndex()
 
@@ -94,13 +92,17 @@ export default class Search extends React.Component {
       })
       .map(({ ref }) => index.documentStore.getDoc(ref))
 
-    this.trackSiteSearch(rawQuery, false, results.length)
+    this.trackSiteSearch(queryText, false, results.length)
 
     this.setState({
-      query: rawQuery,
+      query: queryText,
       sanitizedQuery: sanitizedQuery,
       results
     })
+  }
+
+  updateSearchResultsCallback(evt) {
+    this.updateSearchResult(evt.target.value);
   }
 
   /*
