@@ -2,7 +2,7 @@
 
 In order to run individual spec files, you can run:
 
-    ./node_modules/.bin/cypress run --spec cypress/integration/ui_tests/<file_name>
+    ./node_modules/.bin/cypress run --spec cypress/integration/ui_tests/e2e_tests/<file_name>
 
 # Browser argument
 
