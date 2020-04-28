@@ -138,6 +138,17 @@ export const query = graphql`
     }
   }
 
+  fragment NeighbouringArticleFields on MarkdownRemark {
+    frontmatter {
+      title
+      description
+    }
+    fields {
+      pagename
+      collection
+    }
+  }
+
   query {
     markdownRemark(frontmatter: { alert_title: { ne: null } }) {
       frontmatter {
