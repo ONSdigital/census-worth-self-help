@@ -1,6 +1,7 @@
 import React from "react"
 import renderer from "react-test-renderer"
 import Search from "../search"
+import SearchHistory from "../../utils/searchhistory"
 import { render, fireEvent } from "react-testing-library"
 import { articleList, articleNode, siteSearchIndex } from "../../utils/testdata"
 import ReactDOMServer from "react-dom/server"
@@ -15,11 +16,34 @@ jest.mock("../../utils/querysanitizer", () => {
   })
 })
 
+const mockStore = jest.fn(value => {})
+const mockRetrieve = jest.fn(callback => {})
+
+jest.mock("../../utils/searchhistory", () => {
+  return jest.fn().mockImplementation(() => {
+    return {
+      store: mockStore,
+      retrieve: mockRetrieve
+    }
+  })
+})
+
 describe("Search", () => {
+  let data
+
   beforeEach(() => {
     window._paq = []
-    QuerySanitizer.mockClear()
-    mockSanitizer.mockClear()
+    jest.clearAllMocks()
+
+    const index = new Index()
+    const indexVals = ["title", "roles", "tags", "description", "body"]
+
+    indexVals.forEach(name => index.addField(name))
+
+    data = {
+      allMarkdownRemark: articleList,
+      siteSearchIndex: { index: index.toJSON() }
+    }
   })
 
   it("renders correctly", () => {
@@ -29,14 +53,6 @@ describe("Search", () => {
   })
 
   it("anlytics captured", () => {
-    var index = new Index()
-    ;["title", "tags", "description", "body", "roles"].forEach(name =>
-      index.addField(name)
-    )
-    const data = {
-      allMarkdownRemark: articleList,
-      siteSearchIndex: { index: index.toJSON() }
-    }
     const { getByTestId } = render(<Search data={data} debounceDelay={0} />)
     const searchBox = getByTestId("search-box")
     fireEvent.change(searchBox, { target: { value: "TEST QUERY" } })
@@ -132,22 +148,33 @@ describe("Search", () => {
     )
   })
 
-  it("the query sanitizer is called with the query when updateSearchResults is called", () => {
+  it("the query sanitizer is called with the query when updateSearchResultsCallback is called", () => {
     const evt = { target: { value: "abc" } }
-    var index = new Index()
-    ;["title", "roles", "tags", "description", "body"].forEach(name =>
-      index.addField(name)
-    )
-    const data = {
-      allMarkdownRemark: articleList,
-      siteSearchIndex: { index: index.toJSON() }
-    }
+
     expect(mockSanitizer.mock.calls.length).toEqual(0)
     const search = renderer.create(<Search data={data} debounceDelay={0} />)
-    search.getInstance().updateSearchResults(evt)
+    search.getInstance().updateSearchResultsCallback(evt)
 
     expect(mockSanitizer.mock.calls.length).toEqual(1)
     const sanitizerArguments = mockSanitizer.mock.calls[0]
     expect(sanitizerArguments[0]).toEqual("abc")
+  })
+
+  it("stores the query on search bar update", async () => {
+    const query = "i am a test query"
+
+    const primarySearch = renderer.create(
+      <Search data={data} debounceDelay={0} />
+    )
+    primarySearch.getInstance().addTermToSearchHistory(query)
+    expect(mockStore).toHaveBeenCalledWith(query)
+  })
+
+  it("when search is instantiated then retrieve is called", async () => {
+    expect(mockRetrieve).not.toHaveBeenCalled()
+
+    const search = renderer.create(<Search data={data} debounceDelay={0} />)
+
+    expect(mockRetrieve).toHaveBeenCalled()
   })
 })

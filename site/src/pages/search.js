@@ -14,6 +14,8 @@ import spellingCorrectionMap from "../utils/commonMisspellings.json"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 
+import SearchHistory from "../utils/searchhistory"
+
 const escapeStringRegexp = require("escape-string-regexp")
 const minimumSearchString = 3
 
@@ -33,10 +35,13 @@ export default class Search extends React.Component {
       searchAnalytics.trackSiteSearch,
       props.debounceDelay
     )
-    this.updateSearchResults = this.updateSearchResults.bind(this)
+    this.updateSearchResultsCallback = this.updateSearchResultsCallback.bind(
+      this
+    )
     this.updatePagination = this.updatePagination.bind(this)
 
     this.querySanitizer = new QuerySanitizer(spellingCorrectionMap)
+    this.searchHistory = new SearchHistory()
   }
 
   updatePagination(pageTarget) {
@@ -55,11 +60,28 @@ export default class Search extends React.Component {
     return this.index
   }
 
-  updateSearchResults(evt) {
+  addTermToSearchHistory(query) {
+    this.searchHistory.store(query)
+  }
+
+  retrieveSearchHistory(callback) {
+    this.searchHistory.retrieve(callback)
+  }
+
+  componentDidMount() {
+    this.retrieveSearchHistory((error, value) => {
+      if (error) {
+        console.error(`Error getting search history: ${error}`)
+      }
+      if (value) this.updateSearchResult(value)
+    })
+  }
+
+  updateSearchResult(queryText) {
     this.state.paginator.goToPage(0)
 
-    const rawQuery = evt.target.value
-    const sanitizedQuery = this.querySanitizer.sanitize(rawQuery)
+    this.addTermToSearchHistory(queryText)
+    const sanitizedQuery = this.querySanitizer.sanitize(queryText)
 
     const index = this.getSearchIndex()
 
@@ -77,13 +99,17 @@ export default class Search extends React.Component {
       })
       .map(({ ref }) => index.documentStore.getDoc(ref))
 
-    this.trackSiteSearch(rawQuery, false, results.length)
+    this.trackSiteSearch(queryText, false, results.length)
 
     this.setState({
-      query: rawQuery,
+      query: queryText,
       sanitizedQuery: sanitizedQuery,
       results
     })
+  }
+
+  updateSearchResultsCallback(evt) {
+    this.updateSearchResult(evt.target.value)
   }
 
   /*
@@ -168,7 +194,7 @@ export default class Search extends React.Component {
   render() {
     // the search object is given to the top bar to control search
     let searchObject = {
-      updateFunction: this.updateSearchResults,
+      updateFunction: this.updateSearchResultsCallback,
       query: this.state.query
     }
 
