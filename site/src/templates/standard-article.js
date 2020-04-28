@@ -158,7 +158,7 @@ export default class Article extends React.Component {
       })
       .filter(peer => peer !== undefined)
 
-      let paginatedPeerEdges = this.state.paginator.filterResults(peerEdges)
+    let paginatedPeerEdges = this.state.paginator.filterResults(peerEdges)
 
     let articleContent = post
       ? transformSources(post.html)
@@ -275,7 +275,10 @@ export default class Article extends React.Component {
           {peerEdges.length > 0 && (
             <div>
               <Section>
-                <TabList title="ALSO IN THIS TOPIC" elements={paginatedPeerEdges} />
+                <TabList
+                  title="ALSO IN THIS TOPIC"
+                  elements={paginatedPeerEdges}
+                />
                 <PaginationBar
                   total={peerEdges.length}
                   paginator={this.state.paginator}
@@ -311,17 +314,12 @@ export const query = graphql`
       ...BaseArticleFields
     }
 
-    allMarkdownRemark(filter: {fields: {collection: {in: ["articles", "directories"]}}}) {
+    allMarkdownRemark(
+      filter: { fields: { collection: { in: ["articles", "directories"] } } }
+    ) {
       edges {
         node {
-          id
-          frontmatter {
-            description
-            title
-          }
-          fields {
-            collection
-          }
+          ...NeighbouringArticleFields
         }
       }
     }
