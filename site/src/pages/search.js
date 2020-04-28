@@ -13,28 +13,13 @@ import spellingCorrectionMap from "../utils/commonMisspellings.json"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
-import { keyframes } from "@emotion/core"
 
-const localForage = require("localforage")
+import SearchHistory from "../utils/searchhistory"
+
 const escapeStringRegexp = require("escape-string-regexp")
 const minimumSearchString = 3
-const defaultSearchKey = "searchHistory"
 
-export class SearchHistory {
-  constructor(key) {
-    this.key = key ? key : defaultSearchKey
-  }
-
-  store(queryText) {
-    localForage.setItem(this.key, queryText, err => {})
-  }
-
- retrieve(callback){
-    localForage.getItem(this.key, callback)
-  }
-}
-
-export class Search extends React.Component {
+export default class Search extends React.Component {
   constructor(props) {
     super(props)
 
@@ -50,7 +35,9 @@ export class Search extends React.Component {
       searchAnalytics.trackSiteSearch,
       props.debounceDelay
     )
-    this.updateSearchResultsCallback = this.updateSearchResultsCallback.bind(this)
+    this.updateSearchResultsCallback = this.updateSearchResultsCallback.bind(
+      this
+    )
     this.updatePagination = this.updatePagination.bind(this)
 
     this.querySanitizer = new QuerySanitizer(spellingCorrectionMap)
@@ -78,12 +65,15 @@ export class Search extends React.Component {
   }
 
   getIndexedSearchValue(callback) {
-    return this.searchHistory.retrieve(callback)
+    this.searchHistory.retrieve(callback)
   }
 
   componentDidMount() {
-    this.getIndexedSearchValue((value) => {
-      if(value) this.updateSearchResults(value)
+    this.getIndexedSearchValue((error, value) => {
+      if (error) {
+        console.error(`Error getting search history: ${error}`)
+      }
+      if (value) this.updateSearchResult(value)
     })
   }
 
@@ -119,7 +109,7 @@ export class Search extends React.Component {
   }
 
   updateSearchResultsCallback(evt) {
-    this.updateSearchResult(evt.target.value);
+    this.updateSearchResult(evt.target.value)
   }
 
   /*

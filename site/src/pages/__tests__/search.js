@@ -1,12 +1,12 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import { SearchHistory, Search } from "../search"
+import Search from "../search"
+import SearchHistory from "../../utils/searchhistory"
 import { render, fireEvent } from "react-testing-library"
 import { articleList, articleNode, siteSearchIndex } from "../../utils/testdata"
 import ReactDOMServer from "react-dom/server"
 import { Index } from "elasticlunr"
 import QuerySanitizer from "../../utils/querysanitizer"
-const localForage = require("localforage")
 
 const mockSanitizer = jest.fn(query => query)
 
@@ -18,9 +18,7 @@ jest.mock("../../utils/querysanitizer", () => {
 
 describe("Search", () => {
   
-
   let data
-
 
   beforeEach(() => {
     window._paq = []
@@ -202,44 +200,3 @@ describe("Search", () => {
 //  })
 })
 
-describe("SearchHistory", () => {
-  it("Can be instantiated", () => {
-    const searchHistory = new SearchHistory("some key")
-  })
-
-  it("Storing a search item is possible", () => {
-    const spy = jest.spyOn(localForage, "setItem").mockImplementation(
-      value =>
-        new Promise((resolve, reject) => {
-          resolve(value)
-        })
-    )
-
-    const searchKey = "some key"
-    const queryText = "some random query"
-    const searchHistory = new SearchHistory(searchKey)
-    searchHistory.store(queryText)
-    expect(spy).toBeCalledWith(searchKey, queryText, expect.any(Function))
-    spy.mockRestore()
-  })
-
-  it("Retrieving a search item is possible", async () => {
-    const expected = "stored query"
-    const spy = jest.spyOn(localForage, "getItem").mockImplementation(
-      () =>
-        new Promise((resolve) => {
-          resolve(expected)
-        })
-    )
-
-    const searchKey = "some key"
-    const searchHistory = new SearchHistory(searchKey)
-  
-    searchHistory.retrieve((err, value) => {
-      expect(spy).toBeCalledWith(searchKey, callback)
-      expect(value).toEqual(expected)
-      spy.mockRestore()
-    })
-  })
-
-})
