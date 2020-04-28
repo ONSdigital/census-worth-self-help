@@ -59,7 +59,6 @@
     "chai": "4.2.0",
     "cypress": "^3.4.1",
     "cypress-plugin-retries": "1.2.2",
-    "fake-indexeddb": "^3.0.0",
     "husky": "^4.2.3",
     "identity-obj-proxy": "3.0.0",
     "jest": "^25.1.0",
