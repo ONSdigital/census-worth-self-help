@@ -16,14 +16,25 @@ jest.mock("../../utils/querysanitizer", () => {
   })
 })
 
+const mockStore = jest.fn(value => {})
+const mockRetrieve = jest.fn(callback => {})
+
+jest.mock("../../utils/searchhistory", () => {
+  return jest.fn().mockImplementation(() => {
+    return { 
+      store: mockStore,
+      retrieve: mockRetrieve 
+    }
+  })
+})
+
 describe("Search", () => {
   
   let data
 
   beforeEach(() => {
     window._paq = []
-    QuerySanitizer.mockClear()
-    mockSanitizer.mockClear()
+    jest.clearAllMocks()
 
     const index = new Index();
     const indexVals = ["title", "roles", "tags", "description", "body"]
@@ -155,48 +166,19 @@ describe("Search", () => {
   it("stores the query on search bar update", async () => {
     const query = "i am a test query"
 
-    jest.doMock('../search', () => {
-      return class SearchHistory {
-        store = jest.fn()
-        retrieve() {}
-      }
-    })
-    const SearchHistory = require('../search')
-    const searchHistory = new SearchHistory()
-
     const primarySearch = renderer.create(
       <Search data={data} debounceDelay={0} />
     )
-
-    primarySearch.getInstance().searchHistory = searchHistory
     primarySearch.getInstance().updateIndexedSearchValue(query)
-    expect(searchHistory.store).toHaveBeenCalledWith(query)
-    jest.clearAllMocks
+    expect(mockStore).toHaveBeenCalledWith(query)
  })
 
-//  it("when seach is instantiated then retrieve is called", async () => {
-//   const expected = "stored search query"
-//   let wasCalled
-
-//   const mockRetrieve = jest.fn().mockImplementation((callback) => {
-//     return new Promise((resolve) => {
-//       wasCalled = true
-//       resolve(expected)
-//     })
-//   })
-
-//   jest.doMock('../search', () => {
-//     return class SearchHistory {
-//       store = jest.fn()
-//       retrieve = mockRetrieve
-//     }
-//   })
-
-//   const search = renderer.create(
-//     <Search data={data} debounceDelay={0} />
-//   )
+ it("when search is instantiated then retrieve is called", async () => {
+  const search = renderer.create(
+    <Search data={data} debounceDelay={0} />
+  )
  
-//   expect(mockRetrieve).toHaveBeenCalled()
-//  })
+  expect(mockRetrieve).toHaveBeenCalled()
+ })
 })
 
