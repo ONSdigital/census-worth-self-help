@@ -48,6 +48,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-offline`,
       options: {
+        maximumFileSizeToCacheInBytes: 100000000,
         globPatterns: ["**/*.{css,js,json,html,svg,woff,woff2,ttf}"],
         runtimeCaching: [
           {
