@@ -4,6 +4,8 @@ const localForage = require("localforage")
 describe("SearchHistory", () => {
   it("Can be instantiated", () => {
     const searchHistory = new SearchHistory("some key")
+    expect(searchHistory).toBeTruthy()
+    expect(searchHistory).toBeInstanceOf(SearchHistory)
   })
 
   it("Storing a search item is possible", () => {
@@ -34,7 +36,7 @@ describe("SearchHistory", () => {
     const searchKey = "some key"
     const searchHistory = new SearchHistory(searchKey)
 
-    searchHistory.retrieve((value) => {
+    searchHistory.retrieve(value => {
       expect(spy).toBeCalledWith(searchKey, expect.any(Function))
       expect(value).toEqual(expected)
       spy.mockRestore()

@@ -21,28 +21,25 @@ const mockRetrieve = jest.fn(callback => {})
 
 jest.mock("../../utils/searchhistory", () => {
   return jest.fn().mockImplementation(() => {
-    return { 
+    return {
       store: mockStore,
-      retrieve: mockRetrieve 
+      retrieve: mockRetrieve
     }
   })
 })
 
 describe("Search", () => {
-  
   let data
 
   beforeEach(() => {
     window._paq = []
     jest.clearAllMocks()
 
-    const index = new Index();
+    const index = new Index()
     const indexVals = ["title", "roles", "tags", "description", "body"]
-    
-    indexVals.forEach(name =>
-      index.addField(name)
-    )
-    
+
+    indexVals.forEach(name => index.addField(name))
+
     data = {
       allMarkdownRemark: articleList,
       siteSearchIndex: { index: index.toJSON() }
@@ -153,7 +150,7 @@ describe("Search", () => {
 
   it("the query sanitizer is called with the query when updateSearchResultsCallback is called", () => {
     const evt = { target: { value: "abc" } }
-    
+
     expect(mockSanitizer.mock.calls.length).toEqual(0)
     const search = renderer.create(<Search data={data} debounceDelay={0} />)
     search.getInstance().updateSearchResultsCallback(evt)
@@ -169,16 +166,15 @@ describe("Search", () => {
     const primarySearch = renderer.create(
       <Search data={data} debounceDelay={0} />
     )
-    primarySearch.getInstance().updateIndexedSearchValue(query)
+    primarySearch.getInstance().addTermToSearchHistory(query)
     expect(mockStore).toHaveBeenCalledWith(query)
- })
+  })
 
- it("when search is instantiated then retrieve is called", async () => {
-  const search = renderer.create(
-    <Search data={data} debounceDelay={0} />
-  )
- 
-  expect(mockRetrieve).toHaveBeenCalled()
- })
+  it("when search is instantiated then retrieve is called", async () => {
+    expect(mockRetrieve).not.toHaveBeenCalled()
+
+    const search = renderer.create(<Search data={data} debounceDelay={0} />)
+
+    expect(mockRetrieve).toHaveBeenCalled()
+  })
 })
-

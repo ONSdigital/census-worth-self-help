@@ -60,16 +60,16 @@ export default class Search extends React.Component {
     return this.index
   }
 
-  updateIndexedSearchValue(query) {
+  addTermToSearchHistory(query) {
     this.searchHistory.store(query)
   }
 
-  getIndexedSearchValue(callback) {
+  retrieveSearchHistory(callback) {
     this.searchHistory.retrieve(callback)
   }
 
   componentDidMount() {
-    this.getIndexedSearchValue((error, value) => {
+    this.retrieveSearchHistory((error, value) => {
       if (error) {
         console.error(`Error getting search history: ${error}`)
       }
@@ -80,7 +80,7 @@ export default class Search extends React.Component {
   updateSearchResult(queryText) {
     this.state.paginator.goToPage(0)
 
-    this.updateIndexedSearchValue(queryText)
+    this.addTermToSearchHistory(queryText)
     const sanitizedQuery = this.querySanitizer.sanitize(queryText)
 
     const index = this.getSearchIndex()
