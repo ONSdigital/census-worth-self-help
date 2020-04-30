@@ -1,11 +1,3 @@
-platform: linux
-
-image_resource:
-  type: docker-image
-  source:
-    repository: google/cloud-sdk
-    tag: alpine
-
 run:
   path: sh
   args:
@@ -21,17 +13,6 @@ run:
       fi
 
       echo "REPORTING_MATOMO_AUTH_TOKEN: (set)"
-
-      apk add --no-progress --update nodejs nodejs-npm
-      echo "npm version"
-      npm -v
-      node --version
-
-      export ROOT_FOLDER=$(pwd)
-      npm config set cache ${ROOT_FOLDER}/.npm --global
-
-      cd census-worth-self-help/analytics
-      npm ci
 
       set -e
       node src/review-report-generator.js
