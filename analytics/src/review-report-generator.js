@@ -61,7 +61,7 @@ const dateString =
 
 const siteName = process.env.REPORTING_MATOMO_SITE_NAME || "";
 
-const outFileName = `${dateString}-reviews-report-${siteName}1.csv`;
+const outFileName = `${dateString}-reviews-report-${siteName}.csv`;
 
 matomo.getArticleReviews(queryParams).then((res) => {
   const dataProcessor = new DataProcessor();
