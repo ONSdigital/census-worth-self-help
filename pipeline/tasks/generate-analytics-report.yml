@@ -1,3 +1,5 @@
+platform: linux
+
 run:
   path: sh
   args:
