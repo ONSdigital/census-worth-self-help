@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       uri: https://github.com/ONSdigital/census-worth-self-help.git
-      branch: master
+      branch: feature/ONS-754-refactor
   
   - name: middle-of-the-night
     type: time
@@ -25,14 +25,24 @@ jobs:
       - get: census-worth-self-help
         trigger: false
       
-      - task: generate-report
+      - task: generate-report-one
         file: census-worth-self-help/pipeline/tasks/generate-analytics-report.yml
         params:
           AUTH_KEY: ((gcp.service-account-key))
           PROJECT: ((gcp.project-name))
           REPORTING_MATOMO_BASE_URL: ((analytics.matomo-query-prefix))
           REPORTING_MATOMO_AUTH_TOKEN: ((analytics.matomo-auth-token))
-          REPORTING_MATOMO_SITE_ID: ((analytics.matomo-site-id))
+          REPORTING_MATOMO_SITE_ID: 12
+          REPORTING_BUCKET_NAME: ((analytics.analytics-reports-bucket))
+
+      - task: generate-report-two
+        file: census-worth-self-help/pipeline/tasks/generate-analytics-report.yml
+        params:
+          AUTH_KEY: ((gcp.service-account-key))
+          PROJECT: ((gcp.project-name))
+          REPORTING_MATOMO_BASE_URL: ((analytics.matomo-query-prefix))
+          REPORTING_MATOMO_AUTH_TOKEN: ((analytics.matomo-auth-token))
+          REPORTING_MATOMO_SITE_ID: 2
           REPORTING_BUCKET_NAME: ((analytics.analytics-reports-bucket))
             
         
