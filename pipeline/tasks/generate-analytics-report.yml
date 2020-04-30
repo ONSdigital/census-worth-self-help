@@ -38,6 +38,7 @@ run:
 
 inputs:
   - name: census-worth-self-help
+  - name: node-workspace
 
 caches:
   - path: .npm

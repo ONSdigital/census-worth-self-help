@@ -23,8 +23,8 @@ run:
       cd census-worth-self-help/analytics
       npm ci
 
-inputs:
-  - name: census-worth-self-help
+outputs:
+  - name: node-workspace
 
 caches:
   - path: .npm
