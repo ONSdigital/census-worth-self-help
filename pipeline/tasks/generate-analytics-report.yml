@@ -1,4 +1,3 @@
-
 platform: linux
 
 image_resource:
@@ -10,43 +9,43 @@ image_resource:
 run:
   path: sh
   args:
-  - -exec
-  - |
-    echo "REPORTING_MATOMO_BASE_URL: ${REPORTING_MATOMO_BASE_URL}"
-    echo "REPORTING_MATOMO_SITE_ID: ${REPORTING_MATOMO_SITE_ID}"
-    echo "REPORTING_BUCKET_NAME: ${REPORTING_BUCKET_NAME}"
+    - -exec
+    - |
+      echo "REPORTING_MATOMO_BASE_URL: ${REPORTING_MATOMO_BASE_URL}"
+      echo "REPORTING_MATOMO_SITE_ID: ${REPORTING_MATOMO_SITE_ID}"
+      echo "REPORTING_BUCKET_NAME: ${REPORTING_BUCKET_NAME}"
 
-    if [ -z "${REPORTING_MATOMO_AUTH_TOKEN+x}" ]; then
-      echo "Missing REPORTING_MATOMO_AUTH_TOKEN"
-      exit -1
-    fi
+      if [ -z "${REPORTING_MATOMO_AUTH_TOKEN+x}" ]; then
+        echo "Missing REPORTING_MATOMO_AUTH_TOKEN"
+        exit -1
+      fi
 
-    echo "REPORTING_MATOMO_AUTH_TOKEN: (set)"
+      echo "REPORTING_MATOMO_AUTH_TOKEN: (set)"
 
-    apk add --no-progress --update nodejs nodejs-npm
-    echo "npm version"
-    npm -v
-    node --version
+      apk add --no-progress --update nodejs nodejs-npm
+      echo "npm version"
+      npm -v
+      node --version
 
-    export ROOT_FOLDER=$(pwd)
-    npm config set cache ${ROOT_FOLDER}/.npm --global
+      export ROOT_FOLDER=$(pwd)
+      npm config set cache ${ROOT_FOLDER}/.npm --global
 
-    cd census-worth-self-help/analytics
-    npm ci
+      cd census-worth-self-help/analytics
+      npm ci
 
-    set -e
-    node src/review-report-generator.js
+      set -e
+      node src/review-report-generator.js
 
-    set +x
-    echo $AUTH_KEY > encrypted_key.txt
-    set -x
+      set +x
+      echo $AUTH_KEY > encrypted_key.txt
+      set -x
 
-    base64 -d encrypted_key.txt > service-account.json
-    gcloud auth activate-service-account --key-file service-account.json
-    gcloud config set project $PROJECT
+      base64 -d encrypted_key.txt > service-account.json
+      gcloud auth activate-service-account --key-file service-account.json
+      gcloud config set project $PROJECT
 
-    echo "Copying reports to $REPORTING_GCP_BUCKET_ID"
-    gsutil cp "src/out/*.csv" "gs://$REPORTING_BUCKET_NAME/"
+      echo "Copying reports to $REPORTING_GCP_BUCKET_ID"
+      gsutil cp "src/out/*.csv" "gs://$REPORTING_BUCKET_NAME/$REPORTING_MATOMO_SITE_ID"
 
 inputs:
   - name: census-worth-self-help
