@@ -45,7 +45,7 @@ run:
       gcloud config set project $PROJECT
 
       echo "Copying reports to $REPORTING_GCP_BUCKET_ID"
-      gsutil cp "src/out/*.csv" "gs://$REPORTING_BUCKET_NAME/$REPORTING_MATOMO_SITE_ID/"
+      gsutil cp "src/out/*.csv" "gs://$REPORTING_BUCKET_NAME/$REPORTING_MATOMO_SITE_NAME/"
 
 inputs:
   - name: census-worth-self-help
