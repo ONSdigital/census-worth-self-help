@@ -9,6 +9,7 @@ import DateTimeWidget from "../utils/datetime-widget"
 import { WidgetPreviewContainer } from "netlify-cms-ui-default"
 import NetlifyCmsWidgetMarkdown from "netlify-cms-widget-markdown"
 
+//ONS-397 This widget registration can be removed if Netlify is ever updated to the latest - it is a backport from 2.12.11. The standard datetime widget can then be used in the config.yml
 CMS.registerWidget(
   "dateTimeWithNow",
   DateTimeWidget.controlComponent,
