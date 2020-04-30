@@ -1,8 +1,29 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: google/cloud-sdk
+    tag: alpine
+
+
 run:
   path: sh
   args:
     - -exec
     - |
+
+      apk add --no-progress --update nodejs nodejs-npm
+      echo "npm version"
+      npm -v
+      node --version
+
+      export ROOT_FOLDER=$(pwd)
+      npm config set cache ${ROOT_FOLDER}/.npm --global
+
+      cd census-worth-self-help/analytics
+      npm ci
+
       echo "REPORTING_MATOMO_BASE_URL: ${REPORTING_MATOMO_BASE_URL}"
       echo "REPORTING_MATOMO_SITE_ID: ${REPORTING_MATOMO_SITE_ID}"
       echo "REPORTING_BUCKET_NAME: ${REPORTING_BUCKET_NAME}"
@@ -30,7 +51,6 @@ run:
 
 inputs:
   - name: census-worth-self-help
-  - name: node-workspace
 
 caches:
   - path: .npm
