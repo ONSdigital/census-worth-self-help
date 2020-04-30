@@ -59,7 +59,9 @@ date.setDate(date.getDate() - 1);
 const dateString =
   process.env.REPORTING_DATE || reportGenerator.getReportDateString();
 
-const outFileName = `${dateString}-reviews-report.csv`;
+const siteName = process.env.REPORTING_MATOMO_SITE_NAME || "";
+
+const outFileName = `${dateString}-reviews-report-${siteName}.csv`;
 
 matomo.getArticleReviews(queryParams).then((res) => {
   const dataProcessor = new DataProcessor();
