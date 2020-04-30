@@ -25,6 +25,9 @@ run:
 
 outputs:
   - name: node-workspace
+  
+inputs:
+  - name: census-worth-self-help
 
 caches:
   - path: .npm
