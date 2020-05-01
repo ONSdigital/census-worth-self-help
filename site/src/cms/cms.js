@@ -4,7 +4,7 @@ import TextBlock from "../components/textblock"
 import PageTitle from "../components/pagetitle"
 import { transformSources, htmlSanitize } from "../utils/contenttransforms"
 
-import DateTimeWidget from "../utils/datetime-widget"
+import DateTimeWidget from "./components/datetime-widget"
 
 import { WidgetPreviewContainer } from "netlify-cms-ui-default"
 import NetlifyCmsWidgetMarkdown from "netlify-cms-widget-markdown"
