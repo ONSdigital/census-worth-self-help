@@ -43,6 +43,9 @@ const samsungJ4PlusSize = [
   }
 ]
 
+// Text colour
+const errorTextColour = "rgb(204, 0, 0)"
+
 module.exports = {
   // Article names
   deepArticle,
@@ -67,5 +70,8 @@ module.exports = {
   videoArticlePath,
 
   // Resources
-  faviconPath
+  faviconPath,
+
+  // Text colour
+  errorTextColour
 }
