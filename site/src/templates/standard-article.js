@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import PageTitle from "../components/pagetitle"
+import ArticlePageTitle from "../components/articlepagetitle"
 import Breadcrumbs from "../components/breadcrumbs"
 import TextBlock from "../components/textblock"
 import BlockButton from "../components/blockbutton"
@@ -200,7 +200,7 @@ export default class Article extends React.Component {
               background-color: white;
             `}
           >
-            <PageTitle
+            <ArticlePageTitle
               pageType="article"
               subtitle={
                 post && (
@@ -214,7 +214,7 @@ export default class Article extends React.Component {
               isArticle
             >
               {pageContext.title}
-            </PageTitle>
+            </ArticlePageTitle>
 
             {!bookmarked && (
               <BlockButton

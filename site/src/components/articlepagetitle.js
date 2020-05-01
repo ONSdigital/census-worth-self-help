@@ -1,12 +1,18 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { spacing } from "../utils/styles"
+import { spacing, colors } from "../utils/styles"
 import Metadata from "./metadata"
 import { getSiteSpecificStyle } from "../utils/contenttransforms"
 
-export default ({ children, icon = null, subtitle = null, pageType }) => {
+export default ({
+  children,
+  icon = null,
+  subtitle = null,
+  roles = "",
+  pageType,
+}) => {
   const siteSpecificColourClass = getSiteSpecificStyle().siteSpecificColourClass
-
+  const invalidRoles = roles === ""
   return (
     <div
       css={css`
@@ -45,6 +51,27 @@ export default ({ children, icon = null, subtitle = null, pageType }) => {
           {subtitle}
         </div>
       )}
+      {
+        <div
+          css={css`
+            padding-top: 5px;
+            padding-bottom: 15px;
+          `}
+          className="Button-subhead-Style"
+        >
+          Roles this article applies to:{" "}
+          <span
+            data-testid="article-roles-list"
+            css={css`
+              color: ${invalidRoles ? colors.error_red : colors.primary_purple};
+            `}
+          >
+            {invalidRoles
+              ? "Error please notify Field Staff Support there are no roles associated with this article"
+              : roles}
+          </span>
+        </div>
+      }
     </div>
   )
 }
