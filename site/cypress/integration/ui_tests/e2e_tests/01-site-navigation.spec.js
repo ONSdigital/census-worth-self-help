@@ -61,14 +61,19 @@ describe("Navigating the site and reading articles", function() {
         })
     });
 
-    it('An error in an article without roles', function () {
+    it('If there are no roles associated with an article then show an error', function () {
       cy.visit(globalTestData.deepArticlePath);
       cy.get(article.roles).should('have.text', 'Error please notify Field Staff Support there are no roles associated with this article');
     });
 
-    it('A list of roles in an article', function () {
+    it('The role associated with an article is shown on the page', function () {
       cy.visit(globalTestData.aVerySimpleArticlePath);
       cy.get(article.roles).should('have.text', 'A Role');
+    });
+
+    it('The multiple roles associated with an article is shown on the page', function () {
+      cy.visit(globalTestData.anArticleWithRolesPath);
+      cy.get(article.roles).should('have.text', 'A Role, B Role, C Role, D Role, E Role, F Role, G Role, H Role, I Role, J Role');
     });
 
     it('Explore content on the homepage brings up the menu', function () {

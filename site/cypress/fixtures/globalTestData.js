@@ -8,6 +8,7 @@ const reviwemeArticle = 'reviweme'
 
 // Article paths
 const aVerySimpleArticlePath = '/a-very-simple-article/'
+const anArticleWithRolesPath = '/an-article-with-many-roles/'
 const deepArticlePath = '/deep-article/'
 const editorialWorkflowPath = '/editorial-workflow'
 const imageArticlePath = '/image-tests'
@@ -56,6 +57,7 @@ module.exports = {
 
     // URLs
   aVerySimpleArticlePath,
+  anArticleWithRolesPath,
   deepArticlePath,
   editorialWorkflowPath,
   explorePagePath,
