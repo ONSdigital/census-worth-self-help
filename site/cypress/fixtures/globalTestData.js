@@ -8,6 +8,7 @@ const reviwemeArticle = 'reviweme'
 
 // Article paths
 const aVerySimpleArticlePath = '/a-very-simple-article/'
+const anArticleWithRolesPath = '/an-article-with-many-roles/'
 const deepArticlePath = '/deep-article/'
 const editorialWorkflowPath = '/editorial-workflow'
 const imageArticlePath = '/image-tests'
@@ -42,6 +43,9 @@ const samsungJ4PlusSize = [
   }
 ]
 
+// Text colour
+const errorTextColour = "rgb(204, 0, 0)"
+
 module.exports = {
   // Article names
   deepArticle,
@@ -56,6 +60,7 @@ module.exports = {
 
     // URLs
   aVerySimpleArticlePath,
+  anArticleWithRolesPath,
   deepArticlePath,
   editorialWorkflowPath,
   explorePagePath,
@@ -65,5 +70,8 @@ module.exports = {
   videoArticlePath,
 
   // Resources
-  faviconPath
+  faviconPath,
+
+  // Text colour
+  errorTextColour
 }

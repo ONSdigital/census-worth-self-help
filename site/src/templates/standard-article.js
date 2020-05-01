@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import PageTitle from "../components/pagetitle"
+import ArticlePageTitle from "../components/articlepagetitle"
 import Breadcrumbs from "../components/breadcrumbs"
 import TextBlock from "../components/textblock"
 import BlockButton from "../components/blockbutton"
@@ -141,6 +141,27 @@ export default class Article extends React.Component {
     })
   }
 
+  concatenateRoles(roles) {
+    return roles.join(", ")
+  }
+
+  getRoles(post) {
+    return this.hasRoles(post)
+      ? this.concatenateRoles(post.frontmatter.roles)
+      : ""
+  }
+
+  hasRoles(post) {
+    if (post) {
+      if (post.frontmatter) {
+        if (post.frontmatter.roles) {
+          return true
+        }
+      }
+    }
+    return false
+  }
+
   render() {
     let { data, pageContext } = this.props
     const post = data.markdownRemark
@@ -164,6 +185,8 @@ export default class Article extends React.Component {
       ? transformSources(post.html)
       : "Article content not found. Please Report."
 
+    let roles = this.getRoles(post)
+
     return (
       <div>
         <Layout phone_link={true}>
@@ -177,7 +200,7 @@ export default class Article extends React.Component {
               background-color: white;
             `}
           >
-            <PageTitle
+            <ArticlePageTitle
               pageType="article"
               subtitle={
                 post && (
@@ -187,9 +210,11 @@ export default class Article extends React.Component {
                   </span>
                 )
               }
+              roles={roles}
+              isArticle
             >
               {pageContext.title}
-            </PageTitle>
+            </ArticlePageTitle>
 
             {!bookmarked && (
               <BlockButton
@@ -199,7 +224,6 @@ export default class Article extends React.Component {
                 clickFunction={this.bookmarkPage}
               />
             )}
-
             {bookmarked && (
               <BlockButton
                 icon={<FontAwesomeIcon icon={faBookmarkSolid} />}
@@ -208,7 +232,6 @@ export default class Article extends React.Component {
                 clickFunction={this.unBookmarkPage}
               />
             )}
-
             <div
               css={css`
                 margin-top: 20px;
@@ -227,7 +250,6 @@ export default class Article extends React.Component {
                 />
               </TextBlock>
             </div>
-
             <Section>
               <div
                 className="Section-heading-Style"

@@ -422,6 +422,38 @@ exports[`StandardArticle renders correctly 1`] = `
                 </i>
               </span>
             </div>
+            <div
+              className="Button-subhead-Style"
+              css={
+                Object {
+                  "map": undefined,
+                  "name": "wzn8if",
+                  "next": undefined,
+                  "styles": "
+            padding-top: 5px;
+            padding-bottom: 15px;
+          ",
+                }
+              }
+            >
+              Roles this article applies to:
+               
+              <span
+                css={
+                  Object {
+                    "map": undefined,
+                    "name": "1mn5hqd",
+                    "next": undefined,
+                    "styles": "
+              color: rgb(144, 32, 130);
+            ",
+                  }
+                }
+                data-testid="article-roles-list"
+              >
+                arole
+              </span>
+            </div>
           </div>
           <div
             className="clickable"

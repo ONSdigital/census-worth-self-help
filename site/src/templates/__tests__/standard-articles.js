@@ -11,7 +11,6 @@ import {
 import { render, fireEvent } from "react-testing-library"
 
 describe("StandardArticle", () => {
-  
   beforeEach(() => {
     window._paq = []
   })
@@ -123,5 +122,80 @@ describe("StandardArticle", () => {
     )
 
     expect(getByTestId("webchat-link")).toBeDefined()
+  })
+
+  it("if there are no roles related to the article return empty string", () => {
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+    expect(articleInstance.concatenateRoles([])).toEqual("")
+  })
+
+  it("if there is one role related to the article return it", () => {
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+    expect(articleInstance.concatenateRoles(["role A"])).toEqual("role A")
+  })
+
+  it("if there are multiple roles related to the article return them", () => {
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+    expect(
+      articleInstance.concatenateRoles(["role A", "role B", "role C", "D"])
+    ).toEqual("role A, role B, role C, D")
+  })
+
+  it("returns an empty string when there are no roles in the page data", () => {
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+
+    let editedData = { frontmatter: { roles: [] } }
+
+    expect(articleInstance.getRoles(editedData)).toEqual("")
+  })
+
+  it("returns an empty string when the roles object doesn't exist", () => {
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+
+    let editedData = { frontmatter: {} }
+
+    expect(articleInstance.getRoles(editedData)).toEqual('')
+  })
+  it("can get the roles from the page data when they exist", () => {
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+
+    const post = data.markdownRemark
+    expect(articleInstance.getRoles(post)).toEqual("arole")
+  })
+  it("hasroles returns true if there are roles", () => {
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+    const post = data.markdownRemark
+
+    expect(articleInstance.hasRoles(post)).toBeTruthy()
+  })
+  it("hasroles returns true if there is an empty roles object", () => {
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+    let post = { frontmatter: { roles: [] } }
+
+    expect(articleInstance.hasRoles(post)).toBeTruthy()
+  })
+  it("hasroles returns false if the roles object does not exist", () => {
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+    let post = { frontmatter: {} }
+
+    expect(articleInstance.hasRoles(post)).toBeFalsy()
   })
 })
