@@ -67,7 +67,7 @@ export default ({
             `}
           >
             {invalidRoles
-              ? "Error Please notify Field Staff Support there are no roles associated with this article"
+              ? "Error please notify Field Staff Support there are no roles associated with this article"
               : roles}
           </span>
         </div>
