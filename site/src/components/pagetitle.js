@@ -62,6 +62,7 @@ export default ({
         >
           Roles this article applies to:{" "}
           <span
+            data-testid="article-roles-list"
             css={css`
               color: ${invalidRoles ? colors.error_red : colors.primary_purple};
             `}

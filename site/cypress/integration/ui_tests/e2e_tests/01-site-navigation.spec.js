@@ -61,6 +61,16 @@ describe("Navigating the site and reading articles", function() {
         })
     });
 
+    it('An error in an article without roles', function () {
+      cy.visit(globalTestData.deepArticlePath);
+      cy.get(article.roles).should('have.text', 'Error please notify Field Staff Support there are no roles associated with this article');
+    });
+
+    it('A list of roles in an article', function () {
+      cy.visit(globalTestData.aVerySimpleArticlePath);
+      cy.get(article.roles).should('have.text', 'A Role');
+    });
+
     it('Explore content on the homepage brings up the menu', function () {
         cy.get(menu.menuOverlay).should('not.be.visible');
         cy.get(homepage.exploreContentButton).click();

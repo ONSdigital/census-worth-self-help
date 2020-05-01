@@ -449,6 +449,7 @@ exports[`StandardArticle renders correctly 1`] = `
             ",
                   }
                 }
+                data-testid="article-roles-list"
               >
                 arole
               </span>
