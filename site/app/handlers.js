@@ -8,13 +8,13 @@ const CLOCK_CONTINGENCY = milliseconds(process.env.CLOCK_CONTINGENCY || -1)
 
 const sanitizeDestination = function (destination) {
   if (!destination) {
-    return ''
+    return ""
   }
 
   if (destination.match(destinationRegex)) {
     return destination
   }
-  return ''
+  return ""
 }
 
 const extractPageName = function (path) {
@@ -31,39 +31,43 @@ const isTokenValid = (date) => {
 
 module.exports = {
   // User serialisation / deserialisation is simple one-to-one mappin
-  mapUser : function (user, done) {
+  mapUser: function (user, done) {
     done(null, user)
   },
 
-  callback : function(req, res) {
-    res.redirect('/' + sanitizeDestination(req.body.RelayState));
+  callback: function (req, res) {
+    res.redirect("/" + sanitizeDestination(req.body.RelayState))
   },
 
-  logout: function(idpLogout) {
+  logout: function (idpLogout) {
     return function (req, res) {
-      req.logout();
-      res.redirect(idpLogout);
+      req.logout()
+      res.redirect(idpLogout)
     }
   },
 
-  preAuthenticate : function(req,res,next) {
-    req.query.RelayState = req.query.destination;
-    next();
+  preAuthenticate: function (req, res, next) {
+    req.query.RelayState = req.query.destination
+    next()
   },
 
   milliseconds,
 
-  requireAuthenticated : function(req, res, next) {
+  requireAuthenticated: function (req, res, next) {
     if (req.isAuthenticated() && isTokenValid(req.user.date)) {
       next()
     } else {
       const destination = extractPageName(req.path)
       if (destination) {
-        res.redirect('/login?destination=' + destination)
+        res.redirect("/login?destination=" + destination)
       } else {
-        res.redirect('/login')
+        res.redirect("/login")
       }
     }
-  }
-}
+  },
 
+  isImageAuth: function (req, res, next) {
+    res.status(401)
+    res.send()
+  },
+}
