@@ -4,7 +4,7 @@ const {
   logout,
   preAuthenticate,
   requireAuthenticated,
-  isImageAuth
+  requireImageUploadAuthorized
 } = require("../handlers.js")
 
 let request = {
@@ -44,10 +44,19 @@ let state = {
   }.bind()
 }
 
-describe("isImageAuth", () => {
+describe("Image uploading authentication and authorization", () => {
   it("should return 401 if you have no sign in token", () => {
-    isImageAuth({ ...request, path: "/api/test" }, response, state.next)
+    requireImageUploadAuthorized({ ...request, path: "/api/uploadtoken" }, response, state.next)
     expect(response.statusValue).to.equal(401)
+  })
+
+  it.skip("should return 403 if you have insufficient access rights", () => {
+    let localRequest = {...request}
+    localRequest.isAuthenticated = () => {
+      return true
+    }
+    requireImageUploadAuthorized({ ...localRequest, path: "/api/uploadtoken" }, response, state.next)
+    expect(response.statusValue).to.equal(403)
   })
 })
 

@@ -29,6 +29,10 @@ const isTokenValid = (date) => {
   return CLOCK_CONTINGENCY < delta && delta < VALID_TOKEN_AGE
 }
 
+const isAuthorizedImageUploadUser = (user) => {
+  return !!user
+}
+
 module.exports = {
   // User serialisation / deserialisation is simple one-to-one mappin
   mapUser: function (user, done) {
@@ -66,8 +70,16 @@ module.exports = {
     }
   },
 
-  isImageAuth: function (req, res, next) {
-    res.status(401)
+  requireImageUploadAuthorized: function (req, res, next) {
+    if (req.isAuthenticated() && isTokenValid(req.user.date)) {
+      if(isAuthorizedImageUploadUser(req.user)) {
+        next()
+      } else {
+        res.status(403)
+      }
+    } else {
+      res.status(401)
+    }    
     res.send()
   },
 }

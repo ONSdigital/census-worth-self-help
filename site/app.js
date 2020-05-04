@@ -117,10 +117,11 @@ if (SP_PROTECTED === "false") {
   app.get("/api/auth", requireAuthenticated, (request, response) =>
     withoutEtag(response).send("AUTH")
   )
-  app.get("/api/test", requireAuthenticated, (request, response) => {
-    console.log(request)
-    console.log(request.body)
-    response.send(request.cookies.token)
+  app.get("/api/uploadtoken", requireAuthenticated, (request, response) => {
+    // call uploadcare signature generator 
+    // log the user id
+    // response.send(request.cookies.token)
+    response.send('placeholder for upload care signature')
   })
 
   app.get("/saml/metadata", function (req, res) {
