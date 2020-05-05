@@ -8,18 +8,19 @@ const hstsheader = require("./app/hstsheader").default
 const UploadcareSignature = require("./app/UploadcareSignature")
 
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
+const UPLOAD_TOKEN_EXPIRY_SECONDS = process.env.UPLOAD_EXPIRY || 120
 
-const withoutEtag = (response) => {
-  onHeaders(response, function () {
+const withoutEtag = response => {
+  onHeaders(response, function() {
     this.removeHeader("ETag")
   })
   return response
 }
 
-const twoMinutesFrom = (date) => {
-  const twoMinutes = 2 * 60 * 1000
+const addSecondsToDate = (date, seconds) => {
+  const intervalInMs = seconds * 1000
   const newDate = date
-  newDate.setDate(newDate.getTime() + twoMinutes)
+  newDate.setMilliseconds(newDate.getMilliseconds() + intervalInMs)
   return newDate
 }
 
@@ -72,7 +73,7 @@ if (SP_PROTECTED === "false") {
     cookieSession({
       name: "token",
       secret: COOKIE_SECRET,
-      maxAge: milliseconds(COOKIE_TIMEOUT),
+      maxAge: milliseconds(COOKIE_TIMEOUT)
     })
   )
   app.use(bodyParser.urlencoded({ extended: true }))
@@ -90,14 +91,14 @@ if (SP_PROTECTED === "false") {
       identifierFormat:
         "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
       issuer: SP_ENTITY_ID,
-      privateCert: spKey,
+      privateCert: spKey
     },
-    function (profile, done) {
+    function(profile, done) {
       done(null, {
         nameID: profile.nameID,
         nameIDFormat: profile.nameIDFormat,
         email: profile.email,
-        date: Date.now(),
+        date: Date.now()
       })
     }
   )
@@ -111,13 +112,12 @@ if (SP_PROTECTED === "false") {
     callback
   )
 
-
   app.get(
     "/login",
     preAuthenticate,
     passport.authenticate("saml", {
       failureRedirect: "/",
-      failureFlash: true,
+      failureFlash: true
     })
   )
 
@@ -128,20 +128,31 @@ if (SP_PROTECTED === "false") {
     withoutEtag(response).send("AUTH")
   )
 
-  app.get("/api/uploadtoken", requireImageUploadAuthorized, (request, response) => {
-    // AUDIT: log the user id here
-    
-    if(!UPLOAD_SECRET) {
-      console.error("Missing UPLOAD_SECRET, cannot generate secret")
-      response.status(500).send()
+  app.get(
+    "/api/uploadtoken",
+    requireImageUploadAuthorized,
+    (request, response) => {
+      // AUDIT: log the user id here
+      if (!UPLOAD_SECRET) {
+        console.error("Missing UPLOAD_SECRET, cannot generate secret")
+        response.status(500).send()
+      } else {
+        const expiryEpoch = Math.floor(
+          addSecondsToDate(new Date(), UPLOAD_TOKEN_EXPIRY_SECONDS).getTime() /
+            1000
+        )
+        response.send({
+          signature: new UploadcareSignature().generate(
+            UPLOAD_SECRET,
+            expiryEpoch
+          ),
+          expiry: expiryEpoch
+        })
+      }
     }
-    else {
-      const expiryDate = twoMinutesFrom(new Date())
-      response.send(new UploadcareSignature().generate(UPLOAD_SECRET, expiryDate.getTime()/1000))
-    }
-  })
+  )
 
-  app.get("/saml/metadata", function (req, res) {
+  app.get("/saml/metadata", function(req, res) {
     res.type("application/xml")
     res.send(samlStrategy.generateServiceProviderMetadata(null, spCertificate))
   })
@@ -154,3 +165,5 @@ const PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`)
 })
+
+module.exports = { addSecondsToDate }
