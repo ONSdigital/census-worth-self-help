@@ -4,10 +4,13 @@ import TextBlock from "../components/textblock"
 import PageTitle from "../components/pagetitle"
 import { transformSources, htmlSanitize } from "../utils/contenttransforms"
 
-
-
 import { WidgetPreviewContainer } from "netlify-cms-ui-default"
 import NetlifyCmsWidgetMarkdown from "netlify-cms-widget-markdown"
+
+const config = {
+  config: {}
+}
+CMS.init(config)
 
 const showdown = require("showdown"),
   converter = new showdown.Converter()
@@ -37,6 +40,7 @@ const ArticlePreview = ({ entry, widgetFor }) => {
       )
     }
   }
+
   return (
     <div>
       {linkDiv}
