@@ -64,6 +64,7 @@ if (SP_PROTECTED === "false") {
   const SP_CALLBACK_URL = process.env.SP_CALLBACK_URL
   const SP_ENTITY_ID = process.env.SP_ENTITY_ID
   const COOKIE_TIMEOUT = process.env.COOKIE_TIMEOUT || 5
+  const UPLOAD_SECRET = process.env.UPLOAD_SECRET
 
   // For an protected deployment, protect static file from /public with SAML SSO
   app.use(cookieParser())
@@ -92,7 +93,6 @@ if (SP_PROTECTED === "false") {
       privateCert: spKey,
     },
     function (profile, done) {
-      console.log(`Inside saml passport callback: ${JSON.stringify(profile)}`)
       done(null, {
         nameID: profile.nameID,
         nameIDFormat: profile.nameIDFormat,
@@ -130,8 +130,15 @@ if (SP_PROTECTED === "false") {
 
   app.get("/api/uploadtoken", requireImageUploadAuthorized, (request, response) => {
     // AUDIT: log the user id here
-    const expiryDate = twoMinutesFrom(new Date())
-    response.send(new UploadcareSignature().generate("some_secret", expiryDate.getTime()/1000))
+    
+    if(!UPLOAD_SECRET) {
+      console.error("Missing UPLOAD_SECRET, cannot generate secret")
+      response.status(500).send()
+    }
+    else {
+      const expiryDate = twoMinutesFrom(new Date())
+      response.send(new UploadcareSignature().generate(UPLOAD_SECRET, expiryDate.getTime()/1000))
+    }
   })
 
   app.get("/saml/metadata", function (req, res) {

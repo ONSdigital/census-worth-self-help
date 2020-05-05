@@ -12,6 +12,7 @@ if [[ "true" == "${PROTECTED}" ]] ; then
   export SP_CERTIFICATE=`base64 .secrets/sp/sp.certificate`
   export SP_KEY=`base64 .secrets/sp/sp.key`
   export SP_CALLBACK_URL="http://${SP_DOMAIN_NAME}/sso/callback"
+  export UPLOAD_SECRET="${UPLOAD_SECRET}"
 fi
 
 echo "GATSBY_ASSETS_PATH = ${GATSBY_ASSETS_PATH}"

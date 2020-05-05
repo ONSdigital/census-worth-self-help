@@ -46,8 +46,23 @@ let state = {
 
 describe("Image uploading authentication and authorization", () => {
   it("should return 401 if you have no sign in token", () => {
-    requireImageUploadAuthorized({ ...request, path: "/api/uploadtoken" }, response, state.next)
-    expect(response.statusValue).to.equal(401)
+    let localRequest = {
+      body: {},
+      logoutCalled: false,
+      path: "/",
+      query: {},
+      isAuthenticated: function() {
+        return false
+      },
+      logout: function() {
+        this.logoutCalled = true
+      }
+    }
+
+    const localResponse = {...response}
+    
+    requireImageUploadAuthorized({ ...request, path: "/api/uploadtoken" }, localResponse, state.next)
+    expect(localResponse.statusValue).to.equal(401)
   })
 
   it.skip("should return 403 if you have insufficient access rights", () => {
@@ -55,8 +70,32 @@ describe("Image uploading authentication and authorization", () => {
     localRequest.isAuthenticated = () => {
       return true
     }
-    requireImageUploadAuthorized({ ...localRequest, path: "/api/uploadtoken" }, response, state.next)
-    expect(response.statusValue).to.equal(403)
+    const localResponse = {...response}
+    requireImageUploadAuthorized({ ...localRequest, path: "/api/uploadtoken" }, localResponse, state.next)
+    expect(localResponse.statusValue).to.equal(403)
+  })
+
+  it("should return 200 if the user is authorized", () => {
+    let localRequest = {
+      body: {},
+      logoutCalled: false,
+      path: "/",
+      query: {},
+      isAuthenticated: function() {
+        return true
+      },
+    
+      user: {
+        date: Date.now()
+      },
+      logout: function() {
+        this.logoutCalled = true
+      }
+    }
+
+    const localResponse = {...response}
+    requireImageUploadAuthorized({ ...localRequest, path: "/api/uploadtoken" }, localResponse, state.next)
+    expect(localResponse.statusValue).to.equal(200)
   })
 })
 
