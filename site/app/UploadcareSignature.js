@@ -1,12 +1,14 @@
-import CryptoJS from 'crypto-js';
+const CryptoJS = require("crypto-js")
 
-export default class UploadcareSignature {
+class UploadcareSignature {
 
-generate(secret, expire) {
-  let key = secret
-  let message = expire.toString()
+  generate(secret, expire) {
+    let key = secret
+    let message = expire.toString()
 
-  const hash = CryptoJS.HmacSHA256(message, key);
-  return CryptoJS.enc.Hex.stringify(hash);
+    const hash = CryptoJS.HmacSHA256(message, key);
+    return CryptoJS.enc.Hex.stringify(hash);
+  }
 }
-}
+
+module.exports = UploadcareSignature

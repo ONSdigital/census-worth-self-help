@@ -76,10 +76,11 @@ module.exports = {
         next()
       } else {
         res.status(403)
+        res.send()
       }
     } else {
       res.status(401)
+      res.send()
     }    
-    res.send()
   },
 }

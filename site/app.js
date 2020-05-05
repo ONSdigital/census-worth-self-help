@@ -5,6 +5,7 @@ const onHeaders = require("on-headers")
 const app = express()
 const csp = require("./app/csp").default
 const hstsheader = require("./app/hstsheader").default
+const UploadcareSignature = require("./app/UploadcareSignature")
 
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
 
@@ -13,6 +14,13 @@ const withoutEtag = (response) => {
     this.removeHeader("ETag")
   })
   return response
+}
+
+const twoMinutesFrom = (date) => {
+  const twoMinutes = 2 * 60 * 1000
+  const newDate = date
+  newDate.setDate(newDate.getTime() + twoMinutes)
+  return newDate
 }
 
 app.use(
@@ -47,6 +55,7 @@ if (SP_PROTECTED === "false") {
     preAuthenticate,
     requireAuthenticated,
     milliseconds,
+    requireImageUploadAuthorized
   } = require("./app/handlers")
 
   const COOKIE_SECRET = process.env.COOKIE_SECRET
@@ -83,6 +92,7 @@ if (SP_PROTECTED === "false") {
       privateCert: spKey,
     },
     function (profile, done) {
+      console.log(`Inside saml passport callback: ${JSON.stringify(profile)}`)
       done(null, {
         nameID: profile.nameID,
         nameIDFormat: profile.nameIDFormat,
@@ -95,12 +105,12 @@ if (SP_PROTECTED === "false") {
   passport.use(samlStrategy)
   passport.serializeUser(mapUser)
   passport.deserializeUser(mapUser)
-
   app.post(
     "/sso/callback",
     passport.authenticate("saml", { failureRedirect: "/", failureFlash: true }),
     callback
   )
+
 
   app.get(
     "/login",
@@ -117,11 +127,11 @@ if (SP_PROTECTED === "false") {
   app.get("/api/auth", requireAuthenticated, (request, response) =>
     withoutEtag(response).send("AUTH")
   )
-  app.get("/api/uploadtoken", requireAuthenticated, (request, response) => {
-    // call uploadcare signature generator 
-    // log the user id
-    // response.send(request.cookies.token)
-    response.send('placeholder for upload care signature')
+
+  app.get("/api/uploadtoken", requireImageUploadAuthorized, (request, response) => {
+    // AUDIT: log the user id here
+    const expiryDate = twoMinutesFrom(new Date())
+    response.send(new UploadcareSignature().generate("some_secret", expiryDate.getTime()/1000))
   })
 
   app.get("/saml/metadata", function (req, res) {
