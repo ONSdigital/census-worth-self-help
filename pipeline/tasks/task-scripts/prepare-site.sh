@@ -52,6 +52,9 @@ if [[ "${SP_PROTECTED}" != "false" ]] ; then
   echo "  SP_ENTITY_ID: '${spProtocol}://${SP_DOMAIN_NAME}/saml/metadata'" >> ${appFile}
   echo "  SP_PROTECTED: ${SP_PROTECTED}" >> ${appFile}
   echo "  VALID_TOKEN_AGE: ${VALID_TOKEN_AGE}" >> ${appFile}
+  set +x
+  echo "  UPLOAD_SECRET: ${UPLOAD_SECRET}" >> ${appFile}
+  set -x
 else
   echo "env_variables:" >> ${appFile}
   echo "  SP_PROTECTED: ${SP_PROTECTED}" >> ${appFile}
