@@ -9,9 +9,11 @@ import NetlifyCmsWidgetMarkdown from "netlify-cms-widget-markdown"
 import uploadcare2 from "./widgets/netlify-cms-media-library-uploadcare-custom"
 
 const config = {
-  media_library: {
-    config: {
-      publicKey: process.env.UPLOADCARE_PUBLIC_KEY
+  config: {
+    media_library: {
+      config: {
+        publicKey: process.env.GATSBY_UPLOADCARE_PUBLIC_KEY
+      }
     }
   }
 }
