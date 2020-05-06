@@ -114,16 +114,81 @@ async function openDialog({ files, config, handleInsert, settings = {} }) {
     config["secureExpire"] = expiry
   }
 
+  const sendToSThree = (fileId) => {
+    // TODO : move all this code into an API to protect the private key
+
+    // FIXME
+    const publicKey = "FIXME"
+    const privateKey = "FIXME"
+
+    var myHeaders = new Headers()
+    myHeaders.append(
+      "Authorization",
+      `Uploadcare.Simple ${publicKey}:${privateKey}`
+    )
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded")
+
+    // TODO sort this out witb env vars
+    const customStorageId = "FIXME"
+
+    var urlencoded = new URLSearchParams()
+    urlencoded.append("source", fileId)
+    urlencoded.append("target", customStorageId)
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: "follow"
+    }
+
+    // TODO this should be a const
+    return fetch("https://api.uploadcare.com/files/", requestOptions)
+      .then(response => {
+        if(!response.ok) {
+          throw new Error("Failed to copy file to storage")
+        }
+        return response.json()
+      })
+      .catch(error =>{
+        console.error("Problem sending request to uploadcare", error)
+      })
+  }
+
+  const convertToBucketUrl = (s3PrefixedUrl, realBucketPrefix) => {
+    return s3PrefixedUrl.replace(/^s3:\/\/[^/]+\//, realBucketPrefix)
+  }
+
+  const buildS3BucketUrlPrefix = (bucketName, region) => {
+    return `https://${bucketName}.s3.${region}.amazonaws.com/`
+  }
+
+  const removeUploadcareUrlPrefix = (prefixedUrl) => {
+    return prefixedUrl.replace(/^(http|https):\/\/[^/]*\/(.*)\/$/, "$2")
+  }
+
   uploadcare.openDialog(files, config).done(({ promise, files }) => {
     const isGroup = Boolean(files)
+
+    // TODO Sort this out using env vars
+    const bucketName = "FIXME"
+    const regionName = "FIXME"
+
+    const bucketUrlPrefix = buildS3BucketUrlPrefix(bucketName, regionName)
 
     return promise().then(info => {
       if (isGroup) {
         return Promise.all(
           files().map(promise => promise.then(fileInfo => buildUrl(fileInfo)))
-        ).then(urls => handleInsert(urls))
+        ).then(urls => {
+          // handleInsert(urls)
+        })
       } else {
-        handleInsert(buildUrl(info))
+        const fileId = removeUploadcareUrlPrefix(info.cdnUrl)
+
+        sendToSThree(fileId).then(response => {
+          handleInsert(convertToBucketUrl(response.result, bucketUrlPrefix))
+        })
       }
     })
   })
