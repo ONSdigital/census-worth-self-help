@@ -8,7 +8,7 @@ const hstsheader = require("./app/hstsheader").default
 const UploadcareSignature = require("./app/UploadcareSignature")
 
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
-const UPLOAD_TOKEN_EXPIRY_SECONDS = process.env.UPLOAD_EXPIRY || 120
+const UPLOAD_SIGNATURE_EXPIRY_SECONDS = process.env.UPLOAD_EXPIRY || 120
 
 const withoutEtag = response => {
   onHeaders(response, function() {
@@ -24,12 +24,12 @@ const addSecondsToDate = (date, seconds) => {
   return newDate
 }
 
-app.use(
-  csp({
-    chatDomain: process.env.GATSBY_CHAT_DOMAIN,
-    analyticsHost: process.env.MATOMO_IP,
-  })
-)
+// app.use(
+//   csp({
+//     chatDomain: process.env.GATSBY_CHAT_DOMAIN,
+//     analyticsHost: process.env.MATOMO_IP,
+//   })
+// )
 
 app.use(hstsheader())
 
@@ -65,7 +65,7 @@ if (SP_PROTECTED === "false") {
   const SP_CALLBACK_URL = process.env.SP_CALLBACK_URL
   const SP_ENTITY_ID = process.env.SP_ENTITY_ID
   const COOKIE_TIMEOUT = process.env.COOKIE_TIMEOUT || 5
-  const UPLOAD_SECRET = process.env.UPLOAD_SECRET
+  const UPLOADCARE_SECRET_KEY = process.env.UPLOADCARE_SECRET_KEY
 
   // For an protected deployment, protect static file from /public with SAML SSO
   app.use(cookieParser())
@@ -133,17 +133,17 @@ if (SP_PROTECTED === "false") {
     requireImageUploadAuthorized,
     (request, response) => {
       // AUDIT: log the user id here
-      if (!UPLOAD_SECRET) {
-        console.error("Missing UPLOAD_SECRET, cannot generate secret")
+      if (!UPLOADCARE_SECRET_KEY) {
+        console.error("Missing UPLOADCARE_SECRET_KEY, cannot generate secret")
         response.status(500).send()
       } else {
         const expiryEpoch = Math.floor(
-          addSecondsToDate(new Date(), UPLOAD_TOKEN_EXPIRY_SECONDS).getTime() /
+          addSecondsToDate(new Date(), UPLOAD_SIGNATURE_EXPIRY_SECONDS).getTime() /
             1000
         )
         response.send({
           signature: new UploadcareSignature().generate(
-            UPLOAD_SECRET,
+            UPLOADCARE_SECRET_KEY,
             expiryEpoch
           ),
           expiry: expiryEpoch

@@ -6,10 +6,14 @@ import { transformSources, htmlSanitize } from "../utils/contenttransforms"
 
 import { WidgetPreviewContainer } from "netlify-cms-ui-default"
 import NetlifyCmsWidgetMarkdown from "netlify-cms-widget-markdown"
-import uploadcare2 from './widgets/netlify-cms-media-library-uploadcare-custom'
+import uploadcare2 from "./widgets/netlify-cms-media-library-uploadcare-custom"
 
 const config = {
-  config: {}
+  media_library: {
+    config: {
+      publicKey: process.env.UPLOADCARE_PUBLIC_KEY
+    }
+  }
 }
 CMS.init(config)
 

@@ -53,7 +53,7 @@ if [[ "${SP_PROTECTED}" != "false" ]] ; then
   echo "  SP_PROTECTED: ${SP_PROTECTED}" >> ${appFile}
   echo "  VALID_TOKEN_AGE: ${VALID_TOKEN_AGE}" >> ${appFile}
   set +x
-  echo "  UPLOAD_SECRET: ${UPLOAD_SECRET}" >> ${appFile}
+  echo "  UPLOADCARE_SECRET_KEY: ${UPLOADCARE_SECRET_KEY}" >> ${appFile}
   set -x
 else
   echo "env_variables:" >> ${appFile}
