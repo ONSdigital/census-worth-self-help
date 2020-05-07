@@ -2,11 +2,14 @@ const CryptoJS = require("crypto-js")
 
 class UploadcareSignature {
 
-  generate(secret, expire) {
-    let key = secret
+  constructor(secret) {
+    this.secret = secret
+  }
+
+  generate(expire) {
     let message = expire.toString()
 
-    const hash = CryptoJS.HmacSHA256(message, key);
+    const hash = CryptoJS.HmacSHA256(message, this.secret);
     return CryptoJS.enc.Hex.stringify(hash);
   }
 }

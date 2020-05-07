@@ -1,12 +1,10 @@
 require("dotenv").config({ silent: true })
 
-const fetch = require("node-fetch")
 const express = require("express")
 const onHeaders = require("on-headers")
 const app = express()
 const csp = require("./app/csp").default
 const hstsheader = require("./app/hstsheader").default
-const UploadcareSignature = require("./app/UploadcareSignature")
 
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
 const FEATURE_UPLOADCARE_IS_ENABLED = process.env.GATSBY_FEATURE_UPLOADCARE_IS_ENABLED || false
@@ -133,9 +131,16 @@ if (SP_PROTECTED === "false") {
     const UPLOADCARE_PUBLIC_KEY = process.env.GATSBY_UPLOADCARE_PUBLIC_KEY
     const UPLOADCARE_STORAGE_ID = process.env.UPLOADCARE_STORAGE_ID
     const UPLOAD_SIGNATURE_EXPIRY_SECONDS = process.env.UPLOAD_EXPIRY || 120
-    const UPLOADCARE_API = process.env.UPLOADCARE_API || "https://api.uploadcare.com"
     const ASSET_BUCKET_NAME = process.env.ASSET_BUCKET_NAME
     const ASSET_BUCKET_REGION = process.env.ASSET_BUCKET_REGION || 'eu-west-2'
+
+    const customStorage = new customStorage(
+      UPLOADCARE_STORAGE_ID, 
+      ASSET_BUCKET_NAME, 
+      ASSET_BUCKET_REGION
+    )
+
+    const api = new UploadcareApi(UPLOADCARE_PUBLIC_KEY, UPLOADCARE_SECRET_KEY, customStorage)
 
     app.get(
       "/api/uploadcare/token",
@@ -146,68 +151,24 @@ if (SP_PROTECTED === "false") {
           console.error("Missing UPLOADCARE_SECRET_KEY, cannot generate secret")
           response.status(500).send()
         } else {
-          const expiryEpoch = Math.floor(
-            addSecondsToDate(new Date(), UPLOAD_SIGNATURE_EXPIRY_SECONDS).getTime() /
-              1000
-          )
-          response.send({
-            signature: new UploadcareSignature().generate(
-              UPLOADCARE_SECRET_KEY,
-              expiryEpoch
-            ),
-            expiry: expiryEpoch
-          })
+          response.send(api.createSignature(UPLOAD_SIGNATURE_EXPIRY_SECONDS))
         }
       }
     )
 
-    const convertToBucketUrl = (s3PrefixedUrl, realBucketPrefix) => {
-      return s3PrefixedUrl.replace(/^s3:\/\/[^/]+\//, realBucketPrefix)
-    }
+    app.post("/api/uploadcare/copy", 
+      requireImageUploadAuthorized,
+      (request, response) => {
 
-    const buildS3BucketUrlPrefix = (bucketName, region) => {
-      return `https://${bucketName}.s3.${region}.amazonaws.com/`
-    }
-
-    app.post("/api/uploadcare/copy", (request, response) => {
-      // TODO input validation
-      // Modularise
+      // AUDIT: log the user id here
+        // TODO input validation
       
       const uuid = request.body.uuid
-      const myHeaders = new fetch.Headers()
-      myHeaders.append(
-        "Authorization",
-        `Uploadcare.Simple ${UPLOADCARE_PUBLIC_KEY}:${UPLOADCARE_SECRET_KEY}`
-      )
-      myHeaders.append("Content-Type", "application/x-www-form-urlencoded")
 
-      const urlencoded = new URLSearchParams()
-      urlencoded.append("source", uuid)
-      urlencoded.append("target", UPLOADCARE_STORAGE_ID)
-
-      const requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: urlencoded,
-        redirect: "follow"
-      }
-       
-      fetch(`${UPLOADCARE_API}/files/`, requestOptions)
-        .then(uploadcareResponse => {
-          if(!uploadcareResponse.ok) {
-            throw new Error("Failed to copy file to storage")
-          }
-          return uploadcareResponse.json()
-        })
-        .then(json => {
-          // response looks like this
-          // { type: "file:, result: "s3Url" }
-          const uploadS3Url = json.result
-          const realBucketPrefix = buildS3BucketUrlPrefix(ASSET_BUCKET_NAME, ASSET_BUCKET_REGION)
-          const absoluteS3url = convertToBucketUrl(uploadS3Url, realBucketPrefix)
-
+      api.copyToCustomStorage(uuid)
+        .then(url => {
           response.json({
-            s3Url: absoluteS3url
+            s3Url: url
           })
         })
         .catch(error =>{
@@ -215,7 +176,8 @@ if (SP_PROTECTED === "false") {
           response.status(500).send()
         })
       }
-    )}
+    )
+  }
   
   app.get("/saml/metadata", function(req, res) {
     res.type("application/xml")
