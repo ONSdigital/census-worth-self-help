@@ -19,25 +19,25 @@ class CustomStorage {
     }
   }
 
-  urlPrefix = () => {
+  urlPrefix() {
     return `https://${this.awsBucketId}.s3.${
       this.awsBucketRegion
     }.amazonaws.com/`
   }
 
-  getTarget = () => {
+  getTarget() {
     return this.storageId
   }
 
-  stripStorageAliasPrefix = aliasUrl => {
+  stripStorageAliasPrefix(aliasUrl) {
     return aliasUrl.replace(this.STORAGE_ALIAS_PREFIX, "")
   }
 
-  stripLeadingSlashes = path => {
+  stripLeadingSlashes(path) {
     return path.replace(/^[/]+/, "")
   }
 
-  getUrl = aliasUrl => {
+  getUrl(aliasUrl) {
     const path = this.stripStorageAliasPrefix(aliasUrl)
     return this.urlPrefix() + this.stripLeadingSlashes(path)
   }
