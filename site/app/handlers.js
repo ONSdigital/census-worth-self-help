@@ -6,6 +6,9 @@ const milliseconds = (minutes) => minutes * 60 * 1000
 const VALID_TOKEN_AGE = milliseconds(process.env.VALID_TOKEN_AGE || 5)
 const CLOCK_CONTINGENCY = milliseconds(process.env.CLOCK_CONTINGENCY || -1)
 
+
+const FEATURE_SECURITY_IS_DISABLED =
+  process.env.FEATURE_SECURITY_IS_DISABLED || false
 const sanitizeDestination = function (destination) {
   if (!destination) {
     return ""
@@ -58,7 +61,7 @@ module.exports = {
   milliseconds,
 
   requireAuthenticated: function (req, res, next) {
-    if (req.isAuthenticated() && isTokenValid(req.user.date)) {
+    if (FEATURE_SECURITY_IS_DISABLED || req.isAuthenticated() && isTokenValid(req.user.date)) {
       next()
     } else {
       const destination = extractPageName(req.path)
@@ -71,8 +74,9 @@ module.exports = {
   },
 
   requireImageUploadAuthorized: function (req, res, next) {
-    if (req.isAuthenticated() && isTokenValid(req.user.date)) {
-      if(isAuthorizedImageUploadUser(req.user)) {
+
+    if (FEATURE_SECURITY_IS_DISABLED || req.isAuthenticated() && isTokenValid(req.user.date)) {
+      if(FEATURE_SECURITY_IS_DISABLED || isAuthorizedImageUploadUser(req.user)) {
         next()
       } else {
         res.status(403)

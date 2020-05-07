@@ -12,12 +12,17 @@ const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
 const FEATURE_UPLOADCARE_IS_ENABLED =
   process.env.GATSBY_FEATURE_UPLOADCARE_IS_ENABLED || false
 
+const FEATURE_SECURITY_IS_DISABLED =
+  process.env.FEATURE_SECURITY_IS_DISABLED || false
+
 const withoutEtag = response => {
   onHeaders(response, function() {
     this.removeHeader("ETag")
   })
   return response
 }
+
+
 
 // app.use(
 //   csp({
@@ -38,11 +43,6 @@ if (SP_PROTECTED === "false") {
     withoutEtag(response).send("NOAUTH")
   )
 } else {
-  const SamlStrategy = require("passport-saml").Strategy
-  const passport = require("passport")
-  const fs = require("fs")
-  const cookieSession = require("cookie-session")
-  const cookieParser = require("cookie-parser")
   const bodyParser = require("body-parser")
   const {
     callback,
@@ -53,75 +53,88 @@ if (SP_PROTECTED === "false") {
     milliseconds,
     requireImageUploadAuthorized
   } = require("./app/handlers")
-
-  const COOKIE_SECRET = process.env.COOKIE_SECRET
-  const IDP_ENTRY_POINT = process.env.IDP_ENTRY_POINT
-  const IDP_LOGOUT = process.env.IDP_LOGOUT
-  const SP_CALLBACK_URL = process.env.SP_CALLBACK_URL
-  const SP_ENTITY_ID = process.env.SP_ENTITY_ID
-  const COOKIE_TIMEOUT = process.env.COOKIE_TIMEOUT || 5
-
-  // For an protected deployment, protect static file from /public with SAML SSO
-  app.use(cookieParser())
-  app.use(
-    cookieSession({
-      name: "token",
-      secret: COOKIE_SECRET,
-      maxAge: milliseconds(COOKIE_TIMEOUT)
-    })
-  )
   app.use(bodyParser.urlencoded({ extended: true }))
-  app.use(passport.initialize())
-  app.use(passport.session())
+  if (!FEATURE_SECURITY_IS_DISABLED) {
+    const SamlStrategy = require("passport-saml").Strategy
+    const passport = require("passport")
+    const fs = require("fs")
+    const cookieSession = require("cookie-session")
+    const cookieParser = require("cookie-parser")
 
-  const spCertificate = fs.readFileSync(".deploy/sp/sp.certificate", "utf-8")
-  const spKey = fs.readFileSync(".deploy/sp/sp.key", "utf-8")
-  const idpCertificate = fs.readFileSync(".deploy/idp/idp.certificate", "utf-8")
-  const samlStrategy = new SamlStrategy(
-    {
-      callbackUrl: SP_CALLBACK_URL,
-      cert: idpCertificate,
-      entryPoint: IDP_ENTRY_POINT,
-      identifierFormat:
-        "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
-      issuer: SP_ENTITY_ID,
-      privateCert: spKey
-    },
-    function(profile, done) {
-      done(null, {
-        nameID: profile.nameID,
-        nameIDFormat: profile.nameIDFormat,
-        email: profile.email,
-        date: Date.now()
+
+    const COOKIE_SECRET = process.env.COOKIE_SECRET
+    const IDP_ENTRY_POINT = process.env.IDP_ENTRY_POINT
+    const IDP_LOGOUT = process.env.IDP_LOGOUT
+    const SP_CALLBACK_URL = process.env.SP_CALLBACK_URL
+    const SP_ENTITY_ID = process.env.SP_ENTITY_ID
+    const COOKIE_TIMEOUT = process.env.COOKIE_TIMEOUT || 5
+
+    // For an protected deployment, protect static file from /public with SAML SSO
+    app.use(cookieParser())
+    app.use(
+      cookieSession({
+        name: "token",
+        secret: COOKIE_SECRET,
+        maxAge: milliseconds(COOKIE_TIMEOUT)
       })
-    }
-  )
+    )
 
-  passport.use(samlStrategy)
-  passport.serializeUser(mapUser)
-  passport.deserializeUser(mapUser)
-  app.post(
-    "/sso/callback",
-    passport.authenticate("saml", { failureRedirect: "/", failureFlash: true }),
-    callback
-  )
+    app.use(passport.initialize())
+    app.use(passport.session())
+    const spCertificate = fs.readFileSync(".deploy/sp/sp.certificate", "utf-8")
+    const spKey = fs.readFileSync(".deploy/sp/sp.key", "utf-8")
+    const idpCertificate = fs.readFileSync(
+      ".deploy/idp/idp.certificate",
+      "utf-8"
+    )
+    const samlStrategy = new SamlStrategy(
+      {
+        callbackUrl: SP_CALLBACK_URL,
+        cert: idpCertificate,
+        entryPoint: IDP_ENTRY_POINT,
+        identifierFormat:
+          "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
+        issuer: SP_ENTITY_ID,
+        privateCert: spKey
+      },
+      function(profile, done) {
+        done(null, {
+          nameID: profile.nameID,
+          nameIDFormat: profile.nameIDFormat,
+          email: profile.email,
+          date: Date.now()
+        })
+      }
+    )
 
-  app.get(
-    "/login",
-    preAuthenticate,
-    passport.authenticate("saml", {
-      failureRedirect: "/",
-      failureFlash: true
-    })
-  )
+    passport.use(samlStrategy)
+    passport.serializeUser(mapUser)
+    passport.deserializeUser(mapUser)
+    app.post(
+      "/sso/callback",
+      passport.authenticate("saml", {
+        failureRedirect: "/",
+        failureFlash: true
+      }),
+      callback
+    )
 
-  // logout route is not an end-user flow. It is only added for test and troubleshooting purposes.
-  app.get("/logout", logout(IDP_LOGOUT))
+    app.get(
+      "/login",
+      preAuthenticate,
+      passport.authenticate("saml", {
+        failureRedirect: "/",
+        failureFlash: true
+      })
+    )
 
-  app.get("/api/auth", requireAuthenticated, (request, response) =>
-    withoutEtag(response).send("AUTH")
-  )
+    // logout route is not an end-user flow. It is only added for test and troubleshooting purposes.
+    app.get("/logout", logout(IDP_LOGOUT))
 
+    app.get("/api/auth", requireAuthenticated, (request, response) =>
+      withoutEtag(response).send("AUTH")
+    )
+  }
   if (FEATURE_UPLOADCARE_IS_ENABLED) {
     const UPLOADCARE_SECRET_KEY = process.env.UPLOADCARE_SECRET_KEY
     const UPLOADCARE_PUBLIC_KEY = process.env.GATSBY_UPLOADCARE_PUBLIC_KEY
@@ -181,10 +194,14 @@ if (SP_PROTECTED === "false") {
     )
   }
 
-  app.get("/saml/metadata", function(req, res) {
-    res.type("application/xml")
-    res.send(samlStrategy.generateServiceProviderMetadata(null, spCertificate))
-  })
+  if (!FEATURE_SECURITY_IS_DISABLED) {
+    app.get("/saml/metadata", function(req, res) {
+      res.type("application/xml")
+      res.send(
+        samlStrategy.generateServiceProviderMetadata(null, spCertificate)
+      )
+    })
+  }
 
   app.use(requireAuthenticated, express.static("public"))
 }
