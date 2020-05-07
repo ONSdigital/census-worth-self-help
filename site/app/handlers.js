@@ -2,14 +2,13 @@ const destinationRegex = /^[a-z0-9-\.\/]+$/
 const pageNameRegex = /\/[^a-z0-9-\.\/]*([a-z0-9-\.\/]+)$/
 
 // Note, the time here is in minutes
-const milliseconds = (minutes) => minutes * 60 * 1000
+const milliseconds = minutes => minutes * 60 * 1000
 const VALID_TOKEN_AGE = milliseconds(process.env.VALID_TOKEN_AGE || 5)
 const CLOCK_CONTINGENCY = milliseconds(process.env.CLOCK_CONTINGENCY || -1)
 
-
 const FEATURE_SECURITY_IS_DISABLED =
   process.env.FEATURE_SECURITY_IS_DISABLED || false
-const sanitizeDestination = function (destination) {
+const sanitizeDestination = function(destination) {
   if (!destination) {
     return ""
   }
@@ -20,48 +19,51 @@ const sanitizeDestination = function (destination) {
   return ""
 }
 
-const extractPageName = function (path) {
+const extractPageName = function(path) {
   if (path.match(pageNameRegex)) {
     return pageNameRegex.exec(path)[1]
   }
   return false
 }
 
-const isTokenValid = (date) => {
+const isTokenValid = date => {
   let delta = Date.now() - date
   return CLOCK_CONTINGENCY < delta && delta < VALID_TOKEN_AGE
 }
 
-const isAuthorizedImageUploadUser = (user) => {
+const isAuthorizedImageUploadUser = user => {
   return !!user
 }
 
 module.exports = {
   // User serialisation / deserialisation is simple one-to-one mappin
-  mapUser: function (user, done) {
+  mapUser: function(user, done) {
     done(null, user)
   },
 
-  callback: function (req, res) {
+  callback: function(req, res) {
     res.redirect("/" + sanitizeDestination(req.body.RelayState))
   },
 
-  logout: function (idpLogout) {
-    return function (req, res) {
+  logout: function(idpLogout) {
+    return function(req, res) {
       req.logout()
       res.redirect(idpLogout)
     }
   },
 
-  preAuthenticate: function (req, res, next) {
+  preAuthenticate: function(req, res, next) {
     req.query.RelayState = req.query.destination
     next()
   },
 
   milliseconds,
 
-  requireAuthenticated: function (req, res, next) {
-    if (FEATURE_SECURITY_IS_DISABLED || req.isAuthenticated() && isTokenValid(req.user.date)) {
+  requireAuthenticated: function(req, res, next) {
+    if (
+      FEATURE_SECURITY_IS_DISABLED ||
+      (req.isAuthenticated() && isTokenValid(req.user.date))
+    ) {
       next()
     } else {
       const destination = extractPageName(req.path)
@@ -73,10 +75,15 @@ module.exports = {
     }
   },
 
-  requireImageUploadAuthorized: function (req, res, next) {
-
-    if (FEATURE_SECURITY_IS_DISABLED || req.isAuthenticated() && isTokenValid(req.user.date)) {
-      if(FEATURE_SECURITY_IS_DISABLED || isAuthorizedImageUploadUser(req.user)) {
+  requireImageUploadAuthorized: function(req, res, next) {
+    if (
+      FEATURE_SECURITY_IS_DISABLED ||
+      (req.isAuthenticated() && isTokenValid(req.user.date))
+    ) {
+      if (
+        FEATURE_SECURITY_IS_DISABLED ||
+        isAuthorizedImageUploadUser(req.user)
+      ) {
         next()
       } else {
         res.status(403)
@@ -85,6 +92,6 @@ module.exports = {
     } else {
       res.status(401)
       res.send()
-    }    
-  },
+    }
+  }
 }
