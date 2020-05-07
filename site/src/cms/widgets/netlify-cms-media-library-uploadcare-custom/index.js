@@ -114,13 +114,13 @@ async function openDialog({ files, config, handleInsert, settings = {} }) {
     config["secureExpire"] = expiry
   }
 
-  const sendToSThree = (uuid) => {
+  const sendToSThree = uuid => {
     // TODO : move all this code into an API to protect the private key
     const myHeaders = new Headers()
-      myHeaders.append("Content-Type", "application/x-www-form-urlencoded")
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded")
 
     const urlencoded = new URLSearchParams()
-      urlencoded.append("uuid", uuid)
+    urlencoded.append("uuid", uuid)
 
     const requestOptions = {
       method: "POST",
@@ -132,7 +132,6 @@ async function openDialog({ files, config, handleInsert, settings = {} }) {
     return fetch("/api/uploadcare/copy", requestOptions)
       .then(res => res.json())
       .then(json => {
-        console.log(`JSON response: ${JSON.stringify(json)}`)
         return json.s3Url
       })
       .catch(err => console.error(err))
@@ -140,7 +139,7 @@ async function openDialog({ files, config, handleInsert, settings = {} }) {
 
   uploadcare.openDialog(files, config).done(({ promise, files }) => {
     const isGroup = Boolean(files)
-    
+
     return promise().then(info => {
       if (isGroup) {
         return Promise.all(

@@ -10,7 +10,6 @@ import uploadcare2 from "./widgets/netlify-cms-media-library-uploadcare-custom"
 
 const FEATURE_UPLOADCARE_IS_ENABLED = process.env.GATSBY_FEATURE_UPLOADCARE_IS_ENABLED || false
 
-console.log(FEATURE_UPLOADCARE_IS_ENABLED)
 if(FEATURE_UPLOADCARE_IS_ENABLED) {
   CMS.registerMediaLibrary(uploadcare2)
   CMS.init({

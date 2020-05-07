@@ -1,36 +1,46 @@
 class CustomStorage {
-    // S3 custom storage URLs are defined in Uploadcare as
-    // s3://<bucket-name>/<file-path>
-     STORAGE_ALIAS_PREFIX = /^s3:\/\/[^/]+\//
+  // S3 custom storage URLs are defined in Uploadcare as
+  // s3://<bucket-name>/<file-path>
+  STORAGE_ALIAS_PREFIX = /^s3:\/\/[^/]+\//
 
-    constructor(storageId, awsBucketId, awsBucketRegion) {
-        this.storageId = storageId
-        this.awsBucketId = awsBucketId
-        this.awsBucketRegion = awsBucketRegion
+  constructor(storageId, awsBucketId, awsBucketRegion) {
+    this.storageId = storageId
+    this.awsBucketId = awsBucketId
+    this.awsBucketRegion = awsBucketRegion
 
-        // TODO all params are mandatory
+    if (!storageId) {
+      throw new Error("storageId is mandatory")
     }
-
-    urlPrefix = () => {
-        return `https://${this.awsBucketId}.s3.${this.awsBucketRegion}.amazonaws.com/`
+    if (!awsBucketId) {
+      throw new Error("awsBucketId is mandatory")
     }
-
-    getTarget = () => {
-        return this.storageId
+    if (!awsBucketRegion) {
+      throw new Error("awsBucketRegion is mandatory")
     }
+  }
 
-    stripStorageAliasPrefix = (aliasUrl) => {
-        return aliasUrl.replace(this.STORAGE_ALIAS_PREFIX, '')
-    }
+  urlPrefix = () => {
+    return `https://${this.awsBucketId}.s3.${
+      this.awsBucketRegion
+    }.amazonaws.com/`
+  }
 
-    stripLeadingSlashes = (path) => {
-        return path.replace(/^[/]+/, '')
-    }
+  getTarget = () => {
+    return this.storageId
+  }
 
-    getUrl = (aliasUrl) => {
-        const path = this.stripStorageAliasPrefix(aliasUrl)
-        return this.urlPrefix() + this.stripLeadingSlashes(path)
-    }
+  stripStorageAliasPrefix = aliasUrl => {
+    return aliasUrl.replace(this.STORAGE_ALIAS_PREFIX, "")
+  }
+
+  stripLeadingSlashes = path => {
+    return path.replace(/^[/]+/, "")
+  }
+
+  getUrl = aliasUrl => {
+    const path = this.stripStorageAliasPrefix(aliasUrl)
+    return this.urlPrefix() + this.stripLeadingSlashes(path)
+  }
 }
 
 module.exports = CustomStorage

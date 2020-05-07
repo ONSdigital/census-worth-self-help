@@ -1,5 +1,7 @@
 require("dotenv").config({ silent: true })
 
+const CustomStorage = require("./app/uploadcare/customStorage")
+const UploadcareApi = require("./app/uploadcare/api")
 const express = require("express")
 const onHeaders = require("on-headers")
 const app = express()
@@ -7,20 +9,14 @@ const csp = require("./app/csp").default
 const hstsheader = require("./app/hstsheader").default
 
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
-const FEATURE_UPLOADCARE_IS_ENABLED = process.env.GATSBY_FEATURE_UPLOADCARE_IS_ENABLED || false
+const FEATURE_UPLOADCARE_IS_ENABLED =
+  process.env.GATSBY_FEATURE_UPLOADCARE_IS_ENABLED || false
 
 const withoutEtag = response => {
   onHeaders(response, function() {
     this.removeHeader("ETag")
   })
   return response
-}
-
-const addSecondsToDate = (date, seconds) => {
-  const intervalInMs = seconds * 1000
-  const newDate = date
-  newDate.setMilliseconds(newDate.getMilliseconds() + intervalInMs)
-  return newDate
 }
 
 // app.use(
@@ -126,26 +122,31 @@ if (SP_PROTECTED === "false") {
     withoutEtag(response).send("AUTH")
   )
 
-  if(FEATURE_UPLOADCARE_IS_ENABLED) {
+  if (FEATURE_UPLOADCARE_IS_ENABLED) {
     const UPLOADCARE_SECRET_KEY = process.env.UPLOADCARE_SECRET_KEY
     const UPLOADCARE_PUBLIC_KEY = process.env.GATSBY_UPLOADCARE_PUBLIC_KEY
     const UPLOADCARE_STORAGE_ID = process.env.UPLOADCARE_STORAGE_ID
     const UPLOAD_SIGNATURE_EXPIRY_SECONDS = process.env.UPLOAD_EXPIRY || 120
     const ASSET_BUCKET_NAME = process.env.ASSET_BUCKET_NAME
-    const ASSET_BUCKET_REGION = process.env.ASSET_BUCKET_REGION || 'eu-west-2'
+    const ASSET_BUCKET_REGION = process.env.ASSET_BUCKET_REGION || "eu-west-2"
 
-    const customStorage = new customStorage(
-      UPLOADCARE_STORAGE_ID, 
-      ASSET_BUCKET_NAME, 
+    const customStorage = new CustomStorage(
+      UPLOADCARE_STORAGE_ID,
+      ASSET_BUCKET_NAME,
       ASSET_BUCKET_REGION
     )
 
-    const api = new UploadcareApi(UPLOADCARE_PUBLIC_KEY, UPLOADCARE_SECRET_KEY, customStorage)
+    const api = new UploadcareApi(
+      UPLOADCARE_PUBLIC_KEY,
+      UPLOADCARE_SECRET_KEY,
+      customStorage
+    )
 
     app.get(
       "/api/uploadcare/token",
       requireImageUploadAuthorized,
       (request, response) => {
+        // TODO
         // AUDIT: log the user id here
         if (!UPLOADCARE_SECRET_KEY) {
           console.error("Missing UPLOADCARE_SECRET_KEY, cannot generate secret")
@@ -156,29 +157,30 @@ if (SP_PROTECTED === "false") {
       }
     )
 
-    app.post("/api/uploadcare/copy", 
+    app.post(
+      "/api/uploadcare/copy",
       requireImageUploadAuthorized,
       (request, response) => {
-
-      // AUDIT: log the user id here
+        // AUDIT: log the user id here
         // TODO input validation
-      
-      const uuid = request.body.uuid
 
-      api.copyToCustomStorage(uuid)
-        .then(url => {
-          response.json({
-            s3Url: url
+        const uuid = request.body.uuid
+
+        api
+          .copyToCustomStorage(uuid)
+          .then(url => {
+            response.json({
+              s3Url: url
+            })
           })
-        })
-        .catch(error =>{
-          console.error("Problem sending request to uploadcare", error)
-          response.status(500).send()
-        })
+          .catch(error => {
+            console.error("Problem sending request to uploadcare", error)
+            response.status(500).send()
+          })
       }
     )
   }
-  
+
   app.get("/saml/metadata", function(req, res) {
     res.type("application/xml")
     res.send(samlStrategy.generateServiceProviderMetadata(null, spCertificate))
@@ -192,5 +194,3 @@ const PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`)
 })
-
-module.exports = { addSecondsToDate }
