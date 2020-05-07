@@ -20,9 +20,7 @@ class CustomStorage {
   }
 
   urlPrefix() {
-    return `https://${this.awsBucketId}.s3.${
-      this.awsBucketRegion
-    }.amazonaws.com/`
+    return `https://${this.awsBucketId}.s3.${this.awsBucketRegion}.amazonaws.com/`
   }
 
   getTarget() {
