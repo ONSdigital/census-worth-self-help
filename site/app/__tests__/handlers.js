@@ -61,7 +61,7 @@ describe("Image uploading authentication and authorization", () => {
 
     const localResponse = {...response}
     
-    requireImageUploadAuthorized({ ...request, path: "/api/uploadtoken" }, localResponse, state.next)
+    requireImageUploadAuthorized({ ...request, path: "/api/uploadcare/token" }, localResponse, state.next)
     expect(localResponse.statusValue).to.equal(401)
   })
 
@@ -71,7 +71,7 @@ describe("Image uploading authentication and authorization", () => {
       return true
     }
     const localResponse = {...response}
-    requireImageUploadAuthorized({ ...localRequest, path: "/api/uploadtoken" }, localResponse, state.next)
+    requireImageUploadAuthorized({ ...localRequest, path: "/api/uploadcare/token" }, localResponse, state.next)
     expect(localResponse.statusValue).to.equal(403)
   })
 
@@ -94,7 +94,7 @@ describe("Image uploading authentication and authorization", () => {
     }
 
     const localResponse = {...response}
-    requireImageUploadAuthorized({ ...localRequest, path: "/api/uploadtoken" }, localResponse, state.next)
+    requireImageUploadAuthorized({ ...localRequest, path: "/api/uploadcare/token" }, localResponse, state.next)
     expect(localResponse.statusValue).to.equal(200)
   })
 })

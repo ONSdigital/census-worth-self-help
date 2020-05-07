@@ -8,18 +8,26 @@ import { WidgetPreviewContainer } from "netlify-cms-ui-default"
 import NetlifyCmsWidgetMarkdown from "netlify-cms-widget-markdown"
 import uploadcare2 from "./widgets/netlify-cms-media-library-uploadcare-custom"
 
-const config = {
-  config: {
-    media_library: {
-      config: {
-        publicKey: process.env.GATSBY_UPLOADCARE_PUBLIC_KEY
-      }
-    }
-  }
-}
-CMS.init(config)
+const FEATURE_UPLOADCARE_IS_ENABLED = process.env.GATSBY_FEATURE_UPLOADCARE_IS_ENABLED || false
 
-CMS.registerMediaLibrary(uploadcare2)
+console.log(FEATURE_UPLOADCARE_IS_ENABLED)
+if(FEATURE_UPLOADCARE_IS_ENABLED) {
+  CMS.registerMediaLibrary(uploadcare2)
+  CMS.init({
+    config: {
+      media_library: {
+        name: 'uploadcare2',
+        config: {
+          publicKey: process.env.GATSBY_UPLOADCARE_PUBLIC_KEY,
+          useSecureUpload: true
+        }
+      }
+    }  
+  })
+}
+else{
+  CMS.init()
+}
 
 const showdown = require("showdown"),
   converter = new showdown.Converter()

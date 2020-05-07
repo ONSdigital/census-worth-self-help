@@ -114,80 +114,44 @@ async function openDialog({ files, config, handleInsert, settings = {} }) {
     config["secureExpire"] = expiry
   }
 
-  const sendToSThree = (fileId) => {
+  const sendToSThree = (uuid) => {
     // TODO : move all this code into an API to protect the private key
+    const myHeaders = new Headers()
+      myHeaders.append("Content-Type", "application/x-www-form-urlencoded")
 
-    // FIXME
-    const publicKey = "FIXME"
-    const privateKey = "FIXME"
+    const urlencoded = new URLSearchParams()
+      urlencoded.append("uuid", uuid)
 
-    var myHeaders = new Headers()
-    myHeaders.append(
-      "Authorization",
-      `Uploadcare.Simple ${publicKey}:${privateKey}`
-    )
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded")
-
-    // TODO sort this out witb env vars
-    const customStorageId = "FIXME"
-
-    var urlencoded = new URLSearchParams()
-    urlencoded.append("source", fileId)
-    urlencoded.append("target", customStorageId)
-
-    var requestOptions = {
+    const requestOptions = {
       method: "POST",
       headers: myHeaders,
       body: urlencoded,
       redirect: "follow"
     }
 
-    // TODO this should be a const
-    return fetch("https://api.uploadcare.com/files/", requestOptions)
-      .then(response => {
-        if(!response.ok) {
-          throw new Error("Failed to copy file to storage")
-        }
-        return response.json()
+    return fetch("/api/uploadcare/copy", requestOptions)
+      .then(res => res.json())
+      .then(json => {
+        console.log(`JSON response: ${JSON.stringify(json)}`)
+        return json.s3Url
       })
-      .catch(error =>{
-        console.error("Problem sending request to uploadcare", error)
-      })
-  }
-
-  const convertToBucketUrl = (s3PrefixedUrl, realBucketPrefix) => {
-    return s3PrefixedUrl.replace(/^s3:\/\/[^/]+\//, realBucketPrefix)
-  }
-
-  const buildS3BucketUrlPrefix = (bucketName, region) => {
-    return `https://${bucketName}.s3.${region}.amazonaws.com/`
-  }
-
-  const removeUploadcareUrlPrefix = (prefixedUrl) => {
-    return prefixedUrl.replace(/^(http|https):\/\/[^/]*\/(.*)\/$/, "$2")
+      .catch(err => console.error(err))
   }
 
   uploadcare.openDialog(files, config).done(({ promise, files }) => {
     const isGroup = Boolean(files)
-
-    // TODO Sort this out using env vars
-    const bucketName = "FIXME"
-    const regionName = "FIXME"
-
-    const bucketUrlPrefix = buildS3BucketUrlPrefix(bucketName, regionName)
-
+    
     return promise().then(info => {
       if (isGroup) {
         return Promise.all(
           files().map(promise => promise.then(fileInfo => buildUrl(fileInfo)))
         ).then(urls => {
+          // TODO
           // handleInsert(urls)
         })
       } else {
-        const fileId = removeUploadcareUrlPrefix(info.cdnUrl)
-
-        sendToSThree(fileId).then(response => {
-          handleInsert(convertToBucketUrl(response.result, bucketUrlPrefix))
+        sendToSThree(info.uuid).then(s3Url => {
+          handleInsert(s3Url)
         })
       }
     })
@@ -195,7 +159,7 @@ async function openDialog({ files, config, handleInsert, settings = {} }) {
 }
 
 async function getSignature() {
-  const responseObject = fetch("/api/uploadtoken")
+  const responseObject = fetch("/api/uploadcare/token")
     .then(res => res.json())
     .catch(err => console.error(err))
 
