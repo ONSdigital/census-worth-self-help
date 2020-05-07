@@ -27,7 +27,7 @@ class UploadcareApi {
     )
   }
 
-  addSecondsToDate = (date, seconds) => {
+  addSecondsToDate(date, seconds) {
     const intervalInMs = seconds * 1000
     const newDate = date
     newDate.setMilliseconds(newDate.getMilliseconds() + intervalInMs)
