@@ -164,7 +164,7 @@ describe("StandardArticle", () => {
 
     let editedData = { frontmatter: {} }
 
-    expect(articleInstance.getRoles(editedData)).toEqual('')
+    expect(articleInstance.getRoles(editedData)).toEqual("")
   })
   it("can get the roles from the page data when they exist", () => {
     const articleInstance = renderer
@@ -197,5 +197,41 @@ describe("StandardArticle", () => {
     let post = { frontmatter: {} }
 
     expect(articleInstance.hasRoles(post)).toBeFalsy()
+  })
+  it("hasccnote returns true if there is a ccnote and the ", () => {
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+    let post = { frontmatter: { cconlynote: "testnote" } }
+
+    expect(articleInstance.hasCCNote(post)).toBeTruthy()
+  })
+  it("hasccnote returns false if the roles object does not exist", () => {
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+    let post = { frontmatter: {} }
+
+    expect(articleInstance.hasCCNote(post)).toBeFalsy()
+  })
+  it("hasccnote returns false if the environment variable is false", () => {
+    process.env.GATSBY_IS_CC_SITE = false
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+    let post = { frontmatter: { cconlynote: "testnote" } }
+    articleInstance.IS_CC_SITE = false
+
+    expect(articleInstance.hasCCNote(post)).toBeFalsy()
+  })
+  it("hasccnote returns true if the environment variable is true and there is a note", () => {
+    process.env.GATSBY_IS_CC_SITE = true
+
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+    let post = { frontmatter: { cconlynote: "testnote" } }
+
+    expect(articleInstance.hasCCNote(post)).toBeTruthy()
   })
 })

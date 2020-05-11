@@ -42,7 +42,7 @@ export default class Article extends React.Component {
   constructor(props) {
     super(props)
     this.props = props
-
+    this.IS_CC_SITE = process.env.GATSBY_IS_CC_SITE || "false"
     this.bookmarkPage = this.bookmarkPage.bind(this)
     this.unBookmarkPage = this.unBookmarkPage.bind(this)
     this.givePositiveFeedback = this.givePositiveFeedback.bind(this)
@@ -163,7 +163,19 @@ export default class Article extends React.Component {
     }
     return false
   }
-
+  hasCCNote(post) {
+    if (!this.IS_CC_SITE) {
+      return false
+    }
+    if (post) {
+      if (post.frontmatter) {
+        if (post.frontmatter.cconlynote) {
+          return true
+        }
+      }
+    }
+    return false
+  }
   render() {
     let { data, pageContext } = this.props
     const post = data.markdownRemark
@@ -188,7 +200,8 @@ export default class Article extends React.Component {
       : "Article content not found. Please Report."
 
     let roles = this.getRoles(post)
-
+    const hasCCNote = this.hasCCNote(post) && process.env.GATSBY_IS_CC_SITE
+    const ccOnlyNote = hasCCNote ? post.frontmatter.cconlynote : ""
     return (
       <div>
         <Layout phone_link={true}>
@@ -250,14 +263,15 @@ export default class Article extends React.Component {
                     __html: htmlSanitize(articleContent)
                   }}
                 />
-                {post && (
+                {hasCCNote && (
                   <p
                     css={css`
                       background-color: ${colors.secondary_teal};
                       padding: 5px;
+                      color: ${colors.white};
                     `}
                   >
-                    {post.frontmatter.cconlynote}
+                    {ccOnlyNote}
                   </p>
                 )}
               </TextBlock>
