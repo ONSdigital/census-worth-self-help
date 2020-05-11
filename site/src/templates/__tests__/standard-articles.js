@@ -13,6 +13,7 @@ import { render, fireEvent } from "react-testing-library"
 describe("StandardArticle", () => {
   beforeEach(() => {
     window._paq = []
+    delete process.env.GATSBY_IS_CC_SITE
   })
 
   const pageContext = {
