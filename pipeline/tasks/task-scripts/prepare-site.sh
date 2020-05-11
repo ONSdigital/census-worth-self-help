@@ -52,6 +52,7 @@ if [[ "${SP_PROTECTED}" != "false" ]] ; then
   echo "  SP_ENTITY_ID: '${spProtocol}://${SP_DOMAIN_NAME}/saml/metadata'" >> ${appFile}
   echo "  SP_PROTECTED: ${SP_PROTECTED}" >> ${appFile}
   echo "  VALID_TOKEN_AGE: ${VALID_TOKEN_AGE}" >> ${appFile}
+  echo "  GATSBY_FEATURE_UPLOADCARE_IS_ENABLED: ${GATSBY_FEATURE_UPLOADCARE_IS_ENABLED}" >> ${appFile}
   set +x
   echo "  UPLOADCARE_SECRET_KEY: ${UPLOADCARE_SECRET_KEY}" >> ${appFile}
   set -x
