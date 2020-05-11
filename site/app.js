@@ -19,12 +19,12 @@ const withoutEtag = response => {
   return response
 }
 
-// app.use(
-//   csp({
-//     chatDomain: process.env.GATSBY_CHAT_DOMAIN,
-//     analyticsHost: process.env.MATOMO_IP,
-//   })
-// )
+app.use(
+  csp({
+    chatDomain: process.env.GATSBY_CHAT_DOMAIN,
+    analyticsHost: process.env.MATOMO_IP,
+  })
+)
 
 app.use(hstsheader())
 
