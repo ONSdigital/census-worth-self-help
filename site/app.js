@@ -122,64 +122,21 @@ if (SP_PROTECTED === "false") {
     withoutEtag(response).send("AUTH")
   )
 
-  if (FEATURE_UPLOADCARE_IS_ENABLED) {
-    const UPLOADCARE_SECRET_KEY = process.env.UPLOADCARE_SECRET_KEY
-    const UPLOADCARE_PUBLIC_KEY = process.env.GATSBY_UPLOADCARE_PUBLIC_KEY
-    const UPLOADCARE_STORAGE_ID = process.env.UPLOADCARE_STORAGE_ID
-    const UPLOAD_SIGNATURE_EXPIRY_SECONDS = process.env.UPLOAD_EXPIRY || 120
-    const ASSET_BUCKET_NAME = process.env.ASSET_BUCKET_NAME
-    const ASSET_BUCKET_REGION = process.env.ASSET_BUCKET_REGION || "eu-west-2"
+  app.get(
+    "/api/uploadcare/token",
+    requireImageUploadAuthorized,
+    (request, response) => {
+      response.send("hello")
+    }
+  )
 
-    const customStorage = new CustomStorage(
-      UPLOADCARE_STORAGE_ID,
-      ASSET_BUCKET_NAME,
-      ASSET_BUCKET_REGION
-    )
-
-    const api = new UploadcareApi(
-      UPLOADCARE_PUBLIC_KEY,
-      UPLOADCARE_SECRET_KEY,
-      customStorage
-    )
-
-    app.get(
-      "/api/uploadcare/token",
-      requireImageUploadAuthorized,
-      (request, response) => {
-        // TODO
-        // AUDIT: log the user id here
-        if (!UPLOADCARE_SECRET_KEY) {
-          console.error("Missing UPLOADCARE_SECRET_KEY, cannot generate secret")
-          response.status(500).send()
-        } else {
-          response.send(api.createSignature(UPLOAD_SIGNATURE_EXPIRY_SECONDS))
-        }
-      }
-    )
-
-    app.post(
-      "/api/uploadcare/copy",
-      requireImageUploadAuthorized,
-      (request, response) => {
-        // AUDIT: log the user id here
-        // TODO input validation
-
-        const uuid = request.body.uuid
-
-        api
-          .copyToCustomStorage(uuid)
-          .then(url => {
-            response.json({
-              s3Url: url
-            })
-          })
-          .catch(error => {
-            console.error("Problem sending request to uploadcare", error)
-            response.status(500).send()
-          })
-      }
-    )
-  }
+  app.post(
+    "/api/uploadcare/copy",
+    requireImageUploadAuthorized,
+    (request, response) => {
+      response.send("hello")
+    }
+  )
 
   app.get("/saml/metadata", function(req, res) {
     res.type("application/xml")
