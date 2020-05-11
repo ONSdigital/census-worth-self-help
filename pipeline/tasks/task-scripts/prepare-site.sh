@@ -54,12 +54,12 @@ if [[ "${SP_PROTECTED}" != "false" ]] ; then
   echo "  VALID_TOKEN_AGE: ${VALID_TOKEN_AGE}" >> ${appFile}
   echo "  GATSBY_FEATURE_UPLOADCARE_IS_ENABLED: ${GATSBY_FEATURE_UPLOADCARE_IS_ENABLED}" >> ${appFile}
   echo "  GATSBY_UPLOADCARE_PUBLIC_KEY: ${GATSBY_UPLOADCARE_PUBLIC_KEY}" >> ${appFile}
+  echo "  ASSET_BUCKET_REGION: ${ASSET_BUCKET_REGION}" >> ${appFile}
   set +x
   echo "  UPLOADCARE_SECRET_KEY: ${UPLOADCARE_SECRET_KEY}" >> ${appFile}
   echo "  UPLOADCARE_STORAGE_ID: ${UPLOADCARE_STORAGE_ID}" >> ${appFile}
   echo "  UPLOAD_SIGNATURE_EXPIRY_SECONDS: ${UPLOAD_SIGNATURE_EXPIRY_SECONDS}" >> ${appFile}
   echo "  ASSET_BUCKET_NAME: ${ASSET_BUCKET_NAME}" >> ${appFile}
-  echo "  ASSET_BUCKET_REGION: ${ASSET_BUCKET_REGION}" >> ${appFile}
   set -x
 else
   echo "env_variables:" >> ${appFile}
