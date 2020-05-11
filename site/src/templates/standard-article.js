@@ -31,6 +31,8 @@ import { createHistory } from "@reach/router"
 import { css } from "@emotion/core"
 import { getTimeAgoPublished } from "../utils/time"
 
+import { colors } from "../utils/styles"
+
 import { transformSources, htmlSanitize } from "../utils/contenttransforms"
 const bookmarkNotificationText = "Article added to bookmarks"
 const unbookmarkNotificationText = "Article removed from bookmarks"
@@ -248,6 +250,16 @@ export default class Article extends React.Component {
                     __html: htmlSanitize(articleContent)
                   }}
                 />
+                {post && (
+                  <p
+                    css={css`
+                      background-color: ${colors.secondary_teal};
+                      padding: 5px;
+                    `}
+                  >
+                    {post.frontmatter.cconlynote}
+                  </p>
+                )}
               </TextBlock>
             </div>
             <Section>
