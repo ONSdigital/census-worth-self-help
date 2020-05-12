@@ -147,6 +147,7 @@ async function openDialog({ files, config, handleInsert, settings = {} }) {
         ).then(urls => {
           // TODO
           // handleInsert(urls)
+          console.error("Multiple uploads not supported")
         })
       } else {
         sendToSThree(info.uuid).then(s3Url => {
