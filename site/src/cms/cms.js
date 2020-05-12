@@ -9,9 +9,9 @@ import NetlifyCmsWidgetMarkdown from "netlify-cms-widget-markdown"
 import uploadcare2 from "./widgets/netlify-cms-media-library-uploadcare-custom"
 
 const FEATURE_UPLOADCARE_IS_ENABLED =
-  process.env.GATSBY_FEATURE_UPLOADCARE_IS_ENABLED || false
+  process.env.GATSBY_FEATURE_UPLOADCARE_IS_ENABLED.toLowerCase() || false
 
-if (FEATURE_UPLOADCARE_IS_ENABLED) {
+if (FEATURE_UPLOADCARE_IS_ENABLED === "true") {
   CMS.registerMediaLibrary(uploadcare2)
   CMS.init({
     config: {
