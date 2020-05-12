@@ -20,6 +20,9 @@ const createSources = function(config = {}) {
     sources['default-src'].push(config.analyticsHost)
     sources['connect-src'].push(config.analyticsHost)
   }
+  if (config.imageBucket) {
+    sources['img-src'].push(config.imageBucket)
+  }
   return sources
 }
 
