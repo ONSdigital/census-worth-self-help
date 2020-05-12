@@ -115,7 +115,6 @@ async function openDialog({ files, config, handleInsert, settings = {} }) {
   }
 
   const sendToSThree = uuid => {
-    // TODO : move all this code into an API to protect the private key
     const myHeaders = new Headers()
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded")
 

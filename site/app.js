@@ -148,8 +148,6 @@ if (SP_PROTECTED === "false") {
       "/api/uploadcare/token",
       requireImageUploadAuthorized,
       (request, response) => {
-        // TODO
-        // AUDIT: log the user id here
         if (!UPLOADCARE_SECRET_KEY) {
           console.error("Missing UPLOADCARE_SECRET_KEY, cannot generate secret")
           response.status(500).send()
@@ -163,9 +161,6 @@ if (SP_PROTECTED === "false") {
       "/api/uploadcare/copy",
       requireImageUploadAuthorized,
       (request, response) => {
-        // AUDIT: log the user id here
-        // TODO input validation
-
         const uuid = request.body.uuid
 
         api
