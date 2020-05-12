@@ -23,6 +23,7 @@ app.use(
   csp({
     chatDomain: process.env.GATSBY_CHAT_DOMAIN,
     analyticsHost: process.env.MATOMO_IP,
+    imageBucket: 'https://*.amazonaws.com'
   })
 )
 
