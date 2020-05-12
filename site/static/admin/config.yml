@@ -28,7 +28,7 @@ collections:
           hint: "Remember to add *CC only* at the beginning of the title. The article will be visible only to the Call Centre.",
         }
       - {
-          label: "CC Only Notes",
+          label: "CFS Notes",
           name: "cconlynote",
           widget: "string",
           hint: "This field is only visible on https://cc.census.selfhelp.onsdigital.uk/",
