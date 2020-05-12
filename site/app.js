@@ -9,8 +9,9 @@ const csp = require("./app/csp").default
 const hstsheader = require("./app/hstsheader").default
 
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
-const FEATURE_UPLOADCARE_IS_ENABLED =
-  process.env.GATSBY_FEATURE_UPLOADCARE_IS_ENABLED || false
+const FEATURE_UPLOADCARE_IS_ENABLED = (
+  process.env.GATSBY_FEATURE_UPLOADCARE_IS_ENABLED || "false"
+).toLowerCase()
 
 const withoutEtag = response => {
   onHeaders(response, function() {
@@ -23,7 +24,7 @@ app.use(
   csp({
     chatDomain: process.env.GATSBY_CHAT_DOMAIN,
     analyticsHost: process.env.MATOMO_IP,
-    imageBucket: 'https://*.amazonaws.com'
+    imageBucket: "https://*.amazonaws.com"
   })
 )
 
@@ -123,7 +124,7 @@ if (SP_PROTECTED === "false") {
     withoutEtag(response).send("AUTH")
   )
 
-  if (FEATURE_UPLOADCARE_IS_ENABLED) {
+  if (FEATURE_UPLOADCARE_IS_ENABLED === "true") {
     const UPLOADCARE_SECRET_KEY = process.env.UPLOADCARE_SECRET_KEY
     const UPLOADCARE_PUBLIC_KEY = process.env.GATSBY_UPLOADCARE_PUBLIC_KEY
     const UPLOADCARE_STORAGE_ID = process.env.UPLOADCARE_STORAGE_ID
