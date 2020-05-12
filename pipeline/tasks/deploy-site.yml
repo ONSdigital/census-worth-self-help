@@ -27,6 +27,7 @@ params:
   GATSBY_CHAT_DOMAIN: ((gatsby.chat-domain))
   GATSBY_CHAT_TENANT: ((gatsby.chat-tenant))
   GATSBY_CHAT_UUID: ((gatsby.chat-uuid))
+  GATSBY_FEATURE_UPLOADCARE_IS_ENABLED: false
 
 inputs:
 - name: census-worth-self-help
