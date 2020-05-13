@@ -3,7 +3,8 @@ const {
   callback,
   logout,
   preAuthenticate,
-  requireAuthenticated
+  requireAuthenticated,
+  requireImageUploadAuthorized
 } = require("../handlers.js")
 
 let request = {
@@ -14,6 +15,7 @@ let request = {
   isAuthenticated: function() {
     return false
   },
+
   user: {
     date: Date.now()
   },
@@ -24,8 +26,14 @@ let request = {
 
 let response = {
   redirectCalledWith: "",
+  statusValue: 200,
+  send: () => {},
   redirect: function(url) {
     this.redirectCalledWith = url
+  },
+  status: function(status) {
+    this.statusValue = status
+    
   }
 }
 
@@ -36,10 +44,65 @@ let state = {
   }.bind()
 }
 
+describe("Image uploading authentication and authorization", () => {
+  it("should return 401 if you have no sign in token", () => {
+    let localRequest = {
+      body: {},
+      logoutCalled: false,
+      path: "/",
+      query: {},
+      isAuthenticated: function() {
+        return false
+      },
+      logout: function() {
+        this.logoutCalled = true
+      }
+    }
+
+    const localResponse = {...response}
+    
+    requireImageUploadAuthorized({ ...request, path: "/api/uploadcare/token" }, localResponse, state.next)
+    expect(localResponse.statusValue).to.equal(401)
+  })
+
+  it.skip("should return 403 if you have insufficient access rights", () => {
+    let localRequest = {...request}
+    localRequest.isAuthenticated = () => {
+      return true
+    }
+    const localResponse = {...response}
+    requireImageUploadAuthorized({ ...localRequest, path: "/api/uploadcare/token" }, localResponse, state.next)
+    expect(localResponse.statusValue).to.equal(403)
+  })
+
+  it("should return 200 if the user is authorized", () => {
+    let localRequest = {
+      body: {},
+      logoutCalled: false,
+      path: "/",
+      query: {},
+      isAuthenticated: function() {
+        return true
+      },
+    
+      user: {
+        date: Date.now()
+      },
+      logout: function() {
+        this.logoutCalled = true
+      }
+    }
+
+    const localResponse = {...response}
+    requireImageUploadAuthorized({ ...localRequest, path: "/api/uploadcare/token" }, localResponse, state.next)
+    expect(localResponse.statusValue).to.equal(200)
+  })
+})
+
 describe("sso", function() {
   beforeEach(() => {
     state.allowed = false
-  });
+  })
 
   describe("callback", function() {
     it("Should redirect to default page ", function() {
@@ -67,15 +130,15 @@ describe("sso", function() {
       expect(response.redirectCalledWith).to.equal("/login")
     })
     it("Should redirect if token expired", function() {
-      [
-        ['Old', 1, false],
-        ['Now', Date.now(), true],
-        ['3 minutes ago', Date.now() - 180 * 1000, true],
-        ['10 minutes ago', Date.now() - 600 * 1000, false],
-        ['An hour ago', Date.now() - 3600 * 1000, false],
-        ['In 2 minutes', Date.now() + 180 * 1000, false],
-        ['In 30 seconds', Date.now() + 30 * 1000, true],
-        ['Negative', -5000, false]
+      ;[
+        ["Old", 1, false],
+        ["Now", Date.now(), true],
+        ["3 minutes ago", Date.now() - 180 * 1000, true],
+        ["10 minutes ago", Date.now() - 600 * 1000, false],
+        ["An hour ago", Date.now() - 3600 * 1000, false],
+        ["In 2 minutes", Date.now() + 180 * 1000, false],
+        ["In 30 seconds", Date.now() + 30 * 1000, true],
+        ["Negative", -5000, false]
       ].forEach(item => {
         let state = {
           allowed: false,
@@ -92,20 +155,32 @@ describe("sso", function() {
             }
           },
           response,
-          state.next,
+          state.next
         )
-        expect(state.allowed, item[0] + ':' + item[1]).to.equal(item[2])
+        expect(state.allowed, item[0] + ":" + item[1]).to.equal(item[2])
       })
     })
     it("Should redirect deep if not authenticated", function() {
-      requireAuthenticated({ ...request, path: "/my-page/" }, response, state.next)
+      requireAuthenticated(
+        { ...request, path: "/my-page/" },
+        response,
+        state.next
+      )
       expect(state.allowed).to.equal(false)
-      expect(response.redirectCalledWith).to.equal("/login?destination=my-page/")
+      expect(response.redirectCalledWith).to.equal(
+        "/login?destination=my-page/"
+      )
     })
     it("Should redirect index.html if not authenticated", function() {
-      requireAuthenticated({ ...request, path: "/my-page/index.html" }, response, state.next)
+      requireAuthenticated(
+        { ...request, path: "/my-page/index.html" },
+        response,
+        state.next
+      )
       expect(state.allowed).to.equal(false)
-      expect(response.redirectCalledWith).to.equal("/login?destination=my-page/index.html")
+      expect(response.redirectCalledWith).to.equal(
+        "/login?destination=my-page/index.html"
+      )
     })
     it("Should redirect sw.js if not authenticated", function() {
       requireAuthenticated({ ...request, path: "/sw.js" }, response, state.next)
@@ -126,6 +201,7 @@ describe("sso", function() {
       expect(state.allowed).to.equal(true)
     })
   })
+
   describe("logout", function() {
     it("Should logout and redirect", function() {
       expect(request.logoutCalled).to.equal(false)

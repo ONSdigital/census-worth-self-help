@@ -92,6 +92,7 @@ if (!process.env.DISABLE_NETLIFY) {
   module.exports.plugins.push({
     resolve: `gatsby-plugin-netlify-cms`,
     options: {
+      manualInit: true,
       modulePath: `${__dirname}/src/cms/cms.js`
     }
   })

@@ -12,6 +12,7 @@ publish_mode: editorial_workflow
 media_folder: static/assets
 public_folder: /assets
 
+
 collections:
   - name: articles
     label: Articles
@@ -62,14 +63,10 @@ collections:
           label: "SharePoint link",
           pattern: [".{144,}", "￼Must be a valid SharePoint link"],
           hint: "Always open SharePoint links on Internet Explorer",
-          required: true,
+          required: true 
         }
-      - {
-          name: date,
-          label: Publish Date,
-          widget: dateTimeWithNow,
-          hint: "Remember to change to current date & time before saving",
-        }
+      - { name: date, label: Publish Date, widget: datetime,
+          hint: "Remember to change to current date & time before saving" }
       - { name: title, label: Title }
       - {
           name: description,
