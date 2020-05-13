@@ -1,6 +1,6 @@
 ---
+cconlynote: ""
 cconly: false
-cconlynote: I am a note
 draftreason: Ready for Live Site
 departments:
   - CFODS
