@@ -152,7 +152,7 @@ if (SP_PROTECTED === "false") {
           console.error("Missing UPLOADCARE_SECRET_KEY, cannot generate secret")
           response.status(500).send()
         } else {
-          response.send(api.createSignature(UPLOAD_SIGNATURE_EXPIRY_SECONDS))
+          response.send(api.createSignature(UPLOADCARE_SIGNATURE_EXPIRY_SECONDS))
         }
       }
     )
