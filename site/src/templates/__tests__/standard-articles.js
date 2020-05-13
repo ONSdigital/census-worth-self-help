@@ -200,8 +200,6 @@ describe("StandardArticle", () => {
     expect(articleInstance.hasRoles(post)).toBeFalsy()
   })
   it("hasccnote returns true if there is a ccnote and the note is not blank", () => {
-    process.env.GATSBY_IS_CC_SITE = true
-
     const articleInstance = renderer
       .create(<StandardArticle data={data} pageContext={pageContext} />)
       .getInstance()
@@ -217,24 +215,45 @@ describe("StandardArticle", () => {
 
     expect(articleInstance.hasCCNote(post)).toBeFalsy()
   })
-  it("hasccnote returns false if the environment variable is false", () => {
-    process.env.GATSBY_IS_CC_SITE = false
+  it("hasccnote returns false if the ccnote string is blank", () => {
     const articleInstance = renderer
       .create(<StandardArticle data={data} pageContext={pageContext} />)
       .getInstance()
-    let post = { frontmatter: { cconlynote: "testnote" } }
-    articleInstance.IS_CC_SITE = false
+    let post = { frontmatter: { cconlynote: "" } }
 
     expect(articleInstance.hasCCNote(post)).toBeFalsy()
   })
-  it("hasccnote returns true if the environment variable is true and there is a note", () => {
+
+  it("isCCSite returns true if the environment variable is true", () => {
     process.env.GATSBY_IS_CC_SITE = true
 
     const articleInstance = renderer
       .create(<StandardArticle data={data} pageContext={pageContext} />)
       .getInstance()
-    let post = { frontmatter: { cconlynote: "testnote" } }
-
-    expect(articleInstance.hasCCNote(post)).toBeTruthy()
+    expect(articleInstance.isCCSite()).toBeTruthy()
   })
+  it("isCCSite returns false if the environment variable is false", () => {
+    process.env.GATSBY_IS_CC_SITE = false
+
+    const articleInstance = renderer
+      .create(<StandardArticle data={data} pageContext={pageContext} />)
+      .getInstance()
+    expect(articleInstance.isCCSite()).toBeFalsy()
+  })
+  it("the notes are on the page for a valid cc page", () => {
+    process.env.GATSBY_IS_CC_SITE = true
+    let modifiedData = data
+    data.markdownRemark.frontmatter.cconlynote = "testnote"
+    
+      const { getByTestId } = render(
+        <StandardArticle
+          data={modifiedData}
+          pageContext={pageContext}
+        />
+      )
+  
+      expect(getByTestId("cc-notes")).toBeDefined()
+
+  })
+
 })

@@ -1,5 +1,5 @@
 ---
-cconlynote: ""
+cconlynote: "Test note"
 cconly: false
 draftreason: Ready for Live Site
 departments:

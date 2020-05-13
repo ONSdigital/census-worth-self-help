@@ -163,10 +163,10 @@ export default class Article extends React.Component {
     }
     return false
   }
+  isCCSite() {
+    return this.IS_CC_SITE === true || this.IS_CC_SITE === "true"
+  }
   hasCCNote(post) {
-    if (!this.IS_CC_SITE) {
-      return false
-    }
     if (post) {
       if (post.frontmatter) {
         if (post.frontmatter.cconlynote) {
@@ -200,7 +200,7 @@ export default class Article extends React.Component {
       : "Article content not found. Please Report."
 
     let roles = this.getRoles(post)
-    const hasCCNote = this.hasCCNote(post)
+    const hasCCNote = this.hasCCNote(post) && this.isCCSite()
     const ccOnlyNote = hasCCNote ? post.frontmatter.cconlynote : ""
     return (
       <div>
@@ -265,6 +265,7 @@ export default class Article extends React.Component {
                 />
                 {hasCCNote && (
                   <p
+                    data-testid="cc-notes"
                     css={css`
                       background-color: ${colors.secondary_teal};
                       padding: 5px;
