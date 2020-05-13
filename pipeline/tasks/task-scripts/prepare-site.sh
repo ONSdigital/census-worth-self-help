@@ -58,7 +58,7 @@ if [[ "${SP_PROTECTED}" != "false" ]] ; then
   set +x
   echo "  UPLOADCARE_SECRET_KEY: ${UPLOADCARE_SECRET_KEY}" >> ${appFile}
   echo "  UPLOADCARE_STORAGE_ID: ${UPLOADCARE_STORAGE_ID}" >> ${appFile}
-  echo "  UPLOAD_SIGNATURE_EXPIRY_SECONDS: ${UPLOAD_SIGNATURE_EXPIRY_SECONDS}" >> ${appFile}
+  echo "  UPLOADCARE_SIGNATURE_EXPIRY_SECONDS: ${UPLOADCARE_SIGNATURE_EXPIRY_SECONDS}" >> ${appFile}
   echo "  ASSET_BUCKET_NAME: ${ASSET_BUCKET_NAME}" >> ${appFile}
   set -x
 else
