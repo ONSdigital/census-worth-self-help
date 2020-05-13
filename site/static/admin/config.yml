@@ -31,7 +31,7 @@ collections:
           label: "CFS Notes",
           name: "cconlynote",
           widget: "string",
-          hint: "This field is only visible on https://cc.census.selfhelp.onsdigital.uk/",
+          hint: "This field is only visible on the cc site",
           required: false,
         }
       - {
