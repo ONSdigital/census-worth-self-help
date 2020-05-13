@@ -199,7 +199,9 @@ describe("StandardArticle", () => {
 
     expect(articleInstance.hasRoles(post)).toBeFalsy()
   })
-  it("hasccnote returns true if there is a ccnote and the ", () => {
+  it("hasccnote returns true if there is a ccnote and the note is not blank", () => {
+    process.env.GATSBY_IS_CC_SITE = true
+
     const articleInstance = renderer
       .create(<StandardArticle data={data} pageContext={pageContext} />)
       .getInstance()
