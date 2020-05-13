@@ -82,7 +82,6 @@ class UploadcareApi {
         return uploadcareResponse.json()
       })
       .then(json => {
-        // TODO response validation
         const uploadS3Url = json.result
         return this.customStorage.getUrl(uploadS3Url)
       })
