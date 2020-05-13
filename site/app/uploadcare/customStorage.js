@@ -1,8 +1,7 @@
 class CustomStorage {
-  // S3 custom storage URLs are defined in Uploadcare as
-  // s3://<bucket-name>/<file-path>
-  
   constructor(storageId, awsBucketId, awsBucketRegion) {
+    // S3 custom storage URLs are defined in Uploadcare as
+    // s3://<bucket-name>/<file-path>
     this.STORAGE_ALIAS_PREFIX = /^s3:\/\/[^/]+\//
     this.storageId = storageId
     this.awsBucketId = awsBucketId
