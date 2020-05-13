@@ -1,4 +1,5 @@
 ---
+cconlynote: ""
 title: Text types
 date: 2019-05-29T10:14:48.719Z
 description: A demonstration of mark up in the app
