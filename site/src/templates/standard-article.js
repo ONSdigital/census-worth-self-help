@@ -200,7 +200,7 @@ export default class Article extends React.Component {
       : "Article content not found. Please Report."
 
     let roles = this.getRoles(post)
-    const hasCCNote = this.hasCCNote(post) && this.isCCSite()
+    const hasCCNote =  this.isCCSite()&&this.hasCCNote(post)
     const ccOnlyNote = hasCCNote ? post.frontmatter.cconlynote : ""
     return (
       <div>
