@@ -31,6 +31,8 @@ import { createHistory } from "@reach/router"
 import { css } from "@emotion/core"
 import { getTimeAgoPublished } from "../utils/time"
 
+import { colors } from "../utils/styles"
+
 import { transformSources, htmlSanitize } from "../utils/contenttransforms"
 const bookmarkNotificationText = "Article added to bookmarks"
 const unbookmarkNotificationText = "Article removed from bookmarks"
@@ -40,7 +42,7 @@ export default class Article extends React.Component {
   constructor(props) {
     super(props)
     this.props = props
-
+    this.IS_CC_SITE = process.env.GATSBY_IS_CC_SITE || false
     this.bookmarkPage = this.bookmarkPage.bind(this)
     this.unBookmarkPage = this.unBookmarkPage.bind(this)
     this.givePositiveFeedback = this.givePositiveFeedback.bind(this)
@@ -161,7 +163,19 @@ export default class Article extends React.Component {
     }
     return false
   }
-
+  isCCSite() {
+    return this.IS_CC_SITE === true || this.IS_CC_SITE === "true"
+  }
+  hasCCNote(post) {
+    if (post) {
+      if (post.frontmatter) {
+        if (post.frontmatter.cconlynote) {
+          return post.frontmatter.cconlynote.length > 0
+        }
+      }
+    }
+    return false
+  }
   render() {
     let { data, pageContext } = this.props
     const post = data.markdownRemark
@@ -186,7 +200,8 @@ export default class Article extends React.Component {
       : "Article content not found. Please Report."
 
     let roles = this.getRoles(post)
-
+    const hasCCNote =  this.isCCSite()&&this.hasCCNote(post)
+    const ccOnlyNote = hasCCNote ? post.frontmatter.cconlynote : ""
     return (
       <div>
         <Layout phone_link={true}>
@@ -248,6 +263,18 @@ export default class Article extends React.Component {
                     __html: htmlSanitize(articleContent)
                   }}
                 />
+                {hasCCNote && (
+                  <p
+                    data-testid="cc-notes"
+                    css={css`
+                      background-color: ${colors.secondary_teal};
+                      padding: 5px;
+                      color: ${colors.white};
+                    `}
+                  >
+                    {ccOnlyNote}
+                  </p>
+                )}
               </TextBlock>
             </div>
             <Section>

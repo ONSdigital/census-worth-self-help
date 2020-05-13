@@ -15,17 +15,27 @@ public_folder: /assets
 collections:
   - name: articles
     label: Articles
-    label_singular: 'Article'
+    label_singular: "Article"
     folder: content/articles
     create: true
     fields:
-      - { label: "Call Centre Only",
+      - {
+          label: "Call Centre Only",
           name: "cconly",
           widget: boolean,
           default: false,
           required: false,
-          hint: "Remember to add *CC only* at the beginning of the title. The article will be visible only to the Call Centre." }
-      - { label: "Draft Reason",
+          hint: "Remember to add *CC only* at the beginning of the title. The article will be visible only to the Call Centre.",
+        }
+      - {
+          label: "CFS Notes",
+          name: "cconlynote",
+          widget: "string",
+          hint: "This field is only visible on the cc site",
+          required: false,
+        }
+      - {
+          label: "Draft Reason",
           name: "draftreason",
           widget: "relation",
           collection: "draftreasons",
@@ -34,8 +44,10 @@ collections:
           displayFields: ["title"],
           multiple: false,
           required: true,
-          hint: "Remember to add *DRAFT* at the beginning of the title. The article will be visible only to the Call Centre until this is set to ‘Ready for Live’." }
-      - { label: "Related Team(s)",
+          hint: "Remember to add *DRAFT* at the beginning of the title. The article will be visible only to the Call Centre until this is set to ‘Ready for Live’.",
+        }
+      - {
+          label: "Related Team(s)",
           name: "departments",
           widget: "relation",
           collection: "departments",
@@ -43,17 +55,29 @@ collections:
           valueField: "title",
           displayFields: ["title"],
           multiple: true,
-          hint: "Please include the team responsible plus any team that need to be consulted" }
-      - { name: contentsource, label: "SharePoint link",
-          pattern: ['.{144,}', "￼Must be a valid SharePoint link"],
+          hint: "Please include the team responsible plus any team that need to be consulted",
+        }
+      - {
+          name: contentsource,
+          label: "SharePoint link",
+          pattern: [".{144,}", "￼Must be a valid SharePoint link"],
           hint: "Always open SharePoint links on Internet Explorer",
-          required: true }
-      - { name: date, label: Publish Date, widget: dateTimeWithNow,
-          hint: "Remember to change to current date & time before saving" }
+          required: true,
+        }
+      - {
+          name: date,
+          label: Publish Date,
+          widget: dateTimeWithNow,
+          hint: "Remember to change to current date & time before saving",
+        }
       - { name: title, label: Title }
-      - { name: description, label: Description,
-          hint: "Should only be 1-2 sentences. The description will appear in bold letters on the website." }
-      - { name: roles,
+      - {
+          name: description,
+          label: Description,
+          hint: "Should only be 1-2 sentences. The description will appear in bold letters on the website.",
+        }
+      - {
+          name: roles,
           label: Role(s),
           widget: "relation",
           collection: "roles",
@@ -61,26 +85,42 @@ collections:
           valueField: "title",
           displayFields: ["title"],
           multiple: true,
-          required: true }
-      - { name: body,
+          required: true,
+        }
+      - {
+          name: body,
           label: Main Body,
           widget: sanitiziedMarkdown,
           required: true,
-          hint: "To add a table to the MAIN BODY, use the CMS_Table_Tool.xlsx"}
-      - { label: "Directory",
+          hint: "To add a table to the MAIN BODY, use the CMS_Table_Tool.xlsx",
+        }
+      - {
+          label: "Directory",
           name: "directory",
           widget: "relation",
           collection: "directories",
           searchFields: ["title"],
           valueField: "title",
-          displayFields: ["title"] }
-      - { name: priority, label: Priority, widget: "number", default: 0,
-          hint: "Controls the order in which the directory appears in the parent directory, starting from 0, lower = higher"  }
-      - { name: tags, label: Tags, widget: "list", required: false,
-          hint: "divide tags up using commas, e.g:  emergency, test, contact. The following tags have effects: draft, webchat, popular " }
+          displayFields: ["title"],
+        }
+      - {
+          name: priority,
+          label: Priority,
+          widget: "number",
+          default: 0,
+          hint: "Controls the order in which the directory appears in the parent directory, starting from 0, lower = higher",
+        }
+      - {
+          name: tags,
+          label: Tags,
+          widget: "list",
+          required: false,
+          hint: "divide tags up using commas, e.g:  emergency, test, contact. The following tags have effects: draft, webchat, popular ",
+        }
       - { name: author, label: Author, required: true }
       - { name: reviewedby, label: Reviewed By, required: false }
-      - { label: "Optimised By",
+      - {
+          label: "Optimised By",
           name: "optimisedby",
           widget: "relation",
           collection: "optimisedby",
@@ -88,27 +128,29 @@ collections:
           valueField: "title",
           displayFields: ["title"],
           required: true,
-          multiple: false }
+          multiple: false,
+        }
       - { name: signedby, label: Signed Off, required: true }
 
   - name: departments
     label: Departments
-    label_singular: 'Department'
+    label_singular: "Department"
     folder: content/departments
     create: true
     fields:
-    - { name: title, label: Title }
-    - { name: description, label: Description }
+      - { name: title, label: Title }
+      - { name: description, label: Description }
 
   - name: directories
     label: Directories
-    label_singular: 'Directory'
+    label_singular: "Directory"
     folder: content/directories
     create: true
     fields:
       - { name: title, label: Title }
       - { name: description, label: Description }
-      - { label: "Directory",
+      - {
+          label: "Directory",
           name: "directory",
           widget: "relation",
           collection: "directories",
@@ -116,18 +158,24 @@ collections:
           valueField: "title",
           displayFields: ["title"],
           hint: "Enter the parent directory for this directory, be careful not to create a loop.",
-          required: false }
-      - { name: priority, label: Priority, widget: "number", default: 0,
-          hint: "Controls the order in which the directory appears in the parent directory, starting from 0, lower = higher"  }
+          required: false,
+        }
+      - {
+          name: priority,
+          label: Priority,
+          widget: "number",
+          default: 0,
+          hint: "Controls the order in which the directory appears in the parent directory, starting from 0, lower = higher",
+        }
 
   - name: draftreasons
     label: "Draft Reasons"
-    label_singular: 'Draft Reason'
+    label_singular: "Draft Reason"
     folder: content/draftreason
     create: true
     fields:
-    - { name: title, label: Title }
-    - { name: description, label: Description }
+      - { name: title, label: Title }
+      - { name: description, label: Description }
 
   - name: constants
     label: Constants
@@ -138,31 +186,51 @@ collections:
         label: "Alert"
         name: "alert"
         fields:
-          - { label: 'Title', name: 'alert_title', widget: 'string', required: false }
-          - { label: 'Content', name: 'body', widget: 'markdown', required: false,
-              hint: "If the content is empty no alert will show." }
+          - {
+              label: "Title",
+              name: "alert_title",
+              widget: "string",
+              required: false,
+            }
+          - {
+              label: "Content",
+              name: "body",
+              widget: "markdown",
+              required: false,
+              hint: "If the content is empty no alert will show.",
+            }
 
       - file: "content/constants/contact_centre_details.md"
         label: "Contact centre details"
         name: "contact_centre_details"
         fields:
-          - { label: 'Phone number', name: 'contact_centre_number', widget: 'string', required: true }
-          - { label: 'Text shown on contact centre page', name: 'contact_centre_text', widget: 'text', required: true }
+          - {
+              label: "Phone number",
+              name: "contact_centre_number",
+              widget: "string",
+              required: true,
+            }
+          - {
+              label: "Text shown on contact centre page",
+              name: "contact_centre_text",
+              widget: "text",
+              required: true,
+            }
 
   - name: optimisedby
     label: "Optimised By"
-    label_singular: 'Optimised By'
+    label_singular: "Optimised By"
     folder: content/optimisedby
     create: true
     fields:
-    - { name: title, label: Name }
-    - { name: description, label: Description }
+      - { name: title, label: Name }
+      - { name: description, label: Description }
 
   - name: roles
     label: "Roles"
-    label_singular: 'Role'
+    label_singular: "Role"
     folder: content/roles
     create: true
     fields:
-    - { name: title, label: Name }
-    - { name: description, label: Description }
+      - { name: title, label: Name }
+      - { name: description, label: Description }

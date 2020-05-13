@@ -1,4 +1,5 @@
 ---
+cconlynote: ""
 title: A Too Long Article
 date: 2020-03-01T10:08:38.444Z
 description: Is it possible to create an article that we need to truncate

@@ -136,6 +136,7 @@ export const query = graphql`
       directory
       tags
       roles
+      cconlynote
     }
   }
 
