@@ -144,8 +144,6 @@ async function openDialog({ files, config, handleInsert, settings = {} }) {
         return Promise.all(
           files().map(promise => promise.then(fileInfo => buildUrl(fileInfo)))
         ).then(urls => {
-          // TODO
-          // handleInsert(urls)
           console.error("Multiple uploads not supported")
         })
       } else {
