@@ -209,7 +209,7 @@ describe("StandardArticle", () => {
 
     expect(articleInstance.hasCCNote(post)).toBeTruthy()
   })
-  it("hasccnote returns false if the roles object does not exist", () => {
+  it("hasccnote returns false if the ccnote object does not exist", () => {
     const articleInstance = renderer
       .create(<StandardArticle data={data} pageContext={pageContext} />)
       .getInstance()
