@@ -48,7 +48,7 @@ class UploadcareApi {
     return `Uploadcare.Simple ${this.publicKey}:${this.privateKey}`
   }
 
-  fetchEndpoint() {
+  getFileManagementApiEndpoint() {
     return this.uploadcareApi + "/files/"
   }
 
@@ -74,7 +74,7 @@ class UploadcareApi {
       redirect: "follow"
     }
 
-    return fetch(this.fetchEndpoint(), requestOptions)
+    return fetch(this.getFileManagementApiEndpoint(), requestOptions)
       .then(uploadcareResponse => {
         if (!uploadcareResponse.ok) {
           throw new Error("Failed to copy file to storage")
