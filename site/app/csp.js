@@ -22,6 +22,7 @@ const createSources = function(config = {}) {
   }
   if (config.imageBucket) {
     sources['img-src'].push(config.imageBucket)
+    sources['connect-src'].push(config.imageBucket)
   }
   return sources
 }
