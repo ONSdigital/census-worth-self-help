@@ -4,6 +4,14 @@ import { colors, spacing } from "../utils/styles"
 import LargeButton from "./largebutton"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone } from "@fortawesome/free-solid-svg-icons"
+import { navigate } from "@reach/router"
+import analytics from "../utils/analytics"
+
+
+const navigateToContactCentrePage = () => {
+  analytics.trackEvent("census-field-support", "clicked help", "page", window.location.pathname)
+  navigate("/contactcentre/")
+}
 
 export default ({ phone_link = false }) => {
   return (
@@ -47,7 +55,7 @@ export default ({ phone_link = false }) => {
             <LargeButton
               icon={<FontAwesomeIcon icon={faPhone} />}
               title="Census Field Support"
-              link="/contactcentre/"
+              clickFunction={navigateToContactCentrePage}
             />
           </div>
         </div>
