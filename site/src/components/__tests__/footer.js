@@ -3,7 +3,6 @@ import renderer from "react-test-renderer"
 import { render, fireEvent } from "react-testing-library"
 
 import Footer from "../footer"
-import LargeButton from "../largebutton"
 
 import { navigate } from "@reach/router"
 
