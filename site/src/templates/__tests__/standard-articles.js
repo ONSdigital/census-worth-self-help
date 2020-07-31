@@ -56,13 +56,27 @@ describe("StandardArticle", () => {
     const positiveButton = getByText("Useful")
     fireEvent.click(positiveButton)
 
-    // check notification text
-    const notification = getByTestId("notification-text-content")
-    expect(notification.textContent).toEqual("Thank you for your feedback")
+    // check form appears
+    const feedbackContent = getByTestId("feedback-content")
+
+    // add text.
+    fireEvent.change(feedbackContent, { target: { value: "POSITIVE TEST VALUE" } })
+
+    // click confirm
+    const submitButton = getByTestId("feedback-screen-submit-button")
+    fireEvent.click(submitButton)
 
     // check paq updated.
     expect(window._paq).toEqual([
       ["setCustomDimension", 1, "article"],
+      ["setCustomDimension", 1, "article"],
+      [
+        "trackEvent",
+        "article-feedback-review",
+        "POSITIVE REVIEW: test Article 1",
+        "POSITIVE TEST VALUE",
+        ""
+      ],
       ["trackEvent", "article-feedback-rating", "rating", "test Article 1", 1],
       ["setCustomDimension", 1, "article"]
     ])

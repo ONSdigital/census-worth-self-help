@@ -45,12 +45,9 @@ export default class Article extends React.Component {
     this.IS_CC_SITE = process.env.GATSBY_IS_CC_SITE || false
     this.bookmarkPage = this.bookmarkPage.bind(this)
     this.unBookmarkPage = this.unBookmarkPage.bind(this)
-    this.givePositiveFeedback = this.givePositiveFeedback.bind(this)
-    this.submitNegativeFeedback = this.submitNegativeFeedback.bind(this)
-    this.openNegativeFeedbackScreen = this.openNegativeFeedbackScreen.bind(this)
-    this.closeNegativeFeedbackScreen = this.closeNegativeFeedbackScreen.bind(
-      this
-    )
+    this.submitFeedback = this.submitFeedback.bind(this)
+    this.openFeedbackScreen = this.openFeedbackScreen.bind(this)
+    this.closeFeedbackScreen = this.closeFeedbackScreen.bind(this)
 
     if (typeof window !== "undefined") {
       let history = createHistory(global.window)
@@ -70,7 +67,8 @@ export default class Article extends React.Component {
       notificationId: 0,
       notificationShowing: false,
       feedbackOpen: false,
-      feedbackGiven: null
+      feedbackGiven: null,
+      givingPositiveFeedback: false
     }
 
     this.webchatEnabled =
@@ -87,38 +85,33 @@ export default class Article extends React.Component {
     })
   }
 
-  givePositiveFeedback() {
-    Feedback.articleIsUseful(this.props.pageContext.title)
+  openFeedbackScreen(isPositive) {
     this.setState({
-      notificationText: feedbackNotificationText,
-      notificationId: this.state.notificationId + 1,
-      notificationShowing: true,
-      feedbackGiven: "positive"
+      feedbackOpen: true,
+      givingPositiveFeedback: isPositive
     })
   }
 
-  openNegativeFeedbackScreen() {
-    this.setState({
-      feedbackOpen: true
-    })
-  }
-
-  closeNegativeFeedbackScreen() {
+  closeFeedbackScreen() {
     this.setState({
       feedbackOpen: false
     })
   }
 
-  submitNegativeFeedback() {
+  submitFeedback() {
     let feedback = document.getElementById("feedBackContent").value
-    Feedback.articleIsNotUseful(this.props.pageContext.title, feedback)
+    if(this.state.givingPositiveFeedback) {
+      Feedback.articleIsUseful(this.props.pageContext.title, feedback)
+    } else {
+      Feedback.articleIsNotUseful(this.props.pageContext.title, feedback)
+    }
     this.setState({
       notificationText: feedbackNotificationText,
       notificationId: this.state.notificationId + 1,
       notificationShowing: true,
-      feedbackGiven: "negative"
+      feedbackGiven: this.state.givingPositiveFeedback ? "positive" : "negative"
     })
-    this.closeNegativeFeedbackScreen()
+    this.closeFeedbackScreen()
   }
 
   bookmarkPage() {
@@ -301,7 +294,7 @@ export default class Article extends React.Component {
                   `}
                   icon={<FontAwesomeIcon icon={faThumbsUp} />}
                   title="Useful"
-                  clickFunction={this.givePositiveFeedback}
+                  clickFunction={() => this.openFeedbackScreen(true)}
                   shortMode={true}
                   selected={this.state.feedbackGiven === "positive"}
                   dimmed={this.state.feedbackGiven === "negative"}
@@ -313,7 +306,7 @@ export default class Article extends React.Component {
                   `}
                   icon={<FontAwesomeIcon icon={faThumbsDown} />}
                   title="Not useful"
-                  clickFunction={this.openNegativeFeedbackScreen}
+                  clickFunction={() => this.openFeedbackScreen(false)}
                   shortMode={true}
                   selected={this.state.feedbackGiven === "negative"}
                   dimmed={this.state.feedbackGiven === "positive"}
@@ -347,8 +340,9 @@ export default class Article extends React.Component {
         />
         {this.state.feedbackOpen && (
           <FeedbackScreen
-            hideFunction={this.closeNegativeFeedbackScreen}
-            submitFunction={this.submitNegativeFeedback}
+            hideFunction={this.closeFeedbackScreen}
+            submitFunction={this.submitFeedback}
+            feedbackIsPositive={this.state.givingPositiveFeedback}
           />
         )}
       </div>

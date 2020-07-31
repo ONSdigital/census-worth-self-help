@@ -39,4 +39,24 @@ describe("Feedback Screen", () => {
 
     expect(submitFunction).toHaveBeenCalledTimes(1)
   })
+
+  it("displays positive message if boolean passed in", () => {
+      const { getByText } = render(<FeedbackScreen 
+        hideFunction={hideFunction}
+        submitFunction={submitFunction}
+        feedbackIsPositive={true}
+      />);
+      expect(getByText('Please tell us what you liked')).toBeDefined()
+  })
+
+
+    it("doesn't display positive message if set to negative", () => {
+        const { queryByText } = render(<FeedbackScreen
+            hideFunction={hideFunction}
+            submitFunction={submitFunction}
+            feedbackIsPositive={false}
+        />);
+
+        expect(queryByText('Please tell us what you liked')).toBeNull()
+    })
 })
