@@ -99,7 +99,6 @@ collections:
           searchFields: ["title", "directory"],
           valueField: "title",
           displayFields: ["title"],
-          hint: "TEST hint",
       }
       - {
           name: priority,
