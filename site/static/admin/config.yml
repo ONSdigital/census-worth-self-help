@@ -94,12 +94,13 @@ collections:
       - {
           label: "Directory",
           name: "directory",
-          widget: "relation",
+          widget: "custom_directory_handler",
           collection: "directories",
           searchFields: ["title"],
           valueField: "title",
           displayFields: ["title"],
-        }
+          hint: "TEST hint",
+      }
       - {
           name: priority,
           label: Priority,
