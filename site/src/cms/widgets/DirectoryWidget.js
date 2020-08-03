@@ -1,7 +1,7 @@
  import React from 'react';
  import PropTypes from 'prop-types';
  import ImmutablePropTypes from 'react-immutable-proptypes';
- import Async, { makeAsyncSelect } from 'react-select/async';
+ import Async from 'react-select/async';
  import { find, isEmpty, last, debounce } from 'lodash';
  import { List, Map, fromJS } from 'immutable';
  import { reactSelectStyles } from 'netlify-cms-ui-default';
@@ -141,6 +141,19 @@ export default class DirectoryWidget extends React.Component {
             } else {
                 labelReturn = this.parseNestedFields(hit.data, displayField);
             }
+
+            // to generate the directory path we need to cycle through the parents.
+            let nextHit = hit;
+            while(nextHit.data.directory && nextHit.data.directory !== "Root") {
+                labelReturn = nextHit.data.directory + " → " + labelReturn;
+                let parentHit = hits.find((potentialHit) => potentialHit.data.title === nextHit.data.directory);
+                if(parentHit) {
+                    nextHit = parentHit;
+                } else {
+                    break;
+                }
+            }
+
             return {
                 data: hit.data,
                 value: this.parseNestedFields(hit.data, valueField),
@@ -175,10 +188,6 @@ export default class DirectoryWidget extends React.Component {
     }, 500);
 
     render() {
-
-        console.log("RENDERED")
-        console.log(this.props)
-
         const {
             value,
             field,

@@ -96,7 +96,7 @@ collections:
           name: "directory",
           widget: "custom_directory_handler",
           collection: "directories",
-          searchFields: ["title"],
+          searchFields: ["title", "directory"],
           valueField: "title",
           displayFields: ["title"],
           hint: "TEST hint",
