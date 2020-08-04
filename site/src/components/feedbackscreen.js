@@ -1,7 +1,7 @@
 import React from "react"
 import { css } from "@emotion/core"
 
-export default ({ hideFunction, submitFunction }) => {
+export default ({ hideFunction, submitFunction, feedbackIsPositive=false }) => {
   return (
     <div
       css={css`
@@ -27,7 +27,7 @@ export default ({ hideFunction, submitFunction }) => {
           border-bottom: 1px rgba(17, 17, 17, 0.1) solid;
         `}
       >
-        Please tell us how we could improve
+        {feedbackIsPositive? 'Please tell us what you liked' : 'Please tell us how we could improve'}
       </div>
       <div
         css={css`

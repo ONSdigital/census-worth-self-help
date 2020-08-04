@@ -8,7 +8,12 @@ export default class Feedback {
   static articleWasUnBookmarked(article) {
     Feedback.feedbackEvent("article-was-bookmarked", "unbookmarked", article, 1)
   }
-  static articleIsUseful(article) {
+  static articleIsUseful(article, reason) {
+    Feedback.feedbackEvent(
+        "article-feedback-review",
+        "POSITIVE REVIEW: " + article,
+        reason
+    )
     Feedback.feedbackEvent("article-feedback-rating", "rating", article, 1)
   }
   static articleIsNotUseful(article, reason) {

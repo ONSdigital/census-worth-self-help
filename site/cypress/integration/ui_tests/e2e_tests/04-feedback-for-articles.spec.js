@@ -21,6 +21,8 @@ describe("Article feedback", function() {
     it('Marking an article as useful [ONS-57]', function () {
         cy.visit(globalTestData.deepArticlePath);
         cy.get(feedback.feedbackButtons).contains(useful).click();
+        cy.get(feedback.feedbackTextField).should('be.visible').type('feedback');
+        cy.get(feedback.submitFeedbackButton).should('be.visible').click();
         cy.get(feedback.feedbackNotification).should('be.visible');
         cy.get(feedback.feedbackButtonSelected).should('have.text', useful);
         cy.get(feedback.feedbackButtonSelected).should('not.have.text', notUseful);
