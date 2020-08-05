@@ -9,7 +9,7 @@ import analytics from "../utils/analytics"
 
 
 const navigateToContactCentrePage = () => {
-  analytics.trackEvent("census-field-support", "clicked help", "page", window.location.pathname)
+  analytics.trackEvent("census-field-support", "clicked help",  window.location.pathname, 1)
   navigate("/contactcentre/")
 }
 

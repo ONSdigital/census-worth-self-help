@@ -32,8 +32,8 @@ describe("Footer", () => {
       "trackEvent",
       "census-field-support",
       "clicked help",
-      "page",
-      "/"
+      "/",
+      1
     ])
   })
 })
