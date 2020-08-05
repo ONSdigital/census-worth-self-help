@@ -43,7 +43,7 @@
     "moment": "2.24.0",
     "netlify-cms-app": "^2.12.11",
     "netlify-cms-media-library-uploadcare": "^0.5.5",
-    "netlify-cms-ui-default": "^2.11.2",
+    "netlify-cms-ui-default": "2.11.2",
     "node-fetch": "^2.6.0",
     "npm-font-open-sans": "1.1.0",
     "passport": "0.4.0",
@@ -54,7 +54,7 @@
     "react-datepicker": "^2.10.0",
     "react-dom": "16.8.6",
     "react-helmet": "5.2.1",
-    "react-select": "^3.0.4",
+    "react-select": "3.0.4",
     "sanitize-html-react": "1.13.0",
     "showdown": "^1.9.1"
   },
