@@ -3,9 +3,11 @@ import React from "react"
 import TextBlock from "../components/textblock"
 import PageTitle from "../components/pagetitle"
 import { transformSources, htmlSanitize } from "../utils/contenttransforms"
+import DirectoryWidget from "./widgets/DirectoryWidget"
 
 import { WidgetPreviewContainer } from "netlify-cms-ui-default"
 import NetlifyCmsWidgetMarkdown from "netlify-cms-widget-markdown"
+
 import uploadcare2 from "./widgets/netlify-cms-media-library-uploadcare-custom"
 
 const FEATURE_UPLOADCARE_IS_ENABLED = process.env
@@ -41,6 +43,11 @@ const SanitiziedMarkdownPreview = opts => {
   const markup = createMarkup(opts.value)
   return <WidgetPreviewContainer dangerouslySetInnerHTML={markup} />
 }
+
+CMS.registerWidget(
+    "custom_directory_handler",
+    DirectoryWidget
+)
 
 CMS.registerWidget(
   "sanitiziedMarkdown",
