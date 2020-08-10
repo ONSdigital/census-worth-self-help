@@ -159,15 +159,23 @@ export default class Article extends React.Component {
   isCCSite() {
     return this.IS_CC_SITE === true || this.IS_CC_SITE === "true"
   }
-  hasCCNote(post) {
-    if (post) {
-      if (post.frontmatter) {
-        if (post.frontmatter.cconlynote) {
-          return post.frontmatter.cconlynote.length > 0
-        }
+  getCCNote(post) {
+    let ccNote = ""
+    if( post && post.frontmatter)
+    {
+      if(post.frontmatter.cconly) {
+        ccNote += "This article can only be viewed on the Contact Centre site.\n"
       }
-    }
-    return false
+
+      if(post.frontmatter.draftreason) {
+        ccNote += "This article is in draft: " + post.frontmatter.draftreason + ".\n"
+      }
+
+      if(post.frontmatter.cconlynote){
+        ccNote += post.frontmatter.cconlynote
+      }
+   }
+   return ccNote;
   }
   render() {
     let { data, pageContext } = this.props
@@ -193,8 +201,15 @@ export default class Article extends React.Component {
       : "Article content not found. Please Report."
 
     let roles = this.getRoles(post)
-    const hasCCNote =  this.isCCSite()&&this.hasCCNote(post)
-    const ccOnlyNote = hasCCNote ? post.frontmatter.cconlynote : ""
+
+    let hasCCNote = false
+    let ccNote = ""
+    if(this.isCCSite()) {
+      ccNote = this.getCCNote(post)
+      if(ccNote) {
+        hasCCNote = true;
+      }
+    }
     return (
       <div>
         <Layout phone_link={true}>
@@ -257,7 +272,7 @@ export default class Article extends React.Component {
                   }}
                 />
                 {hasCCNote && (
-                  <p
+                  <div
                     data-testid="cc-notes"
                     css={css`
                       background-color: ${colors.secondary_teal};
@@ -265,8 +280,10 @@ export default class Article extends React.Component {
                       color: ${colors.white};
                     `}
                   >
-                    {ccOnlyNote}
-                  </p>
+                    {
+                      ccNote.split('\n').map((line, i) => (<p key={i}>{line}</p>))
+                    }
+                  </div>
                 )}
               </TextBlock>
             </div>
