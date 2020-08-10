@@ -128,6 +128,8 @@ collections:
           multiple: false,
         }
       - { name: signedby, label: Signed Off, required: true }
+      - { name: unpublishReason, label: Reason for unpublishing, required: false,
+          hint: "If this article has been unpublished please provide a reason." }
 
   - name: departments
     label: Departments
