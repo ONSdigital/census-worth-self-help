@@ -137,6 +137,8 @@ export const query = graphql`
       tags
       roles
       cconlynote
+      cconly
+      draftreason
     }
   }
 

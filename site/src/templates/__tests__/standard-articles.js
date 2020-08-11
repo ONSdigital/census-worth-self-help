@@ -213,30 +213,40 @@ describe("StandardArticle", () => {
 
     expect(articleInstance.hasRoles(post)).toBeFalsy()
   })
-  it("hasccnote returns true if there is a ccnote and the note is not blank", () => {
+  it("getCCNote returns cconlynote if provided", () => {
     const articleInstance = renderer
       .create(<StandardArticle data={data} pageContext={pageContext} />)
       .getInstance()
     let post = { frontmatter: { cconlynote: "testnote" } }
 
-    expect(articleInstance.hasCCNote(post)).toBeTruthy()
+    expect(articleInstance.getCCNote(post)).toBe("testnote")
   })
-  it("hasccnote returns false if the ccnote object does not exist", () => {
+  it("getCCNote returns falsey value if nothing to be displayed", () => {
     const articleInstance = renderer
       .create(<StandardArticle data={data} pageContext={pageContext} />)
       .getInstance()
     let post = { frontmatter: {} }
 
-    expect(articleInstance.hasCCNote(post)).toBeFalsy()
+    expect(articleInstance.getCCNote(post)).toBeFalsy()
   })
-  it("hasccnote returns false if the ccnote string is blank", () => {
+  it("getCCNote returns falsey value if the cconlynote string is blank", () => {
     const articleInstance = renderer
       .create(<StandardArticle data={data} pageContext={pageContext} />)
       .getInstance()
     let post = { frontmatter: { cconlynote: "" } }
 
-    expect(articleInstance.hasCCNote(post)).toBeFalsy()
+    expect(articleInstance.getCCNote(post)).toBeFalsy()
   })
+  it("getCCNote combines draft reason and cconly messages.", () => {
+    const articleInstance = renderer
+        .create(<StandardArticle data={data} pageContext={pageContext} />)
+        .getInstance()
+    let post = { frontmatter: {  cconlynote: "cc only note", draftreason: "not acceptable", cconly: true } }
+
+    expect(articleInstance.getCCNote(post))
+        .toBe("This article can only be viewed on the Contact Centre site.\nThis article is in draft: not acceptable.\ncc only note")
+  })
+
 
   it("isCCSite returns true if the environment variable is true", () => {
     process.env.GATSBY_IS_CC_SITE = true
