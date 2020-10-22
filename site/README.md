@@ -1,32 +1,35 @@
-# Run locally
+# Pre-requisites
+
+Node v12
+
+## Run locally
 
     npm install
     npm run local
 
-# Alternatively serve as we do when doing a production deploy
+## Alternatively serve as we do when doing a production deploy
 
     npm install
     gatsby build
     gatsby serve
 
-# Run e2e tests
+## Run e2e tests
 
     npm run e2e
 
 Or to run test interactively
 
-    
     npm run clean
     npm run local:production-like
     npm run cy-open
 
 See [e2e README](cypress/CYPRESS_README.md) for more details.
 
-# Clear build cache
+## Clear build cache
 
     npm run clean
 
-# Deploy GCP app engine service
+## Deploy GCP app engine service
 
     npm install
     npm run build
@@ -41,7 +44,7 @@ See [e2e README](cypress/CYPRESS_README.md) for more details.
     docker build -t ons-site .
     docker run -d -p 3000:80 --name ons-dev-site ons-site
 
-# Deploying matomo
+## Deploying matomo
 
 By default Matomo will not run and the local build will not report feedback
 
@@ -56,6 +59,6 @@ The site_id, ip and url will depend on what you have configured your matomo inst
 
 You will then need to do a gatsby build and serve ( Not an npm run local! )
 
-# Adding Video Path
+## Adding Video Path
 
     export GATSBY_ASSETS_PATH=...
