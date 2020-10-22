@@ -3,9 +3,10 @@
 In one shell
 
     npm install --global saml-idp
-    scripts/generate-local-idp-certificates.sh   
-    saml-idp --acs http://localhost:8080/sso/callback --aud http://localhost:8080 \
-      --serviceProviderId http://localhost:8080/saml/metadata \
+    scripts/generate-local-idp-certificates.sh
+    export PORT=7000
+    saml-idp --acs http://localhost:8000/sso/callback --aud http://localhost:8000 \
+      --serviceProviderId http://localhost:8000/saml/metadata \
       --cert .secrets/idp/idp.certificate \
       --key .secrets/idp/idp.key
 
