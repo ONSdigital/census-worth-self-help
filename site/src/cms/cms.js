@@ -45,6 +45,7 @@ const SanitiziedMarkdownPreview = opts => {
   return <WidgetPreviewContainer dangerouslySetInnerHTML={markup} />
 }
 
+// Check if obj passed is immutable and return its js value. Return the original obj otherwise.
 const immutableToJs = obj => {
   if(isImmutable(obj)) {
     obj = obj.toJS()
@@ -253,6 +254,8 @@ CMS.registerEditorComponent({
   }
 })
 
+/* ---------- SEP-619 fix ---------- */
+// Registering a new Editor component to override the default image upload widget.
 CMS.registerEditorComponent({
   label: 'Image',
   id: 'image',
@@ -263,11 +266,19 @@ CMS.registerEditorComponent({
       alt: match[1],
       title: match[4],
     } },
+
+    /*
+      In these functions, the image data was no longer received in the following format: {alt: '', title: '', image: ''}
+      Instead, an immutable object was received. Accessing the properties was no longer possible without getting the data out of it beforehand.
+      It's still not known why this changed. Images loaded in existing articles kept the old object structure
+    */
     toBlock: (obj) => {
+      // Call function to get the right data and fill in the string returned by this function.
       obj = immutableToJs(obj);
       return `![${obj.alt || ''}](${obj.image || ''}${obj.title ? ` "${obj.title.replace(/"/g, '\\"')}"` : ''})`
     },
-  
+
+  // Same as previous comment.
   toPreview: (obj, getAsset, fields) => {
     obj = immutableToJs(obj);
     const imageField = fields?.find(f => f.get('widget') === 'image');
@@ -294,3 +305,4 @@ CMS.registerEditorComponent({
   ],
   pattern: /^!\[(.*)\]\((.*?)(\s"(.*)")?\)$/,
 })
+/* ---------- SEP-619 fix ---------- */
