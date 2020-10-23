@@ -32,11 +32,11 @@ jobs:
           EXCLUDE_DRAFTS: 'true'
           MATOMO_IP: ((matomo.matomo-ip-address))
           MATOMO_SITE_ID: 8
-          PATCH_NETLIFY: true
+          PATCH_NETLIFY: false
           PROJECT: ((gcp.project-name))
           SERVICE: test
           SKIP_UNIT_TESTS: true
           SKIP_AUDIT: true
           SP_PROTECTED: false
-          GATSBY_SITE_COLOUR: primary
+          GATSBY_SITE_COLOUR: tertiary
         file: census-worth-self-help/pipeline/tasks/deploy-site.yml
