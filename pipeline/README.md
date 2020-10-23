@@ -1,14 +1,15 @@
 # pre-requisites
 
-Install Concourse locally, e.g. with https://github.com/concourse/concourse-docker,
-log in to web console and install fly command.
+Install Concourse locally, e.g. with
+<https://github.com/concourse/concourse-docker,> log in to web console and install
+fly command.
 
-# Local validation
+## Local validation
 
     set -x CI_URL=...provide-ci-server-url-here....
     fly -t ci login -c $CI_URL
 
-# Set pipelines
+## Set pipelines
 
     fly -t ci login -n dev
 
@@ -22,11 +23,11 @@ log in to web console and install fly command.
     fly -t ci set-pipeline -c pipeline-test.yml -p test
     fly -t ci set-pipeline -c pipeline-trigger.yml -p trigger
 
-# Troubleshooting
+## Troubleshooting
 
     fly -t ci unpause-job  -j self-help/build
     fly -t ci abort-build -j self-help/build --build 4
 
-# Clean up
+## Clean up
 
     fly -t ci destroy-pipeline -p self-help
