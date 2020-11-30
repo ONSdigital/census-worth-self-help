@@ -11,12 +11,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-solid-svg-icons"
 import { faClock as faClockRegular } from "@fortawesome/free-regular-svg-icons"
 import { LastVisitManager } from "../utils/time"
-
 export default class MostRecent extends React.Component {
   constructor(props) {
     super(props)
+    this.clientRendered = false;
     this.LastVisitManager = new LastVisitManager()
-
     let paginator = new PaginationObject()
     this.state = {
       paginator: paginator
@@ -24,11 +23,9 @@ export default class MostRecent extends React.Component {
     this.data = props.data
     this.updatePagination = this.updatePagination.bind(this)
   }
-
   componentWillMount() {
     this.LastVisitManager.updateVisitTime()
   }
-
   updatePagination(pageTarget) {
     this.state.paginator.goToPage(pageTarget)
     // update state to get page to rerender
@@ -36,21 +33,27 @@ export default class MostRecent extends React.Component {
       paginator: this.state.paginator
     })
   }
-
   render() {
     let recentEdges = this.LastVisitManager.getEdgesChangedSinceLastVist(
       this.data.allMarkdownRemark.edges
     )
-
-    let noRecentEdges = recentEdges.length === 0
-
-    if (noRecentEdges) {
+    let shouldShowNoChangesBlock = false;
+    if (typeof window !== 'undefined') {
+      /*
+        Force a re-render once to make sure the Most Recent block content is properly updadted with Client side data.
+       */ 
+      if (this.clientRendered === false) {
+        this.clientRendered = true;
+        setTimeout(() => this.forceUpdate(), 0)
+      } else {
+        shouldShowNoChangesBlock = !!this.LastVisitManager.lastVisitTime;
+      }
+    }
+    if (recentEdges.length === 0) {
       // if no recent edges we will display a message and all the edges.
       recentEdges = this.data.allMarkdownRemark.edges
     }
-
-    let paginatedEdges = this.state.paginator.filterResults(recentEdges)
-
+    const paginatedEdges = this.state.paginator.filterResults(recentEdges)
     return (
       <Layout explore_more_link={true}>
         <PageTitle icon={<FontAwesomeIcon icon={faClock} />}>
@@ -60,7 +63,7 @@ export default class MostRecent extends React.Component {
           This list shows the most recently updated articles since the last time
           you visited the site.
         </TextBlock>
-        {noRecentEdges && (
+        {shouldShowNoChangesBlock && recentEdges.length === 0 && (
           <BlockStatus
             icon={<FontAwesomeIcon icon={faClockRegular} />}
             title="No updates since your last visit"
@@ -78,7 +81,6 @@ export default class MostRecent extends React.Component {
     )
   }
 }
-
 export const query = graphql`
   query {
     allMarkdownRemark(
