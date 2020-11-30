@@ -38,7 +38,10 @@ export default class MostRecent extends React.Component {
       this.data.allMarkdownRemark.edges
     )
     let shouldShowNoChangesBlock = false;
-    if (typeof window !== 'undefined') {   
+    if (typeof window !== 'undefined') {
+      /*
+        Force a re-render once to make sure the Most Recent block content is properly updadted with Client side data.
+       */ 
       if (this.clientRendered === false) {
         this.clientRendered = true;
         setTimeout(() => this.forceUpdate(), 0)
