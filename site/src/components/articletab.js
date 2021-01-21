@@ -1,6 +1,6 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { navigate } from "@reach/router"
+import { navigate } from "gatsby"
 import { colors, spacing } from "../utils/styles"
 import { getTimeAgoPublished } from "../utils/time"
 import { getSiteSpecificStyle } from "../utils/contenttransforms" 
