@@ -4,7 +4,7 @@ import { colors, spacing } from "../utils/styles"
 import LargeButton from "./largebutton"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone } from "@fortawesome/free-solid-svg-icons"
-import { navigate } from "@reach/router"
+import { navigate } from "gatsby"
 import analytics from "../utils/analytics"
 
 

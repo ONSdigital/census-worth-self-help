@@ -1,7 +1,7 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { colors, spacing } from "../utils/styles"
-import { navigate } from "@reach/router"
+import { navigate } from "gatsby"
 import Section from "./section"
 import Select from "react-select"
 import VisuallyHidden from "@reach/visually-hidden"

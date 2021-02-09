@@ -1,7 +1,7 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { spacing } from "../utils/styles"
-import { navigate } from "@reach/router"
+import { navigate } from "gatsby"
 
 export default ({ title, link, background = true, clickFunction = null }) => {
   const redirect = event => {

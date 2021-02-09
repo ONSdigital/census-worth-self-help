@@ -7,7 +7,7 @@ import { getSiteSpecificStyle } from "../utils/contenttransforms"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
-import { navigate } from "@reach/router"
+import { navigate } from "gatsby"
 import VisuallyHidden from "@reach/visually-hidden"
 
 import { parse } from "query-string"
