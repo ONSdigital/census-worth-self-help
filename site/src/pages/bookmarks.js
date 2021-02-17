@@ -16,7 +16,7 @@ import PaginationBar from "../components/paginationbar"
 export default class Bookmarks extends React.Component {
   constructor(props) {
     super(props)
-
+    this.clientRendered = false;
     let paginator = new PaginationObject()
     this.state = {
       paginator: paginator
@@ -37,17 +37,26 @@ export default class Bookmarks extends React.Component {
     let bookmarkManager = new BookmarkManager()
     let bookmarkTitles = bookmarkManager.getTopBookmarks()
     let bookmarkEdges = bookmarkTitles
-      .map(title =>
-        this.data.allMarkdownRemark.edges.find(
-          edge => edge.node.frontmatter.title === title
-        )
-      )
-      .filter(edge => edge)
+    let showBookmarkBlock = false;
     let paginatedBookmarkEdges = this.state.paginator.filterResults(
       bookmarkEdges
     )
-
+    .map(title =>
+      this.data.allMarkdownRemark.edges.find(
+        edge => edge.node.frontmatter.title === title
+      )
+    )
+    .filter(edge => edge)
     bookmarkManager.addBookmarkClickEventToEdges(paginatedBookmarkEdges)
+      /*
+        Force a re-render once to make sure the Bookmark block content is properly updadted with Client side data.
+       */
+      if (this.clientRendered === false) {
+        this.clientRendered = true;
+        setTimeout(() => this.forceUpdate(), 0)
+      } else {
+        showBookmarkBlock = true
+      }
 
     return (
       <Layout explore_more_link={true}>
@@ -60,10 +69,10 @@ export default class Bookmarks extends React.Component {
           bookmark button in the article. Bookmarks are stored on your device,
           and are linked to your account, so only you have access to them.
         </TextBlock>
-        {bookmarkEdges.length > 0 && (
+        {showBookmarkBlock && paginatedBookmarkEdges.length > 0 && (
           <TabList elements={paginatedBookmarkEdges} />
         )}
-        {bookmarkEdges.length > 0 && (
+        {showBookmarkBlock && paginatedBookmarkEdges.length > 0 && (
           <PaginationBar
             total={bookmarkEdges.length}
             paginator={this.state.paginator}
@@ -71,7 +80,7 @@ export default class Bookmarks extends React.Component {
             onPageCount={paginatedBookmarkEdges.length}
           />
         )}
-        {bookmarkEdges.length === 0 && (
+        {showBookmarkBlock && paginatedBookmarkEdges.length === 0 && (
           <BlockStatus
             icon={<FontAwesomeIcon icon={faBookmark} />}
             title="Bookmarks will show here"
