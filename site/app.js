@@ -129,8 +129,7 @@ if (SP_PROTECTED === "false") {
     const UPLOADCARE_SECRET_KEY = process.env.UPLOADCARE_SECRET_KEY
     const UPLOADCARE_PUBLIC_KEY = process.env.GATSBY_UPLOADCARE_PUBLIC_KEY
     const UPLOADCARE_STORAGE_ID = process.env.UPLOADCARE_STORAGE_ID
-    const UPLOADCARE_SIGNATURE_EXPIRY_SECONDS =
-      process.env.UPLOADCARE_SIGNATURE_EXPIRY_SECONDS || 120
+    const UPLOADCARE_SIGNATURE_EXPIRY_SECONDS = process.env.UPLOADCARE_SIGNATURE_EXPIRY_SECONDS || 120
     const ASSET_BUCKET_NAME = process.env.ASSET_BUCKET_NAME
     const ASSET_BUCKET_REGION = process.env.ASSET_BUCKET_REGION || "eu-west-2"
 
@@ -154,9 +153,7 @@ if (SP_PROTECTED === "false") {
           console.error("Missing UPLOADCARE_SECRET_KEY, cannot generate secret")
           response.status(500).send()
         } else {
-          response.send(
-            api.createSignature(UPLOADCARE_SIGNATURE_EXPIRY_SECONDS)
-          )
+          response.send(api.createSignature(UPLOADCARE_SIGNATURE_EXPIRY_SECONDS))
         }
       }
     )
