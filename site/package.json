@@ -85,9 +85,9 @@
     "gatsby"
   ],
   "scripts": {
-    "build": "npm audit && jest && gatsby build",
-    "build-no-audit": "jest && gatsby build",
-    "build-no-audit-no-test": "gatsby build",
+    "build": "npm audit && npm run build-no-audit",
+    "build-no-audit": "jest && npm run build-no-audit-no-test",
+    "build-no-audit-no-test": "gatsby build && ./archive-content-files.sh",
     "clean": "rimraf public/ node_modules/.cache/ .cache/",
     "coverage": "jest --coverage",
     "cy-open": "node_modules/cypress/bin/cypress open",

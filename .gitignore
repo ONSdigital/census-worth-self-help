@@ -23,6 +23,7 @@ ci-app.yaml
 node_modules
 .cache
 public
+site/public-no-content
 site/_build
 site/static/assets
 site/public.zip
