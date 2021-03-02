@@ -35,7 +35,7 @@ app.get("/api/ping", (request, response) => withoutEtag(response).send("OK"))
 
 if (SP_PROTECTED === "false") {
   // For an unprotected deployment, serve static files from /public
-
+  app.use(express.static("public"))
   app.use(staticZip("./public.zip"))
   app.get("/api/auth", (request, response) =>
     withoutEtag(response).send("NOAUTH")
@@ -185,6 +185,7 @@ if (SP_PROTECTED === "false") {
   })
 
   app.use(requireAuthenticated, express.static("public"))
+  app.use(requireAuthenticated, staticZip("./public.zip"))
 }
 
 // Start the server
