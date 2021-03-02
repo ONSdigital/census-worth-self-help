@@ -27,6 +27,7 @@
     "crypto-js": "^4.0.0",
     "dotenv": "8.0.0",
     "escape-string-regexp": "2.0.0",
+    "express-static-zip": "file:vendor/express-static-zip",
     "gatsby": "^2.30.2",
     "gatsby-plugin-emotion": "4.0.7",
     "gatsby-plugin-favicon": "3.1.6",
@@ -56,6 +57,7 @@
     "react-helmet": "5.2.1",
     "react-select": "3.0.4",
     "sanitize-html-react": "1.13.0",
+    "sharp": "^0.27.2",
     "showdown": "^1.9.1"
   },
   "devDependencies": {
@@ -102,7 +104,7 @@
     "local:production-like": "./localbuild.sh; export EXCLUDE_DRAFTS='true' ; npm run develop",
     "merge-reports": "npx mochawesome-merge --reportDir mochawesome-report > mochawesome.json; npx mochawesome-report-generator mochawesome.json --reportDir mochawesome-report",
     "serve": "gatsby serve",
-    "start": "node app.js",
+    "start": "env SP_PROTECTED=false node app.js",
     "test": "jest"
   },
   "repository": {

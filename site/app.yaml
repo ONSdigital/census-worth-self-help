@@ -3,55 +3,43 @@ service: default
 default_expiration: 60m
 handlers:
   - url: /admin/(.*\.yml)
-    mime_type: text/yaml
-    static_files: public/admin/\1
+    script: auto
     secure: always
-    upload: public/admin/(.*\.yml)
 
   - url: /admin/cms.css
-    mime_type: text/css
-    static_files: public/admin/cms.css
+    script: auto
     secure: always
-    upload: public/admin/cms.css
 
   - url: /admin/
     expiration: 5m
-    static_files: public/admin/index.html
-    upload: public/admin/index.html
+    script: auto
     http_headers:
       Content-Security-Policy: |-
         connect-src 'self' blob: https://api.github.com https://upload.uploadcare.com; default-src 'self'; img-src 'self' data: blob: https://*.githubusercontent.com https://ucarecdn.com https://*.amazonaws.com; media-src https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';
 
   - url: /admin/index.html
-    expiration: 5m
-    static_files: public/admin/index.html
-    upload: public/admin/index.html
+    script: auto
     http_headers:
       Content-Security-Policy: |-
         connect-src 'self' blob: https://api.github.com https://upload.uploadcare.com; default-src 'self'; img-src 'self' data: blob: https://*.githubusercontent.com https://ucarecdn.com https://*.amazonaws.com; media-src https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';
 
   - url: /admin/cms.js
     expiration: 30m
-    mime_type: text/javascript
-    static_files: public/admin/cms.js
+    script: auto
     secure: always
-    upload: public/admin/cms.js
 
   - url: /sw.js
     script: auto
     secure: always
 
   - url: /(.*\.js)
-    expiration: 1d
-    mime_type: text/javascript
-    static_files: public/\1
+    script: auto
     secure: always
-    upload: public/(.*\.js)
 
 # Protected content managed images and fonts (driven by CMS)
   - url: /assets/(.*\.(gif|ico|jpeg|jpg|png|svg))
     script: auto
-    secure: always
+    secure: always  
 
 # Online route for offline detection
   - url: /online
@@ -64,28 +52,24 @@ handlers:
 # Robots.txt
   - url: /robots.txt
     expiration: 1d
-    mime_type: text/plain
-    static_files: public/robots.txt
+    script: auto
     secure: always
-    upload: public/robots.txt
 
 # No need for protection for images and fonts driven from code repository
   - url: /(.*\.(gif|ico|jpeg|jpg|png|svg))
     expiration: 1d
-    static_files: public/\1
+    script: auto
     secure: always
-    upload: public/(.*\.(gif|ico|jpeg|jpg|png|svg))
 
 # Fonts
   - url: /(.*\.(woff|woff2|ttf|eot))
     expiration: 7d
-    static_files: public/\1
+    script: auto
     secure: always
-    upload: public/(.*\.(woff|woff2|ttf|eots))
 
   - url: /icons
     expiration: 1d
-    static_dir: public/icons
+    script: auto
     secure: always
 
 # Protected page handling

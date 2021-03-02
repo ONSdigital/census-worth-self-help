@@ -7,6 +7,7 @@ const onHeaders = require("on-headers")
 const app = express()
 const csp = require("./app/csp").default
 const hstsheader = require("./app/hstsheader").default
+const staticZip = require("express-static-zip")
 
 const SP_PROTECTED = (process.env.SP_PROTECTED || "true").toLowerCase()
 const FEATURE_UPLOADCARE_IS_ENABLED = (
@@ -35,7 +36,7 @@ app.get("/api/ping", (request, response) => withoutEtag(response).send("OK"))
 if (SP_PROTECTED === "false") {
   // For an unprotected deployment, serve static files from /public
 
-  app.use(express.static("public"))
+  app.use(staticZip("./public.zip"))
   app.get("/api/auth", (request, response) =>
     withoutEtag(response).send("NOAUTH")
   )
@@ -128,7 +129,8 @@ if (SP_PROTECTED === "false") {
     const UPLOADCARE_SECRET_KEY = process.env.UPLOADCARE_SECRET_KEY
     const UPLOADCARE_PUBLIC_KEY = process.env.GATSBY_UPLOADCARE_PUBLIC_KEY
     const UPLOADCARE_STORAGE_ID = process.env.UPLOADCARE_STORAGE_ID
-    const UPLOADCARE_SIGNATURE_EXPIRY_SECONDS = process.env.UPLOADCARE_SIGNATURE_EXPIRY_SECONDS || 120
+    const UPLOADCARE_SIGNATURE_EXPIRY_SECONDS =
+      process.env.UPLOADCARE_SIGNATURE_EXPIRY_SECONDS || 120
     const ASSET_BUCKET_NAME = process.env.ASSET_BUCKET_NAME
     const ASSET_BUCKET_REGION = process.env.ASSET_BUCKET_REGION || "eu-west-2"
 
@@ -152,7 +154,9 @@ if (SP_PROTECTED === "false") {
           console.error("Missing UPLOADCARE_SECRET_KEY, cannot generate secret")
           response.status(500).send()
         } else {
-          response.send(api.createSignature(UPLOADCARE_SIGNATURE_EXPIRY_SECONDS))
+          response.send(
+            api.createSignature(UPLOADCARE_SIGNATURE_EXPIRY_SECONDS)
+          )
         }
       }
     )

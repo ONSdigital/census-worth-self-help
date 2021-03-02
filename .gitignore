@@ -3,6 +3,9 @@
 .idea
 *.iml
 
+# Mac
+.DS_Store
+
 # Environment variables
 
 .env
@@ -22,6 +25,7 @@ node_modules
 public
 site/_build
 site/static/assets
+site/public.zip
 coverage
 
 # Cypress
