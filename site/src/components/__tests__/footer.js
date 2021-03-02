@@ -4,9 +4,8 @@ import { render, fireEvent } from "react-testing-library"
 
 import Footer from "../footer"
 
-import { navigate } from "@reach/router"
-
-jest.mock('@reach/router', () => ({
+import { navigate } from "gatsby"
+jest.mock('gatsby', () => ({
   navigate: jest.fn(),
 }))
 

@@ -1,8 +1,10 @@
 #!/bin/bash
+sourcedir=${CONTENT_SOURCE:-../content/}
 builddir="_build/content/"
 
+echo "Publishing ${sourcedir} to ${builddir}"
 rm -rf "$builddir"
-mkdir -p "$builddir" && cp -R ../content/ "$builddir";
+mkdir -p "$builddir" && cp -R "${sourcedir}" "$builddir";
 
 assetdir="static/assets/"
 rm -rf "$assetdir"
