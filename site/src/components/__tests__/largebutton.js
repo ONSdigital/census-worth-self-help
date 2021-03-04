@@ -4,9 +4,9 @@ import { render, fireEvent } from "react-testing-library"
 
 import LargeButton from "../largebutton"
 
-import { navigate } from "@reach/router"
+import { navigate } from "gatsby"
 
-jest.mock('@reach/router', () => ({
+jest.mock('gatsby', () => ({
   navigate: jest.fn(),
 }))
 

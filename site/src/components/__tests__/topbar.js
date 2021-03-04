@@ -4,8 +4,8 @@ import renderer from "react-test-renderer"
 import TopBar from "../topbar"
 import { render, fireEvent } from "react-testing-library"
 
-import { navigate } from "@reach/router"
-jest.mock("@reach/router", () => ({
+import { navigate } from "gatsby"
+jest.mock("gatsby", () => ({
   navigate: jest.fn()
 }))
 

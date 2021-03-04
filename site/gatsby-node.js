@@ -3,6 +3,13 @@ const { excludeDraftArticle } = require(`./src/utils/draft-excluder`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
 
+const withSubDirectory = (filename) => {
+  if (["cc", "draft", "how", "what"].includes(filename.split('-')[0])) {
+    return filename.replace("-","/") 
+  }
+  return filename
+}
+
 exports.onCreateNode = (props) => {
   // This function permanently adds the following values to our graphql queries.
   // collection - this tells us which collection the .md is from
@@ -26,7 +33,7 @@ exports.onCreateNode = (props) => {
     createNodeField({
       node,
       name: `pagename`,
-      value: filename,
+      value: withSubDirectory(filename),
     })
   }
 }
