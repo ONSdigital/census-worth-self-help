@@ -18,7 +18,7 @@ jobs:
   - name: deploy
     build_log_retention:
       days: 8
-      builds: 10
+      builds: 100
     max_in_flight: 1
     plan:
       - get: census-worth-self-help
