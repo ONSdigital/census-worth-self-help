@@ -4,7 +4,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
 
 const withSubDirectory = (filename) => {
-  if (["a", "additional", "can", "cc", "ccs", "ce", "census", "draft", "how", "health", "i", "my", "non", "recording", "using", "what", "your"].includes(filename.split('-')[0])) {
+  if (["a", "additional", "applying", "can", "capturing", "cc", "ccs", "ce", "cem", "census", "communal", "community", "covid", "draft", "google", "how", "health", "hostels", "i", "loggng", "managing", "my", "non", "part", "record", "recording", "setting", "the", "using", "what", "when", "your"].includes(filename.split('-')[0])) {
     return filename.replace("-","/") 
   }
   return filename
