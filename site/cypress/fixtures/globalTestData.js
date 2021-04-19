@@ -7,7 +7,7 @@ const injectionAttackArticle = 'Injection Attack'
 const reviwemeArticle = 'reviweme'
 
 // Article paths
-const aVerySimpleArticlePath = '/a-very-simple-article/'
+const aVerySimpleArticlePath = '/a/very-simple-article/'
 const anArticleWithRolesPath = '/an-article-with-many-roles/'
 const deepArticlePath = '/deep-article/'
 const editorialWorkflowPath = '/editorial-workflow'
