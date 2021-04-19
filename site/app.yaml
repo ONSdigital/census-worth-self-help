@@ -37,57 +37,6 @@ handlers:
     secure: always
     upload: public/admin/cms.js
 
-  - url: /sw.js
-    script: auto
-    secure: always
-
-  - url: /(.*\.js)
-    expiration: 1d
-    mime_type: text/javascript
-    static_files: public/\1
-    secure: always
-    upload: public/(.*\.js)
-
-# Protected content managed images and fonts (driven by CMS)
-  - url: /assets/(.*\.(gif|ico|jpeg|jpg|png|svg))
-    script: auto
-    secure: always
-
-# Online route for offline detection
-  - url: /online
-    expiration: 1d
-    mime_type: text/plain
-    static_files: public/online.txt
-    secure: always
-    upload: public/online.txt
-
-# Robots.txt
-  - url: /robots.txt
-    expiration: 1d
-    mime_type: text/plain
-    static_files: public/robots.txt
-    secure: always
-    upload: public/robots.txt
-
-# No need for protection for images and fonts driven from code repository
-  - url: /(.*\.(gif|ico|jpeg|jpg|png|svg))
-    expiration: 1d
-    static_files: public/\1
-    secure: always
-    upload: public/(.*\.(gif|ico|jpeg|jpg|png|svg))
-
-# Fonts
-  - url: /(.*\.(woff|woff2|ttf|eot))
-    expiration: 7d
-    static_files: public/\1
-    secure: always
-    upload: public/(.*\.(woff|woff2|ttf|eots))
-
-  - url: /icons
-    expiration: 1d
-    static_dir: public/icons
-    secure: always
-
 # Protected page handling
   - url: /(.*)
     script: auto
