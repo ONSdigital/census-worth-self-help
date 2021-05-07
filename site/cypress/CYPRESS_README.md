@@ -8,6 +8,9 @@ They should be run against a production-like (gatsby build gatsby serve) version
     ./localbuild.sh && npm run clean && npm run build && npm run serve
     npm run cy-open
 
+If you have the error: Please reinstall Cypress by running: cypress install
+    Try the command ./node_modules/.bin/cypress install
+
 "chromeWebSecurity": false has been added to cypress.json to prevent CORS errors
 The security errors are complaining about how the acceptance tests are navigating the site, so there isn't a concern about apparently 'turning off security'.
 
