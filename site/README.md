@@ -15,7 +15,7 @@ Node v12
 
 ## Run e2e tests
 
-    npm run e2e
+    See CYPRESS_README.md for latest advice
     If you have the error: Please reinstall Cypress by running: cypress install
     Try the command ./node_modules/.bin/cypress install
 
