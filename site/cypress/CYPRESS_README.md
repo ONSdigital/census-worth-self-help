@@ -3,6 +3,7 @@
 
 They should be run against a production-like (gatsby build gatsby serve) version of the site for consistency.
     cd site
+    export EXCLUDE_DRAFTS='true'
     ./localbuild.sh && npm run clean && npm run build && npm run serve
     npm run cy-open
 
