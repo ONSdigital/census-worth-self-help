@@ -37,7 +37,7 @@ describe("Article bookmarks", function() {
     it('The field officer should see all bookmarked articles when they click \'view all\' [ONS-64]', function () {
         cy.bookmarkArticle(globalTestData.deepArticlePath);
         cy.visit('');
-        cy.get(`[href='${bookmarksPage.bookmarkUrlPath}']`).click();
+        cy.visit(bookmarksPage.bookmarkUrlPath);
         cy.url().should('include', bookmarksPage.bookmarkUrlPath);
         cy.get(search.searchResultTitle).should('have.text', 'My Bookmarks');
     });

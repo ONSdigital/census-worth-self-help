@@ -1,8 +1,24 @@
+----------------
+# Run all Acceptance tests 
+
+They should be run against a production-like (gatsby build gatsby serve) version of the site for consistency.
+    cd site
+    ./localbuild.sh && npm run clean && npm run build && npm run serve
+    npm run cy-open
+
+"chromeWebSecurity": false has been added to cypress.json to prevent CORS errors
+The security errors are complaining about how the acceptance tests are navigating the site, so there isn't a concern about apparently 'turning off security'.
+----------------
+
+## Some of the below suggestions may be effective but most recent process/advice can be viewed above (enclosed within dashes)
+
 # Run an individual spec
 
 In order to run individual spec files, you can run:
 
     ./node_modules/.bin/cypress run --spec cypress/integration/ui_tests/e2e_tests/<file_name>
+
+You can also run specific tests through the cy-open UI
 
 # Browser argument
 

@@ -86,14 +86,14 @@ describe("Article searching", function() {
     cy.get(search.searchBarField).clear().type("test")
     cy.get(search.searchResultTitle).should(
       "have.text",
-      '10 results for "test"'
+      '11 results for "test"'
     )
 
     cy.visit("")
     cy.get(search.searchButton).click()
     cy.get(search.searchResultTitle).should(
       "have.text",
-      '10 results for "test"'
+      '11 results for "test"'
     )
   })
 })

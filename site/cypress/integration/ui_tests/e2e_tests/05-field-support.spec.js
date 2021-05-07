@@ -38,7 +38,7 @@ describe("Contact support page", function() {
         const article = 'A very simple article';
         cy.visit(supportPage.contactCentrePath);
         cy.get(homepage.articleCard).contains(article).click();
-        cy.url().should('include', '/'+globalTestData.aVerySimpleArticlePath);
+        cy.url().should('include', globalTestData.aVerySimpleArticlePath);
         cy.get(search.searchResultTitle).should('have.text', article);
     });
 

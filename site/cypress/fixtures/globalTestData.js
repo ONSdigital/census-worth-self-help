@@ -13,7 +13,7 @@ const deepArticlePath = '/deep-article/'
 const editorialWorkflowPath = '/editorial-workflow'
 const imageArticlePath = '/image-tests'
 const reviwemePath = '/reviweme'
-const videoArticlePath = '/video-test/'
+const videoArticlePath = '/video-test'
 
 // Page URLs
 const explorePagePath = '/explore'
