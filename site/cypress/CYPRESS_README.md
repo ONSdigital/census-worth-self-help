@@ -1,7 +1,8 @@
-----------------
-# Run all Acceptance tests 
+# Recommended approach
+## Run all Acceptance tests 
 
 They should be run against a production-like (gatsby build gatsby serve) version of the site for consistency.
+    
     cd site
     export EXCLUDE_DRAFTS='true'
     ./localbuild.sh && npm run clean && npm run build && npm run serve
@@ -9,11 +10,10 @@ They should be run against a production-like (gatsby build gatsby serve) version
 
 "chromeWebSecurity": false has been added to cypress.json to prevent CORS errors
 The security errors are complaining about how the acceptance tests are navigating the site, so there isn't a concern about apparently 'turning off security'.
-----------------
 
-## Some of the below suggestions may be effective but most recent process/advice can be viewed above (enclosed within dashes)
+# Older/other approaches
 
-# Run an individual spec
+## Run an individual spec
 
 In order to run individual spec files, you can run:
 
@@ -21,13 +21,13 @@ In order to run individual spec files, you can run:
 
 You can also run specific tests through the cy-open UI
 
-# Browser argument
+## Browser argument
 
 You can also add `--browser=chrome` if you want to run a test without opening the test runner:
 
     ./node_modules/.bin/cypress run --browser=chrome --spec <path/to/file>
     
-# Scripts in package.json
+## Scripts in package.json
 
 There are scripts in package.json to run with either headless or with the test runner open:
 
@@ -37,7 +37,7 @@ There are scripts in package.json to run with either headless or with the test r
 You will also need to export the environment variables for live chat before running the tests. These are in the secrets
 repo.
 
-# Run against remote environment
+## Run against remote environment
 
     CYPRESS_BASE_URL=<remote environment> <cypress command>
 
