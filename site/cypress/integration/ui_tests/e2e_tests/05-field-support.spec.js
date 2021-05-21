@@ -1,5 +1,7 @@
 /// <reference types="Cypress" />
 
+const globalTestData = require('../../../fixtures/globalTestData');
+
 // fragments
 const menu = require('../../../fixtures/fragments/menu');
 const search = require('../../../fixtures/fragments/search');
@@ -34,10 +36,9 @@ describe("Contact support page", function() {
 
     it('The field officer can view an article from the support page [ONS-47]', function () {
         const article = 'A very simple article';
-        const aVerySimpleArticlePath = 'a-very-simple-article';
         cy.visit(supportPage.contactCentrePath);
         cy.get(homepage.articleCard).contains(article).click();
-        cy.url().should('include', '/'+aVerySimpleArticlePath);
+        cy.url().should('include', globalTestData.aVerySimpleArticlePath);
         cy.get(search.searchResultTitle).should('have.text', article);
     });
 

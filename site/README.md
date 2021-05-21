@@ -15,7 +15,7 @@ Node v12
 
 ## Run e2e tests
 
-    npm run e2e
+    See CYPRESS_README.md for latest advice
 
 Or to run test interactively
 

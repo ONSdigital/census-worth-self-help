@@ -44,7 +44,7 @@
     "netlify-cms-app": "^2.12.11",
     "netlify-cms-media-library-uploadcare": "^0.5.5",
     "netlify-cms-ui-default": "2.11.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "npm-font-open-sans": "1.1.0",
     "passport": "0.4.0",
     "passport-saml": "1.1.0",

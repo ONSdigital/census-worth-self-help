@@ -24,7 +24,7 @@ Cypress.Commands.add('isArticlePage', () => {
 
 Cypress.Commands.add('isPageNotFoundPage', () => {
   cy.get("#___gatsby")
-    .contains("Gatsby.js development 404 page")
+    .contains("Page Not Found")
 })
 
 
