@@ -47,7 +47,7 @@
     "node-fetch": "^2.6.1",
     "npm-font-open-sans": "1.1.0",
     "passport": "0.4.0",
-    "passport-saml": "1.1.0",
+    "passport-saml": "3.1.0",
     "react": "16.8.6",
     "react-aria-menubutton": "6.2.0",
     "react-children-utilities": "1.2.1",
